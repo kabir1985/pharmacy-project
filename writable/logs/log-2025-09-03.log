@@ -1,0 +1,481 @@
+DEBUG - 2025-09-03 09:44:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 09:44:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 09:44:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 09:56:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 09:56:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 09:57:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-03 09:58:00 --> mysqli_sql_exception: Unknown column 'discountOnTotalPrice' in 'field list' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\ReturnController.php(62): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2025-09-03 09:58:03 --> mysqli_sql_exception: Unknown column 'discountOnTotalPrice' in 'field list' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\ReturnController.php(62): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+DEBUG - 2025-09-03 10:01:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 10:01:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-03 10:01:40 --> mysqli_sql_exception: Unknown column 'discountOnTotalPrice' in 'field list' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\ReturnController.php(62): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+DEBUG - 2025-09-03 10:03:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 10:03:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 10:03:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-03 10:03:55 --> mysqli_sql_exception: Unknown column 'discountOnTotalPrice' in 'field list' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\ReturnController.php(60): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+DEBUG - 2025-09-03 10:12:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-03 10:12:10 --> mysqli_sql_exception: Unknown column 'discountOnTotalPrice' in 'field list' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\ReturnController.php(63): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+DEBUG - 2025-09-03 10:21:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-03 10:21:23 --> mysqli_sql_exception: Unknown column 'discountOnTotalPrice' in 'field list' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\ReturnController.php(60): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+DEBUG - 2025-09-03 10:26:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 10:33:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 10:33:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 10:34:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 10:44:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 10:44:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 10:51:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-03 10:51:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-03 10:51:55 --> mysqli_sql_exception: Unknown column 'rs.discount' in 'field list' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT \r\n     ...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT \r\n     ...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT \r\n     ...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\salereturnlist.php(111): CodeIgniter\Database\BaseConnection->query(' SELECT \r\n     ...')
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2025-09-03 10:51:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'rs.discount' in 'field list'
+[Method: GET, Route: salereturnlistshow]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\salereturnlist.php(111): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.total_tax,
+                    rs.discount,
+                    rs.others_cost,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-03 10:51:55 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'rs.discount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.total_tax,
+                    rs.discount,
+                    rs.others_cost,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.total_tax,
+                    rs.discount,
+                    rs.others_cost,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 3 APPPATH\Controllers\salereturnlist.php(111): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.total_tax,
+                    rs.discount,
+                    rs.others_cost,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-03 10:51:55 --> [Caused by] mysqli_sql_exception: Unknown column 'rs.discount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.total_tax,
+                    rs.discount,
+                    rs.others_cost,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.total_tax,
+                    rs.discount,
+                    rs.others_cost,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.total_tax,
+                    rs.discount,
+                    rs.others_cost,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 4 APPPATH\Controllers\salereturnlist.php(111): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.total_tax,
+                    rs.discount,
+                    rs.others_cost,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

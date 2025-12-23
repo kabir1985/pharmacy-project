@@ -1,0 +1,1108 @@
+CRITICAL - 2025-08-21 08:04:59 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "login/login_form.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/login_form.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('login/login_form.php', [], true)
+ 3 APPPATH\Controllers\login.php(22): view('login/login_form.php')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:05:00 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "login/login_form.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/login_form.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('login/login_form.php', [], true)
+ 3 APPPATH\Controllers\login.php(22): view('login/login_form.php')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:05:01 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "login/login_form.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/login_form.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('login/login_form.php', [], true)
+ 3 APPPATH\Controllers\login.php(22): view('login/login_form.php')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:05:19 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "login/login_form.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/login_form.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('login/login_form.php', [], true)
+ 3 APPPATH\Controllers\login.php(22): view('login/login_form.php')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:05:20 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "login/login_form.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/login_form.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('login/login_form.php', [], true)
+ 3 APPPATH\Controllers\login.php(22): view('login/login_form.php')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:05:21 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "login/login_form.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/login_form.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('login/login_form.php', [], true)
+ 3 APPPATH\Controllers\login.php(22): view('login/login_form.php')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:05:21 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "login/login_form.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/login_form.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('login/login_form.php', [], true)
+ 3 APPPATH\Controllers\login.php(22): view('login/login_form.php')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:05:21 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "login/login_form.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/login_form.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('login/login_form.php', [], true)
+ 3 APPPATH\Controllers\login.php(22): view('login/login_form.php')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:05:23 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "login/login_form.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/login_form.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('login/login_form.php', [], true)
+ 3 APPPATH\Controllers\login.php(22): view('login/login_form.php')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:05:24 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "login/login_form.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('login/login_form.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('login/login_form.php', [], true)
+ 3 APPPATH\Controllers\login.php(22): view('login/login_form.php')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-08-21 08:10:20 --> mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\login.php(34): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Login->auth()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-08-21 08:10:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+[Method: POST, Route: login/auth]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `username` = :username:', [...], false)
+ 2 APPPATH\Controllers\login.php(34): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:10:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `username` = \'sdfdsf\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `username` = \'sdfdsf\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `username` = :username:', [...], false)
+ 4 APPPATH\Controllers\login.php(34): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:10:20 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `users`
+WHERE `username` = \'sdfdsf\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `username` = \'sdfdsf\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `username` = \'sdfdsf\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `username` = :username:', [...], false)
+ 5 APPPATH\Controllers\login.php(34): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-08-21 08:18:34 --> mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\login.php(34): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Login->auth()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-08-21 08:18:34 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+[Method: POST, Route: login/auth]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `username` = :username:', [...], false)
+ 2 APPPATH\Controllers\login.php(34): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:18:34 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `username` = \'kabir\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `username` = \'kabir\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `username` = :username:', [...], false)
+ 4 APPPATH\Controllers\login.php(34): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:18:34 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `users`
+WHERE `username` = \'kabir\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `username` = \'kabir\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `username` = \'kabir\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `username` = :username:', [...], false)
+ 5 APPPATH\Controllers\login.php(34): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-08-21 08:28:09 --> mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\Login.php(32): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Login->auth()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-08-21 08:28:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+[Method: POST, Route: login/auth]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `username` = :username:', [...], false)
+ 2 APPPATH\Controllers\Login.php(32): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:28:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `username` = \'ss\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `username` = \'ss\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `username` = :username:', [...], false)
+ 4 APPPATH\Controllers\Login.php(32): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:28:09 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `users`
+WHERE `username` = \'ss\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `username` = \'ss\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `username` = \'ss\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `username` = :username:', [...], false)
+ 5 APPPATH\Controllers\Login.php(32): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-08-21 08:31:23 --> mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\Login.php(32): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Login->auth()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-08-21 08:31:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+[Method: POST, Route: login/auth]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `login_id` = :login_id:', [...], false)
+ 2 APPPATH\Controllers\Login.php(32): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:31:23 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `login_id` = \'kabir\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `login_id` = \'kabir\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `login_id` = :login_id:', [...], false)
+ 4 APPPATH\Controllers\Login.php(32): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:31:23 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `users`
+WHERE `login_id` = \'kabir\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `login_id` = \'kabir\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `login_id` = \'kabir\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `login_id` = :login_id:', [...], false)
+ 5 APPPATH\Controllers\Login.php(32): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-08-21 08:32:50 --> mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\Login.php(32): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Login->auth()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-08-21 08:32:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+[Method: POST, Route: login/auth]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `login_id` = :login_id:', [...], false)
+ 2 APPPATH\Controllers\Login.php(32): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:32:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `login_id` = \'kabir\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `login_id` = \'kabir\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `login_id` = :login_id:', [...], false)
+ 4 APPPATH\Controllers\Login.php(32): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 08:32:50 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `users`
+WHERE `login_id` = \'kabir\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `login_id` = \'kabir\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `login_id` = \'kabir\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `login_id` = :login_id:', [...], false)
+ 5 APPPATH\Controllers\Login.php(32): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Login->auth()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:36:32 --> ErrorException: Undefined variable $data
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 34.
+ 1 APPPATH\Controllers\Dashboard.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:38:09 --> ErrorException: Undefined variable $data
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 34.
+ 1 APPPATH\Controllers\Dashboard.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:38:09 --> ErrorException: Undefined variable $data
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 34.
+ 1 APPPATH\Controllers\Dashboard.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:38:10 --> ErrorException: Undefined variable $data
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 34.
+ 1 APPPATH\Controllers\Dashboard.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:38:10 --> ErrorException: Undefined variable $data
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 34.
+ 1 APPPATH\Controllers\Dashboard.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:38:11 --> ErrorException: Undefined variable $data
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 34.
+ 1 APPPATH\Controllers\Dashboard.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:38:12 --> ErrorException: Undefined variable $data
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 34.
+ 1 APPPATH\Controllers\Dashboard.php(34): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 34)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:39:02 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:39:03 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:39:10 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:41:09 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:41:10 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:41:10 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:41:15 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:41:46 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:41:47 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:41:47 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:41:52 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:42:09 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:42:14 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:47:43 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 5.
+ 1 APPPATH\Views\ViewDashboard.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:48:52 --> ErrorException: Undefined variable $user_id
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 12.
+ 1 APPPATH\Views\ViewDashboard.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user_id', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 12)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 09:48:54 --> ErrorException: Undefined variable $user_id
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 12.
+ 1 APPPATH\Views\ViewDashboard.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user_id', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 12)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(35): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:03:24 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 18.
+ 1 APPPATH\Views\ViewDashboard.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 18)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(8): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:03:25 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 18.
+ 1 APPPATH\Views\ViewDashboard.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 18)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(8): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:03:25 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 18.
+ 1 APPPATH\Views\ViewDashboard.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 18)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(8): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:17:21 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:17:26 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:20:13 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:20:13 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:20:13 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:20:14 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:20:14 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:20:14 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:20:15 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:20:15 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:20:28 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:20:28 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:20:32 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:20:55 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:21:00 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:24:08 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 18.
+ 1 APPPATH\Views\ViewDashboard.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 18)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(12): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:24:10 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 18.
+ 1 APPPATH\Views\ViewDashboard.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 18)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(12): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:24:43 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:24:43 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:24:44 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:24:44 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:24:44 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:24:44 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:24:44 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:25:42 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:25:46 --> ErrorException: Undefined property: App\Controllers\Dashboard::$session
+[Method: GET, Route: dashboard]
+in APPPATH\Controllers\Dashboard.php on line 9.
+ 1 APPPATH\Controllers\Dashboard.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard::$session', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\Dashboard.php', 9)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:26:08 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 18.
+ 1 APPPATH\Views\ViewDashboard.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 18)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(17): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:26:09 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 18.
+ 1 APPPATH\Views\ViewDashboard.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 18)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(17): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:26:12 --> ErrorException: Undefined variable $allowedMenus
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 18.
+ 1 APPPATH\Views\ViewDashboard.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $allowedMenus', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php', 18)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(17): view('ViewDashboard')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:47:00 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "pos/pos_add.php"
+[Method: GET, Route: pos]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pos/pos_add.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('pos/pos_add', [], true)
+ 3 APPPATH\Controllers\pos.php(58): view('pos/pos_add', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

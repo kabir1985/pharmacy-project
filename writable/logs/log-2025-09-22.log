@@ -1,0 +1,2176 @@
+DEBUG - 2025-09-22 05:10:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:10:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:10:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:10:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:17:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:18:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:19:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:19:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:19:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:19:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:19:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:19:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:19:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:26:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:26:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:26:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:26:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:35:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:35:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:35:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:35:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 05:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:04:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:04:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:04:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 06:04:55 --> TypeError: Unsupported operand types: int * string
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 105.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 06:05:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:05:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:09:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:09:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:09:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:11:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:12:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:30:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:30:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:30:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:30:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:33:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:33:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:33:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:41:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:49:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:49:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:49:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:56:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 06:57:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 07:08:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 07:08:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 07:33:03 --> ErrorException: Undefined variable $sales_data
+[Method: GET, Route: invoice/643]
+in APPPATH\Views\report\sales-invoice.php on line 4.
+ 1 APPPATH\Views\report\sales-invoice.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $sales_data', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\report\\sales-invoice.php', 4)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\report\\sales-invoice.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/sales-invoice', [], true)
+ 5 APPPATH\Controllers\PdfController.php(63): view('report/sales-invoice', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('643')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 07:34:03 --> ErrorException: Undefined variable $sales_data
+[Method: GET, Route: invoice/643]
+in APPPATH\Views\report\sales-invoice.php on line 17.
+ 1 APPPATH\Views\report\sales-invoice.php(17): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $sales_data', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\report\\sales-invoice.php', 17)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\report\\sales-invoice.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/sales-invoice', [], true)
+ 5 APPPATH\Controllers\PdfController.php(63): view('report/sales-invoice', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('643')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 07:38:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 07:38:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 07:38:59 --> TypeError: Unsupported operand types: int * string
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 105.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 07:39:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 07:39:07 --> TypeError: Unsupported operand types: int * string
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 105.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 07:39:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 07:39:16 --> TypeError: Unsupported operand types: int * string
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 105.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 08:24:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 08:24:33 --> TypeError: Unsupported operand types: int * string
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 105.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 08:24:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 08:24:40 --> TypeError: Unsupported operand types: int * string
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 105.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 08:24:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 08:24:47 --> TypeError: Unsupported operand types: int * string
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 105.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 08:32:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 08:32:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 08:32:54 --> TypeError: Unsupported operand types: int * string
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 105.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 08:34:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 08:35:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 08:35:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 08:38:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 08:39:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 08:39:17 --> TypeError: Unsupported operand types: string / int
+[Method: GET, Route: invoice/645]
+in APPPATH\Controllers\PdfController.php on line 95.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('645')
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 08:39:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 08:44:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 08:45:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 08:45:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 08:57:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:01:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:01:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:08:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:08:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:09:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:09:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:12:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:12:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:12:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:44:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:45:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:45:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:45:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:48:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:48:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:48:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:49:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:50:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:50:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:52:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:53:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:53:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:57:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 09:57:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:00:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:00:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:02:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:02:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:05:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:06:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:07:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:11:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:14:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:15:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:15:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:17:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:19:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:20:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:20:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:21:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:29:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:30:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:31:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:31:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:32:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:32:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-22 10:52:56 --> mysqli_sql_exception: Unknown column 'created_at' in 'order clause' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-22 10:52:56 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:52:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:52:56 --> [Caused by] mysqli_sql_exception: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-22 10:53:16 --> mysqli_sql_exception: Unknown column 'created_at' in 'order clause' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-22 10:53:16 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:53:16 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:53:16 --> [Caused by] mysqli_sql_exception: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-22 10:53:18 --> mysqli_sql_exception: Unknown column 'created_at' in 'order clause' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-22 10:53:18 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:53:18 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:53:18 --> [Caused by] mysqli_sql_exception: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-22 10:55:49 --> mysqli_sql_exception: Unknown column 'created_at' in 'order clause' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-22 10:55:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:55:49 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:55:49 --> [Caused by] mysqli_sql_exception: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-22 10:55:50 --> mysqli_sql_exception: Unknown column 'created_at' in 'order clause' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-22 10:55:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:55:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:55:50 --> [Caused by] mysqli_sql_exception: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-22 10:57:17 --> mysqli_sql_exception: Unknown column 'tax_paid' in 'field list' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT \r\n     ...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT \r\n     ...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT \r\n     ...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\salelist.php(70): CodeIgniter\Database\BaseConnection->query(' SELECT \r\n     ...')
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\salelist->index()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salelist))
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2025-09-22 10:57:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tax_paid' in 'field list'
+[Method: GET, Route: salelist]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\salelist.php(70): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                            s.sales_invoice,
+                            s.sales_date,
+                            s.seller_id,
+                            u.user_name AS seller_name,    -- ✅ Added seller name
+                            sd.total_sale,
+                            sd.total_tax,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice,
+                            s.paid_amount,
+                            IFNULL(cd.customer_due, 0) AS customer_due,
+                            IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                            (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                            s.due_amount,
+                            CASE 
+                                WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                                ELSE s.customer_type
+                            END AS customer_name,
+                            CASE
+                                WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                                WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                                ELSE \'Partially Paid\'
+                            END AS payment_status
+                        FROM sales s
+                        JOIN (
+                            SELECT 
+                                sales_details_invoice, 
+                                SUM(total_sale_price) AS total_sale, 
+                                SUM(tax_paid) AS total_tax
+                            FROM sales_details
+                            GROUP BY sales_details_invoice
+                        ) sd ON s.sales_invoice = sd.sales_details_invoice
+                        LEFT JOIN (
+                            SELECT 
+                                due_invoice_no, 
+                                SUM(due_amount - due_paid_amount) AS customer_due,
+                                SUM(due_paid_amount) AS total_due_paid
+                            FROM customer_due
+                            GROUP BY due_invoice_no
+                        ) cd ON s.sales_invoice = cd.due_invoice_no
+                        LEFT JOIN customer c 
+                            ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+                        LEFT JOIN `user` u 
+                            ON u.user_id = s.seller_id ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salelist->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salelist))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:57:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tax_paid' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                            s.sales_invoice,
+                            s.sales_date,
+                            s.seller_id,
+                            u.user_name AS seller_name,    -- ✅ Added seller name
+                            sd.total_sale,
+                            sd.total_tax,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice,
+                            s.paid_amount,
+                            IFNULL(cd.customer_due, 0) AS customer_due,
+                            IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                            (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                            s.due_amount,
+                            CASE 
+                                WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                                ELSE s.customer_type
+                            END AS customer_name,
+                            CASE
+                                WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                                WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                                ELSE \'Partially Paid\'
+                            END AS payment_status
+                        FROM sales s
+                        JOIN (
+                            SELECT 
+                                sales_details_invoice, 
+                                SUM(total_sale_price) AS total_sale, 
+                                SUM(tax_paid) AS total_tax
+                            FROM sales_details
+                            GROUP BY sales_details_invoice
+                        ) sd ON s.sales_invoice = sd.sales_details_invoice
+                        LEFT JOIN (
+                            SELECT 
+                                due_invoice_no, 
+                                SUM(due_amount - due_paid_amount) AS customer_due,
+                                SUM(due_paid_amount) AS total_due_paid
+                            FROM customer_due
+                            GROUP BY due_invoice_no
+                        ) cd ON s.sales_invoice = cd.due_invoice_no
+                        LEFT JOIN customer c 
+                            ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+                        LEFT JOIN `user` u 
+                            ON u.user_id = s.seller_id ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                            s.sales_invoice,
+                            s.sales_date,
+                            s.seller_id,
+                            u.user_name AS seller_name,    -- ✅ Added seller name
+                            sd.total_sale,
+                            sd.total_tax,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice,
+                            s.paid_amount,
+                            IFNULL(cd.customer_due, 0) AS customer_due,
+                            IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                            (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                            s.due_amount,
+                            CASE 
+                                WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                                ELSE s.customer_type
+                            END AS customer_name,
+                            CASE
+                                WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                                WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                                ELSE \'Partially Paid\'
+                            END AS payment_status
+                        FROM sales s
+                        JOIN (
+                            SELECT 
+                                sales_details_invoice, 
+                                SUM(total_sale_price) AS total_sale, 
+                                SUM(tax_paid) AS total_tax
+                            FROM sales_details
+                            GROUP BY sales_details_invoice
+                        ) sd ON s.sales_invoice = sd.sales_details_invoice
+                        LEFT JOIN (
+                            SELECT 
+                                due_invoice_no, 
+                                SUM(due_amount - due_paid_amount) AS customer_due,
+                                SUM(due_paid_amount) AS total_due_paid
+                            FROM customer_due
+                            GROUP BY due_invoice_no
+                        ) cd ON s.sales_invoice = cd.due_invoice_no
+                        LEFT JOIN customer c 
+                            ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+                        LEFT JOIN `user` u 
+                            ON u.user_id = s.seller_id ')
+ 3 APPPATH\Controllers\salelist.php(70): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                            s.sales_invoice,
+                            s.sales_date,
+                            s.seller_id,
+                            u.user_name AS seller_name,    -- ✅ Added seller name
+                            sd.total_sale,
+                            sd.total_tax,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice,
+                            s.paid_amount,
+                            IFNULL(cd.customer_due, 0) AS customer_due,
+                            IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                            (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                            s.due_amount,
+                            CASE 
+                                WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                                ELSE s.customer_type
+                            END AS customer_name,
+                            CASE
+                                WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                                WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                                ELSE \'Partially Paid\'
+                            END AS payment_status
+                        FROM sales s
+                        JOIN (
+                            SELECT 
+                                sales_details_invoice, 
+                                SUM(total_sale_price) AS total_sale, 
+                                SUM(tax_paid) AS total_tax
+                            FROM sales_details
+                            GROUP BY sales_details_invoice
+                        ) sd ON s.sales_invoice = sd.sales_details_invoice
+                        LEFT JOIN (
+                            SELECT 
+                                due_invoice_no, 
+                                SUM(due_amount - due_paid_amount) AS customer_due,
+                                SUM(due_paid_amount) AS total_due_paid
+                            FROM customer_due
+                            GROUP BY due_invoice_no
+                        ) cd ON s.sales_invoice = cd.due_invoice_no
+                        LEFT JOIN customer c 
+                            ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+                        LEFT JOIN `user` u 
+                            ON u.user_id = s.seller_id ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salelist->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salelist))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:57:17 --> [Caused by] mysqli_sql_exception: Unknown column 'tax_paid' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT 
+                            s.sales_invoice,
+                            s.sales_date,
+                            s.seller_id,
+                            u.user_name AS seller_name,    -- ✅ Added seller name
+                            sd.total_sale,
+                            sd.total_tax,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice,
+                            s.paid_amount,
+                            IFNULL(cd.customer_due, 0) AS customer_due,
+                            IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                            (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                            s.due_amount,
+                            CASE 
+                                WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                                ELSE s.customer_type
+                            END AS customer_name,
+                            CASE
+                                WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                                WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                                ELSE \'Partially Paid\'
+                            END AS payment_status
+                        FROM sales s
+                        JOIN (
+                            SELECT 
+                                sales_details_invoice, 
+                                SUM(total_sale_price) AS total_sale, 
+                                SUM(tax_paid) AS total_tax
+                            FROM sales_details
+                            GROUP BY sales_details_invoice
+                        ) sd ON s.sales_invoice = sd.sales_details_invoice
+                        LEFT JOIN (
+                            SELECT 
+                                due_invoice_no, 
+                                SUM(due_amount - due_paid_amount) AS customer_due,
+                                SUM(due_paid_amount) AS total_due_paid
+                            FROM customer_due
+                            GROUP BY due_invoice_no
+                        ) cd ON s.sales_invoice = cd.due_invoice_no
+                        LEFT JOIN customer c 
+                            ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+                        LEFT JOIN `user` u 
+                            ON u.user_id = s.seller_id ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                            s.sales_invoice,
+                            s.sales_date,
+                            s.seller_id,
+                            u.user_name AS seller_name,    -- ✅ Added seller name
+                            sd.total_sale,
+                            sd.total_tax,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice,
+                            s.paid_amount,
+                            IFNULL(cd.customer_due, 0) AS customer_due,
+                            IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                            (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                            s.due_amount,
+                            CASE 
+                                WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                                ELSE s.customer_type
+                            END AS customer_name,
+                            CASE
+                                WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                                WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                                ELSE \'Partially Paid\'
+                            END AS payment_status
+                        FROM sales s
+                        JOIN (
+                            SELECT 
+                                sales_details_invoice, 
+                                SUM(total_sale_price) AS total_sale, 
+                                SUM(tax_paid) AS total_tax
+                            FROM sales_details
+                            GROUP BY sales_details_invoice
+                        ) sd ON s.sales_invoice = sd.sales_details_invoice
+                        LEFT JOIN (
+                            SELECT 
+                                due_invoice_no, 
+                                SUM(due_amount - due_paid_amount) AS customer_due,
+                                SUM(due_paid_amount) AS total_due_paid
+                            FROM customer_due
+                            GROUP BY due_invoice_no
+                        ) cd ON s.sales_invoice = cd.due_invoice_no
+                        LEFT JOIN customer c 
+                            ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+                        LEFT JOIN `user` u 
+                            ON u.user_id = s.seller_id ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                            s.sales_invoice,
+                            s.sales_date,
+                            s.seller_id,
+                            u.user_name AS seller_name,    -- ✅ Added seller name
+                            sd.total_sale,
+                            sd.total_tax,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice,
+                            s.paid_amount,
+                            IFNULL(cd.customer_due, 0) AS customer_due,
+                            IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                            (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                            s.due_amount,
+                            CASE 
+                                WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                                ELSE s.customer_type
+                            END AS customer_name,
+                            CASE
+                                WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                                WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                                ELSE \'Partially Paid\'
+                            END AS payment_status
+                        FROM sales s
+                        JOIN (
+                            SELECT 
+                                sales_details_invoice, 
+                                SUM(total_sale_price) AS total_sale, 
+                                SUM(tax_paid) AS total_tax
+                            FROM sales_details
+                            GROUP BY sales_details_invoice
+                        ) sd ON s.sales_invoice = sd.sales_details_invoice
+                        LEFT JOIN (
+                            SELECT 
+                                due_invoice_no, 
+                                SUM(due_amount - due_paid_amount) AS customer_due,
+                                SUM(due_paid_amount) AS total_due_paid
+                            FROM customer_due
+                            GROUP BY due_invoice_no
+                        ) cd ON s.sales_invoice = cd.due_invoice_no
+                        LEFT JOIN customer c 
+                            ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+                        LEFT JOIN `user` u 
+                            ON u.user_id = s.seller_id ')
+ 4 APPPATH\Controllers\salelist.php(70): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                            s.sales_invoice,
+                            s.sales_date,
+                            s.seller_id,
+                            u.user_name AS seller_name,    -- ✅ Added seller name
+                            sd.total_sale,
+                            sd.total_tax,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice,
+                            s.paid_amount,
+                            IFNULL(cd.customer_due, 0) AS customer_due,
+                            IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                            (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                            s.due_amount,
+                            CASE 
+                                WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                                ELSE s.customer_type
+                            END AS customer_name,
+                            CASE
+                                WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                                WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                                ELSE \'Partially Paid\'
+                            END AS payment_status
+                        FROM sales s
+                        JOIN (
+                            SELECT 
+                                sales_details_invoice, 
+                                SUM(total_sale_price) AS total_sale, 
+                                SUM(tax_paid) AS total_tax
+                            FROM sales_details
+                            GROUP BY sales_details_invoice
+                        ) sd ON s.sales_invoice = sd.sales_details_invoice
+                        LEFT JOIN (
+                            SELECT 
+                                due_invoice_no, 
+                                SUM(due_amount - due_paid_amount) AS customer_due,
+                                SUM(due_paid_amount) AS total_due_paid
+                            FROM customer_due
+                            GROUP BY due_invoice_no
+                        ) cd ON s.sales_invoice = cd.due_invoice_no
+                        LEFT JOIN customer c 
+                            ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+                        LEFT JOIN `user` u 
+                            ON u.user_id = s.seller_id ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salelist->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salelist))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-22 10:57:19 --> mysqli_sql_exception: Unknown column 'tax_paid' in 'field list' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT \r\n     ...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT \r\n     ...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT \r\n     ...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\salereturnlist.php(63): CodeIgniter\Database\BaseConnection->query(' SELECT \r\n     ...')
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\salereturnlist->index()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2025-09-22 10:57:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tax_paid' in 'field list'
+[Method: GET, Route: salereturnlist]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\salereturnlist.php(63): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:57:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tax_paid' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 3 APPPATH\Controllers\salereturnlist.php(63): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:57:19 --> [Caused by] mysqli_sql_exception: Unknown column 'tax_paid' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 4 APPPATH\Controllers\salereturnlist.php(63): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-22 10:57:21 --> mysqli_sql_exception: Unknown column 'tax_paid' in 'field list' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT \r\n     ...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT \r\n     ...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT \r\n     ...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\salereturnlist.php(63): CodeIgniter\Database\BaseConnection->query(' SELECT \r\n     ...')
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\salereturnlist->index()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2025-09-22 10:57:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tax_paid' in 'field list'
+[Method: GET, Route: salereturnlist]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\salereturnlist.php(63): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:57:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'tax_paid' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 3 APPPATH\Controllers\salereturnlist.php(63): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:57:21 --> [Caused by] mysqli_sql_exception: Unknown column 'tax_paid' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 4 APPPATH\Controllers\salereturnlist.php(63): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    sd.total_tax,
+                    s.discountOnTotalPrice,
+                    s.vatOnTotalPrice,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(tax_paid) AS total_tax
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 10:57:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:57:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:57:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-22 10:57:40 --> mysqli_sql_exception: Unknown column 'created_at' in 'order clause' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-22 10:57:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:57:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:57:40 --> [Caused by] mysqli_sql_exception: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-22 10:58:39 --> mysqli_sql_exception: Unknown column 'created_at' in 'order clause' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-22 10:58:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:58:39 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:58:39 --> [Caused by] mysqli_sql_exception: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-22 10:58:40 --> mysqli_sql_exception: Unknown column 'created_at' in 'order clause' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-22 10:58:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:58:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:58:40 --> [Caused by] mysqli_sql_exception: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-22 10:58:40 --> mysqli_sql_exception: Unknown column 'created_at' in 'order clause' in C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\app\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#6 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\codeigniter_pharmacy_v_4.6.3\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-22 10:58:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:58:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 10:58:40 --> [Caused by] mysqli_sql_exception: Unknown column 'created_at' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `held_sales`
+ORDER BY `created_at` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 10:58:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:59:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:59:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:59:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 10:59:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 11:00:46 --> ErrorException: Undefined array key "held_invoice"
+[Method: GET, Route: pos]
+in APPPATH\Views\pos\pos_add.php on line 392.
+ 1 APPPATH\Views\pos\pos_add.php(392): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "held_invoice"', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\pos\\pos_add.php', 392)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\pos\\pos_add.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('pos/pos_add', [], true)
+ 5 APPPATH\Controllers\pos.php(69): view('pos/pos_add', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 11:00:47 --> ErrorException: Undefined array key "held_invoice"
+[Method: GET, Route: pos]
+in APPPATH\Views\pos\pos_add.php on line 392.
+ 1 APPPATH\Views\pos\pos_add.php(392): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "held_invoice"', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\pos\\pos_add.php', 392)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\pos\\pos_add.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('pos/pos_add', [], true)
+ 5 APPPATH\Controllers\pos.php(69): view('pos/pos_add', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-22 11:00:48 --> ErrorException: Undefined array key "held_invoice"
+[Method: GET, Route: pos]
+in APPPATH\Views\pos\pos_add.php on line 392.
+ 1 APPPATH\Views\pos\pos_add.php(392): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "held_invoice"', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\pos\\pos_add.php', 392)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Views\\pos\\pos_add.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('pos/pos_add', [], true)
+ 5 APPPATH\Controllers\pos.php(69): view('pos/pos_add', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 11:02:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:03:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:03:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:04:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:04:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:12:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:17:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:17:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:17:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:18:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:18:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:18:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:18:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:18:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:18:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:20:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:20:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 11:26:35 --> ErrorException: Undefined array key "cart_data"
+[Method: GET, Route: pos/resume_sale/2]
+in APPPATH\Controllers\pos.php on line 207.
+ 1 APPPATH\Controllers\pos.php(207): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cart_data"', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\pos.php', 207)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->resume_sale('2')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 11:26:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:26:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:26:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-22 11:26:57 --> ErrorException: Undefined array key "cart_data"
+[Method: GET, Route: pos/resume_sale/6]
+in APPPATH\Controllers\pos.php on line 207.
+ 1 APPPATH\Controllers\pos.php(207): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cart_data"', 'C:\\laragon\\www\\codeigniter_pharmacy_v_4.6.3\\app\\Controllers\\pos.php', 207)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->resume_sale('6')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-09-22 11:30:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:30:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:30:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:30:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:35:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:38:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:38:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:38:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:38:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:39:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:39:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:39:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:39:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:45:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:45:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:45:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:45:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:45:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:45:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:45:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:48:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:48:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:48:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:48:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:48:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:48:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:48:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:48:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:48:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:48:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:50:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:51:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:51:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:51:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:51:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:51:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:51:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:51:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:51:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:51:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:51:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 11:52:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
