@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost/codeigniter_pharmacy_v_4.6.3/';
+    public string $baseURL = 'http://localhost/pharmacy-project/';
 //  public $baseURL = 'http://localhost/codeigniter_pharmacy_v_4.6.3/';
 
     /**

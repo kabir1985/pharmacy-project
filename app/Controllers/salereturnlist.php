@@ -24,7 +24,7 @@ class salereturnlist extends BaseController
                     s.sales_invoice,
                     s.sales_date,
                     sd.total_sale,
-                    sd.total_tax,
+                    sd.productwiseVatPercnt,
                     s.discountOnTotalPrice,
                     s.vatOnTotalPrice,
                     s.paid_amount,
@@ -46,7 +46,7 @@ class salereturnlist extends BaseController
                     SELECT 
                         sales_details_invoice, 
                         SUM(total_sale_price) AS total_sale, 
-                        SUM(tax_paid) AS total_tax
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
                     FROM sales_details
                     GROUP BY sales_details_invoice
                 ) sd ON s.sales_invoice = sd.sales_details_invoice
@@ -71,7 +71,7 @@ class salereturnlist extends BaseController
                     rs.sales_invoice,
                     rs.sales_date,
                     rsd.total_sale,
-                    rsd.total_tax,
+                    rsd.productwiseVatPercnt,
                     rs.discountOnTotalPrice,
                     rs.vatOnTotalPrice,
                     rs.paid_amount,
@@ -93,7 +93,7 @@ class salereturnlist extends BaseController
                     SELECT 
                         sales_details_invoice, 
                         SUM(total_sale_price) AS total_sale, 
-                        SUM(tax_paid) AS total_tax
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
                     FROM return_sales_details
                     GROUP BY sales_details_invoice
                 ) rsd ON rs.sales_invoice = rsd.sales_details_invoice

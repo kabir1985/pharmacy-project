@@ -20,7 +20,7 @@
 
     <div class="login-box">
       <form class="login-form" id="loginForm">
-        <?//= csrf_field() ?>
+        <?= csrf_field() ?>
         <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i> SIGN IN</h3>
 
         <div class="form-group">
@@ -43,29 +43,33 @@
     </div>
   </section>
 
-    <script>
-    $(document).ready(function(){
-        $("#loginForm").on("submit", function(e){
-            e.preventDefault();
+   <script>
+$(document).ready(function(){
+    $("#loginForm").on("submit", function(e){
+        e.preventDefault();
 
-            $.ajax({
-                url: "<?php echo site_url('login/auth')?>",
-                type: "POST",
-                data: $(this).serialize(),
-                dataType: "json",
-                success: function(res){
-                    if(res.status === "success"){
-                        window.location.href = res.redirect;
-                    } else {
-                        $("#msg").text(res.msg);
-                    }
-                },
-                error: function(){
-                    $("#msg").text("Login request failed. Try again.");
+        $.ajax({
+            url: "<?= site_url('login/auth') ?>",
+            type: "POST",
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function(res){
+                console.log(res);
+
+                if(res.status === "success"){
+                    window.location.href = res.redirect;
+                } else {
+                    $("#msg").text(res.msg);
                 }
-            });
+            },
+            error: function(xhr){
+                console.log(xhr.responseText);
+                $("#msg").text("Server error or invalid JSON response.");
+            }
         });
     });
-    </script>
+});
+</script>
+
 </body>
 </html>

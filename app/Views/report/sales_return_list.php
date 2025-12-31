@@ -44,7 +44,7 @@
                                     <?= number_format($row['total_sale'], 2) ?>
                                 </td>
                                 <td>
-                                    <?= number_format($row['total_tax'], 2) ?>
+                                    <?= number_format($row['productwiseVatPercnt'], 2) ?>
                                 </td>
                                 <td>
                                     <?= number_format($row['discountOnTotalPrice'], 2) ?>

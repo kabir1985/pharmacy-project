@@ -1,6 +1,6 @@
 <?php
-    echo $this->extend('layout');
-    echo $this->section('content');
+echo $this->extend('layout');
+echo $this->section('content');
 
 ?>
 <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery-ui.min.css') ?>" />
@@ -92,17 +92,17 @@
 
                                             <tbody>
                                                 <?php
-                                                    foreach ($sales_summery_report_show as $row) {
-                                                        //$date_time = $row['sales_date'];
-                                                        //$new_date = date("Y-m-d H:i:s",strtotime($date_time));
-                                                        $date     = $row['sales_date'];
-                                                        $new_date = explode(" ", $date);
-                                                        //echo $new_date[0];
-                                                        $str       = explode('-', $new_date[0]);
-                                                        $year      = $str[0];
-                                                        $month     = $str[1];
-                                                        $day       = $str[2];
-                                                        $only_date = $day . "/" . $month . "/" . $year;
+                                                foreach ($sales_summery_report_show as $row) {
+                                                    //$date_time = $row['sales_date'];
+                                                    //$new_date = date("Y-m-d H:i:s",strtotime($date_time));
+                                                    $date = $row['sales_date'];
+                                                    $new_date = explode(" ", $date);
+                                                    //echo $new_date[0];
+                                                    $str = explode('-', $new_date[0]);
+                                                    $year = $str[0];
+                                                    $month = $str[1];
+                                                    $day = $str[2];
+                                                    $only_date = $day . "/" . $month . "/" . $year;
                                                     ?>
                                                 <tr>
                                                     <td>
@@ -123,7 +123,7 @@
                                                 </tr>
 
                                                 <?php
-                                                    }
+                                                }
                                                 ?>
 
                                             </tbody>
@@ -148,7 +148,7 @@
     <!-- //////////////////////////NEw Design Start////////////////////////////////////////////////////// -->
     <div class="row">
         <!----------------Customer show and Search Product Option-------------------------------->
-        <div class="col-sm-9">
+        <div class="col-sm-8">
             <div class="row">
                 <div class="col-sm-5">
                     <!-- <div class="input-group"> -->
@@ -156,9 +156,9 @@
                         <select id="customer_type" class="form-control select2" name="customer_type">
                             <option value="Walk-In-Customer">Walk-In Customer</option>
                             <?php foreach ($customer_show as $row): ?>
-                            <option value="<?php echo htmlspecialchars($row['customer_id']) ?>">
-                                <?php echo htmlspecialchars($row['cus_first_name']) ?>
-                            </option>
+                                <option value="<?php echo htmlspecialchars($row['customer_id']) ?>">
+                                    <?php echo htmlspecialchars($row['cus_first_name']) ?>
+                                </option>
                             <?php endforeach; ?>
                         </select>
                         <span class="input-group-text" style="1px solid #ced4da; !important" data-toggle="modal"
@@ -211,13 +211,13 @@
                     <select id="product_category" class="form-control select2">
                         <option value="all_category">All Category</option>
                         <?php
-                            foreach ($product_category_show as $row) {
+                        foreach ($product_category_show as $row) {
                             ?>
-                        <option value="<?php echo $row["product_category_id"] ?>"><?php echo $row["category_name"] ?>
-                        </option>
-                        <?php
-                                }
-                            ?>
+                            <option value="<?php echo $row["product_category_id"] ?>"><?php echo $row["category_name"] ?>
+                            </option>
+                            <?php
+                        }
+                        ?>
                     </select>
 
                 </div>
@@ -227,35 +227,35 @@
                 <div class="col bg-white rounded text-black pt-2">
                     <div class="row all_products">
                         <?php
-                    foreach ($product_show_for_sale as $key => $row) {
-                    ?>
+                        foreach ($product_show_for_sale as $key => $row) {
+                            ?>
                         <?php
-							if ($row["total_stock"] > '0') {
-								?>
+                        if ($row["total_stock"] > '0') {
+                            ?>
 
                         <div class="col-3 mb-3 text-center">
                             <!-- Product Image -->
-                            <img data-stock="<?php echo $row["total_stock"] ?>"
-                                data-id="<?php echo $row["product_id"] ?>"
-                                src="<?php echo base_url() ?>/public/uploads/<?php echo $row["product_image"] ?>"
-                                class="img-thumbnail cart_item_image shadow-sm" alt="<?php echo $row["product_name"] ?>"
-                                style="width: 100px; height: 80px; object-fit: cover;">
+                                    <img data-stock="<?php echo $row["total_stock"] ?>"
+                                        data-id="<?php echo $row["product_id"] ?>"
+                                        src="<?php echo base_url() ?>/public/uploads/<?php echo $row["product_image"] ?>"
+                                        class="img-thumbnail cart_item_image shadow-sm" alt="<?php echo $row["product_name"] ?>"
+                                        style="width: 100px; height: 80px; object-fit: cover;">
 
-                            <!-- Product Name -->
-                            <p class="mt-2 mb-1 fw-semibold text-dark"
-                                style="font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                <?php echo $row["product_name"] ?>
-                            </p>
+                                    <!-- Product Name -->
+                                    <p class="mt-2 mb-1 fw-semibold text-dark"
+                                        style="font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        <?php echo $row["product_name"] ?>
+                                    </p>
 
-                            <!-- Product Price -->
-                            <p class="text-primary mb-0" style="font-size: 0.7rem; font-weight: 600;">
-                                ৳<?php echo number_format($row["selling_unit_price"], 2) ?>
-                            </p>
-                        </div>
+                                    <!-- Product Price -->
+                                    <p class="text-primary mb-0" style="font-size: 0.7rem; font-weight: 600;">
+                                        ৳<?php echo number_format($row["selling_unit_price"], 2) ?>
+                                    </p>
+                                </div>
 
-                        <?php
-                            }
-                            }
+                                <?php
+                        }
+                        }
                         ?>
                     </div>
                 </div>
@@ -264,7 +264,8 @@
         </div>
         <!----------------Customer show and Search Product Option End-------------------------------->
 
-        <div class="col-3 mb-2">
+        <div class="col-4 mb-2">
+
             <div class="card text-dark bg-light mb-3">
                 <div class="card-header">
                     <h2>Create Sale</h2>
@@ -279,144 +280,131 @@
                         Product Wise VAT & Discount
                     </p>
 
-                    <table class="table table-striped mb-0">
-                        <tfoot>
-                            <tr class="table-secondary">
-                                <td colspan="4"></td>
-                                <td class="text-end pe-2">Total Price</td>
-                                <td class="text-end" id="totalPrice">0.00</td>
-                            </tr>
 
-                            <tr>
-                                <td colspan="4"></td>
-                                <td class="text-end pe-2">Discount</td>
-                                <td>
-                                    <div class="d-flex justify-content-end align-items-center gap-2">
-                                        <select id="discountType" class="form-select form-select-sm"
-                                            onchange="calculateDiscount()">
-                                            <option value="%">%</option>
-                                            <option value="flat">Flat</option>
-                                        </select>
-                                        <input type="number" id="discountValue"
-                                            class="form-control form-control-sm extra-fields" placeholder="0"
-                                            value="0.00" oninput="calculateDiscount()">
-                                        <span id="discountOnTotalPrice">: 0.00</span>
-                                    </div>
-                                </td>
-                            </tr>
+                    <div class="row">
+                        <div class="col-sm-4">Total Price</div>
+                        <div class="col-sm-8" id="totalPrice">0.00</div>
+                    </div>
 
-                            <tr>
-                                <td colspan="4"></td>
-                                <td class="text-end pe-2">VAT</td>
-                                <td>
-                                    <div class="d-flex justify-content-end align-items-center gap-2">
-                                        <select id="vatType" class="form-select form-select-sm"
-                                            onchange="calculateVat()">
-                                            <option value="%">%</option>
-                                            <option value="flat">Flat</option>
-                                        </select>
-                                        <input type="number" id="vatValue"
-                                            class="form-control form-control-sm extra-fields" placeholder="0"
-                                            value="0.00" oninput="calculateVat()">
-                                        <span id="vatOnTotalPrice">: 0.00</span>
-                                    </div>
-                                </td>
-                            </tr>
+                    <div class="row">
+                        <!-- <div class="col-sm-4">Discount</div> -->
+                        <div class="col-sm-12">
+                            <div class="d-flex justify-content-left align-items-center gap-2">Discount
+                                <select id="discountType" class="form-select form-select-sm"
+                                    onchange="calculateDiscount()">
+                                    <option value="%">%</option>
+                                    <option value="flat">Flat</option>
+                                </select>
+                                <input type="number" id="discountValue"
+                                    class="form-control form-control-sm extra-fields" placeholder="0" value="0.00"
+                                    oninput="calculateDiscount()">
+                                <span id="discountOnTotalPrice">: 0.00</span>
+                            </div>
+                        </div>
+                    </div>
 
-                            <tr class="table-warning">
-                                <td colspan="4"></td>
-                                <td class="text-end pe-2">Net Total</td>
-                                <td class="text-end" id="netTotalPrice"><strong>0.00</strong></td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="4"></td>
-                                <td class="text-end pe-2">Paid</td>
-                                <td>
-                                    <input type="text" id="paid"
-                                        class="form-control form-control-sm text-end extra-fields" style="width: 100px;"
-                                        onkeypress="return accept_digit_only(event)">
-                                </td>
-                            </tr>
+                    <div class="row">
+                        <!-- <div class="col-sm-4">VAT</div> -->
+                        <div class="col-sm-12">
+                            <div class="d-flex justify-content-left align-items-center"><span
+                                    style="padding-right: 30px;">VAT</span>
+                                <select id="vatType" class="form-select form-select-sm" onchange="calculateVat()">
+                                    <option value="%">%</option>
+                                    <option value="flat">Flat</option>
+                                </select>
+                                <input type="number" id="vatValue" class="form-control form-control-sm extra-fields"
+                                    placeholder="0" value="0.00" oninput="calculateVat()">
+                                <span id="vatOnTotalPrice">: 0.00</span>
+                            </div>
+                        </div>
+                    </div>
 
 
-                            <tr>
-                                <td colspan="4"></td>
-                                <td class="text-end pe-2">Due</td>
-                                <td>
-                                    <input type="text" id="due"
-                                        class="form-control form-control-sm text-end extra-fields" style="width: 100px;"
-                                        onkeypress="return accept_digit_only(event)">
-                                </td>
-                            </tr>
+                    <div class="row">
+                        <div class="col-sm-4">Net Total</div>
+                        <div class="col-sm-8" id="netTotalPrice"><strong>0.00</strong></div>
+                    </div>
 
-                            <tr class="table-secondary">
-                                <td colspan="6">
-                                    <div class="mb-1">
-                                        <button class="btn btn-info w-100 text-uppercase" id="productSale">
-                                            <i class="fa fa-money" aria-hidden="true"></i> Submit Order
-                                        </button>
-                                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">Paid</div>
+                        <div class="col-sm-8">
+                            <input type="text" id="paid" class="form-control form-control-sm text-end extra-fields"
+                                style="width: 100px;" onkeypress="return accept_digit_only(event)">
+                        </div>
+                    </div>
 
-                                    <div class="d-flex gap-2">
-                                        <!-- <button type="button" class="btn btn-danger w-50" id="openVatModal"
+                    <div class="row">
+                        <div class="col-sm-4">Due</div>
+                        <div class="col-sm-8">
+                            <input type="text" id="due" class="form-control form-control-sm text-end extra-fields"
+                                style="width: 100px;" onkeypress="return accept_digit_only(event)">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-1">
+                                <button class="btn btn-info w-100 text-uppercase" id="productSale">
+                                    <i class="fa fa-money" aria-hidden="true"></i> Submit Order
+                                </button>
+                            </div>
+
+                            <div class="d-flex gap-2">
+                                <!-- <button type="button" class="btn btn-danger w-50" id="openVatModal"
                                             data-toggle="modal" data-target="#vatModal">
                                             Hold Txn
                                         </button> -->
 
-                                        <button type="button" id="holdSale" class="btn btn-danger w-50">Hold
-                                            Sale</button>
+                                <button type="button" id="holdSale" class="btn btn-danger w-50">Hold
+                                    Sale</button>
 
-                                        <button type="button" class="btn btn-primary w-50" data-toggle="modal"
-                                            data-target="#recentTransaction">
-                                            <i class="fa fa-list" aria-hidden="true"></i> Recent Txn
-                                        </button>
-                                    </div>
+                                <button type="button" class="btn btn-primary w-50" data-toggle="modal"
+                                    data-target="#recentTransaction">
+                                    <i class="fa fa-list" aria-hidden="true"></i> Recent Txn
+                                </button>
+                            </div>
+                        </div>
 
-                                </td>
-                            </tr>
-
-                        </tfoot>
-                    </table>
+                    </div>
 
 
-                    <table>
-                        <tr class="table-warning">
-                            <div class="card mt-3">
-                                <div class="card-header bg-info text-white">
-                                    <h5 class="mb-0">Held Sales</h5>
-                                </div>
-                                <div class="card-body" style="max-height: 200px; overflow-y:auto;">
-                                    <?php if (!empty($heldSales)): ?>
+                    <div class="row">
+
+                        <div class="card mt-3">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0">Held Sales</h5>
+                            </div>
+                            <div class="card-body" style="max-height: 200px; overflow-y:auto;">
+                                <?php if (!empty($heldSales)): ?>
                                     <ul class="list-group">
                                         <?php foreach ($heldSales as $sale): ?>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <strong><?= $sale['hold_id'] ?></strong><br>
-                                                <small><?= $sale['customer_type'] ?> |
-                                                    <?//= date('d-m-Y H:i', strtotime($sale['created_at'])) ?>
-                                                </small>
-                                            </div>
-                                            <a href="<?= site_url('pos/resume_sale/'.$sale['id']) ?>"
-                                                class="btn btn-sm btn-primary">
-                                                Resume
-                                            </a>
-                                        </li>
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <strong><?= $sale['hold_id'] ?></strong><br>
+                                                    <small><?= $sale['customer_type'] ?> |
+                                                        <?//= date('d-m-Y H:i', strtotime($sale['created_at'])) ?>
+                                                    </small>
+                                                </div>
+                                                <a href="<?= site_url('pos/resume_sale/' . $sale['id']) ?>"
+                                                    class="btn btn-sm btn-primary">
+                                                    Resume
+                                                </a>
+                                            </li>
                                         <?php endforeach; ?>
                                     </ul>
-                                    <?php else: ?>
+                                <?php else: ?>
                                     <p class="text-muted">No held sales found</p>
-                                    <?php endif; ?>
-                                </div>
+                                <?php endif; ?>
                             </div>
-                        </tr>
-                    </table>
-
+                        </div>
+                    </div>
                 </div>
-
-
             </div>
         </div>
+
+
+
+
     </div>
     <!-- ////////////////////////////////////New Design end/////////////////////////////////////////// -->
 
@@ -504,11 +492,11 @@
 </div>
 
 <?php
-    echo $this->endSection();
+echo $this->endSection();
 ?>
 
 <?php
-    echo $this->section('scripts');
+echo $this->section('scripts');
 ?>
 
 <!-- Data table plugin-->
@@ -519,444 +507,478 @@
 
 
 <script type='text/javascript'>
-$('#sampleTable').DataTable();
-var productsList = <?php echo json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
+    $('#sampleTable').DataTable();
+    var productsList = <?php echo json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
 
-//document.write(productsList);
+    //document.write(productsList);
 
-$(document).ready(function() {
+    $(document).ready(function () {
 
-    $("#search_product").focus();
+        $("#search_product").focus();
 
-    /*---sound adding-------------------*/
-    var obj = document.createElement("audio");
-    var obj_warning = document.createElement("audio");
-    obj.src = "<?php echo site_url('public/sounds/success.mp3') ?>";
-    obj_warning.src = "<?php echo site_url('public/sounds/warning.mp3') ?>";
-    obj.volume = 1.0;
-    obj.autoPlay = false;
-    obj.preLoad = true;
-    /*---sound adding-------------------*/
+        /*---sound adding-------------------*/
+        var obj = document.createElement("audio");
+        var obj_warning = document.createElement("audio");
+        obj.src = "<?php echo site_url('public/sounds/success.mp3') ?>";
+        obj_warning.src = "<?php echo site_url('public/sounds/warning.mp3') ?>";
+        obj.volume = 1.0;
+        obj.autoPlay = false;
+        obj.preLoad = true;
+        /*---sound adding-------------------*/
 
-    $("#search_product").autocomplete({
-        source: "<?php echo site_url('pos/product_call') ?>",
-        minLength: 1,
-        //select: function(event, ui) {
-        autoFocus: true,
-        select: function(event, ui) {
-            productAddToCart(ui.item.id, ui.item.total_stock);
-            obj.play();
-            $(this).val("");
-            return false;
-        }
-    });
-
-    var itemsInCart = [];
-    var totalPrice = 0;
-
-    $("#productSale").on("click", function() {
-
-        var discountOnTotalPrice = $("#discountOnTotalPrice").text();
-        var vatOnTotalPrice = $("#vatOnTotalPrice").text();
-        //alert(vatOnTotalPrice);
-
-        var customer_type = $("#customer_type").val();
-        var paid = $("#paid").val();
-        var due = $("#due").val();
-
-        if (customer_type == 'Walk-In-Customer' && due != 0) {
-            alert("Due is not Allow for Walk-In Customer");
-            $("#due").focus();
-            return;
-        }
-
-        if (itemsInCart.length == 0) {
-            alert("Please Add Product To Sale")
-            //swal("Please Add Product To Sale");
-            $("#search_product").focus();
-            return;
-        }
-        if (due == "") {
-            alert("Due is Empty")
-            $("#paid").focus();
-            return;
-        }
-
-        var itemsInCartObject = Object.assign({}, itemsInCart);
-        //console.log(itemsInCartObject);
-        var base_url = "<?php echo rtrim(base_url(), '/') ?>";
-
-        var sales_process_url = "<?php echo site_url('pos/sale') ?>";
-        $.ajax({
-            url: sales_process_url,
-            method: 'POST',
-           // dataType: "json",
-            data: {
-                cart_data: itemsInCartObject,
-                discountOnTotalPrice,
-                vatOnTotalPrice,
-                customer_type,
-                due,
-                paid
-            },
-            success: function(data) {
-               // console.log('output is:'+data);
-
-               alert(data);
-
-                //$("#inVoiceAdd").modal('show');
-                //$("#invoiceData").html(data);
-                if (data.sales_id > 0) {
-                    window.open(base_url + "/invoice/" + data.sales_id, "_blank");
-                }
-                location.reload();
-
-                var index = $(this).data("index");
-                itemsInCart.splice(index);
-                drawTable();
-
-                $('#discountOnTotalPrice').text('');
-                $('#vatOnTotalPrice').text('');
-                $('#paid').val('');
-                $('#due').val('');
-            },
-            error: function() {
-                alert('error');
+        $("#search_product").autocomplete({
+            source: "<?php echo site_url('pos/product_call') ?>",
+            minLength: 1,
+            //select: function(event, ui) {
+            autoFocus: true,
+            select: function (event, ui) {
+                productAddToCart(ui.item.id, ui.item.total_stock);
+                obj.play();
+                $(this).val("");
+                return false;
             }
         });
 
-    });
+        var itemsInCart = [];
+        var totalPrice = 0;
+
+        $("#productSale").on("click", function () {
+
+            var discountOnTotalPrice = $("#discountOnTotalPrice").text();
+            var vatOnTotalPrice = $("#vatOnTotalPrice").text();
+            //alert(vatOnTotalPrice);
+
+            var customer_type = $("#customer_type").val();
+            var paid = $("#paid").val();
+            var due = $("#due").val();
+
+            if (customer_type == 'Walk-In-Customer' && due != 0) {
+                alert("Due is not Allow for Walk-In Customer");
+                $("#due").focus();
+                return;
+            }
+
+            if (itemsInCart.length == 0) {
+                alert("Please Add Product To Sale")
+                //swal("Please Add Product To Sale");
+                $("#search_product").focus();
+                return;
+            }
+            if (due == "") {
+                alert("Due is Empty")
+                $("#paid").focus();
+                return;
+            }
+
+            //var itemsInCartObject = Object.assign({}, itemsInCart);
+            //console.log(itemsInCartObject);
+
+            // var itemsInCartObject = itemsInCart.map(item => ({
+            //     product_id: item.product_id,
+            //     quantity: item.quantity,
+            //     selling_unit_price: item.selling_unit_price,
+            //     discount_on_each_product: parseFloat(item.discount_percent || 0), // ✅ pass per product discount
+            //     vat: parseFloat(item.vat_input || 0)
+            // }));
 
 
-    /////////////////////////////////////Sale HOLD Section//////////////////////////////////////////////////////////////
+            // var itemsInCartObject = Object.assign({}, itemsInCart, {
+            //                 // product_id: item.product_id,
+            //                 // quantity: item.quantity,
+            //                 // selling_unit_price: item.selling_unit_price,
+            //                 discount_on_each_product: parseFloat(item.discount_percent || 0), // ✅ pass per product discount
+            //                 vat: parseFloat(item.vat_input || 0)
+            // });
 
-    $('#holdSale').on('click', function() {
-        if (itemsInCart.length === 0) {
-            alert('Cart is empty. Add products first!');
-            return;
-        }
 
-        // Define these inside the function
-        var discountOnTotalPrice = parseFloat($("#discountOnTotalPrice").text()) || 0;
-        var vatOnTotalPrice = parseFloat($("#vatOnTotalPrice").text()) || 0;
-        var customer_type = $("#customer_type").val();
+            var itemsInCartObject = JSON.parse(JSON.stringify(itemsInCart)); // deep copy
 
-        var itemsInCartObject = Object.assign({}, itemsInCart);
+            $.each(itemsInCartObject, function (key, item) {
+                item.discount_on_each_product = parseFloat(item.discount_percent || 0);
+                item.vat = parseFloat(item.vat_input || 0);
+            });
 
-        $.ajax({
-            url: '<?= site_url("pos/hold_sale") ?>',
-            method: 'POST',
-            dataType: 'json',
-            data: {
-                cart_data: itemsInCartObject,
-                discountOnTotalPrice: discountOnTotalPrice,
-                vatOnTotalPrice: vatOnTotalPrice,
-                customer_type: customer_type
-            },
-            success: function(response) {
-                if (response.status === 'success') {
-                    alert('Sale has been put on hold!');
-                    itemsInCart = []; // clear current cart
+
+            var base_url = "<?php echo rtrim(base_url(), '/') ?>";
+
+            var sales_process_url = "<?php echo site_url('pos/sale') ?>";
+            $.ajax({
+                url: sales_process_url,
+                method: 'POST',
+                 dataType: "json",
+                data: {
+                    // cart_data: itemsInCartObject,
+                    // discountOnTotalPrice,
+                    // vatOnTotalPrice,
+                    // customer_type,
+                    // due,
+                    // paid
+                    cart_data: itemsInCartObject,
+                    discountOnTotalPrice: parseFloat(discountOnTotalPrice) || 0,
+                    vatOnTotalPrice: parseFloat(vatOnTotalPrice) || 0,
+                    customer_type: customer_type,
+                    due: parseFloat(due) || 0,
+                    paid: parseFloat(paid) || 0
+
+                },
+                success: function (data) {
+                    // console.log('output is:'+data);
+
+                   // alert(data);
+
+                    //$("#inVoiceAdd").modal('show');
+                    //$("#invoiceData").html(data);
+                    if (data.sales_id > 0) {
+                        window.open(base_url + "/invoice/" + data.sales_id, "_blank");
+                    }
+                    location.reload();
+
+                    var index = $(this).data("index");
+                    itemsInCart.splice(index);
                     drawTable();
-                } else {
-                    alert('Failed to hold the sale!');
+
+                    $('#discountOnTotalPrice').text('');
+                    $('#vatOnTotalPrice').text('');
+                    $('#paid').val('');
+                    $('#due').val('');
+                },
+                error: function () {
+                    alert('error');
                 }
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-                alert('AJAX error: ' + error);
-            }
+            });
+
         });
-    });
 
 
+        /////////////////////////////////////Sale HOLD Section//////////////////////////////////////////////////////////////
 
+        $('#holdSale').on('click', function () {
+            if (itemsInCart.length === 0) {
+                alert('Cart is empty. Add products first!');
+                return;
+            }
 
-    // Resume Sale
-    $(document).on('click', '.resume-sale', function() {
-        var saleId = $(this).data('id');
+            // Define these inside the function
+            var discountOnTotalPrice = parseFloat($("#discountOnTotalPrice").text()) || 0;
+            var vatOnTotalPrice = parseFloat($("#vatOnTotalPrice").text()) || 0;
+            var customer_type = $("#customer_type").val();
 
-        $.ajax({
-            url: '<?= site_url("pos/resume_sale") ?>/' + saleId,
-            method: 'GET',
-            dataType: 'json',
-            success: function(res) {
-                if (res.status === 'success') {
-                    itemsInCart = res.cart_data;
-                     discountOnTotalPrice = res.discountOnTotalPrice;
-                     vatOnTotalPrice = res.vatOnTotalPrice;
-                     customer_type = res.customer_type;
+            var itemsInCartObject = Object.assign({}, itemsInCart);
 
-                    drawTable(); // redraw cart
-                    alert("Sale resumed successfully!");
-                } else {
-                    alert(res.message);
+            $.ajax({
+                url: '<?= site_url("pos/hold_sale") ?>',
+                method: 'POST',
+                dataType: 'json',
+                data: {
+                    cart_data: itemsInCartObject,
+                    discountOnTotalPrice: discountOnTotalPrice,
+                    vatOnTotalPrice: vatOnTotalPrice,
+                    customer_type: customer_type
+                },
+                success: function (response) {
+                    if (response.status === 'success') {
+                        alert('Sale has been put on hold!');
+                        itemsInCart = []; // clear current cart
+                        drawTable();
+                    } else {
+                        alert('Failed to hold the sale!');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert('AJAX error: ' + error);
                 }
-            }
-        });
-    });
-
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-    //Product show Category-wise
-    $("#product_category").change(function() {
-        var product_category = $(this).val();
-
-        var product_show_url = "<?php echo site_url('pos/products') ?>";
-        $.ajax({
-            url: product_show_url,
-            method: 'POST',
-            data: "product_category=" + product_category,
-            success: function(data) {
-                $(".all_products").html(data);
-            },
-            error: function() {
-                alert('error');
-            }
+            });
         });
 
-    });
 
 
-    $(".extra-fields").on("input", function() {
-        totalCalculation();
-    });
 
-    $('body').on("input", ".product_quantity_change", function() {
-        var index = $(this).data("id");
-        var newQuantity = Number.parseInt($(this).val());
-        var current_stock = Number.parseInt($(this).data('current_stock'));
-        if (newQuantity < current_stock) {
-            if (newQuantity < 1) {
-                itemsInCart.splice(index, 1);
-                obj_warning.play();
+        // Resume Sale
+        $(document).on('click', '.resume-sale', function () {
+            var saleId = $(this).data('id');
+
+            $.ajax({
+                url: '<?= site_url("pos/resume_sale") ?>/' + saleId,
+                method: 'GET',
+                dataType: 'json',
+                success: function (res) {
+                    if (res.status === 'success') {
+                        itemsInCart = res.cart_data;
+                        discountOnTotalPrice = res.discountOnTotalPrice;
+                        vatOnTotalPrice = res.vatOnTotalPrice;
+                        customer_type = res.customer_type;
+
+                        drawTable(); // redraw cart
+                        alert("Sale resumed successfully!");
+                    } else {
+                        alert(res.message);
+                    }
+                }
+            });
+        });
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+        //Product show Category-wise
+        $("#product_category").change(function () {
+            var product_category = $(this).val();
+
+            var product_show_url = "<?php echo site_url('pos/products') ?>";
+            $.ajax({
+                url: product_show_url,
+                method: 'POST',
+                data: "product_category=" + product_category,
+                success: function (data) {
+                    $(".all_products").html(data);
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+
+        });
+
+
+        $(".extra-fields").on("input", function () {
+            totalCalculation();
+        });
+
+        $('body').on("input", ".product_quantity_change", function () {
+            var index = $(this).data("id");
+            var newQuantity = Number.parseInt($(this).val());
+            var current_stock = Number.parseInt($(this).data('current_stock'));
+            if (newQuantity < current_stock) {
+                if (newQuantity < 1) {
+                    itemsInCart.splice(index, 1);
+                    obj_warning.play();
+                } else {
+                    itemsInCart[index].quantity = newQuantity;
+                    obj.play();
+                }
+                drawTable();
             } else {
-                itemsInCart[index].quantity = newQuantity;
+                itemsInCart[index].quantity = current_stock;
+                $(this).val(current_stock);
+                obj_warning.play();
+                alert("Your Stock is Exceeded !");
+            }
+        });
+
+        /* Product Delete Strat */
+        $('body').on("click", ".btn_item_delete", function () {
+            if (confirm("Really Want to Delete ?")) {
+                var index = $(this).data("index");
+                itemsInCart.splice(index, 1);
+                drawTable();
+                obj_warning.play();
+            }
+        });
+        /* Product Delete End */
+
+
+        // VAT and Discount toggle handler
+        $("#ProductWiseVatAndDiscount").on('change', function () {
+            var enabled = $(this).is(":checked");
+            toggleVatAndDiscount(enabled);
+        });
+
+
+        /* Image e click kore product add kora strat */
+        $('body').on("click", ".cart_item_image", function () {
+            var product_id = $(this).data("id");
+            var stock = Number.parseInt($(this).data('stock'));
+            if (stock <= 0) {
+                obj_warning.play();
+                alert("Stock not Available for Sale");
+                $(this).val("");
+                return false;
+            } else {
+                productAddToCart(product_id, stock);
                 obj.play();
             }
-            drawTable();
-        } else {
-            itemsInCart[index].quantity = current_stock;
-            $(this).val(current_stock);
-            obj_warning.play();
-            alert("Your Stock is Exceeded !");
-        }
-    });
-
-    /* Product Delete Strat */
-    $('body').on("click", ".btn_item_delete", function() {
-        if (confirm("Really Want to Delete ?")) {
-            var index = $(this).data("index");
-            itemsInCart.splice(index, 1);
-            drawTable();
-            obj_warning.play();
-        }
-    });
-    /* Product Delete End */
-
-
-    // VAT and Discount toggle handler
-    $("#ProductWiseVatAndDiscount").on('change', function() {
-        var enabled = $(this).is(":checked");
-        toggleVatAndDiscount(enabled);
-    });
-
-
-    /* Image e click kore product add kora strat */
-    $('body').on("click", ".cart_item_image", function() {
-        var product_id = $(this).data("id");
-        var stock = Number.parseInt($(this).data('stock'));
-        if (stock <= 0) {
-            obj_warning.play();
-            alert("Stock not Available for Sale");
-            $(this).val("");
-            return false;
-        } else {
-            productAddToCart(product_id, stock);
-            obj.play();
-        }
-    });
-    /* Image e click kore product add kora End */
-    /*
-    Cart Initialize the cart
-    */
-    function productAddToCart(product_id, stock) {
-        $.each(productsList, function(key, value) {
-            if (value.product_id == product_id) {
-                var response = itemExist(product_id);
-                if (response.inCart) {
-                    if ((itemsInCart[response.productIndex].quantity + 1) <= stock) {
-                        itemsInCart[response.productIndex].quantity = itemsInCart[response.productIndex]
-                            .quantity + 1;
+        });
+        /* Image e click kore product add kora End */
+        /*
+        Cart Initialize the cart
+        */
+        function productAddToCart(product_id, stock) {
+            $.each(productsList, function (key, value) {
+                if (value.product_id == product_id) {
+                    var response = itemExist(product_id);
+                    if (response.inCart) {
+                        if ((itemsInCart[response.productIndex].quantity + 1) <= stock) {
+                            itemsInCart[response.productIndex].quantity = itemsInCart[response.productIndex]
+                                .quantity + 1;
+                        } else {
+                            obj_warning.play();
+                            alert("Your Stock is Exceeded ----------------!");
+                        }
                     } else {
-                        obj_warning.play();
-                        alert("Your Stock is Exceeded ----------------!");
+                        value.quantity = 1;
+                        itemsInCart.push(value);
                     }
-                } else {
-                    value.quantity = 1;
-                    itemsInCart.push(value);
+                    drawTable();
                 }
-                drawTable();
-            }
+            });
+        }
+
+
+
+
+        // Handle VAT input change
+        $(document).on('input', '.vat_input', function () {
+            let index = $(this).closest('tr').find('.btn_item_delete').data('index');
+            let value = parseFloat($(this).val()) || 0;
+
+            // Update the item in itemsInCart
+            itemsInCart[index].vat_input = value;
+
+            // Redraw table to recalculate subtotal
+            drawTable();
         });
-    }
 
 
+        // Handle Discount input change
+        $(document).on('input', '.discount_percent', function () {
+            let index = $(this).closest('tr').find('.btn_item_delete').data('index');
+            let value = parseFloat($(this).val()) || 0;
 
+            itemsInCart[index].discount_percent = value;
 
-    // Handle VAT input change
-    $(document).on('input', '.vat_input', function() {
-        let index = $(this).closest('tr').find('.btn_item_delete').data('index');
-        let value = parseFloat($(this).val()) || 0;
-
-        // Update the item in itemsInCart
-        itemsInCart[index].vat_input = value;
-
-        // Redraw table to recalculate subtotal
-        drawTable();
-    });
-
-
-    // Handle Discount input change
-    $(document).on('input', '.discount_percent', function() {
-        let index = $(this).closest('tr').find('.btn_item_delete').data('index');
-        let value = parseFloat($(this).val()) || 0;
-
-        itemsInCart[index].discount_percent = value;
-
-        drawTable();
-    });
-
-    /*
-    Draw / Redraw Table
-    */
-    function drawTable() {
-        $("#cartTableBody").empty();
-        $("#totalPrice").html("0.00");
-        totalPrice = 0;
-        $.each(itemsInCart, function(key, item) {
-
-            var baseTotal = parseInt(item.quantity) * parseFloat(item.selling_unit_price);
-            var subtotalPrice = baseTotal; // default, no VAT/Discount
-
-            // ✅ Only apply VAT/Discount if toggle is ON
-            if ($("#ProductWiseVatAndDiscount").is(":checked")) {
-                var vatPercent = parseFloat(item.vat_input) || 0;
-                var discountPercent = parseFloat(item.discount_percent) || 0;
-
-                var vatAmount = baseTotal * (vatPercent / 100);
-                var discountAmount = baseTotal * (discountPercent / 100);
-
-                subtotalPrice = (baseTotal + vatAmount) - discountAmount;
-            }
-            $("#cartTableBody").append('<tr>' +
-                '<td>' + item.product_name + '</td>' +
-                '<td>' + item.total_stock + '</td>' +
-                '<td>' +
-                '<input  data-current_stock="' + item.total_stock + '"  data-oldQuantity="' + item
-                .quantity + '" data-id="' + key +
-                '" class="product_quantity_change" type = "number"  size="4"' +
-                'value="' + item.quantity +
-                '" onkeypress="return accept_digit_only(event)" min="0"+ max="99999"/> ' +
-                '</td>' +
-                '<td>' + item.selling_unit_price + '</td>' +
-                '<td class="vat-column hide"><input type="number" name="vat" class="form-control form-control-sm vat_input" value="' +
-                (item.vat_input || 0) + '" min="0" step="0.01"></td>' +
-                '<td class="discount-column hide"><input type="number" name="discount_on_each_product" class="discount_percent form-control form-control-sm" value="' +
-                (item.discount_percent || 0) + '" min="0" step="0.01"></td>' +
-                '<td class = "text-right" > ' + subtotalPrice.toFixed(2) +
-                '<button  data-index="' + key +
-                '" class="badge badge-danger badge-sm btn_item_delete">' +
-                '<i class="fa fa-times"></i></button>' +
-                '</td>' +
-                '</tr>');
-            totalPrice += subtotalPrice;
-            //item.tax_perchantage.toFixed(2)
+            drawTable();
         });
-        totalCalculation();
-        // Show/hide VAT and Discount columns and inputs based on toggle state
-        toggleVatAndDiscount($("#ProductWiseVatAndDiscount").is(":checked"));
 
-    }
+        /*
+        Draw / Redraw Table
+        */
+        function drawTable() {
+            $("#cartTableBody").empty();
+            $("#totalPrice").html("0.00");
+            totalPrice = 0;
+            $.each(itemsInCart, function (key, item) {
 
-    // Show or hide VAT and Discount UI elements
-    function toggleVatAndDiscount(show) {
-        if (show) {
-            $("th.vat-column-header, td.vat-column").removeClass('hide');
-            $("th.discount-column-header, td.discount-column").removeClass('hide');
-            $(".vat_input, .discount_percent").prop("disabled", false);
-        } else {
-            $("th.vat-column-header, td.vat-column").addClass('hide');
-            $("th.discount-column-header, td.discount-column").addClass('hide');
-            $(".vat_input, .discount_percent").prop("disabled", true);
-        }
-    }
+                var baseTotal = parseInt(item.quantity) * parseFloat(item.selling_unit_price);
+                var subtotalPrice = baseTotal; // default, no VAT/Discount
 
-    /*
-    Calculate Table Total / SUbtotal
-    */
-    function totalCalculation() {
-        var discountOnTotalPrice = $("#discountOnTotalPrice").text();
-        if (discountOnTotalPrice != "") {
-            discountOnTotalPrice = parseFloat((Number.isNaN(discountOnTotalPrice)) ? 0 : discountOnTotalPrice);
-        } else {
-            discountOnTotalPrice = 0;
-        }
-        var vatOnTotalPrice = $("#vatOnTotalPrice").text();
-        if (vatOnTotalPrice != "") {
-            vatOnTotalPrice = parseFloat((Number.isNaN(vatOnTotalPrice)) ? 0 : vatOnTotalPrice);
-        } else {
-            vatOnTotalPrice = 0;
-        }
-        var netTotalPrice = (totalPrice + vatOnTotalPrice) - discountOnTotalPrice;
+                // ✅ Only apply VAT/Discount if toggle is ON
+                if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+                    var vatPercent = parseFloat(item.vat_input) || 0;
+                    var discountPercent = parseFloat(item.discount_percent) || 0;
 
-        ///////////////////////////
-        var paid = $("#paid").val();
-        var due = netTotalPrice - paid;
-        $("#due").val(due.toFixed(2));
-        ////////////////////////////////
-        $("#totalPrice").html(totalPrice.toFixed(2));
-        $("#netTotalPrice").html(netTotalPrice.toFixed(2));
-    }
-    /*
-    Chek Is the selected Item Exist in List
-    */
-    function itemExist(product_id) {
-        var response = {
-            inCart: false,
-            productIndex: null
-        };
-        $.each(itemsInCart, function(key, item) {
-            if (item.product_id == product_id) {
-                if (!response.inCart) {
-                    response.inCart = true;
-                    response.productIndex = key;
+                    var vatAmount = baseTotal * (vatPercent / 100);
+                    var discountAmount = baseTotal * (discountPercent / 100);
+
+                    subtotalPrice = (baseTotal + vatAmount) - discountAmount;
                 }
+                $("#cartTableBody").append('<tr>' +
+                    '<td>' + item.product_name + '</td>' +
+                    '<td>' + item.total_stock + '</td>' +
+                    '<td>' +
+                    '<input  data-current_stock="' + item.total_stock + '"  data-oldQuantity="' + item
+                        .quantity + '" data-id="' + key +
+                    '" class="product_quantity_change" type = "number"  size="4"' +
+                    'value="' + item.quantity +
+                    '" onkeypress="return accept_digit_only(event)" min="0"+ max="99999"/> ' +
+                    '</td>' +
+                    '<td>' + item.selling_unit_price + '</td>' +
+                    '<td class="vat-column hide"><input type="number" name="vat" class="form-control form-control-sm vat_input" value="' +
+                    (item.vat_input || 0) + '" min="0" step="0.01"></td>' +
+                    '<td class="discount-column hide"><input type="number" name="discount_on_each_product" class="discount_percent form-control form-control-sm" value="' +
+                    (item.discount_percent || 0) + '" min="0" step="0.01"></td>' +
+                    '<td class = "text-right" > ' + subtotalPrice.toFixed(2) +
+                    '<button  data-index="' + key +
+                    '" class="badge badge-danger badge-sm btn_item_delete">' +
+                    '<i class="fa fa-times"></i></button>' +
+                    '</td>' +
+                    '</tr>');
+                totalPrice += subtotalPrice;
+                //item.tax_perchantage.toFixed(2)
+            });
+            totalCalculation();
+            // Show/hide VAT and Discount columns and inputs based on toggle state
+            toggleVatAndDiscount($("#ProductWiseVatAndDiscount").is(":checked"));
+
+        }
+
+        // Show or hide VAT and Discount UI elements
+        function toggleVatAndDiscount(show) {
+            if (show) {
+                $("th.vat-column-header, td.vat-column").removeClass('hide');
+                $("th.discount-column-header, td.discount-column").removeClass('hide');
+                $(".vat_input, .discount_percent").prop("disabled", false);
+            } else {
+                $("th.vat-column-header, td.vat-column").addClass('hide');
+                $("th.discount-column-header, td.discount-column").addClass('hide');
+                $(".vat_input, .discount_percent").prop("disabled", true);
             }
-        });
-        return response;
-    }
+        }
 
-    ////////////////////New Customer Add//////////////////////////////
-    var allowSubmit = true;
+        /*
+        Calculate Table Total / SUbtotal
+        */
+        function totalCalculation() {
+            var discountOnTotalPrice = $("#discountOnTotalPrice").text();
+            if (discountOnTotalPrice != "") {
+                discountOnTotalPrice = parseFloat((Number.isNaN(discountOnTotalPrice)) ? 0 : discountOnTotalPrice);
+            } else {
+                discountOnTotalPrice = 0;
+            }
+            var vatOnTotalPrice = $("#vatOnTotalPrice").text();
+            if (vatOnTotalPrice != "") {
+                vatOnTotalPrice = parseFloat((Number.isNaN(vatOnTotalPrice)) ? 0 : vatOnTotalPrice);
+            } else {
+                vatOnTotalPrice = 0;
+            }
+            var netTotalPrice = (totalPrice + vatOnTotalPrice) - discountOnTotalPrice;
 
-    //product_group_edit_form
+            ///////////////////////////
+            var paid = $("#paid").val();
+            var due = netTotalPrice - paid;
+            $("#due").val(due.toFixed(2));
+            ////////////////////////////////
+            $("#totalPrice").html(totalPrice.toFixed(2));
+            $("#netTotalPrice").html(netTotalPrice.toFixed(2));
+        }
+        /*
+        Chek Is the selected Item Exist in List
+        */
+        function itemExist(product_id) {
+            var response = {
+                inCart: false,
+                productIndex: null
+            };
+            $.each(itemsInCart, function (key, item) {
+                if (item.product_id == product_id) {
+                    if (!response.inCart) {
+                        response.inCart = true;
+                        response.productIndex = key;
+                    }
+                }
+            });
+            return response;
+        }
 
-    $('#CustomerModalEntry_Form').submit(function(event) {
-        // stop the form from submitting the normal way and refreshing the page
-        event.preventDefault();
+        ////////////////////New Customer Add//////////////////////////////
+        var allowSubmit = true;
 
-        if (allowSubmit) {
-            allowSubmit = false;
-            //for modal close variable after submit
-            var parentMOdal = $(this).closest('.modal');
-            var postData = new FormData(this);
-            $.ajax({
+        //product_group_edit_form
+
+        $('#CustomerModalEntry_Form').submit(function (event) {
+            // stop the form from submitting the normal way and refreshing the page
+            event.preventDefault();
+
+            if (allowSubmit) {
+                allowSubmit = false;
+                //for modal close variable after submit
+                var parentMOdal = $(this).closest('.modal');
+                var postData = new FormData(this);
+                $.ajax({
                     type: $(this).attr("method"),
                     url: $(this).attr("action"),
                     data: postData,
@@ -964,106 +986,106 @@ $(document).ready(function() {
                     processData: false,
                     contentType: false,
                 })
-                .done(function(data) {
-                    if (data == 1) {
+                    .done(function (data) {
+                        if (data == 1) {
 
-                        //Modal Remove after submission
-                        parentMOdal.modal('toggle');
-                        //page refresh after submission
-                        location.reload();
-                    }
+                            //Modal Remove after submission
+                            parentMOdal.modal('toggle');
+                            //page refresh after submission
+                            location.reload();
+                        }
 
-                });
+                    });
+            }
+
+        });
+
+        //.........................................................................
+
+        // ...............For Date Show.............................
+        $('.datePicker').datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true,
+            todayHighlight: true
+        });
+        //.................For Date show end........................
+        ///////////////////////////////////////////////////////////////////////////////////
+        // function resumeHold(hold_id) {
+        //     $.ajax({
+        //         url: '<?= site_url("pos/resume_hold") ?>',
+        //         method: 'POST',
+        //         dataType: 'json',
+        //         data: { hold_id: hold_id },
+        //         success: function(response) {
+        //             itemsInCart = response.cart_data;
+        //             discountOnTotalPrice = response.discountOnTotalPrice;
+        //             vatOnTotalPrice = response.vatOnTotalPrice;
+        //             drawTable();
+        //         }
+        //     });
+        // }
+
+        ///////////////////////////////////////////////////////////////////////////////////
+
+        function calculateDiscount() {
+            let totalPrice = parseFloat($("#totalPrice").text()) || 0;
+            let discountType = $("#discountType").val();
+            let discountValue = parseFloat($("#discountValue").val()) || 0;
+
+            let discountPrice = 0;
+
+            if (discountType === "%") {
+                discountPrice = totalPrice * (discountValue / 100);
+            } else if (discountType === "flat") {
+                discountPrice = discountValue;
+            }
+
+            if (discountPrice < 0) discountPrice = 0;
+
+            // set value into input box instead of span
+            $("#discountOnTotalPrice").text(discountPrice.toFixed(2));
+            totalCalculation(); // 🔥 update net total immediately
         }
+
+        // Auto update when user types or changes values
+        $("#totalPrice, #discountType, #discountValue").on("input change", calculateDiscount);
+
+        // Run once on page load
+        calculateDiscount();
+
+
+
+        function calculateVat() {
+            let totalPrice = parseFloat($("#totalPrice").text()) || 0;
+            let vatType = $("#vatType").val();
+            let vatValue = parseFloat($("#vatValue").val()) || 0;
+
+            let totalVat = 0;
+
+            if (vatType === "%") {
+                totalVat = totalPrice * (vatValue / 100);
+            } else if (vatType === "flat") {
+                totalVat = vatValue;
+            }
+
+            if (totalVat < 0) totalVat = 0; // prevent negative
+            // set value into input box instead of span
+            $("#vatOnTotalPrice").text(totalVat.toFixed(2));
+            totalCalculation(); // 🔥 update net total immediately
+        }
+        // Auto update when values change
+        $("#discountType, #discountValue").on("input change", calculateDiscount);
+        $("#vatType, #vatValue").on("input change", calculateVat);
+
+        // Run once on page load
+        calculateDiscount();
+        calculateVat();
+
+
+
+
 
     });
-
-    //.........................................................................
-
-    // ...............For Date Show.............................
-    $('.datePicker').datepicker({
-        format: "dd/mm/yyyy",
-        autoclose: true,
-        todayHighlight: true
-    });
-    //.................For Date show end........................
-    ///////////////////////////////////////////////////////////////////////////////////
-    // function resumeHold(hold_id) {
-    //     $.ajax({
-    //         url: '<?= site_url("pos/resume_hold") ?>',
-    //         method: 'POST',
-    //         dataType: 'json',
-    //         data: { hold_id: hold_id },
-    //         success: function(response) {
-    //             itemsInCart = response.cart_data;
-    //             discountOnTotalPrice = response.discountOnTotalPrice;
-    //             vatOnTotalPrice = response.vatOnTotalPrice;
-    //             drawTable();
-    //         }
-    //     });
-    // }
-
-    ///////////////////////////////////////////////////////////////////////////////////
-
-    function calculateDiscount() {
-        let totalPrice = parseFloat($("#totalPrice").text()) || 0;
-        let discountType = $("#discountType").val();
-        let discountValue = parseFloat($("#discountValue").val()) || 0;
-
-        let discountPrice = 0;
-
-        if (discountType === "%") {
-            discountPrice = totalPrice * (discountValue / 100);
-        } else if (discountType === "flat") {
-            discountPrice = discountValue;
-        }
-
-        if (discountPrice < 0) discountPrice = 0;
-
-        // set value into input box instead of span
-        $("#discountOnTotalPrice").text(discountPrice.toFixed(2));
-        totalCalculation(); // 🔥 update net total immediately
-    }
-
-    // Auto update when user types or changes values
-    $("#totalPrice, #discountType, #discountValue").on("input change", calculateDiscount);
-
-    // Run once on page load
-    calculateDiscount();
-
-
-
-    function calculateVat() {
-        let totalPrice = parseFloat($("#totalPrice").text()) || 0;
-        let vatType = $("#vatType").val();
-        let vatValue = parseFloat($("#vatValue").val()) || 0;
-
-        let totalVat = 0;
-
-        if (vatType === "%") {
-            totalVat = totalPrice * (vatValue / 100);
-        } else if (vatType === "flat") {
-            totalVat = vatValue;
-        }
-
-        if (totalVat < 0) totalVat = 0; // prevent negative
-        // set value into input box instead of span
-        $("#vatOnTotalPrice").text(totalVat.toFixed(2));
-        totalCalculation(); // 🔥 update net total immediately
-    }
-    // Auto update when values change
-    $("#discountType, #discountValue").on("input change", calculateDiscount);
-    $("#vatType, #vatValue").on("input change", calculateVat);
-
-    // Run once on page load
-    calculateDiscount();
-    calculateVat();
-
-
-
-
-
-});
 </script>
 
 
@@ -1073,92 +1095,92 @@ $(document).ready(function() {
 
 
 <style>
-.discount-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin: 10px 0;
-}
+    .discount-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin: 10px 0;
+    }
 
-select,
-input[type="number"] {
-    padding: 6px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
+    select,
+    input[type="number"] {
+        padding: 6px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
 
-select {
-    width: 70px;
-    text-align: center;
-}
+    select {
+        width: 70px;
+        text-align: center;
+    }
 
-input[type="number"] {
-    width: 80px;
-}
+    input[type="number"] {
+        width: 80px;
+    }
 
-.result {
-    margin-top: 15px;
-    font-size: 16px;
-    font-weight: bold;
-}
+    .result {
+        margin-top: 15px;
+        font-size: 16px;
+        font-weight: bold;
+    }
 
-/* Toggle switch styling */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 20px;
-    vertical-align: middle;
-    margin-right: 8px;
-}
+    /* Toggle switch styling */
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 20px;
+        vertical-align: middle;
+        margin-right: 8px;
+    }
 
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 20px;
-}
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 20px;
+    }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 14px;
-    width: 14px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-}
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 14px;
+        width: 14px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+    }
 
-input:checked+.slider {
-    background-color: #17a2b8;
-}
+    input:checked+.slider {
+        background-color: #17a2b8;
+    }
 
-input:checked+.slider:before {
-    transform: translateX(30px);
-}
+    input:checked+.slider:before {
+        transform: translateX(30px);
+    }
 
-.slider.round {
-    border-radius: 20px;
-}
+    .slider.round {
+        border-radius: 20px;
+    }
 
-/* Hide elements with this class */
-.hide {
-    display: none !important;
-}
+    /* Hide elements with this class */
+    .hide {
+        display: none !important;
+    }
 </style>
 
 

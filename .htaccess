@@ -6,7 +6,7 @@ Options -Indexes
     RewriteEngine On
 
     # Set base for subfolder
-    RewriteBase /codeigniter_pharmacy_v_4.6.3/
+    RewriteBase /pharmacy-project/
 
     # Redirect Trailing Slashes
     RewriteCond %{REQUEST_FILENAME} !-d
