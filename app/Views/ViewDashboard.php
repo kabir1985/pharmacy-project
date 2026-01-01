@@ -11,6 +11,7 @@ echo $this->include('partial/sidebar', ['allowedMenus' => $allowedMenus]); ?>
     <div>
         <h1><i class="fa fa-dashboard"></i> View Dashboard</h1>
         <p>Welcome to View Dashboard </p>
+        <p><?//= $userId = session()->get('user_id');?></p>
          <!-- <p><strong>User ID:</strong> <?//= esc($user_id) ?></p>
   <p><strong>Login ID:</strong> <?//= esc($login_id) ?></p>
   <p>user role id <?//= esc($user_role_id)?></p> -->
