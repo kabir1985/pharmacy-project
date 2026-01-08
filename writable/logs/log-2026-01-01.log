@@ -340,3 +340,843 @@ DEBUG - 2026-01-01 07:53:48 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2026-01-01 07:53:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-01-01 07:54:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-01-01 07:54:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:26:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:26:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:26:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:26:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:26:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:27:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:27:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:27:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:27:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:33:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:34:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:34:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:34:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:34:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:34:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:34:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:35:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:35:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:35:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:35:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:35:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:35:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:35:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:36:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:43:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:44:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:44:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:44:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:44:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:45:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:47:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:48:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:48:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:48:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:48:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:50:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:50:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:50:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:50:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 09:50:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:13:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:14:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:15:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:15:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:15:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:15:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:15:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:15:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:15:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:16:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:16:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:18:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:18:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:18:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:25:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-01 10:25:20 --> ErrorException: Cannot redeclare hasAnyPrivilege() (previously declared in C:\laragon\www\pharmacy-project\app\Views\partial\sidebar.php:4)
+[Method: GET, Route: dashboard]
+in APPPATH\Views\partial\sidebar.php on line 4.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2026-01-01 10:26:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:26:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:26:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:26:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:27:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:27:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:27:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:40:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-01-01 10:40:10 --> mysqli_sql_exception: Unknown column 'productwiseVatPercnt' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT \r\n     ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT \r\n     ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT \r\n     ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\salereturnlist.php(111): CodeIgniter\Database\BaseConnection->query(' SELECT \r\n     ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-01-01 10:40:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'productwiseVatPercnt' in 'field list'
+[Method: GET, Route: salereturnlistshow]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\salereturnlist.php(111): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-01-01 10:40:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'productwiseVatPercnt' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 3 APPPATH\Controllers\salereturnlist.php(111): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-01-01 10:40:10 --> [Caused by] mysqli_sql_exception: Unknown column 'productwiseVatPercnt' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 4 APPPATH\Controllers\salereturnlist.php(111): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-01-01 10:40:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:40:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:43:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:45:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:45:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:45:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:45:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-01-01 10:45:51 --> mysqli_sql_exception: Unknown column 'productwiseVatPercnt' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT \r\n     ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT \r\n     ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT \r\n     ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\salereturnlist.php(111): CodeIgniter\Database\BaseConnection->query(' SELECT \r\n     ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-01-01 10:45:51 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'productwiseVatPercnt' in 'field list'
+[Method: GET, Route: salereturnlistshow]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\salereturnlist.php(111): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-01-01 10:45:51 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'productwiseVatPercnt' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 3 APPPATH\Controllers\salereturnlist.php(111): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-01-01 10:45:51 --> [Caused by] mysqli_sql_exception: Unknown column 'productwiseVatPercnt' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 4 APPPATH\Controllers\salereturnlist.php(111): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-01-01 10:45:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:45:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:46:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:46:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:46:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:46:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:46:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:49:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:49:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:50:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:50:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:54:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:54:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:54:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:54:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:54:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:54:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:54:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:54:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:55:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:55:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:55:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:55:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:55:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:55:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:55:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:55:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:55:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:55:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:56:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:56:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:57:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:57:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:57:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:57:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:57:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:58:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:58:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:58:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:58:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:58:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:58:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:58:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:58:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:59:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 10:59:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 11:01:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 11:03:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 11:03:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-01-01 11:04:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -1,5 +1,5 @@
-<?= $this->extend('layout') ?>
-<?= $this->section('content') ?>
+<?=$this->extend('layout')?>
+<?=$this->section('content')?>
 
 <div class="app-title">
     <div>
@@ -32,32 +32,32 @@
                             <?php foreach ($saleReturnList as $row): ?>
                             <tr>
                                 <td>
-                                    <?= esc($row['sales_date']) ?>
+                                    <?=esc($row['sales_date'])?>
                                 </td>
                                 <td>
-                                    <?= esc($row['sales_invoice']) ?>
+                                    <?=esc($row['sales_invoice'])?>
                                 </td>
                                 <td>
-                                    <?= esc($row['customer_name']) ?>
+                                    <?=esc($row['customer_name'])?>
                                 </td>
                                 <td>
-                                    <?= number_format($row['total_sale'], 2) ?>
+                                    <?=number_format($row['total_sale'], 2)?>
                                 </td>
                                 <td>
-                                    <?= number_format($row['productwiseVatPercnt'], 2) ?>
+                                    <?=number_format($row['productwiseVatPercnt'], 2)?>
                                 </td>
                                 <td>
-                                    <?= number_format($row['discountOnTotalPrice'], 2) ?>
+                                    <?=number_format($row['discountOnTotalPrice'], 2)?>
                                 </td>
                                 <td>
-                                    <?= number_format($row['vatOnTotalPrice'], 2) ?>
+                                    <?=number_format($row['vatOnTotalPrice'], 2)?>
                                 </td>
                                 <td>
-                                    <?= number_format($row['total_paid'], 2) ?>
+                                    <?=number_format($row['total_paid'], 2)?>
                                 </td>
 
                                 <td>
-                                    <?= number_format($row['customer_due'], 2) ?>
+                                    <?=number_format($row['customer_due'], 2)?>
                                 </td>
                                 <td>
                                     <?php if ($row['payment_status'] === 'Fully Paid'): ?>
@@ -68,7 +68,7 @@
                                 </td>
                                 <td>
                                     <button class="btn btn-primary btn-sm btn-return"
-                                        data-sales_invoice="<?= $row['sales_invoice'] ?>">
+                                        data-sales_invoice="<?=$row['sales_invoice']?>">
                                         <i class="fa fa-undo"></i> Return
                                     </button>
                                 </td>
@@ -156,12 +156,12 @@
 
 
 
-<?= $this->endSection() ?>
+<?=$this->endSection()?>
 
-<?= $this->section('scripts') ?>
+<?=$this->section('scripts')?>
 
-<script src="<?= base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script src="<?= base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
+<script src="<?=base_url('assets/js/plugins/jquery.dataTables.min.js')?>"></script>
+<script src="<?=base_url('assets/js/plugins/dataTables.bootstrap.min.js')?>"></script>
 
 <script>
 $(document).ready(function() {
@@ -169,13 +169,14 @@ $(document).ready(function() {
 
 
     ///////////////////////////
-    $('.btn-return').on('click', function() {
+
+    $('body').on('click','.btn-return', function() {
         const invoice = $(this).data('sales_invoice');
         $('#return_invoice').val(invoice);
 
         // Fetch products for this invoice
         $.ajax({
-            url: '<?= base_url("ReturnController/getProducts") ?>',
+            url: '<?=base_url("ReturnController/getProducts")?>',
             method: 'GET',
             data: {
                 invoice: invoice
@@ -191,8 +192,8 @@ $(document).ready(function() {
                     <td>${p.total_buy_price}</td>
                     <td>${p.total_sale_price}</td>
                     <td>
-                        <input type="number" name="return_qty[${p.product_id}]" 
-                               max="${p.product_quantity_sold}" 
+                        <input type="number" name="return_qty[${p.product_id}]"
+                               max="${p.product_quantity_sold}"
                                value="0" class="form-control" required>
                     </td>
                 </tr>`;
@@ -210,7 +211,7 @@ $(document).ready(function() {
     $('#returnForm').submit(function(e) {
         e.preventDefault();
         $.ajax({
-            url: '<?= base_url('ReturnController/process') ?>',
+            url: '<?=base_url('ReturnController/process')?>',
             method: 'POST',
             data: $(this).serialize(),
             success: function(res) {
@@ -241,4 +242,4 @@ $(document).ready(function() {
 });
 </script>
 
-<?= $this->endSection() ?>
+<?=$this->endSection()?>

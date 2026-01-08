@@ -369,13 +369,12 @@ if ($row["total_stock"] > '0') {
 
 
                     <div class="row">
+                        <div class="col">
 
                         <div class="card mt-3">
                             <div class="card-header bg-info text-white">
                                 <h5 class="mb-0">Held Sales</h5>
                             </div>
-
-
 
                             <div class="card-body" style="max-height: 200px; overflow-y:auto;">
                                 <?php if (!empty($heldSales)): ?>
@@ -398,9 +397,7 @@ if ($row["total_stock"] > '0') {
                                 <p class="text-muted">No held sales found</p>
                                 <?php endif; ?>
                             </div>
-
-
-
+                            </div>
 
                         </div>
                     </div>
