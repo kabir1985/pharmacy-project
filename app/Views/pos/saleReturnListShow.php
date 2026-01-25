@@ -28,9 +28,9 @@ echo $this->section('content');
                                 <th>Invoice</th>
                                 <th>Customer</th>
                                 <th>Total Sale</th>
-                                <th>Tax</th>
-                                <th>Discount</th>
-                                <th>Other Cost</th>
+                                <th>ProductwiseVat%</th>
+                                <th>DiscountOnTotalPrice</th>
+                                <th>VatOnTotalPrice</th>
                                 <th>Paid</th>
                                 
                                 <th>Due</th>
@@ -56,7 +56,7 @@ echo $this->section('content');
                                     <?= number_format($row['total_sale'], 2) ?>
                                 </td>
                                 <td>
-                                    <?= number_format($row['total_tax'], 2) ?>
+                                    <?= number_format($row['productwiseVatPercnt'], 2) ?>
                                 </td>
                                 <td>
                                     <?= number_format($row['discountOnTotalPrice'], 2) ?>

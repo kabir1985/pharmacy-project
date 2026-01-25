@@ -48,13 +48,18 @@ class Product extends BaseController
       $data['unit_show']     = $this->productunit_object->findAll();
       $data['tax_show']      = $this->tax_object->findAll();
 
-      $sql = "SELECT * FROM product_inital_stock AS pr
-      JOIN product_category AS pc ON pr.product_category=pc.product_category_id
-      JOIN product_group as pg ON pr.product_group =  pg.product_group_id
-      JOIN product_brand as pb ON pr.product_brand =  pb.brand_id
-      JOIN product_unit as pu ON pr.product_unit =  pu.product_unit_id";
+      $sql = "SELECT *
+      FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id";
 
       $data['product_show'] = $this->db->query($sql)->getResult('array');
+
+//       echo '<pre>';
+// print_r($data['product_show']);
+// exit;
 
       return view('product/NewProductAdd', $data);
    }
@@ -122,6 +127,10 @@ class Product extends BaseController
    public function update($id = 0)
    {
       $id = $this->request->getVar('product_id');
+
+// echo "1";
+// exit();
+
       $data = [
          'product_name'       => $this->request->getVar('product_name'),
          'product_category'   => $this->request->getVar('product_category12'),
@@ -148,9 +157,21 @@ class Product extends BaseController
 
    public function delete($id = 0)
    {
-      $id = $this->request->getVar('delete_id');
-      $this->NewProductAddModel_Object->where('product_id', $id)->delete();
-      return $this->response->redirect(site_url('/Product'));
+       // Get delete_id from POST request
+       $id = $this->request->getPost('delete_id');  // safer than getVar() for POST form
+   
+       if ($id) {
+           // Delete product from database
+           $this->NewProductAddModel_Object->where('product_id', $id)->delete();
+   
+           // Optional: set a flash message
+           session()->setFlashdata('msg', 'Product deleted successfully.');
+       } else {
+           session()->setFlashdata('msg', 'Invalid product ID.');
+       }
+   
+       // Redirect back to product list page
+       return redirect()->to(site_url('/product'));
    }
 
    public function brand_call()

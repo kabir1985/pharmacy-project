@@ -23,6 +23,11 @@ $routes->get('ReturnController/getProducts', 'ReturnController::getProducts');
 $routes->get('salereturnlistshow', 'salereturnlist::saleReturnListShow');
 
 $routes->get('product', 'Product::index');
+$routes->post('initial-product-create', 'Product::create');
+$routes->post('initial-product-update', 'Product::update');
+$routes->post('initial-product-delete', 'Product::delete');
+$routes->post('initial-product-brand', 'Product::brand_call');
+
 $routes->get('barcodegenerate', 'barcodegenerate::index');
 $routes->post('barcodeprint', 'barcodegenerate::barcodeprint');
 $routes->get('productcategoryView', 'Category::index');
@@ -48,6 +53,9 @@ $routes->post('unitDelete', 'Unit::delete');
 
 
 $routes->get('purchase', 'Purchase::index');
+$routes->post('purchase-product', 'Purchase::purchase_product');
+
+
 
 $routes->get('user', 'User::index');
 $routes->post('userCreate', 'User::create');

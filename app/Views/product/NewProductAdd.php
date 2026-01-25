@@ -3,6 +3,7 @@ echo $this->extend('layout');
 echo $this->section('content');
 ?>
 
+
 <div class='app-title'>
     <div>
         <h1><i class='fa fa-th-list'></i> Product List , Edit, Delete & Add Section</h1>
@@ -43,17 +44,17 @@ echo $this->section('content');
                             </tr>
                         </thead>
 
-                        <tbody>
+                         <tbody>
                             <?php
-                            //print_r($category_show);
-                            //exit();
+                            // print_r($product_show);
+                            // exit();
                             if (count($product_show) > 0) {
                                 foreach ($product_show as $row11) {
                             ?>
                                     <tr>
                                        <td><img  src="<?=base_url()?>/public/uploads/<?=$row11["product_image"]?>" class="img-thumbnail cart_item_image" alt="image 1" style="width: 50px; height: 40px;"></td>
                                        <td><?php echo $row11['codefor_barcode'] ?></td>
-                                        <td><?php echo $row11['product_name'] ?></td>
+                                        <td><?php echo $row11['product_name'] ?>  </td>
                                         <td><?php echo $row11['category_name'] ?></td>
                                         <td><?php echo $row11['product_brand_name'] ?></td>
                                         <td><?php echo $row11['group_name'] ?></td>
@@ -76,7 +77,8 @@ echo $this->section('content');
                             } else
                                 echo "Data not Found";
                             ?>
-                        </tbody>
+                        </tbody> 
+
                     </table>
                 </div>
             </div>
@@ -100,7 +102,7 @@ echo $this->section('content');
                 </div>
             <?php endif ?>
             <!-----for image upload------------------->
-            <form id="NewProductAdd_Form" method='post' action="<?php echo site_url('/Product/create') ?>" accept-charset="utf-8" enctype="multipart/form-data">
+            <form id="NewProductAdd_Form" method='post' action="<?php echo site_url('/initial-product-create') ?>" accept-charset="utf-8" enctype="multipart/form-data">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='exampleModalLabel'>Please Enter New Product</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -232,18 +234,17 @@ echo $this->section('content');
 
 <!---------------------------Modal Form for Edit Section Load Start---------------------------------------->
 <!-- Modal -->
-<div class='modal fade' id='EditProductModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-    <div class='modal-dialog  modal-lg modal-dialog-centered' role='document'>
+<div class='modal fade' id='EditProductModal' tabindex='-1' role='dialog' aria-labelledby='EditProductModalLabel' aria-hidden='true'>
+    <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="ProductEdit_submit_form" method='post' action="<?php echo site_url('/Product/update') ?>">
+            <form id="ProductEdit_submit_form" method='post' action="<?php echo base_url('/initial-product-update') ?>">
                 <div class='modal-header'>
-                    <h5 class='modal-title' id='#'>Please Update Product</h5>
+                    <h5 class='modal-title' id='EditProductModalLabel'>Please Update Product</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                        <span aria-hidden='true'>&times;
-                        </span>
+                        <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>
-                <div class='modal-body' id="#">
+                <div class='modal-body'>
                     <input type='hidden' required class='form-control' name='product_id' id='product_id'>
                     <div class='form-row'>
                         <div class='form-group col-md-4'>
@@ -253,77 +254,46 @@ echo $this->section('content');
                         <div class='form-group col-md-4'>
                             <label>Category Name</label>
                             <select id="product_category12" name="product_category12" class="form-control">
-                                <?php
-                                foreach ($category_show as $row22) {
-                                ?>
-                                    <option value="<?php echo $row22['product_category_id'] ?>">
-                                        <?php echo $row22['category_name'] ?></option>
-
-                                <?php
-                                }
-                                ?>
+                                <?php foreach ($category_show as $row22) { ?>
+                                    <option value="<?php echo $row22['product_category_id'] ?>"><?php echo $row22['category_name'] ?></option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Brand</label>
                             <select id="product_brand12" name="product_brand12" class="form-control">
-                                <?php
-                                foreach ($brand_show as $row) {
-                                ?>
+                                <?php foreach ($brand_show as $row) { ?>
                                     <option value="<?php echo $row['brand_id'] ?>"><?php echo $row['product_brand_name'] ?></option>
-
-                                <?php
-                                }
-                                ?>
+                                <?php } ?>
                             </select>
-
                         </div>
                     </div>
                     <div class='form-row'>
                         <div class='form-group col-md-4'>
                             <label>Group</label>
                             <select id="product_group12" name="product_group12" class="form-control">
-                                <?php
-                                foreach ($group_show as $row) {
-                                ?>
+                                <?php foreach ($group_show as $row) { ?>
                                     <option value="<?php echo $row['product_group_id'] ?>"><?php echo $row['group_name'] ?></option>
-
-                                <?php
-                                }
-                                ?>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Unit</label>
                             <select id="product_unit12" name="product_unit12" class="form-control">
-                                <?php
-                                foreach ($unit_show as $row) {
-                                ?>
+                                <?php foreach ($unit_show as $row) { ?>
                                     <option value="<?php echo $row['product_unit_id'] ?>"><?php echo $row['product_unit_name'] ?></option>
-
-                                <?php
-                                }
-                                ?>
+                                <?php } ?>
                             </select>
-
-
                         </div>
                         <div class='form-group col-md-4'>
                             <label>TAX</label>
                             <select id="tax_perchantage12" name="tax_perchantage12" class="form-control">
-                                <?php
-                                foreach ($tax_show as $row) {
-                                ?>
+                                <?php foreach ($tax_show as $row) { ?>
                                     <option value="<?php echo $row['tax_percentage'] ?>"><?php echo $row['tax_name'] ?></option>
-
-                                <?php
-                                }
-                                ?>
+                                <?php } ?>
                             </select>
-
                         </div>
                     </div>
-
 
                     <div class='form-row'>
                         <div class='form-group col-md-4'>
@@ -358,9 +328,9 @@ echo $this->section('content');
                 </div>
             </form>
         </div>
-
     </div>
 </div>
+
 
 <!----------------------Modal Form Edit Section  End------------------------------------------>
 
@@ -380,7 +350,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Customer?</h4>
 
             </div>
-            <form method="post" action="<?php echo site_url('/Product/delete') ?>">
+            <form method="post" action="<?php echo site_url('/initial-product-delete') ?>">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -407,12 +377,20 @@ echo $this->section('scripts');
 <script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
 <script type='text/javascript'>
+
+
+// Fix modal close buttons
+$('.modal .btn-secondary[data-dismiss="modal"], .modal .close').on('click', function() {
+    $(this).closest('.modal').modal('hide');
+});
+
+
     $(document).ready(function() {
 
          $("#product_category").on("change",function(){
             var categoryId = this.value;
 
-            var brand_call_url = "<?=site_url('Product/brand_call')?>";
+            var brand_call_url = "<?=site_url('/initial-product-brand')?>";
             $.ajax({
             url: brand_call_url,
             type: "POST",
@@ -468,36 +446,37 @@ echo $this->section('scripts');
 
         //////Product Edit submit into database start/////////////////////////////////
 
+
         $('#ProductEdit_submit_form').submit(function(event) {
-            event.preventDefault();
+        event.preventDefault();
 
-            if (allowSubmit) {
-                allowSubmit = false;
-                var parentMOdal = $(this).closest('.modal');
-                var postData = new FormData(this);
-                $.ajax({
-                        //alert("ddd");
-                        type: $(this).attr("method"),
-                        url: $(this).attr("action"),
-                        // alert(;
-                        data: postData,
-                        //dataType: 'json',
-                        encode: true,
-                        processData: false,
-                        contentType: false,
-                    })
-                    // using the done promise callback
-                    .done(function(data) {
-                        // alert(data);
-                        if (data == 1) {
-                            parentMOdal.modal('toggle');
-                            //page refresh after submission
-                            location.reload();
-                            // alert("Success");
-                        }
-                    });
+        if (allowSubmit) {
+            allowSubmit = false;
+            var parentMOdal = $(this).closest('.modal');
+            var postData = new FormData(this);
 
-            }
+            $.ajax({
+                type: $(this).attr("method"),
+                url: $(this).attr("action"),
+                data: postData,
+                processData: false,
+                contentType: false,
+            })
+            .done(function(data) {
+                allowSubmit = true; // ✅ allow future submissions
+                if (data == 1) {
+                    parentMOdal.modal('hide'); // ✅ hide modal
+                    location.reload();         // refresh page to show updates
+                } else {
+                    alert('Failed to update product.'); // handle failure
+                }
+            })
+            .fail(function() {
+                allowSubmit = true;
+                alert('Something went wrong. Please try again.');
+            });
+        }
+
         });
 
         /////////Product Edit Submit inot database end here//////////////////////

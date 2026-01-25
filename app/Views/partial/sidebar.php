@@ -25,8 +25,8 @@ $menuSections = [
         'url'   => '#',
         'privileges' => ['pos_sale','general_sale','sale_list','sale_return','sale_return_list'],
         'children' => [
-            ['label'=>'POS Sale','url'=>'pos','privileges'=>['pos_sale']],
-            ['label'=>'General Sale','url'=>'generalsale','privileges'=>['general_sale']],
+            ['label'=>'POS/Genarel Sale','url'=>'pos','privileges'=>['pos_sale']],
+            // ['label'=>'General Sale','url'=>'generalsale','privileges'=>['general_sale']],
             ['label'=>'Sales List','url'=>'salelist','privileges'=>['sale_list']],
             ['label'=>'Sales Return','url'=>'salereturnlist','privileges'=>['sale_return']],
             ['label'=>'Sales Return List','url'=>'salereturnlistshow','privileges'=>['sale_return_list']],

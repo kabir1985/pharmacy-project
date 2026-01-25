@@ -407,7 +407,7 @@ $(document).ready(function() {
         $(this).prop("disabled", true).text("Processing...");
 
         var itemsInCartObject = Object.assign({}, itemsInCart);
-        var purchase_process_url = "<?= site_url('Purchase/purchase_product') ?>";
+        var purchase_process_url = "<?= site_url('purchase-product') ?>";
 
         $.ajax({
             url: purchase_process_url,
