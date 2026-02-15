@@ -77,6 +77,6 @@ class User extends BaseController
       $this->user_model_object->where('user_id', $id)->delete();
 
       //return into supplier page
-      return $this->response->redirect(site_url('/User'));
+      return $this->response->redirect(site_url('/user'));
    }
 }

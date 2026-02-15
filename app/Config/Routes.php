@@ -50,16 +50,45 @@ $routes->post('unitAdd', 'Unit::create');
 $routes->post('unitUpdate', 'Unit::update');
 $routes->post('unitDelete', 'Unit::delete');
 
-
-
 $routes->get('purchase', 'Purchase::index');
 $routes->post('purchase-product', 'Purchase::purchase_product');
 
+$routes->get('Expensecategory', 'Expensecategory::index');
+$routes->POST('ExpensecategoryAdd', 'Expensecategory::create');
+$routes->POST('ExpensecategoryDelete', 'Expensecategory::delete');
+$routes->POST('ExpensecategoryUpdate', 'Expensecategory::update');
+
+$routes->get('Expensesubcategory', 'Expensesubcategory::index');
+$routes->POST('ExpensesubcategoryAdd', 'Expensesubcategory::create');
+$routes->POST('ExpensesubcategoryUpdate', 'Expensesubcategory::update');
+$routes->POST('ExpensesubcategoryDelete', 'Expensesubcategory::delete');
+
+$routes->get('Expense', 'Expense::index');
+$routes->POST('ExpenseAdd', 'Expense::create');
+$routes->POST('ExpenseUpdate', 'Expense::update');
+$routes->POST('ExpenseDelete', 'Expense::delete');
+
+$routes->get('customergroup', 'customergroup::index');
+$routes->POST('customergroupAdd', 'customergroup::create');
+$routes->POST('customergroupUpdate', 'customergroup::update');
+$routes->POST('customergroupDelete', 'customergroup::delete');
+
+$routes->get('customer', 'customer::index');
+$routes->POST('customerAdd', 'customer::create');
+$routes->POST('customerUpdate', 'customer::update');
+$routes->POST('customerDelete', 'customer::delete');
 
 
 $routes->get('user', 'User::index');
 $routes->post('userCreate', 'User::create');
+$routes->post('userDelete', 'user::delete');
+$routes->post('userUpdate', 'user::update');
+//update
 
 $routes->get('role', 'Role::index');
 $routes->post('roleCreate', 'Role::create');
 $routes->post('roleUpdate', 'Role::updateUserRole');
+
+$routes->get('stockreport', 'Stockreport::index');
+
+$routes->get('salesummeryreport', 'SaleSummeryReport::index');

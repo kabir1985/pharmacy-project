@@ -239,7 +239,7 @@ echo $this->section('content');
     aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="user_update_submit" method='post' action="<?php echo site_url('/User/update') ?>">
+            <form id="user_update_submit" method='post' action="<?= site_url('userUpdate') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Udate User Role</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -271,13 +271,13 @@ echo $this->section('content');
                         </div>
                     </div>
                     <div class='form-row'>
-                        <div class='form-group col-md-6'>
+                        <!-- <div class='form-group col-md-6'>
                             <label>Confirm Login Password</label>
                             <input type='password' required class='form-control' name='confirm_login_password'
                                 id='confirm_login_password'>
                             <div id="confirmpasswordmatch">Password Not Match</div>
-                        </div>
-                        <div class='form-group col-md-6'>
+                        </div> -->
+                        <div class='form-group col-md-12'>
                             <label>User Role</label>
                             <select id="user_role_id_edit" name="user_role_id_edit" class="form-control">
                                 <?php
@@ -321,7 +321,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Customer?</h4>
 
             </div>
-            <form action="<?php echo site_url('/User/delete') ?>" method="post">
+            <form action="<?= site_url('userDelete') ?>" method="post">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -350,9 +350,13 @@ echo $this->section('scripts');
 <script type='text/javascript'>
 $(document).ready(function() {
 
+    // Initialize DataTable
     $('#sampleTable').DataTable();
 
+    // ---------------- Global variable for submit control ----------------
+    var allowSubmit = true;
 
+    // ---------------- User Create Modal ----------------
     let submitBtn = $("#userCreate_form button[type='submit']");
     submitBtn.prop('disabled', true);
 
@@ -384,6 +388,37 @@ $(document).ready(function() {
             let parentModal = $(this).closest('.modal');
             let postData = new FormData(this);
 
+            if (allowSubmit) {
+                allowSubmit = false;
+
+                $.ajax({
+                    type: $(this).attr("method"),
+                    url: $(this).attr("action"),
+                    data: postData,
+                    processData: false,
+                    contentType: false,
+                }).done(function(data) {
+                    allowSubmit = true;
+                    if (data == 1) {
+                        parentModal.modal('hide');
+                        location.reload();
+                    } else {
+                        alert("Error saving user. Please try again.");
+                    }
+                });
+            }
+        }
+    });
+
+    // ---------------- User Update Modal ----------------
+    $('#user_update_submit').submit(function(event) {
+        event.preventDefault();
+
+        if (allowSubmit) {
+            allowSubmit = false;
+            let parentModal = $(this).closest('.modal');
+            let postData = new FormData(this);
+
             $.ajax({
                 type: $(this).attr("method"),
                 url: $(this).attr("action"),
@@ -391,108 +426,55 @@ $(document).ready(function() {
                 processData: false,
                 contentType: false,
             }).done(function(data) {
+                allowSubmit = true;
                 if (data == 1) {
-                    parentModal.modal('toggle');
+                    parentModal.modal('hide');
                     location.reload();
                 } else {
-                    alert("Error saving user. Please try again.");
+                    alert("Error updating user. Please try again.");
                 }
             });
-        } else {
-            $("#password-error").text("Passwords do not match");
         }
     });
-    //.........................................................................
 
-    $('#user_update_submit').submit(function(event) {
-
-        // stop the form from submitting the normal way and refreshing the page
-        event.preventDefault();
-
-        if (allowSubmit) {
-            allowSubmit = false;
-            //for modal close variable after submit
-
-            var parentMOdal = $(this).closest('.modal');
-            var postData = new FormData(this);
-
-            $.ajax({
-                    type: $(this).attr("method"),
-                    url: $(this).attr("action"),
-                    data: postData,
-                    encode: true,
-                    processData: false,
-                    contentType: false,
-                })
-                .done(function(data) {
-                    if (data == 1) {
-                        //Modal Remove after submission
-                        parentMOdal.modal('toggle');
-                        //page refresh after submission
-                        location.reload();
-                    }
-                });
-
-        }
-
-    });
-
-
-
-    //...................JQuery for Modal Edit & Delete option...................................
-
-    // get Edit Product
+    // ---------------- Edit Button Click ----------------
     $('.btn-edit').on('click', function() {
-        // get data from button edit
         const user_id = $(this).data('user_id');
         const user_name = $(this).data('user_name');
-
         const user_email = $(this).data('user_email');
         const login_id = $(this).data('login_id');
         const login_password = $(this).data('login_password');
         const user_role_id = $(this).data('user_role_id');
 
-
-        // Set data to Form Edit
+        // Set data to edit modal form
         $('#user_id').val(user_id);
         $('#user_name').val(user_name);
         $('#user_email').val(user_email);
         $('#login_id').val(login_id);
         $('#login_password').val(login_password);
+        $('#confirm_login_password').val(login_password);
         $('#user_role_id_edit').val(user_role_id);
 
-        // Call Modal Edit
+        // Show edit modal
         $('#user_Update_modal').modal('show');
-
     });
 
-    // get Delete Product
-    $('.btn-delete').on('click', function() {
-        // get data from button edit
+    // ---------------- Delete Button Click ----------------
+    $(document).on('click', '.btn-delete', function() {
         const delete_id = $(this).data('delete_id');
-        //alert(delete_id);
-        // Set data to Form Edit
         $('#delete_id').val(delete_id);
-        // Call Modal Edit
         $('#deleteModal').modal('show');
     });
 
-
-    //................ JQuery modal Edit & Delete end here........................................
-    // ...............For Date Show.............................
+    // ---------------- Datepicker ----------------
     $('.datePicker').datepicker({
         format: "dd/mm/yyyy",
         autoclose: true,
         todayHighlight: true
     });
-    //.................For Date show end........................ 
 
 });
 </script>
-
-<!-- For Calendar start -->
-
-<!-- For Calendar End -->
 
 <?php
 echo $this->endSection();

@@ -47,6 +47,12 @@ class Purchase extends BaseController
     {
          $session = session();
         $purchaseList = $this->request->getVar("cart_data");
+
+echo "<pre>";
+print_r( $purchaseList);
+echo "</pre>";
+exit();
+
         $discount = $_POST['discount'];
         $others_cost = $_POST['others_cost'];
         $supplier_id = $_POST['supplier_id'];

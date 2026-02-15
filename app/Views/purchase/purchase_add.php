@@ -291,6 +291,7 @@ $(document).ready(function() {
             var baseTotal = parseInt(item.quantity) * parseFloat(item.buying_unit_price);
             var vatPercent = parseFloat(item.tax_perchantage) || 0;
             var vatAmount = baseTotal * (vatPercent / 100);
+            alert(vatAmount);
             var subTotalPrice = baseTotal + vatAmount;
 
             totalPrice += subTotalPrice;
@@ -418,9 +419,10 @@ $(document).ready(function() {
                 //others_cost,
                 supplier_id
             },
-            success: function() {
-                alert('Purchase Successful');
-                location.reload();
+            success: function(response) {
+                alert(response);
+               // alert('Purchase Successful');
+               // location.reload();
             },
             error: function() {
                 alert('Something went wrong. Please try again.');
