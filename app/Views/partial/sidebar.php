@@ -172,73 +172,50 @@ $menuSections = [
 </aside>
 <style>
 
+
 .treeview-menu .treeview-item {
     padding-left: 38px !important;
     display: flex;
     align-items: center;
     gap: 8px;
 }
-
 /* =========================
-   PROFESSIONAL GLASS SIDEBAR
+   SIMPLE CLEAN SIDEBAR
 ========================= */
 
-/* Background (Clean Dark Professional) */
-body {
-    background: linear-gradient(135deg, #1f2933, #111827);
-}
-
-/* Sidebar Glass Base */
+/* Sidebar Base */
 .app-sidebar {
-    background: rgba(17, 24, 39, 0.75);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.4);
+    background: #1f2937; /* Clean dark gray */
+    border-right: 1px solid #2d3748;
 }
 
-
-/* =========================
-   MAIN MENU
-========================= */
-
+/* Main Menu */
 .app-menu__item {
-    margin: 6px 12px;
+    margin: 4px 10px;
     padding: 10px 14px;
-    border-radius: 10px;
+    border-radius: 6px;
     font-size: 14px;
     font-weight: 500;
     color: #cbd5e1;
-    transition: all 0.25s ease;
+    transition: background 0.2s ease;
 }
 
 /* Main Hover */
 .app-menu__item:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: #374151;
     color: #ffffff;
 }
 
 /* Active Main */
-.treeview.is-expanded > .app-menu__item,
-.app-menu__item.active {
-    background: rgba(59, 130, 246, 0.18);
+.treeview.is-expanded > .app-menu__item {
+    background: #374151;
     color: #ffffff !important;
-    box-shadow: inset 3px 0 0 #007065;
+    border-left: 3px solid #007065;
 }
 
-/* Active Main Icon/Text */
-.treeview.is-expanded > .app-menu__item i,
-.treeview.is-expanded > .app-menu__item span {
-    color: #ffffff !important;
-}
-
-/* Indicator Animation */
-.treeview-indicator {
-    transition: 0.25s ease;
-}
-
-.treeview.is-expanded .treeview-indicator {
-    transform: rotate(90deg);
+/* Main Icon */
+.app-menu__item i {
+    margin-right: 8px;
 }
 
 
@@ -246,38 +223,36 @@ body {
    CHILD MENU
 ========================= */
 
-/* .treeview-menu {
-    margin-top: 4px;
-} */
-
-/* Child Base */
 .treeview-menu .treeview-item {
-    margin: 4px 20px;
+    margin: 2px 20px;
     padding: 8px 12px;
-    padding-left: 38px !important;
-    border-radius: 8px;
+    padding-left: 36px !important;
+    border-radius: 4px;
     font-size: 13px;
-    color: #94a3b8;
-    background: transparent;
-    transition: all 0.25s ease;
+    color: #9ca3af;
+    transition: background 0.2s ease;
 }
 
 /* Child Hover */
 .treeview-menu .treeview-item:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: #2d3748;
     color: #ffffff;
 }
 
 /* Active Child */
 .treeview-menu .treeview-item.active-child {
-    background: rgba(59, 130, 246, 0.25);
+    background: #2d3748;
     color: #ffffff !important;
-    box-shadow: inset 3px 0 0 #3b82f6;
+    border-left: 3px solid #3b82f6;
 }
 
-/* Active Child Icon */
-.treeview-menu .treeview-item.active-child i {
-    color: #ffffff !important;
+/* Rotate arrow */
+.treeview-indicator {
+    transition: 0.2s ease;
+}
+
+.treeview.is-expanded .treeview-indicator {
+    transform: rotate(90deg);
 }
 
 </style>
