@@ -11,7 +11,6 @@ class Currency extends BaseController
 {
    private $currency_obj;
 
-
    public function __construct()
    {
       $this->currency_obj = new CurrencyAddModel();
@@ -66,9 +65,7 @@ class Currency extends BaseController
       $id = $this->request->getVar('delete_id');
 
       $this->currency_obj->where('id', $id)->delete();
-      //$this->NewProductAddModel_Object->where('product_id', $id)->delete();
-
       //return into supplier page
-      return $this->response->redirect(site_url('/Currency'));
+      return $this->response->redirect(site_url('/currency'));
    }
 }

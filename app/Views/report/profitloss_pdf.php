@@ -123,11 +123,11 @@
         </tr>
         <tr>
             <td class="label">Discounts</td>
-            <td><?= number_format($total_discount, 2) ?></td>
+            <td><?= number_format($discountOnTotalPrice, 2) ?></td>
         </tr>
         <tr>
             <td class="label">Other Costs</td>
-            <td><?= number_format($total_others_cost, 2) ?></td>
+            <td><?= number_format($vatOnTotalPrice, 2) ?></td>
         </tr>
         <tr>
             <td class="label">General Expenses</td>
@@ -135,7 +135,7 @@
         </tr>
         <tr class="highlight-expense">
             <td class="label">Total Expenses</td>
-            <td><?= number_format($total_discount + $total_others_cost + $general_expense, 2) ?></td>
+            <td><?= number_format($discountOnTotalPrice + $vatOnTotalPrice + $general_expense, 2) ?></td>
         </tr>
         <tr class="highlight-netprofit">
             <td class="label">Net Profit</td>

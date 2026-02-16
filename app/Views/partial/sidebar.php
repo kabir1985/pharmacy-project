@@ -25,8 +25,7 @@ $menuSections = [
         'url'   => '#',
         'privileges' => ['pos_sale','general_sale','sale_list','sale_return','sale_return_list'],
         'children' => [
-            ['label'=>'POS/Genarel Sale','url'=>'pos','privileges'=>['pos_sale']],
-            // ['label'=>'General Sale','url'=>'generalsale','privileges'=>['general_sale']],
+            ['label'=>'POS/Genarel Sale','url'=>'pos','privileges'=>['pos_sale'] ],
             ['label'=>'Sales List','url'=>'salelist','privileges'=>['sale_list']],
             ['label'=>'Sales Return','url'=>'salereturnlist','privileges'=>['sale_return']],
             ['label'=>'Sales Return List','url'=>'salereturnlistshow','privileges'=>['sale_return_list']],
@@ -85,7 +84,7 @@ $menuSections = [
         'url'=>'#',
         'privileges'=>['stock_report','sale_report','profit_loss','expense_report','customer_report'],
         'children'=>[
-            ['label'=>'Stock Report','url'=>'stockreport','privileges'=>['stock_report']],
+            ['label'=>'Stock Report','url'=>'stockreport','privileges'=>['stock_report']  ],
             ['label'=>'Sales Report','url'=>'salesummeryreport','privileges'=>['sale_report']],
             ['label'=>'Profit & Loss','url'=>'profitloss','privileges'=>['profit_loss']],
             ['label'=>'Expense Report','url'=>'expensereport','privileges'=>['expense_report']],
@@ -155,7 +154,15 @@ $menuSections = [
         <?php foreach($section['children'] as $child):
             if(!hasAnyPrivilege($child['privileges'],$allowedMenus)) continue;
         ?>
-        <li><a class="treeview-item" href="<?= site_url($child['url']); ?>"><?= $child['label'] ?></a></li>
+       <li>
+       <a class="treeview-item <?= strtolower($child['url']) == $current_menu ? 'active-child' : '' ?>" 
+   href="<?= site_url($child['url']); ?>">
+
+        <i class="<?= $child['icon'] ?? 'fa fa-caret-right' ?>"></i>
+        <?= $child['label'] ?>
+    </a>
+</li>
+
         <?php endforeach; ?>
     </ul>
     <?php endif; ?>
@@ -163,3 +170,114 @@ $menuSections = [
 <?php endforeach; ?>
 </ul>
 </aside>
+<style>
+
+.treeview-menu .treeview-item {
+    padding-left: 38px !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* =========================
+   PROFESSIONAL GLASS SIDEBAR
+========================= */
+
+/* Background (Clean Dark Professional) */
+body {
+    background: linear-gradient(135deg, #1f2933, #111827);
+}
+
+/* Sidebar Glass Base */
+.app-sidebar {
+    background: rgba(17, 24, 39, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================
+   MAIN MENU
+========================= */
+
+.app-menu__item {
+    margin: 6px 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #cbd5e1;
+    transition: all 0.25s ease;
+}
+
+/* Main Hover */
+.app-menu__item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+}
+
+/* Active Main */
+.treeview.is-expanded > .app-menu__item,
+.app-menu__item.active {
+    background: rgba(59, 130, 246, 0.18);
+    color: #ffffff !important;
+    box-shadow: inset 3px 0 0 #007065;
+}
+
+/* Active Main Icon/Text */
+.treeview.is-expanded > .app-menu__item i,
+.treeview.is-expanded > .app-menu__item span {
+    color: #ffffff !important;
+}
+
+/* Indicator Animation */
+.treeview-indicator {
+    transition: 0.25s ease;
+}
+
+.treeview.is-expanded .treeview-indicator {
+    transform: rotate(90deg);
+}
+
+
+/* =========================
+   CHILD MENU
+========================= */
+
+/* .treeview-menu {
+    margin-top: 4px;
+} */
+
+/* Child Base */
+.treeview-menu .treeview-item {
+    margin: 4px 20px;
+    padding: 8px 12px;
+    padding-left: 38px !important;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #94a3b8;
+    background: transparent;
+    transition: all 0.25s ease;
+}
+
+/* Child Hover */
+.treeview-menu .treeview-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+/* Active Child */
+.treeview-menu .treeview-item.active-child {
+    background: rgba(59, 130, 246, 0.25);
+    color: #ffffff !important;
+    box-shadow: inset 3px 0 0 #3b82f6;
+}
+
+/* Active Child Icon */
+.treeview-menu .treeview-item.active-child i {
+    color: #ffffff !important;
+}
+
+</style>

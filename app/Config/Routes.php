@@ -92,3 +92,27 @@ $routes->post('roleUpdate', 'Role::updateUserRole');
 $routes->get('stockreport', 'Stockreport::index');
 
 $routes->get('salesummeryreport', 'SaleSummeryReport::index');
+$routes->get('profitloss', 'profitloss::index');
+//expensereport
+$routes->post('expensereport', 'expensereport::index');
+$routes->post('PLReport', 'profitloss::profitlosspdfcreate');
+
+$routes->get('fromcustomer', 'fromcustomer::index');
+//generalsettings
+$routes->post('customer_received', 'fromcustomer::create');
+
+$routes->get('generalsettings', 'generalsettings::index');
+$routes->post('generalsettingsAdd', 'generalsettings::create');
+$routes->post('generalsettingsUpdate', 'generalsettings::update');
+$routes->post('generalsettingsDelete', 'generalsettings::delete');
+
+$routes->get('currency', 'currency::index');
+$routes->post('currencyAdd', 'currency::create');
+$routes->post('currencyUpdate', 'currency::update');
+$routes->post('currencyDelete', 'currency::delete');
+
+$routes->get('tax', 'tax::index');
+$routes->post('taxAdd', 'tax::create');
+$routes->post('taxUpdate', 'tax::update');
+$routes->post('taxDelete', 'tax::delete');
+

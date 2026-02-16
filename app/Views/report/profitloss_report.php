@@ -18,7 +18,7 @@ echo $this->section('content');
         <div class='tile collapseable show animate__animated  animate__fadeInUp'>
             <div class='tile-body'>
                 <div class='table-responsive'>
-                <form method='post' action="<?php echo site_url('/profitloss/profitlosspdfcreate') ?>"  target="_blank" accept-charset="utf-8" enctype="multipart/form-data">
+                <form method='post' action="<?= site_url('PLReport') ?>"  target="_blank" accept-charset="utf-8" enctype="multipart/form-data">
                     <table class='table table-hover'>
                         <thead>
                             <tr>
