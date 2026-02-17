@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controllers;
-
 use App\Models\SupplierModel;
 use CodeIgniter\HTTP\IncomingRequest;
 
@@ -9,7 +7,6 @@ class Supplier extends BaseController
 {
 
     private $supplierModelObject;
-
     public function __construct()
     {
         $this->supplierModelObject = new SupplierModel();
@@ -21,9 +18,7 @@ class Supplier extends BaseController
         $data['subjects'] = $this->supplierModelObject->findAll();
         return view('supplier/supplier_add', $data);
     }
-
     // insert Supplier data
-
     public function create()
     {
         $data = [
@@ -34,14 +29,10 @@ class Supplier extends BaseController
             'supplier_address'    => $this->request->getVar('supplier_address'),
             'supplier_entry_date' => $this->request->getVar('supplier_entry_date'),
         ];
-
         $this->supplierModelObject->insert($data);
-
         //return into supplier page
-        return $this->response->redirect(site_url('/Supplier'));
+        return $this->response->redirect(site_url('supplier'));
     }
-
-
     public function update($id = 0)
     {
         $id = $this->request->getVar('supplier_id');
@@ -56,20 +47,15 @@ class Supplier extends BaseController
         ];
 
         $this->supplierModelObject->update($id, $data);
-
         //return into supplier page
-        return $this->response->redirect(site_url('/Supplier'));
+        return $this->response->redirect(site_url('supplier'));
     }
-
 
     public function delete($id = 0)
     {
-
         $id = $this->request->getVar('delete_id');
-
         $this->supplierModelObject->where('supplier_id', $id)->delete();
-
         //return into supplier page
-        return $this->response->redirect(site_url('/Supplier'));
+        return $this->response->redirect(site_url('supplier'));
     }
 }

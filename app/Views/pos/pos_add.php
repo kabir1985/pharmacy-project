@@ -1132,6 +1132,202 @@ $(document).ready(function() {
 
 
 <style>
+/* ==============================
+   GLOBAL CLEAN LOOK
+============================== */
+
+
+/* ==============================
+   CARD DESIGN (Right Panel)
+============================== */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.card-header {
+    background: #ffffff !important;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+}
+
+.card-header h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+/* ==============================
+   TABLE CLEAN ALIGNMENT
+============================== */
+.table {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 13px;
+}
+
+.table thead th {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 600;
+}
+
+.table tbody td {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.table tbody td:last-child {
+    text-align: right;
+    font-weight: 600;
+}
+
+/* ==============================
+   INPUT & SELECT SMOOTH STYLE
+============================== */
+
+/* ==============================
+   SEARCH + CUSTOMER ALIGNMENT
+============================== */
+
+
+/* ==============================
+   PRODUCT GRID CLEAN
+============================== */
+.all_products {
+    max-height: 450px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.all_products .col-3 {
+    transition: 0.2s ease;
+}
+
+.all_products .col-3:hover {
+    transform: translateY(-3px);
+}
+
+.cart_item_image {
+    border-radius: 8px;
+    border: 1px solid #eee;
+    transition: 0.2s ease;
+}
+
+.cart_item_image:hover {
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* ==============================
+   BILLING ALIGNMENT FIX
+============================== */
+.card-body .row {
+    margin-bottom: 8px;
+}
+
+.card-body .col-sm-4 {
+    font-weight: 600;
+}
+
+#totalPrice,
+#netTotalPrice {
+    text-align: right;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+#paid,
+#due {
+    width: 100% !important;
+    text-align: right;
+}
+
+/* ==============================
+   DISCOUNT & VAT ALIGNMENT
+============================== */
+.d-flex.align-items-center {
+    gap: 8px;
+}
+
+#discountType,
+#vatType {
+    width: 65px;
+}
+
+#discountValue,
+#vatValue {
+    width: 80px;
+}
+
+#discountOnTotalPrice,
+#vatOnTotalPrice {
+    min-width: 60px;
+    font-weight: 600;
+}
+
+/* ==============================
+   BUTTON STYLE CLEAN
+============================== */
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.btn-info {
+    background: #17a2b8;
+    border: none;
+}
+
+.btn-info:hover {
+    background: #138496;
+}
+
+.btn-danger:hover,
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* ==============================
+   HELD SALE SECTION
+============================== */
+.held-sale-list .list-group-item {
+    border-radius: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #eee;
+}
+
+/* ==============================
+   MODAL CLEAN LOOK
+============================== */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+}
+
+.modal-header {
+    border-bottom: 1px solid #eee;
+}
+
+.modal-footer {
+    border-top: 1px solid #eee;
+}
+
+/* ==============================
+   SCROLLBAR LIGHT
+============================== */
+.all_products::-webkit-scrollbar {
+    width: 6px;
+}
+
+.all_products::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+
+
 .discount-container {
     display: flex;
     align-items: center;

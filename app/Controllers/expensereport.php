@@ -11,10 +11,6 @@ class expensereport extends BaseController
       //$this->product_initial_stock_object = new NewProductAddModel();
       $this->db = db_connect();
    }
-
-
-
-
     public function index()
     {
         $db = \Config\Database::connect();

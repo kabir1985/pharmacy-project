@@ -78,6 +78,11 @@ $routes->POST('customerAdd', 'customer::create');
 $routes->POST('customerUpdate', 'customer::update');
 $routes->POST('customerDelete', 'customer::delete');
 
+$routes->get('supplier', 'supplier::index');
+$routes->POST('supplierAdd', 'supplier::create');
+$routes->POST('supplierUpdate', 'supplier::update');
+$routes->POST('supplierDelete', 'supplier::delete');
+
 
 $routes->get('user', 'User::index');
 $routes->post('userCreate', 'User::create');
@@ -94,7 +99,7 @@ $routes->get('stockreport', 'Stockreport::index');
 $routes->get('salesummeryreport', 'SaleSummeryReport::index');
 $routes->get('profitloss', 'profitloss::index');
 //expensereport
-$routes->post('expensereport', 'expensereport::index');
+$routes->get('expensereport', 'expensereport::index');
 $routes->post('PLReport', 'profitloss::profitlosspdfcreate');
 
 $routes->get('fromcustomer', 'fromcustomer::index');

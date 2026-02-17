@@ -6,7 +6,7 @@ echo $this->section('content');
 <div class='app-title'>
     <h1><i class='fa fa-th-list'></i> Expense Report</h1>
 
-    <form method="post" action="<?php echo site_url('/expensereport') ?>"
+    <form method="get" action="<?php echo site_url('/expensereport') ?>"
         style="background: #f9f9f9; padding: 8px; border: 1px solid #ccc; border-radius: 8px; max-width: 1000px; margin: 20px auto; display: flex; flex-wrap: wrap; align-items: center; gap: 10px;">
         <label style="font-weight: bold;">Start Date:</label>
         <input type="date" name="start_date" value="<?= esc($start_date) ?>" required
