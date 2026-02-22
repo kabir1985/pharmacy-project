@@ -11,7 +11,7 @@ echo $this->section('content');
                     <select id="item" class="form-control select2" style="width:100%">
                         <option value="0">Select Product</option>
                         <?php foreach ($product_show_for_sale as $row): ?>
-                        <option value="<?= $row['product_id'] ?>"><?= $row['product_name'] ?></option>
+                        <option value="<?=$row['product_id']?>"><?=$row['product_name']?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -54,7 +54,7 @@ echo $this->section('content');
                     <select id="supplier_id" class="form-control select2 w-100" required>
                         <option value="">Select Supplier</option>
                         <?php foreach ($supplier_show as $row): ?>
-                        <option value="<?= $row['supplier_id'] ?>"><?= $row['supplier_name'] ?></option>
+                        <option value="<?=$row['supplier_id']?>"><?=$row['supplier_name']?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -89,7 +89,7 @@ echo $this->section('content');
 								<td class="text-end p-0 m-0">
 									 <input style="width: 70px;"
 										class="border border-primary rounded extra-fields blur-field" type="text"
-										id="discount_on_total_price" readonly> 
+										id="discount_on_total_price" readonly>
 
 										<span id="discount_on_total_price" class="badge bg-primary w-100 text-end">0.00</span>
 
@@ -246,11 +246,11 @@ echo $this->endSection();
 <?php
 echo $this->section('scripts');
 ?>
-<script src="<?= base_url('assets/js/jquery.mycart.js') ?>"></script>
-<script src="<?= base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script src="<?= base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
+<script src="<?=base_url('assets/js/jquery.mycart.js')?>"></script>
+<script src="<?=base_url('assets/js/plugins/jquery.dataTables.min.js')?>"></script>
+<script src="<?=base_url('assets/js/plugins/dataTables.bootstrap.min.js')?>"></script>
 <script>
-var productsList = <?= json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
+var productsList = <?=json_encode($product_show_for_sale, JSON_PRETTY_PRINT)?>;
 
 $(document).ready(function() {
     var itemsInCart = [];
@@ -330,19 +330,66 @@ $(document).ready(function() {
     //     updateVatHeaderText();
     // }
 
+    let calculationTimer;
+
+    $('body').on('input', '.calculate', function() {
+        // 'this' refers to the specific input field changed
+        const $el = $(this); // Cache the current element
+
+
+        // Clear the previous timer every time the user types
+        clearTimeout(calculationTimer);
+
+        // Set a new timer (e.g., 300ms delay)
+        calculationTimer = setTimeout(function() {
+
+            // 1. Get Row Index
+            const rowIndex = $el.closest('tr').data('index');
+
+            // 2. Class Checks
+            const isVat = $el.hasClass('vat-input');
+            const isDiscount = $el.hasClass('discount_percent');
+
+            // 3. Execution Logic
+            console.log(`Executing logic for row ${rowIndex}...`);
+
+            if (isVat) {
+                itemsInCart[rowIndex].tax_perchantage =$el.val();
+            } else if (isDiscount) {
+                // Run Discount logic
+            } else {
+                // Standard calculation
+            }
+
+        }, 300); // 300 milliseconds delay
+
+
+        drawTable();
+
+
+    });
+
+
     function drawTable() {
     $("#cartTableBody").empty();
     totalPrice = 0;
 
+   const isVatInPercent = $('#vatperchantageToggle').is(':checked');
+
+
+
     $.each(itemsInCart, function(key, item) {
         var baseTotal = parseInt(item.quantity) * parseInt(item.box_quantity) * parseFloat(item.buying_unit_price);
         var vatPercent = parseFloat(item.tax_perchantage) || 0;
+
+        console.log(item.tax_perchantage);
         var vatAmount = baseTotal * (vatPercent / 100);
-        var subTotalPrice = baseTotal + vatAmount;
+        var allVat = (isVatInPercent) ? vatAmount :vatPercent;
+        var subTotalPrice = baseTotal + allVat;
 
         totalPrice += subTotalPrice;
 
-        $("#cartTableBody").append('<tr>' +
+        $("#cartTableBody").append('<tr data-index='+key+'>' +
             '<td>' + item.product_name + '</td>' +
             '<td>' + item.total_stock + '</td>' +
             '<td><input data-id="' + key +
@@ -353,11 +400,11 @@ $(document).ready(function() {
             (item.box_quantity || 1) + '"></td>' +
             '<td><input type="number" class="buying_price form-control form-control-sm" value="' +
             item.buying_unit_price + '" min="1" step="0.01"></td>' +
-            '<td class="vat-column"><input type="number" name="vat" class="form-control form-control-sm vat-input" value="' +
+            '<td class="vat-column"><input type="number" name="vat" class="form-control form-control-sm vat-input calculate" value="' +
             vatPercent + '" min="0" step="0.01"></td>' +
             '<td><input type="number" class="sale_price form-control form-control-sm" value="' +
             (item.sale_price || item.buying_unit_price) + '" min="0" step="0.01"></td>' +
-            '<td class="discount-column"><input type="number" name="discount_on_each_product" class="discount_percent form-control form-control-sm" value="' +
+            '<td class="discount-column"><input type="number" name="discount_on_each_product" class="discount_percent form-control form-control-sm calculate" value="' +
             (item.discount_percent || 0) + '" min="0" step="0.01"></td>' +
             '<td class="text-end">' + subTotalPrice.toFixed(2) + '</td>' +
             '<td> <button data-index="' + key +
@@ -423,11 +470,14 @@ $(document).on("click", ".btn_item_delete", function() {
 
     // Update VAT header text depending on vatperchantageToggle state
     function updateVatHeaderText() {
+
         if ($('#vatperchantageToggle').is(':checked')) {
             $('th.vat-column-header').text('VAT %');
         } else {
             $('th.vat-column-header').text('VAT');
         }
+
+
     }
 
     /////////////////Apply VAT % on Total Price/////////////////////////////////
@@ -486,7 +536,7 @@ $(document).on("click", ".btn_item_delete", function() {
         $(this).prop("disabled", true).text("Processing...");
 
         var itemsInCartObject = Object.assign({}, itemsInCart);
-        var purchase_process_url = "<?= site_url('purchase-product') ?>";
+        var purchase_process_url = "<?=site_url('purchase-product')?>";
 
         $.ajax({
             url: purchase_process_url,
@@ -546,6 +596,8 @@ $(document).on("click", ".btn_item_delete", function() {
 
     // VAT header text toggle handler
     $('#vatperchantageToggle').on('change', function() {
+        drawTable();
+
         updateVatHeaderText();
     });
 

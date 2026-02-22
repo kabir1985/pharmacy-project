@@ -38,23 +38,10 @@ class fromcustomer extends BaseController
             customer.cus_company
         ORDER BY customer_due.customer_id DESC";
 
-
-
-
-
-
-       
-       //$data['product_initial_stock_show'] = $this->product_initial_stock_object->findAll();
        $data['customer_due_show'] = $this->db->query($sql)->getResult('array');
-   //return view('report/sale_summery_report', $data);
 
-
-		
-        ## Fetch all records from database
-      // $data['customer_due_show'] = $this->customerduepayment_obj->findAll();
 	   return view('payment/fromcustomerAdd', $data);
-      //return view('payment/fromcustomerAdd');
-    }
+     }
 
     // due_invoice_no
 

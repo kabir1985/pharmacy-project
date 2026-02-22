@@ -116,10 +116,10 @@
         <form id="returnForm" class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Sales Return</h5>
-                <!-- <button type="button" class="btn bg-danger" data-bs-dismiss="modal">Close</button> -->
+                 <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">X</button> 
             </div>
             <div class="modal-body">
-                <input type="text" id="return_invoice" name="return_invoice">
+                <input type="text" id="return_invoice" name="return_invoice" readonly>
 
                 <div class="mb-3">
                     <label for="reason" class="form-label">Reason</label>
@@ -147,7 +147,7 @@
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Process Return</button>
-                <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">Cancel</button>
             </div>
         </form>
     </div>
@@ -177,7 +177,7 @@ $(document).ready(function() {
         // Fetch products for this invoice
         $.ajax({
             url: '<?=base_url("ReturnController/getProducts")?>',
-            method: 'GET',
+            method: 'POST',
             data: {
                 invoice: invoice
             },

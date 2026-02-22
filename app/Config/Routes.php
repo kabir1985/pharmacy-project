@@ -19,7 +19,7 @@ $routes->post('pos/products', 'Pos::products');
 $routes->get('invoice/(:num)', 'PdfController::invoice/$1');
 $routes->get('salelist', 'salelist::index');
 $routes->get('salereturnlist', 'salereturnlist::index');
-$routes->get('ReturnController/getProducts', 'ReturnController::getProducts');
+$routes->post('ReturnController/getProducts', 'ReturnController::getProducts');
 $routes->get('salereturnlistshow', 'salereturnlist::saleReturnListShow');
 
 $routes->get('product', 'Product::index');

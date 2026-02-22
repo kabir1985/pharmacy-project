@@ -100,7 +100,7 @@ echo $this->section('content');
                         </div>
                         <div class='form-group col-md-12'>
                             <label>Due Amount</label>
-                            <input type='text' required class='form-control' name='total_customer_due' id='total_customer_due'>
+                            <input type='text' required class='form-control' name='total_customer_due' id='total_customer_due' style="color:red;" readonly>
                         </div>
                         <div class='form-group col-md-12'>
                             <label>Paid Now</label>
@@ -108,7 +108,7 @@ echo $this->section('content');
                         </div>
                         <div class='form-group col-md-12'>
                             <label>Amount Receivable</label>
-                            <input type='text' required class='form-control' name='amount_receivable' id='amount_receivable'>
+                            <input type='text' required class='form-control' name='amount_receivable' id='amount_receivable' readonly>
                         </div>
                     </div>
                 </div>
