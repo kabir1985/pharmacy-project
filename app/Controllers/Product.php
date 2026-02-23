@@ -7,13 +7,7 @@ use App\Models\ProductCategoryModel;
 use App\Models\ProductBrandModel;
 use App\Models\ProductGroupModel;
 use App\Models\ProductUnitModel;
-
 use App\Models\TaxModel;
-
-//use Picqer\Barcode;
-//use Picqer\Barcode\BarcodeGeneratorPNG;
-
-
 use CodeIgniter\HTTP\IncomingRequest;
 
 class Product extends BaseController
@@ -48,12 +42,13 @@ class Product extends BaseController
       $data['unit_show']     = $this->productunit_object->findAll();
       $data['tax_show']      = $this->tax_object->findAll();
 
-      $sql = "SELECT *
-      FROM product_inital_stock AS pr
+      $sql = "SELECT * FROM product_inital_stock AS pr
       LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
       LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
       LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
-      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id";
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ";
 
       $data['product_show'] = $this->db->query($sql)->getResult('array');
 
@@ -104,7 +99,7 @@ class Product extends BaseController
          'product_group'           => $this->request->getVar('product_group'),
          'product_unit'            => $this->request->getVar('product_unit'),
          'codefor_barcode'         => $this->request->getVar('codefor_barcode'),
-         'tax_perchantage'         => $this->request->getVar('tax_perchantage'),
+         'tax_id'                  => $this->request->getVar('tax_id'),
          'productinitial_quantity' => $this->request->getVar('productinitial_quantity'),
          'buying_unit_price'       => $this->request->getVar('buying_unit_price'),
          'selling_unit_price'      => $this->request->getVar('selling_unit_price'),

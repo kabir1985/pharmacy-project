@@ -3,7 +3,6 @@ echo $this->extend('layout');
 echo $this->section('content');
 ?>
 
-
 <div class='app-title'>
     <div>
         <h1><i class='fa fa-th-list'></i> Product List , Edit, Delete & Add Section</h1>
@@ -16,8 +15,6 @@ echo $this->section('content');
         Add Product
     </button>
 </div>
-
-
 
 <!---------------Data Table start Here----..............................................--------------------------->
 <div class='row'>
@@ -59,14 +56,14 @@ echo $this->section('content');
                                         <td><?php echo $row11['product_brand_name'] ?></td>
                                         <td><?php echo $row11['group_name'] ?></td>
                                         <td><?php echo $row11['product_unit_name'] ?></td>
-                                        <td><?php echo $row11['tax_perchantage'] ?>%</td>
+                                        <td><?php echo $row11['tax_percentage'] ?>%</td>
                                         <td><?php echo $row11['productinitial_quantity'] ?></td>
                                         <td><?php echo $row11['buying_unit_price'] ?></td>
                                         <td><?php echo $row11['selling_unit_price'] ?></td>
                                         <td>
 
                                             <div class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="#" class="btn btn-primary btn-sm btn-edit" data-product_id="<?php echo $row11['product_id']; ?>" data-product_name="<?php echo $row11['product_name']; ?>" data-product_category="<?php echo $row11['product_category']; ?>" data-product_brand="<?php echo $row11['product_brand'] ?>" data-product_group="<?php echo $row11['product_group'] ?>" data-product_unit="<?php echo $row11['product_unit'] ?>" data-tax_perchantage="<?php echo $row11['tax_perchantage'] ?>" data-productinitial_quantity="<?php echo $row11['productinitial_quantity'] ?>" data-buying_unit_price="<?php echo $row11['buying_unit_price'] ?>" data-selling_unit_price="<?php echo $row11['selling_unit_price'] ?>" data-codefor_barcode="<?php echo $row11['codefor_barcode'] ?>" data-alert_quantity="<?php echo $row11['alert_quantity'] ?>">
+                                                <a href="#" class="btn btn-primary btn-sm btn-edit" data-product_id="<?php echo $row11['product_id']; ?>" data-product_name="<?php echo $row11['product_name']; ?>" data-product_category="<?php echo $row11['product_category']; ?>" data-product_brand="<?php echo $row11['product_brand'] ?>" data-product_group="<?php echo $row11['product_group'] ?>" data-product_unit="<?php echo $row11['product_unit'] ?>" data-tax_percentage="<?php echo $row11['tax_percentage'] ?>" data-productinitial_quantity="<?php echo $row11['productinitial_quantity'] ?>" data-buying_unit_price="<?php echo $row11['buying_unit_price'] ?>" data-selling_unit_price="<?php echo $row11['selling_unit_price'] ?>" data-codefor_barcode="<?php echo $row11['codefor_barcode'] ?>" data-alert_quantity="<?php echo $row11['alert_quantity'] ?>">
                                                     <i class="fa fa-edit"></i></a>
                                                 <a href="#" class="btn btn-danger btn-sm btn-delete" data-delete_id="<?php echo $row11['product_id'] ?>"><i class="fa fa-trash-o"></i></a>
                                             </div>
@@ -170,12 +167,12 @@ echo $this->section('content');
 
                         <div class='form-group col-md-4'>
                             <label>TAX %</label>
-                            <select id="tax_perchantage" name="tax_perchantage" class="form-control" required>
+                            <select id="tax_id" name="tax_id" class="form-control" required>
                             <option value="">Select Tax </option>
                                 <?php
                                 foreach ($tax_show as $row) {
                                 ?>
-                                    <option value="<?php echo $row['tax_percentage'] ?>"><?php echo $row['tax_name'] ?></option>
+                                    <option value="<?php echo $row['tax_id'] ?>"><?php echo $row['tax_name'].":&nbsp; ".$row['tax_percentage']; ?></option>
 
                                 <?php
                                 }
@@ -287,7 +284,7 @@ echo $this->section('content');
                         </div>
                         <div class='form-group col-md-4'>
                             <label>TAX</label>
-                            <select id="tax_perchantage12" name="tax_perchantage12" class="form-control">
+                            <select id="tax_percentage12" name="tax_percentage12" class="form-control">
                                 <?php foreach ($tax_show as $row) { ?>
                                     <option value="<?php echo $row['tax_percentage'] ?>"><?php echo $row['tax_name'] ?></option>
                                 <?php } ?>
@@ -499,7 +496,7 @@ $('.modal .btn-secondary[data-dismiss="modal"], .modal .close').on('click', func
             //const product_group = $(this).data('product_group');
             //const product_unit = $(this).data('product_unit');
 
-            //const tax_perchantage = $(this).data('tax_perchantage');
+            //const tax_percentage = $(this).data('tax_percentage');
             const productinitial_quantity = $(this).data('productinitial_quantity');
             const buying_unit_price = $(this).data('buying_unit_price');
             const selling_unit_price = $(this).data('selling_unit_price');
@@ -535,10 +532,10 @@ $('.modal .btn-secondary[data-dismiss="modal"], .modal .close').on('click', func
             $("#product_unit12 option[value=product_unit_id]").attr('selected', 'selected');
             $("#product_unit12").val(product_unit_id);
 
-            //$('#tax_perchantage').val(tax_perchantage);
-            var tax_perchange_id = $(this).data('tax_perchantage');
-            $("#tax_perchantage12 option[value=tax_perchange_id]").attr('selected', 'selected');
-            $("#tax_perchantage12").val(tax_perchange_id);
+            //$('#tax_percentage').val(tax_percentage);
+            var tax_perchange_id = $(this).data('tax_percentage');
+            $("#tax_percentage12 option[value=tax_perchange_id]").attr('selected', 'selected');
+            $("#tax_percentage12").val(tax_perchange_id);
 
             $('#productinitial_quantity').val(productinitial_quantity);
             $('#buying_unit_price').val(buying_unit_price);
