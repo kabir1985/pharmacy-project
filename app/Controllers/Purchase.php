@@ -53,6 +53,12 @@ class Purchase extends BaseController
         $session = session();
         $purchaseList = json_decode($this->request->getPost("cart_data"), true);
 
+        echo "<pre>";
+        echo print_r($purchaseList);
+        echo "</pre>";
+        exit();
+
+        
         $discount_on_total_price = $this->request->getPost('discount_on_total_price');
         $supplier_id = $this->request->getPost('supplier_id');
 

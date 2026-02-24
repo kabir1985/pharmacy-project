@@ -37,6 +37,7 @@ echo $this->section('content');
                             <th>BoxQty</th>
                             <th>TP</th>
                             <th class="vat-column-header">Vat</th>
+                            <th>Vat Amt</th>
                             <th>SalePrice</th>
                             <th class="discount-column-header">Disc%</th>
                             <th class="text-end">Amount</th>
@@ -334,9 +335,10 @@ $(document).ready(function() {
                 .selling_unit_price);
             var vatPercent = parseFloat(item.tax_percentage) || 0;
 
-            console.log(item.tax_percentage);
-            var vatAmount = baseTotal * (vatPercent / 100);
-            var allVat = (isVatInPercent) ? vatAmount : vatPercent;
+          //  console.log(item.tax_percentage);
+            var vatAmount_ProductWise = baseTotal * (vatPercent / 100);
+            var allVat = (isVatInPercent) ? vatAmount_ProductWise : vatPercent;
+
             var subTotalPrice = baseTotal + allVat;
 
             totalPrice += subTotalPrice;
@@ -356,6 +358,10 @@ $(document).ready(function() {
                 // vatPercent + '" min="0" step="0.01"></td>' +
                 '<td class="vat-column"><input type="number" name="vat" class="form-control form-control-sm vat-input calculate" value="' +
                 item.tax_percentage + '" min="0" step="0.01"></td>' +
+
+                '<td class="vat-column"><input type="text" name="productwiseVatAmount" class="form-control form-control-sm" value="' +
+                (item.allVat || 0) + '" min="0" step="0.01"></td>' +
+
                 '<td><input type="number" class="sale_price form-control form-control-sm" value="' +
                 item.selling_unit_price + '" min="0" step="0.01"></td>' +
                 '<td class="discount-column"><input type="text" name="discount_on_each_product" class="discount_percent form-control form-control-sm calculate" value="' +
@@ -499,7 +505,7 @@ $(document).ready(function() {
         $.ajax({
             url: purchase_process_url,
             type: "POST",
-            dataType: "json",
+           // dataType: "json",
             data: {
                 cart_data: JSON.stringify(itemsInCart), // 👈 important
                 discount_on_total_price: discount_on_total_price,
@@ -509,9 +515,9 @@ $(document).ready(function() {
             success: function(response) {
 
                 if (response.status === "success") {
-                    //alert(response);
+                    alert(response);
 
-                  alert(response.message + "\nInvoice: " + response.invoice_id);
+                 // alert(response.message + "\nInvoice: " + response.invoice_id);
 
                     // Cart Clear
                     itemsInCart = {};
@@ -710,9 +716,9 @@ $("#fixedType, #percentType").on("change", function() {
 function recalcNetTotal() {
     var totalPrice = parseFloat($("#totalPrice").text()) || 0;
     var discount_on_total_price = parseFloat($("#discount_on_total_price").text()) || 0;
-    var vatAmount = parseFloat($("#vat_on_total_price").text()) || 0;
+    var vatAmount_on_total_price = parseFloat($("#vat_on_total_price").text()) || 0;
 
-    var netTotal = totalPrice - discount_on_total_price + vatAmount;
+    var netTotal = totalPrice - discount_on_total_price + vatAmount_on_total_price;
     $("#netTotalPrice").text(netTotal.toFixed(2));
 }
 
@@ -721,8 +727,8 @@ $("#vat_percent").on("input", function() {
     var totalPrice = parseFloat($("#totalPrice").text()) || 0;
     var vatPercent = parseFloat($(this).val()) || 0;
 
-    var vatAmount = (totalPrice * vatPercent) / 100;
-    $("#vat_on_total_price").text(vatAmount.toFixed(2));
+    var vatAmount_on_total_price = (totalPrice * vatPercent) / 100;
+    $("#vat_on_total_price").text(vatAmount_on_total_price.toFixed(2));
 
     recalcNetTotal();
 });
