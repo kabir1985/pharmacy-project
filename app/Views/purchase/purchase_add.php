@@ -4,7 +4,7 @@ echo $this->section('content');
 ?>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-9">
+        <div class="col-12 col-lg-9">
             <div class="d-flex align-items-center">
                 <!-- Product Select (Left Column) -->
                 <div class="flex-grow-1 mr-2">
@@ -20,7 +20,7 @@ echo $this->section('content');
                 <div>
                     <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                         data-target="#AddNewProduct">
-                        <i class="fa fa-plus"></i> Add Product
+                        <i class="fa fa-plus"></i> Opening Stock
                     </button>
                 </div>
             </div>
@@ -36,7 +36,7 @@ echo $this->section('content');
                             <th>QtyPerPack</th>
                             <th>BoxQty</th>
                             <th>TP</th>
-                            <th class="vat-column-header">Vat</th>
+                            <th class="vat-column-header">Vat%</th>
                             <th>Vat Amt</th>
                             <th>SalePrice</th>
                             <th class="discount-column-header">Disc%</th>
@@ -49,7 +49,7 @@ echo $this->section('content');
             </div>
         </div>
 
-        <div class="col-3 mb-2">
+        <div class="col-12 col-lg-3 mb-2">
             <div class="card text-dark bg-light mb-3">
                 <div class="card-header">
                     <select id="supplier_id" class="form-control select2 w-100" required>
@@ -61,21 +61,21 @@ echo $this->section('content');
                 </div>
 
                 <div class="card-body">
-                    <p class="card-title mb-2">
+                    <!-- <p class="card-title mb-2">
                         <label class="switch">
                             <input type="checkbox" id="fixedVatToggle">
                             <span class="slider round"></span>
                         </label>
                         Product Wise VAT & Discount
-                    </p>
+                    </p> -->
 
-                    <p class="card-title mb-2">
+                    <!-- <p class="card-title mb-2">
                         <label class="switch">
                             <input type="checkbox" id="vatperchantageToggle">
                             <span class="slider round"></span>
                         </label>
                         VAT Perchantage
-                    </p>
+                    </p> -->
 
                     <table class="table table-striped mb-0">
                         <tfoot>
@@ -108,7 +108,7 @@ echo $this->section('content');
 
                             <tr>
                                 <td colspan="4"></td>
-                                <td class="text-end p-0 m-0">VAT on Total</td>
+                                <td class="text-end p-0 m-0">VAT % on Total</td>
                                 <td class="text-end p-0 m-0">
                                     <span id="vat_on_total_price" class="badge bg-light">0.00</span>
                                 </td>
@@ -132,14 +132,14 @@ echo $this->section('content');
                             </tr>
                             <tr class="table-secondary">
                                 <td colspan="6">
-                                    <div class="d-flex bg-secondary text-white">
-                                        <button type="button" class="btn btn-danger w-100 text-start mb-2"
+                                    <div class="d-flex flex-column flex-md-row bg-secondary text-white">
+                                        <button type="button" class="btn btn-danger w-100 text-center text-md-start mb-2"
                                             id="openVatModal" data-toggle="modal" data-target="#vatModal">
                                             VAT %
                                         </button>
                                         <div>
                                             <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                data-target="#exampleModal">
+                                                data-target="#discountOnTotalModal">
                                                 Discount
                                             </button>
                                         </div>
@@ -167,12 +167,12 @@ echo $this->section('content');
 </div>
 <!------------------- Modal for discount start----------------------- --->
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="discountOnTotalModal" tabindex="-1" role="dialog" aria-labelledby="discountOnTotalModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Discount</h5>
+                <h5 class="modal-title" id="discountOnTotalModalLabel">Discount</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -328,16 +328,17 @@ $(document).ready(function() {
         $("#cartTableBody").empty();
         totalPrice = 0;
 
-        const isVatInPercent = $('#vatperchantageToggle').is(':checked');
+        // const isVatInPercent = $('#vatperchantageToggle').is(':checked');
 
         $.each(itemsInCart, function(key, item) {
             var baseTotal = parseInt(item.quantity) * parseInt(item.box_quantity) * parseFloat(item
                 .selling_unit_price);
             var vatPercent = parseFloat(item.tax_percentage) || 0;
 
-          //  console.log(item.tax_percentage);
+            //  console.log(item.tax_percentage);
             var vatAmount_ProductWise = baseTotal * (vatPercent / 100);
-            var allVat = (isVatInPercent) ? vatAmount_ProductWise : vatPercent;
+            // var allVat = (isVatInPercent) ? vatAmount_ProductWise : vatPercent;
+            var allVat = vatPercent;
 
             var subTotalPrice = baseTotal + allVat;
 
@@ -377,8 +378,8 @@ $(document).ready(function() {
         enableButton();
 
         // Show/hide VAT and Discount columns based on toggle
-        toggleVatAndDiscount($("#fixedVatToggle").is(":checked"));
-        updateVatHeaderText();
+        // toggleVatAndDiscount($("#fixedVatToggle").is(":checked"));
+        // updateVatHeaderText();
     }
 
     // ===================== Event Handlers ===================== //
@@ -416,29 +417,29 @@ $(document).ready(function() {
 
 
     // Show or hide VAT and Discount UI elements
-    function toggleVatAndDiscount(show) {
-        if (show) {
-            $("th.vat-column-header, td.vat-column").removeClass('hide');
-            $("th.discount-column-header, td.discount-column").removeClass('hide');
-            $(".vat-input, .discount_percent").prop("disabled", false);
-        } else {
-            $("th.vat-column-header, td.vat-column").addClass('hide');
-            $("th.discount-column-header, td.discount-column").addClass('hide');
-            $(".vat-input, .discount_percent").prop("disabled", true);
-        }
-    }
+    // function toggleVatAndDiscount(show) {
+    //     if (show) {
+    //         $("th.vat-column-header, td.vat-column").removeClass('hide');
+    //         $("th.discount-column-header, td.discount-column").removeClass('hide');
+    //         $(".vat-input, .discount_percent").prop("disabled", false);
+    //     } else {
+    //         $("th.vat-column-header, td.vat-column").addClass('hide');
+    //         $("th.discount-column-header, td.discount-column").addClass('hide');
+    //         $(".vat-input, .discount_percent").prop("disabled", true);
+    //     }
+    // }
 
     // Update VAT header text depending on vatperchantageToggle state
-    function updateVatHeaderText() {
+    // function updateVatHeaderText() {
 
-        if ($('#vatperchantageToggle').is(':checked')) {
-            $('th.vat-column-header').text('VAT %');
-        } else {
-            $('th.vat-column-header').text('VAT');
-        }
+    //     if ($('#vatperchantageToggle').is(':checked')) {
+    //         $('th.vat-column-header').text('VAT %');
+    //     } else {
+    //         $('th.vat-column-header').text('VAT');
+    //     }
 
 
-    }
+    // }
 
     /////////////////Apply VAT % on Total Price/////////////////////////////////
     // If you want the modal to reflect the current VAT value:
@@ -482,6 +483,11 @@ $(document).ready(function() {
     ///////////////////////////////////////////////////////////////////////////
 
 
+
+
+
+
+
     $("#productPurchase").on("click", function() {
 
         var discount_on_total_price = $("#discount_on_total_price").text();
@@ -505,7 +511,7 @@ $(document).ready(function() {
         $.ajax({
             url: purchase_process_url,
             type: "POST",
-           // dataType: "json",
+            // dataType: "json",
             data: {
                 cart_data: JSON.stringify(itemsInCart), // 👈 important
                 discount_on_total_price: discount_on_total_price,
@@ -517,7 +523,7 @@ $(document).ready(function() {
                 if (response.status === "success") {
                     alert(response);
 
-                 // alert(response.message + "\nInvoice: " + response.invoice_id);
+                    // alert(response.message + "\nInvoice: " + response.invoice_id);
 
                     // Cart Clear
                     itemsInCart = {};
@@ -571,17 +577,17 @@ $(document).ready(function() {
     });
 
     // VAT and Discount toggle handler
-    $("#fixedVatToggle").on('change', function() {
-        var enabled = $(this).is(":checked");
-        toggleVatAndDiscount(enabled);
-    });
+    // $("#fixedVatToggle").on('change', function() {
+    //     var enabled = $(this).is(":checked");
+    //     toggleVatAndDiscount(enabled);
+    // });
 
     // VAT header text toggle handler
-    $('#vatperchantageToggle').on('change', function() {
-        drawTable();
+    // $('#vatperchantageToggle').on('change', function() {
+    //     drawTable();
 
-        updateVatHeaderText();
-    });
+    //     updateVatHeaderText();
+    // });
 
     function addProductToCart(product_id) {
         var found = false;
@@ -674,20 +680,20 @@ function applyDiscountFromModal() {
     updateLivePreview(); // ensure latest value is applied
 
     // Save last state
-    $("#exampleModal").data("discountType", $("input[name='discountType']:checked").val());
-    $("#exampleModal").data("fixedAmount", $("#fixedAmount").val());
-    $("#exampleModal").data("percentAmount", $("#percentAmount").val());
+    $("#discountOnTotalModal").data("discountType", $("input[name='discountType']:checked").val());
+    $("#discountOnTotalModal").data("fixedAmount", $("#fixedAmount").val());
+    $("#discountOnTotalModal").data("percentAmount", $("#percentAmount").val());
 
-    $("#exampleModal").modal("hide");
+    $("#discountOnTotalModal").modal("hide");
 }
 
 // On modal "Ok" click
-$("#exampleModal .btn-primary").on("click", function() {
+$("#discountOnTotalModal .btn-primary").on("click", function() {
     applyDiscountFromModal();
 });
 
 // When modal opens, restore last state
-$("#exampleModal").on("show.bs.modal", function() {
+$("#discountOnTotalModal").on("show.bs.modal", function() {
     var type = $(this).data("discountType") || "fixed";
     var fixedVal = $(this).data("fixedAmount") || "";
     var percentVal = $(this).data("percentAmount") || "";
@@ -883,6 +889,58 @@ input:checked+.slider:before {
     color: #000;
     /* keep text fully visible */
 }
+
+.modal-body input {
+    height: 45px;
+    font-size: 16px;
+}
+
+
+/* ============================= */
+/* MOBILE RESPONSIVE IMPROVEMENT */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+/* Make table font smaller */
+table {
+    font-size: 12px;
+}
+
+/* Reduce padding inside table */
+.table td, .table th {
+    padding: 4px !important;
+}
+
+/* Input fields smaller */
+.table input {
+    min-width: 70px;
+    font-size: 12px;
+}
+
+/* Make summary card sticky bottom */
+.card {
+    margin-top: 15px;
+}
+
+/* Buttons full width on mobile */
+.btn {
+    font-size: 13px;
+}
+
+/* Reduce select height */
+.select2-container .select2-selection--single {
+    height: 34px !important;
+}
+
+/* Cart scroll fix */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+}
+
+
 </style>
 
 <?php

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 15, 2025 at 11:01 AM
+-- Generation Time: Mar 02, 2026 at 09:19 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -39,7 +39,6 @@ CREATE TABLE `currency` (
 --
 
 INSERT INTO `currency` (`id`, `currency_code`, `currency_name`, `currency_symbol`) VALUES
-(2, 'CNY', 'Chinese Yuan', '¥'),
 (3, 'EUR', 'EURO', '€'),
 (4, 'USD', 'US Dollar', '$'),
 (7, 'BDT', 'Taka', 'TK.');
@@ -68,11 +67,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customer_id`, `cus_first_name`, `cus_last_name`, `cus_email`, `cus_phone`, `cus_address`, `cus_tin`, `cus_company`, `cus_type`, `cus_creation_date`) VALUES
-(11, 'ayan11', 'zahin', 'ayan@gmail.com', '01913698854', 'banasree', '33331425875', 'Mia Group', 'special', '0000-00-00 00:00:00'),
-(13, 'motin', 'mia', 'sfs@gmail.com', '01913698854', 'dhaka', '21/02/2021', 'motin&Brothers', 'special', '0000-00-00 00:00:00'),
-(14, 'Mohamm Kabir', 'Hossain', 'kabir@gmail.com', '01913691185', 'Banasree, Dhaka-1207', '193322200415', 'Bdposhak.com', 'general', '0000-00-00 00:00:00'),
 (15, 'Hossain ', 'Mahmood', 'hossain@gmail.com', '0155869547', 'Aftabnaga', '02213645478', 'bdposhak.com', 'general', '0000-00-00 00:00:00'),
-(16, 'Hossain ', 'Mahmood', 'hossain@gmail.com', '0155869547', 'Aftabnaga', '02213645478', 'bdposhak.com', 'general', '0000-00-00 00:00:00'),
 (18, 'Fouzia', 'Kona', 'kona@gmail.com', '011345567', 'dhaka', '9923445566', 'kona and company', 'special', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -129,7 +124,29 @@ INSERT INTO `customer_due` (`due_id`, `due_date`, `customer_id`, `due_invoice_no
 (393, '2025-09-22', '11', 'INV25265C3A1D', 700, 0, 0),
 (394, '2025-09-22', '13', 'INV2526575647', 64000, 0, 0),
 (395, '2025-09-22', '14', 'INV25265ADDAA', 4857, 0, 0),
-(396, '2025-09-22', '13', 'INV2526516D96', 4500, 0, 0);
+(396, '2025-09-22', '13', 'INV2526516D96', 4500, 0, 0),
+(397, '2026-01-01', '14', 'INV260018ABA4', 5300, 0, 0),
+(398, '2026-01-01', '14', 'INV260019CE47', 40700, 0, 0),
+(399, '2026-01-01', '13', 'INV26001D5AB5', 5300, 0, 0),
+(400, '2026-01-01', '13', 'INV26001A25CB', 1200, 0, 0),
+(401, '2026-01-01', '14', 'INV26001AA43C', 4500, 0, 0),
+(402, '2026-01-01', '14', 'INV26001390C0', 800, 0, 0),
+(403, '2026-01-01', '14', 'INV260011C141', 800, 0, 0),
+(404, '2026-01-01', '15', 'INV26001DCC34', 40000, 0, 0),
+(405, '2026-01-01', '14', 'INV26001D61E6', 500, 0, 0),
+(406, '2026-01-01', '15', 'INV260018975B', 689, 0, 0),
+(407, '2026-01-01', '14', 'INV26001E4BBD', 800, 0, 0),
+(408, '2026-01-01', '13', 'INV260010904A', 5300, 0, 0),
+(409, '2026-01-01', '13', 'INV26001E349B', 4500, 0, 0),
+(410, '2026-01-13', '13', 'INV2601396A7A', 4489, 0, 0),
+(411, '2026-01-13', '13', 'INV26013E64A8', 700, 0, 0),
+(412, '2026-01-25', '13', 'INV26025DAF4A', 5000, 0, 0),
+(413, '2026-02-16', '15', 'INV26001DCC34', 0, 79, 0),
+(414, '2026-02-16', '15', 'INV26001DCC34', 0, 1, 0),
+(415, '2026-02-16', '11', 'INV25265C3A1D', 0, 700, 0),
+(416, '2026-02-17', '15', 'INV26048F9CCA', 4610, 0, 0),
+(417, '2026-02-17', '15', 'INV26048322FE', 5410, 0, 0),
+(418, '2026-02-17', '15', 'INV260481F821', 8001, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -151,7 +168,8 @@ CREATE TABLE `customer_group` (
 INSERT INTO `customer_group` (`customer_group_id`, `cus_group_name`, `cus_due_limit`, `discount_percent`) VALUES
 (1, 'Special Customer', 5000, '5'),
 (2, 'General', 2000, '2'),
-(3, 'Female', 20001, '3');
+(3, 'Female', 20001, '3'),
+(4, 'test group', 1000, '33');
 
 -- --------------------------------------------------------
 
@@ -197,10 +215,9 @@ CREATE TABLE `expense_category` (
 
 INSERT INTO `expense_category` (`expense_category_id`, `expense_category_name`) VALUES
 (4, 'Office Purpose'),
-(7, 'Family Purpose'),
-(8, 'test category'),
-(11, 'Snacks'),
-(12, 'Electricity Bill');
+(7, 'Family Purpos'),
+(11, 'Snacks123'),
+(12, 'Electricity Bill123');
 
 -- --------------------------------------------------------
 
@@ -219,13 +236,14 @@ CREATE TABLE `expense_sub_category` (
 --
 
 INSERT INTO `expense_sub_category` (`expense_sub_category_id`, `expense_category_id`, `expense_sub_category_name`) VALUES
-(1, 4, 'Bangla Khata11'),
+(1, 4, 'Bangla Khata'),
 (3, 7, 'Cloths Purchase'),
 (4, 4, 'Pen Purchase'),
 (5, 4, 'car'),
 (7, 11, 'Morning Ruti'),
 (8, 11, 'Dall Puri'),
-(9, 12, 'Electricity Bill-May,2025');
+(9, 12, 'Electricity Bill-May,2025'),
+(10, 7, 'Dress purchase11');
 
 -- --------------------------------------------------------
 
@@ -273,12 +291,11 @@ CREATE TABLE `held_sales` (
 --
 
 INSERT INTO `held_sales` (`id`, `hold_id`, `seller_id`, `customer_type`, `cart_data`, `discountOnTotalPrice`, `vatOnTotalPrice`, `created_at`) VALUES
-(22, 'HLD250924112742429', 18, 'Walk-In-Customer', '', 0, 0, ''),
-(23, 'HLD250924113002309', 18, '14', '', 0, 0, ''),
-(24, 'HLD250924113422640', 18, '14', '[{\"product_id\":\"101\",\"product_name\":\"Child Dress\",\"product_category\":\"105\",\"product_brand\":\"22\",\"product_group\":\"32\",\"product_unit\":\"9\",\"codefor_barcode\":\"child-dress\",\"tax_perchantage\":\"\",\"productinitial_quantity\":\"150\",\"buying_unit_price\":\"500\",\"selling_unit_price\":\"800\",\"alert_quantity\":\"2\",\"product_image\":\"95147aca2ae40603b8f0046a94a6308c.jpg\",\"total_stock\":\"148\",\"quantity\":\"1\"},{\"product_id\":\"103\",\"product_name\":\"Mobile\",\"product_category\":\"110\",\"product_brand\":\"25\",\"product_group\":\"37\",\"pr', 0, 0, '2025-09-24 11:34:22'),
-(25, 'HLD251028044059514', 18, 'Walk-In-Customer', '[{\"product_id\":\"103\",\"product_name\":\"Mobile\",\"product_category\":\"110\",\"product_brand\":\"25\",\"product_group\":\"37\",\"product_unit\":\"9\",\"codefor_barcode\":\"Nok-001\",\"tax_perchantage\":\"2.00\",\"productinitial_quantity\":\"50\",\"buying_unit_price\":\"3500\",\"selling_unit_price\":\"4500\",\"alert_quantity\":\"2\",\"product_image\":\"nokia.jpg\",\"total_stock\":\"30\",\"quantity\":\"1\"}]', 0, 0, '2025-10-28 04:40:59'),
-(26, 'HLD251215043307969', 18, 'Walk-In-Customer', '[{\"product_id\":\"105\",\"product_name\":\"Three piece\",\"product_category\":\"105\",\"product_brand\":\"22\",\"product_group\":\"32\",\"product_unit\":\"9\",\"codefor_barcode\":\"Tree piece Barcode\",\"tax_perchantage\":\"5\",\"productinitial_quantity\":\"100\",\"buying_unit_price\":\"300\",\"selling_unit_price\":\"500\",\"alert_quantity\":\"5\",\"product_image\":\"11.jpg\",\"total_stock\":\"94\",\"quantity\":\"1\"}]', 0, 0, '2025-12-15 04:33:07'),
-(27, 'HLD251215043320849', 18, 'Walk-In-Customer', '[{\"product_id\":\"106\",\"product_name\":\"Shoes\",\"product_category\":\"112\",\"product_brand\":\"28\",\"product_group\":\"32\",\"product_unit\":\"9\",\"codefor_barcode\":\"Bata-Shoes\",\"tax_perchantage\":\"2\",\"productinitial_quantity\":\"50\",\"buying_unit_price\":\"790\",\"selling_unit_price\":\"1200\",\"alert_quantity\":\"5\",\"product_image\":\"shoes.jpg\",\"total_stock\":\"43\",\"quantity\":\"1\"}]', 0, 0, '2025-12-15 04:33:20');
+(61, 'HLD260113044034259', 18, 'Walk-In-Customer', '[{\"product_id\":\"105\",\"product_name\":\"Three piece\",\"product_category\":\"105\",\"product_brand\":\"22\",\"product_group\":\"32\",\"product_unit\":\"9\",\"codefor_barcode\":\"Tree piece Barcode\",\"tax_perchantage\":\"5\",\"productinitial_quantity\":\"100\",\"buying_unit_price\":\"300\",\"selling_unit_price\":\"500\",\"alert_quantity\":\"5\",\"product_image\":\"11.jpg\",\"total_stock\":\"88\",\"quantity\":\"1\"},{\"product_id\":\"106\",\"product_name\":\"Shoes\",\"product_category\":\"112\",\"product_brand\":\"28\",\"product_group\":\"32\",\"product_unit\":\"9\",\"codefor', 0, 0, '2026-01-13 04:40:34'),
+(62, 'HLD260113044451777', 18, 'Walk-In-Customer', '[{\"product_id\":\"107\",\"product_name\":\"Refrigerator\",\"product_category\":\"113\",\"product_brand\":\"29\",\"product_group\":\"37\",\"product_unit\":\"9\",\"codefor_barcode\":\"test\",\"tax_perchantage\":\"2\",\"productinitial_quantity\":\"100\",\"buying_unit_price\":\"30000\",\"selling_unit_price\":\"40000\",\"alert_quantity\":\"5\",\"product_image\":\"freeze.jpeg\",\"total_stock\":\"93\",\"quantity\":\"2\"},{\"product_id\":\"105\",\"product_name\":\"Three piece\",\"product_category\":\"105\",\"product_brand\":\"22\",\"product_group\":\"32\",\"product_unit\":\"9\",\"codef', 0, 0, '2026-01-13 04:44:51'),
+(63, 'HLD260217103209636', 18, 'Walk-In-Customer', '[{\"product_id\":\"103\",\"product_name\":\"Mobile555\",\"product_category\":\"110\",\"product_brand\":\"25\",\"product_group\":\"37\",\"product_unit\":\"\",\"codefor_barcode\":\"Nok-001\",\"tax_perchantage\":\"\",\"productinitial_quantity\":\"50\",\"buying_unit_price\":\"3500\",\"selling_unit_price\":\"4500\",\"alert_quantity\":\"2\",\"product_image\":\"nokia.jpg\",\"total_stock\":\"20\",\"quantity\":\"1\"}]', 0, 0, '2026-02-17 10:32:09'),
+(64, 'HLD260217105156929', 18, 'Walk-In-Customer', '[{\"product_id\":\"101\",\"product_name\":\"Child Dress1\",\"product_category\":\"105\",\"product_brand\":\"22\",\"product_group\":\"32\",\"product_unit\":\"16\",\"codefor_barcode\":\"child-dress\",\"tax_perchantage\":\"2\",\"productinitial_quantity\":\"150\",\"buying_unit_price\":\"500\",\"selling_unit_price\":\"800\",\"alert_quantity\":\"2\",\"product_image\":\"95147aca2ae40603b8f0046a94a6308c.jpg\",\"total_stock\":\"126\",\"quantity\":\"1\"},{\"product_id\":\"103\",\"product_name\":\"Mobile555\",\"product_category\":\"110\",\"product_brand\":\"25\",\"product_group\":\"3', 0, 0, '2026-02-17 10:51:56'),
+(65, 'HLD260222082936325', 18, 'Walk-In-Customer', '[{\"product_id\":\"101\",\"product_name\":\"Child Dress1\",\"product_category\":\"105\",\"product_brand\":\"22\",\"product_group\":\"32\",\"product_unit\":\"16\",\"codefor_barcode\":\"child-dress\",\"tax_perchantage\":\"2\",\"productinitial_quantity\":\"150\",\"buying_unit_price\":\"500\",\"selling_unit_price\":\"800\",\"alert_quantity\":\"2\",\"product_image\":\"95147aca2ae40603b8f0046a94a6308c.jpg\",\"total_stock\":\"124\",\"quantity\":\"2\"},{\"product_id\":\"108\",\"product_name\":\"sdfsdf\",\"product_category\":\"110\",\"product_brand\":\"25\",\"product_group\":\"32\",', 0, 0, '2026-02-22 08:29:36');
 
 -- --------------------------------------------------------
 
@@ -371,7 +388,8 @@ INSERT INTO `product_brand` (`brand_id`, `product_brand_name`, `product_category
 (30, 'Paracetamle', 114),
 (31, 'Beimco', 114),
 (32, 'asdadasdas', 105),
-(33, 'Panjabi', 105);
+(33, 'Panjabi', 105),
+(36, 'Lemon', 130);
 
 -- --------------------------------------------------------
 
@@ -394,7 +412,8 @@ INSERT INTO `product_category` (`product_category_id`, `category_name`) VALUES
 (111, 'Digital Product'),
 (112, 'Shoes'),
 (113, 'Electronics'),
-(114, 'Tablet');
+(114, 'Tablet'),
+(130, 'Medicine');
 
 -- --------------------------------------------------------
 
@@ -414,9 +433,7 @@ CREATE TABLE `product_group` (
 INSERT INTO `product_group` (`product_group_id`, `group_name`) VALUES
 (32, 'Women'),
 (37, 'Digital Product'),
-(38, 'Paracetamle'),
-(39, 'sdfdsfdsf'),
-(40, 'sdfdsfdsf');
+(38, 'Paracetamle');
 
 -- --------------------------------------------------------
 
@@ -432,7 +449,7 @@ CREATE TABLE `product_inital_stock` (
   `product_group` int NOT NULL,
   `product_unit` varchar(50) DEFAULT NULL,
   `codefor_barcode` varchar(50) DEFAULT NULL,
-  `tax_perchantage` varchar(11) NOT NULL,
+  `tax_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `productinitial_quantity` varchar(20) NOT NULL,
   `buying_unit_price` int NOT NULL,
   `selling_unit_price` varchar(50) NOT NULL,
@@ -444,13 +461,12 @@ CREATE TABLE `product_inital_stock` (
 -- Dumping data for table `product_inital_stock`
 --
 
-INSERT INTO `product_inital_stock` (`product_id`, `product_name`, `product_category`, `product_brand`, `product_group`, `product_unit`, `codefor_barcode`, `tax_perchantage`, `productinitial_quantity`, `buying_unit_price`, `selling_unit_price`, `alert_quantity`, `product_image`) VALUES
-(101, 'Child Dress', '105', '22', 32, '9', 'child-dress', '', '150', 500, '800', '2', '95147aca2ae40603b8f0046a94a6308c.jpg'),
-(103, 'Mobile', '110', '25', 37, '9', 'Nok-001', '2.00', '50', 3500, '4500', '2', 'nokia.jpg'),
-(104, 'Laptop', '111', '27', 37, '9', '111', '2', '10', 20000, '25000', '5', 'laptop.jpg'),
-(105, 'Three piece', '105', '22', 32, '9', 'Tree piece Barcode', '5', '100', 300, '500', '5', '11.jpg'),
-(106, 'Shoes', '112', '28', 32, '9', 'Bata-Shoes', '2', '50', 790, '1200', '5', 'shoes.jpg'),
-(107, 'Refrigerator', '113', '29', 37, '9', 'test', '2', '100', 30000, '40000', '5', 'freeze.jpeg');
+INSERT INTO `product_inital_stock` (`product_id`, `product_name`, `product_category`, `product_brand`, `product_group`, `product_unit`, `codefor_barcode`, `tax_id`, `productinitial_quantity`, `buying_unit_price`, `selling_unit_price`, `alert_quantity`, `product_image`) VALUES
+(101, 'Child Dress1', '105', '22', 32, '16', 'child-dress', '8', '150', 500, '800', '2', '95147aca2ae40603b8f0046a94a6308c.jpg'),
+(103, 'Mobile555', '110', '25', 37, NULL, 'Nok-001', '', '50', 3500, '4500', '2', 'nokia.jpg'),
+(104, 'Laptop', '111', '27', 37, NULL, '111', '8', '10', 20000, '25000', '5', 'laptop.jpg'),
+(108, 'sdfsdf', '110', '25', 32, '16', 'dgdfgdfgd', '9', '100', 100, '110', '10', 'Screenshot 2025-10-28 182730.png'),
+(109, 'lemon', '130', '36', 37, '16', 'medine-barcode', '8', '10', 60, '70', '2', 'lemon.jpg');
 
 -- --------------------------------------------------------
 
@@ -463,8 +479,7 @@ CREATE TABLE `product_purchase` (
   `purchase_invoice` varchar(100) NOT NULL,
   `purchaser_id` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `payment_type` varchar(80) NOT NULL,
-  `purchase_discount` int NOT NULL,
-  `purchase_other_cost` int NOT NULL,
+  `discount_on_total_price` varchar(50) NOT NULL,
   `supplier_id` varchar(50) NOT NULL,
   `purchase_date` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -473,9 +488,15 @@ CREATE TABLE `product_purchase` (
 -- Dumping data for table `product_purchase`
 --
 
-INSERT INTO `product_purchase` (`product_purchase_id`, `purchase_invoice`, `purchaser_id`, `payment_type`, `purchase_discount`, `purchase_other_cost`, `supplier_id`, `purchase_date`) VALUES
-(68, 'PUR251781C57D', '1', 'Cash', 0, 0, '106', '2025-06-27 06:07:11'),
-(69, 'PUR25217AE21C', '18', 'Cash', 0, 0, '106', '2025-08-05 00:41:40');
+INSERT INTO `product_purchase` (`product_purchase_id`, `purchase_invoice`, `purchaser_id`, `payment_type`, `discount_on_total_price`, `supplier_id`, `purchase_date`) VALUES
+(68, 'PUR251781C57D', '1', 'Cash', '0', '106', '2025-06-27 06:07:11'),
+(69, 'PUR25217AE21C', '18', 'Cash', '0', '106', '2025-08-05 00:41:40'),
+(70, 'PUR26054CAD8A', '18', 'Cash', '7.00', '106', '2026-02-23 08:57:44'),
+(71, 'PUR260545FFD9', '18', 'Cash', '9.00', '124', '2026-02-23 09:07:19'),
+(72, 'PUR26054DE36B', '18', 'Cash', '0.00', '124', '2026-02-23 09:42:35'),
+(73, 'PUR260543AC1C', '18', 'Cash', '0.00', '124', '2026-02-23 09:43:55'),
+(74, 'PUR26054DFB91', '18', 'Cash', '0.00', '124', '2026-02-23 09:46:35'),
+(75, 'PUR2605524A8D', '18', 'Cash', '0.00', '106', '2026-02-24 08:34:40');
 
 -- --------------------------------------------------------
 
@@ -498,7 +519,15 @@ CREATE TABLE `product_purchase_details` (
 
 INSERT INTO `product_purchase_details` (`purchase_id`, `purchase_invoice_id`, `product_id`, `unit_price`, `quantity`, `total_price`) VALUES
 (123, 'PUR251781C57D', '101', 500, 2, 1000),
-(124, 'PUR25217AE21C', '107', 30000, 1, 30000);
+(124, 'PUR25217AE21C', '107', 30000, 1, 30000),
+(125, 'PUR26054CAD8A', '109', 60, 1, 60),
+(126, 'PUR260545FFD9', '109', 60, 1, 60),
+(127, 'PUR26054DE36B', '109', 60, 1, 60),
+(128, 'PUR260543AC1C', '109', 60, 1, 60),
+(129, 'PUR260543AC1C', '101', 500, 1, 500),
+(130, 'PUR260543AC1C', '108', 100, 1, 100),
+(131, 'PUR26054DFB91', '109', 60, 1, 60),
+(132, 'PUR2605524A8D', '109', 60, 1, 60);
 
 -- --------------------------------------------------------
 
@@ -516,7 +545,6 @@ CREATE TABLE `product_unit` (
 --
 
 INSERT INTO `product_unit` (`product_unit_id`, `product_unit_name`) VALUES
-(9, 'piece'),
 (16, 'gram'),
 (18, 'Kg');
 
@@ -598,15 +626,15 @@ CREATE TABLE `return_sales_details` (
   `unit_price` decimal(11,2) DEFAULT NULL,
   `total_buy_price` bigint NOT NULL,
   `total_sale_price` decimal(10,2) NOT NULL,
-  `tax_paid` int NOT NULL,
-  `tax_perchantage` int NOT NULL
+  `productwiseVatPercnt` int NOT NULL,
+  `productwiseDiscountPercnt` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `return_sales_details`
 --
 
-INSERT INTO `return_sales_details` (`sales_details_id`, `sales_details_invoice`, `product_id`, `product_quantity_sold`, `unit_price`, `total_buy_price`, `total_sale_price`, `tax_paid`, `tax_perchantage`) VALUES
+INSERT INTO `return_sales_details` (`sales_details_id`, `sales_details_invoice`, `product_id`, `product_quantity_sold`, `unit_price`, `total_buy_price`, `total_sale_price`, `productwiseVatPercnt`, `productwiseDiscountPercnt`) VALUES
 (42, 'INV2516893BBF', '101', 1, 800.00, 500, 800.00, 16, 2),
 (43, 'INV2516893BBF', '102', 1, 1900.00, 1500, 1900.00, 38, 2),
 (44, 'INV2516893BBF', '103', 1, 4500.00, 3500, 4500.00, 90, 2),
@@ -674,7 +702,58 @@ INSERT INTO `sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales_date`,
 (646, 'INV25265C3A1D', '11', '2025-09-22 02:45:45', 'Cash', 48, 0, 200.00, 700.00, '18'),
 (647, 'INV2526575647', '13', '2025-09-22 03:01:09', 'Cash', 7128, 0, 160.00, 64000.00, '18'),
 (648, 'INV25265ADDAA', '14', '2025-09-22 03:09:07', 'Cash', 446, 0, 44.00, 4856.50, '18'),
-(649, 'INV2526516D96', '13', '2025-09-22 03:12:52', 'Cash', 1060, 265, 5.00, 4500.00, '18');
+(649, 'INV2526516D96', '13', '2025-09-22 03:12:52', 'Cash', 1060, 265, 5.00, 4500.00, '18'),
+(650, 'INV260018ABA4', '14', '2025-12-31 22:13:40', 'Cash', 0, 0, 0.00, 5300.00, '0'),
+(651, 'INV260019CE47', '14', '2025-12-31 22:24:44', 'Cash', 3263, 3263, 88.00, 40700.00, '19'),
+(652, 'INV26001D5AB5', '13', '2025-12-31 22:32:48', 'Cash', 0, 0, 0.00, 5300.00, '18'),
+(653, 'INV26001A25CB', '13', '2025-12-31 23:05:23', 'Cash', 0, 0, 0.00, 1200.00, '18'),
+(654, 'INV2600122D3B', 'Walk-In-Customer', '2025-12-31 23:09:39', 'Cash', 0, 0, 1200.00, 0.00, '18'),
+(655, 'INV260011CAC9', 'Walk-In-Customer', '2025-12-31 23:11:40', 'Cash', 0, 0, 1200.00, 0.00, '18'),
+(656, 'INV26001601CF', 'Walk-In-Customer', '2025-12-31 23:13:16', 'Cash', 0, 0, 1200.00, 0.00, '18'),
+(657, 'INV26001F5749', 'Walk-In-Customer', '2025-12-31 23:13:59', 'Cash', 0, 0, 500.00, 0.00, '18'),
+(658, 'INV26001B18A9', 'Walk-In-Customer', '2025-12-31 23:17:48', 'Cash', 0, 0, 1200.00, 0.00, '18'),
+(659, 'INV26001AA43C', '14', '2025-12-31 23:18:47', 'Cash', 45, 90, 45.00, 4500.00, '18'),
+(660, 'INV260015A811', 'Walk-In-Customer', '2025-12-31 23:20:27', 'Cash', 64, 64, 800.00, 0.00, '18'),
+(661, 'INV2600169ABB', 'Walk-In-Customer', '2025-12-31 23:29:48', 'Cash', 64, 64, 800.00, 0.00, '18'),
+(663, 'INV26001EF6C4', 'Walk-In-Customer', '2025-12-31 23:46:01', 'Cash', 64, 64, 800.00, 0.00, '18'),
+(664, 'INV26001390C0', '14', '2025-12-31 23:46:43', 'Cash', 64, 64, 0.00, 800.00, '18'),
+(665, 'INV260011C141', '14', '2025-12-31 23:50:18', 'Cash', 64, 64, 0.00, 800.00, '18'),
+(666, 'INV26001AAAE1', 'Walk-In-Customer', '2026-01-01 00:52:35', 'Cash', 64, 64, 800.00, 0.00, '18'),
+(667, 'INV26001DCC34', '15', '2026-01-01 00:54:32', 'Cash', 0, 0, 0.00, 40000.00, '18'),
+(668, 'INV26001D61E6', '14', '2026-01-01 00:55:05', 'Cash', 0, 0, 0.00, 500.00, '18'),
+(669, 'INV2600128CD6', 'Walk-In-Customer', '2026-01-01 01:09:14', 'Cash', 0, 0, 800.00, 0.00, '18'),
+(670, 'INV2600101871', 'Walk-In-Customer', '2026-01-01 01:09:29', 'Cash', 0, 0, 500.00, 0.00, '18'),
+(671, 'INV26001EF3EB', 'Walk-In-Customer', '2026-01-01 01:10:36', 'Cash', 0, 0, 40000.00, 0.00, '18'),
+(672, 'INV2600185EEE', 'Walk-In-Customer', '2026-01-01 01:10:49', 'Cash', 0, 0, 800.00, 0.00, '18'),
+(673, 'INV2600176E7E', 'Walk-In-Customer', '2026-01-01 01:12:09', 'Cash', 0, 0, 1200.00, 0.00, '18'),
+(674, 'INV2600116A67', 'Walk-In-Customer', '2026-01-01 01:13:48', 'Cash', 0, 0, 40000.00, 0.00, '18'),
+(675, 'INV2600177F82', 'Walk-In-Customer', '2026-01-01 01:14:48', 'Cash', 0, 0, 500.00, 0.00, '18'),
+(676, 'INV26001109F0', 'Walk-In-Customer', '2026-01-01 01:15:01', 'Cash', 0, 0, 40000.00, 0.00, '18'),
+(677, 'INV26001EF331', 'Walk-In-Customer', '2026-01-01 01:15:12', 'Cash', 0, 0, 800.00, 0.00, '18'),
+(678, 'INV260018975B', '15', '2026-01-01 01:31:54', 'Cash', 0, 0, 111.00, 689.00, '18'),
+(679, 'INV2600143294', 'Walk-In-Customer', '2026-01-01 01:32:28', 'Cash', 0, 0, 800.00, 0.00, '18'),
+(680, 'INV2600125D4F', 'Walk-In-Customer', '2026-01-01 01:32:46', 'Cash', 0, 0, 1200.00, 0.00, '18'),
+(681, 'INV26001E1897', 'Walk-In-Customer', '2026-01-01 01:32:59', 'Cash', 0, 0, 500.00, 0.00, '18'),
+(682, 'INV26001B6CBD', 'Walk-In-Customer', '2026-01-01 01:37:01', 'Cash', 0, 0, 4500.00, 0.00, '18'),
+(683, 'INV26001F02C3', 'Walk-In-Customer', '2026-01-01 01:41:47', 'Cash', 0, 0, 800.00, 0.00, '18'),
+(684, 'INV260018C814', 'Walk-In-Customer', '2026-01-01 01:42:12', 'Cash', 0, 0, 800.00, 0.00, '18'),
+(685, 'INV26001AD7E2', 'Walk-In-Customer', '2026-01-01 01:42:43', 'Cash', 0, 0, 4500.00, 0.00, '18'),
+(686, 'INV2600121EE3', 'Walk-In-Customer', '2026-01-01 01:42:56', 'Cash', 0, 0, 800.00, 0.00, '18'),
+(687, 'INV260019A45E', 'Walk-In-Customer', '2026-01-01 01:44:36', 'Cash', 0, 0, 800.00, 0.00, '18'),
+(688, 'INV2600128956', 'Walk-In-Customer', '2026-01-01 01:52:01', 'Cash', 0, 0, 800.00, 0.00, '18'),
+(689, 'INV260012CBA9', 'Walk-In-Customer', '2026-01-01 01:52:57', 'Cash', 0, 0, 500.00, 0.00, '18'),
+(690, 'INV26001E4BBD', '14', '2026-01-01 01:53:48', 'Cash', 0, 0, 0.00, 800.00, '18'),
+(691, 'INV2600138C47', 'Walk-In-Customer', '2026-01-01 01:54:03', 'Cash', 0, 0, 40000.00, 0.00, '18'),
+(692, 'INV260016BA9A', 'Walk-In-Customer', '2026-01-01 03:27:13', 'Cash', 0, 0, 800.00, 0.00, '18'),
+(693, 'INV260010904A', '13', '2026-01-01 03:35:13', 'Cash', 0, 0, 0.00, 5300.00, '18'),
+(694, 'INV26001E349B', '13', '2026-01-01 03:35:30', 'Cash', 0, 0, 0.00, 4500.00, '18'),
+(695, 'INV2601396A7A', '13', '2026-01-12 22:41:48', 'Cash', 0, 0, 11.00, 4489.00, '18'),
+(696, 'INV26013E64A8', '13', '2026-01-12 22:43:52', 'Cash', 0, 0, 76.00, 700.00, '18'),
+(697, 'INV26025DAF4A', '13', '2026-01-24 23:03:16', 'Cash', 0, 0, 0.00, 5000.00, '18'),
+(698, 'INV26048F9CCA', '15', '2026-02-16 23:01:30', 'Cash', 0, 0, 0.00, 4610.00, '18'),
+(699, 'INV26048322FE', '15', '2026-02-17 04:52:38', 'Cash', 0, 0, 0.00, 5410.00, '18'),
+(700, 'INV260481F821', '15', '2026-02-17 05:46:19', 'Cash', 905, 453, 600.00, 8000.73, '18'),
+(701, 'INV26053D2A00', 'Walk-In-Customer', '2026-02-21 23:38:15', 'Cash', 216, 54, 5247.70, 0.00, '18');
 
 -- --------------------------------------------------------
 
@@ -745,7 +824,69 @@ INSERT INTO `sales_details` (`sales_details_id`, `sales_details_invoice`, `produ
 (959, 'INV2526575647', 107, 1, 40000.00, 30000, 40000, 2, 3),
 (960, 'INV25265ADDAA', 103, 1, 4500.00, 3500, 4500, 1, 2),
 (961, 'INV2526516D96', 101, 1, 800.00, 500, 800, 2, 2),
-(962, 'INV2526516D96', 103, 1, 4500.00, 3500, 4500, 2, 2);
+(962, 'INV2526516D96', 103, 1, 4500.00, 3500, 4500, 2, 2),
+(963, 'INV260018ABA4', 101, 1, 800.00, 500, 800, 0, 0),
+(964, 'INV260018ABA4', 103, 1, 4500.00, 3500, 4500, 0, 0),
+(965, 'INV260019CE47', 106, 1, 1200.00, 790, 1200, 5, 6),
+(966, 'INV260019CE47', 107, 1, 40000.00, 30000, 40000, 4, 5),
+(967, 'INV26001D5AB5', 101, 1, 800.00, 500, 800, 0, 0),
+(968, 'INV26001D5AB5', 103, 1, 4500.00, 3500, 4500, 0, 0),
+(969, 'INV26001A25CB', 106, 1, 1200.00, 790, 1200, 0, 0),
+(970, 'INV2600122D3B', 106, 1, 1200.00, 790, 1200, 0, 0),
+(971, 'INV260011CAC9', 106, 1, 1200.00, 790, 1200, 0, 0),
+(972, 'INV26001601CF', 106, 1, 1200.00, 790, 1200, 0, 0),
+(973, 'INV26001F5749', 105, 1, 500.00, 300, 500, 0, 0),
+(974, 'INV26001B18A9', 106, 1, 1200.00, 790, 1200, 0, 0),
+(975, 'INV26001AA43C', 103, 1, 4500.00, 3500, 4500, 1, 1),
+(976, 'INV260015A811', 101, 1, 800.00, 500, 800, 6, 6),
+(977, 'INV2600169ABB', 101, 1, 800.00, 500, 800, 6, 6),
+(979, 'INV26001EF6C4', 101, 1, 800.00, 500, 800, 6, 6),
+(980, 'INV26001390C0', 101, 1, 800.00, 500, 800, 6, 6),
+(981, 'INV260011C141', 101, 1, 800.00, 500, 800, 6, 6),
+(982, 'INV26001AAAE1', 101, 1, 800.00, 500, 800, 6, 6),
+(983, 'INV26001DCC34', 107, 1, 40000.00, 30000, 40000, 0, 0),
+(984, 'INV26001D61E6', 105, 1, 500.00, 300, 500, 0, 0),
+(985, 'INV2600128CD6', 101, 1, 800.00, 500, 800, 0, 0),
+(986, 'INV2600101871', 105, 1, 500.00, 300, 500, 0, 0),
+(987, 'INV26001EF3EB', 107, 1, 40000.00, 30000, 40000, 0, 0),
+(988, 'INV2600185EEE', 101, 1, 800.00, 500, 800, 0, 0),
+(989, 'INV2600176E7E', 106, 1, 1200.00, 790, 1200, 0, 0),
+(990, 'INV2600116A67', 107, 1, 40000.00, 30000, 40000, 0, 0),
+(991, 'INV2600177F82', 105, 1, 500.00, 300, 500, 0, 0),
+(992, 'INV26001109F0', 107, 1, 40000.00, 30000, 40000, 0, 0),
+(993, 'INV26001EF331', 101, 1, 800.00, 500, 800, 0, 0),
+(994, 'INV260018975B', 101, 1, 800.00, 500, 800, 0, 0),
+(995, 'INV2600143294', 101, 1, 800.00, 500, 800, 0, 0),
+(996, 'INV2600125D4F', 106, 1, 1200.00, 790, 1200, 0, 0),
+(997, 'INV26001E1897', 105, 1, 500.00, 300, 500, 0, 0),
+(998, 'INV26001B6CBD', 103, 1, 4500.00, 3500, 4500, 0, 0),
+(999, 'INV26001F02C3', 101, 1, 800.00, 500, 800, 0, 0),
+(1000, 'INV260018C814', 101, 1, 800.00, 500, 800, 0, 0),
+(1001, 'INV26001AD7E2', 103, 1, 4500.00, 3500, 4500, 0, 0),
+(1002, 'INV2600121EE3', 101, 1, 800.00, 500, 800, 0, 0),
+(1003, 'INV260019A45E', 101, 1, 800.00, 500, 800, 0, 0),
+(1004, 'INV2600128956', 101, 1, 800.00, 500, 800, 0, 0),
+(1005, 'INV260012CBA9', 105, 1, 500.00, 300, 500, 0, 0),
+(1006, 'INV26001E4BBD', 101, 1, 800.00, 500, 800, 0, 0),
+(1007, 'INV2600138C47', 107, 1, 40000.00, 30000, 40000, 0, 0),
+(1008, 'INV260016BA9A', 101, 1, 800.00, 500, 800, 0, 0),
+(1009, 'INV260010904A', 101, 1, 800.00, 500, 800, 0, 0),
+(1010, 'INV260010904A', 103, 1, 4500.00, 3500, 4500, 0, 0),
+(1011, 'INV26001E349B', 103, 1, 4500.00, 3500, 4500, 0, 0),
+(1012, 'INV2601396A7A', 103, 1, 4500.00, 3500, 4500, 0, 0),
+(1013, 'INV26013E64A8', 101, 1, 800.00, 500, 800, 1, 4),
+(1014, 'INV26025DAF4A', 105, 1, 500.00, 300, 500, 2, 2),
+(1015, 'INV26025DAF4A', 103, 1, 4500.00, 3500, 4500, 0, 0),
+(1016, 'INV26048F9CCA', 108, 1, 110.00, 100, 110, 0, 0),
+(1017, 'INV26048F9CCA', 103, 1, 4500.00, 3500, 4500, 0, 0),
+(1018, 'INV26048322FE', 101, 1, 800.00, 500, 800, 0, 0),
+(1019, 'INV26048322FE', 103, 1, 4500.00, 3500, 4500, 0, 0),
+(1020, 'INV26048322FE', 108, 1, 110.00, 100, 110, 0, 0),
+(1021, 'INV260481F821', 103, 2, 4500.00, 7000, 9000, 1, 4),
+(1022, 'INV260481F821', 108, 3, 110.00, 300, 330, 0, 2),
+(1023, 'INV26053D2A00', 101, 1, 800.00, 500, 800, 0, 0),
+(1024, 'INV26053D2A00', 103, 1, 4500.00, 3500, 4500, 0, 0),
+(1025, 'INV26053D2A00', 108, 1, 110.00, 100, 110, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -768,7 +909,8 @@ CREATE TABLE `supplier` (
 --
 
 INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `business_name`, `contact_number`, `supplier_email`, `supplier_address`, `supplier_entry_date`) VALUES
-(106, 'Sumonor Rahman', 'Cloths Business', '01952368875', 'sumon@gmail.com', 'Aftabnagar', '12/01/2022');
+(106, 'Sumonor Rahman', 'Cloths Business', '01952368875', 'sumon@gmail.com', 'Aftabnagar', '12/01/2022'),
+(124, 'Sakifur Rahman', 'Safif&Tailers', '01913691187', 'sakif@gmail.com', 'Bashabo, Dhaka', '17/02/2026');
 
 -- --------------------------------------------------------
 
@@ -779,7 +921,7 @@ INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `business_name`, `contac
 CREATE TABLE `tax` (
   `tax_id` int NOT NULL,
   `tax_name` varchar(80) NOT NULL,
-  `tax_percentage` varchar(60) NOT NULL
+  `tax_percentage` decimal(5,2) NOT NULL DEFAULT '0.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -787,9 +929,9 @@ CREATE TABLE `tax` (
 --
 
 INSERT INTO `tax` (`tax_id`, `tax_name`, `tax_percentage`) VALUES
-(4, 'Tax 5%', '5'),
-(8, 'Tax 2%', '2'),
-(9, 'VAT', '0');
+(8, 'Tax', 5.00),
+(9, 'VAT', 13.00),
+(11, 'None', 0.00);
 
 -- --------------------------------------------------------
 
@@ -812,8 +954,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `login_id`, `login_password`, `user_role_id`) VALUES
 (18, 'Md. Kabir Hossain', 'kabir@gmail.com', 'kabir', '123456', '46'),
-(19, 'Nafisa Tabassom', 'nafisa@gmail.com', 'nafisa', '123456', '47'),
-(24, 'sdfdsf', 'kabir@gmail.com', 'kona', '123456', '48');
+(19, 'Nafisa Tabassom', 'nafisa@gmail.com', 'nafisa1', '589674', '46');
 
 -- --------------------------------------------------------
 
@@ -1011,25 +1152,25 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `currency`
 --
 ALTER TABLE `currency`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `customer_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `customer_due`
 --
 ALTER TABLE `customer_due`
-  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=397;
+  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=419;
 
 --
 -- AUTO_INCREMENT for table `customer_group`
 --
 ALTER TABLE `customer_group`
-  MODIFY `customer_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `customer_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `expense`
@@ -1041,25 +1182,25 @@ ALTER TABLE `expense`
 -- AUTO_INCREMENT for table `expense_category`
 --
 ALTER TABLE `expense_category`
-  MODIFY `expense_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `expense_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `expense_sub_category`
 --
 ALTER TABLE `expense_sub_category`
-  MODIFY `expense_sub_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `expense_sub_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `general_settings`
 --
 ALTER TABLE `general_settings`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `held_sales`
 --
 ALTER TABLE `held_sales`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `menu_id`
@@ -1077,37 +1218,37 @@ ALTER TABLE `payment_receive`
 -- AUTO_INCREMENT for table `product_brand`
 --
 ALTER TABLE `product_brand`
-  MODIFY `brand_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `brand_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `product_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `product_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT for table `product_group`
 --
 ALTER TABLE `product_group`
-  MODIFY `product_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `product_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `product_inital_stock`
 --
 ALTER TABLE `product_inital_stock`
-  MODIFY `product_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `product_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `product_purchase`
 --
 ALTER TABLE `product_purchase`
-  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `product_purchase_details`
 --
 ALTER TABLE `product_purchase_details`
-  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `product_unit`
@@ -1137,31 +1278,31 @@ ALTER TABLE `return_sales_details`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=650;
+  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=702;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=963;
+  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1026;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `supplier_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `supplier_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT for table `tax`
 --
 ALTER TABLE `tax`
-  MODIFY `tax_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `tax_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `user_role`

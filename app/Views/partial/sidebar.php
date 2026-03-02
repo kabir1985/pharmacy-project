@@ -37,7 +37,7 @@ $menuSections = [
         'url'   => '#',
         'privileges' => ['initial_product','barcode_generate','product_category','product_brand','product_group','product_unit'],
         'children' => [
-            ['label'=>'Initial Product','url'=>'product','privileges'=>['initial_product']],
+            ['label'=>'Opening Stock','url'=>'product','privileges'=>['initial_product']],
             ['label'=>'Barcode Generate','url'=>'barcodegenerate','privileges'=>['barcode_generate']],
             ['label'=>'Product Category','url'=>'productcategoryView','privileges'=>['product_category']],
             ['label'=>'Product Brand','url'=>'productbrandView','privileges'=>['product_brand']],
