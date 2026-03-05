@@ -82,32 +82,84 @@ class Product extends BaseController
 
       $msg = 'Please select a valid file';
       //exit(WRITEPATH);
+      // if ($validated) {
+      //    $avatar = $this->request->getFile('file');
+      //    // $avatar->move(WRITEPATH . 'uploads');
+
+      //    //$avatar->move(WRITEPATH . 'assets/images');
+      //    $avatar->move(ROOTPATH . 'public/uploads/');
+      // }
+
+      ///////////////////////////////////////////////////////////////////
       if ($validated) {
          $avatar = $this->request->getFile('file');
-         // $avatar->move(WRITEPATH . 'uploads');
-
-         //$avatar->move(WRITEPATH . 'assets/images');
-         $avatar->move(ROOTPATH . 'public/uploads/');
-      }
+     
+         // Generate a unique name to avoid overwriting existing files
+         $newName = $avatar->getRandomName();
+     
+         // Move to public/uploads
+         $avatar->move(ROOTPATH . 'public/uploads/', $newName);
+     } else {
+         // Validation failed
+         echo 'Please select a valid image (jpg, jpeg, gif, png, max 4MB)';
+         return;
+     }
 
       ////////////////////////////////////////////////////////////////////////
 
-      $data = [
-         'product_name'            => $this->request->getVar('product_name'),
-         'product_category'        => $this->request->getVar('product_category'),
-         'product_brand'           => $this->request->getVar('product_brand'),
-         'product_group'           => $this->request->getVar('product_group'),
-         'product_unit'            => $this->request->getVar('product_unit'),
-         'codefor_barcode'         => $this->request->getVar('codefor_barcode'),
-         'tax_id'                  => $this->request->getVar('tax_id'),
-         'productinitial_quantity' => $this->request->getVar('productinitial_quantity'),
-         'buying_unit_price'       => $this->request->getVar('buying_unit_price'),
-         'selling_unit_price'      => $this->request->getVar('selling_unit_price'),
-         'alert_quantity'          => $this->request->getVar('alert_quantity'),
-         // 'product_image'           => $this->request->getVar('product_image')
-         'product_image' =>  $avatar->getClientName()
+      // $data = [
+      //    'product_name'            => $this->request->getVar('product_name'),
+      //    'product_category'        => $this->request->getVar('product_category'),
+      //    'product_brand'           => $this->request->getVar('product_brand'),
+      //    'product_group'           => $this->request->getVar('product_group'),
+      //    'product_unit'            => $this->request->getVar('product_unit'),
+      //    'codefor_barcode'         => $this->request->getVar('codefor_barcode'),
+      //    'tax_id'                  => $this->request->getVar('tax_id'),
+      //    'productinitial_quantity' => $this->request->getVar('productinitial_quantity'),
+      //    'buying_unit_price'       => $this->request->getVar('buying_unit_price'),
+      //    'selling_unit_price'      => $this->request->getVar('selling_unit_price'),
+      //    'alert_quantity'          => $this->request->getVar('alert_quantity'),
+      //    // 'product_image'           => $this->request->getVar('product_image')
+      //    'product_image' =>  $avatar->getClientName()
 
-      ];
+      // ];
+
+
+
+      $tax_percentage = $this->request->getVar('tax_id'); // get from your select data-percent
+$base_price = (float)$this->request->getVar('base_price');
+$tax_type_db = ($this->request->getVar('tax_type') == 'with_tax') ? 1 : 0;
+
+if ($tax_type_db == 1) { // inclusive
+   $tax_amount = round($base_price * $tax_percentage / (100 + $tax_percentage));
+} else { // exclusive
+   $tax_amount = round($base_price * $tax_percentage / 100);
+}
+
+//  echo $tax_amount;
+// exit();
+
+
+
+$data = [
+   'product_name'            => $this->request->getVar('product_name'),
+   'product_category'        => $this->request->getVar('product_category'),
+   'product_brand'           => $this->request->getVar('product_brand'),
+   'product_group'           => (int)$this->request->getVar('product_group'),
+   'product_unit'            => $this->request->getVar('product_unit'),
+   'codefor_barcode'         => $this->request->getVar('codefor_barcode'),
+   'tax_id'                  => $this->request->getVar('tax_id'),
+   'productinitial_quantity' => (int)$this->request->getVar('productinitial_quantity'),
+   'base_price'              => (float)$this->request->getVar('base_price'),
+   'tax_amount'              => $tax_amount,
+   'purchase_price'          => (int)$this->request->getVar('purchase_price'),
+   'tax_type'                => $tax_type_db,
+   'profit_margin'           => (int)$this->request->getVar('profit_margin'),
+   'sales_price'             => (int)$this->request->getVar('sales_price'),
+   'final_price'             => (int)$this->request->getVar('final_price'),
+   'alert_quantity'          => (int)$this->request->getVar('alert_quantity'),
+   'product_image'           => $avatar->getClientName(),
+];
 
       $id = $this->NewProductAddModel_Object->insert($data);
 
@@ -117,6 +169,9 @@ class Product extends BaseController
          echo "0";
       }
    }
+
+
+
 
 
    public function update($id = 0)

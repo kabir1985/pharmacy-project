@@ -133,7 +133,8 @@ echo $this->section('content');
                             <tr class="table-secondary">
                                 <td colspan="6">
                                     <div class="d-flex flex-column flex-md-row bg-secondary text-white">
-                                        <button type="button" class="btn btn-danger w-100 text-center text-md-start mb-2"
+                                        <button type="button"
+                                            class="btn btn-danger w-100 text-center text-md-start mb-2"
                                             id="openVatModal" data-toggle="modal" data-target="#vatModal">
                                             VAT %
                                         </button>
@@ -167,8 +168,8 @@ echo $this->section('content');
 </div>
 <!------------------- Modal for discount start----------------------- --->
 <!-- Modal -->
-<div class="modal fade" id="discountOnTotalModal" tabindex="-1" role="dialog" aria-labelledby="discountOnTotalModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="discountOnTotalModal" tabindex="-1" role="dialog"
+    aria-labelledby="discountOnTotalModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -440,7 +441,6 @@ $(document).ready(function() {
 
 
     // }
-
     /////////////////Apply VAT % on Total Price/////////////////////////////////
     // If you want the modal to reflect the current VAT value:
     // When opening modal, show current VAT %
@@ -811,13 +811,7 @@ $("#discount_on_total_price").on("input", function() {
 .col-xl-5,
 .col-xl-6,
 .col-xl-7,
-.col-xl-8,
-.col-xl-9,
-.col-xl-10,
-.col-xl-11,
-.col-xl-12,
-.col-xl,
-.col-xl-auto {
+.col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
     position: relative;
     width: 100%;
     padding-right: 6px !important;
@@ -902,45 +896,44 @@ input:checked+.slider:before {
 
 @media (max-width: 768px) {
 
-/* Make table font smaller */
-table {
-    font-size: 12px;
-}
+    /* Make table font smaller */
+    table {
+        font-size: 12px;
+    }
 
-/* Reduce padding inside table */
-.table td, .table th {
-    padding: 4px !important;
-}
+    /* Reduce padding inside table */
+    .table td,
+    .table th {
+        padding: 4px !important;
+    }
 
-/* Input fields smaller */
-.table input {
-    min-width: 70px;
-    font-size: 12px;
-}
+    /* Input fields smaller */
+    .table input {
+        min-width: 70px;
+        font-size: 12px;
+    }
 
-/* Make summary card sticky bottom */
-.card {
-    margin-top: 15px;
-}
+    /* Make summary card sticky bottom */
+    .card {
+        margin-top: 15px;
+    }
 
-/* Buttons full width on mobile */
-.btn {
-    font-size: 13px;
-}
+    /* Buttons full width on mobile */
+    .btn {
+        font-size: 13px;
+    }
 
-/* Reduce select height */
-.select2-container .select2-selection--single {
-    height: 34px !important;
-}
+    /* Reduce select height */
+    .select2-container .select2-selection--single {
+        height: 34px !important;
+    }
 
-/* Cart scroll fix */
-.table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    /* Cart scroll fix */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }
-}
-
-
 </style>
 
 <?php
