@@ -41,31 +41,56 @@ echo $this->section('content');
                             <?php
                             if (count($customer_show) > 0) {
                                 foreach ($customer_show as $row) {
-                            ?>
-                                    <tr>
-                                        <td><?php echo $row['cus_first_name'] ?></td>
-                                        <td><?php echo $row['cus_last_name'] ?></td>
-                                        <td><?php echo $row['cus_email'] ?></td>
-                                        <td><?php echo $row['cus_phone'] ?></td>
-                                        <td><?php echo $row['cus_address'] ?></td>
-                                        <td><?php echo $row['cus_tin'] ?></td>
-                                        <td><?php echo $row['cus_company'] ?></td>
-                                        <td>
-                                            <!-- Button to invoke the modal -->
-                                            <a href="#" class="btn btn-primary btn-sm btn-edit" data-customer_id="<?php echo $row['customer_id'] ?>" data-cus_first_name="<?php echo $row['cus_first_name'] ?>" data-cus_last_name="<?php echo $row['cus_last_name'] ?>" data-cus_email="<?php echo $row['cus_email'] ?>" data-cus_phone="<?php echo $row['cus_phone'] ?>" data-cus_address="<?php echo $row['cus_address'] ?>" data-cus_tin="<?php echo $row['cus_tin'] ?>" data-cus_company="<?php echo $row['cus_company'] ?>"><i class="fa fa-edit"></i></a>
+                                    ?>
+                            <tr>
+                                <td>
+                                    <?php echo $row['cus_first_name'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['cus_last_name'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['cus_email'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['cus_phone'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['cus_address'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['cus_tin'] ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['cus_company'] ?>
+                                </td>
+                                <td>
+                                    <!-- Button to invoke the modal -->
+                                            <a href="#" class="btn btn-primary btn-sm btn-edit"
+                                                data-customer_id="<?php echo $row['customer_id'] ?>"
+                                                data-cus_first_name="<?php echo $row['cus_first_name'] ?>"
+                                                data-cus_last_name="<?php echo $row['cus_last_name'] ?>"
+                                                data-cus_email="<?php echo $row['cus_email'] ?>"
+                                                data-cus_phone="<?php echo $row['cus_phone'] ?>"
+                                                data-cus_address="<?php echo $row['cus_address'] ?>"
+                                                data-cus_tin="<?php echo $row['cus_tin'] ?>"
+                                                data-cus_company="<?php echo $row['cus_company'] ?>"><i
+                                                    class="fa fa-edit"></i></a>
 
-                                            <a href="#" class="btn btn-danger btn-sm btn-delete" data-delete_id="<?php echo $row['customer_id'] ?>"><i class="fa fa-trash-o"></i></a>
+                                            <a href="#" class="btn btn-danger btn-sm btn-delete"
+                                                data-delete_id="<?php echo $row['customer_id'] ?>"><i
+                                                    class="fa fa-trash-o"></i></a>
 
                                         </td>
                                     </tr>
-                                <?php
+                                    <?php
                                 }
                             } else {
                                 ?>
                                 <tr>
                                     <td colspan="7">No data found.</td>
                                 </tr>
-                            <?php
+                                <?php
                             }
                             ?>
 
@@ -83,45 +108,49 @@ echo $this->section('content');
 
 <!---------------------------Modal Form for entry Load Start---------------------------------------->
 <!-- Modal -->
-   <form id="CustomerModalEntry_Form" method='post' action="<?= site_url('customerAdd') ?>">
-<div class='modal fade' id='CustomerAdd' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-    <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
-        <div class='modal-content'>
-            <div class='modal-header'>
-                <h5 class='modal-title' id='exampleModalLabel'>Please Enter Customer Details</h5>
-                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                    <span aria-hidden='true'>&times;
-                    </span>
-                </button>
-            </div>
+<form id="CustomerModalEntry_Form" method='post' action="<?= site_url('customerAdd') ?>">
+    <div class='modal fade' id='CustomerAdd' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'
+        aria-hidden='true'>
+        <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Please Enter Customer Details</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                        <span aria-hidden='true'>&times;
+                        </span>
+                    </button>
+                </div>
                 <div class='modal-body'>
 
                     <div class='form-row'>
                         <div class='form-group col-md-4'>
                             <label>First Name</label>
-                            <input required type='text' required class='form-control' name='cus_first_name' placeholder='First Name'>
+                            <input required type='text' required class='form-control' name='cus_first_name'
+                                placeholder='First Name'>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Last Name</label>
                             <input type='text' class='form-control' name='cus_last_name' placeholder='Last Name'>
                         </div>
-						<div class='form-group col-md-4'>
+                        <div class='form-group col-md-4'>
                             <label>Email</label>
-                            <input type='email'  class='form-control' name='cus_email' placeholder='Email'>
+                            <input type='email' class='form-control' name='cus_email' placeholder='Email'>
                         </div>
                     </div>
-					<div class='form-row'>
+                    <div class='form-row'>
                         <div class='form-group col-md-4'>
                             <label> Phone Number</label>
-                            <input type='text' pattern="\d{1,13}"  class='form-control' name='cus_phone' placeholder='Phone'>
+                            <input type='text' pattern="\d{1,13}" class='form-control' name='cus_phone'
+                                placeholder='Phone'>
                         </div>
                         <div class='form-group col-md-4'>
                             <label> Address</label>
-                            <input type='text' class='form-control' name='cus_address'  placeholder='Address'>
+                            <input type='text' class='form-control' name='cus_address' placeholder='Address'>
                         </div>
-						 <div class='form-group col-md-4'>
+                        <div class='form-group col-md-4'>
                             <label> TIN</label>
-                            <input type='text' class='form-control ' name='cus_tin'  placeholder='Tax Identification Number'>
+                            <input type='text' class='form-control ' name='cus_tin'
+                                placeholder='Tax Identification Number'>
                         </div>
                     </div>
 
@@ -134,13 +163,14 @@ echo $this->section('content');
                             <label for="inputState">Customer Type</label>
                             <select id="CustomerType" name="cus_type" class="form-control">
 
-                         <option value="general">General</option>
-						 <option value="special">Special</option>
+                                <option value="general">General</option>
+                                <option value="special">Special</option>
                             </select>
                         </div>
-					  <div class='form-group col-md-4'>
+                        <div class='form-group col-md-4'>
                             <label>Date</label>
-                            <input type='text' class='form-control datePicker' name='cus_creation_date' placeholder='Creation Date'>
+                            <input type='text' class='form-control datePicker' name='cus_creation_date'
+                                placeholder='Creation Date'>
                         </div>
                     </div>
                 </div>
@@ -148,9 +178,9 @@ echo $this->section('content');
                     <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
                     <button type='submit' class='btn btn-primary'>Save changes</button>
                 </div>
+            </div>
         </div>
     </div>
-</div>
 </form>
 <!----------------------Modal Form End------------------------------------------>
 
@@ -160,10 +190,11 @@ echo $this->section('content');
 
 <!---------------------------Modal Form for Edit Section Load Start---------------------------------------->
 <!-- Modal -->
-    <div class='modal fade' id='customer_edit_modal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-        <div class='modal-dialog  modal-dialog-centered' role='document'>
-            <div class='modal-content'>
-                <form id="customer_edit_submit_form" method='post' action="<?php echo site_url('customerUpdate') ?>">
+<div class='modal fade' id='customer_edit_modal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'
+    aria-hidden='true'>
+    <div class='modal-dialog  modal-dialog-centered' role='document'>
+        <div class='modal-content'>
+            <form id="customer_edit_submit_form" method='post' action="<?php echo site_url('customerUpdate') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Please Enter Customer Edit Details</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -214,15 +245,16 @@ echo $this->section('content');
                     <button type='submit' class='btn btn-primary'>Save Edit</button>
                 </div>
             </form>
-            </div>
-
         </div>
+
     </div>
+</div>
 <!----------------------Modal Form Edit Section  End------------------------------------------>
 
 <!-- Modal Delete Product-->
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -264,15 +296,15 @@ echo $this->section('scripts');
 
 <script type='text/javascript'>
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
-     $('#sampleTable').DataTable();
+        $('#sampleTable').DataTable();
 
-  var allowSubmit = true;
+        var allowSubmit = true;
 
         //product_group_edit_form
 
-        $('#CustomerModalEntry_Form').submit(function(event) {
+        $('#CustomerModalEntry_Form').submit(function (event) {
             // stop the form from submitting the normal way and refreshing the page
             event.preventDefault();
 
@@ -282,23 +314,23 @@ echo $this->section('scripts');
                 var parentMOdal = $(this).closest('.modal');
                 var postData = new FormData(this);
                 $.ajax({
-                        type: $(this).attr("method"),
-                        url: $(this).attr("action"),
-                        data: postData,
-                        encode: true,
-                        processData: false,
-                        contentType: false,
-                    })
-                    .done(function(data) {
-                    if(data == 1)
-                        { 
-                        
-                            //Modal Remove after submission
+                    type: $(this).attr("method"),
+                    url: $(this).attr("action"),
+                    data: postData,
+                    encode: true,
+                    processData: false,
+                    contentType: false,
+                })
+                    .done(function (data) {
+
+                        if (data == 1) {
                             parentMOdal.modal('toggle');
-                            //page refresh after submission
                             location.reload();
                         }
-                      
+                        else if (data == "duplicate") {
+                            alert("Customer already exists with same Phone or Email");
+                        }
+
                     });
             }
 
@@ -306,7 +338,7 @@ echo $this->section('scripts');
 
         //.........................................................................
 
-        $('#customer_edit_submit_form').submit(function(event) {
+        $('#customer_edit_submit_form').submit(function (event) {
             // stop the form from submitting the normal way and refreshing the page
             event.preventDefault();
 
@@ -316,23 +348,22 @@ echo $this->section('scripts');
                 var parentMOdal = $(this).closest('.modal');
                 var postData = new FormData(this);
                 $.ajax({
-                        type: $(this).attr("method"),
-                        url: $(this).attr("action"),
-                        data: postData,
-                        encode: true,
-                        processData: false,
-                        contentType: false,
-                    })
-                    .done(function(data) {
-                    if(data == 1)
-                        { 
+                    type: $(this).attr("method"),
+                    url: $(this).attr("action"),
+                    data: postData,
+                    encode: true,
+                    processData: false,
+                    contentType: false,
+                })
+                    .done(function (data) {
+                        if (data == 1) {
                             //Modal Remove after submission
                             parentMOdal.modal('toggle');
                             //page refresh after submission
                             location.reload();
-                       }
-                       
-                     
+                        }
+
+
                     });
             }
 
@@ -342,7 +373,7 @@ echo $this->section('scripts');
         //...................JQuery for Modal Edit & Delete option...................................
 
         // get Edit Product
-        $('.btn-edit').on('click', function() {
+        $('.btn-edit').on('click', function () {
             // get data from button edit
             const customer_id = $(this).data('customer_id');
             const cus_first_name = $(this).data('cus_first_name');
@@ -363,14 +394,14 @@ echo $this->section('scripts');
             $('#cus_phone').val(cus_phone);
             $('#cus_address').val(cus_address);
             $('#cus_tin').val(cus_tin);
-             $('#cus_company').val(cus_company);
+            $('#cus_company').val(cus_company);
             // Call Modal Edit
             $('#customer_edit_modal').modal('show');
 
         });
 
         // get Delete Product
-        $('.btn-delete').on('click', function() {
+        $('.btn-delete').on('click', function () {
             // get data from button edit
             const delete_id = $(this).data('delete_id');
             //alert(delete_id);

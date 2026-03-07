@@ -198,3 +198,146 @@ in APPPATH\Controllers\pos.php on line 111.
  5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-05 15:12:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:12:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:12:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:13:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:16:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:17:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:17:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:21:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:22:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:24:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:25:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:25:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:39:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:42:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:44:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:47:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:50:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:52:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:55:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:56:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 15:59:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 16:01:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 16:03:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 16:03:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-05 16:03:21 --> ErrorException: Undefined array key "selling_unit_price"
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 111.
+ 1 APPPATH\Controllers\pos.php(111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "selling_unit_price"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\pos.php', 111)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-05 16:05:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-05 16:05:29 --> mysqli_sql_exception: Unknown column 'pis.tax_perchantage' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT sd.*, pi...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sd.*, pi...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sd.*, pi...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\PdfController.php(85): CodeIgniter\Database\BaseConnection->query('SELECT sd.*, pi...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\PdfController->invoice('702')
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+DEBUG - 2026-03-05 16:05:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-05 16:05:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pis.tax_perchantage' in 'field list'
+[Method: GET, Route: invoice/702]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\PdfController.php(85): CodeIgniter\Database\BaseConnection->query('SELECT sd.*, pis.product_name, pis.tax_perchantage
+                 FROM sales_details AS sd
+                 JOIN product_inital_stock AS pis ON pis.product_id = sd.product_id
+                 WHERE sd.sales_details_invoice = \'INV2606407776\'')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('702')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-05 16:05:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pis.tax_perchantage' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sd.*, pis.product_name, pis.tax_perchantage
+                 FROM sales_details AS sd
+                 JOIN product_inital_stock AS pis ON pis.product_id = sd.product_id
+                 WHERE sd.sales_details_invoice = \'INV2606407776\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sd.*, pis.product_name, pis.tax_perchantage
+                 FROM sales_details AS sd
+                 JOIN product_inital_stock AS pis ON pis.product_id = sd.product_id
+                 WHERE sd.sales_details_invoice = \'INV2606407776\'')
+ 3 APPPATH\Controllers\PdfController.php(85): CodeIgniter\Database\BaseConnection->query('SELECT sd.*, pis.product_name, pis.tax_perchantage
+                 FROM sales_details AS sd
+                 JOIN product_inital_stock AS pis ON pis.product_id = sd.product_id
+                 WHERE sd.sales_details_invoice = \'INV2606407776\'')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('702')
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-05 16:05:30 --> [Caused by] mysqli_sql_exception: Unknown column 'pis.tax_perchantage' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT sd.*, pis.product_name, pis.tax_perchantage
+                 FROM sales_details AS sd
+                 JOIN product_inital_stock AS pis ON pis.product_id = sd.product_id
+                 WHERE sd.sales_details_invoice = \'INV2606407776\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT sd.*, pis.product_name, pis.tax_perchantage
+                 FROM sales_details AS sd
+                 JOIN product_inital_stock AS pis ON pis.product_id = sd.product_id
+                 WHERE sd.sales_details_invoice = \'INV2606407776\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT sd.*, pis.product_name, pis.tax_perchantage
+                 FROM sales_details AS sd
+                 JOIN product_inital_stock AS pis ON pis.product_id = sd.product_id
+                 WHERE sd.sales_details_invoice = \'INV2606407776\'')
+ 4 APPPATH\Controllers\PdfController.php(85): CodeIgniter\Database\BaseConnection->query('SELECT sd.*, pis.product_name, pis.tax_perchantage
+                 FROM sales_details AS sd
+                 JOIN product_inital_stock AS pis ON pis.product_id = sd.product_id
+                 WHERE sd.sales_details_invoice = \'INV2606407776\'')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('702')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-05 16:16:28 --> ErrorException: Undefined variable $product_show_for_sale
+[Method: GET, Route: pos]
+in APPPATH\Views\pos\pos_add.php on line 230.
+ 1 APPPATH\Views\pos\pos_add.php(230): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $product_show_for_sale', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\pos\\pos_add.php', 230)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\pos\\pos_add.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('pos/pos_add', [], true)
+ 5 APPPATH\Controllers\pos.php(65): view('pos/pos_add', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-05 16:19:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-05 16:19:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-05 16:19:52 --> ErrorException: Undefined array key "selling_unit_price"
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 111.
+ 1 APPPATH\Controllers\pos.php(111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "selling_unit_price"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\pos.php', 111)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-05 16:25:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-05 16:25:45 --> ErrorException: Undefined array key "selling_unit_price"
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 111.
+ 1 APPPATH\Controllers\pos.php(111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "selling_unit_price"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\pos.php', 111)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

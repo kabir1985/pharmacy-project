@@ -26,33 +26,43 @@ class Customer extends BaseController
 
     // insert Supplier data
 
-    public function create()
+public function create()
+{
+    $phone = $this->request->getPost('cus_phone');
+    $email = $this->request->getPost('cus_email');
+
+    // Check duplicate
+    $check = $this->customerModelObject
+            ->where('cus_phone', $phone)
+            ->orWhere('cus_email', $email)
+            ->first();
+
+    if($check)
     {
-        $data = [
-            'cus_first_name'    => $this->request->getVar('cus_first_name'),
-            'cus_last_name'     => $this->request->getVar('cus_last_name'),
-            'cus_email'        => $this->request->getVar('cus_email'),
-            'cus_phone'        => $this->request->getVar('cus_phone'),
-            'cus_address'      => $this->request->getVar('cus_address'),
-            'cus_tin'          => $this->request->getVar('cus_tin'),
-			'cus_company'     => $this->request->getVar('cus_company'),
-			'cus_type'         => $this->request->getVar('cus_type'),
-			'cus_creation_date' => $this->request->getVar('cus_creation_date')
-        ];
-
-        $d = $this->customerModelObject->insert($data);
-        if($d>0)
-        { 
-            echo "1";
-        }
-        else
-        {
-            echo "0";
-        }
-
-        //return into supplier page
-        //return $this->response->redirect(site_url('/Customer'));
+        echo "duplicate";
+        return;
     }
+
+    $data = [
+        'cus_first_name' => $this->request->getPost('cus_first_name'),
+        'cus_last_name'  => $this->request->getPost('cus_last_name'),
+        'cus_email'      => $this->request->getPost('cus_email'),
+        'cus_phone'      => $this->request->getPost('cus_phone'),
+        'cus_address'    => $this->request->getPost('cus_address'),
+        'cus_tin'        => $this->request->getPost('cus_tin'),
+        'cus_company'    => $this->request->getPost('cus_company'),
+        'cus_type'       => $this->request->getPost('cus_type'),
+        'cus_creation_date' => $this->request->getPost('cus_creation_date')
+    ];
+
+    $insert = $this->customerModelObject->insert($data);
+
+    if($insert){
+        echo "1";
+    }else{
+        echo "0";
+    }
+}
 
 
     public function update($id = 0)

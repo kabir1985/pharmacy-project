@@ -26,7 +26,7 @@ echo $this->section('content');
         </div>
         <div class="col-sm-5">
             <select id="supplier_id" class="form-control select2" required>
-                <option value="">Select Warehouse</option>
+                <option value="">Select Supplier</option>
                 <?php
                 foreach ($supplier_show as $row) {
                 ?>

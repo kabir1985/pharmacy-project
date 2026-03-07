@@ -35,7 +35,7 @@ echo $this->section('content');
                             <th>Stock</th>
                             <th>QtyPerPack</th>
                             <th>BoxQty</th>
-                            <th>TP</th>
+                            <th>Purchase Price</th>
                             <th class="vat-column-header">Vat%</th>
                             <th>Vat Amt</th>
                             <th>SalePrice</th>
@@ -333,15 +333,15 @@ $(document).ready(function() {
 
         $.each(itemsInCart, function(key, item) {
             var baseTotal = parseInt(item.quantity) * parseInt(item.box_quantity) * parseFloat(item
-                .selling_unit_price);
+                .final_price);
             var vatPercent = parseFloat(item.tax_percentage) || 0;
 
             //  console.log(item.tax_percentage);
             var vatAmount_ProductWise = baseTotal * (vatPercent / 100);
             // var allVat = (isVatInPercent) ? vatAmount_ProductWise : vatPercent;
-            var allVat = vatPercent;
+           // var allVat = vatPercent;
 
-            var subTotalPrice = baseTotal + allVat;
+            var subTotalPrice = baseTotal + vatAmount_ProductWise;
 
             totalPrice += subTotalPrice;
 
@@ -355,17 +355,17 @@ $(document).ready(function() {
                 '" class="product_boxqty_change form-control form-control-sm" type="number" min="1" step="1" value="' +
                 (item.box_quantity || 1) + '"></td>' +
                 '<td><input type="number" class="buying_price form-control form-control-sm" value="' +
-                item.buying_unit_price + '" min="1" step="0.01"></td>' +
+                item.purchase_price + '" min="1" step="0.01"></td>' +
                 // '<td class="vat-column"><input type="number" name="vat" class="form-control form-control-sm vat-input calculate" value="' +
                 // vatPercent + '" min="0" step="0.01"></td>' +
                 '<td class="vat-column"><input type="number" name="vat" class="form-control form-control-sm vat-input calculate" value="' +
                 item.tax_percentage + '" min="0" step="0.01"></td>' +
 
                 '<td class="vat-column"><input type="text" name="productwiseVatAmount" class="form-control form-control-sm" value="' +
-                (item.allVat || 0) + '" min="0" step="0.01"></td>' +
+                (item.vatAmount_ProductWise || 0) + '" min="0" step="0.01"></td>' +
 
                 '<td><input type="number" class="sale_price form-control form-control-sm" value="' +
-                item.selling_unit_price + '" min="0" step="0.01"></td>' +
+                item.final_price + '" min="0" step="0.01"></td>' +
                 '<td class="discount-column"><input type="text" name="discount_on_each_product" class="discount_percent form-control form-control-sm calculate" value="' +
                 (item.discount_percent || 0) + '" min="0" step="0.01"></td>' +
                 '<td class="text-end">' + subTotalPrice.toFixed(2) + '</td>' +

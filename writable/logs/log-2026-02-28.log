@@ -1,0 +1,195 @@
+DEBUG - 2026-02-28 06:32:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-28 06:32:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-28 06:32:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-28 06:32:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-02-28 06:32:40 --> mysqli_sql_exception: Unknown column 'pr.tax_id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT * FROM p...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM p...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM p...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Product.php(53): CodeIgniter\Database\BaseConnection->query('SELECT * FROM p...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Product->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-02-28 06:32:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pr.tax_id' in 'on clause'
+[Method: GET, Route: product]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Product.php(53): CodeIgniter\Database\BaseConnection->query('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Product->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-28 06:32:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pr.tax_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 3 APPPATH\Controllers\Product.php(53): CodeIgniter\Database\BaseConnection->query('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Product->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-28 06:32:40 --> [Caused by] mysqli_sql_exception: Unknown column 'pr.tax_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 4 APPPATH\Controllers\Product.php(53): CodeIgniter\Database\BaseConnection->query('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Product->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-02-28 06:32:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-02-28 06:33:08 --> mysqli_sql_exception: Unknown column 'pr.tax_id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT * FROM p...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM p...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM p...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Product.php(53): CodeIgniter\Database\BaseConnection->query('SELECT * FROM p...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Product->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-02-28 06:33:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pr.tax_id' in 'on clause'
+[Method: GET, Route: product]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Product.php(53): CodeIgniter\Database\BaseConnection->query('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Product->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-28 06:33:08 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pr.tax_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 3 APPPATH\Controllers\Product.php(53): CodeIgniter\Database\BaseConnection->query('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Product->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-02-28 06:33:08 --> [Caused by] mysqli_sql_exception: Unknown column 'pr.tax_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 4 APPPATH\Controllers\Product.php(53): CodeIgniter\Database\BaseConnection->query('SELECT * FROM product_inital_stock AS pr
+      LEFT JOIN product_category AS pc ON pr.product_category = pc.product_category_id
+      LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
+      LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
+      LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
+      ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Product->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-02-28 06:33:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-02-28 06:33:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -82,28 +82,28 @@ class Product extends BaseController
 
       $msg = 'Please select a valid file';
       //exit(WRITEPATH);
-      // if ($validated) {
-      //    $avatar = $this->request->getFile('file');
-      //    // $avatar->move(WRITEPATH . 'uploads');
-
-      //    //$avatar->move(WRITEPATH . 'assets/images');
-      //    $avatar->move(ROOTPATH . 'public/uploads/');
-      // }
-
-      ///////////////////////////////////////////////////////////////////
       if ($validated) {
          $avatar = $this->request->getFile('file');
+         // $avatar->move(WRITEPATH . 'uploads');
+
+         //$avatar->move(WRITEPATH . 'assets/images');
+         $avatar->move(ROOTPATH . 'public/uploads/');
+      }
+
+      ///////////////////////////////////////////////////////////////////
+   //    if ($validated) {
+   //       $avatar = $this->request->getFile('file');
      
-         // Generate a unique name to avoid overwriting existing files
-         $newName = $avatar->getRandomName();
+   //       // Generate a unique name to avoid overwriting existing files
+   //       $newName = $avatar->getRandomName();
      
-         // Move to public/uploads
-         $avatar->move(ROOTPATH . 'public/uploads/', $newName);
-     } else {
-         // Validation failed
-         echo 'Please select a valid image (jpg, jpeg, gif, png, max 4MB)';
-         return;
-     }
+   //       // Move to public/uploads
+   //       $avatar->move(ROOTPATH . 'public/uploads/', $newName);
+   //   } else {
+   //       // Validation failed
+   //       echo 'Please select a valid image (jpg, jpeg, gif, png, max 4MB)';
+   //       return;
+   //   }
 
       ////////////////////////////////////////////////////////////////////////
 
@@ -126,7 +126,10 @@ class Product extends BaseController
 
 
 
-      $tax_percentage = $this->request->getVar('tax_id'); // get from your select data-percent
+$tax_id = $this->request->getPost('tax_id');
+$tax_percentage = $this->request->getPost('tax_percentage');
+
+//$tax_percentage = $this->request->getVar('tax_percentage'); // get from your select data-percent
 $base_price = (float)$this->request->getVar('base_price');
 $tax_type_db = ($this->request->getVar('tax_type') == 'with_tax') ? 1 : 0;
 
@@ -148,7 +151,7 @@ $data = [
    'product_group'           => (int)$this->request->getVar('product_group'),
    'product_unit'            => $this->request->getVar('product_unit'),
    'codefor_barcode'         => $this->request->getVar('codefor_barcode'),
-   'tax_id'                  => $this->request->getVar('tax_id'),
+   'tax_id'                  => $this->request->getPost('tax_id'),
    'productinitial_quantity' => (int)$this->request->getVar('productinitial_quantity'),
    'base_price'              => (float)$this->request->getVar('base_price'),
    'tax_amount'              => $tax_amount,

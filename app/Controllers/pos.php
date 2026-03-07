@@ -34,7 +34,7 @@ class Pos extends BaseController
 
     public function index()
     {
-        $data['product_show_for_sale'] = $this->products();
+        $data['product_show_for_sale'] = $this->products(); //products function called
         $data['product_category_show'] = $this->productCategory_object->findAll();
         $data['product_brand_show'] = $this->ProductBrand_object->findAll();
         $data['customer_show'] = $this->customerModel_object->findAll();
@@ -71,9 +71,11 @@ class Pos extends BaseController
         $request = $this->request;
         $productsList = $request->getPost('cart_data'); // array of products
 
-        // echo "<pre>";
+        //  echo "<pre>";
         // print_r($productsList);
-        // echo "</pre>";
+        //  echo "</pre>";
+
+        //  exit();
 
         // $hold_id = $this->request->getPost('hold_id'); // now this will work
         // echo $hold_id;
@@ -108,9 +110,9 @@ class Pos extends BaseController
             $item['sales_details_invoice'] = $invoice_id;
             $item['product_id'] = $row['product_id'];
             $item['product_quantity_sold'] = $row['quantity'];
-            $item['unit_price'] = $row['selling_unit_price'];
-            $item['total_buy_price'] = $row['buying_unit_price'] * $row['quantity'];
-            $item['total_sale_price'] = $row['quantity'] * $row['selling_unit_price'];
+            $item['unit_price'] = $row['final_price'];
+            $item['total_buy_price'] = $row['purchase_price'] * $row['quantity'];
+            $item['total_sale_price'] = $row['quantity'] * $row['final_price'];
             $item["productwiseVatPercnt"] = $row['vat'];
             $item["productwiseDiscountPercnt"] = $row['discount_on_each_product'];
             array_push($sales_details_invoice_data, $item);
@@ -250,22 +252,22 @@ class Pos extends BaseController
         if ($category) {
 
             if ($_POST['product_category'] != 'all_category') {
-                $condition = 'WHERE piq.product_category = ' . $_POST['product_category'];
+                $condition = 'WHERE pis.product_category = ' . $_POST['product_category'];
             }
         }
 
-        $sql = "SELECT piq.*, (productinitial_quantity + IFNULL(ppd.new_purchased,0)) - IFNULL(sd.total_sale,0)  AS total_stock
-                FROM product_inital_stock as piq
+        $sql = "SELECT pis.*, (productinitial_quantity + IFNULL(ppd.new_purchased,0)) - IFNULL(sd.total_sale,0)  AS total_stock
+                FROM product_inital_stock as pis
 
                 LEFT JOIN (SELECT product_id,SUM(product_quantity_sold) as total_sale
                                 FROM sales_details
                                 GROUP BY product_id) as sd
-                ON piq.product_id = sd.product_id
+                ON pis.product_id = sd.product_id
 
                 LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
                 FROM product_purchase_details
                 GROUP BY product_id) as ppd
-                ON piq.product_id = ppd.product_id " . $condition;
+                ON pis.product_id = ppd.product_id " . $condition;
 
         $results = $this->db->query($sql)->getResult('array');
 
@@ -287,7 +289,7 @@ class Pos extends BaseController
 
     <!-- Product Price -->
     <p class="text-primary mb-0" style="font-size: 0.7rem; font-weight: 600;">
-        ৳<?php echo number_format($row["selling_unit_price"], 2) ?>
+        ৳<?php echo number_format($row["final_price"], 2) ?>
     </p>
 </div>
 <?php
@@ -303,17 +305,17 @@ class Pos extends BaseController
         $this->db = db_connect();
         $search_product = $_GET['term'];
 
-        $sql = "SELECT piq.product_id as id,piq.product_name as name,piq.product_name as label,
+        $sql = "SELECT pis.product_id as id,pis.product_name as name,pis.product_name as label,
                ((productinitial_quantity + IFNULL(ppd.new_purchased,0)) - IFNULL(sd.total_sale,0))  AS total_stock
-                FROM product_inital_stock as piq
+                FROM product_inital_stock as pis
 
                 LEFT JOIN (SELECT product_id,SUM(product_quantity_sold) as total_sale
                                 FROM sales_details
-                                GROUP BY product_id) as sd ON piq.product_id = sd.product_id
+                                GROUP BY product_id) as sd ON pis.product_id = sd.product_id
 
                 LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
                                 FROM product_purchase_details
-                                GROUP BY product_id) as ppd ON piq.product_id = ppd.product_id
+                                GROUP BY product_id) as ppd ON pis.product_id = ppd.product_id
                 WHERE ((productinitial_quantity + IFNULL(ppd.new_purchased,0)) - IFNULL(sd.total_sale,0))>0 AND  product_name like '%$search_product%' ";
 
         $results = $this->db->query($sql)->getResult('array');

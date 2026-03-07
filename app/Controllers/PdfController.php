@@ -77,7 +77,8 @@ class PdfController extends BaseController
         $sales_invoice_no = $data['invoice_info'][0]['sales_invoice'];
 
         // Fetch sales details with product info
-        $sql2 = "SELECT sd.*, pis.product_name, pis.tax_perchantage
+       // $sql2 = "SELECT sd.*, pis.product_name, pis.tax_perchantage
+        $sql2 = "SELECT sd.*, pis.product_name
                  FROM sales_details AS sd
                  JOIN product_inital_stock AS pis ON pis.product_id = sd.product_id
                  WHERE sd.sales_details_invoice = '" . $sales_invoice_no . "'";
