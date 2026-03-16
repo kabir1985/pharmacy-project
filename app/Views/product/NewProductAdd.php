@@ -33,7 +33,8 @@ echo $this->section('content');
 
                                 <th>Opening stock</th>
                                 <th>Base Price</th>
-                                <th>Tax</th>
+                                <th>Tax%</th>
+                                <th>Tax Amt</th>
                                 <th>purchase Price</th>
 
                                 <th>tax type</th>
@@ -63,6 +64,7 @@ echo $this->section('content');
                                 <td><?php echo $row11['productinitial_quantity'] ?></td>
                                 <td><?php echo $row11['base_price'] ?></td>
                                 <td><?php echo $row11['tax_percentage'] ?>%</td>
+                                <td><?php echo $row11['tax_amount'] ?></td>
                                 <td><?php echo $row11['purchase_price'] ?></td>
 
                                 <td><?php if ($row11['tax_type'] == 1) {

@@ -124,24 +124,28 @@ class Product extends BaseController
 
       // ];
 
-
-
-$tax_id = $this->request->getPost('tax_id');
+///////////////////////////////////////////
 $tax_percentage = $this->request->getPost('tax_percentage');
-
-//$tax_percentage = $this->request->getVar('tax_percentage'); // get from your select data-percent
 $base_price = (float)$this->request->getVar('base_price');
+$purchase_price = (float)$this->request->getVar('purchase_price');
 $tax_type_db = ($this->request->getVar('tax_type') == 'with_tax') ? 1 : 0;
 
-if ($tax_type_db == 1) { // inclusive
-   $tax_amount = round($base_price * $tax_percentage / (100 + $tax_percentage));
-} else { // exclusive
-   $tax_amount = round($base_price * $tax_percentage / 100);
+if ($tax_type_db == 1) { // Inclusive tax
+
+    $base_price = $purchase_price / (1 + $tax_percentage/100);
+    $tax_amount = $purchase_price - $base_price;
+
+} else { // Exclusive tax
+
+    $tax_amount = $base_price * $tax_percentage / 100;
+    $purchase_price = $base_price + $tax_amount;
+
 }
 
-//  echo $tax_amount;
-// exit();
-
+$base_price = round($base_price,2);
+$tax_amount = round($tax_amount,2);
+$purchase_price = round($purchase_price,2);
+/////////////////////////////////////////
 
 
 $data = [
@@ -153,9 +157,9 @@ $data = [
    'codefor_barcode'         => $this->request->getVar('codefor_barcode'),
    'tax_id'                  => $this->request->getPost('tax_id'),
    'productinitial_quantity' => (int)$this->request->getVar('productinitial_quantity'),
-   'base_price'              => (float)$this->request->getVar('base_price'),
+   'base_price'              => $base_price,
    'tax_amount'              => $tax_amount,
-   'purchase_price'          => (int)$this->request->getVar('purchase_price'),
+   'purchase_price'          => $purchase_price,
    'tax_type'                => $tax_type_db,
    'profit_margin'           => (int)$this->request->getVar('profit_margin'),
    'sales_price'             => (int)$this->request->getVar('sales_price'),
