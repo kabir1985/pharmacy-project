@@ -603,7 +603,7 @@ echo $this->section('scripts');
 
                 },
                 success: function (data) {
-                     //console.log('output is:'+data);
+                    //console.log('output is:'+data);
                     // alert(data);
 
                     if (data.sales_id && data.sales_id > 0) {
@@ -1021,7 +1021,7 @@ echo $this->section('scripts');
                     contentType: false,
                 })
                     .done(function (data) {
-                          if (data == 1) {
+                        if (data == 1) {
                             parentMOdal.modal('toggle');
                             location.reload();
                         }
@@ -1114,10 +1114,6 @@ echo $this->section('scripts');
         // Run once on page load
         calculateDiscount();
         calculateVat();
-
-
-
-
 
     });
 </script>

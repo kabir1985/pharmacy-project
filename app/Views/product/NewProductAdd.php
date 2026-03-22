@@ -2,6 +2,12 @@
 echo $this->extend('layout');
 echo $this->section('content');
 ?>
+<style>
+    #sampleTable td,
+#sampleTable th{
+white-space:nowrap;
+}
+    </style>
 
 <div class='app-title'>
     <div>
@@ -22,25 +28,25 @@ echo $this->section('content');
         <div class='tile collapseable show animate__animated  animate__fadeInUp'>
             <div class='tile-body'>
                 <div class='table-responsive'>
-                    <table class='table table-hover table-bordered' id='sampleTable'>
+                    <table class='table table-hover table-bordered dt-responsive nowrap' id='sampleTable' width="100%">
                         <thead>
 
                             <tr>
-                                <th>image</th>
+                                <th>img</th>
                                 <th>Name</th>
                                 <th>Category</th>
                                 <!-- <th>Brand</th> -->
 
-                                <th>Opening stock</th>
-                                <th>Base Price</th>
+                                <th>Open.Stock</th>
+                                <th>Base.Price</th>
                                 <th>Tax%</th>
-                                <th>Tax Amt</th>
-                                <th>purchase Price</th>
+                                <th>Tax.Amt</th>
+                                <th>Pur.Price</th>
 
-                                <th>tax type</th>
+                                <th>Tax.Type</th>
                                 <th>profit-margin</th>
-                                <th>Sales Price</th>
-                                <th>Final Price</th>
+                                <th>Sales.Price</th>
+                                <th>Final</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -225,7 +231,7 @@ echo $this->section('content');
 
 
                         <div class='form-group col-md-4'>
-                            <label>TAX %</label>
+                            <label>Purchase (VAT/TAX) %</label>
                             <select id="tax_id" name="tax_id" class="form-control" required>
                                 <option value="">Select Tax</option>
                                 <?php foreach ($tax_show as $row): ?>
@@ -477,6 +483,7 @@ echo $this->section('scripts');
 ?>
 
 <!-- Data table plugin-->
+ <link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.responsive.min.css') ?>">
 <script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
 <script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
@@ -551,10 +558,10 @@ $('#tax_type, #tax_id').on('change', calculatePrice);
     });
 
 
-
-
-
-    $('#sampleTable').DataTable();
+    $('#sampleTable').DataTable({
+    responsive: true,
+    autoWidth: false
+});
 
     ////-------------------Product Entry Form-------------------------//
 

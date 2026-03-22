@@ -1,0 +1,1212 @@
+DEBUG - 2026-03-22 13:11:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 13:11:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 13:11:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 13:11:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 13:14:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-22 15:03:07 --> mysqli_sql_exception: Unknown column 'quantity' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,\r\n...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,\r\n...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,\r\n...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,\r\n...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Purchase->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-03-22 15:03:07 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+[Method: GET, Route: purchase]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:03:07 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:03:07 --> [Caused by] mysqli_sql_exception: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 15:03:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-22 15:03:21 --> mysqli_sql_exception: Unknown column 'quantity' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,\r\n...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,\r\n...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,\r\n...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,\r\n...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Purchase->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-03-22 15:03:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+[Method: GET, Route: purchase]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:03:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:03:21 --> [Caused by] mysqli_sql_exception: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-22 15:08:05 --> mysqli_sql_exception: Unknown column 'quantity' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,\r\n...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,\r\n...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,\r\n...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,\r\n...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Purchase->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-03-22 15:08:05 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+[Method: GET, Route: purchase]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:08:05 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:08:05 --> [Caused by] mysqli_sql_exception: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-22 15:08:10 --> mysqli_sql_exception: Unknown column 'quantity' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,\r\n...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,\r\n...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,\r\n...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,\r\n...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Purchase->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-03-22 15:08:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+[Method: GET, Route: purchase]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:08:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:08:10 --> [Caused by] mysqli_sql_exception: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-22 15:10:05 --> mysqli_sql_exception: Unknown column 'quantity' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,\r\n...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,\r\n...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,\r\n...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,\r\n...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Purchase->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-03-22 15:10:05 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+[Method: GET, Route: purchase]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:10:05 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:10:05 --> [Caused by] mysqli_sql_exception: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-22 15:10:06 --> mysqli_sql_exception: Unknown column 'quantity' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,\r\n...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,\r\n...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,\r\n...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,\r\n...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Purchase->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-03-22 15:10:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+[Method: GET, Route: purchase]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:10:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:10:06 --> [Caused by] mysqli_sql_exception: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-03-22 15:11:46 --> mysqli_sql_exception: Unknown column 'quantity' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,\r\n...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,\r\n...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,\r\n...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,\r\n...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Purchase->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-03-22 15:11:46 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+[Method: GET, Route: purchase]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:11:46 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:11:46 --> [Caused by] mysqli_sql_exception: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 15:11:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-03-22 15:11:55 --> mysqli_sql_exception: Unknown column 'quantity' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,\r\n...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,\r\n...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,\r\n...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,\r\n...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Purchase->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-03-22 15:11:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+[Method: GET, Route: purchase]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:11:55 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-03-22 15:11:55 --> [Caused by] mysqli_sql_exception: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 4 APPPATH\Controllers\Purchase.php(44): CodeIgniter\Database\BaseConnection->query('SELECT piq.*,
+                tx.tax_percentage,
+                tx.tax_name,
+                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        FROM product_inital_stock as piq
+        LEFT JOIN (
+            SELECT product_id,SUM(quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+            ) as ppd
+           ON piq.product_id = ppd.product_id
+
+           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 15:12:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:15:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:15:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:15:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:15:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 15:18:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-22 16:22:15 --> ParseError: syntax error, unexpected token "=>", expecting "]"
+[Method: GET, Route: purchase]
+in APPPATH\Controllers\Purchase.php on line 84.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\Purchase.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Purchase')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Purchase')
+ 4 SYSTEMPATH\CodeIgniter.php(885): class_exists('\\App\\Controllers\\Purchase', true)
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 16:23:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:23:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-22 16:23:11 --> ErrorException: Array to string conversion
+[Method: POST, Route: purchase-product]
+in APPPATH\Controllers\Purchase.php on line 57.
+ 1 APPPATH\Controllers\Purchase.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\Purchase.php', 57)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->purchase_product()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 16:23:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:24:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-22 16:24:10 --> ErrorException: Array to string conversion
+[Method: POST, Route: purchase-product]
+in APPPATH\Controllers\Purchase.php on line 57.
+ 1 APPPATH\Controllers\Purchase.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\Purchase.php', 57)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->purchase_product()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 16:30:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:30:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-22 16:30:27 --> ErrorException: Undefined variable $purchaseList
+[Method: POST, Route: purchase-product]
+in APPPATH\Controllers\Purchase.php on line 57.
+ 1 APPPATH\Controllers\Purchase.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $purchaseList', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\Purchase.php', 57)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->purchase_product()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 16:30:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:31:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-22 16:31:15 --> ErrorException: Array to string conversion
+[Method: POST, Route: purchase-product]
+in APPPATH\Controllers\Purchase.php on line 57.
+ 1 APPPATH\Controllers\Purchase.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\Purchase.php', 57)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->purchase_product()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-22 16:39:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:39:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-22 16:39:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -10,5 +10,14 @@ class ProductPurchaseDetailsModel extends Model
 
     protected $primaryKey = 'purchase_id';
 
-    protected $allowedFields = ['purchase_invoice_id', 'product_id', 'unit_price', 'quantity', 'total_price'];
+    protected $allowedFields = [
+                                'purchase_invoice_id',
+                                'product_id',
+                                'quantity_per_pack',
+                                'box_quantity',
+                                'base_price_per_unit',
+                                'product_wise_vat_amount',
+                                'product_wise_discount_amount',
+                                'purchase_price'
+                                ];
 }

@@ -33,7 +33,7 @@ class Purchase extends BaseController
                 productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
         FROM product_inital_stock as piq
         LEFT JOIN (
-            SELECT product_id,SUM(quantity) as new_purchased
+            SELECT product_id,SUM(quantity_per_pack) as new_purchased
             FROM product_purchase_details
             GROUP BY product_id
             ) as ppd
@@ -48,90 +48,122 @@ class Purchase extends BaseController
         return view('purchase/purchase_add', $data);
     }
 
-    public function purchase_product()
-    {
-        $session = session();
-        $purchaseList = json_decode($this->request->getPost("cart_data"), true);
+  public function purchase_product()
+{
+    $session = session();
+    $purchaseList = json_decode($this->request->getPost("cart_data"), true);
 
-        echo "<pre>";
-        echo print_r($purchaseList);
-        echo "</pre>";
-        exit();
+    if (!$purchaseList || !is_array($purchaseList)) {
+        return $this->response->setJSON([
+            "status" => "error",
+            "message" => "Cart is empty or invalid!"
+        ]);
+    }
 
-        
-        $discount_on_total_price = $this->request->getPost('discount_on_total_price');
-        $supplier_id = $this->request->getPost('supplier_id');
+    $discount_on_total_price = (float) $this->request->getPost('discount_on_total_price') ?? 0;
+    $vat_on_total = (float) $this->request->getPost('vat_percent_on_total') ?? 0;
+    $supplier_id = $this->request->getPost('supplier_id');
 
-        $purchaser_id = $session->get('user_id');
+    $purchaser_id = $session->get('user_id');
 
-        // Start DB Transaction
-        $this->db->transStart();
+    // Start DB Transaction
+    $this->db->transStart();
 
-        // Invoice Generate
-        $day_no = date('z') + 1;
-        $unique_text = substr(md5(microtime(true) . mt_rand()), -5);
+    // Generate unique invoice
+    $day_no = date('z') + 1;
+    $unique_text = substr(md5(microtime(true) . mt_rand()), -5);
+    $invoice_id = strtoupper(
+        "PUR" . date("y") . str_pad($day_no, 3, "0", STR_PAD_LEFT) . $unique_text
+    );
 
-        $invoice_id = strtoupper(
-            "PUR" . date("y") . str_pad($day_no, 3, "0", STR_PAD_LEFT) . $unique_text
-        );
+    // Insert Master Purchase
+    $purchase_data = [
+        "purchase_invoice" => $invoice_id,
+        "purchaser_id" => $purchaser_id,
+        "payment_type" => "Cash",
+        "supplier_id" => $supplier_id,
+        "total_price" => 0, // Will update later
+        "discount_on_total_price" => $discount_on_total_price,
+        "vat_on_total" => $vat_on_total,
+        "net_total" => 0, // Will update later
+        "due_amount" => 0,
+        "purchase_date" => date("Y-m-d H:i:s"),
+    ];
+    $this->product_purchase_object->insert($purchase_data);
 
-        $purchase_data = [
-            "purchase_invoice" => $invoice_id,
-            "purchaser_id" => $purchaser_id,
-            "payment_type" => "Cash",
-            "discount_on_total_price" => $discount_on_total_price,
-            "supplier_id" => $supplier_id,
-            "purchase_date" => date("Y-m-d H:i:s"),
+    $total_purchase_amount = 0;
+    $purchase_details_invoice_data = [];
+
+    foreach ($purchaseList as $row) {
+
+        $quantity_per_pack = (int) $row['quantity_per_pack'] ?? 1;
+        $box_quantity = (int) $row['box_quantity'] ?? 1;
+        $base_price_per_unit = (float) $row['base_price'] ?? 0;
+        $tax_percentage = (float) $row['tax_percentage'] ?? 0;
+        $discount_percent = (float) $row['discount_percent'] ?? 0;
+
+        $total_qty = $quantity_per_pack * $box_quantity;
+        $base_total = $total_qty * $base_price_per_unit;
+
+        $vat_amount = $base_total * ($tax_percentage / 100);
+        $discount_amount = $base_total * ($discount_percent / 100);
+        $row_total = $base_total + $vat_amount - $discount_amount;
+
+        $total_purchase_amount += $row_total;
+
+        $purchase_details_invoice_data[] = [
+            "purchase_invoice_id" => $invoice_id,
+            "product_id" => $row['product_id'],
+            "quantity_per_pack" => $quantity_per_pack,
+            "box_quantity" => $box_quantity,
+            "base_price_per_unit" => $base_price_per_unit,
+            "product_wise_vat_amount" => $vat_amount,
+            "product_wise_discount_amount" => $discount_amount,
+            "purchase_amount" => $total_qty,
+            "total_price" => $row_total
         ];
 
-        $this->product_purchase_object->insert($purchase_data);
-
-        $purchase_details_invoice_data = [];
-
-        foreach ($purchaseList as $row) {
-
-            $unit_price = (float) $row['buying_unit_price'];
-            $quantity = (int) $row['quantity'];
-
-            $purchase_details_invoice_data[] = [
-                "purchase_invoice_id" => $invoice_id,
-                "product_id" => $row['product_id'],
-                "unit_price" => $unit_price,
-                "quantity" => $quantity,
-                "total_price" => $unit_price * $quantity,
-            ];
-////////////////////////////////যদি tax এর value নতুন হয় তাহলে tax Table update করা /////////////////
-            $tax_id = $row['tax_id'];
-            $tax_percentage = (float) $row['tax_percentage'];
-
-            $current_tax = $this->db->table('tax')->select('tax_percentage')
+        // Update tax table if needed
+        $tax_id = $row['tax_id'] ?? null;
+        if ($tax_id) {
+            $current_tax = $this->db->table('tax')
+                ->select('tax_percentage')
                 ->where('tax_id', $tax_id)
-                ->get()->getRowArray()['tax_percentage'];
+                ->get()->getRowArray()['tax_percentage'] ?? 0;
 
             if ($current_tax != $tax_percentage) {
                 $this->db->table('tax')
                     ->where('tax_id', $tax_id)
                     ->update(['tax_percentage' => $tax_percentage]);
             }
-/////////////////////////////////////////////////////////////////////////////////////////////////
-
-        } //foreach end here
-
-        $this->product_purchase_details_object->insertBatch($purchase_details_invoice_data);
-
-        $this->db->transComplete();
-
-        if ($this->db->transStatus() === false) {
-            return $this->response->setJSON([
-                "status" => "error",
-                "message" => "Purchase Failed!",
-            ]);
         }
+    }
 
+    // Insert purchase details batch
+    $this->product_purchase_details_object->insertBatch($purchase_details_invoice_data);
+
+    // Update master table with totals
+    $net_total = ($total_purchase_amount - $discount_on_total_price);
+    $net_total += ($net_total * ($vat_on_total / 100));
+
+    $this->product_purchase_object
+        ->where('purchase_invoice', $invoice_id)
+        ->set(['total_price' => $total_purchase_amount, 'net_total' => $net_total])
+        ->update();
+
+    $this->db->transComplete();
+
+    if ($this->db->transStatus() === false) {
         return $this->response->setJSON([
-            "status" => "success",
-            "message" => "Purchase Successful!",
-            "invoice_id" => $invoice_id,
+            "status" => "error",
+            "message" => "Purchase Failed!",
         ]);
     }
+
+    return $this->response->setJSON([
+        "status" => "success",
+        "message" => "Purchase Successful!",
+        "invoice_id" => $invoice_id,
+    ]);
+}
 }
