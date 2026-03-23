@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2026 at 04:42 PM
+-- Generation Time: Mar 23, 2026 at 03:55 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -488,7 +488,6 @@ CREATE TABLE `product_purchase` (
   `discount_on_total_price` decimal(10,2) DEFAULT NULL,
   `vat_on_total` decimal(10,2) DEFAULT NULL,
   `net_total` decimal(12,2) DEFAULT NULL,
-  `due_amount` decimal(12,2) DEFAULT NULL,
   `purchase_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -496,16 +495,10 @@ CREATE TABLE `product_purchase` (
 -- Dumping data for table `product_purchase`
 --
 
-INSERT INTO `product_purchase` (`product_purchase_id`, `purchase_invoice`, `purchaser_id`, `payment_type`, `supplier_id`, `total_price`, `discount_on_total_price`, `vat_on_total`, `net_total`, `due_amount`, `purchase_date`) VALUES
-(68, 'PUR251781C57D', '1', 'Cash', '', 0.00, 0.00, 0.00, 0.00, NULL, '2025-06-27 06:07:11'),
-(69, 'PUR25217AE21C', '18', 'Cash', '', 0.00, 0.00, 0.00, 0.00, NULL, '2025-08-05 00:41:40'),
-(70, 'PUR26054CAD8A', '18', 'Cash', '', 0.00, 7.00, 0.00, 0.00, NULL, '2026-02-23 08:57:44'),
-(71, 'PUR260545FFD9', '18', 'Cash', '', 0.00, 9.00, 0.00, 0.00, NULL, '2026-02-23 09:07:19'),
-(72, 'PUR26054DE36B', '18', 'Cash', '', 0.00, 0.00, 0.00, 0.00, NULL, '2026-02-23 09:42:35'),
-(73, 'PUR260543AC1C', '18', 'Cash', '', 0.00, 0.00, 0.00, 0.00, NULL, '2026-02-23 09:43:55'),
-(74, 'PUR26054DFB91', '18', 'Cash', '', 0.00, 0.00, 0.00, 0.00, NULL, '2026-02-23 09:46:35'),
-(75, 'PUR2605524A8D', '18', 'Cash', '', 0.00, 0.00, 0.00, 0.00, NULL, '2026-02-24 08:34:40'),
-(76, 'PUR26081BF8CE', '18', 'Cash', '106', 95.24, 0.00, 0.00, 95.24, 0.00, NULL);
+INSERT INTO `product_purchase` (`product_purchase_id`, `purchase_invoice`, `purchaser_id`, `payment_type`, `supplier_id`, `total_price`, `discount_on_total_price`, `vat_on_total`, `net_total`, `purchase_date`) VALUES
+(82, 'PUR260829FB8B', '18', 'Cash', '106', 98.10, 0.00, 0.00, 98.10, NULL),
+(83, 'PUR260829BD47', '18', 'Cash', '106', 100.00, 0.00, 0.00, 100.00, '2026-03-23 15:43:57'),
+(84, 'PUR2608255348', '18', 'Cash', '124', 100.00, 0.00, 0.00, 100.00, '2026-03-23 15:45:57');
 
 -- --------------------------------------------------------
 
@@ -530,17 +523,9 @@ CREATE TABLE `product_purchase_details` (
 --
 
 INSERT INTO `product_purchase_details` (`purchase_id`, `purchase_invoice_id`, `product_id`, `quantity_per_pack`, `box_quantity`, `base_price_per_unit`, `product_wise_vat_amount`, `product_wise_discount_amount`, `purchase_price`) VALUES
-(123, 'PUR251781C57D', 101, 0, 0, 500.00, 0.00, 0.00, 0),
-(124, 'PUR25217AE21C', 107, 0, 0, 30000.00, 0.00, 0.00, 0),
-(125, 'PUR26054CAD8A', 109, 0, 0, 60.00, 0.00, 0.00, 0),
-(126, 'PUR260545FFD9', 109, 0, 0, 60.00, 0.00, 0.00, 0),
-(127, 'PUR26054DE36B', 109, 0, 0, 60.00, 0.00, 0.00, 0),
-(128, 'PUR260543AC1C', 109, 0, 0, 60.00, 0.00, 0.00, 0),
-(129, 'PUR260543AC1C', 101, 0, 0, 500.00, 0.00, 0.00, 0),
-(130, 'PUR260543AC1C', 108, 0, 0, 100.00, 0.00, 0.00, 0),
-(131, 'PUR26054DFB91', 109, 0, 0, 60.00, 0.00, 0.00, 0),
-(132, 'PUR2605524A8D', 109, 0, 0, 60.00, 0.00, 0.00, 0),
-(133, 'PUR26081BF8CE', 1, 1, 1, 95.24, 0.00, 0.00, 0);
+(142, 'PUR260829FB8B', 1, 1, 1, 95.24, 4.76, 1.90, 0),
+(143, 'PUR260829BD47', 1, 1, 1, 95.24, 4.76, 0.00, 0),
+(144, 'PUR2608255348', 1, 1, 1, 95.24, 4.76, 0.00, 0);
 
 -- --------------------------------------------------------
 
@@ -948,7 +933,7 @@ INSERT INTO `tax` (`tax_id`, `tax_name`, `tax_percentage`) VALUES
 (8, 'Tax', 0.00),
 (9, 'VAT', 13.00),
 (11, 'None', 0.00),
-(12, 'final_tax', 15.00);
+(12, 'final_tax', 0.00);
 
 -- --------------------------------------------------------
 
@@ -1261,13 +1246,13 @@ ALTER TABLE `product_inital_stock`
 -- AUTO_INCREMENT for table `product_purchase`
 --
 ALTER TABLE `product_purchase`
-  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `product_purchase_details`
 --
 ALTER TABLE `product_purchase_details`
-  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT for table `product_unit`
