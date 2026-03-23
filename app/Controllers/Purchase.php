@@ -53,6 +53,11 @@ class Purchase extends BaseController
     $session = session();
     $purchaseList = json_decode($this->request->getPost("cart_data"), true);
 
+    // echo "<pre>";
+    // print_r($purchaseList);
+    // echo "</pre>";
+    // exit();
+
     if (!$purchaseList || !is_array($purchaseList)) {
         return $this->response->setJSON([
             "status" => "error",
@@ -65,31 +70,16 @@ class Purchase extends BaseController
     $supplier_id = $this->request->getPost('supplier_id');
 
     $purchaser_id = $session->get('user_id');
-
-    // Start DB Transaction
-    $this->db->transStart();
-
-    // Generate unique invoice
+        // Generate unique invoice
     $day_no = date('z') + 1;
     $unique_text = substr(md5(microtime(true) . mt_rand()), -5);
     $invoice_id = strtoupper(
         "PUR" . date("y") . str_pad($day_no, 3, "0", STR_PAD_LEFT) . $unique_text
     );
 
-    // Insert Master Purchase
-    $purchase_data = [
-        "purchase_invoice" => $invoice_id,
-        "purchaser_id" => $purchaser_id,
-        "payment_type" => "Cash",
-        "supplier_id" => $supplier_id,
-        "total_price" => 0, // Will update later
-        "discount_on_total_price" => $discount_on_total_price,
-        "vat_on_total" => $vat_on_total,
-        "net_total" => 0, // Will update later
-        "due_amount" => 0,
-        "purchase_date" => date("Y-m-d H:i:s"),
-    ];
-    $this->product_purchase_object->insert($purchase_data);
+    // Start DB Transaction
+    $this->db->transStart();
+
 
     $total_purchase_amount = 0;
     $purchase_details_invoice_data = [];
@@ -105,7 +95,8 @@ class Purchase extends BaseController
         $total_qty = $quantity_per_pack * $box_quantity;
         $base_total = $total_qty * $base_price_per_unit;
 
-        $vat_amount = $base_total * ($tax_percentage / 100);
+       // $vat_amount = $base_total * ($tax_percentage / 100);
+       $vat_amount = $row['tax_amount'];
         $discount_amount = $base_total * ($discount_percent / 100);
         $row_total = $base_total + $vat_amount - $discount_amount;
 
@@ -146,10 +137,25 @@ class Purchase extends BaseController
     $net_total = ($total_purchase_amount - $discount_on_total_price);
     $net_total += ($net_total * ($vat_on_total / 100));
 
-    $this->product_purchase_object
-        ->where('purchase_invoice', $invoice_id)
-        ->set(['total_price' => $total_purchase_amount, 'net_total' => $net_total])
-        ->update();
+
+    // Insert Master Purchase
+    $purchase_data = [
+        "purchase_invoice" => $invoice_id,
+        "purchaser_id" => $purchaser_id,
+        "payment_type" => "Cash",
+        "supplier_id" => $supplier_id,
+        "total_price" => $total_purchase_amount, // Will update later
+        "discount_on_total_price" => $discount_on_total_price,
+        "vat_on_total" => $vat_on_total,
+        "net_total" => $net_total, // Will update later
+        "purchase_date" => date("Y-m-d H:i:s"),
+    ];
+    $this->product_purchase_object->insert($purchase_data);
+
+    // $this->product_purchase_object
+    //     ->where('purchase_invoice', $invoice_id)
+    //     ->set(['total_price' => $total_purchase_amount, 'net_total' => $net_total])
+    //     ->update();
 
     $this->db->transComplete();
 

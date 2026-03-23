@@ -35,10 +35,10 @@ echo $this->section('content');
                             <th>Stock</th>
                             <th>QtyPerPack</th>
                             <th>BoxQty</th>
-                            <th>BasePrice/TP</th>
+                            <th>B.P/TP</th>
                             <th class="vat-column-header">P.Vat%</th>
                             <th>V.Amt</th>
-                            <th>Profit-margin</th>
+                            <!-- <th>Profit-margin</th> -->
                             <th>S.Price</th>
                             <th class="discount-column-header">Dis%</th>
                             <th class="text-end">Amount</th>
@@ -301,35 +301,33 @@ $(document).ready(function () {
 
                 <td>
                     <input data-id="${key}" class="product_quantity_change form-control form-control-sm"
-                    type="number" min="1" value="${item.quantity_per_pack}">
+                    type="number" step="any" value="${item.quantity_per_pack || 1}">
                 </td>
 
                 <td>
                     <input data-id="${key}" class="product_boxqty_change form-control form-control-sm"
-                    type="number" min="1" value="${item.box_quantity || 1}">
+                    type="number" step="any"  value="${item.box_quantity || 1}">
                 </td>
 
                 <td>
-                    <input type="number" class="buying_price form-control form-control-sm"
+                    <input type="text" class="buying_price form-control form-control-sm"
                     value="${item.base_price}" min="1">
                 </td>
 
                 <td>
-                    <input type="number" class="vat-input form-control form-control-sm"
-                    value="${item.tax_percentage || 0}" data-id="${key}">
+                    <input type="text" class="vat-input form-control form-control-sm" min="0"
+                    value="${item.tax_percentage}" data-id="${key}">
                 </td>
 
                 <td>${productVat.toFixed(2)}</td>
-
-                <td>${item.profit_margin || 0}</td>
-
+        
                 <td>
-                    <input type="number" class="sale_price form-control form-control-sm"
+                    <input type="text" class="sale_price form-control form-control-sm"
                     value="${item.sales_price}" data-id="${key}">
                 </td>
 
                 <td>
-                    <input type="number" class="discount_percent form-control form-control-sm"
+                    <input type="text" class="discount_percent form-control form-control-sm"
                     value="${item.discount_percent || 0}" data-id="${key}">
                 </td>
 
@@ -465,7 +463,7 @@ $(document).ready(function () {
 
                     product.quantity_per_pack = 1;
                     product.discount_percent = 0;
-                    product.tax_percentage = 0;
+                  //  product.tax_percentage = 0;
                     product.box_quantity = 1;
 
                     itemsInCart.push(product);
