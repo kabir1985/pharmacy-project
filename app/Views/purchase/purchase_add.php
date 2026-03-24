@@ -306,7 +306,7 @@ $(document).ready(function () {
 
                 <td>
                     <input data-id="${key}" class="product_boxqty_change form-control form-control-sm"
-                    type="number" step="any"  value="${item.box_quantity || 1}">
+                    type="number" step="any"  min='1' value="${item.box_quantity}">
                 </td>
 
                 <td>
