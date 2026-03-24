@@ -26,10 +26,14 @@ echo $this->section('content');
                         <thead>
                             <tr>
                                 <th>Product Name</th>
-                                <th>Purchase Price</th>
-                                <th>Tax</th>
-                                <th>Sales Price</th>
                                 <th>Current Stock</th>
+                                <th>Base Price</th>
+                                <th>Tax Amt</th>
+                                <th>Purchase Price</th>
+                                
+                                <th>Profit-margin%</th>
+                                <th>Sales Price</th>
+                              
                                 <th>Stock Value</th>
                                 <th>purchase by</th>
                             </tr>
@@ -38,14 +42,18 @@ echo $this->section('content');
                             <?php foreach ($stock_report_show as $row): 
                                 $total_stock = $row['initial_stock'] + $row['newPurchase'];
                                 $current_stock = $total_stock - $row['TotalSale'];
-                                $stock_value = $current_stock * $row['sellingPrice'];
+                                $stock_value = $current_stock * $row['sales_price'];
                             ?>
                                 <tr>
                                     <td><?= esc($row['product_name']); ?></td>
-                                    <td><?= esc($row['buyingPrice']); ?></td>
-                                    <td><?= esc($row['tAX']); ?></td>
-                                    <td><?= esc($row['sellingPrice']); ?></td>
                                     <td><?= $current_stock; ?></td>
+                                    <td><?= esc($row['base_price']); ?></td>
+                                    <td><?= esc($row['tax_amount']); ?></td>
+                                    <td><?= esc($row['purchase_price']); ?></td>
+                                    
+                                    <td><?= esc($row['profit_margin']); ?></td>
+                                    <td><?= esc($row['sales_price']); ?></td>
+                                    
                                     <td><?= $stock_value; ?></td>
                                     <td><?= esc($row['purchaser_name']); ?></td>
                                 </tr>

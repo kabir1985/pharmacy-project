@@ -34,20 +34,27 @@ class Stockreport extends BaseController
 $sql = "SELECT  
     pis.product_id, 
     pis.product_name, 
-    pis.buying_unit_price AS buyingPrice,
-    pis.selling_unit_price AS sellingPrice, 
-    pis.tax_perchantage AS tAX,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
     pis.productinitial_quantity AS initial_stock,
     IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
     IFNULL(sd_data.totalSale, 0) AS TotalSale,
     u.user_name AS purchaser_name  -- ✅ Added purchaser name
 FROM 
     product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id 
+    
 LEFT JOIN 
     (
         SELECT 
             ppd.product_id, 
-            SUM(ppd.quantity) AS totalPurchase,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
             MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
         FROM  
             product_purchase_details AS ppd
@@ -57,6 +64,9 @@ LEFT JOIN
             ppd.product_id
     ) AS ppd_data 
     ON pis.product_id = ppd_data.product_id
+
+ 
+
 LEFT JOIN
     (
         SELECT  
