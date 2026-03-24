@@ -66,7 +66,7 @@ class Purchase extends BaseController
     }
 
     $discount_on_total_price = (float) $this->request->getPost('discount_on_total_price') ?? 0;
-    $vat_on_total = (float) $this->request->getPost('vat_percent_on_total') ?? 0;
+    $vat_percent_on_total = (float) $this->request->getPost('vat_percent_on_total') ?? 0;
     $supplier_id = $this->request->getPost('supplier_id');
 
     $purchaser_id = $session->get('user_id');
@@ -95,8 +95,8 @@ class Purchase extends BaseController
         $total_qty = $quantity_per_pack * $box_quantity;
         $base_total = $total_qty * $base_price_per_unit;
 
-       // $vat_amount = $base_total * ($tax_percentage / 100);
-       $vat_amount = $row['tax_amount'];
+        $vat_amount = $base_total * ($tax_percentage / 100);
+       //$vat_amount = $row['tax_amount'];
         $discount_amount = $base_total * ($discount_percent / 100);
         $row_total = $base_total + $vat_amount - $discount_amount;
 
@@ -110,8 +110,8 @@ class Purchase extends BaseController
             "base_price_per_unit" => $base_price_per_unit,
             "product_wise_vat_amount" => $vat_amount,
             "product_wise_discount_amount" => $discount_amount,
-            "purchase_amount" => $total_qty,
-            "total_price" => $row_total
+            "purchase_price" => $row_total
+           // "total_price" => $row_total
         ];
 
         // Update tax table if needed
@@ -135,7 +135,9 @@ class Purchase extends BaseController
 
     // Update master table with totals
     $net_total = ($total_purchase_amount - $discount_on_total_price);
-    $net_total += ($net_total * ($vat_on_total / 100));
+    $net_total += ($net_total * ($vat_percent_on_total / 100));
+
+    $vat_amount_on_total_price = $total_purchase_amount * ( $vat_percent_on_total / 100);
 
 
     // Insert Master Purchase
@@ -144,10 +146,10 @@ class Purchase extends BaseController
         "purchaser_id" => $purchaser_id,
         "payment_type" => "Cash",
         "supplier_id" => $supplier_id,
-        "total_price" => $total_purchase_amount, // Will update later
-        "discount_on_total_price" => $discount_on_total_price,
-        "vat_on_total" => $vat_on_total,
-        "net_total" => $net_total, // Will update later
+        "invoice_total" => $total_purchase_amount, // Will update later
+        "discount_amount_on_invoice_total" => $discount_on_total_price,
+        "vat_amount_on_invoice_total" => $vat_amount_on_total_price,
+        "invoice_net_total" => $net_total, // Will update later
         "purchase_date" => date("Y-m-d H:i:s"),
     ];
     $this->product_purchase_object->insert($purchase_data);

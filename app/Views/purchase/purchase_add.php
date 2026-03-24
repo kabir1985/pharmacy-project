@@ -111,7 +111,7 @@ echo $this->section('content');
                                 <td colspan="4"></td>
                                 <td class="text-end p-0 m-0">VAT % on Total</td>
                                 <td class="text-end p-0 m-0">
-                                    <span id="vat_percent_on_total" class="badge bg-light">0.00</span>
+                                    <span id="vat_percent_on_total" class="badge bg-light">0.00 %</span>
                                 </td>
                             </tr>
 

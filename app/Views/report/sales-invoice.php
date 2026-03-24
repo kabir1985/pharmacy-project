@@ -103,7 +103,11 @@
             <div class="invoice-info">
                 <p><strong>No:</strong> <?= $invoice_info[0]['sales_invoice'] ?></p>
                 <p><strong>Date:</strong> <?= date('d-m-Y H:i', strtotime($invoice_info[0]['sales_date'])) ?></p>
-                <p><strong>Customer:</strong> <?= $invoice_info[0]['customer_type'] ?></p>
+                <p><strong>Customer:</strong> <?= $invoice_info[0]['customer_name'] ?></p>
+                <?php if($invoice_info[0]['customer_name']!='Walk-In-Customer'){?>
+                <p><strong>Mobile:</strong> <?= $invoice_info[0]['cus_phone'] ?></p>
+                <p><strong>Address:</strong> <?= $invoice_info[0]['cus_address'] ?></p>
+                <?php } ?>
             </div>
         </header>
 

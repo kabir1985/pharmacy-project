@@ -69,8 +69,38 @@ class PdfController extends BaseController
     public function invoice($salesId)
 {
     // Fetch sales info
-    $sql1 = "SELECT * FROM sales WHERE sales_id = " . $salesId;
-    $data['invoice_info'] = $this->db->query($sql1)->getResult('array');
+    // $sql1 = "SELECT * FROM sales WHERE sales_id = " . $salesId;
+    // $data['invoice_info'] = $this->db->query($sql1)->getResult('array');
+
+
+    // $data['invoice_info'] = $this->db->table('sales')
+    // ->select('sales.*, customer.cus_first_name, customer.cus_last_name, customer.cus_phone, customer.cus_address')
+    // ->join('customer', 'customer.customer_id = sales.customer_type', 'left')
+    // ->where('sales.sales_id', $salesId)
+    // ->get()
+    // ->getResultArray();
+
+
+    $data['invoice_info'] = $this->db->table('sales')
+    ->select("
+        sales.*,
+
+        CASE 
+            WHEN sales.customer_type = 'Walk-In-Customer' 
+            THEN 'Walk-In-Customer' 
+            ELSE CONCAT(customer.cus_first_name, ' ', customer.cus_last_name) 
+        END as customer_name,
+        customer.cus_phone,
+        customer.cus_address
+    ")
+    ->join('customer', 'customer.customer_id = sales.customer_type', 'left')
+    ->where('sales.sales_id', $salesId)
+    ->get()
+    ->getResultArray();
+
+
+
+
 
     if (!empty($data['invoice_info'])) {
 

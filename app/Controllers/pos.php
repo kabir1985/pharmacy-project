@@ -264,7 +264,7 @@ class Pos extends BaseController
                                 GROUP BY product_id) as sd
                 ON pis.product_id = sd.product_id
 
-                LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
+                LEFT JOIN (SELECT product_id, SUM(quantity_per_pack * box_quantity) as new_purchased
                 FROM product_purchase_details
                 GROUP BY product_id) as ppd
                 ON pis.product_id = ppd.product_id " . $condition;
@@ -313,7 +313,7 @@ class Pos extends BaseController
                                 FROM sales_details
                                 GROUP BY product_id) as sd ON pis.product_id = sd.product_id
 
-                LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
+                LEFT JOIN (SELECT product_id,SUM(quantity_per_pack * box_quantity) as new_purchased
                                 FROM product_purchase_details
                                 GROUP BY product_id) as ppd ON pis.product_id = ppd.product_id
                 WHERE ((productinitial_quantity + IFNULL(ppd.new_purchased,0)) - IFNULL(sd.total_sale,0))>0 AND  product_name like '%$search_product%' ";

@@ -15,10 +15,10 @@ class ProductPurchaseModel extends Model
                                'purchaser_id', 
                                'payment_type', 
                                'supplier_id', 
-                               'total_price', 
-                               'discount_on_total_price',
-                               'vat_on_total',
-                               'net_total',
+                               'invoice_total', 
+                               'discount_amount_on_invoice_total',
+                               'vat_amount_on_invoice_total',
+                               'invoice_net_total',
                                'purchase_date'
                                ];
 }
