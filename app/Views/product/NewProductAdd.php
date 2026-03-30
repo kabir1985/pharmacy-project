@@ -35,18 +35,19 @@ white-space:nowrap;
                                 <th>img</th>
                                 <th>Name</th>
                                 <th>Category</th>
-                                <!-- <th>Brand</th> -->
-
                                 <th>Open.Stock</th>
+
                                 <th>Base.Price</th>
+                                <th>Tax.Type</th>
                                 <th>Tax%</th>
                                 <th>Tax.Amt</th>
-                                <th>Pur.Price</th>
 
-                                <th>Tax.Type</th>
-                                <th>profit-margin</th>
-                                <th>Sales.Price</th>
-                                <th>Final</th>
+                                <th>Pur.Price</th>
+                                <th>profit-margin%</th>
+                                <th>Cost without VAT</th>
+                                <th>Sales.Price(before VAT)</th>
+                                <th>VAT on Sales</th>
+                                <th>Final Sales Price(Customer Pays)</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -69,19 +70,19 @@ white-space:nowrap;
 
                                 <td><?php echo $row11['productinitial_quantity'] ?></td>
                                 <td><?php echo $row11['base_price'] ?></td>
+                                <td><?php echo $row11['tax_type'] ?></td>
                                 <td><?php echo $row11['tax_percentage'] ?>%</td>
                                 <td><?php echo $row11['tax_amount'] ?></td>
-                                <td><?php echo $row11['purchase_price'] ?></td>
 
-                                <td><?php if ($row11['tax_type'] == 1) {
-                                            echo "with tax";
-                                        } else
-                                            echo "without tax";
+                                <td><?php echo $row11['purchase_price'] ?></td>                            
+                                <td><?php echo $row11['profit_margin_%'] ?></td>
+                                <td><?php echo $row11['cost_without_vat'] ?></td>
 
-                                        ?></td>
-                                <td><?php echo $row11['profit_margin'] ?></td>
-                                <td><?php echo $row11['sales_price'] ?></td>
-                                <td><?php echo $row11['final_price'] ?></td>
+                                <td><?php echo $row11['sales_price_before_vat'] ?></td>
+                                <td><?php echo $row11['vat_on_sales'] ?></td>
+
+                                <td><?php echo $row11['sales_price_for_customer'] ?></td>
+                                <!-- <td><?php //echo $row11['final_price'] ?></td> -->
 
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
@@ -95,7 +96,7 @@ white-space:nowrap;
                                             data-tax_percentage="<?php echo $row11['tax_percentage'] ?>"
                                             data-productinitial_quantity="<?php echo $row11['productinitial_quantity'] ?>"
                                             data-base_price="<?php echo $row11['base_price'] ?>"
-                                            data-final_price="<?php echo $row11['final_price'] ?>"
+                                       
                                             data-codefor_barcode="<?php echo $row11['codefor_barcode'] ?>"
                                             data-alert_quantity="<?php echo $row11['alert_quantity'] ?>">
                                             <i class="fa fa-edit"></i></a>
@@ -268,7 +269,7 @@ white-space:nowrap;
                                 placeholder="Selling Price">
                         </div>
                         <div class='form-group col-md-4'>
-                            <label>Sales Price</label>
+                            <label>Sales Price(vat/tax সহ)</label>
                             <input required type='text' required class='form-control' id="sales_price"
                                 name='sales_price' onkeypress="return accept_digit_only(event)"
                                 placeholder="Selling Price">
@@ -277,12 +278,7 @@ white-space:nowrap;
 
 
                     <div class='form-row'>
-                        <div class='form-group col-md-4'>
-                            <label>Fianl Price</label>
-                            <input required type='text' required class='form-control' id="final_price"
-                                name='final_price' onkeypress="return accept_digit_only(event)"
-                                placeholder="Selling Price" readonly>
-                        </div>
+
                         <div class='form-group col-md-4'>
                             <label>SKU(Stock Keeping Unit)</label>
                             <input type="text" class="form-control" name="sku" placeholder="SKU Code">
@@ -292,17 +288,19 @@ white-space:nowrap;
                             <input required type='text' required class='form-control' name='codefor_barcode'
                                 placeholder='Code for Barcode'>
                         </div>
+
+                        <div class='form-group col-md-4'>
+                            <label>Alert Quantity</label>
+                            <input type="number" class="form-control" name="alert_quantity" min="0" required>
+                        </div>
                     </div>
 
 
 
                     <div class="form-row">
 
-                        <div class='form-group col-md-6'>
-                            <label>Alert Quantity</label>
-                            <input type="number" class="form-control" name="alert_quantity" min="0" required>
-                        </div>
-                        <div class="form-group col-md-6">
+                   
+                        <div class="form-group col-md-12">
                             <label>Product Image</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="file" id="file">
@@ -409,11 +407,11 @@ white-space:nowrap;
                             <input type='text' class='form-control' name='base_price' id='base_price'
                                 onkeypress="return accept_digit_only(event)">
                         </div>
-                        <div class='form-group col-md-4'>
+                        <!-- <div class='form-group col-md-4'>
                             <label>Selling Unit Price</label>
                             <input type='text' required class='form-control' name='final_price' id='final_price'
                                 onkeypress="return accept_digit_only(event)">
-                        </div>
+                        </div> -->
                     </div>
 
 
@@ -524,15 +522,15 @@ function calculatePrice() {
     salesPrice = purchasePrice * (1 + margin / 100);
 
     // FINAL PRICE
-    if (taxType === 'without_tax') {
-        finalPrice = salesPrice + (salesPrice * taxPercent / 100);
-    } else {
-        finalPrice = salesPrice;
-    }
+    // if (taxType === 'without_tax') {
+    //     finalPrice = salesPrice + (salesPrice * taxPercent / 100);
+    // } else {
+    //     finalPrice = salesPrice;
+    // }
 
     $('#purchase_price').val(purchasePrice.toFixed(2));
     $('#sales_price').val(salesPrice.toFixed(2));
-    $('#final_price').val(finalPrice.toFixed(2));
+    // $('#final_price').val(finalPrice.toFixed(2));
 }
 
 // EVENTS
@@ -669,7 +667,7 @@ $('#tax_type, #tax_id').on('change', calculatePrice);
         //const tax_percentage = $(this).data('tax_percentage');
         const productinitial_quantity = $(this).data('productinitial_quantity');
         const base_price = $(this).data('base_price');
-        const final_price = $(this).data('final_price');
+       // const final_price = $(this).data('final_price');
         const codefor_barcode = $(this).data('codefor_barcode');
         const alert_quantity = $(this).data('alert_quantity');
 
@@ -709,7 +707,7 @@ $('#tax_type, #tax_id').on('change', calculatePrice);
 
         $('#productinitial_quantity').val(productinitial_quantity);
         $('#base_price').val(base_price);
-        $('#final_price').val(final_price);
+       // $('#final_price').val(final_price);
         $('#codefor_barcode').val(codefor_barcode);
         $('#alert_quantity').val(alert_quantity);
         // Call Modal Edit
