@@ -38,7 +38,6 @@ echo $this->section('content');
                             <th>B.P/TP</th>
                             <th class="vat-column-header">P.Vat%</th>
                             <th>V.Amt</th>
-                            <!-- <th>Profit-margin</th> -->
                             <th>S.Price</th>
                             <th class="discount-column-header">Dis%</th>
                             <th class="text-end">Amount</th>
@@ -62,21 +61,6 @@ echo $this->section('content');
                 </div>
 
                 <div class="card-body">
-                    <!-- <p class="card-title mb-2">
-                        <label class="switch">
-                            <input type="checkbox" id="fixedVatToggle">
-                            <span class="slider round"></span>
-                        </label>
-                        Product Wise VAT & Discount
-                    </p> -->
-
-                    <!-- <p class="card-title mb-2">
-                        <label class="switch">
-                            <input type="checkbox" id="vatperchantageToggle">
-                            <span class="slider round"></span>
-                        </label>
-                        VAT Perchantage
-                    </p> -->
 
                     <table class="table table-striped mb-0">
                         <tfoot>
@@ -85,18 +69,7 @@ echo $this->section('content');
                                 <td class="text-end pe-0">Total Price</td>
                                 <td id="totalPrice" class="text-end">0.00</td>
                             </tr>
-                            <!-- <tr>
-                                <td colspan="4"></td>
-                                <td class="text-end p-0 m-0">Discount on Total</td>
-                                <td class="text-end p-0 m-0">
-                                     <input style="width: 70px;"
-                                        class="border border-primary rounded extra-fields blur-field" type="text"
-                                        id="discount_on_total_price" readonly>
 
-                                        <span id="discount_on_total_price" class="badge bg-primary w-100 text-end">0.00</span>
-
-                                </td>
-                            </tr> -->
 
                             <tr>
                                 <td colspan="4"></td>
@@ -114,16 +87,6 @@ echo $this->section('content');
                                     <span id="vat_percent_on_total" class="badge bg-light">0.00 %</span>
                                 </td>
                             </tr>
-
-                            <!-- <tr>
-                                <td colspan="4"></td>
-                                <td class="text-end p-0 m-0">VAT% on Total</td>
-                                <td class="text-end p-0 m-0">
-                                    <input style="width: 70px;"
-                                        class="border border-info rounded extra-fields blur-field" type="text"
-                                        id="vat_on_total_price" readonly>
-                                </td>
-                            </tr> -->
 
 
                             <tr class="table-warning">
@@ -255,6 +218,8 @@ echo $this->section('scripts');
 <script>
 var productsList = <?= json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
 
+console.log(productsList);
+
 $(document).ready(function () {
 
     var itemsInCart = [];
@@ -280,18 +245,48 @@ $(document).ready(function () {
 
         $.each(itemsInCart, function (key, item) {
 
-            var baseTotal = Number(item.box_quantity) * Number(item.base_price);
+            // var baseTotal = Number(item.box_quantity) * Number(item.base_price);
 
-            // ✅ Product VAT
-            var vatPercent = Number(item.tax_percentage) || 0;
-            var productVat = baseTotal * (vatPercent / 100);
+            // // ✅ Product VAT
+            // var vatPercent = Number(item.tax_percentage) || 0;
+            // var productVat = baseTotal * (vatPercent / 100);
 
-            // ✅ Product Discount
-            var discountPercent = Number(item.discount_percent) || 0;
-            var productDiscount = baseTotal * (discountPercent / 100);
+            // // ✅ Product Discount
+            // var discountPercent = Number(item.discount_percent) || 0;
+            // var productDiscount = baseTotal * (discountPercent / 100);
 
-            // ✅ Final row total
-            var rowTotal = baseTotal + productVat - productDiscount;
+            // // ✅ Final row total
+            // var rowTotal = baseTotal + productVat - productDiscount;
+
+            var qty = Number(item.box_quantity) || 0;
+var basePrice = Number(item.base_price) || 0;
+var vatPercent = Number(item.tax_percentage) || 0;
+var taxType = item.tax_type;
+
+var purchaseTotal = 0;
+var productVat = 0;
+var costWithoutVat = 0;
+
+if (taxType === 'with_tax') {
+    // ✅ VAT included
+    purchaseTotal = qty * basePrice;
+
+    productVat = purchaseTotal * vatPercent / (100 + vatPercent);
+    costWithoutVat = purchaseTotal - productVat;
+
+} else {
+    // ✅ VAT exclusive
+    purchaseTotal = qty * basePrice;
+
+    productVat = purchaseTotal * (vatPercent / 100);
+    costWithoutVat = purchaseTotal;
+}
+
+// ✅ final row total
+var rowTotal = purchaseTotal + (taxType === 'without_tax' ? productVat : 0);
+
+
+
 
             totalPrice += rowTotal;
 
@@ -323,7 +318,7 @@ $(document).ready(function () {
         
                 <td>
                     <input type="text" class="sale_price form-control form-control-sm"
-                    value="${item.sales_price}" data-id="${key}">
+                    value="${item.sales_price_for_customer}" data-id="${key}" disabled>
                 </td>
 
                 <td>

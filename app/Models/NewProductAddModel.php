@@ -19,16 +19,17 @@ class NewProductAddModel extends Model
         'product_group', 
         'product_unit', 
         'codefor_barcode', 
-        'tax_id', 
         'productinitial_quantity', 
-        'base_price',            // selling unit price before tax
+        'base_price', 
+        'tax_type',  
+        'tax_id',    // for tax percentage %         
         'tax_amount', 
         'purchase_price', 
-        'tax_type', 
-        'profit_margin', 
-        'sales_price', 
-        'final_price', 
-        'selling_unit_price', 
+        'profit_margin_%',
+        'cost_without_vat', 
+        'sales_price_before_vat',
+        'vat_on_sales', 
+        'sales_price_for_customer', 
         'alert_quantity', 
         'product_image'
     ];

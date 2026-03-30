@@ -246,7 +246,7 @@ echo $this->section('content');
 
                                     <!-- Product Price -->
                                     <p class="text-primary mb-0" style="font-size: 0.7rem; font-weight: 600;">
-                                        ৳<?php echo number_format($row["final_price"], 2) ?>
+                                        ৳<?php echo number_format($row["sales_price_for_customer"], 2) ?>
                                     </p>
                                 </div>
 
@@ -897,7 +897,7 @@ echo $this->section('scripts');
             totalPrice = 0;
             $.each(itemsInCart, function (key, item) {
 
-                var baseTotal = parseInt(item.quantity) * parseFloat(item.final_price);
+                var baseTotal = parseInt(item.quantity) * parseFloat(item.sales_price_for_customer);
                 var subtotalPrice = baseTotal; // default, no VAT/Discount
 
                 // ✅ Only apply VAT/Discount if toggle is ON
@@ -920,7 +920,7 @@ echo $this->section('scripts');
                     'value="' + item.quantity +
                     '" onkeypress="return accept_digit_only(event)" min="0"+ max="99999"/> ' +
                     '</td>' +
-                    '<td>' + item.final_price + '</td>' +
+                    '<td>' + item.sales_price_for_customer + '</td>' +
                     '<td class="vat-column hide"><input type="number" name="vat" class="form-control form-control-sm vat_input" value="' +
                     (item.vat_input || 0) + '" min="0" step="0.01"></td>' +
                     '<td class="discount-column hide"><input type="number" name="discount_on_each_product" class="discount_percent form-control form-control-sm" value="' +
