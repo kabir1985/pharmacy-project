@@ -100,12 +100,12 @@ echo $this->section('content');
                                         <button type="button"
                                             class="btn btn-danger w-100 text-center text-md-start mb-2"
                                             id="openVatModal" data-toggle="modal" data-target="#vatModal">
-                                            VAT %
+                                            VAT % <!-- vat on total price from modal -->
                                         </button>
                                         <div>
                                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                                 data-target="#discountOnTotalModal">
-                                                Discount
+                                                Discount <!-- discount on total price from modal -->
                                             </button>
                                         </div>
 
@@ -216,81 +216,87 @@ echo $this->section('scripts');
 <script src="<?= base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
 <script src="<?= base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 <script>
-var productsList = <?= json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
+    var productsList = <?= json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
 
-console.log(productsList);
+    console.log(productsList);
 
-$(document).ready(function () {
+    $(document).ready(function () {
 
-    var itemsInCart = [];
-    var totalPrice = 0;
+        var itemsInCart = [];
+        var totalPrice = 0;
 
-    function enableButton() {
-        $("#productPurchase").prop("disabled", itemsInCart.length === 0);
-    }
+        function enableButton() {
+            $("#productPurchase").prop("disabled", itemsInCart.length === 0);
+        }
 
-    function totalCalculation() {
-        $("#totalPrice").html(totalPrice.toFixed(2));
-        recalcNetTotal(); // ✅ always sync
-    }
+        function totalCalculation() {
+            $("#totalPrice").html(totalPrice.toFixed(2));
+            recalcNetTotal(); // ✅ always sync
+        }
 
-    // ================= DRAW TABLE ================= //
-    function drawTable() {
 
-        const tbody = $("#cartTableBody");
-        tbody.empty();
 
-        totalPrice = 0;
-        let rows = "";
 
-        $.each(itemsInCart, function (key, item) {
+        // ================= DRAW TABLE ================= //
+        function drawTable() {
 
-            // var baseTotal = Number(item.box_quantity) * Number(item.base_price);
+            const tbody = $("#cartTableBody");
+            tbody.empty();
 
-            // // ✅ Product VAT
-            // var vatPercent = Number(item.tax_percentage) || 0;
-            // var productVat = baseTotal * (vatPercent / 100);
+            totalPrice = 0;
+            let rows = "";
 
-            // // ✅ Product Discount
-            // var discountPercent = Number(item.discount_percent) || 0;
-            // var productDiscount = baseTotal * (discountPercent / 100);
+            $.each(itemsInCart, function (key, item) {
 
-            // // ✅ Final row total
-            // var rowTotal = baseTotal + productVat - productDiscount;
+                // var baseTotal = Number(item.box_quantity) * Number(item.base_price);
 
-            var qty = Number(item.box_quantity) || 0;
+                // // ✅ Product VAT
+                // var vatPercent = Number(item.tax_percentage) || 0;
+                // var productVat = baseTotal * (vatPercent / 100);
+
+                // // ✅ Product Discount
+                // var discountPercent = Number(item.discount_percent) || 0;
+                // var productDiscount = baseTotal * (discountPercent / 100);
+
+                // // ✅ Final row total
+                // var rowTotal = baseTotal + productVat - productDiscount;
+  var qtyPerPack = Number(item.quantity_per_pack) || 0;
+var qty = Number(item.box_quantity) || 1;
 var basePrice = Number(item.base_price) || 0;
 var vatPercent = Number(item.tax_percentage) || 0;
+var discountPercent = Number(item.discount_percent) || 0;
 var taxType = item.tax_type;
 
-var purchaseTotal = 0;
+// 👉 Total quantity
+var totalQty = qtyPerPack * qty;
+
+// 👉 Base total price
+var purchaseTotal = totalQty * basePrice;
+
 var productVat = 0;
 var costWithoutVat = 0;
+var rowTotal = 0;
 
 if (taxType === 'with_tax') {
-    // ✅ VAT included
-    purchaseTotal = qty * basePrice;
-
+    // ✅ VAT included in price
     productVat = purchaseTotal * vatPercent / (100 + vatPercent);
+    productDiscountAmt = purchaseTotal * (discountPercent / 100);
     costWithoutVat = purchaseTotal - productVat;
+    rowTotal = purchaseTotal - productDiscountAmt;
 
 } else {
     // ✅ VAT exclusive
-    purchaseTotal = qty * basePrice;
-
     productVat = purchaseTotal * (vatPercent / 100);
+    productDiscountAmt = purchaseTotal * (discountPercent / 100);
     costWithoutVat = purchaseTotal;
+    rowTotal = purchaseTotal + productVat - productDiscountAmt;
 }
 
-// ✅ final row total
-var rowTotal = purchaseTotal + (taxType === 'without_tax' ? productVat : 0);
+// 👉 Grand total
+totalPrice += rowTotal;
 
 
-
-
-            totalPrice += rowTotal;
-
-            rows += `<tr data-index="${key}">
+                rows += `<tr data-index="${key}">
                 <td>${item.product_name}</td>
                 <td>${item.total_stock}</td>
 
@@ -332,189 +338,189 @@ var rowTotal = purchaseTotal + (taxType === 'without_tax' ? productVat : 0);
                     <button data-index="${key}" class="btn btn-sm btn-danger btn_item_delete">×</button>
                 </td>
             </tr>`;
-        });
+            });
 
-        tbody.html(rows);
+            tbody.html(rows);
 
-        totalCalculation();
-        enableButton();
-    }
-
-    // ================= NET TOTAL ================= //
-    function recalcNetTotal() {
-
-        var subtotal = parseFloat($("#totalPrice").text()) || 0;
-        var discount = parseFloat($("#discount_on_total_price").text()) || 0;
-        var vatPercent = parseFloat($("#vat_percent_on_total").text()) || 0;
-
-        var afterDiscount = subtotal - discount;
-        var vatAmount = afterDiscount * (vatPercent / 100);
-
-        var netTotal = afterDiscount + vatAmount;
-
-        $("#netTotalPrice").text(netTotal.toFixed(2));
-    }
-
-    // ================= EVENTS ================= //
-
-    $(document).on("input", ".product_quantity_change", function () {
-        var index = $(this).data("id");
-        itemsInCart[index].quantity_per_pack = Number($(this).val());
-        drawTable();
-    });
-
-    $(document).on("input", ".product_boxqty_change", function () {
-        var index = $(this).data("id");
-        itemsInCart[index].box_quantity = Number($(this).val());
-        drawTable();
-    });
-
-    $(document).on("input", ".vat-input", function () {
-        var index = $(this).data("id");
-        itemsInCart[index].tax_percentage = Number($(this).val());
-        drawTable();
-    });
-
-    $(document).on("input", ".discount_percent", function () {
-        var index = $(this).data("id");
-        itemsInCart[index].discount_percent = Number($(this).val());
-        drawTable();
-    });
-
-    $(document).on("click", ".btn_item_delete", function () {
-        var index = $(this).data("index");
-        itemsInCart.splice(index, 1);
-        drawTable();
-    });
-
-    // ================= VAT MODAL ================= //
-
-    $("#openVatModal").on("click", function () {
-        var currentVat = parseFloat($("#vat_percent_on_total").text()) || 0;
-        $("#vatInput").val(currentVat);
-    });
-
-    $("#saveVatBtn").on("click", function () {
-        var vatPercent = parseFloat($("#vatInput").val()) || 0;
-        $("#vat_percent_on_total").text(vatPercent.toFixed(2));
-        recalcNetTotal();
-        $("#vatModal").modal("hide");
-    });
-
-    $("#vatInput").on("input", function () {
-        var vatPercent = parseFloat($(this).val()) || 0;
-        $("#vat_percent_on_total").text(vatPercent.toFixed(2));
-        recalcNetTotal();
-    });
-
-    // ================= DISCOUNT ================= //
-
-    function updateLivePreview() {
-        var total = parseFloat($("#totalPrice").text()) || 0;
-        var discountValue = 0;
-
-        if ($("#fixedType").is(":checked")) {
-            discountValue = parseFloat($("#fixedAmount").val()) || 0;
-        } else {
-            var percent = parseFloat($("#percentAmount").val()) || 0;
-            discountValue = (total * percent) / 100;
+            totalCalculation();
+            enableButton();
         }
 
-        $("#discount_on_total_price").text(discountValue.toFixed(2));
-        recalcNetTotal();
-    }
+        // ================= NET TOTAL ================= //
+        function recalcNetTotal() {
 
-    $("#fixedAmount, #percentAmount").on("input", updateLivePreview);
-    $("#fixedType, #percentType").on("change", updateLivePreview);
+            var subtotal = parseFloat($("#totalPrice").text()) || 0;
+            var discount = parseFloat($("#discount_on_total_price").text()) || 0;
+            var vatPercent = parseFloat($("#vat_percent_on_total").text()) || 0;
 
-    $("#discountOnTotalModal .btn-primary").on("click", function () {
-        updateLivePreview();
-        $("#discountOnTotalModal").modal("hide");
-    });
+            var afterDiscount = subtotal - discount;
+            var vatAmount = afterDiscount * (vatPercent / 100);
 
-    // ================= ADD PRODUCT ================= //
+            var netTotal = afterDiscount + vatAmount;
 
-    $("#item").on('change', function () {
-        var product_id = $(this).val();
-        if (product_id > 0) addProductToCart(product_id);
-        $(this).val("0");
-    });
+            $("#netTotalPrice").text(netTotal.toFixed(2));
+        }
 
-    function addProductToCart(product_id) {
+        // ================= EVENTS ================= //
 
-        var found = false;
-
-        $.each(itemsInCart, function (key, item) {
-            if (item.product_id == product_id) {
-                item.quantity_per_pack += 1;
-                found = true;
-                return false;
-            }
+        $(document).on("input", ".product_quantity_change", function () {
+            var index = $(this).data("id");
+            itemsInCart[index].quantity_per_pack = Number($(this).val());
+            drawTable();
         });
 
-        if (!found) {
-            $.each(productsList, function (key, product) {
-                if (product.product_id == product_id) {
+        $(document).on("input", ".product_boxqty_change", function () {
+            var index = $(this).data("id");
+            itemsInCart[index].box_quantity = Number($(this).val());
+            drawTable();
+        });
 
-                    product.quantity_per_pack = 1;
-                    product.discount_percent = 0;
-                  //  product.tax_percentage = 0;
-                    product.box_quantity = 1;
+        $(document).on("input", ".vat-input", function () {
+            var index = $(this).data("id");
+            itemsInCart[index].tax_percentage = Number($(this).val());
+            drawTable();
+        });
 
-                    itemsInCart.push(product);
+        $(document).on("input", ".discount_percent", function () {
+            var index = $(this).data("id");
+            itemsInCart[index].discount_percent = Number($(this).val());
+            drawTable();
+        });
+
+        $(document).on("click", ".btn_item_delete", function () {
+            var index = $(this).data("index");
+            itemsInCart.splice(index, 1);
+            drawTable();
+        });
+
+        // ================= VAT on total price MODAL ================= //
+
+        $("#openVatModal").on("click", function () {
+            var currentVat = parseFloat($("#vat_percent_on_total").text()) || 0;
+            $("#vatInput").val(currentVat);
+        });
+
+        $("#saveVatBtn").on("click", function () {
+            var vatPercent = parseFloat($("#vatInput").val()) || 0;
+            $("#vat_percent_on_total").text(vatPercent.toFixed(2));
+            recalcNetTotal();
+            $("#vatModal").modal("hide");
+        });
+
+        $("#vatInput").on("input", function () {
+            var vatPercent = parseFloat($(this).val()) || 0;
+            $("#vat_percent_on_total").text(vatPercent.toFixed(2));
+            recalcNetTotal();
+        });
+
+        // ================= DISCOUNT on total price Modal ================= //
+
+        function updateLivePreview() {
+            var total = parseFloat($("#totalPrice").text()) || 0;
+            var discountValue = 0;
+
+            if ($("#fixedType").is(":checked")) {
+                discountValue = parseFloat($("#fixedAmount").val()) || 0;
+            } else {
+                var percent = parseFloat($("#percentAmount").val()) || 0;
+                discountValue = (total * percent) / 100;
+            }
+
+            $("#discount_on_total_price").text(discountValue.toFixed(2));
+            recalcNetTotal();
+        }
+
+        $("#fixedAmount, #percentAmount").on("input", updateLivePreview);
+        $("#fixedType, #percentType").on("change", updateLivePreview);
+
+        $("#discountOnTotalModal .btn-primary").on("click", function () {
+            updateLivePreview();
+            $("#discountOnTotalModal").modal("hide");
+        });
+
+        // ================= ADD PRODUCT ================= //
+
+        $("#item").on('change', function () {
+            var product_id = $(this).val();
+            if (product_id > 0) addProductToCart(product_id);
+            $(this).val("0");
+        });
+
+        function addProductToCart(product_id) {
+
+            var found = false;
+
+            $.each(itemsInCart, function (key, item) {
+                if (item.product_id == product_id) {
+                    item.quantity_per_pack += 1;
+                    found = true;
                     return false;
                 }
             });
+
+            if (!found) {
+                $.each(productsList, function (key, product) {
+                    if (product.product_id == product_id) {
+
+                        product.quantity_per_pack = 1;
+                        product.discount_percent = 0;
+                        //  product.tax_percentage = 0;
+                        product.box_quantity = 1;
+
+                        itemsInCart.push(product);
+                        return false;
+                    }
+                });
+            }
+
+            drawTable();
         }
+
+        // ================= PURCHASE ================= //
+
+        $("#productPurchase").on("click", function () {
+
+            var supplier_id = $("#supplier_id").val();
+
+            if (!supplier_id) {
+                alert("Please Select Supplier");
+                return;
+            }
+
+            if (itemsInCart.length === 0) {
+                alert("Cart is empty!");
+                return;
+            }
+
+            $(this).prop("disabled", true).text("Processing...");
+
+            $.ajax({
+                url: "<?= site_url('purchase-product') ?>",
+                type: "POST",
+                data: {
+                    cart_data: JSON.stringify(itemsInCart),
+                    discount_on_total_price: $("#discount_on_total_price").text(),
+                    vat_percent_on_total: $("#vat_percent_on_total").text(),
+                    supplier_id: supplier_id
+                },
+                success: function () {
+
+                    alert("Purchase Successful");
+
+                    // ✅ FIXED BUG
+                    itemsInCart = [];
+
+                    location.reload();
+                },
+                error: function () {
+                    alert("Error!");
+                    $("#productPurchase").prop("disabled", false).text("Purchase");
+                }
+            });
+        });
 
         drawTable();
-    }
-
-    // ================= PURCHASE ================= //
-
-    $("#productPurchase").on("click", function () {
-
-        var supplier_id = $("#supplier_id").val();
-
-        if (!supplier_id) {
-            alert("Please Select Supplier");
-            return;
-        }
-
-        if (itemsInCart.length === 0) {
-            alert("Cart is empty!");
-            return;
-        }
-
-        $(this).prop("disabled", true).text("Processing...");
-
-        $.ajax({
-            url: "<?= site_url('purchase-product') ?>",
-            type: "POST",
-            data: {
-                cart_data: JSON.stringify(itemsInCart),
-                discount_on_total_price: $("#discount_on_total_price").text(),
-                vat_percent_on_total: $("#vat_percent_on_total").text(),
-                supplier_id: supplier_id
-            },
-            success: function () {
-
-                alert("Purchase Successful");
-
-                // ✅ FIXED BUG
-                itemsInCart = [];
-
-                location.reload();
-            },
-            error: function () {
-                alert("Error!");
-                $("#productPurchase").prop("disabled", false).text("Purchase");
-            }
-        });
     });
-
-    drawTable();
-});
 </script>
 
 

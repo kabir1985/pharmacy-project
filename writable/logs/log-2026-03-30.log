@@ -86,3 +86,29 @@ DEBUG - 2026-03-30 11:23:13 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2026-03-30 11:39:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-03-30 11:41:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-03-30 11:42:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 15:47:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 15:47:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 15:47:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 15:47:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-03-30 15:47:40 --> ErrorException: Undefined array key "profit_margin_%"
+[Method: GET, Route: product]
+in APPPATH\Views\product\NewProductAdd.php on line 78.
+ 1 APPPATH\Views\product\NewProductAdd.php(78): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "profit_margin_%"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\NewProductAdd.php', 78)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\NewProductAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/NewProductAdd', [], true)
+ 5 APPPATH\Controllers\Product.php(57): view('product/NewProductAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Product->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Product))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-03-30 15:51:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 15:52:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 16:04:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 16:04:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 16:05:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 16:10:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 16:30:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-03-30 16:33:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
