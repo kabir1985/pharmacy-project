@@ -268,7 +268,8 @@ var discountPercent = Number(item.discount_percent) || 0;
 var taxType = item.tax_type;
 
 // 👉 Total quantity
-var totalQty = qtyPerPack * qty;
+//var totalQty = qtyPerPack * qty;
+var totalQty = qty;
 
 // 👉 Base total price
 var purchaseTotal = totalQty * basePrice;
