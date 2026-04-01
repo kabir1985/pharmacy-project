@@ -11,7 +11,7 @@ echo $this->section('content');
                     <select id="item" class="form-control select2" style="width:100%">
                         <option value="0">Select Product</option>
                         <?php foreach ($product_show_for_sale as $row): ?>
-                            <option value="<?= $row['product_id'] ?>"><?= $row['product_name'] ?></option>
+                        <option value="<?=$row['product_id']?>"><?=$row['product_name']?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -33,14 +33,15 @@ echo $this->section('content');
                         <tr class="table-info">
                             <th>Product</th>
                             <th>Stock</th>
-                            <th>QtyPerPack</th>
+                            <th>QtyPerBox</th>
                             <th>BoxQty</th>
+                            <th>PricePerBox</th>
                             <th>B.P/TP</th>
                             <th class="vat-column-header">P.Vat%</th>
                             <th>V.Amt</th>
                             <th>S.Price</th>
                             <th class="discount-column-header">Dis%</th>
-                            <th class="text-end">Amount</th>
+                            <th class="text-end">SubTotal</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -55,7 +56,7 @@ echo $this->section('content');
                     <select id="supplier_id" class="form-control select2 w-100" required>
                         <option value="">Select Supplier</option>
                         <?php foreach ($supplier_show as $row): ?>
-                            <option value="<?= $row['supplier_id'] ?>"><?= $row['supplier_name'] ?></option>
+                        <option value="<?=$row['supplier_id']?>"><?=$row['supplier_name']?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -100,12 +101,14 @@ echo $this->section('content');
                                         <button type="button"
                                             class="btn btn-danger w-100 text-center text-md-start mb-2"
                                             id="openVatModal" data-toggle="modal" data-target="#vatModal">
-                                            VAT % <!-- vat on total price from modal -->
+                                            VAT %
+                                            <!-- vat on total price from modal -->
                                         </button>
                                         <div>
                                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                                 data-target="#discountOnTotalModal">
-                                                Discount <!-- discount on total price from modal -->
+                                                Discount
+                                                <!-- discount on total price from modal -->
                                             </button>
                                         </div>
 
@@ -212,92 +215,94 @@ echo $this->endSection();
 <?php
 echo $this->section('scripts');
 ?>
-<script src="<?= base_url('assets/js/jquery.mycart.js') ?>"></script>
-<script src="<?= base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script src="<?= base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
+<script src="<?=base_url('assets/js/jquery.mycart.js')?>"></script>
+<script src="<?=base_url('assets/js/plugins/jquery.dataTables.min.js')?>"></script>
+<script src="<?=base_url('assets/js/plugins/dataTables.bootstrap.min.js')?>"></script>
 <script>
-    var productsList = <?= json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
+var productsList = <?=json_encode($product_show_for_sale, JSON_PRETTY_PRINT)?>;
 
-    console.log(productsList);
+console.log(productsList);
 
-    $(document).ready(function () {
+$(document).ready(function() {
 
-        var itemsInCart = [];
-        var totalPrice = 0;
+    var itemsInCart = [];
+    var totalPrice = 0;
 
-        function enableButton() {
-            $("#productPurchase").prop("disabled", itemsInCart.length === 0);
-        }
+    function enableButton() {
+        $("#productPurchase").prop("disabled", itemsInCart.length === 0);
+    }
 
-        function totalCalculation() {
-            $("#totalPrice").html(totalPrice.toFixed(2));
-            recalcNetTotal(); // ✅ always sync
-        }
-
-
+    function totalCalculation() {
+        $("#totalPrice").html(totalPrice.toFixed(2));
+        recalcNetTotal(); // ✅ always sync
+    }
 
 
-        // ================= DRAW TABLE ================= //
-        function drawTable() {
-
-            const tbody = $("#cartTableBody");
-            tbody.empty();
-
-            totalPrice = 0;
-            let rows = "";
-
-            $.each(itemsInCart, function (key, item) {
-
-                // var baseTotal = Number(item.box_quantity) * Number(item.base_price);
-
-                // // ✅ Product VAT
-                // var vatPercent = Number(item.tax_percentage) || 0;
-                // var productVat = baseTotal * (vatPercent / 100);
-
-                // // ✅ Product Discount
-                // var discountPercent = Number(item.discount_percent) || 0;
-                // var productDiscount = baseTotal * (discountPercent / 100);
-
-                // // ✅ Final row total
-                // var rowTotal = baseTotal + productVat - productDiscount;
-  var qtyPerPack = Number(item.quantity_per_pack) || 0;
-var qty = Number(item.box_quantity) || 1;
-var basePrice = Number(item.base_price) || 0;
-var vatPercent = Number(item.tax_percentage) || 0;
-var discountPercent = Number(item.discount_percent) || 0;
-var taxType = item.tax_type;
-
-// 👉 Total quantity
-//var totalQty = qtyPerPack * qty;
-var totalQty = qty;
-
-// 👉 Base total price
-var purchaseTotal = totalQty * basePrice;
-
-var productVat = 0;
-var costWithoutVat = 0;
-var rowTotal = 0;
-
-if (taxType === 'with_tax') {
-    // ✅ VAT included in price
-    productVat = purchaseTotal * vatPercent / (100 + vatPercent);
-    productDiscountAmt = purchaseTotal * (discountPercent / 100);
-    costWithoutVat = purchaseTotal - productVat;
-    rowTotal = purchaseTotal - productDiscountAmt;
-
-} else {
-    // ✅ VAT exclusive
-    productVat = purchaseTotal * (vatPercent / 100);
-    productDiscountAmt = purchaseTotal * (discountPercent / 100);
-    costWithoutVat = purchaseTotal;
-    rowTotal = purchaseTotal + productVat - productDiscountAmt;
-}
-
-// 👉 Grand total
-totalPrice += rowTotal;
 
 
-                rows += `<tr data-index="${key}">
+    // ================= DRAW TABLE ================= //
+    function drawTable() {
+
+        const tbody = $("#cartTableBody");
+        tbody.empty();
+
+        totalPrice = 0;
+        let rows = "";
+
+        $.each(itemsInCart, function(key, item) {
+
+            // var baseTotal = Number(item.box_quantity) * Number(item.base_price);
+
+            // // ✅ Product VAT
+            // var vatPercent = Number(item.tax_percentage) || 0;
+            // var productVat = baseTotal * (vatPercent / 100);
+
+            // // ✅ Product Discount
+            // var discountPercent = Number(item.discount_percent) || 0;
+            // var productDiscount = baseTotal * (discountPercent / 100);
+
+            // // ✅ Final row total
+            // var rowTotal = baseTotal + productVat - productDiscount;
+            var qtyPerPack = Number(item.quantity_per_pack) || 0;
+            var qty = Number(item.box_quantity) || 1;
+            var basePrice = Number(item.base_price) || 0;
+            var vatPercent = Number(item.tax_percentage) || 0;
+            var discountPercent = Number(item.discount_percent) || 0;
+            var taxType = item.tax_type;
+
+            var PricePerBox = qtyPerPack * basePrice;
+
+            // 👉 Total quantity
+            var totalQty = qtyPerPack * qty;
+            //var totalQty = qty;
+
+            // 👉 Base total price
+            var purchaseTotal = totalQty * basePrice;
+
+            var productVat = 0;
+            var costWithoutVat = 0;
+            var rowTotal = 0;
+
+            if (taxType === 'with_tax') {
+                // ✅ VAT included in price
+                productVat = purchaseTotal * vatPercent / (100 + vatPercent);
+                productDiscountAmt = purchaseTotal * (discountPercent / 100);
+                costWithoutVat = purchaseTotal - productVat;
+                rowTotal = purchaseTotal - productDiscountAmt;
+
+            } else {
+                // ✅ VAT exclusive
+                productVat = purchaseTotal * (vatPercent / 100);
+                productDiscountAmt = purchaseTotal * (discountPercent / 100);
+                costWithoutVat = purchaseTotal;
+                rowTotal = purchaseTotal + productVat - productDiscountAmt;
+            }
+
+            // 👉 Grand total
+            totalPrice += rowTotal;
+
+
+            rows += `<tr data-index="${key}">
                 <td>${item.product_name}</td>
                 <td>${item.total_stock}</td>
 
@@ -311,6 +316,12 @@ totalPrice += rowTotal;
                     type="number" step="any"  min='1' value="${item.box_quantity}">
                 </td>
 
+                
+                <td>
+                    <input type="text" class="price_per_box form-control form-control-sm"
+                    value="${PricePerBox}" data-id="${key}">
+                </td>
+
                 <td>
                     <input type="text" class="buying_price form-control form-control-sm"
                     value="${item.base_price}" min="1">
@@ -322,7 +333,7 @@ totalPrice += rowTotal;
                 </td>
 
                 <td>${productVat.toFixed(2)}</td>
-        
+
                 <td>
                     <input type="text" class="sale_price form-control form-control-sm"
                     value="${item.sales_price_for_customer}" data-id="${key}" disabled>
@@ -333,392 +344,393 @@ totalPrice += rowTotal;
                     value="${item.discount_percent || 0}" data-id="${key}">
                 </td>
 
+
                 <td class="text-end">${rowTotal.toFixed(2)}</td>
 
                 <td>
                     <button data-index="${key}" class="btn btn-sm btn-danger btn_item_delete">×</button>
                 </td>
             </tr>`;
-            });
+        });
 
-            tbody.html(rows);
+        tbody.html(rows);
 
-            totalCalculation();
-            enableButton();
+        totalCalculation();
+        enableButton();
+    }
+
+    // ================= NET TOTAL ================= //
+    function recalcNetTotal() {
+
+        var subtotal = parseFloat($("#totalPrice").text()) || 0;
+        var discount = parseFloat($("#discount_on_total_price").text()) || 0;
+        var vatPercent = parseFloat($("#vat_percent_on_total").text()) || 0;
+
+        var afterDiscount = subtotal - discount;
+        var vatAmount = afterDiscount * (vatPercent / 100);
+
+        var netTotal = afterDiscount + vatAmount;
+
+        $("#netTotalPrice").text(netTotal.toFixed(2));
+    }
+
+    // ================= EVENTS ================= //
+
+    $(document).on("input", ".product_quantity_change", function() {
+        var index = $(this).data("id");
+        itemsInCart[index].quantity_per_pack = Number($(this).val());
+        drawTable();
+    });
+
+    $(document).on("input", ".product_boxqty_change", function() {
+        var index = $(this).data("id");
+        itemsInCart[index].box_quantity = Number($(this).val());
+        drawTable();
+    });
+
+    $(document).on("input", ".vat-input", function() {
+        var index = $(this).data("id");
+        itemsInCart[index].tax_percentage = Number($(this).val());
+        drawTable();
+    });
+
+    $(document).on("input", ".discount_percent", function() {
+        var index = $(this).data("id");
+        itemsInCart[index].discount_percent = Number($(this).val());
+        drawTable();
+    });
+
+    $(document).on("click", ".btn_item_delete", function() {
+        var index = $(this).data("index");
+        itemsInCart.splice(index, 1);
+        drawTable();
+    });
+
+    // ================= VAT on total price MODAL ================= //
+
+    $("#openVatModal").on("click", function() {
+        var currentVat = parseFloat($("#vat_percent_on_total").text()) || 0;
+        $("#vatInput").val(currentVat);
+    });
+
+    $("#saveVatBtn").on("click", function() {
+        var vatPercent = parseFloat($("#vatInput").val()) || 0;
+        $("#vat_percent_on_total").text(vatPercent.toFixed(2));
+        recalcNetTotal();
+        $("#vatModal").modal("hide");
+    });
+
+    $("#vatInput").on("input", function() {
+        var vatPercent = parseFloat($(this).val()) || 0;
+        $("#vat_percent_on_total").text(vatPercent.toFixed(2));
+        recalcNetTotal();
+    });
+
+    // ================= DISCOUNT on total price Modal ================= //
+
+    function updateLivePreview() {
+        var total = parseFloat($("#totalPrice").text()) || 0;
+        var discountValue = 0;
+
+        if ($("#fixedType").is(":checked")) {
+            discountValue = parseFloat($("#fixedAmount").val()) || 0;
+        } else {
+            var percent = parseFloat($("#percentAmount").val()) || 0;
+            discountValue = (total * percent) / 100;
         }
 
-        // ================= NET TOTAL ================= //
-        function recalcNetTotal() {
+        $("#discount_on_total_price").text(discountValue.toFixed(2));
+        recalcNetTotal();
+    }
 
-            var subtotal = parseFloat($("#totalPrice").text()) || 0;
-            var discount = parseFloat($("#discount_on_total_price").text()) || 0;
-            var vatPercent = parseFloat($("#vat_percent_on_total").text()) || 0;
+    $("#fixedAmount, #percentAmount").on("input", updateLivePreview);
+    $("#fixedType, #percentType").on("change", updateLivePreview);
 
-            var afterDiscount = subtotal - discount;
-            var vatAmount = afterDiscount * (vatPercent / 100);
+    $("#discountOnTotalModal .btn-primary").on("click", function() {
+        updateLivePreview();
+        $("#discountOnTotalModal").modal("hide");
+    });
 
-            var netTotal = afterDiscount + vatAmount;
+    // ================= ADD PRODUCT ================= //
 
-            $("#netTotalPrice").text(netTotal.toFixed(2));
-        }
+    $("#item").on('change', function() {
+        var product_id = $(this).val();
+        if (product_id > 0) addProductToCart(product_id);
+        $(this).val("0");
+    });
 
-        // ================= EVENTS ================= //
+    function addProductToCart(product_id) {
 
-        $(document).on("input", ".product_quantity_change", function () {
-            var index = $(this).data("id");
-            itemsInCart[index].quantity_per_pack = Number($(this).val());
-            drawTable();
-        });
+        var found = false;
 
-        $(document).on("input", ".product_boxqty_change", function () {
-            var index = $(this).data("id");
-            itemsInCart[index].box_quantity = Number($(this).val());
-            drawTable();
-        });
-
-        $(document).on("input", ".vat-input", function () {
-            var index = $(this).data("id");
-            itemsInCart[index].tax_percentage = Number($(this).val());
-            drawTable();
-        });
-
-        $(document).on("input", ".discount_percent", function () {
-            var index = $(this).data("id");
-            itemsInCart[index].discount_percent = Number($(this).val());
-            drawTable();
-        });
-
-        $(document).on("click", ".btn_item_delete", function () {
-            var index = $(this).data("index");
-            itemsInCart.splice(index, 1);
-            drawTable();
-        });
-
-        // ================= VAT on total price MODAL ================= //
-
-        $("#openVatModal").on("click", function () {
-            var currentVat = parseFloat($("#vat_percent_on_total").text()) || 0;
-            $("#vatInput").val(currentVat);
-        });
-
-        $("#saveVatBtn").on("click", function () {
-            var vatPercent = parseFloat($("#vatInput").val()) || 0;
-            $("#vat_percent_on_total").text(vatPercent.toFixed(2));
-            recalcNetTotal();
-            $("#vatModal").modal("hide");
-        });
-
-        $("#vatInput").on("input", function () {
-            var vatPercent = parseFloat($(this).val()) || 0;
-            $("#vat_percent_on_total").text(vatPercent.toFixed(2));
-            recalcNetTotal();
-        });
-
-        // ================= DISCOUNT on total price Modal ================= //
-
-        function updateLivePreview() {
-            var total = parseFloat($("#totalPrice").text()) || 0;
-            var discountValue = 0;
-
-            if ($("#fixedType").is(":checked")) {
-                discountValue = parseFloat($("#fixedAmount").val()) || 0;
-            } else {
-                var percent = parseFloat($("#percentAmount").val()) || 0;
-                discountValue = (total * percent) / 100;
+        $.each(itemsInCart, function(key, item) {
+            if (item.product_id == product_id) {
+                item.quantity_per_pack += 1;
+                found = true;
+                return false;
             }
-
-            $("#discount_on_total_price").text(discountValue.toFixed(2));
-            recalcNetTotal();
-        }
-
-        $("#fixedAmount, #percentAmount").on("input", updateLivePreview);
-        $("#fixedType, #percentType").on("change", updateLivePreview);
-
-        $("#discountOnTotalModal .btn-primary").on("click", function () {
-            updateLivePreview();
-            $("#discountOnTotalModal").modal("hide");
         });
 
-        // ================= ADD PRODUCT ================= //
+        if (!found) {
+            $.each(productsList, function(key, product) {
+                if (product.product_id == product_id) {
 
-        $("#item").on('change', function () {
-            var product_id = $(this).val();
-            if (product_id > 0) addProductToCart(product_id);
-            $(this).val("0");
-        });
+                    product.quantity_per_pack = 1;
+                    product.discount_percent = 0;
+                    //  product.tax_percentage = 0;
+                    product.box_quantity = 1;
 
-        function addProductToCart(product_id) {
-
-            var found = false;
-
-            $.each(itemsInCart, function (key, item) {
-                if (item.product_id == product_id) {
-                    item.quantity_per_pack += 1;
-                    found = true;
+                    itemsInCart.push(product);
                     return false;
                 }
             });
-
-            if (!found) {
-                $.each(productsList, function (key, product) {
-                    if (product.product_id == product_id) {
-
-                        product.quantity_per_pack = 1;
-                        product.discount_percent = 0;
-                        //  product.tax_percentage = 0;
-                        product.box_quantity = 1;
-
-                        itemsInCart.push(product);
-                        return false;
-                    }
-                });
-            }
-
-            drawTable();
         }
 
-        // ================= PURCHASE ================= //
-
-        $("#productPurchase").on("click", function () {
-
-            var supplier_id = $("#supplier_id").val();
-
-            if (!supplier_id) {
-                alert("Please Select Supplier");
-                return;
-            }
-
-            if (itemsInCart.length === 0) {
-                alert("Cart is empty!");
-                return;
-            }
-
-            $(this).prop("disabled", true).text("Processing...");
-
-            $.ajax({
-                url: "<?= site_url('purchase-product') ?>",
-                type: "POST",
-                data: {
-                    cart_data: JSON.stringify(itemsInCart),
-                    discount_on_total_price: $("#discount_on_total_price").text(),
-                    vat_percent_on_total: $("#vat_percent_on_total").text(),
-                    supplier_id: supplier_id
-                },
-                success: function () {
-
-                    alert("Purchase Successful");
-
-                    // ✅ FIXED BUG
-                    itemsInCart = [];
-
-                    location.reload();
-                },
-                error: function () {
-                    alert("Error!");
-                    $("#productPurchase").prop("disabled", false).text("Purchase");
-                }
-            });
-        });
-
         drawTable();
+    }
+
+    // ================= PURCHASE ================= //
+
+    $("#productPurchase").on("click", function() {
+
+        var supplier_id = $("#supplier_id").val();
+
+        if (!supplier_id) {
+            alert("Please Select Supplier");
+            return;
+        }
+
+        if (itemsInCart.length === 0) {
+            alert("Cart is empty!");
+            return;
+        }
+
+        $(this).prop("disabled", true).text("Processing...");
+
+        $.ajax({
+            url: "<?=site_url('purchase-product')?>",
+            type: "POST",
+            data: {
+                cart_data: JSON.stringify(itemsInCart),
+                discount_on_total_price: $("#discount_on_total_price").text(),
+                vat_percent_on_total: $("#vat_percent_on_total").text(),
+                supplier_id: supplier_id
+            },
+            success: function() {
+
+                alert("Purchase Successful");
+
+                // ✅ FIXED BUG
+                itemsInCart = [];
+
+                location.reload();
+            },
+            error: function() {
+                alert("Error!");
+                $("#productPurchase").prop("disabled", false).text("Purchase");
+            }
+        });
     });
+
+    drawTable();
+});
 </script>
 
 
 <style>
-    /* Your existing styles for cols */
-    .col-1,
-    .col-2,
-    .col-3,
-    .col-4,
-    .col-5,
-    .col-6,
-    .col-7,
-    .col-8,
-    .col-9,
-    .col-10,
-    .col-11,
-    .col-12,
-    .col,
-    .col-auto,
-    .col-sm-1,
-    .col-sm-2,
-    .col-sm-3,
-    .col-sm-4,
-    .col-sm-5,
-    .col-sm-6,
-    .col-sm-7,
-    .col-sm-8,
-    .col-sm-9,
-    .col-sm-10,
-    .col-sm-11,
-    .col-sm-12,
-    .col-sm,
-    .col-sm-auto,
-    .col-md-1,
-    .col-md-2,
-    .col-md-3,
-    .col-md-4,
-    .col-md-5,
-    .col-md-6,
-    .col-md-7,
-    .col-md-8,
-    .col-md-9,
-    .col-md-10,
-    .col-md-11,
-    .col-md-12,
-    .col-md,
-    .col-md-auto,
-    .col-lg-1,
-    .col-lg-2,
-    .col-lg-3,
-    .col-lg-4,
-    .col-lg-5,
-    .col-lg-6,
-    .col-lg-7,
-    .col-lg-8,
-    .col-lg-9,
-    .col-lg-10,
-    .col-lg-11,
-    .col-lg-12,
-    .col-lg,
-    .col-lg-auto,
-    .col-xl-1,
-    .col-xl-2,
-    .col-xl-3,
-    .col-xl-4,
-    .col-xl-5,
-    .col-xl-6,
-    .col-xl-7,
-    .col-xl-8,
-    .col-xl-9,
-    .col-xl-10,
-    .col-xl-11,
-    .col-xl-12,
-    .col-xl,
-    .col-xl-auto {
-        position: relative;
-        width: 100%;
-        padding-right: 6px !important;
-        padding-left: 7px !important;
+/* Your existing styles for cols */
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col,
+.col-auto,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm,
+.col-sm-auto,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md,
+.col-md-auto,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg,
+.col-lg-auto,
+.col-xl-1,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl,
+.col-xl-auto {
+    position: relative;
+    width: 100%;
+    padding-right: 6px !important;
+    padding-left: 7px !important;
+}
+
+/* Toggle switch styling */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #17a2b8;
+}
+
+input:checked+.slider:before {
+    transform: translateX(30px);
+}
+
+.slider.round {
+    border-radius: 20px;
+}
+
+/* Hide elements with this class */
+.hide {
+    display: none !important;
+}
+
+.blur-field {
+    background-color: #f5f5f5;
+    /* light gray background */
+    opacity: 0.7;
+    /* slightly transparent */
+    color: #000;
+    /* keep text fully visible */
+}
+
+.modal-body input {
+    height: 45px;
+    font-size: 16px;
+}
+
+
+/* ============================= */
+/* MOBILE RESPONSIVE IMPROVEMENT */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    /* Make table font smaller */
+    table {
+        font-size: 12px;
     }
 
-    /* Toggle switch styling */
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 50px;
-        height: 20px;
-        vertical-align: middle;
-        margin-right: 8px;
+    /* Reduce padding inside table */
+    .table td,
+    .table th {
+        padding: 4px !important;
     }
 
-    .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
+    /* Input fields smaller */
+    .table input {
+        min-width: 70px;
+        font-size: 12px;
     }
 
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        transition: 0.4s;
-        border-radius: 20px;
+    /* Make summary card sticky bottom */
+    .card {
+        margin-top: 15px;
     }
 
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 14px;
-        width: 14px;
-        left: 3px;
-        bottom: 3px;
-        background-color: white;
-        transition: 0.4s;
-        border-radius: 50%;
+    /* Buttons full width on mobile */
+    .btn {
+        font-size: 13px;
     }
 
-    input:checked+.slider {
-        background-color: #17a2b8;
+    /* Reduce select height */
+    .select2-container .select2-selection--single {
+        height: 34px !important;
     }
 
-    input:checked+.slider:before {
-        transform: translateX(30px);
+    /* Cart scroll fix */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
-
-    .slider.round {
-        border-radius: 20px;
-    }
-
-    /* Hide elements with this class */
-    .hide {
-        display: none !important;
-    }
-
-    .blur-field {
-        background-color: #f5f5f5;
-        /* light gray background */
-        opacity: 0.7;
-        /* slightly transparent */
-        color: #000;
-        /* keep text fully visible */
-    }
-
-    .modal-body input {
-        height: 45px;
-        font-size: 16px;
-    }
-
-
-    /* ============================= */
-    /* MOBILE RESPONSIVE IMPROVEMENT */
-    /* ============================= */
-
-    @media (max-width: 768px) {
-
-        /* Make table font smaller */
-        table {
-            font-size: 12px;
-        }
-
-        /* Reduce padding inside table */
-        .table td,
-        .table th {
-            padding: 4px !important;
-        }
-
-        /* Input fields smaller */
-        .table input {
-            min-width: 70px;
-            font-size: 12px;
-        }
-
-        /* Make summary card sticky bottom */
-        .card {
-            margin-top: 15px;
-        }
-
-        /* Buttons full width on mobile */
-        .btn {
-            font-size: 13px;
-        }
-
-        /* Reduce select height */
-        .select2-container .select2-selection--single {
-            height: 34px !important;
-        }
-
-        /* Cart scroll fix */
-        .table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-    }
+}
 </style>
 
 <?php
