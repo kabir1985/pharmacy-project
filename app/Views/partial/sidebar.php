@@ -51,7 +51,9 @@ $menuSections = [
         'url'=>'#',
         'privileges'=>['purchase_product'],
         'children'=>[
-            ['label'=>'Purchase Product','url'=>'purchase','privileges'=>['purchase_product']]
+            ['label'=>'Purchase Product','url'=>'purchase','privileges'=>['purchase_product']],
+            //allpurchase
+            ['label'=>'All Purchase','url'=>'allpurchase','privileges'=>['purchase_product']]
         ]
     ],
     [

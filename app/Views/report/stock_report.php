@@ -5,7 +5,7 @@ echo $this->section('content');
 
 <div class='app-title'>	
     <div>
-        <h1><i class='fa fa-th-list'></i> Stock Report</h1>
+        <h1><i class='fa fa-th-list'></i> Stock / Purchse Report</h1>
     </div>
     <div class="mt-3 mb-3 d-flex gap-2">
         <button id="exportCsvBtn" class="btn btn-outline-success">
@@ -41,8 +41,8 @@ echo $this->section('content');
                         <tbody>
                             <?php foreach ($stock_report_show as $row): 
                                 $total_stock = $row['initial_stock'] + $row['newPurchase'];
-                                $current_stock = $total_stock - $row['TotalSale'];
-                                $stock_value = $current_stock * $row['sales_price'];
+                                $current_stock = $total_stock - $row['totalSale'];
+                                $stock_value = $current_stock * $row['sales_price_for_customer'];
                             ?>
                                 <tr>
                                     <td><?= esc($row['product_name']); ?></td>
@@ -52,7 +52,7 @@ echo $this->section('content');
                                     <td><?= esc($row['purchase_price']); ?></td>
                                     
                                     <td><?= esc($row['profit_margin']); ?></td>
-                                    <td><?= esc($row['sales_price']); ?></td>
+                                    <td><?= esc($row['sales_price_for_customer']); ?></td>
                                     
                                     <td><?= $stock_value; ?></td>
                                     <td><?= esc($row['purchaser_name']); ?></td>

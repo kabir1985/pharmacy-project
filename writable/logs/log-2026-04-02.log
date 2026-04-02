@@ -1,0 +1,1492 @@
+DEBUG - 2026-04-02 04:30:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 04:30:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 04:30:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 04:31:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 04:54:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 05:03:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 05:06:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 05:10:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 05:10:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 05:14:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 05:16:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 05:24:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 05:38:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 05:38:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:08:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:12:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:13:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:13:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:17:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:17:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:20:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:23:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:23:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:37:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:38:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:41:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:42:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:46:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 06:46:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-02 06:46:22 --> mysqli_sql_exception: Unknown column 'quantity' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*, p...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*, p...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*, p...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\profitloss.php(28): CodeIgniter\Database\BaseConnection->query('SELECT piq.*, p...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\profitloss->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\profitloss))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-04-02 06:46:22 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+[Method: GET, Route: profitloss]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\profitloss.php(28): CodeIgniter\Database\BaseConnection->query('SELECT piq.*, productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+      FROM product_inital_stock as piq
+      LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
+      FROM product_purchase_details
+      GROUP BY product_id) as ppd
+      ON piq.product_id = ppd.product_id')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\profitloss->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\profitloss))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 06:46:22 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*, productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+      FROM product_inital_stock as piq
+      LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
+      FROM product_purchase_details
+      GROUP BY product_id) as ppd
+      ON piq.product_id = ppd.product_id')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*, productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+      FROM product_inital_stock as piq
+      LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
+      FROM product_purchase_details
+      GROUP BY product_id) as ppd
+      ON piq.product_id = ppd.product_id')
+ 3 APPPATH\Controllers\profitloss.php(28): CodeIgniter\Database\BaseConnection->query('SELECT piq.*, productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+      FROM product_inital_stock as piq
+      LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
+      FROM product_purchase_details
+      GROUP BY product_id) as ppd
+      ON piq.product_id = ppd.product_id')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\profitloss->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\profitloss))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 06:46:22 --> [Caused by] mysqli_sql_exception: Unknown column 'quantity' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT piq.*, productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+      FROM product_inital_stock as piq
+      LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
+      FROM product_purchase_details
+      GROUP BY product_id) as ppd
+      ON piq.product_id = ppd.product_id', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT piq.*, productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+      FROM product_inital_stock as piq
+      LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
+      FROM product_purchase_details
+      GROUP BY product_id) as ppd
+      ON piq.product_id = ppd.product_id')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT piq.*, productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+      FROM product_inital_stock as piq
+      LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
+      FROM product_purchase_details
+      GROUP BY product_id) as ppd
+      ON piq.product_id = ppd.product_id')
+ 4 APPPATH\Controllers\profitloss.php(28): CodeIgniter\Database\BaseConnection->query('SELECT piq.*, productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+      FROM product_inital_stock as piq
+      LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
+      FROM product_purchase_details
+      GROUP BY product_id) as ppd
+      ON piq.product_id = ppd.product_id')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\profitloss->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\profitloss))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-02 06:46:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-02 06:46:53 --> mysqli_sql_exception: Unknown column 'pis.sales_price' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT  \r\n    p...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT  \r\n    p...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT  \r\n    p...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Stockreport.php(86): CodeIgniter\Database\BaseConnection->query('SELECT  \r\n    p...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-04-02 06:46:53 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pis.sales_price' in 'field list'
+[Method: GET, Route: stockreport]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Stockreport.php(86): CodeIgniter\Database\BaseConnection->query('SELECT  
+    pis.product_id, 
+    pis.product_name, 
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM 
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id 
+    
+LEFT JOIN 
+    (
+        SELECT 
+            ppd.product_id, 
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM  
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp 
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY 
+            ppd.product_id
+    ) AS ppd_data 
+    ON pis.product_id = ppd_data.product_id
+
+ 
+
+LEFT JOIN
+    (
+        SELECT  
+            sd.product_id, 
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM    
+            sales_details AS sd
+        GROUP BY 
+            sd.product_id
+    ) AS sd_data 
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN 
+    user AS u 
+    ON u.user_id = ppd_data.purchaser_id')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 06:46:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pis.sales_price' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT  
+    pis.product_id, 
+    pis.product_name, 
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM 
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id 
+    
+LEFT JOIN 
+    (
+        SELECT 
+            ppd.product_id, 
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM  
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp 
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY 
+            ppd.product_id
+    ) AS ppd_data 
+    ON pis.product_id = ppd_data.product_id
+
+ 
+
+LEFT JOIN
+    (
+        SELECT  
+            sd.product_id, 
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM    
+            sales_details AS sd
+        GROUP BY 
+            sd.product_id
+    ) AS sd_data 
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN 
+    user AS u 
+    ON u.user_id = ppd_data.purchaser_id')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT  
+    pis.product_id, 
+    pis.product_name, 
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM 
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id 
+    
+LEFT JOIN 
+    (
+        SELECT 
+            ppd.product_id, 
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM  
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp 
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY 
+            ppd.product_id
+    ) AS ppd_data 
+    ON pis.product_id = ppd_data.product_id
+
+ 
+
+LEFT JOIN
+    (
+        SELECT  
+            sd.product_id, 
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM    
+            sales_details AS sd
+        GROUP BY 
+            sd.product_id
+    ) AS sd_data 
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN 
+    user AS u 
+    ON u.user_id = ppd_data.purchaser_id')
+ 3 APPPATH\Controllers\Stockreport.php(86): CodeIgniter\Database\BaseConnection->query('SELECT  
+    pis.product_id, 
+    pis.product_name, 
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM 
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id 
+    
+LEFT JOIN 
+    (
+        SELECT 
+            ppd.product_id, 
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM  
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp 
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY 
+            ppd.product_id
+    ) AS ppd_data 
+    ON pis.product_id = ppd_data.product_id
+
+ 
+
+LEFT JOIN
+    (
+        SELECT  
+            sd.product_id, 
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM    
+            sales_details AS sd
+        GROUP BY 
+            sd.product_id
+    ) AS sd_data 
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN 
+    user AS u 
+    ON u.user_id = ppd_data.purchaser_id')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 06:46:53 --> [Caused by] mysqli_sql_exception: Unknown column 'pis.sales_price' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT  
+    pis.product_id, 
+    pis.product_name, 
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM 
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id 
+    
+LEFT JOIN 
+    (
+        SELECT 
+            ppd.product_id, 
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM  
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp 
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY 
+            ppd.product_id
+    ) AS ppd_data 
+    ON pis.product_id = ppd_data.product_id
+
+ 
+
+LEFT JOIN
+    (
+        SELECT  
+            sd.product_id, 
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM    
+            sales_details AS sd
+        GROUP BY 
+            sd.product_id
+    ) AS sd_data 
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN 
+    user AS u 
+    ON u.user_id = ppd_data.purchaser_id', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT  
+    pis.product_id, 
+    pis.product_name, 
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM 
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id 
+    
+LEFT JOIN 
+    (
+        SELECT 
+            ppd.product_id, 
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM  
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp 
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY 
+            ppd.product_id
+    ) AS ppd_data 
+    ON pis.product_id = ppd_data.product_id
+
+ 
+
+LEFT JOIN
+    (
+        SELECT  
+            sd.product_id, 
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM    
+            sales_details AS sd
+        GROUP BY 
+            sd.product_id
+    ) AS sd_data 
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN 
+    user AS u 
+    ON u.user_id = ppd_data.purchaser_id')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT  
+    pis.product_id, 
+    pis.product_name, 
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM 
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id 
+    
+LEFT JOIN 
+    (
+        SELECT 
+            ppd.product_id, 
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM  
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp 
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY 
+            ppd.product_id
+    ) AS ppd_data 
+    ON pis.product_id = ppd_data.product_id
+
+ 
+
+LEFT JOIN
+    (
+        SELECT  
+            sd.product_id, 
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM    
+            sales_details AS sd
+        GROUP BY 
+            sd.product_id
+    ) AS sd_data 
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN 
+    user AS u 
+    ON u.user_id = ppd_data.purchaser_id')
+ 4 APPPATH\Controllers\Stockreport.php(86): CodeIgniter\Database\BaseConnection->query('SELECT  
+    pis.product_id, 
+    pis.product_name, 
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM 
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id 
+    
+LEFT JOIN 
+    (
+        SELECT 
+            ppd.product_id, 
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM  
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp 
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY 
+            ppd.product_id
+    ) AS ppd_data 
+    ON pis.product_id = ppd_data.product_id
+
+ 
+
+LEFT JOIN
+    (
+        SELECT  
+            sd.product_id, 
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM    
+            sales_details AS sd
+        GROUP BY 
+            sd.product_id
+    ) AS sd_data 
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN 
+    user AS u 
+    ON u.user_id = ppd_data.purchaser_id')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-02 06:52:06 --> mysqli_sql_exception: Unknown column 'pis.profit_margin' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT\r\n    pis...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT\r\n    pis...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT\r\n    pis...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Stockreport.php(65): CodeIgniter\Database\BaseConnection->query('SELECT\r\n    pis...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-04-02 06:52:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pis.profit_margin' in 'field list'
+[Method: GET, Route: stockreport]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Stockreport.php(65): CodeIgniter\Database\BaseConnection->query('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 06:52:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pis.profit_margin' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 3 APPPATH\Controllers\Stockreport.php(65): CodeIgniter\Database\BaseConnection->query('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 06:52:06 --> [Caused by] mysqli_sql_exception: Unknown column 'pis.profit_margin' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 4 APPPATH\Controllers\Stockreport.php(65): CodeIgniter\Database\BaseConnection->query('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-02 06:52:56 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantag' at line 7 in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT\r\n    pis...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT\r\n    pis...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT\r\n    pis...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Stockreport.php(65): CodeIgniter\Database\BaseConnection->query('SELECT\r\n    pis...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-04-02 06:52:56 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantag' at line 7
+[Method: GET, Route: stockreport]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Stockreport.php(65): CodeIgniter\Database\BaseConnection->query('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin_%,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 06:52:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantag' at line 7
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin_%,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin_%,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 3 APPPATH\Controllers\Stockreport.php(65): CodeIgniter\Database\BaseConnection->query('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin_%,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 06:52:56 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantag' at line 7
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin_%,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin_%,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin_%,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 4 APPPATH\Controllers\Stockreport.php(65): CodeIgniter\Database\BaseConnection->query('SELECT
+    pis.product_id,
+    pis.product_name,
+    pis.base_price,
+    pis.purchase_price ,
+    pis.sales_price_for_customer,
+    pis.profit_margin_%,
+    pis.tax_amount,
+    tx.tax_percentage AS tAX,
+    -- pis.tax_perchantage AS tAX,
+    pis.productinitial_quantity AS initial_stock,
+    IFNULL(ppd_data.totalPurchase, 0) AS newPurchase,
+    IFNULL(sd_data.totalSale, 0) AS TotalSale,
+    u.user_name AS purchaser_name  -- ✅ Added purchaser name
+FROM
+    product_inital_stock AS pis
+
+    LEFT JOIN tax as tx  ON pis.tax_id = tx.tax_id
+
+LEFT JOIN
+    (
+        SELECT
+            ppd.product_id,
+            SUM(ppd.quantity_per_pack * box_quantity) AS totalPurchase,
+            MAX(pp.purchaser_id) AS purchaser_id  -- ✅ Representative purchaser (if multiple purchases)
+        FROM
+            product_purchase_details AS ppd
+        LEFT JOIN product_purchase AS pp
+            ON ppd.purchase_invoice_id = pp.purchase_invoice
+        GROUP BY
+            ppd.product_id
+    ) AS ppd_data
+    ON pis.product_id = ppd_data.product_id
+
+
+
+LEFT JOIN
+    (
+        SELECT
+            sd.product_id,
+            SUM(sd.product_quantity_sold) AS totalSale
+        FROM
+            sales_details AS sd
+        GROUP BY
+            sd.product_id
+    ) AS sd_data
+    ON sd_data.product_id = pis.product_id
+LEFT JOIN
+    user AS u
+    ON u.user_id = ppd_data.purchaser_id')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 06:59:01 --> ErrorException: Undefined array key "TotalSale"
+[Method: GET, Route: stockreport]
+in APPPATH\Views\report\stock_report.php on line 44.
+ 1 APPPATH\Views\report\stock_report.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "TotalSale"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php', 44)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/stock_report', [], true)
+ 5 APPPATH\Controllers\Stockreport.php(58): view('report/stock_report', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 06:59:54 --> ErrorException: Undefined array key "sales_price"
+[Method: GET, Route: stockreport]
+in APPPATH\Views\report\stock_report.php on line 45.
+ 1 APPPATH\Views\report\stock_report.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "sales_price"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php', 45)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/stock_report', [], true)
+ 5 APPPATH\Controllers\Stockreport.php(58): view('report/stock_report', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-02 07:00:23 --> ErrorException: Undefined array key "sales_price"
+[Method: GET, Route: stockreport]
+in APPPATH\Views\report\stock_report.php on line 55.
+ 1 APPPATH\Views\report\stock_report.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "sales_price"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php', 55)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/stock_report', [], true)
+ 5 APPPATH\Controllers\Stockreport.php(58): view('report/stock_report', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Stockreport->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Stockreport))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-02 07:00:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 07:06:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 07:06:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 07:06:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 07:06:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 07:06:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 07:06:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-02 07:07:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
