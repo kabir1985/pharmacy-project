@@ -53,7 +53,7 @@ $menuSections = [
         'children'=>[
             ['label'=>'Purchase Product','url'=>'purchase','privileges'=>['purchase_product']],
             //allpurchase
-            ['label'=>'All Purchase','url'=>'allpurchase','privileges'=>['purchase_product']]
+            ['label'=>'Purchase List','url'=>'purchaseList','privileges'=>['stock_report']],
         ]
     ],
     [
@@ -86,7 +86,7 @@ $menuSections = [
         'url'=>'#',
         'privileges'=>['stock_report','sale_report','profit_loss','expense_report','customer_report'],
         'children'=>[
-            ['label'=>'Stock Report','url'=>'stockreport','privileges'=>['stock_report']  ],
+            ['label'=>'Stock/Purchase','url'=>'stockreport','privileges'=>['stock_report']  ],
             ['label'=>'Sales Report','url'=>'salesummeryreport','privileges'=>['sale_report']],
             ['label'=>'Profit & Loss','url'=>'profitloss','privileges'=>['profit_loss']],
             ['label'=>'Expense Report','url'=>'expensereport','privileges'=>['expense_report']],

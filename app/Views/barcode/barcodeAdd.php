@@ -3,7 +3,7 @@ echo $this->extend('layout');
 echo $this->section('content');
 ?>
 
-<div class="container">
+<div class="container-fluid">
     <!----------------Invoice Option Start------------------------>
 
 
@@ -137,7 +137,8 @@ $(document).ready(function() {
             url: barcodeprinturl, // complete url from siteurl/constroller/function
             method: 'POST',
             data: {
-                cart_data: itemsInCartObject,
+                //cart_data: itemsInCartObject,
+                cart_data: JSON.stringify(itemsInCart), // send as JSON string
                 // discount,
                 //others_cost,
                 supplier_id
@@ -174,7 +175,7 @@ $(document).ready(function() {
         if (newQuantity < 1) {
             itemsInCart.splice(index, 1);
         } else {
-            itemsInCart[index].quantity = newQuantity;
+            itemsInCart[index].quantity_per_pack = newQuantity;
         }
         drawTable();
     });
@@ -204,10 +205,10 @@ $(document).ready(function() {
                 var response = itemExist(product_id);
                 //console.log("testsdfsd sdf" + response);
                 if (response.inCart) {
-                    itemsInCart[response.productIndex].quantity = itemsInCart[response.productIndex]
-                        .quantity + 1;
+                    itemsInCart[response.productIndex].quantity_per_pack = itemsInCart[response.productIndex]
+                        .quantity_per_pack + 1;
                 } else {
-                    value.quantity = 1;
+                    value.quantity_per_pack = 1;
                     itemsInCart.push(value);
                 }
                 drawTable();
@@ -230,9 +231,9 @@ $(document).ready(function() {
                 '<td>' + item.product_name + '</td>' +
                 '<td>' + item.product_id + '</td>' +
                 '<td>' +
-                '<input data-oldQuantity="' + item.quantity + '" data-id="' + key +
+                '<input data-oldQuantity="' + item.quantity_per_pack + '" data-id="' + key +
                 '" class="product_quantity_change" type = "number"  size="10"' +
-                'value="' + item.quantity +
+                'value="' + item.quantity_per_pack +
                 '" onkeypress="return accept_digit_only(event)" min="0" max="99999"/> ' +
                 '</td>' +
                 '<td class = "text-right" > ' +

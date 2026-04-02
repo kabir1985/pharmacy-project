@@ -95,7 +95,7 @@ $routes->post('roleCreate', 'Role::create');
 $routes->post('roleUpdate', 'Role::updateUserRole');
 
 $routes->get('stockreport', 'Stockreport::index');
-$routes->get('allpurchase', 'Stockreport::index');
+$routes->get('purchaseList', 'Stockreport::index');
 
 $routes->get('salesummeryreport', 'SaleSummeryReport::index');
 $routes->get('profitloss', 'profitloss::index');
