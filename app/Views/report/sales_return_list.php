@@ -211,34 +211,49 @@ console.log(products);
     });
 
     /////////////////////////////
-    $('#returnForm').submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            url: '<?=base_url('ReturnController/process')?>',
-            method: 'POST',
-            data: $(this).serialize(),
-            success: function(res) {
-                if (res.status === 'success') {
-                    alert(res.message);
+    $('#returnForm').on('submit', function(e) {
+    e.preventDefault();
 
-                    // Close modal using Bootstrap 5 API
-                    var modalEl = document.getElementById('returnModal');
-                    var modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(
-                        modalEl);
-                    modal.hide();
+    let form = $(this);
 
-                    location.reload();
-                } else {
-                    alert('Error: ' + res.message);
-                }
-            },
-            error: function(xhr) {
-                alert('Error: ' + xhr.responseText);
+    $.ajax({
+        url: '<?= base_url("ReturnController/process") ?>',
+        type: 'POST',
+        data: form.serialize(),
+        dataType: 'json', // ✅ MUST for res.status
+        beforeSend: function() {
+            // ✅ prevent double click submit
+            form.find('button[type="submit"]').prop('disabled', true);
+        },
+        success: function(res) {
+
+            if (res.status === 'success') {
+
+                // ✅ Better than alert
+                alert(res.message);
+
+                $('#returnModal').modal('hide');
+
+                // ✅ Optional: reset form
+                form[0].reset();
+
+                // ✅ Smooth reload
+                setTimeout(() => location.reload(), 500);
+
+            } else {
+                alert('Error: ' + res.message);
             }
-        });
+        },
+        error: function(xhr) {
+            console.error(xhr.responseText); // debug
+            alert('Server Error! Check console.');
+        },
+        complete: function() {
+            // ✅ enable button again
+            form.find('button[type="submit"]').prop('disabled', false);
+        }
     });
-
-
+});
 
     ////////////////////////////////
 

@@ -21,6 +21,8 @@ $routes->get('salelist', 'salelist::index');
 $routes->get('salereturnlist', 'salereturnlist::index');
 $routes->post('ReturnController/getProducts', 'ReturnController::getProducts');
 $routes->get('salereturnlistshow', 'salereturnlist::saleReturnListShow');
+//ReturnController/process
+$routes->post('ReturnController/process', 'ReturnController::process');
 
 $routes->get('product', 'Product::index');
 $routes->post('initial-product-create', 'Product::create');
