@@ -23,7 +23,11 @@ class ReturnController extends BaseController
 // Get products for an invoice
 public function getProducts()
 {
-    $invoice = $this->request->getGet('invoice');
+   // $invoice = $this->request->getGet('invoice');
+    $invoice = $this->request->getPost('invoice');
+
+    //echo $invoice;
+    //exit();
 
     $products = $this->db->table('sales_details')
         ->where('sales_details_invoice', $invoice)

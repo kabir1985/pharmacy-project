@@ -59,7 +59,7 @@ class Pos extends BaseController
 
         // Fetch held sales
         $data['heldSales'] = $this->db->table('held_sales')
-        // ->orderBy('created_at', 'DESC')
+            // ->orderBy('created_at', 'DESC')
             ->get()
             ->getResultArray();
         return view('pos/pos_add', $data);
@@ -72,7 +72,7 @@ class Pos extends BaseController
         $productsList = $request->getPost('cart_data'); // array of products
 
         //  echo "<pre>";
-        // print_r($productsList);
+        //  print_r($productsList);
         //  echo "</pre>";
 
         //  exit();
@@ -110,9 +110,9 @@ class Pos extends BaseController
             $item['sales_details_invoice'] = $invoice_id;
             $item['product_id'] = $row['product_id'];
             $item['product_quantity_sold'] = $row['quantity'];
-            $item['unit_price'] = $row['final_price'];
+            $item['unit_price'] = $row['sales_price_for_customer'];
             $item['total_buy_price'] = $row['purchase_price'] * $row['quantity'];
-            $item['total_sale_price'] = $row['quantity'] * $row['final_price'];
+            $item['total_sale_price'] = $row['quantity'] * $row['sales_price_for_customer'];
             $item["productwiseVatPercnt"] = $row['vat'];
             $item["productwiseDiscountPercnt"] = $row['discount_on_each_product'];
             array_push($sales_details_invoice_data, $item);
@@ -149,32 +149,32 @@ class Pos extends BaseController
         if ($this->db->transStatus() === false) {
             $this->db->transRollback();
             $lastSalesId = 0; // fail
+            return $this->response->setJSON([
+                'status' => 'error'
+            ]);
         } else {
             $this->db->transCommit();
+
+            return $this->response->setJSON([
+                'status' => 'success',
+                'sales_id' => $lastSalesId
+            ]);
         }
-
-        $this->db->transComplete();
-
-        // Return JSON with actual sale_id
-        return $this->response->setJSON([
-            'status' => 'success',
-            'sales_id' => $lastSalesId,
-        ]);
     }
 
     public function hold_sale()
     {
         $session = session();
         $productsList = $this->request->getVar('cart_data');
-    
+
         $discountOnTotalPrice = $this->request->getVar('discountOnTotalPrice');
         $vatOnTotalPrice = $this->request->getVar('vatOnTotalPrice');
         $customer_type = $this->request->getVar('customer_type');
         $seller_id = $session->get('user_id');
-    
+
         // Auto Hold ID
         $hold_id = strtoupper('HLD' . date('ymdHis') . mt_rand(100, 999));
-    
+
         $hold_data = [
             'hold_id' => $hold_id,
             'seller_id' => $seller_id,
@@ -184,13 +184,13 @@ class Pos extends BaseController
             'vatOnTotalPrice' => $vatOnTotalPrice,
             'created_at' => date('Y-m-d H:i:s'),
         ];
-    
+
         $insert = $this->db->table('held_sales')->insert($hold_data);
-    
+
         if ($insert) {
-    
+
             $id = $this->db->insertID(); // actual DB id
-    
+
             return $this->response->setJSON([
                 'status' => 'success',
                 'id' => $id,
@@ -200,7 +200,7 @@ class Pos extends BaseController
                 'discountOnTotalPrice' => $discountOnTotalPrice,
                 'vatOnTotalPrice' => $vatOnTotalPrice,
             ]);
-    
+
         } else {
             return $this->response->setJSON([
                 'status' => 'error',
@@ -208,7 +208,7 @@ class Pos extends BaseController
             ]);
         }
     }
-    
+
 
 
 
@@ -274,26 +274,26 @@ class Pos extends BaseController
         if ($category) {
             foreach ($results as $key => $row) {
                 ?>
-<div class="col-3 mb-3 text-center">
-    <!-- Product Image -->
-    <img data-stock="<?php echo $row["total_stock"] ?>" data-id="<?php echo $row["product_id"] ?>"
-        src="<?php echo base_url('/public/uploads/' . $row["product_image"]) ?>"
-        class="img-thumbnail cart_item_image shadow-sm" alt="<?php echo htmlspecialchars($row["product_name"]) ?>"
-        style="width: 100px; height: 80px; object-fit: cover;">
+                <div class="col-3 mb-3 text-center">
+                    <!-- Product Image -->
+                    <img data-stock="<?php echo $row["total_stock"] ?>" data-id="<?php echo $row["product_id"] ?>"
+                        src="<?php echo base_url('/public/uploads/' . $row["product_image"]) ?>"
+                        class="img-thumbnail cart_item_image shadow-sm" alt="<?php echo htmlspecialchars($row["product_name"]) ?>"
+                        style="width: 100px; height: 80px; object-fit: cover;">
 
-    <!-- Product Name -->
-    <p class="mt-2 mb-1 fw-semibold text-dark"
-        style="font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-        <?php echo htmlspecialchars($row["product_name"]) ?>
-    </p>
+                    <!-- Product Name -->
+                    <p class="mt-2 mb-1 fw-semibold text-dark"
+                        style="font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        <?php echo htmlspecialchars($row["product_name"]) ?>
+                    </p>
 
-    <!-- Product Price -->
-    <p class="text-primary mb-0" style="font-size: 0.7rem; font-weight: 600;">
-        ৳<?php echo number_format($row["final_price"], 2) ?>
-    </p>
-</div>
-<?php
-}
+                    <!-- Product Price -->
+                    <p class="text-primary mb-0" style="font-size: 0.7rem; font-weight: 600;">
+                        ৳<?php echo number_format($row["sales_price_for_customer"], 2) ?>
+                    </p>
+                </div>
+                <?php
+            }
         } else {
             return $results;
         }
@@ -319,6 +319,6 @@ class Pos extends BaseController
                 WHERE ((productinitial_quantity + IFNULL(ppd.new_purchased,0)) - IFNULL(sd.total_sale,0))>0 AND  product_name like '%$search_product%' ";
 
         $results = $this->db->query($sql)->getResult('array');
-        echo(json_encode($results));
+        echo (json_encode($results));
     }
 }

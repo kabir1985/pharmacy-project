@@ -167,7 +167,6 @@
 $(document).ready(function() {
     $('#sampleTable').DataTable();
 
-
     ///////////////////////////
 
     $('body').on('click','.btn-return', function() {
@@ -183,6 +182,10 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function(products) {
+
+console.log(products);
+
+
                 let html = '';
                 products.forEach(p => {
                     html += `<tr>
