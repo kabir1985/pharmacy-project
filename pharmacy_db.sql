@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 30, 2026 at 11:43 AM
+-- Generation Time: Apr 09, 2026 at 12:17 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -91,20 +91,11 @@ CREATE TABLE `customer_due` (
 --
 
 INSERT INTO `customer_due` (`due_id`, `due_date`, `customer_id`, `due_invoice_no`, `due_amount`, `due_paid_amount`, `current_balance`) VALUES
-(361, '2025-07-31', '13', 'INV25212FA09C', 525, 0, 0),
-(364, '2025-08-05', '13', 'INV25217398B8', 4590, 0, 0),
-(365, '2025-08-24', '14', 'INV25236D85F4', 4590, 0, 0),
-(366, '2025-08-24', '13', 'INV252362FA4E', 34680, 0, 0),
-(367, '2025-08-24', '13', 'INV25236C2EFF', 25500, 0, 0),
-(368, '2025-08-24', '13', 'INV2523668F09', 4590, 0, 0),
-(369, '2025-08-24', '15', 'INV2523647FBE', 4590, 0, 0),
-(370, '2025-08-24', '13', 'INV252360433B', 25500, 0, 0),
 (371, '2025-08-24', '14', 'INV25236DBA25', 25500, 0, 0),
 (372, '2025-08-24', '13', 'INV25236417A9', 25500, 0, 0),
 (373, '2025-08-24', '13', 'INV2523699B53', 25500, 0, 0),
 (374, '2025-08-24', '13', 'INV2523646375', 525, 0, 0),
 (375, '2025-08-24', '13', 'INV25236FD6A8', 25500, 0, 0),
-(376, '2025-08-24', '13', 'INV25236222CB', 525, 0, 0),
 (377, '2025-08-24', '14', 'INV2523686A2A', 25500, 0, 0),
 (378, '2025-08-24', '13', 'INV2523686BA2', 25500, 0, 0),
 (379, '2025-08-24', '14', 'INV252363DE0B', 4590, 0, 0),
@@ -381,7 +372,6 @@ INSERT INTO `product_brand` (`brand_id`, `product_brand_name`, `product_category
 (29, 'Walton', 113),
 (30, 'Paracetamle', 114),
 (31, 'Beimco', 114),
-(32, 'asdadasdas', 105),
 (33, 'Panjabi', 105),
 (36, 'Lemon', 130);
 
@@ -407,7 +397,8 @@ INSERT INTO `product_category` (`product_category_id`, `category_name`) VALUES
 (112, 'Shoes'),
 (113, 'Electronics'),
 (114, 'Tablet'),
-(130, 'Medicine');
+(130, 'Medicine'),
+(131, 'test12');
 
 -- --------------------------------------------------------
 
@@ -495,7 +486,8 @@ INSERT INTO `product_purchase` (`product_purchase_id`, `purchase_invoice`, `purc
 (90, 'PUR26083B4F7B', '18', 'Cash', '106', 204.91, 2.00, 4.10, 206.96, '2026-03-24 06:25:46'),
 (91, 'PUR260831A079', '18', 'Cash', '124', 1050.00, 0.00, 0.00, 1050.00, '2026-03-24 07:59:55'),
 (92, 'PUR26089309AA', '18', 'Cash', '106', 105.00, 0.00, 0.00, 105.00, '2026-03-30 10:54:25'),
-(93, 'PUR26089495B5', '18', 'Cash', '106', 105.00, 0.00, 0.00, 105.00, '2026-03-30 10:54:42');
+(93, 'PUR26089495B5', '18', 'Cash', '106', 105.00, 0.00, 0.00, 105.00, '2026-03-30 10:54:42'),
+(94, 'PUR2609748917', '18', 'Cash', '106', 220.50, 0.00, 0.00, 220.50, '2026-04-07 06:01:50');
 
 -- --------------------------------------------------------
 
@@ -527,7 +519,8 @@ INSERT INTO `product_purchase_details` (`purchase_id`, `purchase_invoice_id`, `p
 (155, 'PUR26083B4F7B', 2, 1, 1, 100.00, 5.00, 2.00, 103.00),
 (156, 'PUR260831A079', 2, 10, 1, 100.00, 50.00, 0.00, 1050.00),
 (157, 'PUR26089309AA', 4, 1, 1, 100.00, 5.00, 0.00, 105.00),
-(158, 'PUR26089495B5', 4, 1, 1, 100.00, 5.00, 0.00, 105.00);
+(158, 'PUR26089495B5', 4, 1, 1, 100.00, 5.00, 0.00, 105.00),
+(159, 'PUR2609748917', 5, 1, 1, 210.00, 10.50, 0.00, 220.50);
 
 -- --------------------------------------------------------
 
@@ -546,7 +539,8 @@ CREATE TABLE `product_unit` (
 
 INSERT INTO `product_unit` (`product_unit_id`, `product_unit_name`) VALUES
 (16, 'gram'),
-(18, 'Kg');
+(18, 'Kg'),
+(19, 'Piece');
 
 -- --------------------------------------------------------
 
@@ -580,7 +574,16 @@ INSERT INTO `return_customer_due` (`due_id`, `return_due_date`, `customer_id`, `
 (46, '03-09-2025', '14', 'INV25173F2C4F', 0, 900, 0),
 (47, '03-09-2025', '14', 'INV25173F2C4F', 0, 700, 0),
 (48, '03-09-2025', '14', 'INV25173F2C4F', 0, 300, 0),
-(49, '10-09-2025', '14', 'INV25173A4B9B', 2448, 0, 0);
+(49, '10-09-2025', '14', 'INV25173A4B9B', 2448, 0, 0),
+(50, '08-04-2026', '13', 'INV25212FA09C', 525, 0, 0),
+(51, '08-04-2026', '13', 'INV25217398B8', 4590, 0, 0),
+(52, '08-04-2026', '14', 'INV25236D85F4', 4590, 0, 0),
+(53, '08-04-2026', '13', 'INV252362FA4E', 34680, 0, 0),
+(54, '08-04-2026', '13', 'INV25236C2EFF', 25500, 0, 0),
+(55, '08-04-2026', '13', 'INV2523668F09', 4590, 0, 0),
+(56, '08-04-2026', '15', 'INV2523647FBE', 4590, 0, 0),
+(57, '08-04-2026', '13', 'INV252360433B', 25500, 0, 0),
+(58, '09-04-2026', '13', 'INV25236222CB', 525, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -597,20 +600,30 @@ CREATE TABLE `return_sales` (
   `discountOnTotalPrice` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `vatOnTotalPrice` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `paid_amount` decimal(11,2) DEFAULT NULL,
-  `due_amount` decimal(11,2) DEFAULT NULL
+  `due_amount` decimal(11,2) DEFAULT NULL,
+  `return_by` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `return_sales`
 --
 
-INSERT INTO `return_sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales_date`, `payment_type`, `discountOnTotalPrice`, `vatOnTotalPrice`, `paid_amount`, `due_amount`) VALUES
-(65, 'INV2516893BBF', '14', '2025-06-17 11:36:21', 'Cash', '111', '222', 7777.00, 50678.00),
-(66, 'INV25173A4EDB', '13', '2025-06-22 11:51:09', 'Cash', '22', '3', 97.00, 700.00),
-(67, 'INV25173BA945', '16', '2025-06-22 12:05:44', 'Cash', '2', '2', 599.00, 24901.00),
-(68, 'INV251821D36E', '13', '2025-07-01 10:16:49', 'Cash', '500', '200', 20000.00, 20500.00),
-(69, 'INV25173F2C4F', '14', '2025-06-22 11:55:40', 'Cash', '0', '0', 0.00, 25500.00),
-(70, 'INV25173A4B9B', '14', '2025-06-22 11:54:30', 'Cash', '0', '0', 0.00, 2448.00);
+INSERT INTO `return_sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales_date`, `payment_type`, `discountOnTotalPrice`, `vatOnTotalPrice`, `paid_amount`, `due_amount`, `return_by`) VALUES
+(65, 'INV2516893BBF', '14', '2025-06-17 11:36:21', 'Cash', '111', '222', 7777.00, 50678.00, ''),
+(66, 'INV25173A4EDB', '13', '2025-06-22 11:51:09', 'Cash', '22', '3', 97.00, 700.00, ''),
+(67, 'INV25173BA945', '16', '2025-06-22 12:05:44', 'Cash', '2', '2', 599.00, 24901.00, ''),
+(68, 'INV251821D36E', '13', '2025-07-01 10:16:49', 'Cash', '500', '200', 20000.00, 20500.00, ''),
+(69, 'INV25173F2C4F', '14', '2025-06-22 11:55:40', 'Cash', '0', '0', 0.00, 25500.00, ''),
+(70, 'INV25173A4B9B', '14', '2025-06-22 11:54:30', 'Cash', '0', '0', 0.00, 2448.00, ''),
+(71, 'INV25212FA09C', '13', '2025-07-31 01:28:25', 'Cash', '0', '0', 0.00, 525.00, '18'),
+(72, 'INV25217398B8', '13', '2025-08-05 01:24:04', 'Cash', '0', '0', 0.00, 4590.00, '18'),
+(73, 'INV25236D85F4', '14', '2025-08-24 06:58:50', 'Cash', '0', '0', 0.00, 4590.00, '18'),
+(74, 'INV252362FA4E', '13', '2025-08-24 06:59:24', 'Cash', '0', '0', 0.00, 34680.00, '18'),
+(75, 'INV25236C2EFF', '13', '2025-08-24 07:00:47', 'Cash', '0', '0', 0.00, 25500.00, '18'),
+(76, 'INV2523668F09', '13', '2025-08-24 07:07:47', 'Cash', '0', '0', 0.00, 4590.00, '18'),
+(77, 'INV2523647FBE', '15', '2025-08-24 07:11:19', 'Cash', '0', '0', 0.00, 4590.00, '18'),
+(78, 'INV252360433B', '13', '2025-08-24 07:11:53', 'Cash', '0', '0', 0.00, 25500.00, '18'),
+(79, 'INV25236222CB', '13', '2025-08-24 07:24:43', 'Cash', '0', '0', 0.00, 525.00, '18');
 
 -- --------------------------------------------------------
 
@@ -643,7 +656,15 @@ INSERT INTO `return_sales_details` (`sales_details_id`, `sales_details_invoice`,
 (47, 'INV25173BA945', '104', 1, 25000.00, 20000, 25000.00, 500, 2),
 (54, 'INV251821D36E', '107', 1, 40000.00, 30000, 40000.00, 800, 2),
 (55, 'INV25173F2C4F', '104', 1, 25000.00, 20000, 25000.00, 500, 2),
-(56, 'INV25173A4B9B', '106', 2, 1200.00, 1580, 2400.00, 48, 2);
+(56, 'INV25173A4B9B', '106', 2, 1200.00, 1580, 2400.00, 48, 2),
+(57, 'INV25212FA09C', '105', 1, 500.00, 300, 500.00, 25, 5),
+(58, 'INV25217398B8', '103', 1, 4500.00, 3500, 4500.00, 90, 2),
+(59, 'INV25236D85F4', '103', 1, 4500.00, 3500, 4500.00, 90, 2),
+(60, 'INV252362FA4E', '103', 2, 4500.00, 7000, 9000.00, 180, 2),
+(61, 'INV252362FA4E', '104', 1, 25000.00, 20000, 25000.00, 500, 2),
+(62, 'INV2523668F09', '103', 1, 4500.00, 3500, 4500.00, 90, 2),
+(63, 'INV252360433B', '104', 1, 25000.00, 20000, 25000.00, 500, 2),
+(64, 'INV25236222CB', '105', 1, 500.00, 300, 500.00, 25, 5);
 
 -- --------------------------------------------------------
 
@@ -669,20 +690,11 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales_date`, `payment_type`, `discountOnTotalPrice`, `vatOnTotalPrice`, `paid_amount`, `due_amount`, `seller_id`) VALUES
-(616, 'INV25212FA09C', '13', '2025-07-30 19:28:25', 'Cash', 0, 0, 0.00, 525.00, '18'),
-(617, 'INV25217398B8', '13', '2025-08-04 19:24:04', 'Cash', 0, 0, 0.00, 4590.00, '18'),
-(618, 'INV25236D85F4', '14', '2025-08-24 00:58:50', 'Cash', 0, 0, 0.00, 4590.00, '18'),
-(619, 'INV252362FA4E', '13', '2025-08-24 00:59:24', 'Cash', 0, 0, 0.00, 34680.00, '18'),
-(620, 'INV25236C2EFF', '13', '2025-08-24 01:00:47', 'Cash', 0, 0, 0.00, 25500.00, '18'),
-(621, 'INV2523668F09', '13', '2025-08-24 01:07:47', 'Cash', 0, 0, 0.00, 4590.00, '18'),
-(622, 'INV2523647FBE', '15', '2025-08-24 01:11:19', 'Cash', 0, 0, 0.00, 4590.00, '18'),
-(623, 'INV252360433B', '13', '2025-08-24 01:11:53', 'Cash', 0, 0, 0.00, 25500.00, '18'),
 (624, 'INV25236DBA25', '14', '2025-08-24 01:12:23', 'Cash', 0, 0, 0.00, 25500.00, '18'),
 (625, 'INV25236417A9', '13', '2025-08-24 01:14:55', 'Cash', 0, 0, 0.00, 25500.00, '18'),
 (626, 'INV2523699B53', '13', '2025-08-24 01:16:01', 'Cash', 0, 0, 0.00, 25500.00, '18'),
 (627, 'INV2523646375', '13', '2025-08-24 01:17:42', 'Cash', 0, 0, 0.00, 525.00, '18'),
 (628, 'INV25236FD6A8', '13', '2025-08-24 01:20:41', 'Cash', 0, 0, 0.00, 25500.00, '18'),
-(629, 'INV25236222CB', '13', '2025-08-24 01:24:43', 'Cash', 0, 0, 0.00, 525.00, '18'),
 (630, 'INV2523686A2A', '14', '2025-08-24 01:40:03', 'Cash', 0, 0, 0.00, 25500.00, '18'),
 (631, 'INV2523686BA2', '13', '2025-08-24 01:41:40', 'Cash', 0, 0, 0.00, 25500.00, '18'),
 (632, 'INV252363DE0B', '14', '2025-08-24 01:43:16', 'Cash', 0, 0, 0.00, 4590.00, '18'),
@@ -787,21 +799,11 @@ CREATE TABLE `sales_details` (
 
 INSERT INTO `sales_details` (`sales_details_id`, `sales_details_invoice`, `product_id`, `product_quantity_sold`, `unit_price`, `total_buy_price`, `total_sale_price`, `productwiseVatPercnt`, `productwiseDiscountPercnt`) VALUES
 (905, 'INV251682190C', 106, 1, 1200.00, 790, 1200, 24, 2),
-(917, 'INV25212FA09C', 105, 1, 500.00, 300, 500, 25, 5),
-(918, 'INV25217398B8', 103, 1, 4500.00, 3500, 4500, 90, 2),
-(919, 'INV25236D85F4', 103, 1, 4500.00, 3500, 4500, 90, 2),
-(920, 'INV252362FA4E', 103, 2, 4500.00, 7000, 9000, 180, 2),
-(921, 'INV252362FA4E', 104, 1, 25000.00, 20000, 25000, 500, 2),
-(922, 'INV25236C2EFF', 104, 1, 25000.00, 20000, 25000, 500, 2),
-(923, 'INV2523668F09', 103, 1, 4500.00, 3500, 4500, 90, 2),
-(924, 'INV2523647FBE', 103, 1, 4500.00, 3500, 4500, 90, 2),
-(925, 'INV252360433B', 104, 1, 25000.00, 20000, 25000, 500, 2),
 (926, 'INV25236DBA25', 104, 1, 25000.00, 20000, 25000, 500, 2),
 (927, 'INV25236417A9', 104, 1, 25000.00, 20000, 25000, 500, 2),
 (928, 'INV2523699B53', 104, 1, 25000.00, 20000, 25000, 500, 2),
 (929, 'INV2523646375', 105, 1, 500.00, 300, 500, 25, 5),
 (930, 'INV25236FD6A8', 104, 1, 25000.00, 20000, 25000, 500, 2),
-(931, 'INV25236222CB', 105, 1, 500.00, 300, 500, 25, 5),
 (932, 'INV2523686A2A', 104, 1, 25000.00, 20000, 25000, 500, 2),
 (933, 'INV2523686BA2', 104, 1, 25000.00, 20000, 25000, 500, 2),
 (934, 'INV252363DE0B', 103, 1, 4500.00, 3500, 4500, 90, 2),
@@ -1248,7 +1250,7 @@ ALTER TABLE `product_brand`
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `product_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `product_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `product_group`
@@ -1260,43 +1262,43 @@ ALTER TABLE `product_group`
 -- AUTO_INCREMENT for table `product_inital_stock`
 --
 ALTER TABLE `product_inital_stock`
-  MODIFY `product_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `product_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=561;
 
 --
 -- AUTO_INCREMENT for table `product_purchase`
 --
 ALTER TABLE `product_purchase`
-  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `product_purchase_details`
 --
 ALTER TABLE `product_purchase_details`
-  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT for table `product_unit`
 --
 ALTER TABLE `product_unit`
-  MODIFY `product_unit_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `product_unit_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `return_customer_due`
 --
 ALTER TABLE `return_customer_due`
-  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `return_sales`
 --
 ALTER TABLE `return_sales`
-  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `return_sales_details`
 --
 ALTER TABLE `return_sales_details`
-  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `sales`
