@@ -20,12 +20,36 @@ class ReturnController extends BaseController
 // Get products for an invoice
     public function getProducts()
     {
+        $db = \Config\Database::connect();
         $invoice = $this->request->getPost('invoice');
 
-        $products = $this->db->table('sales_details')
-            ->where('sales_details_invoice', $invoice)
-            ->get()
-            ->getResultArray();
+        $builder = $db->query("
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.unit_price,
+                sd.total_buy_price,
+                sd.total_sale_price,
+                sd.product_quantity_sold AS sold_qty,
+
+IFNULL(r.return_qty,0) AS return_qty,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(return_qty) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ", [$invoice]);
+
+        $products = $builder->getResultArray();
 
         return $this->response->setJSON($products);
     }
@@ -33,77 +57,109 @@ class ReturnController extends BaseController
     public function process()
     {
 
-        $db = \Config\Database::connect();
+    $db = \Config\Database::connect();
 
-        $ProductSaleModel = new ProductSaleModel();
-        $ProductSaleDetailsModel = new ProductSaleDetailsModel();
-        $CustomerDueModel = new CustomerDueModel();
-    
-        $returnSaleModel = new ReturnSaleModel();
-        $returnSaleDetailsModel = new ReturnSaleDetailsModel();
-        $returnCustomerDueModel = new ReturnCustomerDueModel();
-    
-        $invoice    = $this->request->getPost('return_invoice');
-        $return_qty = $this->request->getPost('return_qty'); // array: product_id => qty
-        $reason     = $this->request->getPost('reason');
-    ///########################## validation #############################################///
+    $ProductSaleModel = new ProductSaleModel();
+    $ProductSaleDetailsModel = new ProductSaleDetailsModel();
+    $CustomerDueModel = new CustomerDueModel();
 
-        // Basic validation
-        if (!$invoice || empty($return_qty)) {
+    $returnSaleModel = new ReturnSaleModel();
+    $returnSaleDetailsModel = new ReturnSaleDetailsModel();
+    $returnCustomerDueModel = new ReturnCustomerDueModel();
+
+    $invoice = $this->request->getPost('return_invoice');
+    $return_qty = $this->request->getPost('return_qty');
+    $reason = $this->request->getPost('reason');
+
+    // ---------------- VALIDATION ----------------
+    if (!$invoice || empty($return_qty)) {
+        return $this->response->setJSON([
+            'status' => 'error',
+            'message' => 'Invoice and return quantities are required.',
+        ]);
+    }
+
+    $saleDetails = $ProductSaleDetailsModel
+        ->where('sales_details_invoice', $invoice)
+        ->findAll();
+
+    if (!$saleDetails) {
+        return $this->response->setJSON([
+            'status' => 'error',
+            'message' => 'No sale details found.',
+        ]);
+    }
+
+    // ---------------- VALIDATE BEFORE TRANSACTION ----------------
+    foreach ($return_qty as $pid => $qty) {
+
+        if ($qty <= 0) continue;
+
+        $product = $db->table('sales_details')
+            ->where('sales_details_invoice', $invoice)
+            ->where('product_id', $pid)
+            ->get()
+            ->getRowArray();
+
+        if (!$product) {
             return $this->response->setJSON([
                 'status' => 'error',
-                'message' => 'Invoice and return quantities are required.',
+                'message' => "Product not found: $pid",
             ]);
         }
-    
-        // Validate each return quantity
-        foreach ($return_qty as $product_id => $qty) {
-    
-            if ($qty <= 0) {
-                return $this->response->setJSON([
-                    'status' => 'error',
-                    'message' => 'Return quantity must be at least 1 for product ID: ' . $product_id,
-                ]);
-            }
-    
-            $product = $db->table('sales_details')
-                ->where('sales_details_invoice', $invoice)
-                ->where('product_id', $product_id)
-                ->get()
-                ->getRowArray();
-    
-            if (!$product) {
-                return $this->response->setJSON([
-                    'status' => 'error',
-                    'message' => 'Product not found for product ID: ' . $product_id,
-                ]);
-            }
-    
-            if ($qty > $product['product_quantity_sold']) {
-                return $this->response->setJSON([
-                    'status' => 'error',
-                    'message' => 'Return quantity cannot exceed sold quantity for product ID: ' . $product_id,
-                ]);
-            }
+
+        // already returned qty
+        $returned = $db->table('return_sales_details')
+            ->selectSum('return_qty')
+            ->where('sales_details_invoice', $invoice)
+            ->where('product_id', $pid)
+            ->get()
+            ->getRow()
+            ->return_qty ?? 0;
+
+        $available = $product['product_quantity_sold'] - $returned;
+
+        if ($qty > $available) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => "Return qty exceeds available qty for product ID: $pid",
+            ]);
         }
-        //#################################################################################
+    }
 
+    // ---------------- GET MASTER DATA ----------------
+    $sale = $ProductSaleModel
+        ->where('sales_invoice', $invoice)
+        ->first();
 
-        $db->transStart();
+    if (!$sale) {
+        return $this->response->setJSON([
+            'status' => 'error',
+            'message' => 'Sale not found.',
+        ]);
+    }
 
-        // ✅ Fetch data from sales
-        $sale = $ProductSaleModel->where('sales_invoice', $invoice)->first();
-        // ✅ Fetch data from sales_details
-        $saleDetails = $ProductSaleDetailsModel->where('sales_details_invoice', $invoice)->findAll();
+    // ---------------- FULL OR PARTIAL ----------------
+    $totalSold = 0;
+    $totalReturn = 0;
 
-        // ✅ Fetch data from customer_due
-        $CustomerDue = $CustomerDueModel->where('due_invoice_no', $invoice)->findAll();
+    foreach ($saleDetails as $d) {
+        $pid = $d['product_id'];
+        $totalSold += $d['product_quantity_sold'];
+        $totalReturn += $return_qty[$pid] ?? 0;
+    }
 
-        if (!$sale) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Sale not found.']);
-        }
+    $isFullReturn = ($totalSold == $totalReturn);
 
-        // ✅ Insert return sale
+    // ---------------- START TRANSACTION ----------------
+    $db->transStart();
+
+    // ---------------- INSERT RETURN MASTER (NO DUPLICATE) ----------------
+    $existingReturn = $returnSaleModel
+        ->where('sales_invoice', $invoice)
+        ->first();
+
+    if (!$existingReturn) {
         $returnSaleModel->insert([
             'sales_invoice' => $sale['sales_invoice'],
             'customer_type' => $sale['customer_type'],
@@ -114,67 +170,86 @@ class ReturnController extends BaseController
             'paid_amount' => $sale['paid_amount'],
             'due_amount' => $sale['due_amount'],
             'return_by' => $sale['seller_id'] ?? 0,
+            'reason' => $reason,
+            'return_type' => $isFullReturn ? 'FULL' : 'PARTIAL',
+        ]);
+    }
+
+    // ---------------- INSERT RETURN DETAILS + STOCK UPDATE ----------------
+    foreach ($saleDetails as $detail) {
+
+        $pid = $detail['product_id'];
+        $qty = $return_qty[$pid] ?? 0;
+
+        if ($qty <= 0) continue;
+
+        // insert return details
+        $returnSaleDetailsModel->insert([
+            'sales_details_invoice' => $detail['sales_details_invoice'],
+            'product_id' => $pid,
+            'return_qty' => $qty,
+            'unit_price' => $detail['unit_price'],
+            'total_buy_price' => $detail['total_buy_price'],
+            'total_sale_price' => $detail['total_sale_price'],
+            'productwiseVatPercnt' => $detail['productwiseVatPercnt'],
+            'productwiseDiscountPercnt' => $detail['productwiseDiscountPercnt'],
         ]);
 
+        // STOCK UPDATE
+        $db->table('product_inital_stock')
+            ->set('productinitial_quantity', 'productinitial_quantity + ' . $qty, false)
+            ->where('product_id', $pid)
+            ->update();
+    }
 
-        // ✅ Insert return details + restore stock
-       // foreach ($saleDetails as $detail) {
-        foreach ($saleDetails as $detail) {
+    // ---------------- CUSTOMER DUE RETURN ----------------
+    $CustomerDue = $CustomerDueModel
+        ->where('due_invoice_no', $invoice)
+        ->findAll();
 
-            $pid = $detail['product_id'];
-            $qty = $return_qty[$pid] ?? 0;
-        
-            if ($qty > 0) {
+    foreach ($CustomerDue as $due) {
+        $returnCustomerDueModel->insert([
+            'return_due_date' => date('d-m-Y'),
+            'customer_id' => $due['customer_id'],
+            'due_invoice_no' => $due['due_invoice_no'],
+            'due_amount' => $due['due_amount'],
+            'due_paid_amount' => $due['due_paid_amount'],
+            'current_balance' => $due['current_balance'],
+        ]);
+    }
 
-            $returnSaleDetailsModel->insert([
-                'sales_details_invoice' => $detail['sales_details_invoice'],
-                'product_id' => $detail['product_id'],
-                'product_quantity_sold' => $detail['product_quantity_sold'],
-                'unit_price' => $detail['unit_price'],
-                'total_buy_price' => $detail['total_buy_price'],
-                'total_sale_price' => $detail['total_sale_price'],
-                'productwiseVatPercnt' => $detail['productwiseVatPercnt'],
-                'productwiseDiscountPercnt' => $detail['productwiseDiscountPercnt'],
-            ]);
+    // ---------------- UPDATE/DELETE SALE ----------------
+    if ($isFullReturn) {
 
-            // // ✅ RESTORE STOCK
-            // $db->table('products')
-            //     ->where('product_id', $detail['product_id'])
-            //     ->set('quantity', 'quantity + ' . (int) $detail['product_quantity_sold'], false)
-            //     ->update();
-        }
-       }
-
-        // ✅ Insert return due
-        foreach ($CustomerDue as $dueList) {
-            $returnCustomerDueModel->insert([
-                'return_due_date' => date('d-m-Y'),
-                'customer_id' => $dueList['customer_id'],
-                'due_invoice_no' => $dueList['due_invoice_no'],
-                'due_amount' => $dueList['due_amount'],
-                'due_paid_amount' => $dueList['due_paid_amount'],
-                'current_balance' => $dueList['current_balance'],
-            ]);
-        }
-
-        // ✅ DELETE AFTER LOOP (IMPORTANT)
         $ProductSaleDetailsModel->where('sales_details_invoice', $invoice)->delete();
         $CustomerDueModel->where('due_invoice_no', $invoice)->delete();
         $ProductSaleModel->where('sales_invoice', $invoice)->delete();
 
-        $db->transComplete();
+    } else {
 
-        if ($db->transStatus() === false) {
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'Transaction failed.',
-            ]);
-        }
+        $ProductSaleModel
+            ->where('sales_invoice', $invoice)
+            ->set('return_status', 'PARTIAL')
+            ->update();
+    }
 
+    // ---------------- COMPLETE TRANSACTION ----------------
+    $db->transComplete();
+
+    if ($db->transStatus() === false) {
         return $this->response->setJSON([
-            'status' => 'success',
-            'message' => 'Return sale inserted successfully.',
+            'status' => 'error',
+            'message' => 'Transaction failed.',
         ]);
     }
+
+    return $this->response->setJSON([
+        'status' => 'success',
+        'message' => $isFullReturn
+            ? 'Full return completed successfully.'
+            : 'Partial return completed successfully.',
+    ]);
+}
+    ////////////////////////////////////////////////////////////////////////////
 
 }

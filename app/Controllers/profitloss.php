@@ -19,7 +19,7 @@ class profitloss extends BaseController
 
       $sql = "SELECT piq.*, productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
       FROM product_inital_stock as piq
-      LEFT JOIN (SELECT product_id,SUM(quantity) as new_purchased
+      LEFT JOIN (SELECT product_id,SUM(quantity_per_pack) as new_purchased
       FROM product_purchase_details
       GROUP BY product_id) as ppd
       ON piq.product_id = ppd.product_id";

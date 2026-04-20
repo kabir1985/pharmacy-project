@@ -131,11 +131,13 @@
                         <thead>
                             <tr>
                                 <th>Product ID</th>
-                                <th>Quantity Sold</th>
+                                <th>Sold</th>
+                                <th>Returned</th>
+                                <th>Available</th>
                                 <th>Unit Price</th>
                                 <th>Buy Price</th>
                                 <th>Sale Price</th>
-                                <th>Return Quantity</th>
+                                <th>Return Qty</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -152,9 +154,6 @@
         </form>
     </div>
 </div>
-
-
-
 
 <?=$this->endSection()?>
 
@@ -183,21 +182,26 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(products) {
 
-console.log(products);
+//console.log(products);
 
 
                 let html = '';
                 products.forEach(p => {
                     html += `<tr>
                     <td>${p.product_id}</td>
-                    <td>${p.product_quantity_sold}</td>
-                    <td>${p.unit_price}</td>
-                    <td>${p.total_buy_price}</td>
-                    <td>${p.total_sale_price}</td>
+                    <td>${p.sold_qty ?? 0}</td>
+
+                    <td>${p.return_qty ?? 0}</td>
+                    <td>${p.remaining_qty ?? 0}</td>
+
+                    <td>${p.unit_price ?? 0}</td>
+                    <td>${p.total_buy_price ?? 0}</td>
+                    <td>${p.total_sale_price ?? 0}</td>
                     <td>
                         <input type="number" name="return_qty[${p.product_id}]"
-                               max="${p.product_quantity_sold}"
-                               value="0" class="form-control" required>
+                               min="0"
+                               max="${p.remaining_qty ?? 0}"
+                               value="0" class="form-control" step="1" required>
                     </td>
                 </tr>`;
                 });

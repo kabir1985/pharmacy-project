@@ -1,0 +1,1314 @@
+DEBUG - 2026-04-20 05:28:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 05:28:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 05:28:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 05:30:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-20 05:30:39 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: ReturnController/process]
+in SYSTEMPATH\BaseModel.php on line 1008.
+ 1 SYSTEMPATH\BaseModel.php(1008): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(860): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\ReturnController.php(364): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-20 05:40:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-20 05:40:49 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: ReturnController/process]
+in SYSTEMPATH\BaseModel.php on line 1008.
+ 1 SYSTEMPATH\BaseModel.php(1008): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(860): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\ReturnController.php(375): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 05:40:58 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: ReturnController/process]
+in SYSTEMPATH\BaseModel.php on line 1008.
+ 1 SYSTEMPATH\BaseModel.php(1008): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(860): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\ReturnController.php(375): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 05:42:30 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: ReturnController/process]
+in SYSTEMPATH\BaseModel.php on line 1008.
+ 1 SYSTEMPATH\BaseModel.php(1008): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(860): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\ReturnController.php(375): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-20 05:42:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-20 05:42:48 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: ReturnController/process]
+in SYSTEMPATH\BaseModel.php on line 1008.
+ 1 SYSTEMPATH\BaseModel.php(1008): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(860): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\ReturnController.php(375): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 05:43:32 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: ReturnController/process]
+in SYSTEMPATH\BaseModel.php on line 1008.
+ 1 SYSTEMPATH\BaseModel.php(1008): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(860): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\ReturnController.php(375): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 05:45:15 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: ReturnController/process]
+in SYSTEMPATH\BaseModel.php on line 1008.
+ 1 SYSTEMPATH\BaseModel.php(1008): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(860): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\ReturnController.php(375): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-20 05:49:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-20 05:49:32 --> ParseError: syntax error, unexpected token "public"
+[Method: POST, Route: ReturnController/getProducts]
+in APPPATH\Controllers\ReturnController.php on line 337.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\ReturnController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ReturnController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ReturnController')
+ 4 SYSTEMPATH\CodeIgniter.php(885): class_exists('\\App\\Controllers\\ReturnController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-20 05:50:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-20 05:50:38 --> ParseError: syntax error, unexpected token "public"
+[Method: POST, Route: ReturnController/getProducts]
+in APPPATH\Controllers\ReturnController.php on line 337.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\ReturnController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ReturnController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ReturnController')
+ 4 SYSTEMPATH\CodeIgniter.php(885): class_exists('\\App\\Controllers\\ReturnController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 05:50:58 --> ParseError: syntax error, unexpected token "public"
+[Method: POST, Route: ReturnController/getProducts]
+in APPPATH\Controllers\ReturnController.php on line 337.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\ReturnController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ReturnController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ReturnController')
+ 4 SYSTEMPATH\CodeIgniter.php(885): class_exists('\\App\\Controllers\\ReturnController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-20 05:51:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-20 05:51:58 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: ReturnController/process]
+in SYSTEMPATH\BaseModel.php on line 1008.
+ 1 SYSTEMPATH\BaseModel.php(1008): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(860): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\ReturnController.php(347): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-20 06:00:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:00:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:00:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:03:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:03:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:12:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:15:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:15:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:16:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:16:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:16:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:17:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:25:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:32:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:32:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:34:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:34:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:34:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 06:50:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:03:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:04:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-20 07:04:33 --> Error: Call to a member function get() on string
+[Method: POST, Route: ReturnController/getProducts]
+in APPPATH\Controllers\ReturnController.php on line 53.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-20 07:05:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-20 07:05:47 --> mysqli_sql_exception: Unknown column 'product_quantity_sold' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n            S...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            S...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            S...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(42): CodeIgniter\Database\BaseConnection->query('\r\n            S...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-04-20 07:05:47 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'product_quantity_sold' in 'field list'
+[Method: POST, Route: ReturnController/getProducts]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\ReturnController.php(42): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 07:05:47 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'product_quantity_sold' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 3 APPPATH\Controllers\ReturnController.php(42): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 07:05:47 --> [Caused by] mysqli_sql_exception: Unknown column 'product_quantity_sold' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 4 APPPATH\Controllers\ReturnController.php(42): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-20 07:06:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-20 07:06:30 --> mysqli_sql_exception: Unknown column 'product_quantity_sold' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n            S...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            S...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            S...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('\r\n            S...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-04-20 07:06:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'product_quantity_sold' in 'field list'
+[Method: POST, Route: ReturnController/getProducts]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 07:06:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'product_quantity_sold' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 3 APPPATH\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 07:06:30 --> [Caused by] mysqli_sql_exception: Unknown column 'product_quantity_sold' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 4 APPPATH\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-20 07:06:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-20 07:06:50 --> mysqli_sql_exception: Unknown column 'product_quantity_sold' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n            S...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            S...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            S...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('\r\n            S...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-04-20 07:06:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'product_quantity_sold' in 'field list'
+[Method: POST, Route: ReturnController/getProducts]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 07:06:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'product_quantity_sold' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 3 APPPATH\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 07:06:50 --> [Caused by] mysqli_sql_exception: Unknown column 'product_quantity_sold' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 4 APPPATH\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-20 07:07:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-20 07:07:20 --> mysqli_sql_exception: Unknown column 'product_quantity_sold' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n            S...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            S...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            S...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('\r\n            S...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-04-20 07:07:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'product_quantity_sold' in 'field list'
+[Method: POST, Route: ReturnController/getProducts]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 07:07:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'product_quantity_sold' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV2610993157\'
+        ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV2610993157\'
+        ')
+ 3 APPPATH\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 07:07:20 --> [Caused by] mysqli_sql_exception: Unknown column 'product_quantity_sold' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV2610993157\'
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV2610993157\'
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV2610993157\'
+        ')
+ 4 APPPATH\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-04-20 07:08:44 --> mysqli_sql_exception: Unknown column 'product_quantity_sold' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n            S...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            S...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            S...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('\r\n            S...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-04-20 07:08:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'product_quantity_sold' in 'field list'
+[Method: POST, Route: ReturnController/getProducts]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 07:08:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'product_quantity_sold' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 3 APPPATH\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 07:08:44 --> [Caused by] mysqli_sql_exception: Unknown column 'product_quantity_sold' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 4 APPPATH\Controllers\ReturnController.php(43): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(product_quantity_sold) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-20 07:10:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:16:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:18:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-20 07:18:15 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            F' at line 7 in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n            S...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            S...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            S...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(46): CodeIgniter\Database\BaseConnection->query('\r\n            S...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-04-20 07:18:15 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            F' at line 7
+[Method: POST, Route: ReturnController/getProducts]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\ReturnController.php(46): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.unit_price,
+sd.total_buy_price,
+sd.total_sale_price
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(return_qty) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 07:18:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            F' at line 7
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.unit_price,
+sd.total_buy_price,
+sd.total_sale_price
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(return_qty) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.unit_price,
+sd.total_buy_price,
+sd.total_sale_price
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(return_qty) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 3 APPPATH\Controllers\ReturnController.php(46): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.unit_price,
+sd.total_buy_price,
+sd.total_sale_price
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(return_qty) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-20 07:18:15 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            F' at line 7
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.unit_price,
+sd.total_buy_price,
+sd.total_sale_price
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(return_qty) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.unit_price,
+sd.total_buy_price,
+sd.total_sale_price
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(return_qty) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.unit_price,
+sd.total_buy_price,
+sd.total_sale_price
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(return_qty) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = \'INV261105D35E\'
+        ')
+ 4 APPPATH\Controllers\ReturnController.php(46): CodeIgniter\Database\BaseConnection->query('
+            SELECT
+                sd.sales_details_invoice,
+                sd.product_id,
+                sd.unit_price,
+sd.total_buy_price,
+sd.total_sale_price
+                sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
+            FROM sales_details sd
+            LEFT JOIN (
+                SELECT
+                    sales_details_invoice,
+                    product_id,
+                    SUM(return_qty) AS return_qty
+                FROM return_sales_details
+                GROUP BY sales_details_invoice, product_id
+            ) r
+            ON r.sales_details_invoice = sd.sales_details_invoice
+            AND r.product_id = sd.product_id
+            WHERE sd.sales_details_invoice = ?
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ReturnController->getProducts()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-20 07:19:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:20:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:38:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:45:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:48:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:50:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:50:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:51:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:58:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:59:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:59:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 07:59:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 08:00:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 08:04:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 08:04:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-20 08:06:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

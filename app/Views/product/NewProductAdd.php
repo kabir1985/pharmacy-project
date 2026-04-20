@@ -225,7 +225,7 @@ white-space:nowrap;
 
                     <div class='form-row'>
                         <div class='form-group col-md-4'>
-                            <label>Base Price</label>
+                            <label>Base Price (PerProduct)</label>
                             <input required type='text' required class='form-control' name='base_price' id="base_price"
                                 onkeypress="return accept_digit_only(event)" placeholder='Base Price'>
                         </div>
@@ -247,7 +247,7 @@ white-space:nowrap;
 
 
                         <div class='form-group col-md-4'>
-                            <label>Purchase Price</label>
+                            <label>Purchase Price (Per Product)</label>
                             <input required type='text' required class='form-control' id="purchase_price"
                                 name='purchase_price' onkeypress="return accept_digit_only(event)"
                                 placeholder='Unit Price' readonly>

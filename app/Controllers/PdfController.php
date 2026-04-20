@@ -17,69 +17,14 @@ class PdfController extends BaseController
         $this->db = db_connect();
     }
 
-    function index($invoice)
-    {
-
-        // $dompdf = new \Dompdf\Dompdf();
-        // $dompdf->loadHtml(view('report/pdftest'));
-        // $dompdf->setPaper('A4', 'landscape');
-
-        // $dompdf->render();
-        // $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
-        // exit(0);
-    }
-
-
-    // function invoice($salesId)
+    // function index($invoice)
     // {
-    //     // $data = ["name"=>"$salesId"];
-    //     // $data = $salesId;
 
-    //     //  print_r(json_decode($salesId));
-    //     // exit('tst');
-
-
-    //     $sql1 = "SELECT * FROM sales  WHERE sales_id = " . $salesId;
-    //     $data['invoice_info'] = $this->db->query($sql1)->getResult('array');
-
-
-    //     if ($data['invoice_info'] > 0) {
-    //         $sql2 = "SELECT sd.*, pis.product_name,pis.tax_perchantage
-    //     FROM sales_details AS sd, product_inital_stock AS pis
-    //     WHERE sales_details_invoice = '" . $data['invoice_info'][0]["sales_invoice"] . "'" .
-    //             "AND pis.product_id = sd.product_id";
-
-    //         $data['product_info'] = $this->db->query($sql2)->getResult('array');
-
-    //         $dompdf = new \Dompdf\Dompdf();
-
-    //         $dompdf->loadHtml(view('report/sales-invoice', $data));
-    //         $dompdf->setPaper('A4', 'portrait');
-
-    //         $dompdf->render();
-    //         $dompdf->stream("dompdf_out.pdf", array("Attachment" => false));
-    //         exit(0);
-    //     }
     // }
-
-
-
 
 
     public function invoice($salesId)
 {
-    // Fetch sales info
-    // $sql1 = "SELECT * FROM sales WHERE sales_id = " . $salesId;
-    // $data['invoice_info'] = $this->db->query($sql1)->getResult('array');
-
-
-    // $data['invoice_info'] = $this->db->table('sales')
-    // ->select('sales.*, customer.cus_first_name, customer.cus_last_name, customer.cus_phone, customer.cus_address')
-    // ->join('customer', 'customer.customer_id = sales.customer_type', 'left')
-    // ->where('sales.sales_id', $salesId)
-    // ->get()
-    // ->getResultArray();
-
 
     $data['invoice_info'] = $this->db->table('sales')
     ->select("
@@ -97,9 +42,6 @@ class PdfController extends BaseController
     ->where('sales.sales_id', $salesId)
     ->get()
     ->getResultArray();
-
-
-
 
 
     if (!empty($data['invoice_info'])) {
