@@ -103,6 +103,7 @@ class Pos extends BaseController
             'paid_amount' => $paid,
             'due_amount' => $due,
             'seller_id' => $seller_id,
+            'return_status' => 'ACTIVE',
         ];
 
         $sales_details_invoice_data = [];
@@ -256,20 +257,54 @@ class Pos extends BaseController
             }
         }
 
-        $sql = "SELECT pis.*, (productinitial_quantity + IFNULL(ppd.new_purchased,0)) - IFNULL(sd.total_sale,0)  AS total_stock
-                FROM product_inital_stock as pis
+        // $sql = "SELECT pis.*, (productinitial_quantity + IFNULL(ppd.new_purchased,0)) - IFNULL(sd.total_sale,0)  AS total_stock
+        //         FROM product_inital_stock as pis
 
-                LEFT JOIN (SELECT product_id,SUM(product_quantity_sold) as total_sale
-                                FROM sales_details
-                                GROUP BY product_id) as sd
-                ON pis.product_id = sd.product_id
+        //         LEFT JOIN (SELECT product_id,SUM(product_quantity_sold) as total_sale
+        //                         FROM sales_details
+        //                         GROUP BY product_id) as sd
+        //         ON pis.product_id = sd.product_id
 
-                LEFT JOIN (SELECT product_id, SUM(quantity_per_pack * box_quantity) as new_purchased
-                FROM product_purchase_details
-                GROUP BY product_id) as ppd
-                ON pis.product_id = ppd.product_id " . $condition;
+        //         LEFT JOIN (SELECT product_id, SUM(quantity_per_pack * box_quantity) as new_purchased
+        //         FROM product_purchase_details
+        //         GROUP BY product_id) as ppd
+        //         ON pis.product_id = ppd.product_id " . $condition;
 
-        $results = $this->db->query($sql)->getResult('array');
+        // $results = $this->db->query($sql)->getResult('array');
+
+
+ $sql = "SELECT pis.*,
+        GREATEST(
+            (IFNULL(pis.productinitial_quantity,0)
+            + IFNULL(ppd.new_purchased,0)
+            + IFNULL(rsd.total_return,0))
+            - IFNULL(sd.total_sale,0),
+        0) AS total_stock
+
+        FROM product_inital_stock as pis
+
+        LEFT JOIN (
+            SELECT product_id, SUM(product_quantity_sold) as total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) as sd ON pis.product_id = sd.product_id
+
+        LEFT JOIN (
+            SELECT product_id, SUM(quantity_per_pack * box_quantity) as new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) as ppd ON pis.product_id = ppd.product_id
+
+        LEFT JOIN (
+            SELECT product_id, SUM(return_qty) as total_return
+            FROM return_sales_details
+            GROUP BY product_id
+        ) as rsd ON pis.product_id = rsd.product_id
+
+        " . $condition;
+
+        $results = $this->db->query($sql)->getResultArray();
+
 
         if ($category) {
             foreach ($results as $key => $row) {

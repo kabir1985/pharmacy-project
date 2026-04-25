@@ -1,5 +1,5 @@
-<?=$this->extend('layout')?>
-<?=$this->section('content')?>
+<?= $this->extend('layout') ?>
+<?= $this->section('content') ?>
 
 <div class="app-title">
     <div>
@@ -30,49 +30,49 @@
                         </thead>
                         <tbody>
                             <?php foreach ($saleReturnList as $row): ?>
-                            <tr>
-                                <td>
-                                    <?=esc($row['sales_date'])?>
-                                </td>
-                                <td>
-                                    <?=esc($row['sales_invoice'])?>
-                                </td>
-                                <td>
-                                    <?=esc($row['customer_name'])?>
-                                </td>
-                                <td>
-                                    <?=number_format($row['total_sale'], 2)?>
-                                </td>
-                                <td>
-                                    <?=number_format($row['productwiseVatPercnt'], 2)?>
-                                </td>
-                                <td>
-                                    <?=number_format($row['discountOnTotalPrice'], 2)?>
-                                </td>
-                                <td>
-                                    <?=number_format($row['vatOnTotalPrice'], 2)?>
-                                </td>
-                                <td>
-                                    <?=number_format($row['total_paid'], 2)?>
-                                </td>
+                                <tr>
+                                    <td>
+                                        <?= esc($row['sales_date']) ?>
+                                    </td>
+                                    <td>
+                                        <?= esc($row['sales_invoice']) ?>
+                                    </td>
+                                    <td>
+                                        <?= esc($row['customer_name']) ?>
+                                    </td>
+                                    <td>
+                                        <?= number_format($row['total_sale'], 2) ?>
+                                    </td>
+                                    <td>
+                                        <?= number_format($row['productwiseVatPercnt'], 2) ?>
+                                    </td>
+                                    <td>
+                                        <?= number_format($row['discountOnTotalPrice'], 2) ?>
+                                    </td>
+                                    <td>
+                                        <?= number_format($row['vatOnTotalPrice'], 2) ?>
+                                    </td>
+                                    <td>
+                                        <?= number_format($row['total_paid'], 2) ?>
+                                    </td>
 
-                                <td>
-                                    <?=number_format($row['customer_due'], 2)?>
-                                </td>
-                                <td>
-                                    <?php if ($row['payment_status'] === 'Fully Paid'): ?>
-                                    <span class="badge bg-success text-white">Fully Paid</span>
-                                    <?php else: ?>
-                                    <span class="badge bg-danger text-white">Partially Paid</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm btn-return"
-                                        data-sales_invoice="<?=$row['sales_invoice']?>">
-                                        <i class="fa fa-undo"></i> Return
-                                    </button>
-                                </td>
-                            </tr>
+                                    <td>
+                                        <?= number_format($row['customer_due'], 2) ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($row['payment_status'] === 'Fully Paid'): ?>
+                                            <span class="badge bg-success text-white">Fully Paid</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-danger text-white">Partially Paid</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm btn-return"
+                                            data-sales_invoice="<?= $row['sales_invoice'] ?>">
+                                            <i class="fa fa-undo"></i> Return
+                                        </button>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -115,11 +115,21 @@
     <div class="modal-dialog modal-lg">
         <form id="returnForm" class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Sales Return</h5>
-                 <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">X</button> 
+                <!-- <h5 class="modal-title">Sales Return Invoice :<input type="text" id="return_invoice" name="return_invoice" readonly></h5> -->
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <h5 class="modal-title mb-0">Sales Return</h5>
+
+                    <div class="fw-bold text-primary">
+                        Invoice: <span id="invoice_text"></span>
+                    </div>
+
+                    <input type="hidden" id="return_invoice" name="return_invoice">
+                </div>
+
+                <!-- <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">X</button> -->
+                <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">X</button>
             </div>
             <div class="modal-body">
-                <input type="text" id="return_invoice" name="return_invoice" readonly>
 
                 <div class="mb-3">
                     <label for="reason" class="form-label">Reason</label>
@@ -130,13 +140,14 @@
                     <table class="table table-bordered" id="returnProductsTable">
                         <thead>
                             <tr>
-                                <th>Product ID</th>
+                                <th>Product</th>
                                 <th>Sold</th>
                                 <th>Returned</th>
                                 <th>Available</th>
                                 <th>Unit Price</th>
                                 <th>Buy Price</th>
                                 <th>Sale Price</th>
+                                <th>Return Status</th>
                                 <th>Return Qty</th>
                             </tr>
                         </thead>
@@ -155,40 +166,45 @@
     </div>
 </div>
 
-<?=$this->endSection()?>
+<?= $this->endSection() ?>
 
-<?=$this->section('scripts')?>
+<?= $this->section('scripts') ?>
 
-<script src="<?=base_url('assets/js/plugins/jquery.dataTables.min.js')?>"></script>
-<script src="<?=base_url('assets/js/plugins/dataTables.bootstrap.min.js')?>"></script>
+<script src="<?= base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
+<script src="<?= base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
 <script>
-$(document).ready(function() {
-    $('#sampleTable').DataTable();
+    $(document).ready(function () {
+        $('#sampleTable').DataTable();
 
-    ///////////////////////////
+        ///////////////////////////
 
-    $('body').on('click','.btn-return', function() {
-        const invoice = $(this).data('sales_invoice');
-        $('#return_invoice').val(invoice);
-
-        // Fetch products for this invoice
-        $.ajax({
-            url: '<?=base_url("ReturnController/getProducts")?>',
-            method: 'POST',
-            data: {
-                invoice: invoice
-            },
-            dataType: 'json',
-            success: function(products) {
-
-//console.log(products);
+        $('body').on('click', '.btn-return', function () {
+            const invoice = $(this).data('sales_invoice');
+            $('#return_invoice').val(invoice);
+            $('#invoice_text').text(invoice);   // ✅ ADD THIS LINE
 
 
-                let html = '';
-                products.forEach(p => {
-                    html += `<tr>
-                    <td>${p.product_id}</td>
+
+            // Fetch products for this invoice
+            $.ajax({
+                url: '<?= base_url("ReturnController/getProducts") ?>',
+                method: 'POST',
+                data: {
+                    invoice: invoice
+                },
+                dataType: 'json',
+                success: function (products) {
+
+                    //console.log(products);
+
+
+                    let html = '';
+                    products.forEach(p => {
+                        html += `<tr>
+                    <td>${p.product_name}
+                     <input type="hidden" name="product_id[]" value="${p.product_id}">
+                    </td>
                     <td>${p.sold_qty ?? 0}</td>
 
                     <td>${p.return_qty ?? 0}</td>
@@ -197,71 +213,77 @@ $(document).ready(function() {
                     <td>${p.unit_price ?? 0}</td>
                     <td>${p.total_buy_price ?? 0}</td>
                     <td>${p.total_sale_price ?? 0}</td>
+                    <td>${p.return_status ?? 0}</td>
                     <td>
                         <input type="number" name="return_qty[${p.product_id}]"
-                               min="0"
-                               max="${p.remaining_qty ?? 0}"
-                               value="0" class="form-control" step="1" required>
+                            min="0"
+                            max="${p.remaining_qty ?? 0}"
+                            value="0"
+                            class="form-control"
+                            step="1"
+                            ${p.remaining_qty == 0 ? 'readonly' : ''}
+                            required>
                     </td>
                 </tr>`;
-                });
-                $('#returnProductsTable tbody').html(html);
-                $('#returnModal').modal('show');
-            },
-            error: function(xhr) {
-                alert('Error fetching products: ' + xhr.responseText);
-            }
+                    });
+                    // $('#returnProductsTable tbody').html(html);
+                    $('#returnProductsTable tbody').empty().html(html);
+                    $('#returnModal').modal('show');
+                },
+                error: function (xhr) {
+                    alert('Error fetching products: ' + xhr.responseText);
+                }
+            });
         });
+
+        /////////////////////////////
+        $('#returnForm').on('submit', function (e) {
+            e.preventDefault();
+
+            let form = $(this);
+
+            $.ajax({
+                url: '<?= base_url("ReturnController/process") ?>',
+                type: 'POST',
+                data: form.serialize(),
+                dataType: 'json', // ✅ MUST for res.status
+                beforeSend: function () {
+                    // ✅ prevent double click submit
+                    form.find('button[type="submit"]').prop('disabled', true);
+                },
+                success: function (res) {
+
+                    if (res.status === 'success') {
+
+                        // ✅ Better than alert
+                        alert(res.message);
+
+                        $('#returnModal').modal('hide');
+
+                        // ✅ Optional: reset form
+                        form[0].reset();
+
+                        // ✅ Smooth reload
+                        setTimeout(() => location.reload(), 500);
+
+                    } else {
+                        alert('Error: ' + res.message);
+                    }
+                },
+                error: function (xhr) {
+                    console.error(xhr.responseText); // debug
+                    alert('Server Error! Check console.');
+                },
+                complete: function () {
+                    // ✅ enable button again
+                    form.find('button[type="submit"]').prop('disabled', false);
+                }
+            });
+        });
+
+        ////////////////////////////////
+
     });
-
-    /////////////////////////////
-    $('#returnForm').on('submit', function(e) {
-    e.preventDefault();
-
-    let form = $(this);
-
-    $.ajax({
-        url: '<?= base_url("ReturnController/process") ?>',
-        type: 'POST',
-        data: form.serialize(),
-        dataType: 'json', // ✅ MUST for res.status
-        beforeSend: function() {
-            // ✅ prevent double click submit
-            form.find('button[type="submit"]').prop('disabled', true);
-        },
-        success: function(res) {
-
-            if (res.status === 'success') {
-
-                // ✅ Better than alert
-                alert(res.message);
-
-                $('#returnModal').modal('hide');
-
-                // ✅ Optional: reset form
-                form[0].reset();
-
-                // ✅ Smooth reload
-                setTimeout(() => location.reload(), 500);
-
-            } else {
-                alert('Error: ' + res.message);
-            }
-        },
-        error: function(xhr) {
-            console.error(xhr.responseText); // debug
-            alert('Server Error! Check console.');
-        },
-        complete: function() {
-            // ✅ enable button again
-            form.find('button[type="submit"]').prop('disabled', false);
-        }
-    });
-});
-
-    ////////////////////////////////
-
-});
 </script>
 
-<?=$this->endSection()?>
+<?= $this->endSection() ?>

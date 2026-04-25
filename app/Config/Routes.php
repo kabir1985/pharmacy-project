@@ -12,7 +12,7 @@ $routes->get('dashboard', 'Dashboard::index');
 $routes->get('pos', 'Pos::index');
 $routes->post('pos/sale', 'Pos::sale');
 $routes->post('pos/hold_sale', 'Pos::hold_sale');
-$routes->get('pos/resume_sale/(:num)', 'Pos::resume_sale/$1');
+$routes->post('pos/resume_sale/(:num)', 'Pos::resume_sale/$1');
 
 $routes->get('pos/product_call', 'Pos::product_call');
 $routes->post('pos/products', 'Pos::products');

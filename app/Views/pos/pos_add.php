@@ -719,7 +719,8 @@ echo $this->section('scripts');
 
             $.ajax({
                 url: '<?= site_url("pos/resume_sale") ?>/' + saleId,
-                method: 'GET',
+                method: 'POST',
+                data: {id: saleId },
                 dataType: 'json',
                 success: function (res) {
                     if (res.status === 'success') {

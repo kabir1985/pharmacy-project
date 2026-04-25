@@ -42,6 +42,7 @@ class salereturnlist extends BaseController
                         ELSE 'Partially Paid'
                     END AS payment_status
                 FROM sales s
+                
                 JOIN (
                     SELECT 
                         sales_details_invoice, 
@@ -59,6 +60,7 @@ class salereturnlist extends BaseController
                     GROUP BY due_invoice_no
                 ) cd ON s.sales_invoice = cd.due_invoice_no
                 LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP '^[0-9]+'
+           where s.return_status != 'FULL'
             ";
         $query = $this->db->query($sql);
         $data['saleReturnList'] = $query->getResultArray();
