@@ -1,102 +1,169 @@
 <?php
+
 namespace App\Controllers;
 
-use CodeIgniter\HTTP\IncomingRequest;
-
-class profitloss extends BaseController
+class Profitloss extends BaseController
 {
-   private $db;
+    private $db;
+
+    public function __construct()
+    {
+        $this->db = db_connect();
+    }
+
+    // =========================
+    // STOCK REPORT
+    // =========================
+    public function index()
+    {
+        $sql = "
+            SELECT 
+                piq.*,
+                COALESCE(piq.productinitial_quantity,0)
+                + COALESCE(ppd.new_purchased,0) AS total_stock
+
+            FROM product_inital_stock piq
+
+            LEFT JOIN (
+                SELECT 
+                    product_id,
+                    SUM(quantity_per_pack * box_quantity) AS new_purchased
+                FROM product_purchase_details
+                GROUP BY product_id
+            ) ppd ON piq.product_id = ppd.product_id
+        ";
+
+        $data['stock_report_show'] = $this->db->query($sql)->getResultArray();
+
+        return view('report/profitloss_report', $data);
+    }
+
+    // =========================
+    // PROFIT LOSS REPORT
+    // =========================
+    public function profitlosspdfcreate()
+    {
+        $start = $this->request->getVar('start_date');
+        $end   = $this->request->getVar('end_date');
+
+        if (!$start || !$end) {
+            return redirect()->back()->with('error', 'Date range is required');
+        }
+
+      echo  $start_date = date('Y-m-d', strtotime($start));
+      echo  $end_date   = date('Y-m-d', strtotime($end));
+      exit();
+
+        // =========================
+        // SALES + COST
+        // =========================
+        $sales = $this->db->query("
+            SELECT 
+                IFNULL(SUM(sd.total_sale_price),0) AS total_sales,
+                IFNULL(SUM(sd.total_buy_price),0) AS total_cogs
+            FROM sales_details sd
+            JOIN sales s 
+                ON sd.sales_details_invoice = s.sales_invoice
+            WHERE s.sales_date BETWEEN ? AND ?
+        ", [$start_date, $end_date])->getRowArray();
+
+        // =========================
+        // RETURNS (IMPORTANT FIX)
+        // =========================
+        $returns = $this->db->query("
+            SELECT 
+                IFNULL(SUM(rsd.total_sale_price),0) AS return_sales,
+                IFNULL(SUM(rsd.total_buy_price),0) AS return_cost
+            FROM return_sales_details rsd
+            WHERE rsd.sales_details_invoice IN (
+                SELECT sales_invoice 
+                FROM sales 
+                WHERE sales_date BETWEEN ? AND ?
+            )
+        ", [$start_date, $end_date])->getRowArray();
+
+        // =========================
+        // EXPENSES
+        // =========================
+        $expense = $this->db->query("
+            SELECT IFNULL(SUM(expense_amount),0) AS total_expense
+            FROM expense
+            WHERE STR_TO_DATE(expense_date,'%d-%m-%Y')
+            BETWEEN ? AND ?
+        ", [$start_date, $end_date])->getRowArray();
+
+        // =========================
+        // CREDIT SALES
+        // =========================
+        $credit = $this->db->query("
+            SELECT IFNULL(SUM(due_amount - due_paid_amount),0) AS credit
+            FROM customer_due
+            WHERE due_date BETWEEN ? AND ?
+        ", [$start_date, $end_date])->getRowArray();
+
+        // =========================
+        // FINAL CALCULATION
+        // =========================
+        $total_sales = $sales['total_sales'] - $returns['return_sales'];
+        $total_cost  = $sales['total_cogs'] - $returns['return_cost'];
+
+        $gross_profit = $total_sales - $total_cost;
+
+        $net_profit = $gross_profit
+                      - $expense['total_expense'];
+
+        // =========================
+        // DATA
+        // =========================
+        $data = [
+            'total_sales'   => $total_sales,
+            'total_cogs'    => $total_cost,
+            'gross_profit'  => $gross_profit,
+            'net_profit'    => $net_profit,
+            'expense'       => $expense['total_expense'],
+            'credit'        => $credit['credit'],
+            // ADD THESE ↓↓↓
+            'discountOnTotalPrice' => $this->getDiscount($start_date, $end_date),
+            'vatOnTotalPrice'      => $this->getVat($start_date, $end_date),
+
+            'start_date'    => $start_date,
+            'end_date'      => $end_date,
+        ];
+
+        // =========================
+        // PDF GENERATION
+        // =========================
+        $html = view('report/profitloss_pdf', $data);
+
+        $dompdf = new \Dompdf\Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream("profit_loss.pdf", ["Attachment" => false]);
+        exit();
+    }
 
 
-   public function __construct()
-   {
-      //$this->product_initial_stock_object = new NewProductAddModel();
-      $this->db = db_connect();
-   }
 
-   public function index()
-   {
+    private function getDiscount($start, $end)
+{
+    $db = db_connect();
 
-      $sql = "SELECT piq.*, productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
-      FROM product_inital_stock as piq
-      LEFT JOIN (SELECT product_id,SUM(quantity_per_pack) as new_purchased
-      FROM product_purchase_details
-      GROUP BY product_id) as ppd
-      ON piq.product_id = ppd.product_id";
+    return $db->query("
+        SELECT IFNULL(SUM(discountOnTotalPrice),0) AS total
+        FROM sales
+        WHERE sales_date BETWEEN ? AND ?
+    ", [$start, $end])->getRow()->total;
+}
 
-      //$data['product_initial_stock_show'] = $this->product_initial_stock_object->findAll();
-      $data['stock_report_show'] = $this->db->query($sql)->getResult('array');
-      return view('report/profitloss_report', $data);
-   }
+private function getVat($start, $end)
+{
+    $db = db_connect();
 
-   function profitlosspdfcreate()
-   {
-      $start_date_input = $this->request->getVar('start_date');
-      $end_date_input = $this->request->getVar('end_date');
-
-      if (!$start_date_input || !$end_date_input) {
-         return redirect()->back()->with('error', 'Date range is required');
-      }
-
-      $start_date = date('Y-m-d', strtotime($start_date_input));
-      $end_date = date('Y-m-d', strtotime($end_date_input));
-
-      $db = \Config\Database::connect();
-
-      // Main sales + expense query
-      $query = $db->query("
-        SELECT
-            IFNULL(SUM(sd.total_sale_price), 0) AS total_sales,
-            IFNULL(SUM(sd.total_buy_price), 0) AS total_cogs,
-            (
-                SELECT IFNULL(SUM(s.discountOnTotalPrice), 0) 
-                FROM sales s 
-                WHERE s.sales_date BETWEEN '$start_date' AND '$end_date'
-            ) AS discountOnTotalPrice,
-            (
-                SELECT IFNULL(SUM(s.vatOnTotalPrice), 0) 
-                FROM sales s 
-                WHERE s.sales_date BETWEEN '$start_date' AND '$end_date'
-            ) AS vatOnTotalPrice,
-            (
-                SELECT IFNULL(SUM(e.expense_amount), 0)
-                FROM expense e 
-                WHERE STR_TO_DATE(e.expense_date, '%d-%m-%Y') 
-                BETWEEN '$start_date' AND '$end_date'
-            ) AS general_expense
-        FROM sales_details sd
-        JOIN sales s ON sd.sales_details_invoice = s.sales_invoice
-        WHERE s.sales_date BETWEEN '$start_date' AND '$end_date'
-    ");
-      $data = $query->getRowArray();
-
-      // Get total credit sales from customer_due table
-      $creditQuery = $db->query("
-        SELECT IFNULL(SUM(due_amount - due_paid_amount), 0) AS total_credit_sales
-        FROM customer_due
-        WHERE due_date BETWEEN '$start_date' AND '$end_date'
-    ");
-      $creditResult = $creditQuery->getRowArray();
-      $data['total_credit_sales'] = $creditResult['total_credit_sales'];
-
-      // Calculations
-      $gross_profit = $data['total_sales'] - $data['total_cogs'];
-      $net_profit = $gross_profit - $data['general_expense'] - $data['discountOnTotalPrice'] - $data['vatOnTotalPrice'];
-
-      $data['gross_profit'] = $gross_profit;
-      $data['net_profit'] = $net_profit;
-      $data['start_date'] = $start_date;
-      $data['end_date'] = $end_date;
-
-      // Load view and generate PDF
-      $html = view('report/profitloss_pdf', $data);
-      $dompdf = new \Dompdf\Dompdf();
-      $dompdf->loadHtml($html);
-      $dompdf->setPaper('A4', 'portrait');
-      $dompdf->render();
-      $dompdf->stream("profit_loss_statement.pdf", array("Attachment" => false));
-      exit(0);
-
-   }
-
+    return $db->query("
+        SELECT IFNULL(SUM(vatOnTotalPrice),0) AS total
+        FROM sales
+        WHERE sales_date BETWEEN ? AND ?
+    ", [$start, $end])->getRow()->total;
+}
 }

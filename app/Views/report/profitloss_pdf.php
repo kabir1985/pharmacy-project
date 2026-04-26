@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Profit & Loss Statement</title>
+
     <style>
         body {
             font-family: DejaVu Sans, sans-serif;
@@ -16,18 +17,12 @@
             margin-top: 20px;
         }
 
-        .header img {
-            max-height: 80px;
-        }
-
         h2 {
-            margin-bottom: 5px;
             color: #2c3e50;
+            margin-bottom: 5px;
         }
 
         p {
-            text-align: center;
-            margin-top: 0;
             font-size: 14px;
             color: #555;
         }
@@ -37,39 +32,34 @@
             margin: 30px auto;
             border-collapse: collapse;
             font-size: 14px;
-            border: 0.5px solid #ccc;
+            border: 1px solid #ccc;
         }
 
         td {
             padding: 10px 14px;
-            border: 0.5px solid #ccc;
+            border: 1px solid #ddd;
         }
 
         .label {
             font-weight: bold;
         }
 
-        .highlight-income {
-            background-color: #d4edda;
+        .income {
+            background: #e8f5e9;
             font-weight: bold;
-            color: #155724;
+            color: #1b5e20;
         }
 
-        .highlight-expense {
-            background-color: #f8d7da;
+        .expense {
+            background: #ffebee;
             font-weight: bold;
-            color: #721c24;
+            color: #b71c1c;
         }
 
-        .highlight-netprofit {
-            background-color: #cce5ff;
+        .netprofit {
+            background: #e3f2fd;
             font-weight: bold;
-            color: #004085;
-        }
-
-        .negative {
-            color: #dc3545;
-            font-weight: bold;
+            color: #0d47a1;
         }
 
         .positive {
@@ -77,102 +67,110 @@
             font-weight: bold;
         }
 
-        .signature-box {
-            width: 100%;
-            padding: 20px;
+        .negative {
+            color: #dc3545;
+            font-weight: bold;
         }
 
         .signature-line {
             border-top: 1px dotted #000;
             width: 150px;
             margin: 0 auto 5px auto;
-            height: 1px;
         }
 
         .signature-label {
-            /* font-weight: bold; */
-            margin-top: 5px;
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="header">
-        <!-- <img src="<?//= base_url('public/uploads/company_logo.png') ?>" alt="Company Logo"> -->
-        <h2>Profit & Loss Statement</h2>
-        <p>Period: <?= date('d M Y', strtotime($start_date)) ?> to <?= date('d M Y', strtotime($end_date)) ?></p>
-    </div>
+<div class="header">
+    <h2>Profit & Loss Statement</h2>
+    <p>
+        Period: <?= date('d M Y', strtotime($start_date)) ?> 
+        to <?= date('d M Y', strtotime($end_date)) ?>
+    </p>
+</div>
 
-    <table>
-        <tr>
-            <td class="label">Total Income (Sales)</td>
-            <td><?= number_format($total_sales, 2) ?></td>
-        </tr>
-        <tr>
-            <td class="label">Total Credit Sales (Unpaid)</td>
-            <td><?= number_format($total_credit_sales, 2) ?></td>
-        </tr>
-        <tr>
-            <td class="label">Cost of Goods Sold (COGS)</td>
-            <td><?= number_format($total_cogs, 2) ?></td>
-        </tr>
-        <tr class="highlight-income">
-            <td class="label">Gross Profit</td>
-            <td><?= number_format($gross_profit, 2) ?></td>
-        </tr>
-        <tr>
-            <td class="label">Discounts</td>
-            <td><?= number_format($discountOnTotalPrice, 2) ?></td>
-        </tr>
-        <tr>
-            <td class="label">Other Costs</td>
-            <td><?= number_format($vatOnTotalPrice, 2) ?></td>
-        </tr>
-        <tr>
-            <td class="label">General Expenses</td>
-            <td><?= number_format($general_expense, 2) ?></td>
-        </tr>
-        <tr class="highlight-expense">
-            <td class="label">Total Expenses</td>
-            <td><?= number_format($discountOnTotalPrice + $vatOnTotalPrice + $general_expense, 2) ?></td>
-        </tr>
-        <tr class="highlight-netprofit">
-            <td class="label">Net Profit</td>
-            <td class="<?= $net_profit >= 0 ? 'positive' : 'negative' ?>">
-                <?= number_format($net_profit, 2) ?>
-            </td>
-        </tr>
-    </table>
+<table>
 
+    <!-- ===================== -->
+    <!-- REVENUE SECTION -->
+    <!-- ===================== -->
+    <tr class="income">
+        <td class="label">Total Sales Revenue</td>
+        <td><?= number_format($total_sales, 2) ?></td>
+    </tr>
 
+    <tr>
+        <td class="label">Cost of Goods Sold (COGS)</td>
+        <td><?= number_format($total_cogs, 2) ?></td>
+    </tr>
 
+    <tr class="income">
+        <td class="label">Gross Profit</td>
+        <td><?= number_format($gross_profit, 2) ?></td>
+    </tr>
 
-    <table style="width: 100%; border-collapse: collapse; border: none; margin-top: 80px;">
-        <tr>
-            <td style="border: none; text-align: center;">
-                <div class="signature-box">
-                    <div class="signature-line"></div>
-                    <div class="signature-label">Prepared By</div>
-                </div>
-            </td>
-            <td style="border: none; text-align: center;">
-                <div class="signature-box">
-                    <div class="signature-line"></div>
-                    <div class="signature-label">Checked By</div>
-                </div>
-            </td>
-            <td style="border: none; text-align: center;">
-                <div class="signature-box">
-                    <div class="signature-line"></div>
-                    <div class="signature-label">Approved By</div>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <!-- ===================== -->
+    <!-- EXPENSE SECTION -->
+    <!-- ===================== -->
+    <tr>
+        <td class="label">Discounts Given</td>
+        <td><?= number_format($discountOnTotalPrice, 2) ?></td>
+    </tr>
 
+    <tr>
+        <td class="label">General Expenses</td>
+        <td><?= number_format($expense, 2) ?></td>
+    </tr>
 
+    <!-- VAT FIXED (NOT EXPENSE) -->
+    <tr>
+        <td class="label">VAT Collected (Liability)</td>
+        <td><?= number_format($vatOnTotalPrice, 2) ?></td>
+    </tr>
+
+    <tr class="expense">
+        <td class="label">Total Operating Expenses</td>
+        <td>
+            <?= number_format($discountOnTotalPrice + $expense, 2) ?>
+        </td>
+    </tr>
+
+    <!-- ===================== -->
+    <!-- NET PROFIT -->
+    <!-- ===================== -->
+    <tr class="netprofit">
+        <td class="label">Net Profit</td>
+        <td class="<?= $net_profit >= 0 ? 'positive' : 'negative' ?>">
+            <?= number_format($net_profit, 2) ?>
+        </td>
+    </tr>
+
+</table>
+
+<!-- ===================== -->
+<!-- SIGNATURE -->
+<!-- ===================== -->
+<table style="width:100%; border:none; margin-top:80px;">
+    <tr>
+        <td style="border:none; text-align:center;">
+            <div class="signature-line"></div>
+            Prepared By
+        </td>
+        <td style="border:none; text-align:center;">
+            <div class="signature-line"></div>
+            Checked By
+        </td>
+        <td style="border:none; text-align:center;">
+            <div class="signature-line"></div>
+            Approved By
+        </td>
+    </tr>
+</table>
 
 </body>
-
 </html>

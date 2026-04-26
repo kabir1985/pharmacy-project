@@ -3,7 +3,7 @@
 
 <div class="app-title">
     <div>
-        <h1><i class="fa fa-th-list"></i> &nbsp;&nbsp; Enter Invoice for Sales Return</h1>
+        <h1><i class="fa fa-th-list"></i> &nbsp;&nbsp; Sales List for Sales-Return</h1>
     </div>
 </div>
 <div class="row">
@@ -185,7 +185,6 @@
             $('#invoice_text').text(invoice);   // ✅ ADD THIS LINE
 
 
-
             // Fetch products for this invoice
             $.ajax({
                 url: '<?= base_url("ReturnController/getProducts") ?>',
@@ -197,7 +196,6 @@
                 success: function (products) {
 
                     //console.log(products);
-
 
                     let html = '';
                     products.forEach(p => {

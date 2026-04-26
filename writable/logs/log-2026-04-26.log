@@ -1,0 +1,264 @@
+DEBUG - 2026-04-26 05:24:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 05:43:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 05:43:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 05:43:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 05:44:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 05:46:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 05:46:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 05:48:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 05:57:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 05:57:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 05:58:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 05:59:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 06:02:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 06:02:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 06:02:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 06:09:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-26 06:23:13 --> ErrorException: Undefined array key "total_stock"
+[Method: GET, Route: pos]
+in APPPATH\Views\pos\pos_add.php on line 230.
+ 1 APPPATH\Views\pos\pos_add.php(230): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "total_stock"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\pos\\pos_add.php', 230)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\pos\\pos_add.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('pos/pos_add', [], true)
+ 5 APPPATH\Controllers\pos.php(65): view('pos/pos_add', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 06:23:52 --> ErrorException: Undefined array key "product_image"
+[Method: GET, Route: pos]
+in APPPATH\Views\pos\pos_add.php on line 237.
+ 1 APPPATH\Views\pos\pos_add.php(237): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "product_image"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\pos\\pos_add.php', 237)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\pos\\pos_add.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('pos/pos_add', [], true)
+ 5 APPPATH\Controllers\pos.php(65): view('pos/pos_add', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 06:24:48 --> ErrorException: Undefined array key "sales_price_for_customer"
+[Method: GET, Route: pos]
+in APPPATH\Views\pos\pos_add.php on line 249.
+ 1 APPPATH\Views\pos\pos_add.php(249): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "sales_price_for_customer"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\pos\\pos_add.php', 249)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\pos\\pos_add.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('pos/pos_add', [], true)
+ 5 APPPATH\Controllers\pos.php(65): view('pos/pos_add', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 06:25:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:15:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:15:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-26 07:15:52 --> ErrorException: Undefined array key "purchase_price"
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 115.
+ 1 APPPATH\Controllers\pos.php(115): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "purchase_price"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\pos.php', 115)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 07:16:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-26 07:16:02 --> ErrorException: Undefined array key "purchase_price"
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 115.
+ 1 APPPATH\Controllers\pos.php(115): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "purchase_price"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\pos.php', 115)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 07:16:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-26 07:16:12 --> ErrorException: Undefined array key "purchase_price"
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\pos.php on line 115.
+ 1 APPPATH\Controllers\pos.php(115): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "purchase_price"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\pos.php', 115)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->sale()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 07:17:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:17:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:17:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:18:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:18:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:18:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:18:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:18:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:18:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:19:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:19:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:19:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:19:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:19:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 07:19:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 09:11:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 09:11:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-26 09:11:18 --> ErrorException: Undefined array key "general_expense"
+[Method: POST, Route: PLReport]
+in APPPATH\Controllers\profitloss.php on line 111.
+ 1 APPPATH\Controllers\profitloss.php(111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "general_expense"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\profitloss.php', 111)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\profitloss->profitlosspdfcreate()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\profitloss))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 09:14:15 --> ErrorException: Undefined array key "general_expense"
+[Method: POST, Route: PLReport]
+in APPPATH\Controllers\profitloss.php on line 105.
+ 1 APPPATH\Controllers\profitloss.php(105): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "general_expense"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\profitloss.php', 105)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\profitloss->profitlosspdfcreate()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\profitloss))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 09:29:15 --> ErrorException: Undefined array key "general_expense"
+[Method: POST, Route: PLReport]
+in APPPATH\Controllers\profitloss.php on line 113.
+ 1 APPPATH\Controllers\profitloss.php(113): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "general_expense"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\profitloss.php', 113)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\profitloss->profitlosspdfcreate()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\profitloss))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 09:30:40 --> ErrorException: Undefined variable $discountOnTotalPrice
+[Method: POST, Route: PLReport]
+in APPPATH\Views\report\profitloss_pdf.php on line 126.
+ 1 APPPATH\Views\report\profitloss_pdf.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $discountOnTotalPrice', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\profitloss_pdf.php', 126)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\profitloss_pdf.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/profitloss_pdf', [], true)
+ 5 APPPATH\Controllers\profitloss.php(124): view('report/profitloss_pdf', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\profitloss->profitlosspdfcreate()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\profitloss))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 09:47:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 09:47:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 09:47:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 09:47:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-26 09:47:53 --> ErrorException: Undefined variable $discountOnTotalPrice
+[Method: POST, Route: PLReport]
+in APPPATH\Views\report\profitloss_pdf.php on line 122.
+ 1 APPPATH\Views\report\profitloss_pdf.php(122): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $discountOnTotalPrice', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\profitloss_pdf.php', 122)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\profitloss_pdf.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/profitloss_pdf', [], true)
+ 5 APPPATH\Controllers\profitloss.php(131): view('report/profitloss_pdf', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 09:52:06 --> Error: Call to undefined method App\Controllers\Profitloss::getDiscount()
+[Method: POST, Route: PLReport]
+in APPPATH\Controllers\profitloss.php on line 125.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 09:53:05 --> ErrorException: Undefined variable $general_expense
+[Method: POST, Route: PLReport]
+in APPPATH\Views\report\profitloss_pdf.php on line 127.
+ 1 APPPATH\Views\report\profitloss_pdf.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $general_expense', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\profitloss_pdf.php', 127)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\profitloss_pdf.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/profitloss_pdf', [], true)
+ 5 APPPATH\Controllers\profitloss.php(135): view('report/profitloss_pdf', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:03:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:03:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:04:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:15:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-26 10:22:58 --> mysqli_sql_exception: Unknown column 'ex.expense_sub_category' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT * FROM e...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM e...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM e...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Expense.php(38): CodeIgniter\Database\BaseConnection->query('SELECT * FROM e...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Expense->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expense))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-04-26 10:22:58 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'ex.expense_sub_category' in 'on clause'
+[Method: GET, Route: Expense]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Expense.php(38): CodeIgniter\Database\BaseConnection->query('SELECT * FROM expense AS ex
+       JOIN expense_category AS exc ON ex.expense_category=exc.expense_category_id
+       JOIN expense_sub_category as exsc ON ex.expense_sub_category =  exsc.expense_sub_category_id')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Expense->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expense))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:22:58 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'ex.expense_sub_category' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM expense AS ex
+       JOIN expense_category AS exc ON ex.expense_category=exc.expense_category_id
+       JOIN expense_sub_category as exsc ON ex.expense_sub_category =  exsc.expense_sub_category_id')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM expense AS ex
+       JOIN expense_category AS exc ON ex.expense_category=exc.expense_category_id
+       JOIN expense_sub_category as exsc ON ex.expense_sub_category =  exsc.expense_sub_category_id')
+ 3 APPPATH\Controllers\Expense.php(38): CodeIgniter\Database\BaseConnection->query('SELECT * FROM expense AS ex
+       JOIN expense_category AS exc ON ex.expense_category=exc.expense_category_id
+       JOIN expense_sub_category as exsc ON ex.expense_sub_category =  exsc.expense_sub_category_id')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Expense->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expense))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-04-26 10:22:58 --> [Caused by] mysqli_sql_exception: Unknown column 'ex.expense_sub_category' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT * FROM expense AS ex
+       JOIN expense_category AS exc ON ex.expense_category=exc.expense_category_id
+       JOIN expense_sub_category as exsc ON ex.expense_sub_category =  exsc.expense_sub_category_id', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT * FROM expense AS ex
+       JOIN expense_category AS exc ON ex.expense_category=exc.expense_category_id
+       JOIN expense_sub_category as exsc ON ex.expense_sub_category =  exsc.expense_sub_category_id')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT * FROM expense AS ex
+       JOIN expense_category AS exc ON ex.expense_category=exc.expense_category_id
+       JOIN expense_sub_category as exsc ON ex.expense_sub_category =  exsc.expense_sub_category_id')
+ 4 APPPATH\Controllers\Expense.php(38): CodeIgniter\Database\BaseConnection->query('SELECT * FROM expense AS ex
+       JOIN expense_category AS exc ON ex.expense_category=exc.expense_category_id
+       JOIN expense_sub_category as exsc ON ex.expense_sub_category =  exsc.expense_sub_category_id')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Expense->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expense))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-04-26 10:27:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:30:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-04-26 10:32:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

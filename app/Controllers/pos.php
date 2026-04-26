@@ -273,35 +273,42 @@ class Pos extends BaseController
         // $results = $this->db->query($sql)->getResult('array');
 
 
- $sql = "SELECT pis.*,
-        GREATEST(
-            (IFNULL(pis.productinitial_quantity,0)
-            + IFNULL(ppd.new_purchased,0)
-            + IFNULL(rsd.total_return,0))
-            - IFNULL(sd.total_sale,0),
-        0) AS total_stock
+ $sql = "SELECT 
+ pis.product_id,
+ pis.product_name,
+ pis.product_image,
+ pis.sales_price_for_customer,
+ pis.purchase_price,
 
-        FROM product_inital_stock as pis
+ GREATEST(
+     COALESCE(pis.productinitial_quantity, 0)
+     + COALESCE(pp.total_purchase, 0)
+     + COALESCE(rs.total_return, 0)
+     - COALESCE(sd.total_sale, 0),
+ 0) AS total_stock
 
-        LEFT JOIN (
-            SELECT product_id, SUM(product_quantity_sold) as total_sale
-            FROM sales_details
-            GROUP BY product_id
-        ) as sd ON pis.product_id = sd.product_id
+FROM product_inital_stock pis
 
-        LEFT JOIN (
-            SELECT product_id, SUM(quantity_per_pack * box_quantity) as new_purchased
-            FROM product_purchase_details
-            GROUP BY product_id
-        ) as ppd ON pis.product_id = ppd.product_id
+LEFT JOIN (
+ SELECT product_id, 
+        SUM(quantity_per_pack * box_quantity) AS total_purchase
+ FROM product_purchase_details
+ GROUP BY product_id
+) pp ON pp.product_id = pis.product_id
 
-        LEFT JOIN (
-            SELECT product_id, SUM(return_qty) as total_return
-            FROM return_sales_details
-            GROUP BY product_id
-        ) as rsd ON pis.product_id = rsd.product_id
+LEFT JOIN (
+ SELECT product_id, 
+        SUM(product_quantity_sold) AS total_sale
+ FROM sales_details
+ GROUP BY product_id
+) sd ON sd.product_id = pis.product_id
 
-        " . $condition;
+LEFT JOIN (
+ SELECT product_id, 
+        SUM(return_qty) AS total_return
+ FROM return_sales_details
+ GROUP BY product_id
+) rs ON rs.product_id = pis.product_id; " ;
 
         $results = $this->db->query($sql)->getResultArray();
 
