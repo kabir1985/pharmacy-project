@@ -257,15 +257,15 @@ return $this->response->setJSON($products);
             $returnSaleModel->insert([
                 'sales_invoice' => $sale['sales_invoice'],
                 'customer_type' => $sale['customer_type'],
-                'sales_date' => $sale['sales_date'],
+                'return_date' => $sale['sales_date'],
                 'payment_type' => $sale['payment_type'],
                 'discountOnTotalPrice' => $sale['discountOnTotalPrice'],
                 'vatOnTotalPrice' => $sale['vatOnTotalPrice'],
                 'paid_amount' => $sale['paid_amount'],
                 'due_amount' => $sale['due_amount'],
                 'return_by' => $sale['seller_id'] ?? 0,
-                'reason' => $reason,
                 'return_type' => $isFullReturn ? 'FULL' : 'PARTIAL',
+                'return_reason' => $reason,
             ]);
         }
 

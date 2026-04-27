@@ -228,7 +228,7 @@ echo $this->section('content');
                     <div class="form-row">
                         <div class='form-group col-md-12'>
                             <label>Expense Date</label>
-                            <input type='text' class='form-control datePicker' required name='expense_date' id="expense_date">
+                            <input type='text' class='form-control datePicker' required name='expense_date' id="expense_date" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -424,10 +424,11 @@ echo $this->section('scripts');
         //................ JQuery modal Edit & Delete end here........................................
         // ...............For Date Show.............................
         $('.datePicker').datepicker({
-            format: "dd-mm-yyyy",
-            autoclose: true,
-            todayHighlight: true
-        });
+        format: "dd-mm-yyyy",
+        autoclose: true,
+        todayHighlight: true,
+        container: 'body'
+    });
         //.................For Date show end........................ 
 
     });

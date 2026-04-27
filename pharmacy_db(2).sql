@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 26, 2026 at 10:33 AM
+-- Generation Time: Apr 27, 2026 at 10:45 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -93,7 +93,14 @@ CREATE TABLE `customer_due` (
 INSERT INTO `customer_due` (`due_id`, `due_date`, `customer_id`, `due_invoice_no`, `due_amount`, `due_paid_amount`, `current_balance`) VALUES
 (432, '2026-04-26', '15', 'INV26116EB1B1', 1, 0, 0),
 (433, '2026-04-26', '15', 'INV261160DFFC', 1, 0, 0),
-(434, '2026-04-26', '18', 'INV26116D0928', 6, 0, 0);
+(434, '2026-04-26', '18', 'INV26116D0928', 6, 0, 0),
+(435, '2026-04-27', '15', 'INV2611790184', 13, 0, 0),
+(436, '2026-04-27', '15', 'INV261171C512', 1, 0, 0),
+(437, '2026-04-27', '15', 'INV261178D161', 1, 0, 0),
+(438, '2026-04-27', '18', 'INV26117E66D2', 1, 0, 0),
+(439, '2026-04-27', '15', 'INV261178A8FA', 1, 0, 0),
+(440, '2026-04-27', '15', 'INV26117869A8', 73, 0, 0),
+(441, '2026-04-27', '15', 'INV261173304B', 24, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -561,7 +568,8 @@ INSERT INTO `return_customer_due` (`due_id`, `return_due_date`, `customer_id`, `
 (115, '26-04-2026', '15', 'INV261149E820', 7, 0, 0),
 (116, '26-04-2026', '15', 'INV261149E820', 7, 0, 0),
 (117, '26-04-2026', '15', 'INV26116EB1B1', 1, 0, 0),
-(118, '26-04-2026', '18', 'INV26116D0928', 6, 0, 0);
+(118, '26-04-2026', '18', 'INV26116D0928', 6, 0, 0),
+(120, '27-04-2026', '15', 'INV26117869A8', 73, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -570,26 +578,29 @@ INSERT INTO `return_customer_due` (`due_id`, `return_due_date`, `customer_id`, `
 --
 
 CREATE TABLE `return_sales` (
-  `sales_id` int NOT NULL,
+  `return_id` int NOT NULL,
   `sales_invoice` varchar(50) NOT NULL,
   `customer_type` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `sales_date` varchar(40) NOT NULL,
+  `return_date` timestamp NULL DEFAULT NULL,
   `payment_type` varchar(50) NOT NULL,
-  `discountOnTotalPrice` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `vatOnTotalPrice` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `paid_amount` decimal(11,2) DEFAULT NULL,
-  `due_amount` decimal(11,2) DEFAULT NULL,
-  `return_by` varchar(40) NOT NULL,
-  `return_type` varchar(20) NOT NULL
+  `discountOnTotalPrice` decimal(11,2) DEFAULT '0.00',
+  `vatOnTotalPrice` decimal(11,2) DEFAULT '0.00',
+  `paid_amount` decimal(11,2) DEFAULT '0.00',
+  `due_amount` decimal(11,2) DEFAULT '0.00',
+  `return_by` int NOT NULL,
+  `return_type` enum('FULL','PARTIAL') NOT NULL,
+  `return_reason` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `return_sales`
 --
 
-INSERT INTO `return_sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales_date`, `payment_type`, `discountOnTotalPrice`, `vatOnTotalPrice`, `paid_amount`, `due_amount`, `return_by`, `return_type`) VALUES
-(109, 'INV26116EB1B1', '15', '2026-04-26 07:17:30', 'Cash', '0', '0', 0.00, 1.20, '18', 'FULL'),
-(110, 'INV26116D0928', '18', '2026-04-26 07:19:06', 'Cash', '0', '0', 0.00, 6.00, '18', 'PARTIAL');
+INSERT INTO `return_sales` (`return_id`, `sales_invoice`, `customer_type`, `return_date`, `payment_type`, `discountOnTotalPrice`, `vatOnTotalPrice`, `paid_amount`, `due_amount`, `return_by`, `return_type`, `return_reason`, `created_at`) VALUES
+(109, 'INV26116EB1B1', '15', '2026-04-26 01:17:30', 'Cash', 0.00, 0.00, 0.00, 1.20, 18, 'FULL', NULL, '2026-04-27 09:54:35'),
+(110, 'INV26116D0928', '18', '2026-04-26 01:19:06', 'Cash', 0.00, 0.00, 0.00, 6.00, 18, 'PARTIAL', NULL, '2026-04-27 09:54:35'),
+(111, 'INV26117869A8', '15', '2026-04-27 01:06:37', 'Cash', 1.44, 2.88, 0.00, 73.44, 18, 'PARTIAL', 'test', '2026-04-27 10:17:39');
 
 -- --------------------------------------------------------
 
@@ -598,13 +609,13 @@ INSERT INTO `return_sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales
 --
 
 CREATE TABLE `return_sales_details` (
-  `sales_details_id` int NOT NULL,
+  `return_detail_id` int NOT NULL,
   `sales_details_invoice` varchar(50) NOT NULL,
-  `product_id` varchar(50) NOT NULL,
+  `product_id` int NOT NULL,
   `return_qty` int DEFAULT NULL,
   `unit_price` decimal(11,2) DEFAULT NULL,
-  `total_buy_price` bigint NOT NULL,
-  `total_sale_price` decimal(10,2) NOT NULL,
+  `total_buy_price` decimal(11,2) DEFAULT '0.00',
+  `total_sale_price` decimal(11,2) DEFAULT '0.00',
   `productwiseVatPercnt` int NOT NULL,
   `productwiseDiscountPercnt` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -613,9 +624,10 @@ CREATE TABLE `return_sales_details` (
 -- Dumping data for table `return_sales_details`
 --
 
-INSERT INTO `return_sales_details` (`sales_details_id`, `sales_details_invoice`, `product_id`, `return_qty`, `unit_price`, `total_buy_price`, `total_sale_price`, `productwiseVatPercnt`, `productwiseDiscountPercnt`) VALUES
-(95, 'INV26116EB1B1', '562', 1, 1.20, 1, 1.00, 0, 0),
-(96, 'INV26116D0928', '562', 1, 1.20, 5, 6.00, 0, 0);
+INSERT INTO `return_sales_details` (`return_detail_id`, `sales_details_invoice`, `product_id`, `return_qty`, `unit_price`, `total_buy_price`, `total_sale_price`, `productwiseVatPercnt`, `productwiseDiscountPercnt`) VALUES
+(95, 'INV26116EB1B1', 562, 1, 1.20, 1.00, 1.00, 0, 0),
+(96, 'INV26116D0928', 562, 1, 1.20, 5.00, 6.00, 0, 0),
+(97, 'INV26117869A8', 562, 3, 1.20, 60.00, 72.00, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -629,22 +641,24 @@ CREATE TABLE `sales` (
   `customer_type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `sales_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `payment_type` varchar(11) NOT NULL,
-  `discountOnTotalPrice` int NOT NULL,
-  `vatOnTotalPrice` int NOT NULL,
+  `total_amount` decimal(11,2) DEFAULT NULL,
+  `discountOnTotalPrice` decimal(11,2) NOT NULL,
+  `vatOnTotalPrice` decimal(11,2) NOT NULL,
   `paid_amount` decimal(11,2) DEFAULT NULL,
   `due_amount` decimal(11,2) DEFAULT NULL,
-  `seller_id` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `return_status` varchar(20) NOT NULL
+  `seller_id` int DEFAULT NULL,
+  `return_status` enum('ACTIVE','PARTIAL','FULL') DEFAULT 'ACTIVE',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `sales`
 --
 
-INSERT INTO `sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales_date`, `payment_type`, `discountOnTotalPrice`, `vatOnTotalPrice`, `paid_amount`, `due_amount`, `seller_id`, `return_status`) VALUES
-(717, 'INV26116EB1B1', '15', '2026-04-26 01:17:30', 'Cash', 0, 0, 0.00, 1.20, '18', 'FULL'),
-(718, 'INV261160DFFC', '15', '2026-04-26 01:18:17', 'Cash', 0, 0, 0.00, 1.20, '18', 'ACTIVE'),
-(719, 'INV26116D0928', '18', '2026-04-26 01:19:06', 'Cash', 0, 0, 0.00, 6.00, '18', 'PARTIAL');
+INSERT INTO `sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales_date`, `payment_type`, `total_amount`, `discountOnTotalPrice`, `vatOnTotalPrice`, `paid_amount`, `due_amount`, `seller_id`, `return_status`, `created_at`) VALUES
+(726, 'INV261178A8FA', '15', '2026-04-27 00:41:43', 'Cash', 1.20, 0.00, 0.00, 0.00, 1.20, 18, 'ACTIVE', '2026-04-27 06:41:43'),
+(727, 'INV26117869A8', '15', '2026-04-27 01:06:37', 'Cash', 73.44, 1.44, 2.88, 0.00, 73.44, 18, 'PARTIAL', '2026-04-27 07:06:37'),
+(728, 'INV261173304B', '15', '2026-04-27 01:07:32', 'Cash', 24.00, 0.00, 0.00, 0.00, 24.00, 18, 'ACTIVE', '2026-04-27 07:07:32');
 
 -- --------------------------------------------------------
 
@@ -658,20 +672,22 @@ CREATE TABLE `sales_details` (
   `product_id` int DEFAULT NULL,
   `product_quantity_sold` int DEFAULT NULL,
   `unit_price` decimal(11,2) DEFAULT NULL,
-  `total_buy_price` bigint NOT NULL,
-  `total_sale_price` bigint NOT NULL,
+  `total_sale_price` decimal(11,2) DEFAULT NULL,
+  `total_buy_price` decimal(12,2) DEFAULT NULL,
+  `productwiseDiscountPercnt` int DEFAULT NULL,
+  `productwiseDiscountAmount` decimal(11,2) DEFAULT NULL,
   `productwiseVatPercnt` int DEFAULT NULL,
-  `productwiseDiscountPercnt` int DEFAULT NULL
+  `productwiseVatAmount` decimal(11,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `sales_details`
 --
 
-INSERT INTO `sales_details` (`sales_details_id`, `sales_details_invoice`, `product_id`, `product_quantity_sold`, `unit_price`, `total_buy_price`, `total_sale_price`, `productwiseVatPercnt`, `productwiseDiscountPercnt`) VALUES
-(1048, 'INV26116EB1B1', 562, 1, 1.20, 1, 1, 0, 0),
-(1049, 'INV261160DFFC', 562, 1, 1.20, 1, 1, 0, 0),
-(1050, 'INV26116D0928', 562, 5, 1.20, 5, 6, 0, 0);
+INSERT INTO `sales_details` (`sales_details_id`, `sales_details_invoice`, `product_id`, `product_quantity_sold`, `unit_price`, `total_sale_price`, `total_buy_price`, `productwiseDiscountPercnt`, `productwiseDiscountAmount`, `productwiseVatPercnt`, `productwiseVatAmount`) VALUES
+(1057, 'INV261178A8FA', 562, 1, 1.20, 1.20, 1.00, 5, 0.06, 7, 0.08),
+(1058, 'INV26117869A8', 562, 60, 1.20, 72.00, 60.00, 2, 1.44, 4, 2.88),
+(1059, 'INV261173304B', 563, 1, 24.00, 24.00, 20.00, 0, 0.00, 0, 0.00);
 
 -- --------------------------------------------------------
 
@@ -886,13 +902,14 @@ ALTER TABLE `return_customer_due`
 -- Indexes for table `return_sales`
 --
 ALTER TABLE `return_sales`
-  ADD PRIMARY KEY (`sales_id`);
+  ADD PRIMARY KEY (`return_id`),
+  ADD UNIQUE KEY `uniq_return_invoice` (`sales_invoice`);
 
 --
 -- Indexes for table `return_sales_details`
 --
 ALTER TABLE `return_sales_details`
-  ADD PRIMARY KEY (`sales_details_id`);
+  ADD PRIMARY KEY (`return_detail_id`);
 
 --
 -- Indexes for table `sales`
@@ -951,7 +968,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer_due`
 --
 ALTER TABLE `customer_due`
-  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=435;
+  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=442;
 
 --
 -- AUTO_INCREMENT for table `customer_group`
@@ -1047,31 +1064,31 @@ ALTER TABLE `product_unit`
 -- AUTO_INCREMENT for table `return_customer_due`
 --
 ALTER TABLE `return_customer_due`
-  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `return_sales`
 --
 ALTER TABLE `return_sales`
-  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `return_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `return_sales_details`
 --
 ALTER TABLE `return_sales_details`
-  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `return_detail_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=720;
+  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=729;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1051;
+  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1060;
 
 --
 -- AUTO_INCREMENT for table `supplier`
