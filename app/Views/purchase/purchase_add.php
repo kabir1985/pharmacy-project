@@ -312,7 +312,7 @@ $(document).ready(function() {
 
                 <td>
                     <input type="text" class="buying_price form-control form-control-sm"
-                    value="${item.base_price}" min="1">
+                    value="${item.base_price}" min="1" data-id="${key}">
                 </td>
 
                 <td>
@@ -391,6 +391,16 @@ $(document).ready(function() {
 
         var qtyPerPack = itemsInCart[index].quantity_per_pack || 1;
         itemsInCart[index].base_price = pricePerBox / qtyPerPack;
+
+        drawTable();
+    });
+
+
+    $(document).on("input", ".buying_price", function() {
+        var index = $(this).closest("tr").data("index");
+        var newPrice = Number($(this).val()) || 0;
+
+        itemsInCart[index].base_price = newPrice;
 
         drawTable();
     });

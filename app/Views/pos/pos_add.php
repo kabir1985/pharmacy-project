@@ -183,9 +183,10 @@ echo $this->section('content');
                                     <th scope="col">Stock</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">SalePrice</th>
-                                    <th scope="col">Avg Price</th>
+                                  
                                     <th class="vat-column-header hide">Vat%</th>
                                     <th class="discount-column-header hide">Disc%</th>
+                                       <th scope="col">Avg Pur.Price</th> 
                                     <th scope="col" onkeypress="return accept_digit_only(event)" class="text-right">
                                         Sub-Total
                                     </th>

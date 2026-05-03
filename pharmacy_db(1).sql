@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 30, 2026 at 10:13 AM
+-- Generation Time: May 03, 2026 at 10:10 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -96,7 +96,12 @@ INSERT INTO `customer_due` (`due_id`, `due_date`, `customer_id`, `due_invoice_no
 (444, '2026-04-29', '18', 'INV26119F696A', 24, 0, 0),
 (445, '2026-04-29', '15', 'INV26119B0AB3', 41, 0, 0),
 (446, '2026-04-29', '15', 'INV261193ABF1', 2, 0, 0),
-(447, '2026-04-30', '15', 'INV261202823F', 1, 0, 0);
+(447, '2026-04-30', '15', 'INV261202823F', 1, 0, 0),
+(448, '2026-05-03', '15', 'INV26123C15E9', 50, 0, 0),
+(449, '2026-05-03', '15', 'INV26123B7B8F', 6, 0, 0),
+(450, '2026-05-03', '15', 'INV261230CD76', 29, 0, 0),
+(451, '2026-05-03', '15', 'INV2612390290', 153, 0, 0),
+(452, '2026-05-03', '15', 'INV2612320544', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -220,11 +225,18 @@ CREATE TABLE `held_sales` (
   `hold_id` varchar(50) NOT NULL,
   `seller_id` int NOT NULL,
   `customer_type` varchar(50) NOT NULL,
-  `cart_data` varchar(500) NOT NULL,
+  `cart_data` longtext NOT NULL,
   `discountOnTotalPrice` int NOT NULL,
   `vatOnTotalPrice` int NOT NULL,
   `created_at` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `held_sales`
+--
+
+INSERT INTO `held_sales` (`id`, `hold_id`, `seller_id`, `customer_type`, `cart_data`, `discountOnTotalPrice`, `vatOnTotalPrice`, `created_at`) VALUES
+(82, 'HLD260503073758234', 18, 'Walk-In-Customer', '[{\"product_id\":\"563\",\"product_name\":\"Napa Syrup\",\"product_image\":\"napa-syrup-100ml.jpg\",\"sales_price_for_customer\":\"24.00\",\"purchase_price\":\"20.00\",\"total_stock\":\"8\",\"total_purchase_cost\":\"20.00\",\"unit_purchase_price\":\"20.000000\",\"stock_value\":\"160.000000\",\"quantity\":\"1\"}]', 0, 0, '2026-05-03 07:37:58');
 
 -- --------------------------------------------------------
 
@@ -311,7 +323,8 @@ CREATE TABLE `product_brand` (
 INSERT INTO `product_brand` (`brand_id`, `product_brand_name`, `product_category_id`) VALUES
 (37, 'Square', 132),
 (38, 'Renata', 132),
-(39, 'Incepta', 133);
+(39, 'Incepta', 133),
+(40, 'Square Pharma', 138);
 
 -- --------------------------------------------------------
 
@@ -334,7 +347,8 @@ INSERT INTO `product_category` (`product_category_id`, `category_name`) VALUES
 (134, 'Injections'),
 (135, 'Gels & Lotions'),
 (136, 'Suppositories'),
-(137, 'Drops');
+(137, 'Drops'),
+(138, 'Capsule');
 
 -- --------------------------------------------------------
 
@@ -359,7 +373,8 @@ INSERT INTO `product_group` (`product_group_id`, `group_name`) VALUES
 (43, 'Medical Devices'),
 (44, 'Surgical Items'),
 (45, 'Nutritional Products'),
-(46, 'Baby Care');
+(46, 'Baby Care'),
+(47, 'Omeprazole');
 
 -- --------------------------------------------------------
 
@@ -396,7 +411,8 @@ CREATE TABLE `product_inital_stock` (
 
 INSERT INTO `product_inital_stock` (`product_id`, `product_name`, `product_category`, `product_brand`, `product_group`, `product_unit`, `codefor_barcode`, `productinitial_quantity`, `base_price`, `tax_type`, `tax_id`, `tax_amount`, `purchase_price`, `profit_margin_%`, `cost_without_vat`, `sales_price_before_vat`, `vat_on_sales`, `sales_price_for_customer`, `alert_quantity`, `product_image`) VALUES
 (562, 'Napa Tablet', 132, 37, 37, 20, 'barcode', 112, 1.00, 'without_tax', 11, 0.00, 1.00, 20.00, 1, 1.20, 0.00, 1.20, 5, 'napa.jpeg'),
-(563, 'Napa Syrup', 133, 39, 46, 22, 'barcode-syrup', 10, 20.00, 'without_tax', 11, 0.00, 20.00, 20.00, 20, 24.00, 0.00, 24.00, 2, 'napa-syrup-100ml.jpg');
+(563, 'Napa Syrup', 133, 39, 46, 22, 'barcode-syrup', 10, 20.00, 'without_tax', 11, 0.00, 20.00, 20.00, 20, 24.00, 0.00, 24.00, 2, 'napa-syrup-100ml.jpg'),
+(564, 'Seclo 20 mg', 138, 40, 47, 22, 'barcode', 100, 3.50, 'without_tax', 11, 0.00, 3.50, 43.00, 4, 5.01, 0.00, 5.01, 5, 'seclo.jpeg');
 
 -- --------------------------------------------------------
 
@@ -424,7 +440,8 @@ CREATE TABLE `product_purchase` (
 INSERT INTO `product_purchase` (`product_purchase_id`, `purchase_invoice`, `purchaser_id`, `payment_type`, `supplier_id`, `invoice_total`, `discount_amount_on_invoice_total`, `vat_amount_on_invoice_total`, `invoice_net_total`, `purchase_date`) VALUES
 (96, 'PUR2610976064', '18', 'Cash', '124', 200.00, 0.00, 0.00, 200.00, '2026-04-19 05:56:55'),
 (97, 'PUR261199A4DD', '18', 'Cash', '106', 20.00, 0.00, 0.00, 20.00, '2026-04-29 07:30:34'),
-(98, 'PUR2612001248', '18', 'Cash', '106', 1.00, 0.00, 0.00, 1.00, '2026-04-30 08:08:40');
+(98, 'PUR2612001248', '18', 'Cash', '106', 1.00, 0.00, 0.00, 1.00, '2026-04-30 08:08:40'),
+(99, 'PUR2612341EE4', '18', 'Cash', '124', 700.00, 0.00, 0.00, 700.00, '2026-05-03 05:57:40');
 
 -- --------------------------------------------------------
 
@@ -449,7 +466,8 @@ CREATE TABLE `product_purchase_details` (
 --
 
 INSERT INTO `product_purchase_details` (`purchase_id`, `purchase_invoice_id`, `product_id`, `quantity_per_pack`, `box_quantity`, `base_price_per_unit`, `product_wise_vat_amount`, `product_wise_discount_amount`, `purchase_price`) VALUES
-(162, 'PUR261199A4DD', 563, 1, 1, 20.00, 0.00, 0.00, 20.00);
+(162, 'PUR261199A4DD', 563, 1, 1, 20.00, 0.00, 0.00, 20.00),
+(164, 'PUR2612341EE4', 564, 100, 2, 3.50, 0.00, 0.00, 700.00);
 
 -- --------------------------------------------------------
 
@@ -634,7 +652,12 @@ INSERT INTO `sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales_date`,
 (731, 'INV26119F696A', '18', '2026-04-29 00:55:05', 'Cash', 24.00, 0.00, 0.00, 0.00, 24.00, 18, 'ACTIVE', '2026-04-29 06:55:05'),
 (732, 'INV26119B0AB3', '15', '2026-04-29 01:29:11', 'Cash', 40.80, 0.00, 0.00, 0.00, 40.80, 18, 'ACTIVE', '2026-04-29 07:29:11'),
 (733, 'INV261193ABF1', '15', '2026-04-29 01:30:01', 'Cash', 2.40, 0.00, 0.00, 0.00, 2.40, 18, 'ACTIVE', '2026-04-29 07:30:01'),
-(734, 'INV261202823F', '15', '2026-04-30 02:08:07', 'Cash', 1.20, 0.00, 0.00, 0.00, 1.20, 18, 'ACTIVE', '2026-04-30 08:08:07');
+(734, 'INV261202823F', '15', '2026-04-30 02:08:07', 'Cash', 1.20, 0.00, 0.00, 0.00, 1.20, 18, 'ACTIVE', '2026-04-30 08:08:07'),
+(735, 'INV26123C15E9', '15', '2026-05-02 23:11:49', 'Cash', 50.10, 0.00, 0.00, 0.00, 50.10, 18, 'ACTIVE', '2026-05-03 05:11:49'),
+(736, 'INV26123B7B8F', '15', '2026-05-03 01:37:39', 'Cash', 6.21, 0.00, 0.00, 0.00, 6.21, 18, 'ACTIVE', '2026-05-03 07:37:39'),
+(737, 'INV261230CD76', '15', '2026-05-03 02:55:15', 'Cash', 29.01, 0.00, 0.00, 0.00, 29.01, 18, 'ACTIVE', '2026-05-03 08:55:15'),
+(738, 'INV2612390290', '15', '2026-05-03 03:11:42', 'Cash', 152.53, 4.80, 0.07, 0.00, 152.53, 18, 'ACTIVE', '2026-05-03 09:11:42'),
+(739, 'INV2612320544', '15', '2026-05-03 03:13:34', 'Cash', 1.20, 0.00, 0.00, 0.00, 1.20, 18, 'ACTIVE', '2026-05-03 09:13:34');
 
 -- --------------------------------------------------------
 
@@ -667,7 +690,16 @@ INSERT INTO `sales_details` (`sales_details_id`, `sales_details_invoice`, `produ
 (1063, 'INV26119B0AB3', 562, 14, 1.20, 16.80, 14.00, 0, 0.00, 0, 0.00),
 (1064, 'INV26119B0AB3', 563, 1, 24.00, 24.00, 20.00, 0, 0.00, 0, 0.00),
 (1065, 'INV261193ABF1', 562, 2, 1.20, 2.40, 2.00, 0, 0.00, 0, 0.00),
-(1066, 'INV261202823F', 562, 1, 1.20, 1.20, 1.00, 0, 0.00, 0, 0.00);
+(1066, 'INV261202823F', 562, 1, 1.20, 1.20, 1.00, 0, 0.00, 0, 0.00),
+(1067, 'INV26123C15E9', 564, 10, 5.01, 50.10, 35.00, 0, 0.00, 0, 0.00),
+(1068, 'INV26123B7B8F', 562, 1, 1.20, 1.20, 1.00, 0, 0.00, 0, 0.00),
+(1069, 'INV26123B7B8F', 564, 1, 5.01, 5.01, 3.50, 0, 0.00, 0, 0.00),
+(1070, 'INV261230CD76', 563, 1, 24.00, 24.00, 20.00, 0, 0.00, 0, 0.00),
+(1071, 'INV261230CD76', 564, 1, 5.01, 5.01, 3.50, 0, 0.00, 0, 0.00),
+(1072, 'INV2612390290', 562, 6, 1.20, 7.20, 6.00, 0, 0.00, 1, 0.07),
+(1073, 'INV2612390290', 563, 5, 24.00, 120.00, 100.00, 4, 4.80, 0, 0.00),
+(1074, 'INV2612390290', 564, 6, 5.01, 30.06, 21.00, 0, 0.00, 0, 0.00),
+(1075, 'INV2612320544', 562, 1, 1.20, 1.20, 1.00, 0, 0.00, 0, 0.00);
 
 -- --------------------------------------------------------
 
@@ -712,7 +744,7 @@ CREATE TABLE `tax` (
 INSERT INTO `tax` (`tax_id`, `tax_name`, `tax_percentage`) VALUES
 (8, 'Tax', 5.00),
 (9, 'VAT', 10.00),
-(11, 'None', 0.00);
+(11, 'None', 4.00);
 
 -- --------------------------------------------------------
 
@@ -948,7 +980,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer_due`
 --
 ALTER TABLE `customer_due`
-  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=448;
+  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=453;
 
 --
 -- AUTO_INCREMENT for table `customer_group`
@@ -978,7 +1010,7 @@ ALTER TABLE `general_settings`
 -- AUTO_INCREMENT for table `held_sales`
 --
 ALTER TABLE `held_sales`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `menu_id`
@@ -996,37 +1028,37 @@ ALTER TABLE `payment_receive`
 -- AUTO_INCREMENT for table `product_brand`
 --
 ALTER TABLE `product_brand`
-  MODIFY `brand_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `brand_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `product_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `product_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `product_group`
 --
 ALTER TABLE `product_group`
-  MODIFY `product_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `product_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `product_inital_stock`
 --
 ALTER TABLE `product_inital_stock`
-  MODIFY `product_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=564;
+  MODIFY `product_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=565;
 
 --
 -- AUTO_INCREMENT for table `product_purchase`
 --
 ALTER TABLE `product_purchase`
-  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `product_purchase_details`
 --
 ALTER TABLE `product_purchase_details`
-  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 
 --
 -- AUTO_INCREMENT for table `product_stock`
@@ -1062,13 +1094,13 @@ ALTER TABLE `return_sales_details`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=735;
+  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=740;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1067;
+  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1076;
 
 --
 -- AUTO_INCREMENT for table `supplier`

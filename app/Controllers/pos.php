@@ -652,7 +652,7 @@ LEFT JOIN (
     FROM return_sales_details
     GROUP BY product_id
 ) rs ON rs.product_id = pis.product_id
-";
+" . $condition;
 
 
         $results = $this->db->query($sql)->getResultArray();
