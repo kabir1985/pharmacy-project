@@ -137,6 +137,9 @@
                     $item_discount_amt = $item['unit_price'] * $item['product_quantity_sold'] * ($item['discount_percent'] ?? 0) / 100;
                     $item_subtotal = ($item['unit_price'] * $item['product_quantity_sold']) + $item_vat_amt - $item_discount_amt;
 
+                    $discountOnTotalPrice = $item['discountOnTotalPrice'];
+                    $vatOnTotalPrice = $item['vatOnTotalPrice'];
+
                     $total_base += $item['unit_price'] * $item['product_quantity_sold'];
                     $total_vat += $item_vat_amt;
                     $total_discount += $item_discount_amt;
@@ -164,34 +167,20 @@
                     <th class="text-right"><?= number_format($grand_total, 2) ?></th>
                 </tr>
 
-                <!-- <tr class="totals-row">
-                    <th colspan="8" class="text-right">VAT on Total</th>
-                    <td class="text-right"><?= number_format($invoice_info[0]['vatOnTotalPrice'], 2) ?></td>
-                </tr> -->
                 <tr class="totals-row">
                     <th colspan="8">
                         <div style="text-align: right;">VAT on Total</div>
                     </th>
-                    <td class="text-right"><?= number_format($invoice_info[0]['vatOnTotalPrice'], 2) ?></td>
+                    <td class="text-right"><?= number_format($vatOnTotalPrice, 2) ?></td>
                 </tr>
-
-                <!-- <tr class="totals-row">
-                    <th colspan="8" class="text-right">Discount on Total</th>
-                    <td class="text-right"><?= number_format($invoice_info[0]['discountOnTotalPrice'], 2) ?></td>
-                </tr> -->
-
 
                 <tr class="totals-row">
                     <th colspan="8">
                         <div style="text-align: right;">Discount on Total</div>
                     </th>
-                    <td class="text-right"><?= number_format($invoice_info[0]['discountOnTotalPrice'], 2) ?></td>
+                    <td class="text-right"><?= number_format($discountOnTotalPrice, 2) ?></td>
                 </tr>
 
-                <!-- <tr class="totals-row">
-                    <th colspan="8" class="text-right">Paid Amount</th>
-                    <td class="text-right"><?= number_format($invoice_info[0]['paid_amount'], 2) ?></td>
-                </tr> -->
 
                 <tr class="totals-row">
                     <th colspan="8">
