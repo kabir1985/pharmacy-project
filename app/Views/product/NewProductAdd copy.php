@@ -3,11 +3,11 @@ echo $this->extend('layout');
 echo $this->section('content');
 ?>
 <style>
-#sampleTable td,
-#sampleTable th {
-    white-space: nowrap;
+    #sampleTable td,
+#sampleTable th{
+white-space:nowrap;
 }
-</style>
+    </style>
 
 <div class='app-title'>
     <div>
@@ -37,12 +37,16 @@ echo $this->section('content');
                                 <th>Category</th>
                                 <th>Open.Stock</th>
 
-                                <th>Price-Without-VAT</th>
+                                <th>Base.Price</th>
+                                <th>Tax.Type</th>
                                 <th>Tax%</th>
                                 <th>Tax.Amt</th>
 
                                 <th>Pur.Price</th>
                                 <th>profit-margin%</th>
+                                <th>Cost without VAT</th>
+                                <th>Sales.Price(before VAT)</th>
+                                <th>VAT on Sales</th>
                                 <th>Final Sales Price(Customer Pays)</th>
                                 <th>Action</th>
                             </tr>
@@ -50,13 +54,13 @@ echo $this->section('content');
 
                         <tbody>
                             <?php
-// print_r($product_show);
-// exit();
-if (count($product_show) > 0) {
-    foreach ($product_show as $row11) {
-        ?>
+                            // print_r($product_show);
+                            // exit();
+                            if (count($product_show) > 0) {
+                                foreach ($product_show as $row11) {
+                                    ?>
                             <tr>
-                                <td><img src="<?=base_url()?>/public/uploads/<?=$row11["product_image"]?>"
+                                <td><img src="<?= base_url() ?>/public/uploads/<?= $row11["product_image"] ?>"
                                         class="img-thumbnail cart_item_image" alt="image 1"
                                         style="width: 50px; height: 40px;"></td>
                                 <!-- <td><?php //echo $row11['codefor_barcode'] ?></td> -->
@@ -65,14 +69,17 @@ if (count($product_show) > 0) {
                                 <!-- <td><?php //echo $row11['product_brand_name'] ?></td> -->
 
                                 <td><?php echo $row11['productinitial_quantity'] ?></td>
-                                <td><?php echo $row11['cost_without_vat'] ?></td>
-
+                                <td><?php echo $row11['base_price'] ?></td>
+                                <td><?php echo $row11['tax_type'] ?></td>
                                 <td><?php echo $row11['tax_percentage'] ?>%</td>
                                 <td><?php echo $row11['tax_amount'] ?></td>
 
-                                <td><?php echo $row11['purchase_price'] ?></td>
+                                <td><?php echo $row11['purchase_price'] ?></td>                            
                                 <td><?php echo $row11['profit_margin_%'] ?></td>
+                                <td><?php echo $row11['cost_without_vat'] ?></td>
 
+                                <td><?php echo $row11['sales_price_before_vat'] ?></td>
+                                <td><?php echo $row11['vat_on_sales'] ?></td>
 
                                 <td><?php echo $row11['sales_price_for_customer'] ?></td>
                                 <!-- <td><?php //echo $row11['final_price'] ?></td> -->
@@ -89,6 +96,7 @@ if (count($product_show) > 0) {
                                             data-tax_percentage="<?php echo $row11['tax_percentage'] ?>"
                                             data-productinitial_quantity="<?php echo $row11['productinitial_quantity'] ?>"
                                             data-base_price="<?php echo $row11['base_price'] ?>"
+                                       
                                             data-codefor_barcode="<?php echo $row11['codefor_barcode'] ?>"
                                             data-alert_quantity="<?php echo $row11['alert_quantity'] ?>">
                                             <i class="fa fa-edit"></i></a>
@@ -99,12 +107,10 @@ if (count($product_show) > 0) {
                                 </td>
                             </tr>
                             <?php
-}
-} else {
-    echo "Data not Found";
-}
-
-?>
+                                }
+                            } else
+                                echo "Data not Found";
+                            ?>
                         </tbody>
 
                     </table>
@@ -128,10 +134,10 @@ if (count($product_show) > 0) {
             <!-----for image upload------------------->
             <?php if (session('msg')): ?>
             <div class="alert alert-success alert-dismissible">
-                <?=session('msg')?>
+                <?= session('msg') ?>
                 <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
             </div>
-            <?php endif?>
+            <?php endif ?>
             <!-----for image upload------------------->
             <form id="NewProductAdd_Form" method='post' action="<?php echo site_url('/initial-product-create') ?>"
                 accept-charset="utf-8" enctype="multipart/form-data">
@@ -155,15 +161,15 @@ if (count($product_show) > 0) {
                             <select id="product_category" name="product_category" class="form-control" required>
                                 <option value="">Select Category </option>
                                 <?php
-foreach ($category_show as $category) {
-    ?>
+                                foreach ($category_show as $category) {
+                                    ?>
                                 <option value="<?php echo $category['product_category_id'] ?>">
                                     <?php echo $category['category_name'] ?>
                                 </option>
 
                                 <?php
-}
-?>
+                                }
+                                ?>
                             </select>
                         </div>
 
@@ -183,14 +189,14 @@ foreach ($category_show as $category) {
                             <select id="product_group" name="product_group" class="form-control" required>
                                 <option value="">Select Group </option>
                                 <?php
-foreach ($group_show as $group) {
-    ?>
+                                foreach ($group_show as $group) {
+                                    ?>
                                 <option value="<?php echo $group['product_group_id'] ?>">
                                     <?php echo $group['group_name'] ?>
                                 </option>
                                 <?php
-}
-?>
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
@@ -198,15 +204,15 @@ foreach ($group_show as $group) {
                             <select id="product_unit" name="product_unit" class="form-control" required>
                                 <option value="">Select Unit </option>
                                 <?php
-foreach ($unit_show as $unit) {
-    ?>
+                                foreach ($unit_show as $unit) {
+                                    ?>
                                 <option value="<?php echo $unit['product_unit_id'] ?>">
                                     <?php echo $unit['product_unit_name'] ?>
                                 </option>
 
                                 <?php
-}
-?>
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
@@ -230,9 +236,9 @@ foreach ($unit_show as $unit) {
                             <select id="tax_id" name="tax_id" class="form-control" required>
                                 <option value="">Select Tax</option>
                                 <?php foreach ($tax_show as $row): ?>
-                                <option value="<?=$row['tax_id'];?>" data-percent="<?=$row['tax_percentage'];?>">
-                                    <?=$row['tax_name'];?> (
-                                    <?=$row['tax_percentage'];?>%)
+                                <option value="<?= $row['tax_id']; ?>" data-percent="<?= $row['tax_percentage']; ?>">
+                                    <?= $row['tax_name']; ?> (
+                                    <?= $row['tax_percentage']; ?>%)
                                 </option>
                                 <?php endforeach; ?>
                             </select>
@@ -293,7 +299,7 @@ foreach ($unit_show as $unit) {
 
                     <div class="form-row">
 
-
+                   
                         <div class="form-group col-md-12">
                             <label>Product Image</label>
                             <div class="custom-file">
@@ -342,20 +348,20 @@ foreach ($unit_show as $unit) {
                         <div class='form-group col-md-4'>
                             <label>Category Name</label>
                             <select id="product_category12" name="product_category12" class="form-control">
-                                <?php foreach ($category_show as $row22) {?>
+                                <?php foreach ($category_show as $row22) { ?>
                                 <option value="<?php echo $row22['product_category_id'] ?>">
                                     <?php echo $row22['category_name'] ?>
                                 </option>
-                                <?php }?>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Brand</label>
                             <select id="product_brand12" name="product_brand12" class="form-control">
-                                <?php foreach ($brand_show as $row) {?>
+                                <?php foreach ($brand_show as $row) { ?>
                                 <option value="<?php echo $row['brand_id'] ?>"><?php echo $row['product_brand_name'] ?>
                                 </option>
-                                <?php }?>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -363,29 +369,29 @@ foreach ($unit_show as $unit) {
                         <div class='form-group col-md-4'>
                             <label>Group</label>
                             <select id="product_group12" name="product_group12" class="form-control">
-                                <?php foreach ($group_show as $row) {?>
+                                <?php foreach ($group_show as $row) { ?>
                                 <option value="<?php echo $row['product_group_id'] ?>"><?php echo $row['group_name'] ?>
                                 </option>
-                                <?php }?>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Unit</label>
                             <select id="product_unit12" name="product_unit12" class="form-control">
-                                <?php foreach ($unit_show as $row) {?>
+                                <?php foreach ($unit_show as $row) { ?>
                                 <option value="<?php echo $row['product_unit_id'] ?>">
                                     <?php echo $row['product_unit_name'] ?>
                                 </option>
-                                <?php }?>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>TAX</label>
                             <select id="tax_percentage12" name="tax_percentage12" class="form-control">
-                                <?php foreach ($tax_show as $row) {?>
+                                <?php foreach ($tax_show as $row) { ?>
                                 <option value="<?php echo $row['tax_percentage'] ?>"><?php echo $row['tax_name'] ?>
                                 </option>
-                                <?php }?>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -475,7 +481,7 @@ echo $this->section('scripts');
 ?>
 
 <!-- Data table plugin-->
-<link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.responsive.min.css') ?>">
+ <link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.responsive.min.css') ?>">
 <script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
 <script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
@@ -490,72 +496,53 @@ $(document).ready(function() {
 
     /////////////////Product Final Price Calculation start//////////////////////////////////////////////////////////////////////
     function getTaxPercent() {
-        return parseFloat($('#tax_id option:selected').data('percent')) || 0;
+    return parseFloat($('#tax_id option:selected').data('percent')) || 0;
+}
+
+// MAIN CALCULATION
+function calculatePrice() {
+
+    let basePrice = parseFloat($('#base_price').val()) || 0;
+    let margin = parseFloat($('#profit_margin').val()) || 0;
+    let taxPercent = getTaxPercent();
+    let taxType = $('#tax_type').val();
+
+    let purchasePrice = 0;
+    let salesPrice = 0;
+    let finalPrice = 0;
+
+    // PURCHASE PRICE
+    if (taxType === 'with_tax') {
+        purchasePrice = basePrice;
+    } else {
+        purchasePrice = basePrice + (basePrice * taxPercent / 100);
     }
 
-    // MAIN CALCULATION
-    function calculatePrice(fromSales = false) {
+    // SALES PRICE
+    salesPrice = purchasePrice * (1 + margin / 100);
 
-        let basePrice = parseFloat($('#base_price').val()) || 0;
-        let margin = parseFloat($('#profit_margin').val()) || 0;
-        let taxPercent = getTaxPercent();
-        let taxType = $('#tax_type').val();
+    // FINAL PRICE
+    // if (taxType === 'without_tax') {
+    //     finalPrice = salesPrice + (salesPrice * taxPercent / 100);
+    // } else {
+    //     finalPrice = salesPrice;
+    // }
 
-        let purchasePrice = 0;
-        let salesPrice = parseFloat($('#sales_price').val()) || 0;
+    $('#purchase_price').val(purchasePrice.toFixed(2));
+    $('#sales_price').val(salesPrice.toFixed(2));
+    // $('#final_price').val(finalPrice.toFixed(2));
+}
 
-        // PURCHASE PRICE
-        if (taxType === 'with_tax') {
-            purchasePrice = basePrice;
-        } else {
-            purchasePrice = basePrice + (basePrice * taxPercent / 100);
-        }
+// EVENTS
+$('#base_price, #profit_margin').on('input', calculatePrice);
 
-        // যদি sales price থেকে margin calculate করতে চান
-        if (fromSales) {
-
-            if (purchasePrice > 0) {
-                margin = ((salesPrice - purchasePrice) / purchasePrice) * 100;
-            } else {
-                margin = 0;
-            }
-
-            $('#profit_margin').val(margin.toFixed(2));
-
-        } else {
-
-            // margin থেকে sales price calculate
-            salesPrice = purchasePrice * (1 + margin / 100);
-
-            $('#sales_price').val(salesPrice.toFixed(2));
-        }
-
-        $('#purchase_price').val(purchasePrice.toFixed(2));
-    }
-
-
-    // EVENTS
-
-    // base price / margin change হলে sales price auto calculate
-    $('#base_price, #profit_margin').on('input', function() {
-        calculatePrice(false);
-    });
-
-    // sales price change হলে margin auto calculate
-    $('#sales_price').on('input', function() {
-        calculatePrice(true);
-    });
-
-    // tax change হলে recalculation
-    $('#tax_type, #tax_id').on('change', function() {
-        calculatePrice(false);
-    });
+$('#tax_type, #tax_id').on('change', calculatePrice);
     //////////////Product Final Price Calculation End///////////////////////////////////////////////////////////////////////////////////
 
     $("#product_category").on("change", function() {
         var categoryId = this.value;
 
-        var brand_call_url = "<?=site_url('/initial-product-brand')?>";
+        var brand_call_url = "<?= site_url('/initial-product-brand') ?>";
         $.ajax({
             url: brand_call_url,
             type: "POST",
@@ -570,9 +557,9 @@ $(document).ready(function() {
 
 
     $('#sampleTable').DataTable({
-        responsive: true,
-        autoWidth: false
-    });
+    responsive: true,
+    autoWidth: false
+});
 
     ////-------------------Product Entry Form-------------------------//
 
@@ -680,7 +667,7 @@ $(document).ready(function() {
         //const tax_percentage = $(this).data('tax_percentage');
         const productinitial_quantity = $(this).data('productinitial_quantity');
         const base_price = $(this).data('base_price');
-        // const final_price = $(this).data('final_price');
+       // const final_price = $(this).data('final_price');
         const codefor_barcode = $(this).data('codefor_barcode');
         const alert_quantity = $(this).data('alert_quantity');
 
@@ -720,7 +707,7 @@ $(document).ready(function() {
 
         $('#productinitial_quantity').val(productinitial_quantity);
         $('#base_price').val(base_price);
-        // $('#final_price').val(final_price);
+       // $('#final_price').val(final_price);
         $('#codefor_barcode').val(codefor_barcode);
         $('#alert_quantity').val(alert_quantity);
         // Call Modal Edit
@@ -750,7 +737,7 @@ $(document).ready(function() {
         autoclose: true,
         todayHighlight: true
     });
-    //.................For Date show end........................
+    //.................For Date show end........................ 
 
     ///////////////////product image upload issue//////////////////////////////////
     $('.custom-file-input').on('change', function() {

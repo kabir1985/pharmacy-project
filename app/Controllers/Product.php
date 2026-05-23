@@ -86,12 +86,14 @@ class Product extends BaseController
             //$avatar->move(WRITEPATH . 'assets/images');
             $avatar->move(ROOTPATH . 'public/uploads/');
         }
+
         $tax_id = $this->request->getPost('tax_id');
         $tax_percentage = $this->request->getPost('tax_percentage');
         $base_price = (float) $this->request->getVar('base_price');
         $purchase_price = (float) $this->request->getVar('purchase_price');
         $tax_type_db = ($this->request->getVar('tax_type') == 'with_tax') ? 'with_tax' : 'without_tax';
         $profit_margin = (int) $this->request->getVar('profit_margin');
+        $sales_price = $this->request->getVar('sales_price');
 
         if ($tax_type_db == 'with_tax') { // Inclusive tax
 
@@ -101,21 +103,16 @@ class Product extends BaseController
             $tax_amount = $base_price * $tax_percentage / (100 + $tax_percentage);
 
             $cost_without_vat = $base_price - $tax_amount;
-            $sales_price_before_vat = $cost_without_vat * (1 + $profit_margin / 100);
-            $vat_on_sales = $sales_price_before_vat * $tax_percentage / 100;
-            $sales_price_for_customer = $sales_price_before_vat + $vat_on_sales;
+
+            $sales_price_for_customer = $sales_price;
 
         } else { // Exclusive tax
 
-            //  $tax_amount = $base_price * $tax_percentage / 100;
-            //  $purchase_price = $base_price + $tax_amount;
-
-            $tax_amount = $base_price * $tax_percentage / 100;
+            $tax_amount = ($base_price * $tax_percentage) / 100;
+           // VAT added separately
             $purchase_price = $base_price + $tax_amount;
+
             $cost_without_vat = $base_price;
-            $sales_price_before_vat = $cost_without_vat * (1 + $profit_margin / 100);
-            $vat_on_sales = $sales_price_before_vat * $tax_percentage / 100;
-            $sales_price_for_customer = $sales_price_before_vat + $vat_on_sales;
 
         }
 
@@ -134,16 +131,14 @@ class Product extends BaseController
             'productinitial_quantity' => (int) $this->request->getVar('productinitial_quantity'),
 
             'base_price' => $base_price,
+            'cost_without_vat' => $cost_without_vat,
             'tax_type' => $tax_type_db,
             'tax_id' => $tax_id,
             'tax_amount' => $tax_amount,
+            
             'purchase_price' => $purchase_price,
             'profit_margin_%' => $profit_margin,
-            'cost_without_vat' => $cost_without_vat,
-            'sales_price_before_vat' => $sales_price_before_vat,
-            'vat_on_sales' => $vat_on_sales,
-            'sales_price_for_customer' => $sales_price_for_customer,
-
+            'sales_price_for_customer' => $sales_price,
             'alert_quantity' => (int) $this->request->getVar('alert_quantity'),
             'product_image' => $avatar->getClientName(),
         ];

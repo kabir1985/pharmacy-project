@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 21, 2026 at 10:47 AM
+-- Generation Time: May 23, 2026 at 11:11 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -85,6 +85,15 @@ CREATE TABLE `customer_due` (
   `due_paid_amount` bigint NOT NULL,
   `current_balance` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `customer_due`
+--
+
+INSERT INTO `customer_due` (`due_id`, `due_date`, `customer_id`, `due_invoice_no`, `due_amount`, `due_paid_amount`, `current_balance`) VALUES
+(469, '2026-05-23', '15', 'INV2614322600', 100, 0, 0),
+(470, '2026-05-23', '15', 'INV26143AE760', 200, 0, 0),
+(471, '2026-05-23', '15', 'INV26143DF5AD', 230, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -228,6 +237,13 @@ CREATE TABLE `held_sales` (
   `vatOnTotalPrice` int NOT NULL,
   `created_at` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `held_sales`
+--
+
+INSERT INTO `held_sales` (`id`, `hold_id`, `seller_id`, `customer_type`, `cart_data`, `discountOnTotalPrice`, `vatOnTotalPrice`, `created_at`) VALUES
+(85, 'HLD260523102617320', 18, 'Walk-In-Customer', '[{\"product_id\":\"569\",\"product_name\":\"dfgfdg\",\"product_image\":\"Untitled.jpg\",\"sales_price_for_customer\":\"130.00\",\"purchase_price\":\"100.00\",\"total_stock\":\"20\",\"total_purchase_cost\":\"0.00\",\"unit_purchase_price\":\"100.000000\",\"stock_value\":\"2000.000000\",\"quantity\":\"2\"},{\"product_id\":\"570\",\"product_name\":\"sfsd\",\"product_image\":\"logo.jpg\",\"sales_price_for_customer\":\"100.00\",\"purchase_price\":\"88.05\",\"total_stock\":\"10\",\"total_purchase_cost\":\"0.00\",\"unit_purchase_price\":\"88.050000\",\"stock_value\":\"880.500000\",\"quantity\":\"3\"}]', 0, 0, '2026-05-23 10:26:17');
 
 -- --------------------------------------------------------
 
@@ -375,26 +391,34 @@ INSERT INTO `product_group` (`product_group_id`, `group_name`) VALUES
 
 CREATE TABLE `product_inital_stock` (
   `product_id` bigint NOT NULL,
-  `product_name` varchar(100) DEFAULT NULL,
+  `product_name` varchar(255) NOT NULL,
   `product_category` int DEFAULT NULL,
   `product_brand` int DEFAULT NULL,
   `product_group` int DEFAULT NULL,
   `product_unit` int DEFAULT NULL,
-  `codefor_barcode` varchar(50) DEFAULT NULL,
-  `productinitial_quantity` int DEFAULT NULL,
-  `base_price` decimal(10,2) DEFAULT NULL,
-  `tax_type` varchar(50) NOT NULL,
+  `codefor_barcode` varchar(100) DEFAULT NULL,
+  `productinitial_quantity` decimal(10,2) DEFAULT '0.00',
+  `base_price` decimal(15,2) DEFAULT '0.00',
+  `cost_without_vat` decimal(15,2) DEFAULT '0.00',
+  `tax_type` enum('with_tax','without_tax') NOT NULL,
   `tax_id` int NOT NULL,
-  `tax_amount` decimal(10,2) DEFAULT NULL,
-  `purchase_price` decimal(10,2) DEFAULT NULL,
+  `tax_amount` decimal(15,2) DEFAULT '0.00',
+  `purchase_price` decimal(15,2) DEFAULT '0.00',
   `profit_margin_%` decimal(5,2) DEFAULT NULL,
-  `cost_without_vat` int NOT NULL,
-  `sales_price_before_vat` decimal(10,2) DEFAULT NULL,
-  `vat_on_sales` decimal(10,2) DEFAULT NULL,
-  `sales_price_for_customer` decimal(12,2) DEFAULT NULL,
-  `alert_quantity` int DEFAULT NULL,
-  `product_image` varchar(100) DEFAULT NULL
+  `sales_price_for_customer` decimal(15,2) DEFAULT '0.00',
+  `alert_quantity` decimal(10,2) DEFAULT '0.00',
+  `product_image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `product_inital_stock`
+--
+
+INSERT INTO `product_inital_stock` (`product_id`, `product_name`, `product_category`, `product_brand`, `product_group`, `product_unit`, `codefor_barcode`, `productinitial_quantity`, `base_price`, `cost_without_vat`, `tax_type`, `tax_id`, `tax_amount`, `purchase_price`, `profit_margin_%`, `sales_price_for_customer`, `alert_quantity`, `product_image`, `created_at`, `updated_at`) VALUES
+(569, 'dfgfdg', 132, 37, 32, 20, 'dgfd', 20.00, 100.00, 95.24, 'with_tax', 8, 4.76, 100.00, 30.00, 130.00, 4.00, 'Untitled.jpg', '2026-05-23 11:09:43', '2026-05-23 11:09:43'),
+(570, 'sfsd', 132, 37, 37, 20, 'sdfsd', 10.00, 75.00, 75.00, 'without_tax', 9, 13.05, 88.05, 13.00, 100.00, 5.00, 'logo.jpg', '2026-05-23 11:09:43', '2026-05-23 11:09:43');
 
 -- --------------------------------------------------------
 
@@ -415,6 +439,13 @@ CREATE TABLE `product_purchase` (
   `purchase_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `product_purchase`
+--
+
+INSERT INTO `product_purchase` (`product_purchase_id`, `purchase_invoice`, `purchaser_id`, `payment_type`, `supplier_id`, `invoice_total`, `discount_amount_on_invoice_total`, `vat_amount_on_invoice_total`, `invoice_net_total`, `purchase_date`) VALUES
+(101, 'PUR26143C6BEF', '18', 'Cash', '106', 176.10, 0.00, 0.00, 176.10, '2026-05-23 06:30:07');
+
 -- --------------------------------------------------------
 
 --
@@ -432,6 +463,14 @@ CREATE TABLE `product_purchase_details` (
   `product_wise_discount_amount` decimal(10,2) NOT NULL DEFAULT '0.00',
   `purchase_price` decimal(12,2) NOT NULL DEFAULT '0.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `product_purchase_details`
+--
+
+INSERT INTO `product_purchase_details` (`purchase_id`, `purchase_invoice_id`, `product_id`, `quantity_per_pack`, `box_quantity`, `base_price_per_unit`, `product_wise_vat_amount`, `product_wise_discount_amount`, `purchase_price`) VALUES
+(166, 'PUR26143C6BEF', 566, 1, 1, 75.00, 13.05, 0.00, 88.05),
+(167, 'PUR26143C6BEF', 565, 1, 1, 75.00, 13.05, 0.00, 88.05);
 
 -- --------------------------------------------------------
 
@@ -561,6 +600,15 @@ CREATE TABLE `sales` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales_date`, `payment_type`, `total_amount`, `discountOnTotalPrice`, `vatOnTotalPrice`, `paid_amount`, `due_amount`, `seller_id`, `return_status`, `created_at`) VALUES
+(756, 'INV2614322600', '15', '2026-05-23 00:28:19', 'Cash', 100.00, 0.00, 0.00, 0.00, 100.00, 18, 'ACTIVE', '2026-05-23 06:28:19'),
+(757, 'INV26143AE760', '15', '2026-05-23 00:30:43', 'Cash', 199.50, 0.00, 0.00, 0.00, 199.50, 18, 'ACTIVE', '2026-05-23 06:30:43'),
+(758, 'INV26143DF5AD', '15', '2026-05-23 04:43:07', 'Cash', 230.00, 0.00, 0.00, 0.00, 230.00, 18, 'ACTIVE', '2026-05-23 10:43:07');
+
 -- --------------------------------------------------------
 
 --
@@ -580,6 +628,17 @@ CREATE TABLE `sales_details` (
   `productwiseVatPercnt` int DEFAULT NULL,
   `productwiseVatAmount` decimal(11,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `sales_details`
+--
+
+INSERT INTO `sales_details` (`sales_details_id`, `sales_details_invoice`, `product_id`, `product_quantity_sold`, `unit_price`, `total_sale_price`, `total_buy_price`, `productwiseDiscountPercnt`, `productwiseDiscountAmount`, `productwiseVatPercnt`, `productwiseVatAmount`) VALUES
+(1104, 'INV2614322600', 566, 1, 100.00, 100.00, 88.05, 0, 0.00, 0, 0.00),
+(1105, 'INV26143AE760', 565, 1, 99.50, 99.50, 88.05, 0, 0.00, 0, 0.00),
+(1106, 'INV26143AE760', 566, 1, 100.00, 100.00, 88.05, 0, 0.00, 0, 0.00),
+(1107, 'INV26143DF5AD', 569, 1, 130.00, 130.00, 100.00, 0, 0.00, 0, 0.00),
+(1108, 'INV26143DF5AD', 570, 1, 100.00, 100.00, 88.05, 0, 0.00, 0, 0.00);
 
 -- --------------------------------------------------------
 
@@ -623,7 +682,7 @@ CREATE TABLE `tax` (
 
 INSERT INTO `tax` (`tax_id`, `tax_name`, `tax_percentage`) VALUES
 (8, 'Tax', 5.00),
-(9, 'VAT', 10.00),
+(9, 'VAT', 17.40),
 (11, 'None', 0.00);
 
 -- --------------------------------------------------------
@@ -861,7 +920,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer_due`
 --
 ALTER TABLE `customer_due`
-  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=469;
+  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=472;
 
 --
 -- AUTO_INCREMENT for table `customer_group`
@@ -891,7 +950,7 @@ ALTER TABLE `general_settings`
 -- AUTO_INCREMENT for table `held_sales`
 --
 ALTER TABLE `held_sales`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `menu_id`
@@ -927,19 +986,19 @@ ALTER TABLE `product_group`
 -- AUTO_INCREMENT for table `product_inital_stock`
 --
 ALTER TABLE `product_inital_stock`
-  MODIFY `product_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=565;
+  MODIFY `product_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=571;
 
 --
 -- AUTO_INCREMENT for table `product_purchase`
 --
 ALTER TABLE `product_purchase`
-  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `product_purchase_details`
 --
 ALTER TABLE `product_purchase_details`
-  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
+  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
 
 --
 -- AUTO_INCREMENT for table `product_stock`
@@ -975,13 +1034,13 @@ ALTER TABLE `return_sales_details`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=756;
+  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=759;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1104;
+  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1109;
 
 --
 -- AUTO_INCREMENT for table `supplier`
