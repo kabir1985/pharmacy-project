@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 23, 2026 at 11:11 AM
+-- Generation Time: May 24, 2026 at 10:40 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -93,7 +93,9 @@ CREATE TABLE `customer_due` (
 INSERT INTO `customer_due` (`due_id`, `due_date`, `customer_id`, `due_invoice_no`, `due_amount`, `due_paid_amount`, `current_balance`) VALUES
 (469, '2026-05-23', '15', 'INV2614322600', 100, 0, 0),
 (470, '2026-05-23', '15', 'INV26143AE760', 200, 0, 0),
-(471, '2026-05-23', '15', 'INV26143DF5AD', 230, 0, 0);
+(471, '2026-05-23', '15', 'INV26143DF5AD', 230, 0, 0),
+(472, '2026-05-24', '15', 'INV261449A983', 124, 0, 0),
+(473, '2026-05-24', '15', 'INV2614434015', 110, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -124,22 +126,24 @@ INSERT INTO `customer_group` (`customer_group_id`, `cus_group_name`, `cus_due_li
 --
 
 CREATE TABLE `expense` (
-  `expense_id` bigint NOT NULL,
+  `expense_id` bigint UNSIGNED NOT NULL,
   `expense_ref_no` varchar(150) NOT NULL,
-  `expense_category` varchar(100) NOT NULL,
-  `expense_sub_category` varchar(100) NOT NULL,
+  `expense_category` bigint DEFAULT NULL,
+  `expense_sub_category` bigint DEFAULT NULL,
   `expense_what_for` varchar(200) NOT NULL,
-  `expense_amount` decimal(12,2) NOT NULL,
-  `expense_note` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `expense_date` date NOT NULL
+  `expense_amount` decimal(15,2) NOT NULL DEFAULT '0.00',
+  `expense_note` text,
+  `expense_date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `expense`
 --
 
-INSERT INTO `expense` (`expense_id`, `expense_ref_no`, `expense_category`, `expense_sub_category`, `expense_what_for`, `expense_amount`, `expense_note`, `expense_date`) VALUES
-(0, 'fdgdg', '15', '11', 'dfgf', 200.00, 'dfgf', '0000-00-00');
+INSERT INTO `expense` (`expense_id`, `expense_ref_no`, `expense_category`, `expense_sub_category`, `expense_what_for`, `expense_amount`, `expense_note`, `expense_date`, `created_at`) VALUES
+(1, 'Salary-May-26', 22, 15, 'labour overtime', 1.00, 'test', '2026-05-24', '2026-05-24 06:40:40'),
+(3, 'dfdsf', 16, 12, 'sdfdsf', 12.00, 'fdgdf', '2026-05-24', '2026-05-24 07:51:04');
 
 -- --------------------------------------------------------
 
@@ -318,20 +322,22 @@ CREATE TABLE `payment_receive` (
 --
 
 CREATE TABLE `product_brand` (
-  `brand_id` bigint NOT NULL,
+  `brand_id` bigint UNSIGNED NOT NULL,
   `product_brand_name` varchar(50) NOT NULL,
-  `product_category_id` int NOT NULL
+  `product_category_id` bigint UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `product_brand`
 --
 
-INSERT INTO `product_brand` (`brand_id`, `product_brand_name`, `product_category_id`) VALUES
-(37, 'Square', 132),
-(38, 'Renata', 132),
-(39, 'Incepta', 133),
-(40, 'Square Pharma', 138);
+INSERT INTO `product_brand` (`brand_id`, `product_brand_name`, `product_category_id`, `created_at`, `updated_at`) VALUES
+(37, 'Square', 132, '2026-05-24 08:04:27', '2026-05-24 08:04:27'),
+(38, 'Renata', 132, '2026-05-24 08:04:27', '2026-05-24 08:04:27'),
+(39, 'Incepta', 133, '2026-05-24 08:04:27', '2026-05-24 08:04:27'),
+(40, 'Square Pharma', 138, '2026-05-24 08:04:27', '2026-05-24 08:04:27');
 
 -- --------------------------------------------------------
 
@@ -417,8 +423,8 @@ CREATE TABLE `product_inital_stock` (
 --
 
 INSERT INTO `product_inital_stock` (`product_id`, `product_name`, `product_category`, `product_brand`, `product_group`, `product_unit`, `codefor_barcode`, `productinitial_quantity`, `base_price`, `cost_without_vat`, `tax_type`, `tax_id`, `tax_amount`, `purchase_price`, `profit_margin_%`, `sales_price_for_customer`, `alert_quantity`, `product_image`, `created_at`, `updated_at`) VALUES
-(569, 'dfgfdg', 132, 37, 32, 20, 'dgfd', 20.00, 100.00, 95.24, 'with_tax', 8, 4.76, 100.00, 30.00, 130.00, 4.00, 'Untitled.jpg', '2026-05-23 11:09:43', '2026-05-23 11:09:43'),
-(570, 'sfsd', 132, 37, 37, 20, 'sdfsd', 10.00, 75.00, 75.00, 'without_tax', 9, 13.05, 88.05, 13.00, 100.00, 5.00, 'logo.jpg', '2026-05-23 11:09:43', '2026-05-23 11:09:43');
+(569, 'Napa Syrup', 133, 37, 37, 20, 'dgfd', 20.00, 100.00, 95.24, 'with_tax', 8, 4.76, 100.00, 30.00, 130.00, 4.00, 'Untitled.jpg', '2026-05-23 11:09:43', '2026-05-24 08:20:40'),
+(570, 'Napa', 132, 37, 37, 20, 'sdfsd', 10.00, 75.00, 75.00, 'without_tax', 9, 13.05, 88.05, 13.00, 100.00, 5.00, 'logo.jpg', '2026-05-23 11:09:43', '2026-05-24 08:20:08');
 
 -- --------------------------------------------------------
 
@@ -444,7 +450,9 @@ CREATE TABLE `product_purchase` (
 --
 
 INSERT INTO `product_purchase` (`product_purchase_id`, `purchase_invoice`, `purchaser_id`, `payment_type`, `supplier_id`, `invoice_total`, `discount_amount_on_invoice_total`, `vat_amount_on_invoice_total`, `invoice_net_total`, `purchase_date`) VALUES
-(101, 'PUR26143C6BEF', '18', 'Cash', '106', 176.10, 0.00, 0.00, 176.10, '2026-05-23 06:30:07');
+(101, 'PUR26143C6BEF', '18', 'Cash', '106', 176.10, 0.00, 0.00, 176.10, '2026-05-23 06:30:07'),
+(102, 'PUR261449C4A1', '18', 'Cash', '106', 105.00, 0.00, 0.00, 105.00, '2026-05-24 09:38:14'),
+(103, 'PUR26144F81B3', '18', 'Cash', '106', 105.00, 0.00, 0.00, 105.00, '2026-05-24 09:50:23');
 
 -- --------------------------------------------------------
 
@@ -470,7 +478,9 @@ CREATE TABLE `product_purchase_details` (
 
 INSERT INTO `product_purchase_details` (`purchase_id`, `purchase_invoice_id`, `product_id`, `quantity_per_pack`, `box_quantity`, `base_price_per_unit`, `product_wise_vat_amount`, `product_wise_discount_amount`, `purchase_price`) VALUES
 (166, 'PUR26143C6BEF', 566, 1, 1, 75.00, 13.05, 0.00, 88.05),
-(167, 'PUR26143C6BEF', 565, 1, 1, 75.00, 13.05, 0.00, 88.05);
+(167, 'PUR26143C6BEF', 565, 1, 1, 75.00, 13.05, 0.00, 88.05),
+(168, 'PUR261449C4A1', 569, 1, 1, 100.00, 5.00, 0.00, 105.00),
+(169, 'PUR26144F81B3', 569, 1, 1, 100.00, 5.00, 0.00, 105.00);
 
 -- --------------------------------------------------------
 
@@ -538,6 +548,15 @@ CREATE TABLE `return_customer_due` (
   `current_balance` bigint NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `return_customer_due`
+--
+
+INSERT INTO `return_customer_due` (`due_id`, `return_due_date`, `customer_id`, `due_invoice_no`, `due_amount`, `due_paid_amount`, `current_balance`) VALUES
+(122, '24-05-2026', '15', 'INV2614322600', 100, 0, 0),
+(123, '24-05-2026', '15', 'INV26143DF5AD', 230, 0, 0),
+(124, '24-05-2026', '15', 'INV261449A983', 124, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -560,6 +579,15 @@ CREATE TABLE `return_sales` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `return_sales`
+--
+
+INSERT INTO `return_sales` (`return_id`, `sales_invoice`, `customer_type`, `return_date`, `payment_type`, `discountOnTotalPrice`, `vatOnTotalPrice`, `paid_amount`, `due_amount`, `return_by`, `return_type`, `return_reason`, `created_at`) VALUES
+(113, 'INV2614322600', '15', '2026-05-23 00:28:19', 'Cash', 0.00, 0.00, 0.00, 100.00, 18, 'FULL', 'test', '2026-05-24 06:05:13'),
+(114, 'INV26143DF5AD', '15', '2026-05-23 04:43:07', 'Cash', 0.00, 0.00, 0.00, 230.00, 18, 'PARTIAL', 'rtret', '2026-05-24 06:16:34'),
+(115, 'INV261449A983', '15', '2026-05-23 21:40:48', 'Cash', 0.00, 0.00, 0.00, 123.50, 18, 'FULL', 'xdsfdsf', '2026-05-24 09:53:23');
+
 -- --------------------------------------------------------
 
 --
@@ -577,6 +605,15 @@ CREATE TABLE `return_sales_details` (
   `productwiseVatPercnt` int NOT NULL,
   `productwiseDiscountPercnt` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `return_sales_details`
+--
+
+INSERT INTO `return_sales_details` (`return_detail_id`, `sales_details_invoice`, `product_id`, `return_qty`, `unit_price`, `total_buy_price`, `total_sale_price`, `productwiseVatPercnt`, `productwiseDiscountPercnt`) VALUES
+(99, 'INV2614322600', 566, 1, 100.00, 88.05, 100.00, 0, 0),
+(100, 'INV26143DF5AD', 569, 1, 130.00, 100.00, 130.00, 0, 0),
+(101, 'INV261449A983', 569, 1, 130.00, 100.00, 130.00, 10, 15);
 
 -- --------------------------------------------------------
 
@@ -605,9 +642,11 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales_date`, `payment_type`, `total_amount`, `discountOnTotalPrice`, `vatOnTotalPrice`, `paid_amount`, `due_amount`, `seller_id`, `return_status`, `created_at`) VALUES
-(756, 'INV2614322600', '15', '2026-05-23 00:28:19', 'Cash', 100.00, 0.00, 0.00, 0.00, 100.00, 18, 'ACTIVE', '2026-05-23 06:28:19'),
+(756, 'INV2614322600', '15', '2026-05-23 00:28:19', 'Cash', 100.00, 0.00, 0.00, 0.00, 100.00, 18, 'FULL', '2026-05-23 06:28:19'),
 (757, 'INV26143AE760', '15', '2026-05-23 00:30:43', 'Cash', 199.50, 0.00, 0.00, 0.00, 199.50, 18, 'ACTIVE', '2026-05-23 06:30:43'),
-(758, 'INV26143DF5AD', '15', '2026-05-23 04:43:07', 'Cash', 230.00, 0.00, 0.00, 0.00, 230.00, 18, 'ACTIVE', '2026-05-23 10:43:07');
+(758, 'INV26143DF5AD', '15', '2026-05-23 04:43:07', 'Cash', 230.00, 0.00, 0.00, 0.00, 230.00, 18, 'PARTIAL', '2026-05-23 10:43:07'),
+(759, 'INV261449A983', '15', '2026-05-23 21:40:48', 'Cash', 123.50, 0.00, 0.00, 0.00, 123.50, 18, 'FULL', '2026-05-24 03:40:48'),
+(760, 'INV2614434015', '15', '2026-05-23 21:45:30', 'Cash', 100.00, 10.00, 20.00, 0.00, 110.00, 18, 'ACTIVE', '2026-05-24 03:45:30');
 
 -- --------------------------------------------------------
 
@@ -638,7 +677,9 @@ INSERT INTO `sales_details` (`sales_details_id`, `sales_details_invoice`, `produ
 (1105, 'INV26143AE760', 565, 1, 99.50, 99.50, 88.05, 0, 0.00, 0, 0.00),
 (1106, 'INV26143AE760', 566, 1, 100.00, 100.00, 88.05, 0, 0.00, 0, 0.00),
 (1107, 'INV26143DF5AD', 569, 1, 130.00, 130.00, 100.00, 0, 0.00, 0, 0.00),
-(1108, 'INV26143DF5AD', 570, 1, 100.00, 100.00, 88.05, 0, 0.00, 0, 0.00);
+(1108, 'INV26143DF5AD', 570, 1, 100.00, 100.00, 88.05, 0, 0.00, 0, 0.00),
+(1109, 'INV261449A983', 569, 1, 130.00, 130.00, 100.00, 15, 19.50, 10, 13.00),
+(1110, 'INV2614434015', 570, 1, 100.00, 100.00, 88.05, 0, 0.00, 0, 0.00);
 
 -- --------------------------------------------------------
 
@@ -758,6 +799,13 @@ ALTER TABLE `customer_group`
   ADD PRIMARY KEY (`customer_group_id`);
 
 --
+-- Indexes for table `expense`
+--
+ALTER TABLE `expense`
+  ADD PRIMARY KEY (`expense_id`),
+  ADD KEY `expense_date` (`expense_date`);
+
+--
 -- Indexes for table `expense_category`
 --
 ALTER TABLE `expense_category`
@@ -798,7 +846,9 @@ ALTER TABLE `payment_receive`
 -- Indexes for table `product_brand`
 --
 ALTER TABLE `product_brand`
-  ADD PRIMARY KEY (`brand_id`);
+  ADD PRIMARY KEY (`brand_id`),
+  ADD UNIQUE KEY `unique_brand_category` (`product_brand_name`,`product_category_id`),
+  ADD KEY `idx_product_category_id` (`product_category_id`);
 
 --
 -- Indexes for table `product_category`
@@ -920,13 +970,19 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer_due`
 --
 ALTER TABLE `customer_due`
-  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=472;
+  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=474;
 
 --
 -- AUTO_INCREMENT for table `customer_group`
 --
 ALTER TABLE `customer_group`
   MODIFY `customer_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `expense`
+--
+ALTER TABLE `expense`
+  MODIFY `expense_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `expense_category`
@@ -968,7 +1024,7 @@ ALTER TABLE `payment_receive`
 -- AUTO_INCREMENT for table `product_brand`
 --
 ALTER TABLE `product_brand`
-  MODIFY `brand_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `brand_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -992,13 +1048,13 @@ ALTER TABLE `product_inital_stock`
 -- AUTO_INCREMENT for table `product_purchase`
 --
 ALTER TABLE `product_purchase`
-  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `product_purchase_details`
 --
 ALTER TABLE `product_purchase_details`
-  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT for table `product_stock`
@@ -1016,31 +1072,31 @@ ALTER TABLE `product_unit`
 -- AUTO_INCREMENT for table `return_customer_due`
 --
 ALTER TABLE `return_customer_due`
-  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT for table `return_sales`
 --
 ALTER TABLE `return_sales`
-  MODIFY `return_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `return_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `return_sales_details`
 --
 ALTER TABLE `return_sales_details`
-  MODIFY `return_detail_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `return_detail_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=759;
+  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=761;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1109;
+  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1111;
 
 --
 -- AUTO_INCREMENT for table `supplier`

@@ -179,7 +179,7 @@ foreach ($category_show as $category) {
 
                     <div class='form-row'>
                         <div class='form-group col-md-4'>
-                            <label for="inputState">Product Group</label>
+                            <label for="inputState">Generic Name (Group)</label>
                             <select id="product_group" name="product_group" class="form-control" required>
                                 <option value="">Select Group </option>
                                 <?php
@@ -397,29 +397,14 @@ foreach ($unit_show as $unit) {
                                 name="productinitial_quantity" min="0" required placeholder="Opening Quantity">
                         </div>
                         <div class='form-group col-md-4'>
-                            <label>Buying Unit Price</label>
-                            <input type='text' class='form-control' name='base_price' id='base_price'
-                                onkeypress="return accept_digit_only(event)">
-                        </div>
-                        <!-- <div class='form-group col-md-4'>
-                            <label>Selling Unit Price</label>
-                            <input type='text' required class='form-control' name='final_price' id='final_price'
-                                onkeypress="return accept_digit_only(event)">
-                        </div> -->
-                    </div>
-
-
-
-                    <div class='form-row'>
-                        <div class='form-group col-md-6'>
                             <label>Barcode</label>
                             <input type='text' class='form-control' name='codefor_barcode' id='codefor_barcode'>
                         </div>
-                        <div class='form-group col-md-6'>
+                         <div class='form-group col-md-4'>
                             <label>Alert Quantity</label>
                             <input type='text' class='form-control' name='alert_quantity' id='alert_quantity'
                                 onkeypress="return accept_digit_only(event)">
-                        </div>
+                        </div> 
                     </div>
 
                 </div>

@@ -183,6 +183,15 @@ class Product extends BaseController
         }
     }
 
+
+    public function openingStockForm()
+    {
+        return view('product/modal_opening_stock');
+    }
+
+
+
+
     public function delete($id = 0)
     {
         // Get delete_id from POST request

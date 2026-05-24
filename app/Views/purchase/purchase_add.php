@@ -17,10 +17,12 @@ echo $this->section('content');
                 </div>
                 <!-- Add Button (Right Column) -->
                 <div>
-                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                        data-target="#AddNewProduct">
+                    <!-- <button type="button" class="btn btn-primary btn-sm" >
                         <i class="fa fa-plus"></i> Opening Stock
-                    </button>
+                    </button> -->
+                    <a href="<?= base_url('product') ?>" class="btn btn-primary btn-sm">
+                        <i class="fa fa-plus"></i> Opening Stock </a>
+
                 </div>
             </div>
             <!-- Cart Table -->
@@ -211,6 +213,8 @@ var productsList = <?=json_encode($product_show_for_sale, JSON_PRETTY_PRINT)?>;
 
 console.log(productsList);
 
+//alert(productsList);
+
 $(document).ready(function() {
 
     var itemsInCart = [];
@@ -229,7 +233,9 @@ $(document).ready(function() {
 
     // ================= Purchase Button Enable when Supplier and product selected ================= //
 
+/////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////
 
     // ================= DRAW TABLE ================= //
     function drawTable() {

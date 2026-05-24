@@ -1,0 +1,1133 @@
+DEBUG - 2026-05-24 03:36:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 03:36:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 03:36:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 03:37:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 03:39:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 03:40:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 03:40:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 03:40:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 03:41:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 03:45:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 03:45:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 03:45:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 03:45:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 05:58:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-24 05:58:17 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\profitloss.php(170): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-05-24 05:58:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'where clause'
+[Method: POST, Route: PLReport]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\profitloss.php(170): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN ? AND ?
+        AND status != \'cancelled\'
+    ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 05:58:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-05-03 00:00:00\' AND \'2026-05-24 23:59:59\'
+        AND status != \'cancelled\'
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-05-03 00:00:00\' AND \'2026-05-24 23:59:59\'
+        AND status != \'cancelled\'
+    ')
+ 3 APPPATH\Controllers\profitloss.php(170): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN ? AND ?
+        AND status != \'cancelled\'
+    ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 05:58:17 --> [Caused by] mysqli_sql_exception: Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-05-03 00:00:00\' AND \'2026-05-24 23:59:59\'
+        AND status != \'cancelled\'
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-05-03 00:00:00\' AND \'2026-05-24 23:59:59\'
+        AND status != \'cancelled\'
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-05-03 00:00:00\' AND \'2026-05-24 23:59:59\'
+        AND status != \'cancelled\'
+    ')
+ 4 APPPATH\Controllers\profitloss.php(170): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN ? AND ?
+        AND status != \'cancelled\'
+    ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-05-24 06:01:21 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\profitloss.php(170): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-05-24 06:01:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'where clause'
+[Method: POST, Route: PLReport]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\profitloss.php(170): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN ? AND ?
+        AND status = \'ACTIVE\'
+    ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 06:01:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-05-03 00:00:00\' AND \'2026-05-24 23:59:59\'
+        AND status = \'ACTIVE\'
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-05-03 00:00:00\' AND \'2026-05-24 23:59:59\'
+        AND status = \'ACTIVE\'
+    ')
+ 3 APPPATH\Controllers\profitloss.php(170): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN ? AND ?
+        AND status = \'ACTIVE\'
+    ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 06:01:21 --> [Caused by] mysqli_sql_exception: Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-05-03 00:00:00\' AND \'2026-05-24 23:59:59\'
+        AND status = \'ACTIVE\'
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-05-03 00:00:00\' AND \'2026-05-24 23:59:59\'
+        AND status = \'ACTIVE\'
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-05-03 00:00:00\' AND \'2026-05-24 23:59:59\'
+        AND status = \'ACTIVE\'
+    ')
+ 4 APPPATH\Controllers\profitloss.php(170): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat,
+            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount
+        FROM sales
+        WHERE sales_date BETWEEN ? AND ?
+        AND status = \'ACTIVE\'
+    ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-05-24 06:03:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:03:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:03:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:03:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:03:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:04:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:04:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:05:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:05:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:08:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:08:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:08:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-24 06:08:20 --> mysqli_sql_exception: Unknown column 'rs.sales_date' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT \r\n     ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT \r\n     ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT \r\n     ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\salereturnlist.php(113): CodeIgniter\Database\BaseConnection->query(' SELECT \r\n     ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-05-24 06:08:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'rs.sales_date' in 'field list'
+[Method: GET, Route: salereturnlistshow]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\salereturnlist.php(113): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 06:08:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'rs.sales_date' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 3 APPPATH\Controllers\salereturnlist.php(113): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 06:08:20 --> [Caused by] mysqli_sql_exception: Unknown column 'rs.sales_date' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 4 APPPATH\Controllers\salereturnlist.php(113): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    rs.sales_invoice,
+                    rs.sales_date,
+                    rsd.total_sale,
+                    rsd.productwiseVatPercnt,
+                    rs.discountOnTotalPrice,
+                    rs.vatOnTotalPrice,
+                    rs.paid_amount,
+                    IFNULL(rcd.customer_due, 0) AS customer_due,
+                    IFNULL(rcd.total_due_paid, 0) AS due_paid_amount,
+                    (rs.paid_amount + IFNULL(rcd.total_due_paid, 0)) AS total_paid,
+                    rs.due_amount,
+                    CASE 
+                        WHEN rs.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE rs.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN rs.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(rcd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM return_sales rs
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale, 
+                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                    FROM return_sales_details
+                    GROUP BY sales_details_invoice
+                ) rsd ON rs.sales_invoice = rsd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM return_customer_due
+                    GROUP BY due_invoice_no
+                ) rcd ON rs.sales_invoice = rcd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = rs.customer_type AND rs.customer_type REGEXP \'^[0-9]+\'
+            ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->saleReturnListShow()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-05-24 06:08:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:08:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:09:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:10:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:16:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:16:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:20:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:27:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:39:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:39:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:42:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:45:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:45:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:47:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:47:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:48:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 06:49:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:50:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:50:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:50:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:50:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:51:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:51:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:52:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:57:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:57:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:59:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:59:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:59:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:59:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:59:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:59:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 07:59:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:11:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:11:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:11:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:18:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:19:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:20:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:20:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:21:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:23:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:25:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:25:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:41:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 08:43:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:21:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:29:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:29:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:32:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:32:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:33:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:33:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:36:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:37:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:37:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:37:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:37:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:37:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:37:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:37:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:38:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:38:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:38:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:39:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:39:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:39:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:39:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:40:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:40:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:40:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:41:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:41:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:41:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:42:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:46:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:47:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:48:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:48:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:48:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:48:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:48:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:48:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:48:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:48:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:49:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:50:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:50:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:50:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:50:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:51:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:51:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:52:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:52:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:52:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:52:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:52:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:53:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:53:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:53:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:53:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:53:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:54:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:54:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:55:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 09:55:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 10:01:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-05-24 10:01:38 --> ErrorException: Undefined property: CodeIgniter\View\View::$db
+[Method: GET, Route: dashboard]
+in APPPATH\Views\ViewDashboard.php on line 36.
+ 1 APPPATH\Views\ViewDashboard.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$db', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\ViewDashboard.php', 36)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\ViewDashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(27): view('ViewDashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-05-24 10:06:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 10:07:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 10:08:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 10:08:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 10:31:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 10:32:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 10:32:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 10:32:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 10:38:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-24 10:38:04 --> mysqli_sql_exception: Table 'pharmacy_db.purchase' doesn't exist in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n            S...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            S...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            S...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('\r\n            S...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-05-24 10:38:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.purchase' doesn't exist
+[Method: GET, Route: dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 10:38:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.purchase' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 3 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 10:38:04 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.purchase' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 4 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-05-24 10:38:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-24 10:38:06 --> mysqli_sql_exception: Table 'pharmacy_db.purchase' doesn't exist in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n            S...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            S...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            S...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('\r\n            S...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-05-24 10:38:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.purchase' doesn't exist
+[Method: GET, Route: dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 10:38:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.purchase' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 3 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 10:38:06 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.purchase' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 4 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-05-24 10:38:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-24 10:38:30 --> mysqli_sql_exception: Unknown column 'total_amount' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n            S...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            S...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            S...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('\r\n            S...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-05-24 10:38:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'total_amount' in 'field list'
+[Method: GET, Route: dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 10:38:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 3 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 10:38:30 --> [Caused by] mysqli_sql_exception: Unknown column 'total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 4 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-05-24 10:38:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-24 10:38:31 --> mysqli_sql_exception: Unknown column 'total_amount' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n            S...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            S...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            S...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('\r\n            S...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-05-24 10:38:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'total_amount' in 'field list'
+[Method: GET, Route: dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 10:38:31 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 3 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 10:38:31 --> [Caused by] mysqli_sql_exception: Unknown column 'total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 4 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-05-24 10:38:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-05-24 10:38:32 --> mysqli_sql_exception: Unknown column 'total_amount' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n            S...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n            S...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n            S...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('\r\n            S...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-05-24 10:38:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'total_amount' in 'field list'
+[Method: GET, Route: dashboard]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 10:38:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 3 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-05-24 10:38:32 --> [Caused by] mysqli_sql_exception: Unknown column 'total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = \'2026-05-24\'
+        ')
+ 4 APPPATH\Controllers\Dashboard.php(39): CodeIgniter\Database\BaseConnection->query('
+            SELECT IFNULL(SUM(total_amount),0) AS today_purchase
+            FROM product_purchase
+            WHERE DATE(purchase_date) = ?
+        ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-05-24 10:39:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-05-24 10:40:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
