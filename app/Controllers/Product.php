@@ -184,10 +184,10 @@ class Product extends BaseController
     }
 
 
-    public function openingStockForm()
-    {
-        return view('product/modal_opening_stock');
-    }
+    // public function openingStockForm()
+    // {
+    //     return view('product/modal_opening_stock');
+    // }
 
 
 

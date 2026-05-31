@@ -20,6 +20,7 @@ echo $this->section('content');
                     <!-- <button type="button" class="btn btn-primary btn-sm" >
                         <i class="fa fa-plus"></i> Opening Stock
                     </button> -->
+                    
                     <a href="<?= base_url('product') ?>" class="btn btn-primary btn-sm">
                         <i class="fa fa-plus"></i> Opening Stock </a>
 
@@ -35,7 +36,7 @@ echo $this->section('content');
                             <th>QtyPerBox</th>
                             <th>BoxQty</th>
                             <th>PricePerBox</th>
-                            <th>B.P/TP</th>
+                            <th>Base.P/TP</th>
                             <th class="vat-column-header">P.Vat%</th>
                             <th>V.Amt</th>
                             <th>S.Price</th>
@@ -300,50 +301,83 @@ $(document).ready(function() {
                 <td>${item.product_name}</td>
                 <td>${item.total_stock}</td>
 
-                <td>
-                    <input data-id="${key}" class="product_quantity_change form-control form-control-sm"
-                    type="number" step="any" value="${item.quantity_per_pack || 1}">
-                </td>
+               <td>
+            <input 
+                data-id="${key}"
+                class="product_quantity_change form-control form-control-sm w-100"
+                type="number"
+                step="any"
+                value="${item.quantity_per_pack || 1}">
+        </td>
 
-                <td>
-                    <input data-id="${key}" class="product_boxqty_change form-control form-control-sm"
-                    type="number" step="any"  min='1' value="${item.box_quantity}">
-                </td>
+        <td>
+            <input 
+                data-id="${key}"
+                class="product_boxqty_change form-control form-control-sm"
+                type="number"
+                min="1"
+                step="any"
+                value="${item.box_quantity}">
+        </td>
 
+        <td>
+            <input 
+                type="text"
+                class="price_per_box form-control form-control-sm w-75"
+                value="${PricePerBox}"
+                data-id="${key}"
+                readonly>
+        </td>
 
-                <td>
-                    <input type="text" class="price_per_box form-control form-control-sm"
-                    value="${PricePerBox}" data-id="${key}" readonly>
-                </td>
+        <td>
+            <input 
+                type="text"
+                class="buying_price form-control form-control-sm w-100"
+                value="${item.base_price}"
+                min="1"
+                data-id="${key}">
+        </td>
 
-                <td>
-                    <input type="text" class="buying_price form-control form-control-sm"
-                    value="${item.base_price}" min="1" data-id="${key}">
-                </td>
+        <td>
+            <input 
+                type="text"
+                class="vat-input form-control form-control-sm"
+                min="0"
+                value="${item.tax_percentage}"
+                data-id="${key}">
+        </td>
 
-                <td>
-                    <input type="text" class="vat-input form-control form-control-sm" min="0"
-                    value="${item.tax_percentage}" data-id="${key}">
-                </td>
+        <td>${vatAfterDiscount.toFixed(2)}</td>
 
-                <td>${vatAfterDiscount.toFixed(2)}</td>
+        <td>
+            <input 
+                type="text"
+                class="sale_price form-control form-control-sm"
+                value="${item.sales_price_for_customer}"
+                data-id="${key}"
+                disabled>
+        </td>
 
-                <td>
-                    <input type="text" class="sale_price form-control form-control-sm"
-                    value="${item.sales_price_for_customer}" data-id="${key}" disabled>
-                </td>
+        <td>
+            <input 
+                type="text"
+                class="discount_percent form-control form-control-sm"
+                value="${item.discount_percent || 0}"
+                data-id="${key}">
+        </td>
 
-                <td>
-                    <input type="text" class="discount_percent form-control form-control-sm"
-                    value="${item.discount_percent || 0}" data-id="${key}">
-                </td>
+        <td class="text-end">
+            ${rowTotal.toFixed(2)}
+        </td>
 
+        <td>
+            <button 
+                data-index="${key}"
+                class="btn btn-sm btn-danger btn_item_delete">
+                ×
+            </button>
+        </td>
 
-                <td class="text-end">${rowTotal.toFixed(2)}</td>
-
-                <td>
-                    <button data-index="${key}" class="btn btn-sm btn-danger btn_item_delete">×</button>
-                </td>
             </tr>`;
         });
 

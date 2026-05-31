@@ -1,8 +1,13 @@
 <?php
 echo $this->extend('layout');
 echo $this->section('content');
-
 ?>
+<style>
+.table th
+   {
+    font-size: 12px;
+   }
+    </style>
 <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery-ui.min.css') ?>" />
 
 <div class="container-fluid">

@@ -2,6 +2,10 @@
 $this->extend('layout');
 $this->section('content');
 ?>
+
+<style>
+    h4{font-size: 14px;}
+</style>
 <?php 
 //$allowedMenus = session()->get('allowedMenus');
 echo $this->include('partial/sidebar', ['allowedMenus' => $allowedMenus]); ?>
@@ -9,11 +13,11 @@ echo $this->include('partial/sidebar', ['allowedMenus' => $allowedMenus]); ?>
 
 <div class="app-title">
     <div>
-        <h1><i class="fa fa-dashboard"></i> View Dashboard</h1>
-        <p>Welcome to View Dashboard </p>
+        <h3><i class="fa fa-cubes"></i> Welcome To POS Inventory Management System</h3>
+        <!-- <p>Welcome to View Dashboard </p>
         <p>
             <?//= $userId = session()->get('user_id');?>
-        </p>
+        </p> -->
     </div>
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>

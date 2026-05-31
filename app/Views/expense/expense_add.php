@@ -40,43 +40,57 @@ echo $this->section('content');
                         <?php
                         if (count($expense_category_sub_category_show) > 0) {
                             foreach ($expense_category_sub_category_show as $rows) {
-                        ?>
+                                ?>
                         <tr>
-                            <td><?php echo $rows['expense_ref_no'] ?></td>
-                            <td><?php echo $rows['expense_category_name'] ?></td>
-                            <td><?php echo $rows['expense_sub_category_name'] ?></td>
-                            <td><?php echo $rows['expense_what_for'] ?></td>
-                            <td><?php echo $rows['expense_amount'] ?></td>
-                            <td><?php echo $rows['expense_note'] ?></td>
-                            <td><?php echo $rows['expense_date']  ?></td>
+                            <td>
+                                <?php echo $rows['expense_ref_no'] ?>
+                            </td>
+                            <td>
+                                <?php echo $rows['expense_category_name'] ?>
+                            </td>
+                            <td>
+                                <?php echo $rows['expense_sub_category_name'] ?>
+                            </td>
+                            <td>
+                                <?php echo $rows['expense_what_for'] ?>
+                            </td>
+                            <td>
+                                <?php echo $rows['expense_amount'] ?>
+                            </td>
+                            <td>
+                                <?php echo $rows['expense_note'] ?>
+                            </td>
+                            <td>
+                                <?php echo $rows['expense_date'] ?>
+                            </td>
                             <td>
                                 <!-- Button to invoke the modal -->
-                                <a href="#" class="btn btn-primary btn-sm btn-edit"
-                                    data-expense_id="<?php echo $rows['expense_id'] ?>"
-                                    data-expense_ref_no="<?php echo $rows['expense_ref_no'] ?>"
-                                    data-expense_category_name="<?php echo $rows['expense_category_name'] ?>"
-                                    data-expense_sub_category_name="<?php echo $rows['expense_sub_category_name'] ?>"
-                                    data-expense_what_for="<?php echo $rows['expense_what_for'] ?>"
-                                    data-expense_amount="<?php echo $rows['expense_amount'] ?>"
-                                    data-expense_note="<?php echo $rows['expense_note'] ?>"
-                                    data-expense_date="<?php echo $rows['expense_date'] ?>"
-                                    data-expense_category_id="<?php echo $rows['expense_category']?>"
-                                    data-expense_sub_category_id="<?php echo $rows['expense_sub_category']?>"><i
-                                        class="fa fa-edit"></i></a>
+                                        <a href="#" class="btn btn-primary btn-sm btn-edit"
+                                            data-expense_id="<?php echo $rows['expense_id'] ?>"
+                                            data-expense_ref_no="<?php echo $rows['expense_ref_no'] ?>"
+                                            data-expense_category_name="<?php echo $rows['expense_category_name'] ?>"
+                                            data-expense_sub_category_name="<?php echo $rows['expense_sub_category_name'] ?>"
+                                            data-expense_what_for="<?php echo $rows['expense_what_for'] ?>"
+                                            data-expense_amount="<?php echo $rows['expense_amount'] ?>"
+                                            data-expense_note="<?php echo $rows['expense_note'] ?>"
+                                            data-expense_date="<?php echo $rows['expense_date'] ?>"
+                                            data-expense_category_id="<?php echo $rows['expense_category'] ?>"
+                                            data-expense_sub_category_id="<?php echo $rows['expense_sub_category'] ?>"><i
+                                                class="fa fa-edit"></i></a>
 
-                                <a href="#" class="btn btn-danger btn-sm btn-delete"
-                                    data-delete_id="<?php echo $rows['expense_id'] ?>"><i class="fa fa-trash-o"></i></a>
+                                        <a href="#" class="btn btn-danger btn-sm btn-delete"
+                                            data-delete_id="<?php echo $rows['expense_id'] ?>"><i class="fa fa-trash-o"></i></a>
 
-                            </td>
-                        </tr>
-                        <?php
+                                    </td>
+                                </tr>
+                                <?php
                             }
                         } else {
                             ?>
-                        <tr>
-                            <td colspan="7">No data found.</td>
-                        </tr>
-                        <?php
+                            <tr>
+                                <td colspan="7">No data found.</td>
+                            </tr>
+                            <?php
                         }
                         ?>
                         <tbody>
@@ -114,34 +128,29 @@ echo $this->section('content');
 
                         <div class='form-group col-md-6'>
                             <label>Category</label>
-                            <select id="expense_category" name="expense_category" class="form-control" required>
+                            <select name="expense_category" class=" expense_category form-control" required>
                                 <option value="">Select Category</option>
                                 <?php
                                 foreach ($expense_category_show as $row) {
-                                ?>
-                                <option value="<?php echo $row['expense_category_id'] ?>">
-                                    <?php echo $row['expense_category_name'] ?></option>
-                                <?php
+                                    ?>
+                                    <option value="<?php echo $row['expense_category_id'] ?>">
+                                        <?php echo $row['expense_category_name'] ?>
+                                    </option>
+                                    <?php
                                 }
                                 ?>
                             </select>
                         </div>
                     </div>
-                    <div class='form-row'>
+
+                    <div class="form-row">
                         <div class='form-group col-md-6'>
-                            <label>Sub-Category</label>
-                            <select id="expense_sub_category" name="expense_sub_category" class="form-control" required>
-                                <option value="">Select Sub-Category</option>
-                                <?php
-                                foreach ($expense_sub_category_show as $row) {
-                                ?>
-                                <option value="<?php echo $row['expense_sub_category_id'] ?>">
-                                    <?php echo $row['expense_sub_category_name'] ?></option>
-                                <?php
-                                }
-                                ?>
+                            <label>Expense Sub Category</label>
+                            <select id="expense_sub_category_add" name="expense_sub_category_add" class="form-control" required>
+                                <option value="">Select Sub Category</option>
                             </select>
                         </div>
+
                         <div class='form-group col-md-6'>
                             <label>What For</label>
                             <input required type='text' required class='form-control' name='expense_what_for'
@@ -199,14 +208,16 @@ echo $this->section('content');
                             <input type='text' required class='form-control' name='expense_ref_no' id='expense_ref_no'>
                         </div>
                         <div class='form-group col-md-6'>
-                            <label>Category Name</label>
-                            <select id="expense_category_name" name="expense_category_name" class="form-control">
+                                <label>Category</label>
+                            <select name="expense_category" class=" expense_category form-control" required>
+                                <option value="">Select Category</option>
                                 <?php
                                 foreach ($expense_category_show as $row) {
-                                ?>
-                                <option value="<?php echo $row['expense_category_id'] ?>">
-                                    <?php echo $row['expense_category_name'] ?></option>
-                                <?php
+                                    ?>
+                                    <option value="<?php echo $row['expense_category_id'] ?>">
+                                        <?php echo $row['expense_category_name'] ?>
+                                    </option>
+                                    <?php
                                 }
                                 ?>
                             </select>
@@ -214,17 +225,9 @@ echo $this->section('content');
                     </div>
                     <div class='form-row'>
                         <div class='form-group col-md-6'>
-                            <label>Sub Category Name</label>
-                            <select id="expense_sub_category_name" name="expense_sub_category_name"
-                                class="form-control">
-                                <?php
-                                foreach ($expense_sub_category_show as $row) {
-                                ?>
-                                <option value="<?php echo $row['expense_sub_category_id'] ?>">
-                                    <?php echo $row['expense_sub_category_name'] ?></option>
-                                <?php
-                                }
-                                ?>
+                          <label>Expense Sub Category</label>
+                            <select id="expense_sub_category_edit"  name="expense_sub_category_edit" class="form-control" required>
+                                <option value="">Select Sub Category</option>
                             </select>
 
                         </div>
@@ -311,22 +314,22 @@ echo $this->section('scripts');
 
 <!-- Google analytics script-->
 <script type='text/javascript'>
-$(document).ready(function() {
-    $('#sampleTable').DataTable();
+    $(document).ready(function () {
+        $('#sampleTable').DataTable();
 
-    ////-------------------Product Category Entry Form-------------------------//
-    var allowSubmit = true;
+        ////-------------------Product Category Entry Form-------------------------//
+        var allowSubmit = true;
 
-    $('#Expense_add_submit_form').submit(function(event) {
-        // stop the form from submitting the normal way and refreshing the page
-        event.preventDefault();
+        $('#Expense_add_submit_form').submit(function (event) {
+            // stop the form from submitting the normal way and refreshing the page
+            event.preventDefault();
 
-        if (allowSubmit) {
-            allowSubmit = false;
-            //for modal close variable after submit
-            var parentMOdal = $(this).closest('.modal');
-            var postData = new FormData(this);
-            $.ajax({
+            if (allowSubmit) {
+                allowSubmit = false;
+                //for modal close variable after submit
+                var parentMOdal = $(this).closest('.modal');
+                var postData = new FormData(this);
+                $.ajax({
                     type: $(this).attr("method"),
                     url: $(this).attr("action"),
                     data: postData,
@@ -334,30 +337,85 @@ $(document).ready(function() {
                     processData: false,
                     contentType: false,
                 })
-                .done(function(data) {
-                    if (data == 1) {
-                        //Modal Remove after submission
-                        parentMOdal.modal('toggle');
-                        //page refresh after submission
-                        location.reload();
-                    }
+                    .done(function (data) {
+                        if (data == 1) {
+                            //Modal Remove after submission
+                            parentMOdal.modal('toggle');
+                            //page refresh after submission
+                            location.reload();
+                        }
+                    });
+            }
+
+        });
+
+        //////Get Sub category by category from database/////////////////////////////////
+       $('.expense_category').change(function () {
+
+    var expense_category_id = $(this).val();
+
+    if (expense_category_id != '') {
+
+        $.ajax({
+            url: "<?= base_url('expense/getSubCategory') ?>",
+            type: "POST",
+            data: {
+                expense_category_id: expense_category_id
+            },
+            dataType: "json",
+
+            success: function (response) {
+
+                // Add Modal
+                $('#expense_sub_category_add').html(
+                    '<option value="">Select Sub Category</option>'
+                );
+
+                // Edit Modal
+                $('#expense_sub_category_edit').html(
+                    '<option value="">Select Sub Category</option>'
+                );
+
+                $.each(response, function (index, row) {
+
+                    var option =
+                        '<option value="' + row.expense_sub_category_id + '">' +
+                        row.expense_sub_category_name +
+                        '</option>';
+
+                    $('#expense_sub_category_add').append(option);
+                    $('#expense_sub_category_edit').append(option);
+
                 });
-        }
 
-    });
+            }
+        });
 
+    } else {
 
-    //////Category Edit submit into database start/////////////////////////////////
+        $('#expense_sub_category_add').html(
+            '<option value="">Select Sub Category</option>'
+        );
 
-    $('#expense_update_submit_form').submit(function(event) {
-        event.preventDefault();
+        $('#expense_sub_category_edit').html(
+            '<option value="">Select Sub Category</option>'
+        );
 
-        if (allowSubmit) {
-            allowSubmit = false;
+    }
 
-            var parentMOdal = $(this).closest('.modal');
-            var postData = new FormData(this);
-            $.ajax({
+});
+
+        //////////////////////////////////////////////////////////////////////////////
+
+        $('#expense_update_submit_form').submit(function (event) {
+            event.preventDefault();
+
+            if (allowSubmit) {
+                allowSubmit = false;
+
+                var parentMOdal = $(this).closest('.modal');
+                var postData = new FormData(this);
+                $.ajax({
                     //alert("ddd");
                     type: $(this).attr("method"),
                     url: $(this).attr("action"),
@@ -368,90 +426,103 @@ $(document).ready(function() {
                     processData: false,
                     contentType: false,
                 })
-                // using the done promise callback
-                .done(function(data) {
-                    // alert(data);
-                    parentMOdal.modal('toggle');
-                    //page refresh after submission
-                    location.reload();
-                    // alert("Success");
-                });
+                    // using the done promise callback
+                    .done(function (data) {
+                        // alert(data);
+                        parentMOdal.modal('toggle');
+                        //page refresh after submission
+                        location.reload();
+                        // alert("Success");
+                    });
 
+            }
+
+        });
+
+        /////////Category Edit Submit inot database end here//////////////////////
+
+
+        //...................JQuery for Modal Edit & Delete option...................................
+
+        // get Edit Product
+$('.btn-edit').on('click', function () {
+
+    var expense_id = $(this).data('expense_id');
+    var expense_ref_no = $(this).data('expense_ref_no');
+    var expense_category_id = $(this).data('expense_category_id');
+    var expense_sub_category_id = $(this).data('expense_sub_category_id');
+    var expense_what_for = $(this).data('expense_what_for');
+    var expense_amount = $(this).data('expense_amount');
+    var expense_note = $(this).data('expense_note');
+    var expense_date = $(this).data('expense_date');
+
+    $('#expense_id').val(expense_id);
+    $('#expense_ref_no').val(expense_ref_no);
+
+    // Category Select
+    $('#ExpenseEditModal select[name="expense_category"]').val(expense_category_id);
+
+    // Load Sub Category
+    $.ajax({
+        url: "<?= base_url('expense/getSubCategory') ?>",
+        type: "POST",
+        data: {
+            expense_category_id: expense_category_id
+        },
+        dataType: "json",
+        success: function (response) {
+
+            var html = '<option value="">Select Sub Category</option>';
+
+            $.each(response, function (index, row) {
+
+                var selected = '';
+
+                if (row.expense_sub_category_id == expense_sub_category_id) {
+                    selected = 'selected';
+                }
+
+                html += '<option value="' +
+                    row.expense_sub_category_id +
+                    '" ' + selected + '>' +
+                    row.expense_sub_category_name +
+                    '</option>';
+            });
+
+            $('#expense_sub_category_edit').html(html);
         }
-
     });
 
-    /////////Category Edit Submit inot database end here//////////////////////
+    $('#expense_what_for').val(expense_what_for);
+    $('#expense_amount').val(expense_amount);
+    $('#expense_note').val(expense_note);
+    $('#expense_date').val(expense_date);
 
-
-    //...................JQuery for Modal Edit & Delete option...................................
-
-    // get Edit Product
-    $('.btn-edit').on('click', function() {
-        // get data from button edit
-        var expense_id = $(this).data('expense_id');
-        var expense_ref_no = $(this).data('expense_ref_no');
-        var expense_category_name = $(this).data('expense_category_name');
-        var expense_sub_category_name = $(this).data('expense_sub_category_name');
-        var expense_what_for = $(this).data('expense_what_for');
-
-        var expense_amount = $(this).data('expense_amount');
-        var expense_note = $(this).data('expense_note');
-        var expense_date = $(this).data('expense_date');
-
-        // Set data to Form Edit
-        $('#expense_id').val(expense_id);
-        $('#expense_ref_no').val(expense_ref_no);
-
-        ///Category auto selected/////////////////////////////////////////////
-        var expense_category_id = $(this).data('expense_category_id');
-        $("#expense_category_name option[value=expense_category_id]").attr('selected', 'selected');
-        $("#expense_category_name").val(expense_category_id);
-        //////////////////////////////////////////////////////////
-
-        //expense_sub_category_id
-        var expense_sub_category_id = $(this).data('expense_sub_category_id');
-        $("#expense_sub_category_name option[value=expense_sub_category_id]").attr('selected',
-            'selected');
-        $("#expense_sub_category_name").val(expense_sub_category_id);
-        //////////////////////////////////////////////////////////
-
-        // $('#expense_sub_category_name').val(expense_sub_category_name);
-
-        $('#expense_what_for').val(expense_what_for);
-        $('#expense_amount').val(expense_amount);
-        $('#expense_note').val(expense_note);
-        $('#expense_date').val(expense_date);
-
-
-        // Call Modal Edit
-        $('#ExpenseEditModal').modal('show');
-
-    });
-
-    // get Delete Product
-    $('.btn-delete').on('click', function() {
-        // get data from button edit
-        const delete_id = $(this).data('delete_id');
-        //alert(delete_id);
-        // Set data to Form Edit
-        $('#delete_id').val(delete_id);
-        // Call Modal Edit
-        $('#deleteModal').modal('show');
-    });
-
-
-    //................ JQuery modal Edit & Delete end here........................................
-    // ...............For Date Show.............................
-    $('.datePicker').datepicker({
-        format: "yyyy-mm-dd",
-        autoclose: true,
-        todayHighlight: true,
-        container: 'body'
-    });
-    //.................For Date show end........................ 
-
+    $('#ExpenseEditModal').modal('show');
 });
+        // get Delete Product
+        $('.btn-delete').on('click', function () {
+            // get data from button edit
+            const delete_id = $(this).data('delete_id');
+            //alert(delete_id);
+            // Set data to Form Edit
+            $('#delete_id').val(delete_id);
+            // Call Modal Edit
+            $('#deleteModal').modal('show');
+        });
+
+
+        //................ JQuery modal Edit & Delete end here........................................
+        // ...............For Date Show.............................
+        $('.datePicker').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            todayHighlight: true,
+            container: 'body'
+        });
+        //.................For Date show end........................ 
+
+    });
 </script>
 
 <!-- For Calendar start -->

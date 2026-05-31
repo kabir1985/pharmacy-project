@@ -3,9 +3,39 @@ echo $this->extend('layout');
 echo $this->section('content');
 ?>
 <style>
+#sampleTable {
+    font-size: 12px;
+}
+
+.modal-content, .form-control, label, option {
+    font-size: 12px;
+}
+
 #sampleTable td,
 #sampleTable th {
     white-space: nowrap;
+}
+
+#sampleTable th,
+#sampleTable td {
+    padding: 4px 6px;
+    vertical-align: middle;
+}
+
+.product-name {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 1366px) {
+
+    #sampleTable th:nth-child(4),
+    #sampleTable td:nth-child(4),
+    #sampleTable th:nth-child(7),
+    #sampleTable td:nth-child(7) {
+        display: none;
+    }
 }
 </style>
 
@@ -28,7 +58,8 @@ echo $this->section('content');
         <div class='tile collapseable show animate__animated  animate__fadeInUp'>
             <div class='tile-body'>
                 <div class='table-responsive'>
-                    <table class='table table-hover table-bordered dt-responsive nowrap' id='sampleTable' width="100%">
+                        <table class="table table-bordered table-sm dt-responsive nowrap" id="sampleTable" width="100%">
+    
                         <thead>
 
                             <tr>
@@ -43,8 +74,8 @@ echo $this->section('content');
 
                                 <th>Pur.Price</th>
                                 <th>profit-margin%</th>
-                                <th>Final Sales Price(Customer Pays)</th>
-                                <th>Action</th>
+                                <th>Sales/Cus Price</th>
+                                <div class="btn-group btn-group-sm"><th>Action</th></div>
                             </tr>
                         </thead>
 
@@ -57,10 +88,10 @@ if (count($product_show) > 0) {
         ?>
                             <tr>
                                 <td><img src="<?=base_url()?>/public/uploads/<?=$row11["product_image"]?>"
-                                        class="img-thumbnail cart_item_image" alt="image 1"
-                                        style="width: 50px; height: 40px;"></td>
+     class="img-thumbnail"
+     style="width:40px;height:35px;"></td>
                                 <!-- <td><?php //echo $row11['codefor_barcode'] ?></td> -->
-                                <td><?php echo $row11['product_name'] ?> </td>
+                                <td class="product-name"><?php echo $row11['product_name']; ?></td>
                                 <td><?php echo $row11['category_name'] ?></td>
                                 <!-- <td><?php //echo $row11['product_brand_name'] ?></td> -->
 
@@ -554,10 +585,11 @@ $(document).ready(function() {
     });
 
 
-    $('#sampleTable').DataTable({
-        responsive: true,
-        autoWidth: false
-    });
+   $('#sampleTable').DataTable({
+    responsive: true,
+    autoWidth: false,
+    pageLength: 25
+});
 
     ////-------------------Product Entry Form-------------------------//
 

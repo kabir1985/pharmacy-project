@@ -47,7 +47,7 @@ class Expense extends BaseController
         $data = [
             'expense_ref_no'       => $this->request->getVar('expense_ref_no'),
             'expense_category'     => $this->request->getVar('expense_category'),
-            'expense_sub_category' => $this->request->getVar('expense_sub_category'),
+            'expense_sub_category' => $this->request->getVar('expense_sub_category_add'),
             'expense_what_for'     => $this->request->getVar('expense_what_for'),
             'expense_amount'       => $this->request->getVar('expense_amount'),
 			'expense_note'         => $this->request->getVar('expense_note'),
@@ -73,8 +73,8 @@ class Expense extends BaseController
         //echo $id;
         $data = [
             'expense_ref_no'       => $this->request->getVar('expense_ref_no'),
-            'expense_category'     => $this->request->getVar('expense_category_name'),
-            'expense_sub_category' => $this->request->getVar('expense_sub_category_name'),
+            'expense_category'     => $this->request->getVar('expense_category'),
+            'expense_sub_category' => $this->request->getVar('expense_sub_category_edit'),
             'expense_what_for'     => $this->request->getVar('expense_what_for'),
             'expense_amount'       => $this->request->getVar('expense_amount'),
             'expense_note'         => $this->request->getVar('expense_note'),
@@ -96,4 +96,19 @@ class Expense extends BaseController
         //return into supplier page
         return $this->response->redirect(site_url('/Expense'));
     } 
+
+
+public function getSubCategory()
+{
+    $category_id = $this->request->getPost('expense_category_id');
+
+    $result = $this->expense_sub_category_model_object
+                    ->where('expense_category_id', $category_id)
+                    ->findAll();
+
+    return $this->response->setJSON($result);
+}
+
+
+
 }
