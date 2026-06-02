@@ -39,11 +39,51 @@ class Dashboard extends BaseController
         ", [$today])->getRowArray();
 
         ///////////////////////////////////////////////////////////////
+       // $db = \Config\Database::connect();
 
-        return view('ViewDashboard', [
-            'allowedMenus' => $allowedMenus,
-            'today_sales' => $today_sales['today_sales'],
-            'today_purchase' => $today_purchase['today_purchase'],
-        ]);
+$query = $this->db->query("
+   SELECT
+    MONTH(sales_date) AS month_no,
+    MONTHNAME(sales_date) AS month_name,
+    SUM(total_amount) AS total_sale
+FROM sales
+WHERE YEAR(sales_date) = YEAR(CURDATE())
+GROUP BY MONTH(sales_date), MONTHNAME(sales_date)
+ORDER BY month_no
+");
+
+$result = $query->getResult();
+
+$labels = [];
+$amounts = [];
+
+foreach ($result as $row) {
+    $labels[] = $row->month_name;
+    $amounts[] = (float)$row->total_sale;
+}
+
+$data['sales_labels'] = json_encode($labels);
+$data['sales_amounts'] = json_encode($amounts);
+
+//return view('dashboard', $data);
+
+        ///////////////////////////////////////////////////////////////////////////
+$data['allowedMenus'] = $allowedMenus;
+$data['today_sales'] = $today_sales['today_sales'];
+$data['today_purchase'] = $today_purchase['today_purchase'];
+
+
+return view('ViewDashboard', $data);
+
+
+        // return view('ViewDashboard', [
+        //     'allowedMenus' => $allowedMenus,
+        //     'today_sales' => $today_sales['today_sales'],
+        //     'today_purchase' => $today_purchase['today_purchase'],
+        //     $data
+        // ]);
     }
+
+
+
 }
