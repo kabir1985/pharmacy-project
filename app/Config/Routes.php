@@ -108,6 +108,8 @@ $routes->get('profitloss', 'profitloss::index');
 $routes->get('expensereport', 'expensereport::index');
 $routes->post('PLReport', 'profitloss::profitlosspdfcreate');
 
+$routes->get('customerreport', 'customerreport::index');
+
 $routes->get('fromcustomer', 'fromcustomer::index');
 //generalsettings
 $routes->post('customer_received', 'fromcustomer::create');
