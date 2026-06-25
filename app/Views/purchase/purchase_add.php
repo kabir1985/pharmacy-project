@@ -20,10 +20,9 @@ echo $this->section('content');
                     <!-- <button type="button" class="btn btn-primary btn-sm" >
                         <i class="fa fa-plus"></i> Opening Stock
                     </button> -->
-                    
-                    <a href="<?= base_url('product') ?>" class="btn btn-primary btn-sm">
-                        <i class="fa fa-plus"></i> Opening Stock </a>
 
+                    <a href="<?=base_url('product')?>" class="btn btn-primary btn-sm">
+                        <i class="fa fa-plus"></i> Opening Stock </a>
                 </div>
             </div>
             <!-- Cart Table -->
@@ -35,8 +34,9 @@ echo $this->section('content');
                             <th>Stock</th>
                             <th>QtyPerBox</th>
                             <th>BoxQty</th>
-                            <th>PricePerBox</th>
-                            <th>Base.P/TP</th>
+                            <th>UnitPrice</th>
+                            <th>TP/Box</th>
+                            <th>Type</th>
                             <th class="vat-column-header">P.Vat%</th>
                             <th>V.Amt</th>
                             <th>S.Price</th>
@@ -118,10 +118,6 @@ echo $this->section('content');
         <div class="col-12 col-lg-9"> SubTotal = ( মূল প্রাইজ - ডিসকাউন্ট ) + ভ্যাট</div>
     </div>
 </div>
-
-
-
-
 
 
 <!------------------- Modal for discount start----------------------- --->
@@ -234,9 +230,9 @@ $(document).ready(function() {
 
     // ================= Purchase Button Enable when Supplier and product selected ================= //
 
-/////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
 
     // ================= DRAW TABLE ================= //
     function drawTable() {
@@ -250,20 +246,27 @@ $(document).ready(function() {
         $.each(itemsInCart, function(key, item) {
 
             var qtyPerPack = Number(item.quantity_per_pack) || 0;
-            var qty = Number(item.box_quantity) || 1;
-            var basePrice = Number(item.base_price) || 0;
+            var Boxqty = Number(item.box_quantity) || 1;
+            var UnitPrice = Number(item.base_price) || 0;
+            var cost_without_vat = Number(item.cost_without_vat) || 0;
             var vatPercent = Number(item.tax_percentage) || 0;
             var discountPercent = Number(item.discount_percent) || 0;
+
             var taxType = item.tax_type;
 
-            var PricePerBox = qtyPerPack * basePrice;
+            // alert(cost_without_vat);
+
+            // var PricePerBox = qtyPerPack * basePrice;
+            // var PricePerBox = qtyPerPack * basePrice;
 
             // 👉 Total quantity
-            var totalQty = qtyPerPack * qty;
+            var totalQty = qtyPerPack * Boxqty;
             //var totalQty = qty;
 
+            var Trade_Price_Per_Box = qtyPerPack * 1 * UnitPrice;
+
             // 👉 Base total price
-            var purchaseTotal = totalQty * basePrice;
+            var purchaseTotal = totalQty * UnitPrice;
             var productDiscountAmt = 0;
             var vatAfterDiscount = 0;
             var rowTotal = 0;
@@ -301,17 +304,18 @@ $(document).ready(function() {
                 <td>${item.product_name}</td>
                 <td>${item.total_stock}</td>
 
-               <td>
-            <input 
+        <!---------- QtyPerBox----------------------->
+        <td>
+            <input
                 data-id="${key}"
                 class="product_quantity_change form-control form-control-sm w-100"
                 type="number"
                 step="any"
                 value="${item.quantity_per_pack || 1}">
         </td>
-
+<!--------------------BoxQty-------------------------------->
         <td>
-            <input 
+            <input
                 data-id="${key}"
                 class="product_boxqty_change form-control form-control-sm"
                 type="number"
@@ -320,26 +324,32 @@ $(document).ready(function() {
                 value="${item.box_quantity}">
         </td>
 
-        <td>
-            <input 
-                type="text"
-                class="price_per_box form-control form-control-sm w-75"
-                value="${PricePerBox}"
-                data-id="${key}"
-                readonly>
-        </td>
 
+<!---------------- Unit Price------------------------------>
         <td>
-            <input 
+            <input
                 type="text"
                 class="buying_price form-control form-control-sm w-100"
                 value="${item.base_price}"
                 min="1"
-                data-id="${key}">
+                data-id="${key}" readonly>
         </td>
 
+
+<!----------------Trade Price Per Box-------------------------------------->
         <td>
-            <input 
+        <input
+    type="text"
+
+    class="trade_price_per_box form-control form-control-sm text-end"
+    value="${parseFloat(Trade_Price_Per_Box).toFixed(2)}"
+    data-id="${key}">
+        </td>
+
+        <td>${item.tax_type}</td>
+
+        <td>
+            <input
                 type="text"
                 class="vat-input form-control form-control-sm"
                 min="0"
@@ -350,7 +360,7 @@ $(document).ready(function() {
         <td>${vatAfterDiscount.toFixed(2)}</td>
 
         <td>
-            <input 
+            <input
                 type="text"
                 class="sale_price form-control form-control-sm"
                 value="${item.sales_price_for_customer}"
@@ -359,7 +369,7 @@ $(document).ready(function() {
         </td>
 
         <td>
-            <input 
+            <input
                 type="text"
                 class="discount_percent form-control form-control-sm"
                 value="${item.discount_percent || 0}"
@@ -371,7 +381,7 @@ $(document).ready(function() {
         </td>
 
         <td>
-            <button 
+            <button
                 data-index="${key}"
                 class="btn btn-sm btn-danger btn_item_delete">
                 ×
@@ -413,24 +423,26 @@ $(document).ready(function() {
 
     // ================= EVENTS ================= //
 
-    $(document).on("input", ".product_quantity_change", function() {
+    $(document).on("change", ".product_quantity_change", function() {
         var index = $(this).data("id");
         itemsInCart[index].quantity_per_pack = Number($(this).val());
         drawTable();
     });
 
-    $(document).on("input", ".product_boxqty_change", function() {
+    $(document).on("change", ".product_boxqty_change", function() {
         var index = $(this).data("id");
         itemsInCart[index].box_quantity = Number($(this).val());
         drawTable();
     });
 
-    $(document).on("input", ".price_per_box", function() {
+    $(document).on("change", ".trade_price_per_box", function() {
         var index = $(this).data("id");
-        var pricePerBox = Number($(this).val());
+        var Trade_Price_Per_Box = Number($(this).val());
 
-        var qtyPerPack = itemsInCart[index].quantity_per_pack || 1;
-        itemsInCart[index].base_price = pricePerBox / qtyPerPack;
+        // var qtyPerPack = itemsInCart[index].quantity_per_pack || 1;
+        // itemsInCart[index].base_price = Trade_Price_Per_Box / qtyPerPack;
+        var qtyPerPack = Number(itemsInCart[index].quantity_per_pack) || 1;
+        itemsInCart[index].base_price = Trade_Price_Per_Box / qtyPerPack;
 
         drawTable();
     });
@@ -604,6 +616,15 @@ $(document).ready(function() {
 
 
 <style>
+.trade_price_per_box,
+.product_quantity_change,
+.product_boxqty_change,
+.discount_percent,
+.sale_price {
+    /* min-width:90px;*/
+    text-align: center;
+}
+
 /* Your existing styles for cols */
 .col-1,
 .col-2,
