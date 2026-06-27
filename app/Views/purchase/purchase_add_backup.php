@@ -363,9 +363,7 @@ $(document).ready(function() {
                 data-id="${key}">
         </td>
 
-        <td class="vatAmount">
-    ${vatAfterDiscount.toFixed(2)}
-</td>
+        <td>${vatAfterDiscount.toFixed(2)}</td>
 
         <td>
             <input
@@ -384,9 +382,9 @@ $(document).ready(function() {
                 data-id="${key}">
         </td>
 
-    <td class="text-end rowTotal">
-    ${rowTotal.toFixed(2)}
-</td>
+        <td class="text-end">
+            ${rowTotal.toFixed(2)}
+        </td>
 
         <td>
             <button
@@ -404,86 +402,6 @@ $(document).ready(function() {
         totalCalculation();
         enableButton();
     }
-
-
-<!----------------------For Subtotal Update Automatically-------------------------------------------->
-
-function calculateRow(item) {
-
-    let qtyPerPack = Number(item.quantity_per_pack) || 0;
-    let boxQty = Number(item.box_quantity) || 1;
-    let unitPrice = Number(item.cost_without_vat) || 0;
-    let vatPercent = Number(item.tax_percentage) || 0;
-    let discountPercent = Number(item.discount_percent) || 0;
-
-    let totalQty = qtyPerPack * boxQty;
-
-    let purchaseTotal = totalQty * unitPrice;
-
-    let discountAmount = purchaseTotal * discountPercent / 100;
-
-    let discountedBase = purchaseTotal - discountAmount;
-
-    let vatAmount = discountedBase * vatPercent / 100;
-
-    let rowTotal = discountedBase + vatAmount;
-
-    return {
-        tradePrice: qtyPerPack * unitPrice,
-        vatAmount,
-        rowTotal
-    };
-}
-
-
-
-
-function updateGrandTotal() {
-
-    totalPrice = 0;
-
-    itemsInCart.forEach(function(item){
-        totalPrice += calculateRow(item).rowTotal;
-    });
-
-    totalCalculation();
-}
-
-
-function updateRow(index, skipTradePrice = false) {
-
-    let item = itemsInCart[index];
-
-    let calc = calculateRow(item);
-
-    let row = $("#cartTableBody tr[data-index='" + index + "']");
-
-    // Update Buying Price
-    row.find(".buying_price")
-        .val(parseFloat(item.cost_without_vat).toFixed(2));
-
-    // Update Trade Price (unless currently typing in it)
-    if (!skipTradePrice) {
-        row.find(".trade_price_per_box")
-            .val(calc.tradePrice.toFixed(2));
-    }
-
-    // Update VAT Amount
-    row.find(".vatAmount")
-        .text(calc.vatAmount.toFixed(2));
-
-    // Update Subtotal
-    row.find(".rowTotal")
-        .text(calc.rowTotal.toFixed(2));
-
-    // Update Grand Total
-    updateGrandTotal();
-}
-
-<!----------------------------For automatically subtotal update End------------------------------------------->
-
-
-
 
     function recalcNetTotal() {
 
@@ -511,87 +429,51 @@ function updateRow(index, skipTradePrice = false) {
 
     // ================= EVENTS ================= //
 
-$(document).on("input", ".product_quantity_change", function () {
+    $(document).on("change", ".product_quantity_change", function() {
+        var index = $(this).data("id");
+        itemsInCart[index].quantity_per_pack = Number($(this).val());
+        drawTable();
+    });
 
-    let index = $(this).data("id");
+    $(document).on("change", ".product_boxqty_change", function() {
+        var index = $(this).data("id");
+        itemsInCart[index].box_quantity = Number($(this).val());
+        drawTable();
+    });
 
-    let qty = parseFloat($(this).val()) || 1;
+    $(document).on("change", ".trade_price_per_box", function() {
+        var index = $(this).data("id");
+        var Trade_Price_Per_Box = Number($(this).val());
 
-    // Save new Qty Per Box
-    itemsInCart[index].quantity_per_pack = qty;
+        // var qtyPerPack = itemsInCart[index].quantity_per_pack || 1;
+        // itemsInCart[index].base_price = Trade_Price_Per_Box / qtyPerPack;
+        var qtyPerPack = Number(itemsInCart[index].quantity_per_pack) || 1;
+        itemsInCart[index].cost_without_vat = Trade_Price_Per_Box / qtyPerPack;
 
-    // Read current Trade Price Per Box from the row
-    let tradePrice = parseFloat(
-        $("#cartTableBody tr[data-index='" + index + "']")
-            .find(".trade_price_per_box")
-            .val()
-    ) || 0;
-
-    // Buying Price = Trade Price / Qty Per Box
-    itemsInCart[index].cost_without_vat = tradePrice / qty;
-
-    updateRow(index);
-
-});
-
-$(document).on("input",".product_boxqty_change",function(){
-
-    let index=$(this).data("id");
-
-    itemsInCart[index].box_quantity=Number($(this).val())||0;
-
-    updateRow(index);
-
-});
-
-$(document).on("input",".trade_price_per_box",function(){
-
-    let index=$(this).data("id");
-
-    let tradePrice = Number($(this).val()) || 0;
-
-    let qty = Number(itemsInCart[index].quantity_per_pack) || 1;
-
-    itemsInCart[index].cost_without_vat = tradePrice / qty;
-
-    updateRow(index, true);
-
-});
-
+        drawTable();
+    });
 
 
     $(document).on("input", ".buying_price", function() {
         var index = $(this).closest("tr").data("index");
         var newPrice = Number($(this).val()) || 0;
 
-        // itemsInCart[index].cost_without_vat = newPrice;
-
-        // drawTable();
-
         itemsInCart[index].cost_without_vat = newPrice;
 
-updateRow(index);
+        drawTable();
     });
 
-$(document).on("input",".vat-input",function(){
+    $(document).on("change", ".vat-input", function() {
+        var index = $(this).data("id");
+        itemsInCart[index].tax_percentage = Number($(this).val());
+        drawTable();
+    });
 
-    let index=$(this).data("id");
-
-    itemsInCart[index].tax_percentage=Number($(this).val())||0;
-
-    updateRow(index);
-
-});
-
-$(document).on("input",".discount_percent",function(){
-
-    let index=$(this).data("id");
-
-    itemsInCart[index].discount_percent=Number($(this).val())||0;
-
-    updateRow(index);
-
-});
+    $(document).on("change", ".discount_percent", function() {
+        var index = $(this).data("id");
+        itemsInCart[index].discount_percent = Number($(this).val());
+        drawTable();
+    });
 
     $(document).on("click", ".btn_item_delete", function() {
         var index = $(this).data("index");
