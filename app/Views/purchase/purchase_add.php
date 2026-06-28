@@ -36,6 +36,7 @@ echo $this->section('content');
                             <th>BoxQty</th>
                             <th>UnitPrice</th>
                             <th>TP/Box</th>
+                            <th>Free Qty</th>
                             <th class="vat-column-header">P.Vat%</th>
                             <th>V.Amt</th>
                             <th>S.Price</th>
@@ -213,6 +214,8 @@ console.log(productsList);
 
 $(document).ready(function() {
 
+    $("body").addClass("sidenav-toggled");
+
     var itemsInCart = [];
     var totalPrice = 0;
 
@@ -296,14 +299,14 @@ $(document).ready(function() {
             //     rowTotal = discountedBase + vatAfterDiscount;
             // }
 
-            
-                 productDiscountAmt = purchaseTotal * (discountPercent / 100);
 
-                var discountedBase = purchaseTotal - productDiscountAmt;
+            productDiscountAmt = purchaseTotal * (discountPercent / 100);
 
-                vatAfterDiscount = discountedBase * (vatPercent / 100);
+            var discountedBase = purchaseTotal - productDiscountAmt;
 
-                rowTotal = discountedBase + vatAfterDiscount;
+            vatAfterDiscount = discountedBase * (vatPercent / 100);
+
+            rowTotal = discountedBase + vatAfterDiscount;
 
             // 👉 Grand total
             totalPrice += rowTotal;
@@ -354,6 +357,17 @@ $(document).ready(function() {
     data-id="${key}">
         </td>
 
+        <!----------------Free Qty-------------------------------------->
+        <td>
+            <input
+            type="number"
+            class="free_qty form-control form-control-sm"
+            data-id="${key}"
+            min="0"
+            value="${item.free_qty || 0}">
+         </td>
+
+
         <td>
             <input
                 type="text"
@@ -363,9 +377,7 @@ $(document).ready(function() {
                 data-id="${key}">
         </td>
 
-        <td class="vatAmount">
-    ${vatAfterDiscount.toFixed(2)}
-</td>
+        <td class="vatAmount"> ${vatAfterDiscount.toFixed(2)}</td>
 
         <td>
             <input
@@ -406,81 +418,84 @@ $(document).ready(function() {
     }
 
 
-<!----------------------For Subtotal Update Automatically-------------------------------------------->
+    
+    //-- -- -- -- -- -- -- -- -- -- --For Subtotal Update Automatically-- -- -- -- -- -- -- -- -- -- -- -- -- --
+  
 
-function calculateRow(item) {
+    function calculateRow(item) {
 
-    let qtyPerPack = Number(item.quantity_per_pack) || 0;
-    let boxQty = Number(item.box_quantity) || 1;
-    let unitPrice = Number(item.cost_without_vat) || 0;
-    let vatPercent = Number(item.tax_percentage) || 0;
-    let discountPercent = Number(item.discount_percent) || 0;
+        let qtyPerPack = Number(item.quantity_per_pack) || 0;
+        let boxQty = Number(item.box_quantity) || 1;
+        let unitPrice = Number(item.cost_without_vat) || 0;
+        let vatPercent = Number(item.tax_percentage) || 0;
+        let discountPercent = Number(item.discount_percent) || 0;
 
-    let totalQty = qtyPerPack * boxQty;
+        let totalQty = qtyPerPack * boxQty;
 
-    let purchaseTotal = totalQty * unitPrice;
+        let purchaseTotal = totalQty * unitPrice;
 
-    let discountAmount = purchaseTotal * discountPercent / 100;
+        let discountAmount = purchaseTotal * discountPercent / 100;
 
-    let discountedBase = purchaseTotal - discountAmount;
+        let discountedBase = purchaseTotal - discountAmount;
 
-    let vatAmount = discountedBase * vatPercent / 100;
+        let vatAmount = discountedBase * vatPercent / 100;
 
-    let rowTotal = discountedBase + vatAmount;
+        let rowTotal = discountedBase + vatAmount;
 
-    return {
-        tradePrice: qtyPerPack * unitPrice,
-        vatAmount,
-        rowTotal
-    };
-}
-
-
-
-
-function updateGrandTotal() {
-
-    totalPrice = 0;
-
-    itemsInCart.forEach(function(item){
-        totalPrice += calculateRow(item).rowTotal;
-    });
-
-    totalCalculation();
-}
-
-
-function updateRow(index, skipTradePrice = false) {
-
-    let item = itemsInCart[index];
-
-    let calc = calculateRow(item);
-
-    let row = $("#cartTableBody tr[data-index='" + index + "']");
-
-    // Update Buying Price
-    row.find(".buying_price")
-        .val(parseFloat(item.cost_without_vat).toFixed(2));
-
-    // Update Trade Price (unless currently typing in it)
-    if (!skipTradePrice) {
-        row.find(".trade_price_per_box")
-            .val(calc.tradePrice.toFixed(2));
+        return {
+            tradePrice: qtyPerPack * unitPrice,
+            vatAmount,
+            rowTotal
+        };
     }
 
-    // Update VAT Amount
-    row.find(".vatAmount")
-        .text(calc.vatAmount.toFixed(2));
 
-    // Update Subtotal
-    row.find(".rowTotal")
-        .text(calc.rowTotal.toFixed(2));
 
-    // Update Grand Total
-    updateGrandTotal();
-}
 
-<!----------------------------For automatically subtotal update End------------------------------------------->
+    function updateGrandTotal() {
+
+        totalPrice = 0;
+
+        itemsInCart.forEach(function(item) {
+            totalPrice += calculateRow(item).rowTotal;
+        });
+
+        totalCalculation();
+    }
+
+
+    function updateRow(index, skipTradePrice = false) {
+
+        let item = itemsInCart[index];
+
+        let calc = calculateRow(item);
+
+        let row = $("#cartTableBody tr[data-index='" + index + "']");
+
+        // Update Buying Price
+        row.find(".buying_price")
+            .val(parseFloat(item.cost_without_vat).toFixed(2));
+
+        // Update Trade Price (unless currently typing in it)
+        if (!skipTradePrice) {
+            row.find(".trade_price_per_box")
+                .val(calc.tradePrice.toFixed(2));
+        }
+
+        // Update VAT Amount
+        row.find(".vatAmount")
+            .text(calc.vatAmount.toFixed(2));
+
+        // Update Subtotal
+        row.find(".rowTotal")
+            .text(calc.rowTotal.toFixed(2));
+
+        // Update Grand Total
+        updateGrandTotal();
+    }
+
+//-- -- -- -- -- -- -- -- -- -- -- -- -- --For automatically subtotal update End-- -- -- -- -- -- -- -- -- --
+   
 
 
 
@@ -511,52 +526,52 @@ function updateRow(index, skipTradePrice = false) {
 
     // ================= EVENTS ================= //
 
-$(document).on("input", ".product_quantity_change", function () {
+    $(document).on("input", ".product_quantity_change", function() {
 
-    let index = $(this).data("id");
+        let index = $(this).data("id");
 
-    let qty = parseFloat($(this).val()) || 1;
+        let qty = parseFloat($(this).val()) || 1;
 
-    // Save new Qty Per Box
-    itemsInCart[index].quantity_per_pack = qty;
+        // Save new Qty Per Box
+        itemsInCart[index].quantity_per_pack = qty;
 
-    // Read current Trade Price Per Box from the row
-    let tradePrice = parseFloat(
-        $("#cartTableBody tr[data-index='" + index + "']")
+        // Read current Trade Price Per Box from the row
+        let tradePrice = parseFloat(
+            $("#cartTableBody tr[data-index='" + index + "']")
             .find(".trade_price_per_box")
             .val()
-    ) || 0;
+        ) || 0;
 
-    // Buying Price = Trade Price / Qty Per Box
-    itemsInCart[index].cost_without_vat = tradePrice / qty;
+        // Buying Price = Trade Price / Qty Per Box
+        itemsInCart[index].cost_without_vat = tradePrice / qty;
 
-    updateRow(index);
+        updateRow(index);
 
-});
+    });
 
-$(document).on("input",".product_boxqty_change",function(){
+    $(document).on("input", ".product_boxqty_change", function() {
 
-    let index=$(this).data("id");
+        let index = $(this).data("id");
 
-    itemsInCart[index].box_quantity=Number($(this).val())||0;
+        itemsInCart[index].box_quantity = Number($(this).val()) || 0;
 
-    updateRow(index);
+        updateRow(index);
 
-});
+    });
 
-$(document).on("input",".trade_price_per_box",function(){
+    $(document).on("input", ".trade_price_per_box", function() {
 
-    let index=$(this).data("id");
+        let index = $(this).data("id");
 
-    let tradePrice = Number($(this).val()) || 0;
+        let tradePrice = Number($(this).val()) || 0;
 
-    let qty = Number(itemsInCart[index].quantity_per_pack) || 1;
+        let qty = Number(itemsInCart[index].quantity_per_pack) || 1;
 
-    itemsInCart[index].cost_without_vat = tradePrice / qty;
+        itemsInCart[index].cost_without_vat = tradePrice / qty;
 
-    updateRow(index, true);
+        updateRow(index, true);
 
-});
+    });
 
 
 
@@ -570,28 +585,40 @@ $(document).on("input",".trade_price_per_box",function(){
 
         itemsInCart[index].cost_without_vat = newPrice;
 
-updateRow(index);
+        updateRow(index);
     });
 
-$(document).on("input",".vat-input",function(){
+    $(document).on("input", ".free_qty", function () {
+    const index = $(this).data("id");
 
-    let index=$(this).data("id");
+    itemsInCart[index].free_qty = Number($(this).val()) || 0;
 
-    itemsInCart[index].tax_percentage=Number($(this).val())||0;
+    console.log(itemsInCart);
 
-    updateRow(index);
-
+    updateRow(index); // or updateRow(index)
 });
 
-$(document).on("input",".discount_percent",function(){
 
-    let index=$(this).data("id");
 
-    itemsInCart[index].discount_percent=Number($(this).val())||0;
+    $(document).on("input", ".vat-input", function() {
 
-    updateRow(index);
+        let index = $(this).data("id");
 
-});
+        itemsInCart[index].tax_percentage = Number($(this).val()) || 0;
+
+        updateRow(index);
+
+    });
+
+    $(document).on("input", ".discount_percent", function() {
+
+        let index = $(this).data("id");
+
+        itemsInCart[index].discount_percent = Number($(this).val()) || 0;
+
+        updateRow(index);
+
+    });
 
     $(document).on("click", ".btn_item_delete", function() {
         var index = $(this).data("index");
@@ -680,7 +707,11 @@ $(document).on("input",".discount_percent",function(){
 
                     // itemsInCart.push(product);
                     itemsInCart.push({
-                        ...product
+                        ...product,
+                        quantity_per_pack: 1,
+                    discount_percent: 0,
+                    box_quantity: 1,
+                    free_qty: 0      // ✅ Add this
                     });
                     return false;
                 }

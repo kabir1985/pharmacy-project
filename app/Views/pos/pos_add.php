@@ -516,6 +516,8 @@ var productsList = <?php echo json_encode($product_show_for_sale, JSON_PRETTY_PR
 
 $(document).ready(function() {
 
+    $("body").addClass("sidenav-toggled");
+
     $("#search_product").focus();
 
     /*---sound adding-------------------*/

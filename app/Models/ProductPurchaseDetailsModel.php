@@ -16,6 +16,7 @@ class ProductPurchaseDetailsModel extends Model
                                 'quantity_per_pack',
                                 'box_quantity',
                                 'base_price_per_unit',
+                                'free_qty',
                                 'product_wise_vat_amount',
                                 'product_wise_discount_amount',
                                 'purchase_price'

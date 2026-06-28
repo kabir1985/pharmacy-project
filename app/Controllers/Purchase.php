@@ -89,6 +89,7 @@ class Purchase extends BaseController
         $quantity_per_pack = (int) $row['quantity_per_pack'] ?? 1;
         $box_quantity = (int) $row['box_quantity'] ?? 1;
         $base_price_per_unit = (float) $row['base_price'] ?? 0;
+        $free_qty = (int) $row['free_qty'] ?? 0;
         $tax_percentage = (float) $row['tax_percentage'] ?? 0;
         $discount_percent = (float) $row['discount_percent'] ?? 0;
 
@@ -108,6 +109,7 @@ class Purchase extends BaseController
             "quantity_per_pack" => $quantity_per_pack,
             "box_quantity" => $box_quantity,
             "base_price_per_unit" => $base_price_per_unit,
+            "free_qty" => $free_qty,
             "product_wise_vat_amount" => $vat_amount,
             "product_wise_discount_amount" => $discount_amount,
             "purchase_price" => $row_total
