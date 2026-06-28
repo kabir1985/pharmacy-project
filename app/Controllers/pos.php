@@ -406,25 +406,116 @@ LEFT JOIN (
 
     }
 
-    public function product_call()
-    {
-        $this->db = db_connect();
-        $search_product = $_GET['term'];
 
-        $sql = "SELECT pis.product_id as id,pis.product_name as name,pis.product_name as label,
-               ((productinitial_quantity + IFNULL(ppd.new_purchased,0)) - IFNULL(sd.total_sale,0))  AS total_stock
-                FROM product_inital_stock as pis
 
-                LEFT JOIN (SELECT product_id,SUM(product_quantity_sold) as total_sale
-                                FROM sales_details
-                                GROUP BY product_id) as sd ON pis.product_id = sd.product_id
+public function product_call()
+{
+    $this->db = db_connect();
 
-                LEFT JOIN (SELECT product_id,SUM(quantity_per_pack * box_quantity) as new_purchased
-                                FROM product_purchase_details
-                                GROUP BY product_id) as ppd ON pis.product_id = ppd.product_id
-                WHERE ((productinitial_quantity + IFNULL(ppd.new_purchased,0)) - IFNULL(sd.total_sale,0))>0 AND  product_name like '%$search_product%' ";
+    $search = trim($this->request->getGet('term'));
 
-        $results = $this->db->query($sql)->getResult('array');
-        echo(json_encode($results));
-    }
+    $builder = $this->db->table('product_inital_stock pis');
+
+    $builder->select("
+        pis.product_id AS id,
+        pis.product_name AS name,
+
+        CONCAT(
+            pis.product_name,
+            ' | ',
+            pb.product_brand_name,
+            ' | ',
+            pc.category_name,
+            ' | ',
+            pg.group_name,
+            ' | Stock: ',
+            ((pis.productinitial_quantity + IFNULL(ppd.new_purchased,0))
+             - IFNULL(sd.total_sale,0))
+        ) AS label,
+
+        ((pis.productinitial_quantity + IFNULL(ppd.new_purchased,0))
+         - IFNULL(sd.total_sale,0)) AS total_stock
+    ");
+
+    // Sales
+    $builder->join("
+    (
+        SELECT product_id,
+               SUM(product_quantity_sold) total_sale
+        FROM sales_details
+        GROUP BY product_id
+    ) sd","pis.product_id=sd.product_id","left");
+
+    // Purchase
+    $builder->join("
+    (
+        SELECT product_id,
+               SUM(quantity_per_pack*box_quantity) new_purchased
+        FROM product_purchase_details
+        GROUP BY product_id
+    ) ppd","pis.product_id=ppd.product_id","left");
+
+    // Brand
+    $builder->join(
+        "product_brand pb",
+        "pb.brand_id=pis.product_brand",
+        "left"
+    );
+
+    // Category
+    $builder->join(
+        "product_category pc",
+        "pc.product_category_id=pis.product_category",
+        "left"
+    );
+
+    // Group
+    $builder->join(
+        "product_group pg",
+        "pg.product_group_id=pis.product_group",
+        "left"
+    );
+
+$search = strtolower(trim($this->request->getGet('term')));
+
+$builder->groupStart();
+
+$builder->where("
+LOWER(CONCAT(
+    pis.product_name,' ',
+    IFNULL(pb.product_brand_name,''),' ',
+    IFNULL(pc.category_name,''),' ',
+    IFNULL(pg.group_name,''),' ',
+    IFNULL(pis.codefor_barcode,'')
+)) LIKE '%{$this->db->escapeLikeString($search)}%'
+", null, false);
+
+$builder->groupEnd();
+$builder->having('total_stock >=', 0);
+
+    $builder->orderBy("
+        CASE
+            WHEN pis.codefor_barcode='$search' THEN 1
+            WHEN pis.product_name='$search' THEN 2
+            WHEN pis.product_name LIKE '%".$this->db->escapeLikeString($search)."%' THEN 3
+            WHEN pb.product_brand_name LIKE '".$this->db->escapeLikeString($search)."%' THEN 4
+            WHEN pc.category_name LIKE '".$this->db->escapeLikeString($search)."%' THEN 5
+            WHEN pg.group_name LIKE '".$this->db->escapeLikeString($search)."%' THEN 6
+            ELSE 7
+        END
+    ", false);
+
+    $builder->limit(20);
+
+
+
+//      echo $builder->getCompiledSelect();
+//  die;
+
+    return $this->response->setJSON(
+        $builder->get()->getResultArray()
+    );
+}
+
+
 }

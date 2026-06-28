@@ -517,32 +517,48 @@ var productsList = <?php echo json_encode($product_show_for_sale, JSON_PRETTY_PR
 $(document).ready(function() {
 
     $("body").addClass("sidenav-toggled");
+$("#search_product").focus();
 
-    $("#search_product").focus();
+/*--- Sound -------------------*/
+const obj = new Audio("<?php echo site_url('public/sounds/success.mp3') ?>");
+const obj_warning = new Audio("<?php echo site_url('public/sounds/warning.mp3') ?>");
 
-    /*---sound adding-------------------*/
-    var obj = document.createElement("audio");
-    var obj_warning = document.createElement("audio");
-    obj.src = "<?php echo site_url('public/sounds/success.mp3') ?>";
-    obj_warning.src = "<?php echo site_url('public/sounds/warning.mp3') ?>";
-    obj.volume = 1.0;
-    obj.autoPlay = false;
-    obj.preLoad = true;
-    /*---sound adding-------------------*/
+obj.volume = 1.0;
 
-    $("#search_product").autocomplete({
-        source: "<?php echo site_url('pos/product_call') ?>",
-        minLength: 1,
-        //select: function(event, ui) {
-        autoFocus: true,
-        select: function(event, ui) {
-            productAddToCart(ui.item.id, ui.item.total_stock);
-            obj.play();
-            $(this).val("");
-            return false;
-        }
-    });
+/*--- Product Search -------------------*/
+$("#search_product").autocomplete({
+    source: function(request, response) {
 
+        $.ajax({
+            url: "<?php echo site_url('pos/product_call') ?>",
+            dataType: "json",
+            data: {
+                term: request.term
+            },
+            success: function(data) {
+                response(data);
+            },
+            error: function() {
+                response([]);
+            }
+        });
+
+    },
+    minLength: 1,
+    autoFocus: true,
+    delay: 150,
+
+    select: function(event, ui) {
+
+        productAddToCart(ui.item.id, ui.item.total_stock);
+
+        obj.play();
+
+        $(this).val("");
+
+        return false;
+    }
+});
     var itemsInCart = [];
     var totalPrice = 0;
 
@@ -790,26 +806,29 @@ $(document).ready(function() {
         totalCalculation();
     });
 
-    $('body').on("input", ".product_quantity_change", function() {
-        var index = $(this).data("id");
-        var newQuantity = Number.parseInt($(this).val());
-        var current_stock = Number.parseInt($(this).data('current_stock'));
-        if (newQuantity < current_stock) {
-            if (newQuantity < 1) {
-                itemsInCart.splice(index, 1);
-                obj_warning.play();
-            } else {
-                itemsInCart[index].quantity = newQuantity;
-                obj.play();
-            }
-            drawTable();
-        } else {
-            itemsInCart[index].quantity = current_stock;
-            $(this).val(current_stock);
-            obj_warning.play();
-            alert("Your Stock is Exceeded !");
-        }
-    });
+$('body').on("input", ".product_quantity_change", function () {
+
+    let index = $(this).data("id");
+    let qty = parseFloat($(this).val()) || 0;
+    let stock = parseFloat($(this).data("current_stock"));
+
+    if (qty <= 0) {
+        itemsInCart.splice(index, 1);
+        drawTable();          // Only when deleting a row
+        return;
+    }
+
+    if (qty > stock) {
+        qty = stock;
+        $(this).val(stock);
+        obj_warning.play();
+        alert("Your Stock is Exceeded!");
+    }
+
+    itemsInCart[index].quantity = qty;
+
+    updateRow(index);         // Smooth update only
+});
 
     /* Product Delete Strat */
     $('body').on("click", ".btn_item_delete", function() {
@@ -871,29 +890,119 @@ $(document).ready(function() {
 
 
 
+$(document).on("input", ".sale_price_change", function () {
 
-    // Handle VAT input change
-    $(document).on('input', '.vat_input', function() {
-        let index = $(this).closest('tr').find('.btn_item_delete').data('index');
-        let value = parseFloat($(this).val()) || 0;
+    let index = $(this).data("id");
 
-        // Update the item in itemsInCart
-        itemsInCart[index].vat_input = value;
+    itemsInCart[index].sales_price_for_customer = parseFloat($(this).val()) || 0;
 
-        // Redraw table to recalculate subtotal
-        drawTable();
+    updateRow(index);
+});
+
+$(document).on("input", ".vat_input", function () {
+
+    let index = $(this).closest("tr").find(".btn_item_delete").data("index");
+
+    itemsInCart[index].vat_input = parseFloat($(this).val()) || 0;
+
+    updateRow(index);
+});
+
+$(document).on("input", ".discount_percent", function () {
+
+    let index = $(this).closest("tr").find(".btn_item_delete").data("index");
+
+    itemsInCart[index].discount_percent = parseFloat($(this).val()) || 0;
+
+    updateRow(index);
+});
+
+
+/////##############################################################
+function updateRow(index) {
+
+    const item = itemsInCart[index];
+    if (!item) return;
+
+    let subtotal = (parseFloat(item.quantity) || 0) *
+                   (parseFloat(item.sales_price_for_customer) || 0);
+
+    if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+
+        const vat = parseFloat(item.vat_input) || 0;
+        const discount = parseFloat(item.discount_percent) || 0;
+
+        subtotal += subtotal * vat / 100;
+        subtotal -= subtotal * discount / 100;
+    }
+
+    // Find the row using data-id instead of row index
+    const $row = $('.product_quantity_change[data-id="' + index + '"]').closest('tr');
+
+    if ($row.length) {
+        $row.find("td:last")
+            .contents()
+            .first()[0]
+            .textContent = subtotal.toFixed(2);
+    }
+
+    updateGrandTotal();
+}
+
+function updateGrandTotal() {
+
+    totalPrice = 0;
+
+    itemsInCart.forEach(function(item) {
+
+        //let subtotal = item.quantity * item.sales_price_for_customer;
+        let subtotal =(parseFloat(item.quantity) || 0) * (parseFloat(item.sales_price_for_customer) || 0);
+
+        if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+            subtotal += subtotal * ((parseFloat(item.vat_input) || 0) / 100);
+            subtotal -= subtotal * ((parseFloat(item.discount_percent) || 0) / 100);
+        }
+
+        totalPrice += subtotal;
     });
 
+    totalCalculation();
+}
+/////################################################################
 
-    // Handle Discount input change
-    $(document).on('input', '.discount_percent', function() {
-        let index = $(this).closest('tr').find('.btn_item_delete').data('index');
-        let value = parseFloat($(this).val()) || 0;
 
-        itemsInCart[index].discount_percent = value;
 
-        drawTable();
-    });
+
+
+
+
+// function updateGrandTotal() {
+
+//     totalPrice = 0;
+
+//     itemsInCart.forEach(function(item) {
+
+//         let rowTotal = item.quantity * item.sales_price_for_customer;
+
+//         if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+//             const vat = parseFloat(item.vat_input) || 0;
+//             const discount = parseFloat(item.discount_percent) || 0;
+
+//             rowTotal += rowTotal * vat / 100;
+//             rowTotal -= rowTotal * discount / 100;
+//         }
+
+//         totalPrice += rowTotal;
+//     });
+
+//     totalCalculation();
+// }
+
+
+
+
+
+
 
     /*
     Draw / Redraw Table
@@ -904,7 +1013,8 @@ $(document).ready(function() {
         totalPrice = 0;
         $.each(itemsInCart, function(key, item) {
 
-            var baseTotal = parseInt(item.quantity) * parseFloat(item.sales_price_for_customer);
+           // var baseTotal = parseInt(item.quantity) * parseFloat(item.sales_price_for_customer);
+            var baseTotal =(parseFloat(item.quantity) || 0) * (parseFloat(item.sales_price_for_customer) || 0);
             var subtotalPrice = baseTotal; // default, no VAT/Discount
 
             // ✅ Only apply VAT/Discount if toggle is ON
@@ -927,11 +1037,21 @@ $(document).ready(function() {
                 'value="' + item.quantity +
                 '" onkeypress="return accept_digit_only(event)" min="0"+ max="99999"/> ' +
                 '</td>' +
-                '<td>' + item.sales_price_for_customer + '</td>' +
-                '<td class="vat-column hide"><input type="number" name="vat" class="form-control form-control-sm vat_input" value="' +
-                (item.vat_input || 0) + '" min="0" step="0.01"></td>' +
-                '<td class="discount-column hide"><input type="number" name="discount_on_each_product" class="discount_percent form-control form-control-sm" value="' +
-                (item.discount_percent || 0) + '" min="0" step="0.01"></td>' +
+                // '<td>' + item.sales_price_for_customer + '</td>' +
+
+                '<td><input type="number" \
+data-id="' + key + '" \
+name="sales_price_for_customer" \
+class="sale_price_change form-control form-control-sm" \
+value="' + (item.sales_price_for_customer || 1) + '" \
+min="1" \
+step="0.01"></td>' +
+
+                '<td class="vat-column hide"><input type="number" data-id="' + key + '" class="vat_input form-control form-control-sm" value="' +
+                 (item.vat_input || 0) + '"></td>' +
+
+                '<td class="discount-column hide"><input type="number" data-id="' + key + '" class="discount_percent form-control form-control-sm"  value="' + 
+                 (item.discount_percent || 0) + '"></td>' +
     // ✅ ADD HERE
     '<td>' + (item.unit_purchase_price ? parseFloat(item.unit_purchase_price).toFixed(2) : '0.00') + '</td>' +
 
