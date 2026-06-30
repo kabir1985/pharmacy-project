@@ -237,4 +237,25 @@ class Product extends BaseController
         // $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
         echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_CODE_128)) . '">';
     }
+
+
+
+public function categoryCreateAjax()
+{
+    $model = new ProductCategoryModel();
+
+    $data = [
+        'category_name' => $this->request->getPost('category_name')
+    ];
+
+    $id = $model->insert($data);
+
+    return $this->response->setJSON([
+        'status' => true,
+        'id' => $id,
+        'name' => $data['category_name']
+    ]);
+}
+
+
 }

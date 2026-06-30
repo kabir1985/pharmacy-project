@@ -30,6 +30,8 @@ $routes->post('initial-product-update', 'Product::update');
 $routes->post('initial-product-delete', 'Product::delete');
 $routes->post('initial-product-brand', 'Product::brand_call');
 
+$routes->post('category-create-ajax', 'Product::categoryCreateAjax');
+
 
 $routes->get('barcodegenerate', 'barcodegenerate::index');
 $routes->post('barcodeprint', 'barcodegenerate::barcodeprint');

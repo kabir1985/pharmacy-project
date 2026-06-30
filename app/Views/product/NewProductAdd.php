@@ -3,39 +3,51 @@ echo $this->extend('layout');
 echo $this->section('content');
 ?>
 <style>
-#sampleTable {
-    font-size: 12px;
-}
-
-.modal-content, .form-control, label, option {
-    font-size: 12px;
-}
-
-#sampleTable td,
-#sampleTable th {
-    white-space: nowrap;
-}
-
-#sampleTable th,
-#sampleTable td {
-    padding: 4px 6px;
-    vertical-align: middle;
-}
-
-.product-name {
-    max-width: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-@media (max-width: 1366px) {
-
-    #sampleTable th:nth-child(4),
-    #sampleTable td:nth-child(4),
-    #sampleTable th:nth-child(7),
-    #sampleTable td:nth-child(7) {
-        display: none;
+    #sampleTable {
+        font-size: 12px;
     }
+
+    .modal-content,
+    .form-control,
+    label,
+    option {
+        font-size: 12px;
+    }
+
+    #sampleTable td,
+    #sampleTable th {
+        white-space: nowrap;
+    }
+
+    #sampleTable th,
+    #sampleTable td {
+        padding: 4px 6px;
+        vertical-align: middle;
+    }
+
+    .product-name {
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    @media (max-width: 1366px) {
+
+        #sampleTable th:nth-child(4),
+        #sampleTable td:nth-child(4),
+        #sampleTable th:nth-child(7),
+        #sampleTable td:nth-child(7) {
+            display: none;
+        }
+    }
+
+
+    .swal2-container{
+    z-index:999999 !important;
+}
+
+.swal2-input{
+    pointer-events:auto !important;
 }
 </style>
 
@@ -58,8 +70,8 @@ echo $this->section('content');
         <div class='tile collapseable show animate__animated  animate__fadeInUp'>
             <div class='tile-body'>
                 <div class='table-responsive'>
-                        <table class="table table-bordered table-sm dt-responsive nowrap" id="sampleTable" width="100%">
-    
+                    <table class="table table-bordered table-sm dt-responsive nowrap" id="sampleTable" width="100%">
+
                         <thead>
 
                             <tr>
@@ -75,67 +87,68 @@ echo $this->section('content');
                                 <th>Pur.Price</th>
                                 <th>profit-margin%</th>
                                 <th>Sales/Cus Price</th>
-                                <div class="btn-group btn-group-sm"><th>Action</th></div>
+                                <div class="btn-group btn-group-sm">
+                                    <th>Action</th>
+                                </div>
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php
-// print_r($product_show);
+                            // print_r($product_show);
 // exit();
-if (count($product_show) > 0) {
-    foreach ($product_show as $row11) {
-        ?>
+                            if (count($product_show) > 0) {
+                                foreach ($product_show as $row11) {
+                                    ?>
                             <tr>
-                                <td><img src="<?=base_url()?>/public/uploads/<?=$row11["product_image"]?>"
-     class="img-thumbnail"
-     style="width:40px;height:35px;"></td>
+                                <td><img src="<?= base_url() ?>/public/uploads/<?= $row11["product_image"] ?>"
+                                        class="img-thumbnail" style="width:40px;height:35px;"></td>
                                 <!-- <td><?php //echo $row11['codefor_barcode'] ?></td> -->
-                                <td class="product-name"><?php echo $row11['product_name']; ?></td>
-                                <td><?php echo $row11['category_name'] ?></td>
-                                <!-- <td><?php //echo $row11['product_brand_name'] ?></td> -->
+                                        <td class="product-name"><?php echo $row11['product_name']; ?></td>
+                                        <td><?php echo $row11['category_name'] ?></td>
+                                        <!-- <td><?php //echo $row11['product_brand_name'] ?></td> -->
 
-                                <td><?php echo $row11['productinitial_quantity'] ?></td>
-                                <td><?php echo $row11['cost_without_vat'] ?></td>
+                                        <td><?php echo $row11['productinitial_quantity'] ?></td>
+                                        <td><?php echo $row11['cost_without_vat'] ?></td>
 
-                                <td><?php echo $row11['tax_percentage'] ?>%</td>
-                                <td><?php echo $row11['tax_amount'] ?></td>
+                                        <td><?php echo $row11['tax_percentage'] ?>%</td>
+                                        <td><?php echo $row11['tax_amount'] ?></td>
 
-                                <td><?php echo $row11['purchase_price'] ?></td>
-                                <td><?php echo $row11['profit_margin_%'] ?></td>
+                                        <td><?php echo $row11['purchase_price'] ?></td>
+                                        <td><?php echo $row11['profit_margin_%'] ?></td>
 
 
-                                <td><?php echo $row11['sales_price_for_customer'] ?></td>
-                                <!-- <td><?php //echo $row11['final_price'] ?></td> -->
+                                        <td><?php echo $row11['sales_price_for_customer'] ?></td>
+                                        <!-- <td><?php //echo $row11['final_price'] ?></td> -->
 
-                                <td>
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <a href="#" class="btn btn-primary btn-sm btn-edit"
-                                            data-product_id="<?php echo $row11['product_id']; ?>"
-                                            data-product_name="<?php echo $row11['product_name']; ?>"
-                                            data-product_category="<?php echo $row11['product_category']; ?>"
-                                            data-product_brand="<?php echo $row11['product_brand'] ?>"
-                                            data-product_group="<?php echo $row11['product_group'] ?>"
-                                            data-product_unit="<?php echo $row11['product_unit'] ?>"
-                                            data-tax_percentage="<?php echo $row11['tax_percentage'] ?>"
-                                            data-productinitial_quantity="<?php echo $row11['productinitial_quantity'] ?>"
-                                            data-base_price="<?php echo $row11['base_price'] ?>"
-                                            data-codefor_barcode="<?php echo $row11['codefor_barcode'] ?>"
-                                            data-alert_quantity="<?php echo $row11['alert_quantity'] ?>">
-                                            <i class="fa fa-edit"></i></a>
-                                        <a href="#" class="btn btn-danger btn-sm btn-delete"
-                                            data-delete_id="<?php echo $row11['product_id'] ?>"><i
-                                                class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <?php
-}
-} else {
-    echo "Data not Found";
-}
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <a href="#" class="btn btn-primary btn-sm btn-edit"
+                                                    data-product_id="<?php echo $row11['product_id']; ?>"
+                                                    data-product_name="<?php echo $row11['product_name']; ?>"
+                                                    data-product_category="<?php echo $row11['product_category']; ?>"
+                                                    data-product_brand="<?php echo $row11['product_brand'] ?>"
+                                                    data-product_group="<?php echo $row11['product_group'] ?>"
+                                                    data-product_unit="<?php echo $row11['product_unit'] ?>"
+                                                    data-tax_percentage="<?php echo $row11['tax_percentage'] ?>"
+                                                    data-productinitial_quantity="<?php echo $row11['productinitial_quantity'] ?>"
+                                                    data-base_price="<?php echo $row11['base_price'] ?>"
+                                                    data-codefor_barcode="<?php echo $row11['codefor_barcode'] ?>"
+                                                    data-alert_quantity="<?php echo $row11['alert_quantity'] ?>">
+                                                    <i class="fa fa-edit"></i></a>
+                                                <a href="#" class="btn btn-danger btn-sm btn-delete"
+                                                    data-delete_id="<?php echo $row11['product_id'] ?>"><i
+                                                        class="fa fa-trash-o"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                            } else {
+                                echo "Data not Found";
+                            }
 
-?>
+                            ?>
                         </tbody>
 
                     </table>
@@ -159,10 +172,10 @@ if (count($product_show) > 0) {
             <!-----for image upload------------------->
             <?php if (session('msg')): ?>
             <div class="alert alert-success alert-dismissible">
-                <?=session('msg')?>
+                <?= session('msg') ?>
                 <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
             </div>
-            <?php endif?>
+            <?php endif ?>
             <!-----for image upload------------------->
             <form id="NewProductAdd_Form" method='post' action="<?php echo site_url('/initial-product-create') ?>"
                 accept-charset="utf-8" enctype="multipart/form-data">
@@ -181,22 +194,27 @@ if (count($product_show) > 0) {
                             <input required type='text' required class='form-control' name='product_name'
                                 placeholder='Product Name'>
                         </div>
-                        <div class='form-group col-md-4'>
-                            <label for="inputState">Product Category</label>
-                            <select id="product_category" name="product_category" class="form-control" required>
-                                <option value="">Select Category </option>
-                                <?php
-foreach ($category_show as $category) {
-    ?>
-                                <option value="<?php echo $category['product_category_id'] ?>">
-                                    <?php echo $category['category_name'] ?>
-                                </option>
 
-                                <?php
-}
-?>
+                        <!-----------------------Product Category Select Start------------------------------>
+                        <div class="input-group col-md-4">
+                            <select id="product_category" name="product_category" class="form-control" required>
+                                <option value="">Select Category</option>
+
+                                <?php foreach ($category_show as $category): ?>
+                                    <option value="<?= $category['product_category_id'] ?>">
+                                        <?= $category['category_name'] ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
+
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-success" id="btnAddCategory" title="Add Category">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
                         </div>
+                        <!-----------------------Product Category Select End------------------------------>
+
 
                         <div class='form-group col-md-4'>
                             <label for="inputState">Brand</label>
@@ -214,14 +232,14 @@ foreach ($category_show as $category) {
                             <select id="product_group" name="product_group" class="form-control" required>
                                 <option value="">Select Group </option>
                                 <?php
-foreach ($group_show as $group) {
-    ?>
-                                <option value="<?php echo $group['product_group_id'] ?>">
-                                    <?php echo $group['group_name'] ?>
-                                </option>
-                                <?php
-}
-?>
+                                foreach ($group_show as $group) {
+                                    ?>
+                                    <option value="<?php echo $group['product_group_id'] ?>">
+                                        <?php echo $group['group_name'] ?>
+                                    </option>
+                                    <?php
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
@@ -229,15 +247,15 @@ foreach ($group_show as $group) {
                             <select id="product_unit" name="product_unit" class="form-control" required>
                                 <option value="">Select Unit </option>
                                 <?php
-foreach ($unit_show as $unit) {
-    ?>
-                                <option value="<?php echo $unit['product_unit_id'] ?>">
-                                    <?php echo $unit['product_unit_name'] ?>
-                                </option>
+                                foreach ($unit_show as $unit) {
+                                    ?>
+                                    <option value="<?php echo $unit['product_unit_id'] ?>">
+                                        <?php echo $unit['product_unit_name'] ?>
+                                    </option>
 
-                                <?php
-}
-?>
+                                    <?php
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
@@ -261,10 +279,10 @@ foreach ($unit_show as $unit) {
                             <select id="tax_id" name="tax_id" class="form-control" required>
                                 <option value="">Select Tax</option>
                                 <?php foreach ($tax_show as $row): ?>
-                                <option value="<?=$row['tax_id'];?>" data-percent="<?=$row['tax_percentage'];?>">
-                                    <?=$row['tax_name'];?> (
-                                    <?=$row['tax_percentage'];?>%)
-                                </option>
+                                    <option value="<?= $row['tax_id']; ?>" data-percent="<?= $row['tax_percentage']; ?>">
+                                        <?= $row['tax_name']; ?> (
+                                        <?= $row['tax_percentage']; ?>%)
+                                    </option>
                                 <?php endforeach; ?>
                             </select>
                             <input type="hidden" name="tax_percentage" id="tax_percentage">
@@ -348,8 +366,6 @@ foreach ($unit_show as $unit) {
 
 
 
-
-
 <!---------------------------Modal Form for Edit Section Load Start---------------------------------------->
 <!-- Modal -->
 <div class='modal fade' id='EditProductModal' tabindex='-1' role='dialog' aria-labelledby='EditProductModalLabel'
@@ -373,20 +389,20 @@ foreach ($unit_show as $unit) {
                         <div class='form-group col-md-4'>
                             <label>Category Name</label>
                             <select id="product_category12" name="product_category12" class="form-control">
-                                <?php foreach ($category_show as $row22) {?>
-                                <option value="<?php echo $row22['product_category_id'] ?>">
-                                    <?php echo $row22['category_name'] ?>
-                                </option>
-                                <?php }?>
+                                <?php foreach ($category_show as $row22) { ?>
+                                    <option value="<?php echo $row22['product_category_id'] ?>">
+                                        <?php echo $row22['category_name'] ?>
+                                    </option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Brand</label>
                             <select id="product_brand12" name="product_brand12" class="form-control">
-                                <?php foreach ($brand_show as $row) {?>
-                                <option value="<?php echo $row['brand_id'] ?>"><?php echo $row['product_brand_name'] ?>
-                                </option>
-                                <?php }?>
+                                <?php foreach ($brand_show as $row) { ?>
+                                    <option value="<?php echo $row['brand_id'] ?>"><?php echo $row['product_brand_name'] ?>
+                                    </option>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -394,29 +410,29 @@ foreach ($unit_show as $unit) {
                         <div class='form-group col-md-4'>
                             <label>Group</label>
                             <select id="product_group12" name="product_group12" class="form-control">
-                                <?php foreach ($group_show as $row) {?>
-                                <option value="<?php echo $row['product_group_id'] ?>"><?php echo $row['group_name'] ?>
-                                </option>
-                                <?php }?>
+                                <?php foreach ($group_show as $row) { ?>
+                                    <option value="<?php echo $row['product_group_id'] ?>"><?php echo $row['group_name'] ?>
+                                    </option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Unit</label>
                             <select id="product_unit12" name="product_unit12" class="form-control">
-                                <?php foreach ($unit_show as $row) {?>
-                                <option value="<?php echo $row['product_unit_id'] ?>">
-                                    <?php echo $row['product_unit_name'] ?>
-                                </option>
-                                <?php }?>
+                                <?php foreach ($unit_show as $row) { ?>
+                                    <option value="<?php echo $row['product_unit_id'] ?>">
+                                        <?php echo $row['product_unit_name'] ?>
+                                    </option>
+                                <?php } ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>TAX</label>
                             <select id="tax_percentage12" name="tax_percentage12" class="form-control">
-                                <?php foreach ($tax_show as $row) {?>
-                                <option value="<?php echo $row['tax_percentage'] ?>"><?php echo $row['tax_name'] ?>
-                                </option>
-                                <?php }?>
+                                <?php foreach ($tax_show as $row) { ?>
+                                    <option value="<?php echo $row['tax_percentage'] ?>"><?php echo $row['tax_name'] ?>
+                                    </option>
+                                <?php } ?>
                             </select>
                         </div>
                     </div>
@@ -431,11 +447,11 @@ foreach ($unit_show as $unit) {
                             <label>Barcode</label>
                             <input type='text' class='form-control' name='codefor_barcode' id='codefor_barcode'>
                         </div>
-                         <div class='form-group col-md-4'>
+                        <div class='form-group col-md-4'>
                             <label>Alert Quantity</label>
                             <input type='text' class='form-control' name='alert_quantity' id='alert_quantity'
                                 onkeypress="return accept_digit_only(event)">
-                        </div> 
+                        </div>
                     </div>
 
                 </div>
@@ -494,125 +510,128 @@ echo $this->section('scripts');
 <link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.responsive.min.css') ?>">
 <script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
 <script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type='text/javascript'>
-// Fix modal close buttons
-$('.modal .btn-secondary[data-dismiss="modal"], .modal .close').on('click', function() {
-    $(this).closest('.modal').modal('hide');
-});
+    // Fix modal close buttons
+    $('.modal .btn-secondary[data-dismiss="modal"], .modal .close').on('click', function () {
+        $(this).closest('.modal').modal('hide');
+    });
 
 
-$(document).ready(function() {
+    $(document).ready(function () {
 
-    /////////////////Product Final Price Calculation start//////////////////////////////////////////////////////////////////////
-    function getTaxPercent() {
-        return parseFloat($('#tax_id option:selected').data('percent')) || 0;
-    }
+    $.fn.modal.Constructor.prototype.enforceFocus = function () {};
 
-    // MAIN CALCULATION
-    function calculatePrice(fromSales = false) {
 
-        let basePrice = parseFloat($('#base_price').val()) || 0;
-        let margin = parseFloat($('#profit_margin').val()) || 0;
-        let taxPercent = getTaxPercent();
-        let taxType = $('#tax_type').val();
-
-        let purchasePrice = 0;
-        let salesPrice = parseFloat($('#sales_price').val()) || 0;
-
-        // PURCHASE PRICE
-        if (taxType === 'with_tax') {
-            purchasePrice = basePrice;
-        } else {
-            purchasePrice = basePrice + (basePrice * taxPercent / 100);
+        /////////////////Product Final Price Calculation start//////////////////////////////////////////////////////////////////////
+        function getTaxPercent() {
+            return parseFloat($('#tax_id option:selected').data('percent')) || 0;
         }
 
-        // যদি sales price থেকে margin calculate করতে চান
-        if (fromSales) {
+        // MAIN CALCULATION
+        function calculatePrice(fromSales = false) {
 
-            if (purchasePrice > 0) {
-                margin = ((salesPrice - purchasePrice) / purchasePrice) * 100;
+            let basePrice = parseFloat($('#base_price').val()) || 0;
+            let margin = parseFloat($('#profit_margin').val()) || 0;
+            let taxPercent = getTaxPercent();
+            let taxType = $('#tax_type').val();
+
+            let purchasePrice = 0;
+            let salesPrice = parseFloat($('#sales_price').val()) || 0;
+
+            // PURCHASE PRICE
+            if (taxType === 'with_tax') {
+                purchasePrice = basePrice;
             } else {
-                margin = 0;
+                purchasePrice = basePrice + (basePrice * taxPercent / 100);
             }
 
-            $('#profit_margin').val(margin.toFixed(2));
+            // যদি sales price থেকে margin calculate করতে চান
+            if (fromSales) {
 
-        } else {
+                if (purchasePrice > 0) {
+                    margin = ((salesPrice - purchasePrice) / purchasePrice) * 100;
+                } else {
+                    margin = 0;
+                }
 
-            // margin থেকে sales price calculate
-            salesPrice = purchasePrice * (1 + margin / 100);
+                $('#profit_margin').val(margin.toFixed(2));
 
-            $('#sales_price').val(salesPrice.toFixed(2));
+            } else {
+
+                // margin থেকে sales price calculate
+                salesPrice = purchasePrice * (1 + margin / 100);
+
+                $('#sales_price').val(salesPrice.toFixed(2));
+            }
+
+            $('#purchase_price').val(purchasePrice.toFixed(2));
         }
 
-        $('#purchase_price').val(purchasePrice.toFixed(2));
-    }
 
+        // EVENTS
 
-    // EVENTS
-
-    // base price / margin change হলে sales price auto calculate
-    $('#base_price, #profit_margin').on('input', function() {
-        calculatePrice(false);
-    });
-
-    // sales price change হলে margin auto calculate
-    $('#sales_price').on('input', function() {
-        calculatePrice(true);
-    });
-
-    // tax change হলে recalculation
-    $('#tax_type, #tax_id').on('change', function() {
-        calculatePrice(false);
-    });
-    //////////////Product Final Price Calculation End///////////////////////////////////////////////////////////////////////////////////
-
-    $("#product_category").on("change", function() {
-        var categoryId = this.value;
-
-        var brand_call_url = "<?=site_url('/initial-product-brand')?>";
-        $.ajax({
-            url: brand_call_url,
-            type: "POST",
-            data: "categoryId=" + categoryId,
-            success: function(response) {
-                console.log(response);
-                $("#product_brand").html(response);
-            },
+        // base price / margin change হলে sales price auto calculate
+        $('#base_price, #profit_margin').on('input', function () {
+            calculatePrice(false);
         });
 
-    });
+        // sales price change হলে margin auto calculate
+        $('#sales_price').on('input', function () {
+            calculatePrice(true);
+        });
 
+        // tax change হলে recalculation
+        $('#tax_type, #tax_id').on('change', function () {
+            calculatePrice(false);
+        });
+        //////////////Product Final Price Calculation End///////////////////////////////////////////////////////////////////////////////////
 
-   $('#sampleTable').DataTable({
-    responsive: true,
-    autoWidth: false,
-    pageLength: 25
-});
+        $("#product_category").on("change", function () {
+            var categoryId = this.value;
 
-    ////-------------------Product Entry Form-------------------------//
-
-    $('#tax_id').on('change', function() {
-
-        var tax_percentage = $(this).find(':selected').data('percent');
-
-        $('#tax_percentage').val(tax_percentage);
-
-    });
-
-
-
-    var allowSubmit = true;
-
-    $('#NewProductAdd_Form').submit(function(event) {
-        event.preventDefault();
-
-        if (allowSubmit) {
-            allowSubmit = false;
-            var parentMOdal = $(this).closest('.modal');
-            var postData = new FormData(this);
+            var brand_call_url = "<?= site_url('/initial-product-brand') ?>";
             $.ajax({
+                url: brand_call_url,
+                type: "POST",
+                data: "categoryId=" + categoryId,
+                success: function (response) {
+                    console.log(response);
+                    $("#product_brand").html(response);
+                },
+            });
+
+        });
+
+
+        $('#sampleTable').DataTable({
+            responsive: true,
+            autoWidth: false,
+            pageLength: 25
+        });
+
+        ////-------------------Product Entry Form-------------------------//
+
+        $('#tax_id').on('change', function () {
+
+            var tax_percentage = $(this).find(':selected').data('percent');
+
+            $('#tax_percentage').val(tax_percentage);
+
+        });
+
+
+
+        var allowSubmit = true;
+
+        $('#NewProductAdd_Form').submit(function (event) {
+            event.preventDefault();
+
+            if (allowSubmit) {
+                allowSubmit = false;
+                var parentMOdal = $(this).closest('.modal');
+                var postData = new FormData(this);
+                $.ajax({
                     //alert("ddd");
                     type: $(this).attr("method"),
                     url: $(this).attr("action"),
@@ -623,172 +642,247 @@ $(document).ready(function() {
                     processData: false,
                     contentType: false,
                 })
-                // using the done promise callback
-                .done(function(data) {
-                    if (data == 1) {
-                        parentMOdal.modal('toggle');
-                        //     //page refresh after submission
-                        location.reload();
-                        //     // alert("Success");
-                    }
+                    // using the done promise callback
+                    .done(function (data) {
+                        if (data == 1) {
+                            parentMOdal.modal('toggle');
+                            //     //page refresh after submission
+                            location.reload();
+                            //     // alert("Success");
+                        }
 
-                    // alert(data);
-                });
+                        // alert(data);
+                    });
 
-        }
-    });
-
-
-    //////Product Edit submit into database start/////////////////////////////////
+            }
+        });
 
 
-    $('#ProductEdit_submit_form').submit(function(event) {
-        event.preventDefault();
+        //////Product Edit submit into database start/////////////////////////////////
 
-        if (allowSubmit) {
-            allowSubmit = false;
-            var parentMOdal = $(this).closest('.modal');
-            var postData = new FormData(this);
 
-            $.ajax({
+        $('#ProductEdit_submit_form').submit(function (event) {
+            event.preventDefault();
+
+            if (allowSubmit) {
+                allowSubmit = false;
+                var parentMOdal = $(this).closest('.modal');
+                var postData = new FormData(this);
+
+                $.ajax({
                     type: $(this).attr("method"),
                     url: $(this).attr("action"),
                     data: postData,
                     processData: false,
                     contentType: false,
                 })
-                .done(function(data) {
-                    allowSubmit = true; // ✅ allow future submissions
-                    if (data == 1) {
-                        parentMOdal.modal('hide'); // ✅ hide modal
-                        location.reload(); // refresh page to show updates
-                    } else {
-                        alert('Failed to update product.'); // handle failure
+                    .done(function (data) {
+                        allowSubmit = true; // ✅ allow future submissions
+                        if (data == 1) {
+                            parentMOdal.modal('hide'); // ✅ hide modal
+                            location.reload(); // refresh page to show updates
+                        } else {
+                            alert('Failed to update product.'); // handle failure
+                        }
+                    })
+                    .fail(function () {
+                        allowSubmit = true;
+                        alert('Something went wrong. Please try again.');
+                    });
+            }
+
+        });
+
+        /////////Product Edit Submit inot database end here//////////////////////
+
+
+
+        //...................JQuery for Modal Edit & Delete option...................................
+
+
+
+        // get Edit Product
+        $('.btn-edit').on('click', function () {
+            // get data from button edit
+            const product_id = $(this).data('product_id');
+            const product_name = $(this).data('product_name');
+
+            // alert(product_category);
+
+
+            //const product_group = $(this).data('product_group');
+            //const product_unit = $(this).data('product_unit');
+
+            //const tax_percentage = $(this).data('tax_percentage');
+            const productinitial_quantity = $(this).data('productinitial_quantity');
+            const base_price = $(this).data('base_price');
+            // const final_price = $(this).data('final_price');
+            const codefor_barcode = $(this).data('codefor_barcode');
+            const alert_quantity = $(this).data('alert_quantity');
+
+
+
+            // Set data to Form Edit
+            $('#product_id').val(product_id);
+            $('#product_name').val(product_name);
+
+            //$('#product_category').val(product_category);
+
+            ///Category auto selected/////////////////////////////////////////////
+            //var expense_category_id = $(this).data('expense_category_id');
+            var product_category_id = $(this).data('product_category');
+            $("#product_category12 option[value=product_category_id]").attr('selected', 'selected');
+            $("#product_category12").val(product_category_id);
+            //////////////////////////////////////////////////////////
+
+            var product_brand_id = $(this).data('product_brand');
+            $("#product_brand12 option[value=product_brand_id]").attr('selected', 'selected');
+            $("#product_brand12").val(product_brand_id);
+
+            var product_group_id = $(this).data('product_group');
+            $("#product_group12 option[value=product_group_id]").attr('selected', 'selected');
+            $("#product_group12").val(product_group_id);
+
+
+            // $('#product_unit').val(product_unit);
+            var product_unit_id = $(this).data('product_unit');
+            $("#product_unit12 option[value=product_unit_id]").attr('selected', 'selected');
+            $("#product_unit12").val(product_unit_id);
+
+            //$('#tax_percentage').val(tax_percentage);
+            var tax_perchange_id = $(this).data('tax_percentage');
+            $("#tax_percentage12 option[value=tax_perchange_id]").attr('selected', 'selected');
+            $("#tax_percentage12").val(tax_perchange_id);
+
+            $('#productinitial_quantity').val(productinitial_quantity);
+            $('#base_price').val(base_price);
+            // $('#final_price').val(final_price);
+            $('#codefor_barcode').val(codefor_barcode);
+            $('#alert_quantity').val(alert_quantity);
+            // Call Modal Edit
+            $('#EditProductModal').modal('show');
+
+        });
+
+
+
+
+
+        // get Delete Product
+        $('.btn-delete').on('click', function () {
+            // get data from button edit
+            const delete_id = $(this).data('delete_id');
+            // Set data to Form Edit
+            $('#delete_id').val(delete_id);
+            // Call Modal Edit
+            $('#DeleteProductModal').modal('show');
+        });
+
+
+        //................ JQuery modal Edit & Delete end here........................................
+        // ...............For Date Show.............................
+        $('.datePicker').datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true,
+            todayHighlight: true
+        });
+        //.................For Date show end........................
+
+        ///////////////////product image upload issue//////////////////////////////////
+        $('.custom-file-input').on('change', function () {
+            var fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').html(fileName);
+        });
+
+
+
+        document.getElementById("file").onchange = function (evt) {
+            const [file] = this.files;
+            if (file) {
+                document.getElementById("preview").src = URL.createObjectURL(file);
+                document.getElementById("preview").style.display = "block";
+            }
+        }
+        ////////////////////////////////////////////////////////
+
+        //=================================== Category Add dynamically ==================================
+
+        $("#btnAddCategory").click(function () {
+
+            Swal.fire({
+
+                title: "Add Product Category",
+
+                input: "text",
+
+                inputPlaceholder: "Enter Category Name",
+
+                showCancelButton: true,
+
+                confirmButtonText: "Save",
+
+                inputValidator: (value) => {
+
+                    if (!value) {
+                        return "Please enter category name";
                     }
-                })
-                .fail(function() {
-                    allowSubmit = true;
-                    alert('Something went wrong. Please try again.');
-                });
-        }
+
+                }
+
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    $.ajax({
+
+                        url: "<?= site_url('category-create-ajax') ?>",
+
+                        type: "POST",
+
+                        dataType: "json",
+
+                        data: {
+                            category_name: result.value
+                        },
+
+                        success: function (response) {
+
+                            if (response.status) {
+
+                                // Add new option
+                                $("#product_category").append(
+                                    '<option value="' + response.id + '" selected>'
+                                    + response.name +
+                                    '</option>'
+                                );
+
+                                // Select new category
+                                $("#product_category").val(response.id).trigger("change");
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Category Added',
+                                    timer: 1200,
+                                    showConfirmButton: false
+                                });
+
+                            }
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+        });
+
+        //===================================================================================================
+
+
 
     });
-
-    /////////Product Edit Submit inot database end here//////////////////////
-
-
-
-    //...................JQuery for Modal Edit & Delete option...................................
-
-
-
-    // get Edit Product
-    $('.btn-edit').on('click', function() {
-        // get data from button edit
-        const product_id = $(this).data('product_id');
-        const product_name = $(this).data('product_name');
-
-        // alert(product_category);
-
-
-        //const product_group = $(this).data('product_group');
-        //const product_unit = $(this).data('product_unit');
-
-        //const tax_percentage = $(this).data('tax_percentage');
-        const productinitial_quantity = $(this).data('productinitial_quantity');
-        const base_price = $(this).data('base_price');
-        // const final_price = $(this).data('final_price');
-        const codefor_barcode = $(this).data('codefor_barcode');
-        const alert_quantity = $(this).data('alert_quantity');
-
-
-
-        // Set data to Form Edit
-        $('#product_id').val(product_id);
-        $('#product_name').val(product_name);
-
-        //$('#product_category').val(product_category);
-
-        ///Category auto selected/////////////////////////////////////////////
-        //var expense_category_id = $(this).data('expense_category_id');
-        var product_category_id = $(this).data('product_category');
-        $("#product_category12 option[value=product_category_id]").attr('selected', 'selected');
-        $("#product_category12").val(product_category_id);
-        //////////////////////////////////////////////////////////
-
-        var product_brand_id = $(this).data('product_brand');
-        $("#product_brand12 option[value=product_brand_id]").attr('selected', 'selected');
-        $("#product_brand12").val(product_brand_id);
-
-        var product_group_id = $(this).data('product_group');
-        $("#product_group12 option[value=product_group_id]").attr('selected', 'selected');
-        $("#product_group12").val(product_group_id);
-
-
-        // $('#product_unit').val(product_unit);
-        var product_unit_id = $(this).data('product_unit');
-        $("#product_unit12 option[value=product_unit_id]").attr('selected', 'selected');
-        $("#product_unit12").val(product_unit_id);
-
-        //$('#tax_percentage').val(tax_percentage);
-        var tax_perchange_id = $(this).data('tax_percentage');
-        $("#tax_percentage12 option[value=tax_perchange_id]").attr('selected', 'selected');
-        $("#tax_percentage12").val(tax_perchange_id);
-
-        $('#productinitial_quantity').val(productinitial_quantity);
-        $('#base_price').val(base_price);
-        // $('#final_price').val(final_price);
-        $('#codefor_barcode').val(codefor_barcode);
-        $('#alert_quantity').val(alert_quantity);
-        // Call Modal Edit
-        $('#EditProductModal').modal('show');
-
-    });
-
-
-
-
-
-    // get Delete Product
-    $('.btn-delete').on('click', function() {
-        // get data from button edit
-        const delete_id = $(this).data('delete_id');
-        // Set data to Form Edit
-        $('#delete_id').val(delete_id);
-        // Call Modal Edit
-        $('#DeleteProductModal').modal('show');
-    });
-
-
-    //................ JQuery modal Edit & Delete end here........................................
-    // ...............For Date Show.............................
-    $('.datePicker').datepicker({
-        format: "dd/mm/yyyy",
-        autoclose: true,
-        todayHighlight: true
-    });
-    //.................For Date show end........................
-
-    ///////////////////product image upload issue//////////////////////////////////
-    $('.custom-file-input').on('change', function() {
-        var fileName = $(this).val().split('\\').pop();
-        $(this).next('.custom-file-label').html(fileName);
-    });
-
-
-
-    document.getElementById("file").onchange = function(evt) {
-        const [file] = this.files;
-        if (file) {
-            document.getElementById("preview").src = URL.createObjectURL(file);
-            document.getElementById("preview").style.display = "block";
-        }
-    }
-    ////////////////////////////////////////////////////////
-
-
-
-});
 </script>
 
 <!-- For Calendar start -->
