@@ -258,4 +258,63 @@ public function categoryCreateAjax()
 }
 
 
+
+public function getCategoryList()
+{
+
+   // echo "getCategoryList";
+    $model = new ProductCategoryModel();
+
+    $data = $model
+            ->select('product_category_id, category_name')
+            ->orderBy('category_name','ASC')
+            ->findAll();
+
+    return $this->response->setJSON($data);
+}
+
+public function brandCreateAjax()
+{
+    $brandModel = new ProductBrandModel();
+
+    $category_id = $this->request->getPost('category_id');
+
+    
+    $brand_name  = trim($this->request->getPost('product_brand_name'));
+
+    if (empty($category_id) || empty($brand_name)) {
+        return $this->response->setJSON([
+            'status' => false,
+            'message' => 'Category and Brand Name are required.'
+        ]);
+    }
+
+    // Duplicate Check
+    $exists = $brandModel
+        ->where('product_category_id', $category_id)
+        ->where('LOWER(product_brand_name)', strtolower($brand_name))
+        ->first();
+
+    if ($exists) {
+        return $this->response->setJSON([
+            'status' => false,
+            'message' => 'This brand already exists in the selected category.'
+        ]);
+    }
+
+    $brandModel->insert([
+        'product_brand_name'  => $brand_name,
+        'product_category_id' => $category_id
+      
+    ]);
+
+    return $this->response->setJSON([
+        'status' => true,
+        'id'     => $brandModel->getInsertID(),
+        'name'   => $brand_name
+    ]);
+}
+
+
+
 }

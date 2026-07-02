@@ -31,6 +31,9 @@ $routes->post('initial-product-delete', 'Product::delete');
 $routes->post('initial-product-brand', 'Product::brand_call');
 
 $routes->post('category-create-ajax', 'Product::categoryCreateAjax');
+$routes->get('get-category-list', 'Product::getCategoryList');
+//brand-create-ajax
+$routes->post('brand-create-ajax', 'Product::brandCreateAjax');
 
 
 $routes->get('barcodegenerate', 'barcodegenerate::index');
@@ -39,6 +42,7 @@ $routes->get('productcategoryView', 'Category::index');
 $routes->post('productcategoryAdd', 'Category::create');
 $routes->post('productcategoryUpdate', 'Category::update');
 $routes->post('productcategoryDelete', 'Category::delete');
+
 
 $routes->get('productbrandView', 'Brand::index');
 $routes->post('productbrandAdd', 'Brand::create');

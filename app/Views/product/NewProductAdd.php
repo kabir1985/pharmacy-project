@@ -316,8 +316,7 @@ if (count($product_show) > 0) {
 
                                 <div class="input-group-append">
 
-                                    <button class="btn btn-success" id="btnAddBrand" type="button"
-                                        title="Add Brand">
+                                    <button class="btn btn-success" id="btnAddBrand" type="button" title="Add Brand">
 
                                         <i class="fa fa-plus"></i>
 
@@ -728,21 +727,47 @@ $(document).ready(function() {
     });
     //////////////Product Final Price Calculation End///////////////////////////////////////////////////////////////////////////////////
 
+    // $("#product_category").on("change", function() {
+    //     var categoryId = this.value;
+
+    //     var brand_call_url = "<?=site_url('/initial-product-brand')?>";
+    //     $.ajax({
+    //         url: brand_call_url,
+    //         type: "POST",
+    //         data: "categoryId=" + categoryId,
+    //         success: function(response) {
+    //             console.log(response);
+    //             $("#product_brand").html(response);
+    //         },
+    //     });
+
+    // });
     $("#product_category").on("change", function() {
-        var categoryId = this.value;
+    var categoryId = this.value;
 
-        var brand_call_url = "<?=site_url('/initial-product-brand')?>";
-        $.ajax({
-            url: brand_call_url,
-            type: "POST",
-            data: "categoryId=" + categoryId,
-            success: function(response) {
-                console.log(response);
-                $("#product_brand").html(response);
-            },
-        });
+    $.ajax({
+        url: "<?=site_url('/initial-product-brand')?>",
+        type: "POST",
+        data: {
+            categoryId: categoryId
+        },
+        success: function(response) {
 
+            $("#product_brand").html(response);
+
+            // এখানে এই অংশ যোগ করুন
+            let selectedBrand = $("#product_brand").data("selected_brand");
+
+            if (selectedBrand) {
+                $("#product_brand").val(selectedBrand);
+                $("#product_brand").removeData("selected_brand");
+            }
+
+            $("#product_brand").trigger("change");
+        }
     });
+});
+
 
 
     $('#sampleTable').DataTable({
@@ -1008,58 +1033,165 @@ $(document).ready(function() {
 
     $("#btnAddBrand").click(function() {
 
-$('#AddNewProduct').modal('hide');
+        // alert("kabir")
 
-setTimeout(function() {
+        $('#AddNewProduct').modal('hide');
 
-    Swal.fire({
-        title: "Add Product Category",
-        input: "text",
-        inputPlaceholder: "Enter Category Name",
-        allowOutsideClick: false,
-        showCancelButton: true,
-        confirmButtonText: "Save"
-    }).then((result) => {
-
-        $('#AddNewProduct').modal('show');
-
-        if (result.isConfirmed) {
+        setTimeout(function() {
 
             $.ajax({
-                url: "<?=site_url('category-create-ajax')?>",
-                type: "POST",
+                url: "<?= site_url('get-category-list') ?>",
+                type: "GET",
                 dataType: "json",
-                data: {
-                    category_name: result.value
-                },
-                success: function(response) {
+                success: function(categories) {
 
-                    if (response.status) {
+                    //alert(categories)
 
-                        $("#product_category").append(
-                            '<option value="' + response.id +
-                            '" selected>' + response.name +
-                            '</option>'
-                        );
+                    let option = '';
 
-                        $("#product_category").trigger('change');
+                    $.each(categories, function(i, row) {
+                        option += '<option value="' + row
+                            .product_category_id + '">' + row
+                            .category_name + '</option>';
+                    });
 
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Category Added'
-                        });
-                    }
+                    Swal.fire({
+                        title: 'Add Brand',
+                        html: '<label style="float:left">Category</label>' +
+                            '<select id="swal_category" class="swal2-input">' +
+                            option +
+                            '</select>' +
+
+                            '<label style="float:left">Brand Name</label>' +
+                            '<input id="swal_brand" class="swal2-input" placeholder="Enter Brand Name">',
+
+                        focusConfirm: false,
+                        showCancelButton: true,
+
+                        // preConfirm: () => {
+
+                        //     let category = $('#swal_category').val();
+                        //     let brand = $('#swal_brand').val();
+
+                        //     if (brand.trim() == '') {
+                        //         Swal.showValidationMessage(
+                        //             'Please enter Brand Name');
+                        //         return false;
+                        //     }
+
+                        //     return {
+                        //         category: category,
+                        //         brand: brand
+                        //     };
+                        // }
+
+
+                        /////////////////////////////////////////
+                        preConfirm: () => {
+
+                            return {
+                                category: $("#swal_category").val(),
+                                brand: $("#swal_brand").val()
+                            };
+
+                        }
+                        ////////////////////////////////////////////////
+
+
+                    }).then((result) => {
+
+                        $('#AddNewProduct').modal('show');
+
+                        if (result.isConfirmed) {
+
+                            $.ajax({
+                                url: "<?= site_url('brand-create-ajax') ?>",
+                                type: "POST",
+                                dataType: "json",
+                                data: {
+                                    category_id: result.value
+                                        .category,
+                                    product_brand_name: result.value
+                                        .brand
+                                },
+                                success: function(response) {
+
+                                    if (response.status) {
+                                
+                                        loadCategory(
+                                            result.value
+                                            .category,
+                                            response.id
+                                        );
+
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Brand Added Successfully'
+                                        });
+
+                                        // Swal.fire({
+                                        //     icon: 'success',
+                                        //     title: 'Brand Added Successfully'
+                                        // });
+
+                                    } else {
+
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: response
+                                                .message
+                                        });
+
+                                    }
+
+                                }
+                            });
+
+                        }
+
+                    });
+
                 }
             });
 
-        }
+        }, 300);
 
     });
 
-}, 300);
 
-});
-//===================================================================================================
+    function loadCategory(selected_category = null, selected_brand = null)
+{
+    $.ajax({
+        url: "<?= site_url('get-category-list') ?>",
+        type: "GET",
+        dataType: "json",
+        success: function(response){
+
+            $("#product_category").empty();
+
+            $.each(response, function(i,row){
+
+                $("#product_category").append(
+                    '<option value="'+row.product_category_id+'">'+
+                    row.category_name+
+                    '</option>'
+                );
+
+            });
+
+            if(selected_category){
+                $("#product_category").val(selected_category);
+            }
+
+            // Brand ID Store করুন
+            $("#product_brand").data("selected_brand", selected_brand);
+
+            $("#product_category").trigger("change");
+        }
+    });
+}
+
+    //===================================================================================================
 
 
 
