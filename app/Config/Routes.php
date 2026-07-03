@@ -34,6 +34,9 @@ $routes->post('category-create-ajax', 'Product::categoryCreateAjax');
 $routes->get('get-category-list', 'Product::getCategoryList');
 //brand-create-ajax
 $routes->post('brand-create-ajax', 'Product::brandCreateAjax');
+$routes->post('group-create-ajax', 'Product::groupCreateAjax');
+$routes->post('unit-create-ajax', 'Product::unitCreateAjax');
+
 
 
 $routes->get('barcodegenerate', 'barcodegenerate::index');

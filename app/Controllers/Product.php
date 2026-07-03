@@ -316,5 +316,42 @@ public function brandCreateAjax()
 }
 
 
+public function groupCreateAjax()
+{
+    $model = new ProductGroupModel();
+
+    $data = [
+        'group_name' => $this->request->getPost('group_name')
+    ];
+
+    $id = $model->insert($data);
+
+    return $this->response->setJSON([
+        'status' => true,
+        'id' => $id,
+        'name' => $data['group_name']
+    ]);
+}
+
+
+public function unitCreateAjax()
+{
+    $model = new ProductUnitModel();
+
+    $data = [
+        'product_unit_name' => $this->request->getPost('product_unit')
+    ];
+
+    $id = $model->insert($data);
+
+    return $this->response->setJSON([
+        'status' => true,
+        'id' => $id,
+        'name' => $data['product_unit_name']
+    ]);
+}
+
+
+
 
 }

@@ -358,7 +358,7 @@ echo $this->section('scripts');
 
         <!----------------Free Qty-------------------------------------->
         <td>
-            <input
+            <input style="min-width: 50px;"
             type="number"
             class="free_qty form-control form-control-sm"
             data-id="${key}"
