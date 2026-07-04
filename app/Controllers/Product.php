@@ -8,6 +8,7 @@ use App\Models\ProductCategoryModel;
 use App\Models\ProductGroupModel;
 use App\Models\ProductUnitModel;
 use App\Models\TaxModel;
+use App\Models\ProductStrengthModel;
 
 class Product extends BaseController
 {
@@ -16,6 +17,7 @@ class Product extends BaseController
     private $ProductBrandModel;
     private $productgroup_object;
     private $productunit_object;
+     private $ProductStrengthModel_object;
     private $tax_object;
     //private $db;
     protected $db;
@@ -28,6 +30,7 @@ class Product extends BaseController
         $this->productgroup_object = new ProductGroupModel();
         $this->productunit_object = new ProductUnitModel();
         $this->tax_object = new TaxModel();
+        $this->ProductStrengthModel_object = new ProductStrengthModel();
         //$this->db = \Config\Database::connect();
         $this->db = db_connect();
     }
@@ -38,6 +41,7 @@ class Product extends BaseController
         $data['brand_show'] = $this->ProductBrandModel->findAll();
         $data['group_show'] = $this->productgroup_object->findAll();
         $data['unit_show'] = $this->productunit_object->findAll();
+        $data['strength_show'] = $this->ProductStrengthModel_object->findAll();
         $data['tax_show'] = $this->tax_object->findAll();
 
         $sql = "SELECT * FROM product_inital_stock AS pr
@@ -45,6 +49,7 @@ class Product extends BaseController
       LEFT JOIN product_group AS pg ON pr.product_group = pg.product_group_id
       LEFT JOIN product_brand AS pb ON pr.product_brand = pb.brand_id
       LEFT JOIN product_unit AS pu ON pr.product_unit = pu.product_unit_id
+      LEFT JOIN product_strength AS ps ON pr.product_strength = ps.strength_id
       LEFT JOIN tax AS tx ON pr.tax_id = tx.tax_id
       ";
 
@@ -126,6 +131,7 @@ class Product extends BaseController
             'product_category' => $this->request->getVar('product_category'),
             'product_brand' => $this->request->getVar('product_brand'),
             'product_group' => (int) $this->request->getVar('product_group'),
+            'product_strength' => (int) $this->request->getVar('strength'),
             'product_unit' => $this->request->getVar('product_unit'),
             'codefor_barcode' => $this->request->getVar('codefor_barcode'),
             'productinitial_quantity' => (int) $this->request->getVar('productinitial_quantity'),
@@ -351,7 +357,46 @@ public function unitCreateAjax()
     ]);
 }
 
+//strengthCreateAjax
 
+public function strengthCreateAjax()
+{
+    $model = new ProductStrengthModel();
+
+    $strength = trim($this->request->getPost('strength'));
+
+    // Empty validation
+    if ($strength == '') {
+        return $this->response->setJSON([
+            'status' => false,
+            'message' => 'Strength is required.'
+        ]);
+    }
+
+    // Duplicate check
+    $exists = $model->where('strength_name', $strength)->first();
+
+    if ($exists) {
+        return $this->response->setJSON([
+            'status' => true,
+            'id' => $exists['strength_id'],
+            'name' => $exists['strength_name'],
+            'message' => 'Strength already exists.'
+        ]);
+    }
+
+    // Insert
+    $id = $model->insert([
+        'strength_name' => $strength
+    ]);
+
+    return $this->response->setJSON([
+        'status' => true,
+        'id' => $id,
+        'name' => $strength,
+        'message' => 'Strength added successfully.'
+    ]);
+}
 
 
 }

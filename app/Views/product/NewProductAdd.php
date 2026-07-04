@@ -302,7 +302,7 @@ echo $this->section('content');
                         </div>
                         <!-----------------------Product Category Select Start------------------------------>
                         <div class="form-group col-md-4">
-                            <label>Category</label>
+                            <label>Category / Dosage Form</label>
 
                             <div class="input-group">
 
@@ -416,6 +416,55 @@ echo $this->section('content');
 
                         </div>
 
+                        <!--------------------product Strenght----------------------------------->
+                        <!-- <div class='form-group col-md-4'>
+                            <label>Strength</label>
+                            <input required type='text' required class='form-control' name='strength'
+                                 placeholder='Product Strength'>
+                        </div> -->
+
+
+                        <div class="form-group col-md-4">
+                            <label>Strength</label>
+
+                            <div class="input-group">
+
+                           <!-- <input required type='text' required class='form-control' id="strength" name='strength'
+                                 placeholder='Product Strength'> -->
+
+ <select id="strength" name="strength" class="form-control" required>
+                                    <option value="">Select Strength </option>
+                                    <?php
+                                    foreach ($strength_show as $row) {
+                                        ?>
+                                    <option value="<?php echo $row['strength_id'] ?>">
+                                        <?php echo $row['strength_name'] ?>
+                                    </option>
+
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+
+
+                                <div class="input-group-append">
+
+                                    <button class="btn btn-success" id="btnAddStrength" type="button" title="Add Strength">
+
+                                        <i class="fa fa-plus"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+
+
                         <!----------------------------------Product Unit----------------------------------------------------->
                         <div class="form-group col-md-4">
                             <label>Product Unit</label>
@@ -453,17 +502,18 @@ echo $this->section('content');
 
                         <!------------------------------------------------------------------------------------------->
 
-                        <div class='form-group col-md-4'>
+                        <!-- <div class='form-group col-md-4'>
                             <label>Opening /Initial Quantity</label>
                             <input required type='text' required class='form-control' name='productinitial_quantity'
                                 onkeypress="return accept_digit_only(event)" placeholder='Product Quantity'>
-                        </div>
+                        </div> -->
+
                     </div>
 
 
                     <div class='form-row'>
                         <div class='form-group col-md-4'>
-                            <label>Base Price (PerProduct)</label>
+                            <label>Base Price/Purchase Price (Without VAT)</label>
                             <input required type='text' required class='form-control' name='base_price' id="base_price"
                                 onkeypress="return accept_digit_only(event)" placeholder='Base Price'>
                         </div>
@@ -485,7 +535,7 @@ echo $this->section('content');
 
 
                         <div class='form-group col-md-4'>
-                            <label>Purchase Price (Per Product)</label>
+                            <label>Purchase Price (Per Product-With VAT)</label>
                             <input required type='text' required class='form-control' id="purchase_price"
                                 name='purchase_price' onkeypress="return accept_digit_only(event)"
                                 placeholder='Unit Price' readonly>
@@ -517,6 +567,12 @@ echo $this->section('content');
 
                     <div class='form-row'>
 
+                    <div class='form-group col-md-4'>
+                            <label>Opening /Initial Quantity</label>
+                            <input required type='text' required class='form-control' name='productinitial_quantity'
+                                onkeypress="return accept_digit_only(event)" placeholder='Product Quantity'>
+                        </div>
+
                         <div class='form-group col-md-4'>
                             <label>SKU(Stock Keeping Unit)</label>
                             <input type="text" class="form-control" name="sku" placeholder="SKU Code">
@@ -527,10 +583,10 @@ echo $this->section('content');
                                 placeholder='Code for Barcode'>
                         </div>
 
-                        <div class='form-group col-md-4'>
+                        <!-- <div class='form-group col-md-4'>
                             <label>Alert Quantity</label>
                             <input type="number" class="form-control" name="alert_quantity" min="0" required>
-                        </div>
+                        </div> -->
                     </div>
 
 
@@ -538,14 +594,12 @@ echo $this->section('content');
                     <div class="form-row">
 
 
-                        <!-- <div class="form-group col-md-12">
-                            <label>Product Image</label>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="file" id="file">
-                                <label class="custom-file-label" for="file">Choose Product Image</label>
-                            </div>
-                        </div> -->
-                        <div class="form-group col-md-12">
+                       <div class='form-group col-md-4'>
+                            <label>Alert Quantity</label>
+                            <input type="number" class="form-control" name="alert_quantity" min="0" required>
+                        </div>
+
+                        <div class="form-group col-md-8">
 
                             <label>Product Image</label>
 
@@ -578,7 +632,7 @@ echo $this->section('content');
                         Close
                     </button>
 
-                    <button class="btn btn-primary">
+                    <button type='submit' class="btn btn-primary">
                         <i class="fa fa-save"></i> Save Product
                     </button>
 
@@ -1418,9 +1472,74 @@ echo $this->section('scripts');
         });
 
 
-        //==========================================================================================
+//====================Strength add======================================================================
+
+$("#btnAddStrength").click(function () {
+
+    $('#AddNewProduct').modal('hide');
+
+    setTimeout(function () {
+
+        Swal.fire({
+            title: "Add Product Strength",
+            input: "text",
+            inputPlaceholder: "Enter Strength (e.g. 500 mg)",
+            allowOutsideClick: false,
+            showCancelButton: true,
+            confirmButtonText: "Save"
+        }).then((result) => {
+
+            $('#AddNewProduct').modal('show');
+
+            if (result.isConfirmed && result.value.trim() != "") {
+
+                $.ajax({
+                    url: "<?= site_url('strength-create-ajax') ?>",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        strength: result.value
+                    },
+                    success: function (response) {
+
+                        if (response.status) {
+
+                            // শুধু input-এ value সেট করুন
+                           // $("#strength").val(response.name);
 
 
+  $("#strength").append(
+                                        '<option value="' + response.id +
+                                        '" selected>' + response.name +
+                                        '</option>'
+                                    );
+
+                                    $("#strength").trigger('change');
+
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Product Strength Added'
+                            });
+
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: response.message
+                            });
+                        }
+
+                    }
+                });
+
+            }
+
+        });
+
+    }, 300);
+
+});
+//===============================================================================
 
     });
 </script>

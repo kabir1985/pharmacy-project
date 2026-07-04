@@ -27,21 +27,69 @@ class Purchase extends BaseController
     public function index()
     {
 
-        $sql = "SELECT piq.*,
-                tx.tax_percentage,
-                tx.tax_name,
-                productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
-        FROM product_inital_stock as piq
+        // $sql = "SELECT piq.*,
+        //         tx.tax_percentage,
+        //         tx.tax_name,
+        //         productinitial_quantity + IFNULL(ppd.new_purchased,0) AS total_stock
+        // FROM product_inital_stock as piq
+        // LEFT JOIN (
+        //     SELECT product_id,SUM(quantity_per_pack) as new_purchased
+        //     FROM product_purchase_details
+        //     GROUP BY product_id
+        //     ) as ppd
+        //    ON piq.product_id = ppd.product_id
+
+        //    LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ";
+
+        // $data['product_show_for_sale'] = $this->db->query($sql)->getResult('array');
+
+
+$sql = "SELECT
+            piq.*,
+
+            pc.category_name,
+            pb.product_brand_name,
+            pg.group_name,
+             ps.strength_name,
+
+            tx.tax_percentage,
+            tx.tax_name,
+
+            (piq.productinitial_quantity + IFNULL(ppd.new_purchased,0)) AS total_stock
+
+        FROM product_inital_stock AS piq
+
         LEFT JOIN (
-            SELECT product_id,SUM(quantity_per_pack) as new_purchased
+            SELECT
+                product_id,
+                SUM(quantity_per_pack) AS new_purchased
             FROM product_purchase_details
             GROUP BY product_id
-            ) as ppd
-           ON piq.product_id = ppd.product_id
+        ) AS ppd
+            ON piq.product_id = ppd.product_id
 
-           LEFT JOIN tax as tx  ON piq.tax_id = tx.tax_id ";
+        LEFT JOIN tax AS tx
+            ON piq.tax_id = tx.tax_id
 
-        $data['product_show_for_sale'] = $this->db->query($sql)->getResult('array');
+        LEFT JOIN product_category AS pc
+            ON piq.product_category = pc.product_category_id
+
+        LEFT JOIN product_brand AS pb
+            ON piq.product_brand = pb.brand_id
+
+        LEFT JOIN product_group AS pg
+            ON piq.product_group = pg.product_group_id
+
+         LEFT JOIN product_strength AS ps
+             ON piq.product_strength = ps.strength_id
+
+        ORDER BY piq.product_id DESC";
+
+$data['product_show_for_sale'] = $this->db->query($sql)->getResultArray();
+
+
+
+
 
         $data['supplier_show'] = $this->supplier_object->findAll();
 

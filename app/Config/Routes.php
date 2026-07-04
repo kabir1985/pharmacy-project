@@ -36,6 +36,8 @@ $routes->get('get-category-list', 'Product::getCategoryList');
 $routes->post('brand-create-ajax', 'Product::brandCreateAjax');
 $routes->post('group-create-ajax', 'Product::groupCreateAjax');
 $routes->post('unit-create-ajax', 'Product::unitCreateAjax');
+//strength-create-ajax
+$routes->post('strength-create-ajax', 'Product::strengthCreateAjax');
 
 
 

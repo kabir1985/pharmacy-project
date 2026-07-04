@@ -17,6 +17,7 @@ class NewProductAddModel extends Model
         'product_category', 
         'product_brand', 
         'product_group', 
+        'product_strength',
         'product_unit', 
         'codefor_barcode', 
         'productinitial_quantity', 

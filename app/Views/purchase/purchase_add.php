@@ -11,7 +11,7 @@ echo $this->section('content');
                     <select id="item" class="form-control select2" style="width:100%">
                         <option value="0">Select Product</option>
                         <?php foreach ($product_show_for_sale as $row): ?>
-                            <option value="<?= $row['product_id'] ?>"><?= $row['product_name'] ?></option>
+                            <option value="<?= $row['product_id'] ?>"><?= $row['product_name']."&nbsp;|&nbsp;".$row['category_name']."&nbsp;|&nbsp;".$row['group_name'] ."&nbsp;|&nbsp;".$row['strength_name'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
