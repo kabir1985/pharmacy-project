@@ -7,6 +7,14 @@ echo $this->section('content');
    {
     font-size: 12px;
    }
+
+   #cartTableBody td {
+    vertical-align: middle !important;
+}
+
+#cartTableBody .btn_item_delete {
+    display: inline-block;
+}
     </style>
 <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery-ui.min.css') ?>" />
 
@@ -950,13 +958,44 @@ $(document).on("input", ".discount_percent", function () {
 
 
 /////##############################################################
+// function updateRow(index) {
+
+//     const item = itemsInCart[index];
+//     if (!item) return;
+
+//     let subtotal = (parseFloat(item.quantity) || 0) *
+//                    (parseFloat(item.sales_price_for_customer) || 0);
+
+//     if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+
+//         const vat = parseFloat(item.vat_input) || 0;
+//         const discount = parseFloat(item.discount_percent) || 0;
+
+//         subtotal += subtotal * vat / 100;
+//         subtotal -= subtotal * discount / 100;
+//     }
+
+//     // Find the row using data-id instead of row index
+//     const $row = $('.product_quantity_change[data-id="' + index + '"]').closest('tr');
+
+//     if ($row.length) {
+//         $row.find("td:last")
+//             .contents()
+//             .first()[0]
+//             .textContent = subtotal.toFixed(2);
+//     }
+
+//     updateGrandTotal();
+// }
+
 function updateRow(index) {
 
     const item = itemsInCart[index];
     if (!item) return;
 
-    let subtotal = (parseFloat(item.quantity) || 0) *
-                   (parseFloat(item.sales_price_for_customer) || 0);
+    let subtotal =
+        (parseFloat(item.quantity) || 0) *
+        (parseFloat(item.sales_price_for_customer) || 0);
 
     if ($("#ProductWiseVatAndDiscount").is(":checked")) {
 
@@ -967,14 +1006,10 @@ function updateRow(index) {
         subtotal -= subtotal * discount / 100;
     }
 
-    // Find the row using data-id instead of row index
     const $row = $('.product_quantity_change[data-id="' + index + '"]').closest('tr');
 
     if ($row.length) {
-        $row.find("td:last")
-            .contents()
-            .first()[0]
-            .textContent = subtotal.toFixed(2);
+        $row.find(".subtotal_td").text(subtotal.toFixed(2));
     }
 
     updateGrandTotal();
@@ -1061,64 +1096,87 @@ function updateGrandTotal() {
             //     '</tr>');
             // totalPrice += subtotalPrice;
             // //item.tax_perchantage.toFixed(2)
+// Calculate subtotal
+//let subtotalPrice = parseFloat(item.sales_price_for_customer || 0) * parseFloat(item.quantity || 0);
 
-                    $("#cartTableBody").append(
-            '<tr>' +
-                '<td>' + item.product_name + '</td>' +
-                '<td>' + item.total_stock + '</td>' +
+// Add to total
+totalPrice += subtotalPrice;
 
-                '<td class="text-center">' +
-                    '<input data-current_stock="' + item.total_stock + '" ' +
-                    'data-oldQuantity="' + item.quantity + '" ' +
-                    'data-id="' + key + '" ' +
-                    'class="product_quantity_change text-center form-control form-control-sm" ' +
-                    'type="number" value="' + item.quantity + '" ' +
-                    'min="0" max="99999" ' +
-                    'onkeypress="return accept_digit_only(event)">' +
-                '</td>' +
+// Append Row
+$("#cartTableBody").append(`
+<tr>
 
-                '<td class="text-center">' +
-                    '<input type="number" ' +
-                    'data-id="' + key + '" ' +
-                    'name="sales_price_for_customer" ' +
-                    'class="sale_price_change text-center form-control form-control-sm" ' +
-                    'value="' + (item.sales_price_for_customer || 1) + '" ' +
-                    'min="1" step="0.01">' +
-                '</td>' +
+    <!-- Product Name -->
+    <td>${item.product_name}</td>
 
-                '<td class="vat-column hide">' +
-                    '<input type="number" data-id="' + key + '" ' +
-                    'class="vat_input form-control form-control-sm" ' +
-                    'value="' + (item.vat_input || 0) + '">' +
-                '</td>' +
+    <!-- Current Stock -->
+    <td class="text-center">${item.total_stock}</td>
 
-                '<td class="discount-column hide">' +
-                    '<input type="number" data-id="' + key + '" ' +
-                    'class="discount_percent form-control form-control-sm" ' +
-                    'value="' + (item.discount_percent || 0) + '">' +
-                '</td>' +
+    <!-- Quantity -->
+    <td class="text-center">
+        <input
+            type="number"
+            class="product_quantity_change form-control form-control-sm text-center"
+            data-current_stock="${item.total_stock}"
+            data-oldQuantity="${item.quantity}"
+            data-id="${key}"
+            value="${item.quantity}"
+            min="0"
+            max="99999"
+            onkeypress="return accept_digit_only(event)">
+    </td>
 
-                '<td>' +
-                    (item.unit_purchase_price
-                        ? parseFloat(item.unit_purchase_price).toFixed(2)
-                        : '0.00') +
-                '</td>' +
+    <!-- Sale Price -->
+<td class="text-center align-middle">
+    <input
+        type="number"
+        inputmode="decimal"
+        class="form-control form-control-sm sale_price_change text-center"
+        data-id="${key}"
+        name="sales_price_for_customer"
+        value="${parseFloat(item.sales_price_for_customer || 1).toFixed(2)}">
+</td>
 
-                '<td class="text-end">' +
-                    subtotalPrice.toFixed(2) +
-                '</td>' +
+    <!-- VAT -->
+    <td class="vat-column hide">
+        <input
+            type="number"
+            class="vat_input form-control form-control-sm text-center"
+            data-id="${key}"
+            value="${item.vat_input || 0}">
+    </td>
 
-                '<td class="text-center">' +
-                    '<button type="button" ' +
-                    'data-index="' + key + '" ' +
-                    'class="btn btn-danger btn-sm btn_item_delete">' +
-                        '<i class="fa fa-trash"></i>' +
-                    '</button>' +
-                '</td>' +
-            '</tr>'
-        );
+    <!-- Discount -->
+    <td class="discount-column hide">
+        <input
+            type="number"
+            class="discount_percent form-control form-control-sm text-center"
+            data-id="${key}"
+            value="${item.discount_percent || 0}">
+    </td>
 
-        totalPrice += subtotalPrice;
+    <!-- Purchase Price -->
+    <td class="text-end">
+        ${parseFloat(item.unit_purchase_price || 0).toFixed(2)}
+    </td>
+
+    <!-- Subtotal -->
+    <td class="text-end subtotal_td">
+        ${subtotalPrice.toFixed(2)}
+    </td>
+
+    <!-- Action -->
+    <td class="text-center">
+        <button
+            type="button"
+            class="btn btn-danger btn-sm btn_item_delete"
+            data-index="${key}">
+            <i class="fa fa-trash"></i>
+        </button>
+    </td>
+
+</tr>
+`);
 
         });
         totalCalculation();
@@ -1362,6 +1420,14 @@ function updateGrandTotal() {
     font-weight: 600;
 }
 
+.form-control:not(.sale_price_change) {
+    text-align: left;
+}
+
+.sale_price_change.form-control {
+    text-align: center !important;
+    width: 100% !important;
+}
 /* ==============================
    INPUT & SELECT SMOOTH STYLE
 ============================== */
@@ -1527,9 +1593,9 @@ select {
     text-align: center;
 }
 
-input[type="number"] {
+/*input[type="number"] {
     width: 80px;
-}
+}*/
 
 .result {
     margin-top: 15px;
