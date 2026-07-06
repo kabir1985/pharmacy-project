@@ -178,7 +178,7 @@ echo $this->section('content');
                 </div>
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col">
                     <div class="table-responsive">
                         <table class="table table-striped">
@@ -205,7 +205,39 @@ echo $this->section('content');
                     </div>
                 </div>
 
-            </div>
+            </div> -->
+
+            <div class="row">
+    <div class="col">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr class="table-info">
+                        <th>Name</th>
+                        <th>Stock</th>
+                        <th>Quantity</th>
+                        <th>Sale Price</th>
+
+                        <th class="vat-column-header hide">Vat %</th>
+                        <th class="discount-column-header hide">Disc %</th>
+
+                        <th>Avg Pur. Price</th>
+                        <th class="text-end">Sub Total</th>
+                        <th width="60" class="text-center">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="cartTableBody">
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
 
             <div class="row">
                 <div class="col-sm-12">
@@ -409,7 +441,6 @@ echo $this->section('content');
 
     </div>
     <!-- ////////////////////////////////////New Design end/////////////////////////////////////////// -->
-
 
     <!-------------------------- Modal for New Customer Add------------------------------------>
     <div class='modal fade' id='CustomerAdd' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'
@@ -968,40 +999,7 @@ function updateGrandTotal() {
 
     totalCalculation();
 }
-/////################################################################
-
-
-
-
-
-
-
-// function updateGrandTotal() {
-
-//     totalPrice = 0;
-
-//     itemsInCart.forEach(function(item) {
-
-//         let rowTotal = item.quantity * item.sales_price_for_customer;
-
-//         if ($("#ProductWiseVatAndDiscount").is(":checked")) {
-//             const vat = parseFloat(item.vat_input) || 0;
-//             const discount = parseFloat(item.discount_percent) || 0;
-
-//             rowTotal += rowTotal * vat / 100;
-//             rowTotal -= rowTotal * discount / 100;
-//         }
-
-//         totalPrice += rowTotal;
-//     });
-
-//     totalCalculation();
-// }
-
-
-
-
-
+/////###############################################################
 
 
     /*
@@ -1027,42 +1025,101 @@ function updateGrandTotal() {
 
                 subtotalPrice = (baseTotal + vatAmount) - discountAmount;
             }
-            $("#cartTableBody").append('<tr>' +
+            // $("#cartTableBody").append('<tr>' +
+            //     '<td>' + item.product_name + '</td>' +
+            //     '<td>' + item.total_stock + '</td>' +
+            //     '<td>' +
+            //     '<input  data-current_stock="' + item.total_stock + '"  data-oldQuantity="' + item
+            //     .quantity + '" data-id="' + key +
+            //     '" class="product_quantity_change" type = "number"  size="4"' +
+            //     'value="' + item.quantity +
+            //     '" onkeypress="return accept_digit_only(event)" min="0"+ max="99999"/> ' +
+            //     '</td>' +
+            //     // '<td>' + item.sales_price_for_customer + '</td>' +
+
+            //     '<td><input type="number" \
+            //         data-id="' + key + '" \
+            //         name="sales_price_for_customer" \
+            //         class="sale_price_change form-control form-control-sm" \
+            //         value="' + (item.sales_price_for_customer || 1) + '" \
+            //         min="1" \
+            //         step="0.01"></td>' +
+
+            //     '<td class="vat-column hide"><input type="number" data-id="' + key + '" class="vat_input form-control form-control-sm" value="' +
+            //      (item.vat_input || 0) + '"></td>' +
+
+            //     '<td class="discount-column hide"><input type="number" data-id="' + key + '" class="discount_percent form-control form-control-sm"  value="' + 
+            //      (item.discount_percent || 0) + '"></td>' +
+            //      // ✅ ADD HERE
+            //      '<td>' + (item.unit_purchase_price ? parseFloat(item.unit_purchase_price).toFixed(2) : '0.00') + '</td>' +
+
+            //     '<td class = "text-right" > ' + subtotalPrice.toFixed(2) +
+            //     '<button  data-index="' + key +
+            //     '" class="badge badge-danger badge-sm btn_item_delete">' +
+            //     '<i class="fa fa-times"></i></button>' +
+            //     '</td>' +
+            //     '</tr>');
+            // totalPrice += subtotalPrice;
+            // //item.tax_perchantage.toFixed(2)
+
+                    $("#cartTableBody").append(
+            '<tr>' +
                 '<td>' + item.product_name + '</td>' +
                 '<td>' + item.total_stock + '</td>' +
+
+                '<td class="text-center">' +
+                    '<input data-current_stock="' + item.total_stock + '" ' +
+                    'data-oldQuantity="' + item.quantity + '" ' +
+                    'data-id="' + key + '" ' +
+                    'class="product_quantity_change text-center form-control form-control-sm" ' +
+                    'type="number" value="' + item.quantity + '" ' +
+                    'min="0" max="99999" ' +
+                    'onkeypress="return accept_digit_only(event)">' +
+                '</td>' +
+
+                '<td class="text-center">' +
+                    '<input type="number" ' +
+                    'data-id="' + key + '" ' +
+                    'name="sales_price_for_customer" ' +
+                    'class="sale_price_change text-center form-control form-control-sm" ' +
+                    'value="' + (item.sales_price_for_customer || 1) + '" ' +
+                    'min="1" step="0.01">' +
+                '</td>' +
+
+                '<td class="vat-column hide">' +
+                    '<input type="number" data-id="' + key + '" ' +
+                    'class="vat_input form-control form-control-sm" ' +
+                    'value="' + (item.vat_input || 0) + '">' +
+                '</td>' +
+
+                '<td class="discount-column hide">' +
+                    '<input type="number" data-id="' + key + '" ' +
+                    'class="discount_percent form-control form-control-sm" ' +
+                    'value="' + (item.discount_percent || 0) + '">' +
+                '</td>' +
+
                 '<td>' +
-                '<input  data-current_stock="' + item.total_stock + '"  data-oldQuantity="' + item
-                .quantity + '" data-id="' + key +
-                '" class="product_quantity_change" type = "number"  size="4"' +
-                'value="' + item.quantity +
-                '" onkeypress="return accept_digit_only(event)" min="0"+ max="99999"/> ' +
+                    (item.unit_purchase_price
+                        ? parseFloat(item.unit_purchase_price).toFixed(2)
+                        : '0.00') +
                 '</td>' +
-                // '<td>' + item.sales_price_for_customer + '</td>' +
 
-                '<td><input type="number" \
-data-id="' + key + '" \
-name="sales_price_for_customer" \
-class="sale_price_change form-control form-control-sm" \
-value="' + (item.sales_price_for_customer || 1) + '" \
-min="1" \
-step="0.01"></td>' +
-
-                '<td class="vat-column hide"><input type="number" data-id="' + key + '" class="vat_input form-control form-control-sm" value="' +
-                 (item.vat_input || 0) + '"></td>' +
-
-                '<td class="discount-column hide"><input type="number" data-id="' + key + '" class="discount_percent form-control form-control-sm"  value="' + 
-                 (item.discount_percent || 0) + '"></td>' +
-    // ✅ ADD HERE
-    '<td>' + (item.unit_purchase_price ? parseFloat(item.unit_purchase_price).toFixed(2) : '0.00') + '</td>' +
-
-                '<td class = "text-right" > ' + subtotalPrice.toFixed(2) +
-                '<button  data-index="' + key +
-                '" class="badge badge-danger badge-sm btn_item_delete">' +
-                '<i class="fa fa-times"></i></button>' +
+                '<td class="text-end">' +
+                    subtotalPrice.toFixed(2) +
                 '</td>' +
-                '</tr>');
-            totalPrice += subtotalPrice;
-            //item.tax_perchantage.toFixed(2)
+
+                '<td class="text-center">' +
+                    '<button type="button" ' +
+                    'data-index="' + key + '" ' +
+                    'class="btn btn-danger btn-sm btn_item_delete">' +
+                        '<i class="fa fa-trash"></i>' +
+                    '</button>' +
+                '</td>' +
+            '</tr>'
+        );
+
+        totalPrice += subtotalPrice;
+
         });
         totalCalculation();
         // Show/hide VAT and Discount columns and inputs based on toggle state

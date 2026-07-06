@@ -2,8 +2,8 @@
 -- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 05, 2026 at 03:57 PM
+-- Host: localhost:3306
+-- Generation Time: Jul 06, 2026 at 11:18 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -306,12 +306,17 @@ CREATE TABLE `product_brand` (
 --
 
 INSERT INTO `product_brand` (`brand_id`, `product_brand_name`, `product_category_id`, `created_at`, `updated_at`) VALUES
-(37, 'Square', 132, '2026-05-24 08:04:27', '2026-05-24 08:04:27'),
+(37, 'Incepta', 132, '2026-05-24 08:04:27', '2026-07-06 07:01:14'),
 (38, 'Renata', 132, '2026-05-24 08:04:27', '2026-05-24 08:04:27'),
 (39, 'Incepta', 133, '2026-05-24 08:04:27', '2026-05-24 08:04:27'),
 (40, 'Square Pharma', 138, '2026-05-24 08:04:27', '2026-05-24 08:04:27'),
 (41, 'ayan', 140, '2026-07-03 14:39:15', '2026-07-03 14:39:15'),
-(42, 'hhh', 135, '2026-07-03 16:15:02', '2026-07-03 16:15:02');
+(42, 'Aristopharma', 135, '2026-07-03 16:15:02', '2026-07-06 07:00:47'),
+(43, 'Square Pharma', 132, '2026-07-06 07:01:36', '2026-07-06 07:01:36'),
+(44, 'ACI', 133, '2026-07-06 07:02:02', '2026-07-06 07:02:02'),
+(45, 'Opsonin', 133, '2026-07-06 07:02:30', '2026-07-06 07:02:30'),
+(46, 'Novartis', 133, '2026-07-06 07:02:59', '2026-07-06 07:02:59'),
+(47, 'Beximco', 132, '2026-07-06 07:16:47', '2026-07-06 07:16:47');
 
 -- --------------------------------------------------------
 
@@ -353,16 +358,16 @@ CREATE TABLE `product_group` (
 --
 
 INSERT INTO `product_group` (`product_group_id`, `group_name`) VALUES
-(32, 'Herbal & Ayurvedic'),
-(37, 'Over-The-Counter'),
-(38, 'Doctor-prescribed drugs'),
-(42, 'Personal Care'),
-(43, 'Medical Devices'),
+(32, 'Fexofenadine'),
+(38, 'Vitamin C'),
+(42, 'Ciprofloxacin'),
+(43, 'Diclofenac Diethylamine'),
 (44, 'Surgical Items'),
 (45, 'Nutritional Products'),
-(46, 'Baby Care'),
+(46, 'Paracetamol'),
 (47, 'Omeprazole'),
-(48, 'Lotion');
+(48, 'Lotion'),
+(49, 'Cefixime');
 
 -- --------------------------------------------------------
 
@@ -394,6 +399,14 @@ CREATE TABLE `product_inital_stock` (
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `product_inital_stock`
+--
+
+INSERT INTO `product_inital_stock` (`product_id`, `product_name`, `product_category`, `product_brand`, `product_group`, `product_strength`, `product_unit`, `codefor_barcode`, `productinitial_quantity`, `base_price`, `cost_without_vat`, `tax_type`, `tax_id`, `tax_amount`, `purchase_price`, `profit_margin_%`, `sales_price_for_customer`, `alert_quantity`, `product_image`, `created_at`, `updated_at`) VALUES
+(573, 'Napa 500', 132, 47, 46, 1, 22, 'barcode-napa', 5000.00, 1.00, 1.00, 'without_tax', 11, 0.00, 1.00, 20.00, 1.20, 5.00, 'napa 500.jpg', '2026-07-06 07:21:17', '2026-07-06 07:21:17'),
+(574, 'Cef-3', 132, 43, 49, 5, 22, 'barcode-cef', 500.00, 33.00, 33.00, 'without_tax', 11, 0.00, 33.00, 21.00, 40.00, 5.00, 'cef-3.jpg', '2026-07-06 08:40:58', '2026-07-06 08:40:58');
+
 -- --------------------------------------------------------
 
 --
@@ -413,6 +426,14 @@ CREATE TABLE `product_purchase` (
   `purchase_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `product_purchase`
+--
+
+INSERT INTO `product_purchase` (`product_purchase_id`, `purchase_invoice`, `purchaser_id`, `payment_type`, `supplier_id`, `invoice_total`, `discount_amount_on_invoice_total`, `vat_amount_on_invoice_total`, `invoice_net_total`, `purchase_date`) VALUES
+(112, 'PUR2618793170', '18', 'Cash', '106', 100.00, 0.00, 0.00, 100.00, '2026-07-06 07:23:23'),
+(113, 'PUR26187A2715', '18', 'Cash', '124', 100.00, 0.00, 0.00, 100.00, '2026-07-06 08:46:33');
+
 -- --------------------------------------------------------
 
 --
@@ -431,6 +452,14 @@ CREATE TABLE `product_purchase_details` (
   `product_wise_discount_amount` decimal(10,2) NOT NULL DEFAULT '0.00',
   `purchase_price` decimal(12,2) NOT NULL DEFAULT '0.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `product_purchase_details`
+--
+
+INSERT INTO `product_purchase_details` (`purchase_id`, `purchase_invoice_id`, `product_id`, `quantity_per_pack`, `box_quantity`, `base_price_per_unit`, `free_qty`, `product_wise_vat_amount`, `product_wise_discount_amount`, `purchase_price`) VALUES
+(179, 'PUR2618793170', 573, 100, 1, 1.00, 0, 0.00, 0.00, 100.00),
+(180, 'PUR26187A2715', 573, 100, 1, 1.00, 50, 0.00, 0.00, 100.00);
 
 -- --------------------------------------------------------
 
@@ -467,7 +496,18 @@ CREATE TABLE `product_strength` (
 INSERT INTO `product_strength` (`strength_id`, `strength_name`) VALUES
 (1, '500 mg'),
 (2, '20mg'),
-(3, '10mg');
+(3, '10mg'),
+(4, '665 mg'),
+(5, '200 mg'),
+(6, '100 mg/5ml'),
+(7, '120 mg/5ml'),
+(8, '12 mg/ml'),
+(9, '250 mg'),
+(10, '5 mg/5ml'),
+(11, '120 mg'),
+(12, '1%'),
+(13, '100 IU/ml'),
+(14, '5 ml');
 
 -- --------------------------------------------------------
 
@@ -501,7 +541,8 @@ INSERT INTO `product_unit` (`product_unit_id`, `product_unit_name`) VALUES
 (33, 'Pack'),
 (34, 'Pair (for gloves)'),
 (35, 'Roll (bandage)'),
-(36, 'kg');
+(36, 'kg'),
+(41, 'Tube');
 
 -- --------------------------------------------------------
 
@@ -950,7 +991,7 @@ ALTER TABLE `payment_receive`
 -- AUTO_INCREMENT for table `product_brand`
 --
 ALTER TABLE `product_brand`
-  MODIFY `brand_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `brand_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -962,25 +1003,25 @@ ALTER TABLE `product_category`
 -- AUTO_INCREMENT for table `product_group`
 --
 ALTER TABLE `product_group`
-  MODIFY `product_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `product_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `product_inital_stock`
 --
 ALTER TABLE `product_inital_stock`
-  MODIFY `product_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=573;
+  MODIFY `product_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=575;
 
 --
 -- AUTO_INCREMENT for table `product_purchase`
 --
 ALTER TABLE `product_purchase`
-  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `product_purchase_details`
 --
 ALTER TABLE `product_purchase_details`
-  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
+  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
 
 --
 -- AUTO_INCREMENT for table `product_stock`
@@ -992,13 +1033,13 @@ ALTER TABLE `product_stock`
 -- AUTO_INCREMENT for table `product_strength`
 --
 ALTER TABLE `product_strength`
-  MODIFY `strength_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `strength_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `product_unit`
 --
 ALTER TABLE `product_unit`
-  MODIFY `product_unit_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `product_unit_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `return_customer_due`

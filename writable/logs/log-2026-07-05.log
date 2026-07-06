@@ -1,0 +1,361 @@
+DEBUG - 2026-07-05 04:40:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-05 04:40:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-05 04:40:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-05 04:40:41 --> mysqli_sql_exception: Table 'pharmacy_db.product_strength' doesn't exist in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT\r\n       ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT\r\n       ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT\r\n       ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\Purchase.php(88): CodeIgniter\Database\BaseConnection->query('SELECT\r\n       ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Purchase->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-07-05 04:40:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.product_strength' doesn't exist
+[Method: GET, Route: purchase]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\Purchase.php(88): CodeIgniter\Database\BaseConnection->query('SELECT
+            piq.*,
+
+            pc.category_name,
+            pb.product_brand_name,
+            pg.group_name,
+             ps.strength_name,
+
+            tx.tax_percentage,
+            tx.tax_name,
+
+            (piq.productinitial_quantity + IFNULL(ppd.new_purchased,0)) AS total_stock
+
+        FROM product_inital_stock AS piq
+
+        LEFT JOIN (
+            SELECT
+                product_id,
+                SUM(quantity_per_pack) AS new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) AS ppd
+            ON piq.product_id = ppd.product_id
+
+        LEFT JOIN tax AS tx
+            ON piq.tax_id = tx.tax_id
+
+        LEFT JOIN product_category AS pc
+            ON piq.product_category = pc.product_category_id
+
+        LEFT JOIN product_brand AS pb
+            ON piq.product_brand = pb.brand_id
+
+        LEFT JOIN product_group AS pg
+            ON piq.product_group = pg.product_group_id
+
+         LEFT JOIN product_strength AS ps
+             ON piq.product_strength = ps.strength_id
+
+        ORDER BY piq.product_id DESC')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-05 04:40:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.product_strength' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+            piq.*,
+
+            pc.category_name,
+            pb.product_brand_name,
+            pg.group_name,
+             ps.strength_name,
+
+            tx.tax_percentage,
+            tx.tax_name,
+
+            (piq.productinitial_quantity + IFNULL(ppd.new_purchased,0)) AS total_stock
+
+        FROM product_inital_stock AS piq
+
+        LEFT JOIN (
+            SELECT
+                product_id,
+                SUM(quantity_per_pack) AS new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) AS ppd
+            ON piq.product_id = ppd.product_id
+
+        LEFT JOIN tax AS tx
+            ON piq.tax_id = tx.tax_id
+
+        LEFT JOIN product_category AS pc
+            ON piq.product_category = pc.product_category_id
+
+        LEFT JOIN product_brand AS pb
+            ON piq.product_brand = pb.brand_id
+
+        LEFT JOIN product_group AS pg
+            ON piq.product_group = pg.product_group_id
+
+         LEFT JOIN product_strength AS ps
+             ON piq.product_strength = ps.strength_id
+
+        ORDER BY piq.product_id DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+            piq.*,
+
+            pc.category_name,
+            pb.product_brand_name,
+            pg.group_name,
+             ps.strength_name,
+
+            tx.tax_percentage,
+            tx.tax_name,
+
+            (piq.productinitial_quantity + IFNULL(ppd.new_purchased,0)) AS total_stock
+
+        FROM product_inital_stock AS piq
+
+        LEFT JOIN (
+            SELECT
+                product_id,
+                SUM(quantity_per_pack) AS new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) AS ppd
+            ON piq.product_id = ppd.product_id
+
+        LEFT JOIN tax AS tx
+            ON piq.tax_id = tx.tax_id
+
+        LEFT JOIN product_category AS pc
+            ON piq.product_category = pc.product_category_id
+
+        LEFT JOIN product_brand AS pb
+            ON piq.product_brand = pb.brand_id
+
+        LEFT JOIN product_group AS pg
+            ON piq.product_group = pg.product_group_id
+
+         LEFT JOIN product_strength AS ps
+             ON piq.product_strength = ps.strength_id
+
+        ORDER BY piq.product_id DESC')
+ 3 APPPATH\Controllers\Purchase.php(88): CodeIgniter\Database\BaseConnection->query('SELECT
+            piq.*,
+
+            pc.category_name,
+            pb.product_brand_name,
+            pg.group_name,
+             ps.strength_name,
+
+            tx.tax_percentage,
+            tx.tax_name,
+
+            (piq.productinitial_quantity + IFNULL(ppd.new_purchased,0)) AS total_stock
+
+        FROM product_inital_stock AS piq
+
+        LEFT JOIN (
+            SELECT
+                product_id,
+                SUM(quantity_per_pack) AS new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) AS ppd
+            ON piq.product_id = ppd.product_id
+
+        LEFT JOIN tax AS tx
+            ON piq.tax_id = tx.tax_id
+
+        LEFT JOIN product_category AS pc
+            ON piq.product_category = pc.product_category_id
+
+        LEFT JOIN product_brand AS pb
+            ON piq.product_brand = pb.brand_id
+
+        LEFT JOIN product_group AS pg
+            ON piq.product_group = pg.product_group_id
+
+         LEFT JOIN product_strength AS ps
+             ON piq.product_strength = ps.strength_id
+
+        ORDER BY piq.product_id DESC')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-05 04:40:41 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.product_strength' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT
+            piq.*,
+
+            pc.category_name,
+            pb.product_brand_name,
+            pg.group_name,
+             ps.strength_name,
+
+            tx.tax_percentage,
+            tx.tax_name,
+
+            (piq.productinitial_quantity + IFNULL(ppd.new_purchased,0)) AS total_stock
+
+        FROM product_inital_stock AS piq
+
+        LEFT JOIN (
+            SELECT
+                product_id,
+                SUM(quantity_per_pack) AS new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) AS ppd
+            ON piq.product_id = ppd.product_id
+
+        LEFT JOIN tax AS tx
+            ON piq.tax_id = tx.tax_id
+
+        LEFT JOIN product_category AS pc
+            ON piq.product_category = pc.product_category_id
+
+        LEFT JOIN product_brand AS pb
+            ON piq.product_brand = pb.brand_id
+
+        LEFT JOIN product_group AS pg
+            ON piq.product_group = pg.product_group_id
+
+         LEFT JOIN product_strength AS ps
+             ON piq.product_strength = ps.strength_id
+
+        ORDER BY piq.product_id DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+            piq.*,
+
+            pc.category_name,
+            pb.product_brand_name,
+            pg.group_name,
+             ps.strength_name,
+
+            tx.tax_percentage,
+            tx.tax_name,
+
+            (piq.productinitial_quantity + IFNULL(ppd.new_purchased,0)) AS total_stock
+
+        FROM product_inital_stock AS piq
+
+        LEFT JOIN (
+            SELECT
+                product_id,
+                SUM(quantity_per_pack) AS new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) AS ppd
+            ON piq.product_id = ppd.product_id
+
+        LEFT JOIN tax AS tx
+            ON piq.tax_id = tx.tax_id
+
+        LEFT JOIN product_category AS pc
+            ON piq.product_category = pc.product_category_id
+
+        LEFT JOIN product_brand AS pb
+            ON piq.product_brand = pb.brand_id
+
+        LEFT JOIN product_group AS pg
+            ON piq.product_group = pg.product_group_id
+
+         LEFT JOIN product_strength AS ps
+             ON piq.product_strength = ps.strength_id
+
+        ORDER BY piq.product_id DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+            piq.*,
+
+            pc.category_name,
+            pb.product_brand_name,
+            pg.group_name,
+             ps.strength_name,
+
+            tx.tax_percentage,
+            tx.tax_name,
+
+            (piq.productinitial_quantity + IFNULL(ppd.new_purchased,0)) AS total_stock
+
+        FROM product_inital_stock AS piq
+
+        LEFT JOIN (
+            SELECT
+                product_id,
+                SUM(quantity_per_pack) AS new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) AS ppd
+            ON piq.product_id = ppd.product_id
+
+        LEFT JOIN tax AS tx
+            ON piq.tax_id = tx.tax_id
+
+        LEFT JOIN product_category AS pc
+            ON piq.product_category = pc.product_category_id
+
+        LEFT JOIN product_brand AS pb
+            ON piq.product_brand = pb.brand_id
+
+        LEFT JOIN product_group AS pg
+            ON piq.product_group = pg.product_group_id
+
+         LEFT JOIN product_strength AS ps
+             ON piq.product_strength = ps.strength_id
+
+        ORDER BY piq.product_id DESC')
+ 4 APPPATH\Controllers\Purchase.php(88): CodeIgniter\Database\BaseConnection->query('SELECT
+            piq.*,
+
+            pc.category_name,
+            pb.product_brand_name,
+            pg.group_name,
+             ps.strength_name,
+
+            tx.tax_percentage,
+            tx.tax_name,
+
+            (piq.productinitial_quantity + IFNULL(ppd.new_purchased,0)) AS total_stock
+
+        FROM product_inital_stock AS piq
+
+        LEFT JOIN (
+            SELECT
+                product_id,
+                SUM(quantity_per_pack) AS new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) AS ppd
+            ON piq.product_id = ppd.product_id
+
+        LEFT JOIN tax AS tx
+            ON piq.tax_id = tx.tax_id
+
+        LEFT JOIN product_category AS pc
+            ON piq.product_category = pc.product_category_id
+
+        LEFT JOIN product_brand AS pb
+            ON piq.product_brand = pb.brand_id
+
+        LEFT JOIN product_group AS pg
+            ON piq.product_group = pg.product_group_id
+
+         LEFT JOIN product_strength AS ps
+             ON piq.product_strength = ps.strength_id
+
+        ORDER BY piq.product_id DESC')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

@@ -343,7 +343,7 @@ LEFT JOIN (
         product_id,
 
         -- total quantity purchased
-        SUM(quantity_per_pack * box_quantity) AS total_purchase_qty,
+        SUM((IFNULL(quantity_per_pack, 0) * IFNULL(box_quantity, 0))+ IFNULL(free_qty, 0)) AS total_purchase_qty,
 
         -- total cost (your stored line cost)
         SUM(purchase_price) AS total_purchase_cost,
@@ -406,17 +406,15 @@ LEFT JOIN (
 
     }
 
+    public function product_call()
+    {
+        $this->db = db_connect();
 
+        $search = trim($this->request->getGet('term'));
 
-public function product_call()
-{
-    $this->db = db_connect();
+        $builder = $this->db->table('product_inital_stock pis');
 
-    $search = trim($this->request->getGet('term'));
-
-    $builder = $this->db->table('product_inital_stock pis');
-
-    $builder->select("
+        $builder->select("
         pis.product_id AS id,
         pis.product_name AS name,
 
@@ -437,50 +435,50 @@ public function product_call()
          - IFNULL(sd.total_sale,0)) AS total_stock
     ");
 
-    // Sales
-    $builder->join("
+        // Sales
+        $builder->join("
     (
         SELECT product_id,
                SUM(product_quantity_sold) total_sale
         FROM sales_details
         GROUP BY product_id
-    ) sd","pis.product_id=sd.product_id","left");
+    ) sd", "pis.product_id=sd.product_id", "left");
 
-    // Purchase
-    $builder->join("
+        // Purchase
+        $builder->join("
     (
         SELECT product_id,
                SUM(quantity_per_pack*box_quantity) new_purchased
         FROM product_purchase_details
         GROUP BY product_id
-    ) ppd","pis.product_id=ppd.product_id","left");
+    ) ppd", "pis.product_id=ppd.product_id", "left");
 
-    // Brand
-    $builder->join(
-        "product_brand pb",
-        "pb.brand_id=pis.product_brand",
-        "left"
-    );
+        // Brand
+        $builder->join(
+            "product_brand pb",
+            "pb.brand_id=pis.product_brand",
+            "left"
+        );
 
-    // Category
-    $builder->join(
-        "product_category pc",
-        "pc.product_category_id=pis.product_category",
-        "left"
-    );
+        // Category
+        $builder->join(
+            "product_category pc",
+            "pc.product_category_id=pis.product_category",
+            "left"
+        );
 
-    // Group
-    $builder->join(
-        "product_group pg",
-        "pg.product_group_id=pis.product_group",
-        "left"
-    );
+        // Group
+        $builder->join(
+            "product_group pg",
+            "pg.product_group_id=pis.product_group",
+            "left"
+        );
 
-$search = strtolower(trim($this->request->getGet('term')));
+        $search = strtolower(trim($this->request->getGet('term')));
 
-$builder->groupStart();
+        $builder->groupStart();
 
-$builder->where("
+        $builder->where("
 LOWER(CONCAT(
     pis.product_name,' ',
     IFNULL(pb.product_brand_name,''),' ',
@@ -490,32 +488,29 @@ LOWER(CONCAT(
 )) LIKE '%{$this->db->escapeLikeString($search)}%'
 ", null, false);
 
-$builder->groupEnd();
-$builder->having('total_stock >=', 0);
+        $builder->groupEnd();
+        $builder->having('total_stock >=', 0);
 
-    $builder->orderBy("
+        $builder->orderBy("
         CASE
             WHEN pis.codefor_barcode='$search' THEN 1
             WHEN pis.product_name='$search' THEN 2
-            WHEN pis.product_name LIKE '%".$this->db->escapeLikeString($search)."%' THEN 3
-            WHEN pb.product_brand_name LIKE '".$this->db->escapeLikeString($search)."%' THEN 4
-            WHEN pc.category_name LIKE '".$this->db->escapeLikeString($search)."%' THEN 5
-            WHEN pg.group_name LIKE '".$this->db->escapeLikeString($search)."%' THEN 6
+            WHEN pis.product_name LIKE '%" . $this->db->escapeLikeString($search) . "%' THEN 3
+            WHEN pb.product_brand_name LIKE '" . $this->db->escapeLikeString($search) . "%' THEN 4
+            WHEN pc.category_name LIKE '" . $this->db->escapeLikeString($search) . "%' THEN 5
+            WHEN pg.group_name LIKE '" . $this->db->escapeLikeString($search) . "%' THEN 6
             ELSE 7
         END
     ", false);
 
-    $builder->limit(20);
-
-
+        $builder->limit(20);
 
 //      echo $builder->getCompiledSelect();
 //  die;
 
-    return $this->response->setJSON(
-        $builder->get()->getResultArray()
-    );
-}
-
+        return $this->response->setJSON(
+            $builder->get()->getResultArray()
+        );
+    }
 
 }

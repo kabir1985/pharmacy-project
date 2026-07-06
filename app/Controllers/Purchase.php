@@ -62,7 +62,7 @@ $sql = "SELECT
         LEFT JOIN (
             SELECT
                 product_id,
-                SUM(quantity_per_pack) AS new_purchased
+                SUM(IFNULL(quantity_per_pack, 0) + IFNULL(free_qty, 0)) AS new_purchased
             FROM product_purchase_details
             GROUP BY product_id
         ) AS ppd
@@ -86,10 +86,6 @@ $sql = "SELECT
         ORDER BY piq.product_id DESC";
 
 $data['product_show_for_sale'] = $this->db->query($sql)->getResultArray();
-
-
-
-
 
         $data['supplier_show'] = $this->supplier_object->findAll();
 
