@@ -327,9 +327,11 @@ echo $this->section('content');
                     </div> -->
 
                     <div class="d-flex justify-content-between">
-    <span>Sub Total Cost</span>
+    <span><b>Sub Total Cost</b></span>
     <strong id="subTotalCost">0.00</strong>
 </div>
+<!-- <hr style="border: none; border-top: 1px dashed #000;"> -->
+ <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
 
                     <!-- <div class="row">
                         <div class="col-sm-4">Discount</div>
@@ -368,6 +370,7 @@ echo $this->section('content');
     <span>(+) Product VAT</span>
     <strong id="productVat">0.00</strong>
 </div>
+ <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
 
 
 <div class="row mb-2">
@@ -422,12 +425,16 @@ echo $this->section('content');
                         <div class="col-sm-8" id="netTotalPrice"><strong>0.00</strong></div>
                     </div> -->
 
+ <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
+
                     <div class="d-flex justify-content-between">
     <strong>Net Total</strong>
     <strong id="netTotalPrice">0.00</strong>
 </div>
+ <hr style="border:0; border-top:1px dashed #b5b5b5; margin:6px 0;">
 
-                    <div class="row">
+
+                    <div class="row text-success">
                         <div class="col-sm-4">Paid</div>
                         <div class="col-sm-8">
                             <input type="text" id="paid" class="form-control form-control-sm text-end extra-fields"
@@ -435,7 +442,7 @@ echo $this->section('content');
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row text-danger">
                         <div class="col-sm-4">Due</div>
                         <div class="col-sm-8">
                             <input type="text" id="due" class="form-control form-control-sm text-end extra-fields"

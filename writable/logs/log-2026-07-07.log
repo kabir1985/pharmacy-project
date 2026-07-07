@@ -1456,3 +1456,296 @@ in APPPATH\Controllers\PdfController.php on line 74.
  5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-07 14:19:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:20:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:20:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:20:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:33:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:34:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:39:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:41:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:41:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:42:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:43:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:44:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:46:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:47:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:48:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:49:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:51:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:52:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-07 14:52:02 --> ErrorException: Undefined array key "product_vat"
+[Method: GET, Route: invoice/765]
+in APPPATH\Controllers\PdfController.php on line 73.
+ 1 APPPATH\Controllers\PdfController.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "product_vat"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\PdfController.php', 73)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('765')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-07 14:52:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:53:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-07 14:53:54 --> ErrorException: Undefined array key "product_vat"
+[Method: GET, Route: invoice/766]
+in APPPATH\Controllers\PdfController.php on line 73.
+ 1 APPPATH\Controllers\PdfController.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "product_vat"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\PdfController.php', 73)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('766')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-07 14:53:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:58:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-07 14:58:25 --> ErrorException: Undefined array key "product_vat"
+[Method: GET, Route: invoice/767]
+in APPPATH\Controllers\PdfController.php on line 73.
+ 1 APPPATH\Controllers\PdfController.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "product_vat"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\PdfController.php', 73)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('767')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-07 14:58:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 14:59:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-07 14:59:38 --> ErrorException: Undefined array key "product_vat"
+[Method: GET, Route: invoice/768]
+in APPPATH\Controllers\PdfController.php on line 73.
+ 1 APPPATH\Controllers\PdfController.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "product_vat"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\PdfController.php', 73)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('768')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-07 14:59:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-07 15:22:26 --> ErrorException: Undefined array key "product_vat"
+[Method: GET, Route: invoice/765]
+in APPPATH\Controllers\PdfController.php on line 73.
+ 1 APPPATH\Controllers\PdfController.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "product_vat"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\PdfController.php', 73)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('765')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-07 15:23:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-07 15:23:11 --> ErrorException: Undefined array key "product_vat"
+[Method: GET, Route: invoice/769]
+in APPPATH\Controllers\PdfController.php on line 73.
+ 1 APPPATH\Controllers\PdfController.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "product_vat"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\PdfController.php', 73)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('769')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-07 15:23:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-07 15:25:00 --> ErrorException: Undefined array key "product_discount"
+[Method: GET, Route: invoice/769]
+in APPPATH\Controllers\PdfController.php on line 75.
+ 1 APPPATH\Controllers\PdfController.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "product_discount"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\PdfController.php', 75)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('769')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-07-07 15:26:12 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.product_name
+
+
+        FROM sales_details AS sd
+        JOIN product_inital' at line 6 in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT  sd.*,\r\n...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT  sd.*,\r\n...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT  sd.*,\r\n...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\PdfController.php(68): CodeIgniter\Database\BaseConnection->query('SELECT  sd.*,\r\n...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\PdfController->invoice('769')
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-07-07 15:26:12 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.product_name
+
+
+        FROM sales_details AS sd
+        JOIN product_inital' at line 6
+[Method: GET, Route: invoice/769]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\PdfController.php(68): CodeIgniter\Database\BaseConnection->query('SELECT  sd.*,
+                             s.product_vat,
+                             s.product_discount,
+                             s.discount_on_all,
+                             s.other_charge_on_all
+                            pis.product_name
+
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618807172\'')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('769')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 15:26:12 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.product_name
+
+
+        FROM sales_details AS sd
+        JOIN product_inital' at line 6
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT  sd.*,
+                             s.product_vat,
+                             s.product_discount,
+                             s.discount_on_all,
+                             s.other_charge_on_all
+                            pis.product_name
+
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618807172\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT  sd.*,
+                             s.product_vat,
+                             s.product_discount,
+                             s.discount_on_all,
+                             s.other_charge_on_all
+                            pis.product_name
+
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618807172\'')
+ 3 APPPATH\Controllers\PdfController.php(68): CodeIgniter\Database\BaseConnection->query('SELECT  sd.*,
+                             s.product_vat,
+                             s.product_discount,
+                             s.discount_on_all,
+                             s.other_charge_on_all
+                            pis.product_name
+
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618807172\'')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('769')
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 15:26:12 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.product_name
+
+
+        FROM sales_details AS sd
+        JOIN product_inital' at line 6
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT  sd.*,
+                             s.product_vat,
+                             s.product_discount,
+                             s.discount_on_all,
+                             s.other_charge_on_all
+                            pis.product_name
+
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618807172\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT  sd.*,
+                             s.product_vat,
+                             s.product_discount,
+                             s.discount_on_all,
+                             s.other_charge_on_all
+                            pis.product_name
+
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618807172\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT  sd.*,
+                             s.product_vat,
+                             s.product_discount,
+                             s.discount_on_all,
+                             s.other_charge_on_all
+                            pis.product_name
+
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618807172\'')
+ 4 APPPATH\Controllers\PdfController.php(68): CodeIgniter\Database\BaseConnection->query('SELECT  sd.*,
+                             s.product_vat,
+                             s.product_discount,
+                             s.discount_on_all,
+                             s.other_charge_on_all
+                            pis.product_name
+
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618807172\'')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('769')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 15:28:04 --> ErrorException: Undefined array key "subtotal"
+[Method: GET, Route: invoice/769]
+in APPPATH\Views\report\sales-invoice.php on line 199.
+ 1 APPPATH\Views\report\sales-invoice.php(199): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "subtotal"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\sales-invoice.php', 199)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\sales-invoice.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/sales-invoice', [], true)
+ 5 APPPATH\Controllers\PdfController.php(100): view('report/sales-invoice', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('769')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 15:29:28 --> ErrorException: Undefined array key "subtotal"
+[Method: GET, Route: invoice/769]
+in APPPATH\Views\report\sales-invoice.php on line 199.
+ 1 APPPATH\Views\report\sales-invoice.php(199): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "subtotal"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\sales-invoice.php', 199)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\sales-invoice.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/sales-invoice', [], true)
+ 5 APPPATH\Controllers\PdfController.php(100): view('report/sales-invoice', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('769')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-07 15:51:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 15:51:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
