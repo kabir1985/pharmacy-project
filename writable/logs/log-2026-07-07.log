@@ -1288,3 +1288,171 @@ in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
  9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 DEBUG - 2026-07-07 10:11:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 10:34:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-07 10:34:43 --> mysqli_sql_exception: Unknown column 's.discountOnTotalPrice' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT  sd.*,\r\n...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT  sd.*,\r\n...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT  sd.*,\r\n...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\PdfController.php(65): CodeIgniter\Database\BaseConnection->query('SELECT  sd.*,\r\n...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\PdfController->invoice('765')
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-07-07 10:34:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.discountOnTotalPrice' in 'field list'
+[Method: GET, Route: invoice/765]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\PdfController.php(65): CodeIgniter\Database\BaseConnection->query('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.otherChargeOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV26188117BA\'')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('765')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:34:43 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.discountOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.otherChargeOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV26188117BA\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.otherChargeOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV26188117BA\'')
+ 3 APPPATH\Controllers\PdfController.php(65): CodeIgniter\Database\BaseConnection->query('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.otherChargeOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV26188117BA\'')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('765')
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:34:43 --> [Caused by] mysqli_sql_exception: Unknown column 's.discountOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.otherChargeOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV26188117BA\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.otherChargeOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV26188117BA\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.otherChargeOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV26188117BA\'')
+ 4 APPPATH\Controllers\PdfController.php(65): CodeIgniter\Database\BaseConnection->query('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.otherChargeOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV26188117BA\'')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('765')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-07 10:34:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-07 10:36:26 --> ErrorException: Undefined array key "productwiseVatPercnt"
+[Method: GET, Route: invoice/765]
+in APPPATH\Controllers\PdfController.php on line 70.
+ 1 APPPATH\Controllers\PdfController.php(70): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "productwiseVatPercnt"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\PdfController.php', 70)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('765')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:38:31 --> ErrorException: Undefined array key "productwiseVatPercnt"
+[Method: GET, Route: invoice/765]
+in APPPATH\Controllers\PdfController.php on line 70.
+ 1 APPPATH\Controllers\PdfController.php(70): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "productwiseVatPercnt"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\PdfController.php', 70)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('765')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:38:32 --> ErrorException: Undefined array key "productwiseVatPercnt"
+[Method: GET, Route: invoice/765]
+in APPPATH\Controllers\PdfController.php on line 70.
+ 1 APPPATH\Controllers\PdfController.php(70): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "productwiseVatPercnt"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\PdfController.php', 70)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('765')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:38:54 --> ErrorException: Undefined variable $vat_percent
+[Method: GET, Route: invoice/765]
+in APPPATH\Controllers\PdfController.php on line 74.
+ 1 APPPATH\Controllers\PdfController.php(74): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $vat_percent', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\PdfController.php', 74)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('765')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

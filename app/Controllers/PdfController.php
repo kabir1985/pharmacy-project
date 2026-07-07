@@ -51,9 +51,8 @@ class PdfController extends BaseController
 
     // Fetch sales, sales details with product info
             $sql2 = "SELECT  sd.*,
-                            pis.product_name,
-                            s.discountOnTotalPrice,
-                            s.otherChargeOnTotalPrice
+                            pis.product_name
+
 
         FROM sales_details AS sd
         JOIN product_inital_stock AS pis 
@@ -68,8 +67,13 @@ class PdfController extends BaseController
             foreach ($product_details as $key => $item) {
                 $quantity = $item['product_quantity_sold'];
                 $unit_price = $item['unit_price'];
-                $vat_percent = $item['productwiseVatPercnt']; // assuming tax_perchantage stored per product
-                $discount_percent = isset($item['productwiseDiscountPercnt']) ? $item['productwiseDiscountPercnt'] : 0;
+               // $vat_percent = $item['productwiseVatPercnt']; // assuming tax_perchantage stored per product
+               // $discount_percent = isset($item['productwiseDiscountPercnt']) ? $item['productwiseDiscountPercnt'] : 0;
+
+               $product_vat = $item['product_vat'];
+               $prodcut_discount = $item['prodcut_discount'];
+               $discount_on_all = $item['discount_on_all'];
+               $other_charge_on_all = $item['other_charge_on_all'];
 
                 $base_total = $quantity * $unit_price;
                 $vat_amount = $base_total * ($vat_percent / 100);
