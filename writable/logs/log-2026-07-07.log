@@ -1,0 +1,1290 @@
+DEBUG - 2026-07-07 04:35:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 04:35:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 04:35:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 04:35:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 04:42:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 04:49:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 04:53:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 04:54:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 04:54:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 04:55:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 05:00:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 06:12:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 06:12:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 06:12:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 06:32:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 06:41:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 06:44:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 06:44:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 06:45:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 06:46:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 06:50:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 06:51:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-07 06:51:16 --> mysqli_sql_exception: Unknown column 's.vatOnTotalPrice' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT  sd.*,\r\n...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT  sd.*,\r\n...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT  sd.*,\r\n...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\PdfController.php(65): CodeIgniter\Database\BaseConnection->query('SELECT  sd.*,\r\n...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\PdfController->invoice('763')
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+DEBUG - 2026-07-07 06:51:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-07 06:51:16 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.vatOnTotalPrice' in 'field list'
+[Method: GET, Route: invoice/763]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\PdfController.php(65): CodeIgniter\Database\BaseConnection->query('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618814E54\'')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('763')
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 06:51:16 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.vatOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618814E54\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618814E54\'')
+ 3 APPPATH\Controllers\PdfController.php(65): CodeIgniter\Database\BaseConnection->query('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618814E54\'')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('763')
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 06:51:16 --> [Caused by] mysqli_sql_exception: Unknown column 's.vatOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618814E54\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618814E54\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618814E54\'')
+ 4 APPPATH\Controllers\PdfController.php(65): CodeIgniter\Database\BaseConnection->query('SELECT  sd.*,
+                            pis.product_name,
+                            s.discountOnTotalPrice,
+                            s.vatOnTotalPrice
+
+        FROM sales_details AS sd
+        JOIN product_inital_stock AS pis 
+            ON pis.product_id = sd.product_id
+        JOIN sales AS s 
+            ON s.sales_invoice = sd.sales_details_invoice
+        WHERE sd.sales_details_invoice = \'INV2618814E54\'')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('763')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 06:52:44 --> ErrorException: Undefined array key "vatOnTotalPrice"
+[Method: GET, Route: invoice/763]
+in APPPATH\Views\report\sales-invoice.php on line 141.
+ 1 APPPATH\Views\report\sales-invoice.php(141): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "vatOnTotalPrice"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\sales-invoice.php', 141)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\sales-invoice.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/sales-invoice', [], true)
+ 5 APPPATH\Controllers\PdfController.php(91): view('report/sales-invoice', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PdfController->invoice('763')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PdfController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-07 07:47:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 07:49:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 07:54:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 07:54:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 07:59:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 08:02:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 08:41:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 08:48:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 09:11:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 09:13:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 09:18:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 09:28:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 09:38:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 09:40:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 09:40:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 09:43:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 09:45:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 09:46:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 09:52:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-07 09:52:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-07 10:08:04 --> mysqli_sql_exception: Unknown column 'sales.discountOnTotalPrice' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT\r\n       ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT\r\n       ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT\r\n       ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT\r\n       ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-07-07 10:08:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.discountOnTotalPrice' in 'field list'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discountOnTotalPrice,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:08:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.discountOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discountOnTotalPrice,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discountOnTotalPrice,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discountOnTotalPrice,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:08:04 --> [Caused by] mysqli_sql_exception: Unknown column 'sales.discountOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discountOnTotalPrice,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discountOnTotalPrice,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discountOnTotalPrice,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discountOnTotalPrice,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-07-07 10:09:01 --> mysqli_sql_exception: Unknown column 'sales.otherChargeOnTotalPrice' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT\r\n       ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT\r\n       ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT\r\n       ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT\r\n       ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-07-07 10:09:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.otherChargeOnTotalPrice' in 'field list'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:09:01 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.otherChargeOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:09:01 --> [Caused by] mysqli_sql_exception: Unknown column 'sales.otherChargeOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.otherChargeOnTotalPrice,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-07-07 10:09:24 --> mysqli_sql_exception: Unknown column 'sales.discountOnTotalPrice' in 'group statement' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT\r\n       ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT\r\n       ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT\r\n       ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT\r\n       ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-07-07 10:09:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:09:24 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:09:24 --> [Caused by] mysqli_sql_exception: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.otherChargeOnTotalPrice
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-07-07 10:10:05 --> mysqli_sql_exception: Unknown column 'sales.discountOnTotalPrice' in 'group statement' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT\r\n       ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT\r\n       ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT\r\n       ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT\r\n       ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-07-07 10:10:05 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:10:05 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:10:05 --> [Caused by] mysqli_sql_exception: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-07-07 10:10:06 --> mysqli_sql_exception: Unknown column 'sales.discountOnTotalPrice' in 'group statement' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT\r\n       ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT\r\n       ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT\r\n       ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT\r\n       ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-07-07 10:10:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:10:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:10:06 --> [Caused by] mysqli_sql_exception: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-07-07 10:10:47 --> mysqli_sql_exception: Unknown column 'sales.discountOnTotalPrice' in 'group statement' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT\r\n       ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT\r\n       ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT\r\n       ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT\r\n       ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-07-07 10:10:47 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:10:47 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:10:47 --> [Caused by] mysqli_sql_exception: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-07-07 10:10:48 --> mysqli_sql_exception: Unknown column 'sales.discountOnTotalPrice' in 'group statement' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT\r\n       ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT\r\n       ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT\r\n       ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT\r\n       ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-07-07 10:10:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+[Method: GET, Route: pos]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:10:48 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-07 10:10:48 --> [Caused by] mysqli_sql_exception: Unknown column 'sales.discountOnTotalPrice' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 4 APPPATH\Controllers\pos.php(58): CodeIgniter\Database\BaseConnection->query('SELECT
+                    sales.sales_id,
+                    sales.sales_invoice,
+                    sales.sales_date,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
+                    SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
+                    SUM(sales_details.total_sale_price) AS Total_Sale_Value,
+                    SUM(sales_details.unit_price) AS Unite_Price
+                FROM sales
+                LEFT JOIN sales_details
+                    ON sales.sales_invoice = sales_details.sales_details_invoice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.other_charge_on_all
+                ORDER BY sales_id DESC
+                LIMIT 5')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-07 10:11:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

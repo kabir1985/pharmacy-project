@@ -138,7 +138,7 @@
                     $item_subtotal = ($item['unit_price'] * $item['product_quantity_sold']) + $item_vat_amt - $item_discount_amt;
 
                     $discountOnTotalPrice = $item['discountOnTotalPrice'];
-                    $vatOnTotalPrice = $item['vatOnTotalPrice'];
+                    $otherChargeOnTotalPrice = $item['otherChargeOnTotalPrice'];
 
                     $total_base += $item['unit_price'] * $item['product_quantity_sold'];
                     $total_vat += $item_vat_amt;
@@ -169,9 +169,9 @@
 
                 <tr class="totals-row">
                     <th colspan="8">
-                        <div style="text-align: right;">VAT on Total</div>
+                        <div style="text-align: right;">Other Charge on Total</div>
                     </th>
-                    <td class="text-right"><?= number_format($vatOnTotalPrice, 2) ?></td>
+                    <td class="text-right"><?= number_format($otherChargeOnTotalPrice, 2) ?></td>
                 </tr>
 
                 <tr class="totals-row">

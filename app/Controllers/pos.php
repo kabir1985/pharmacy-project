@@ -43,15 +43,15 @@ class Pos extends BaseController
                     sales.sales_id,
                     sales.sales_invoice,
                     sales.sales_date,
-                    sales.discountOnTotalPrice,
-                    sales.vatOnTotalPrice,
+                    sales.discount_on_all,
+                    sales.other_charge_on_all,
                     SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
                     SUM(sales_details.total_sale_price) AS Total_Sale_Value,
                     SUM(sales_details.unit_price) AS Unite_Price
                 FROM sales
                 LEFT JOIN sales_details
                     ON sales.sales_invoice = sales_details.sales_details_invoice
-                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discountOnTotalPrice, sales.vatOnTotalPrice
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discount_on_all, sales.other_charge_on_all
                 ORDER BY sales_id DESC
                 LIMIT 5";
 
@@ -74,7 +74,7 @@ class Pos extends BaseController
         $productsList = $request->getPost('cart_data');
 
         $discountOnTotalPrice = (float) $request->getPost('discountOnTotalPrice');
-        $vatOnTotalPrice = (float) $request->getPost('vatOnTotalPrice');
+        $otherChargeOnTotalPrice = (float) $request->getPost('otherChargeOnTotalPrice');
         $paid = (float) $request->getPost('paid');
         $customer_type = $request->getPost('customer_type');
         $seller_id = $session->get('user_id');
@@ -119,12 +119,11 @@ class Pos extends BaseController
                 'unit_price' => $price,
                 'total_sale_price' => $line_total,
                 'total_buy_price' => $row['purchase_price'] * $qty,
+                // 'productwiseDiscountPercnt' => $discount_percent,
+                // 'productwiseDiscountAmount' => $discount_amount,
 
-                'productwiseDiscountPercnt' => $discount_percent,
-                'productwiseDiscountAmount' => $discount_amount,
-
-                'productwiseVatPercnt' => $vat_percent,
-                'productwiseVatAmount' => $vat_amount,
+                // 'productwiseVatPercnt' => $vat_percent,
+                // 'productwiseVatAmount' => $vat_amount,
             ];
         }
 
@@ -132,35 +131,60 @@ class Pos extends BaseController
         // FINAL TOTAL CALCULATION
         // =========================
         // $calculated_total = $subtotal - $total_discount + $total_vat;
-        // $due = $calculated_total + $vatOnTotalPrice - $discountOnTotalPrice - $paid;
+        // $due = $calculated_total + $otherChargeOnTotalPrice - $discountOnTotalPrice - $paid;
 
         $calculated_total = $subtotal - $total_discount + $total_vat;
 
-        $grand_total = $calculated_total + $vatOnTotalPrice - $discountOnTotalPrice;
+        $grand_total = $calculated_total + $otherChargeOnTotalPrice - $discountOnTotalPrice;
 
         $due = $grand_total - $paid;
 
         // =========================
         // SALES MASTER DATA
         // =========================
+        // $sales_data = [
+        //     'sales_invoice' => $invoice_id,
+        //     'customer_type' => $customer_type,
+        //     'sales_date' => date('Y-m-d H:i:s'),
+        //     'payment_type' => 'Cash',
+
+        //     'total_amount' => round($calculated_total, 2),
+
+        //     'discountOnTotalPrice' => round($discountOnTotalPrice, 2),
+        //     'otherChargeOnTotalPrice' => round($otherChargeOnTotalPrice, 2),
+
+        //     'paid_amount' => $paid,
+        //     'due_amount' => round($due, 2),
+
+        //     'seller_id' => $seller_id,
+        //     'return_status' => 'ACTIVE',
+        // ];
+
+
         $sales_data = [
+
             'sales_invoice' => $invoice_id,
             'customer_type' => $customer_type,
             'sales_date' => date('Y-m-d H:i:s'),
             'payment_type' => 'Cash',
-
-            'total_amount' => round($calculated_total, 2),
-
-            'discountOnTotalPrice' => round($discountOnTotalPrice, 2),
-            'vatOnTotalPrice' => round($vatOnTotalPrice, 2),
-
+        
+            // Final invoice amount
+            'total_amount' => round($grand_total, 2),
+        
+            // Product-wise totals
+            'product_discount' => round($total_discount, 2),
+            'product_vat'      => round($total_vat, 2),
+        
+            // Invoice-level adjustments
+            'discount_on_all'      => round($discountOnTotalPrice, 2),
+            'other_charge_on_all'  => round($otherChargeOnTotalPrice, 2),
+        
             'paid_amount' => $paid,
-            'due_amount' => round($due, 2),
-
+            'due_amount'  => round($due, 2),
+        
             'seller_id' => $seller_id,
             'return_status' => 'ACTIVE',
         ];
-
         // =========================
         // DATABASE TRANSACTION
         // =========================
@@ -211,9 +235,16 @@ class Pos extends BaseController
             'status' => 'success',
             'invoice' => $invoice_id,
             'sales_id' => $sales_id,
-            'total' => $calculated_total,
+            'total' => round($grand_total, 2),
         ]);
     }
+
+
+
+
+
+
+
 
     public function hold_sale()
     {
@@ -221,7 +252,7 @@ class Pos extends BaseController
         $productsList = $this->request->getVar('cart_data');
 
         $discountOnTotalPrice = $this->request->getVar('discountOnTotalPrice');
-        $vatOnTotalPrice = $this->request->getVar('vatOnTotalPrice');
+        $otherChargeOnTotalPrice = $this->request->getVar('otherChargeOnTotalPrice');
         $customer_type = $this->request->getVar('customer_type');
         $seller_id = $session->get('user_id');
 
@@ -234,7 +265,7 @@ class Pos extends BaseController
             'customer_type' => $customer_type,
             'cart_data' => json_encode($productsList),
             'discountOnTotalPrice' => $discountOnTotalPrice,
-            'vatOnTotalPrice' => $vatOnTotalPrice,
+            'otherChargeOnTotalPrice' => $otherChargeOnTotalPrice,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
@@ -251,7 +282,7 @@ class Pos extends BaseController
                 'customer_type' => $customer_type,
                 'cart_data' => json_decode($hold_data['cart_data'], true),
                 'discountOnTotalPrice' => $discountOnTotalPrice,
-                'vatOnTotalPrice' => $vatOnTotalPrice,
+                'otherChargeOnTotalPrice' => $otherChargeOnTotalPrice,
             ]);
 
         } else {
@@ -274,7 +305,7 @@ class Pos extends BaseController
                 'cart_data' => $cartData ?? [],
                 'customer_type' => $sale['customer_type'] ?? 'regular',
                 'discountOnTotalPrice' => $sale['discountOnTotalPrice'] ?? 0,
-                'vatOnTotalPrice' => $sale['vatOnTotalPrice'] ?? 0,
+                'otherChargeOnTotalPrice' => $sale['otherChargeOnTotalPrice'] ?? 0,
             ]);
         } else {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Held sale not found']);

@@ -10,5 +10,5 @@ class ProductSaleDetailsModel extends Model
 
     protected $primaryKey = 'sales_details_id';
 
-    protected $allowedFields = ['sales_details_invoice', 'product_id', 'product_quantity_sold', 'unit_price','total_sale_price', 'total_buy_price' ,'productwiseDiscountPercnt','productwiseDiscountAmount','productwiseVatPercnt','productwiseVatAmount'];
+    protected $allowedFields = ['sales_details_invoice', 'product_id', 'product_quantity_sold', 'unit_price','total_sale_price', 'total_buy_price'];
 }

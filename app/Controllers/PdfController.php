@@ -53,7 +53,7 @@ class PdfController extends BaseController
             $sql2 = "SELECT  sd.*,
                             pis.product_name,
                             s.discountOnTotalPrice,
-                            s.vatOnTotalPrice
+                            s.otherChargeOnTotalPrice
 
         FROM sales_details AS sd
         JOIN product_inital_stock AS pis 

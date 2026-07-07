@@ -3,19 +3,18 @@ echo $this->extend('layout');
 echo $this->section('content');
 ?>
 <style>
-.table th
-   {
+.table th {
     font-size: 12px;
-   }
+}
 
-   #cartTableBody td {
+#cartTableBody td {
     vertical-align: middle !important;
 }
 
 #cartTableBody .btn_item_delete {
     display: inline-block;
 }
-    </style>
+</style>
 <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery-ui.min.css') ?>" />
 
 <div class="container-fluid">
@@ -216,32 +215,32 @@ echo $this->section('content');
             </div> -->
 
             <div class="row">
-    <div class="col">
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr class="table-info">
-                        <th>Name</th>
-                        <th>Stock</th>
-                        <th>Quantity</th>
-                        <th>Sale Price</th>
+                <div class="col">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr class="table-info">
+                                    <th>Name</th>
+                                    <th>Stock</th>
+                                    <th>Quantity</th>
+                                    <th>Sale Price</th>
 
-                        <th class="vat-column-header hide">Vat %</th>
-                        <th class="discount-column-header hide">Disc %</th>
+                                    <th class="vat-column-header hide">Vat %</th>
+                                    <th class="discount-column-header hide">Disc %</th>
 
-                        <th>Avg Pur. Price</th>
-                        <th class="text-end">Sub Total</th>
-                        <th width="60" class="text-center">Action</th>
-                    </tr>
-                </thead>
+                                    <th>Avg Pur. Price</th>
+                                    <th class="text-end">Sub Total</th>
+                                    <th width="60" class="text-center">Action</th>
+                                </tr>
+                            </thead>
 
-                <tbody id="cartTableBody">
-                </tbody>
+                            <tbody id="cartTableBody">
+                            </tbody>
 
-            </table>
-        </div>
-    </div>
-</div>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
 
 
@@ -322,49 +321,111 @@ echo $this->section('content');
                     </p>
 
 
-                    <div class="row">
-                        <div class="col-sm-4">Total Price</div>
-                        <div class="col-sm-8" id="totalPrice">0.00</div>
+                    <!-- <div class="row">
+                        <div class="col-sm-4">Sub Total Cost</div>
+                        <div class="col-sm-8" id="subTotalCost">0.00</div>
+                    </div> -->
+
+                    <div class="d-flex justify-content-between">
+    <span>Sub Total Cost</span>
+    <strong id="subTotalCost">0.00</strong>
+</div>
+
+                    <!-- <div class="row">
+                        <div class="col-sm-4">Discount</div>
+                        <div class="col-sm-8" id="discount_amount">0.00</div>
                     </div>
 
                     <div class="row">
-                        <!-- <div class="col-sm-4">Discount</div> -->
-                        <div class="col-sm-12">
-                            <div class="d-flex justify-content-left align-items-center gap-2">Discount
-                                <select id="discountType" class="form-select form-select-sm"
-                                    onchange="calculateDiscount()">
-                                    <option value="%">%</option>
-                                    <option value="flat">Flat</option>
-                                </select>
-                                <input type="number" id="discountValue"
-                                    class="form-control form-control-sm extra-fields" placeholder="0" value="0.00"
-                                    oninput="calculateDiscount()">
-                                <span id="discountOnTotalPrice">: 0.00</span>
-                            </div>
+                        <div class="col-sm-4">VAT</div>
+                        <div class="col-sm-8" id="vat_amount">0.00</div>
+                    </div> -->
+
+                    <!-- <div class="row mb-2">
+                        <div class="col-7">
+                            <strong>Product Discount</strong>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <!-- <div class="col-sm-4">VAT</div> -->
-                        <div class="col-sm-12">
-                            <div class="d-flex justify-content-left align-items-center"><span
-                                    style="padding-right: 30px;">VAT</span>
-                                <select id="vatType" class="form-select form-select-sm" onchange="calculateVat()">
-                                    <option value="%">%</option>
-                                    <option value="flat">Flat</option>
-                                </select>
-                                <input type="number" id="vatValue" class="form-control form-control-sm extra-fields"
-                                    placeholder="0" value="0.00" oninput="calculateVat()">
-                                <span id="vatOnTotalPrice">: 0.00</span>
-                            </div>
+                        <div class="col-5 text-end">
+                            <strong id="productDiscount">0.00</strong>
                         </div>
-                    </div>
+                    </div> -->
+
+                    <div class="d-flex justify-content-between text-danger">
+    <span>(-) Product Discount</span>
+    <strong id="productDiscount">0.00</strong>
+</div>
+
+                    <!-- <div class="row mb-2">
+                        <div class="col-7">
+                            <strong>Product VAT</strong>
+                        </div>
+                        <div class="col-5 text-end">
+                            <strong id="productVat">0.00</strong>
+                        </div>
+                    </div> -->
+
+                    <div class="d-flex justify-content-between text-success">
+    <span>(+) Product VAT</span>
+    <strong id="productVat">0.00</strong>
+</div>
 
 
-                    <div class="row">
+<div class="row mb-2">
+    <div class="col-sm-12">
+        <div class="d-flex align-items-center">
+            <span class="charge-label text-danger">(-) Discount on All</span>
+
+            <select id="discountType"
+                class="form-select form-select-sm me-2"
+                onchange="calculateDiscountOnAll()">
+                <option value="%">%</option>
+                <option value="flat">Flat</option>
+            </select>
+
+            <input type="number"
+                id="discountOnAllValue"
+                class="form-control form-control-sm me-2 extra-fields"
+                value="0.00"
+                oninput="calculateDiscountOnAll()">
+
+            <span id="discountOnAllPrice">0.00</span>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-2">
+    <div class="col-sm-12">
+        <div class="d-flex align-items-center">
+            <span class="charge-label text-success">(+) Other Charge on All</span>
+
+            <select id="otherCharge"
+                class="form-select form-select-sm me-2"
+                onchange="calculateotherCharge()">
+                <option value="%">%</option>
+                <option value="flat">Flat</option>
+            </select>
+
+            <input type="number"
+                id="otherChargeValue"
+                class="form-control form-control-sm me-2 extra-fields"
+                value="0.00"
+                oninput="calculateotherCharge()">
+
+            <span id="otherChargeOnTotalPrice">0.00</span>
+        </div>
+    </div>
+</div>
+
+
+                    <!-- <div class="row">
                         <div class="col-sm-4">Net Total</div>
                         <div class="col-sm-8" id="netTotalPrice"><strong>0.00</strong></div>
-                    </div>
+                    </div> -->
+
+                    <div class="d-flex justify-content-between">
+    <strong>Net Total</strong>
+    <strong id="netTotalPrice">0.00</strong>
+</div>
 
                     <div class="row">
                         <div class="col-sm-4">Paid</div>
@@ -556,55 +617,55 @@ var productsList = <?php echo json_encode($product_show_for_sale, JSON_PRETTY_PR
 $(document).ready(function() {
 
     $("body").addClass("sidenav-toggled");
-$("#search_product").focus();
+    $("#search_product").focus();
 
-/*--- Sound -------------------*/
-const obj = new Audio("<?php echo site_url('public/sounds/success.mp3') ?>");
-const obj_warning = new Audio("<?php echo site_url('public/sounds/warning.mp3') ?>");
+    /*--- Sound -------------------*/
+    const obj = new Audio("<?php echo site_url('public/sounds/success.mp3') ?>");
+    const obj_warning = new Audio("<?php echo site_url('public/sounds/warning.mp3') ?>");
 
-obj.volume = 1.0;
+    obj.volume = 1.0;
 
-/*--- Product Search -------------------*/
-$("#search_product").autocomplete({
-    source: function(request, response) {
+    /*--- Product Search -------------------*/
+    $("#search_product").autocomplete({
+        source: function(request, response) {
 
-        $.ajax({
-            url: "<?php echo site_url('pos/product_call') ?>",
-            dataType: "json",
-            data: {
-                term: request.term
-            },
-            success: function(data) {
-                response(data);
-            },
-            error: function() {
-                response([]);
-            }
-        });
+            $.ajax({
+                url: "<?php echo site_url('pos/product_call') ?>",
+                dataType: "json",
+                data: {
+                    term: request.term
+                },
+                success: function(data) {
+                    response(data);
+                },
+                error: function() {
+                    response([]);
+                }
+            });
 
-    },
-    minLength: 1,
-    autoFocus: true,
-    delay: 150,
+        },
+        minLength: 1,
+        autoFocus: true,
+        delay: 150,
 
-    select: function(event, ui) {
+        select: function(event, ui) {
 
-        productAddToCart(ui.item.id, ui.item.total_stock);
+            productAddToCart(ui.item.id, ui.item.total_stock);
 
-        obj.play();
+            obj.play();
 
-        $(this).val("");
+            $(this).val("");
 
-        return false;
-    }
-});
+            return false;
+        }
+    });
     var itemsInCart = [];
-    var totalPrice = 0;
+    var subTotalCost = 0;
 
     $("#productSale").on("click", function() {
 
-        var discountOnTotalPrice = $("#discountOnTotalPrice").text();
-        var vatOnTotalPrice = $("#vatOnTotalPrice").text();
+        var discountOnAllPrice = $("#discountOnAllPrice").text();
+        var otherChargeOnTotalPrice = $("#otherChargeOnTotalPrice").text();
         //alert(vatOnTotalPrice);
 
         var customer_type = $("#customer_type").val();
@@ -653,8 +714,8 @@ $("#search_product").autocomplete({
             dataType: "json",
             data: {
                 cart_data: itemsInCartObject,
-                discountOnTotalPrice: parseFloat(discountOnTotalPrice) || 0,
-                vatOnTotalPrice: parseFloat(vatOnTotalPrice) || 0,
+                discountOnAllPrice: parseFloat(discountOnAllPrice) || 0,
+                otherChargeOnTotalPrice: parseFloat(otherChargeOnTotalPrice) || 0,
                 customer_type: customer_type,
                 due: parseFloat(due) || 0,
                 paid: parseFloat(paid) || 0,
@@ -678,8 +739,8 @@ $("#search_product").autocomplete({
                 itemsInCart = [];
                 drawTable();
 
-                $('#discountOnTotalPrice').text('');
-                $('#vatOnTotalPrice').text('');
+                $('#discountOnAllPrice').text('');
+                $('#otherChargeOnTotalPrice').text('');
                 $('#paid').val('');
                 $('#due').val('');
 
@@ -709,8 +770,8 @@ $("#search_product").autocomplete({
         }
 
         // Define these inside the function
-        var discountOnTotalPrice = parseFloat($("#discountOnTotalPrice").text()) || 0;
-        var vatOnTotalPrice = parseFloat($("#vatOnTotalPrice").text()) || 0;
+        var discountOnAllPrice = parseFloat($("#discountOnAllPrice").text()) || 0;
+        var otherChargeOnTotalPrice = parseFloat($("#otherChargeOnTotalPrice").text()) || 0;
         var customer_type = $("#customer_type").val();
 
         var itemsInCartObject = Object.assign({}, itemsInCart);
@@ -721,8 +782,8 @@ $("#search_product").autocomplete({
             dataType: 'json',
             data: {
                 cart_data: itemsInCartObject,
-                discountOnTotalPrice: discountOnTotalPrice,
-                vatOnTotalPrice: vatOnTotalPrice,
+                discountOnAllPrice: discountOnAllPrice,
+                otherChargeOnTotalPrice: otherChargeOnTotalPrice,
                 customer_type: customer_type
             },
             success: function(response) {
@@ -791,15 +852,15 @@ $("#search_product").autocomplete({
                         item.hold_id = saleId;
                     });
 
-                    discountOnTotalPrice = parseFloat(res.discountOnTotalPrice) || 0;
-                    vatOnTotalPrice = parseFloat(res.vatOnTotalPrice) || 0;
+                    discountOnAllPrice = parseFloat(res.discountOnAllPrice) || 0;
+                    otherChargeOnTotalPrice = parseFloat(res.otherChargeOnTotalPrice) || 0;
                     customer_type = res.customer_type || 'Walk-In-Customer';
 
                     drawTable();
-                    $("#discountValue").val(discountOnTotalPrice);
-                    $("#vatValue").val(vatOnTotalPrice);
-                    calculateDiscount();
-                    calculateVat();
+                    $("#discountOnAllValue").val(discountOnAllPrice);
+                    $("#otherChargeValue").val(otherChargeOnTotalPrice);
+                    calculateDiscountOnAll();
+                    calculateotherCharge();
                     $("#customer_type").val(customer_type).trigger('change');
 
                     // ✅ Remove the resumed sale from Held Sales list immediately
@@ -845,29 +906,29 @@ $("#search_product").autocomplete({
         totalCalculation();
     });
 
-$('body').on("input", ".product_quantity_change", function () {
+    $('body').on("input", ".product_quantity_change", function() {
 
-    let index = $(this).data("id");
-    let qty = parseFloat($(this).val()) || 0;
-    let stock = parseFloat($(this).data("current_stock"));
+        let index = $(this).data("id");
+        let qty = parseFloat($(this).val()) || 0;
+        let stock = parseFloat($(this).data("current_stock"));
 
-    if (qty <= 0) {
-        itemsInCart.splice(index, 1);
-        drawTable();          // Only when deleting a row
-        return;
-    }
+        if (qty <= 0) {
+            itemsInCart.splice(index, 1);
+            drawTable(); // Only when deleting a row
+            return;
+        }
 
-    if (qty > stock) {
-        qty = stock;
-        $(this).val(stock);
-        obj_warning.play();
-        alert("Your Stock is Exceeded!");
-    }
+        if (qty > stock) {
+            qty = stock;
+            $(this).val(stock);
+            obj_warning.play();
+            alert("Your Stock is Exceeded!");
+        }
 
-    itemsInCart[index].quantity = qty;
+        itemsInCart[index].quantity = qty;
 
-    updateRow(index);         // Smooth update only
-});
+        updateRow(index); // Smooth update only
+    });
 
     /* Product Delete Strat */
     $('body').on("click", ".btn_item_delete", function() {
@@ -929,112 +990,84 @@ $('body').on("input", ".product_quantity_change", function () {
 
 
 
-$(document).on("input", ".sale_price_change", function () {
+    $(document).on("input", ".sale_price_change", function() {
 
-    let index = $(this).data("id");
+        let index = $(this).data("id");
 
-    itemsInCart[index].sales_price_for_customer = parseFloat($(this).val()) || 0;
+        itemsInCart[index].sales_price_for_customer = parseFloat($(this).val()) || 0;
 
-    updateRow(index);
-});
-
-$(document).on("input", ".vat_input", function () {
-
-    let index = $(this).closest("tr").find(".btn_item_delete").data("index");
-
-    itemsInCart[index].vat_input = parseFloat($(this).val()) || 0;
-
-    updateRow(index);
-});
-
-$(document).on("input", ".discount_percent", function () {
-
-    let index = $(this).closest("tr").find(".btn_item_delete").data("index");
-
-    itemsInCart[index].discount_percent = parseFloat($(this).val()) || 0;
-
-    updateRow(index);
-});
-
-
-/////##############################################################
-// function updateRow(index) {
-
-//     const item = itemsInCart[index];
-//     if (!item) return;
-
-//     let subtotal = (parseFloat(item.quantity) || 0) *
-//                    (parseFloat(item.sales_price_for_customer) || 0);
-
-//     if ($("#ProductWiseVatAndDiscount").is(":checked")) {
-
-//         const vat = parseFloat(item.vat_input) || 0;
-//         const discount = parseFloat(item.discount_percent) || 0;
-
-//         subtotal += subtotal * vat / 100;
-//         subtotal -= subtotal * discount / 100;
-//     }
-
-//     // Find the row using data-id instead of row index
-//     const $row = $('.product_quantity_change[data-id="' + index + '"]').closest('tr');
-
-//     if ($row.length) {
-//         $row.find("td:last")
-//             .contents()
-//             .first()[0]
-//             .textContent = subtotal.toFixed(2);
-//     }
-
-//     updateGrandTotal();
-// }
-
-function updateRow(index) {
-
-    const item = itemsInCart[index];
-    if (!item) return;
-
-    let subtotal =
-        (parseFloat(item.quantity) || 0) *
-        (parseFloat(item.sales_price_for_customer) || 0);
-
-    if ($("#ProductWiseVatAndDiscount").is(":checked")) {
-
-        const vat = parseFloat(item.vat_input) || 0;
-        const discount = parseFloat(item.discount_percent) || 0;
-
-        subtotal += subtotal * vat / 100;
-        subtotal -= subtotal * discount / 100;
-    }
-
-    const $row = $('.product_quantity_change[data-id="' + index + '"]').closest('tr');
-
-    if ($row.length) {
-        $row.find(".subtotal_td").text(subtotal.toFixed(2));
-    }
-
-    updateGrandTotal();
-}
-
-function updateGrandTotal() {
-
-    totalPrice = 0;
-
-    itemsInCart.forEach(function(item) {
-
-        //let subtotal = item.quantity * item.sales_price_for_customer;
-        let subtotal =(parseFloat(item.quantity) || 0) * (parseFloat(item.sales_price_for_customer) || 0);
-
-        if ($("#ProductWiseVatAndDiscount").is(":checked")) {
-            subtotal += subtotal * ((parseFloat(item.vat_input) || 0) / 100);
-            subtotal -= subtotal * ((parseFloat(item.discount_percent) || 0) / 100);
-        }
-
-        totalPrice += subtotal;
+        updateRow(index);
     });
 
-    totalCalculation();
-}
-/////###############################################################
+    $(document).on("input", ".vat_input", function() {
+
+        let index = $(this).closest("tr").find(".btn_item_delete").data("index");
+
+        itemsInCart[index].vat_input = parseFloat($(this).val()) || 0;
+
+        updateRow(index);
+    });
+
+    $(document).on("input", ".discount_percent", function() {
+
+        let index = $(this).closest("tr").find(".btn_item_delete").data("index");
+
+        itemsInCart[index].discount_percent = parseFloat($(this).val()) || 0;
+
+        updateRow(index);
+    });
+
+
+    /////##############################################################
+
+    function updateRow(index) {
+
+        const item = itemsInCart[index];
+        if (!item) return;
+
+        let subtotal =
+            (parseFloat(item.quantity) || 0) *
+            (parseFloat(item.sales_price_for_customer) || 0);
+
+        if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+
+            const vat = parseFloat(item.vat_input) || 0;
+            const discount = parseFloat(item.discount_percent) || 0;
+
+            subtotal += subtotal * vat / 100;
+            subtotal -= subtotal * discount / 100;
+        }
+
+        const $row = $('.product_quantity_change[data-id="' + index + '"]').closest('tr');
+
+        if ($row.length) {
+            $row.find(".subtotal_td").text(subtotal.toFixed(2));
+        }
+
+        updateGrandTotal();
+    }
+
+    function updateGrandTotal() {
+
+        subTotalCost = 0;
+
+        itemsInCart.forEach(function(item) {
+
+            //let subtotal = item.quantity * item.sales_price_for_customer;
+            let subtotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
+                .sales_price_for_customer) || 0);
+
+            // if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+            //     subtotal += subtotal * ((parseFloat(item.vat_input) || 0) / 100);
+            //     subtotal -= subtotal * ((parseFloat(item.discount_percent) || 0) / 100);
+            // }
+
+            subTotalCost += subtotal;
+        });
+
+        totalCalculation();
+    }
+    /////###############################################################
 
 
     /*
@@ -1042,68 +1075,30 @@ function updateGrandTotal() {
     */
     function drawTable() {
         $("#cartTableBody").empty();
-        $("#totalPrice").html("0.00");
-        totalPrice = 0;
+        $("#subTotalCost").html("0.00");
+        subTotalCost = 0;
         $.each(itemsInCart, function(key, item) {
 
-           // var baseTotal = parseInt(item.quantity) * parseFloat(item.sales_price_for_customer);
-            var baseTotal =(parseFloat(item.quantity) || 0) * (parseFloat(item.sales_price_for_customer) || 0);
+            // var baseTotal = parseInt(item.quantity) * parseFloat(item.sales_price_for_customer);
+            var baseTotal = (parseFloat(item.quantity) || 0) * (parseFloat(item.sales_price_for_customer) || 0);
             var subtotalPrice = baseTotal; // default, no VAT/Discount
 
             // ✅ Only apply VAT/Discount if toggle is ON
-            if ($("#ProductWiseVatAndDiscount").is(":checked")) {
-                var vatPercent = parseFloat(item.vat_input) || 0;
-                var discountPercent = parseFloat(item.discount_percent) || 0;
+            // if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+            //     var vatPercent = parseFloat(item.vat_input) || 0;
+            //     var discountPercent = parseFloat(item.discount_percent) || 0;
 
-                var vatAmount = baseTotal * (vatPercent / 100);
-                var discountAmount = baseTotal * (discountPercent / 100);
+            //     var vatAmount = baseTotal * (vatPercent / 100);
+            //     var discountAmount = baseTotal * (discountPercent / 100);
 
-                subtotalPrice = (baseTotal + vatAmount) - discountAmount;
-            }
-            // $("#cartTableBody").append('<tr>' +
-            //     '<td>' + item.product_name + '</td>' +
-            //     '<td>' + item.total_stock + '</td>' +
-            //     '<td>' +
-            //     '<input  data-current_stock="' + item.total_stock + '"  data-oldQuantity="' + item
-            //     .quantity + '" data-id="' + key +
-            //     '" class="product_quantity_change" type = "number"  size="4"' +
-            //     'value="' + item.quantity +
-            //     '" onkeypress="return accept_digit_only(event)" min="0"+ max="99999"/> ' +
-            //     '</td>' +
-            //     // '<td>' + item.sales_price_for_customer + '</td>' +
+            //     subtotalPrice = (baseTotal + vatAmount) - discountAmount;
+            // }
 
-            //     '<td><input type="number" \
-            //         data-id="' + key + '" \
-            //         name="sales_price_for_customer" \
-            //         class="sale_price_change form-control form-control-sm" \
-            //         value="' + (item.sales_price_for_customer || 1) + '" \
-            //         min="1" \
-            //         step="0.01"></td>' +
+            // Add to total
+            subTotalCost += subtotalPrice;
 
-            //     '<td class="vat-column hide"><input type="number" data-id="' + key + '" class="vat_input form-control form-control-sm" value="' +
-            //      (item.vat_input || 0) + '"></td>' +
-
-            //     '<td class="discount-column hide"><input type="number" data-id="' + key + '" class="discount_percent form-control form-control-sm"  value="' + 
-            //      (item.discount_percent || 0) + '"></td>' +
-            //      // ✅ ADD HERE
-            //      '<td>' + (item.unit_purchase_price ? parseFloat(item.unit_purchase_price).toFixed(2) : '0.00') + '</td>' +
-
-            //     '<td class = "text-right" > ' + subtotalPrice.toFixed(2) +
-            //     '<button  data-index="' + key +
-            //     '" class="badge badge-danger badge-sm btn_item_delete">' +
-            //     '<i class="fa fa-times"></i></button>' +
-            //     '</td>' +
-            //     '</tr>');
-            // totalPrice += subtotalPrice;
-            // //item.tax_perchantage.toFixed(2)
-// Calculate subtotal
-//let subtotalPrice = parseFloat(item.sales_price_for_customer || 0) * parseFloat(item.quantity || 0);
-
-// Add to total
-totalPrice += subtotalPrice;
-
-// Append Row
-$("#cartTableBody").append(`
+            // Append Row
+            $("#cartTableBody").append(`
 <tr>
 
     <!-- Product Name -->
@@ -1127,7 +1122,7 @@ $("#cartTableBody").append(`
     </td>
 
     <!-- Sale Price -->
-<td class="text-center align-middle">
+<td class="d-flex justify-content-center">
     <input
         type="number"
         inputmode="decimal"
@@ -1202,27 +1197,70 @@ $("#cartTableBody").append(`
     Calculate Table Total / SUbtotal
     */
     function totalCalculation() {
-        var discountOnTotalPrice = $("#discountOnTotalPrice").text();
-        if (discountOnTotalPrice != "") {
-            discountOnTotalPrice = parseFloat((Number.isNaN(discountOnTotalPrice)) ? 0 : discountOnTotalPrice);
+        var discountOnAllPrice = $("#discountOnAllPrice").text();
+        if (discountOnAllPrice != "") {
+            discountOnAllPrice = parseFloat((Number.isNaN(discountOnAllPrice)) ? 0 : discountOnAllPrice);
         } else {
-            discountOnTotalPrice = 0;
+            discountOnAllPrice = 0;
         }
-        var vatOnTotalPrice = $("#vatOnTotalPrice").text();
-        if (vatOnTotalPrice != "") {
-            vatOnTotalPrice = parseFloat((Number.isNaN(vatOnTotalPrice)) ? 0 : vatOnTotalPrice);
+        var otherChargeOnTotalPrice = $("#otherChargeOnTotalPrice").text();
+        if (otherChargeOnTotalPrice != "") {
+            otherChargeOnTotalPrice = parseFloat((Number.isNaN(otherChargeOnTotalPrice)) ? 0 :
+                otherChargeOnTotalPrice);
         } else {
-            vatOnTotalPrice = 0;
+            otherChargeOnTotalPrice = 0;
         }
-        var netTotalPrice = (totalPrice + vatOnTotalPrice) - discountOnTotalPrice;
+
+
+        //////////////////////////////////////////////////
+        subTotalCost = 0;
+        var productTotalVat = 0;
+        var productTotalDiscount = 0;
+
+        itemsInCart.forEach(function(item) {
+
+            let qty = parseFloat(item.quantity) || 0;
+            let price = parseFloat(item.sales_price_for_customer) || 0;
+
+            // Basic subtotal (without VAT & Discount)
+            let lineTotal = qty * price;
+
+            subTotalCost += lineTotal;
+
+            if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+
+                let vatPercent = parseFloat(item.vat_input) || 0;
+                let discountPercent = parseFloat(item.discount_percent) || 0;
+
+                let vatAmount = lineTotal * vatPercent / 100;
+                let discountAmount = lineTotal * discountPercent / 100;
+
+                productTotalVat += vatAmount;
+                productTotalDiscount += discountAmount;
+            }
+
+        });
+        ////////////////////////////////////////////////
+
+
+       // var netTotalPrice = (subTotalCost + otherChargeOnTotalPrice) - discountOnAllPrice;
+        var netTotalPrice = subTotalCost - productTotalDiscount + productTotalVat - discountOnAllPrice + otherChargeOnTotalPrice;
 
         ///////////////////////////
         var paid = $("#paid").val();
         var due = netTotalPrice - paid;
         $("#due").val(due.toFixed(2));
         ////////////////////////////////
-        $("#totalPrice").html(totalPrice.toFixed(2));
-        $("#netTotalPrice").html(netTotalPrice.toFixed(2));
+        // $("#subTotalCost").html(subTotalCost.toFixed(2));
+        // $("#productDiscount").html(productTotalDiscount.toFixed(2));
+        // $("#productVat").html(productTotalVat.toFixed(2));
+
+        // $("#netTotalPrice").html(netTotalPrice.toFixed(2));
+
+        $("#subTotalCost").html(subTotalCost.toFixed(2));
+$("#productDiscount").html(productTotalDiscount.toFixed(2));
+$("#productVat").html(productTotalVat.toFixed(2));
+$("#netTotalPrice").html(netTotalPrice.toFixed(2));
     }
     /*
     Chek Is the selected Item Exist in List
@@ -1296,7 +1334,7 @@ $("#cartTableBody").append(`
     //         data: { hold_id: hold_id },
     //         success: function(response) {
     //             itemsInCart = response.cart_data;
-    //             discountOnTotalPrice = response.discountOnTotalPrice;
+    //             discountOnAllPrice = response.discountOnAllPrice;
     //             vatOnTotalPrice = response.vatOnTotalPrice;
     //             drawTable();
     //         }
@@ -1305,59 +1343,59 @@ $("#cartTableBody").append(`
 
     ///////////////////////////////////////////////////////////////////////////////////
 
-    function calculateDiscount() {
-        let totalPrice = parseFloat($("#totalPrice").text()) || 0;
+    function calculateDiscountOnAll() {
+        let subTotalCost = parseFloat($("#subTotalCost").text()) || 0;
         let discountType = $("#discountType").val();
-        let discountValue = parseFloat($("#discountValue").val()) || 0;
+        let discountOnAllValue = parseFloat($("#discountOnAllValue").val()) || 0;
 
         let discountPrice = 0;
 
         if (discountType === "%") {
-            discountPrice = totalPrice * (discountValue / 100);
+            discountPrice = subTotalCost * (discountOnAllValue / 100);
         } else if (discountType === "flat") {
-            discountPrice = discountValue;
+            discountPrice = discountOnAllValue;
         }
 
         if (discountPrice < 0) discountPrice = 0;
 
         // set value into input box instead of span
-        $("#discountOnTotalPrice").text(discountPrice.toFixed(2));
+        $("#discountOnAllPrice").text(discountPrice.toFixed(2));
         totalCalculation(); // 🔥 update net total immediately
     }
 
     // Auto update when user types or changes values
-    $("#totalPrice, #discountType, #discountValue").on("input change", calculateDiscount);
+    $("#subTotalCost, #discountType, #discountOnAllValue").on("input change", calculateDiscountOnAll);
 
     // Run once on page load
-    calculateDiscount();
+    calculateDiscountOnAll();
 
 
 
-    function calculateVat() {
-        let totalPrice = parseFloat($("#totalPrice").text()) || 0;
-        let vatType = $("#vatType").val();
-        let vatValue = parseFloat($("#vatValue").val()) || 0;
+    function calculateotherCharge() {
+        let subTotalCost = parseFloat($("#subTotalCost").text()) || 0;
+        let otherCharge = $("#otherCharge").val();
+        let otherChargeValue = parseFloat($("#otherChargeValue").val()) || 0;
 
         let totalVat = 0;
 
-        if (vatType === "%") {
-            totalVat = totalPrice * (vatValue / 100);
-        } else if (vatType === "flat") {
-            totalVat = vatValue;
+        if (otherCharge === "%") {
+            totalVat = subTotalCost * (otherChargeValue / 100);
+        } else if (otherCharge === "flat") {
+            totalVat = otherChargeValue;
         }
 
         if (totalVat < 0) totalVat = 0; // prevent negative
         // set value into input box instead of span
-        $("#vatOnTotalPrice").text(totalVat.toFixed(2));
+        $("#otherChargeOnTotalPrice").text(totalVat.toFixed(2));
         totalCalculation(); // 🔥 update net total immediately
     }
     // Auto update when values change
-    $("#discountType, #discountValue").on("input change", calculateDiscount);
-    $("#vatType, #vatValue").on("input change", calculateVat);
+    $("#discountType, #discountOnAllValue").on("input change", calculateDiscountOnAll);
+    $("#otherCharge, #otherChargeValue").on("input change", calculateotherCharge);
 
     // Run once on page load
-    calculateDiscount();
-    calculateVat();
+    calculateDiscountOnAll();
+    calculateotherCharge();
 
 });
 </script>
@@ -1426,8 +1464,9 @@ $("#cartTableBody").append(`
 
 .sale_price_change.form-control {
     text-align: center !important;
-    width: 100% !important;
+    width: 80% !important;
 }
+
 /* ==============================
    INPUT & SELECT SMOOTH STYLE
 ============================== */
@@ -1475,7 +1514,7 @@ $("#cartTableBody").append(`
     font-weight: 600;
 }
 
-#totalPrice,
+#subTotalCost,
 #netTotalPrice {
     text-align: right;
     font-weight: 600;
@@ -1496,20 +1535,37 @@ $("#cartTableBody").append(`
 }
 
 #discountType,
-#vatType {
+#otherCharge {
     width: 65px;
 }
 
-#discountValue,
-#vatValue {
-    width: 80px;
+#discountOnAllValue,
+#otherChargeValue {
+    width: 80%;
 }
 
-#discountOnTotalPrice,
-#vatOnTotalPrice {
-    min-width: 60px;
-    font-weight: 600;
+
+.charge-label{
+    width:180px;      /* Same width for both labels */
+    font-weight:600;
+    margin-right:10px;
 }
+
+.form-select{
+    width:70px;
+}
+
+.extra-fields{
+    width:120px;
+}
+
+#discountOnAllPrice,
+#otherChargeOnTotalPrice{
+    width:60px;
+    text-align:right;
+    font-weight:600;
+}
+
 
 /* ==============================
    BUTTON STYLE CLEAN
