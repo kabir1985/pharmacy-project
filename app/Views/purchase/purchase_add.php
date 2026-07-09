@@ -22,7 +22,7 @@ echo $this->section('content');
                     </button> -->
 
                     <a href="<?= base_url('product') ?>" class="btn btn-primary btn-sm">
-                        <i class="fa fa-plus"></i> Opening Stock </a>
+                         Opening Stock  &nbsp; <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
             <!-- Cart Table -->
@@ -272,33 +272,6 @@ echo $this->section('scripts');
                 var productDiscountAmt = 0;
                 var vatAfterDiscount = 0;
                 var rowTotal = 0;
-
-                // if (taxType === 'with_tax') {
-
-                //     // var priceWithoutVat = purchaseTotal / (1 + vatPercent / 100);
-                //     var priceWithoutVat = vatPercent > 0 ?
-                //         purchaseTotal / (1 + vatPercent / 100) :
-                //         purchaseTotal;
-
-                //     productDiscountAmt = priceWithoutVat * (discountPercent / 100);
-
-                //     var discountedBase = priceWithoutVat - productDiscountAmt;
-
-                //     vatAfterDiscount = discountedBase * (vatPercent / 100);
-
-                //     rowTotal = discountedBase + vatAfterDiscount;
-
-                // } else {
-
-                //     productDiscountAmt = purchaseTotal * (discountPercent / 100);
-
-                //     var discountedBase = purchaseTotal - productDiscountAmt;
-
-                //     vatAfterDiscount = discountedBase * (vatPercent / 100);
-
-                //     rowTotal = discountedBase + vatAfterDiscount;
-                // }
-
 
                 productDiscountAmt = purchaseTotal * (discountPercent / 100);
 

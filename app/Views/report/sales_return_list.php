@@ -44,13 +44,13 @@
                                         <?= number_format($row['total_sale'], 2) ?>
                                     </td>
                                     <td>
-                                        <?= number_format($row['productwiseVatPercnt'], 2) ?>
+                                        <?= number_format($row['product_vat'], 2) ?>
                                     </td>
                                     <td>
-                                        <?= number_format($row['discountOnTotalPrice'], 2) ?>
+                                        <?= number_format($row['discount_on_all'], 2) ?>
                                     </td>
                                     <td>
-                                        <?= number_format($row['vatOnTotalPrice'], 2) ?>
+                                        <?= number_format($row['other_charge_on_all'], 2) ?>
                                     </td>
                                     <td>
                                         <?= number_format($row['total_paid'], 2) ?>
@@ -81,34 +81,6 @@
         </div>
     </div>
 </div>
-
-<!-- Return Modal -->
-<!-- <div class="modal fade" id="returnModal" tabindex="-1">
-    <div class="modal-dialog">
-        <form id="returnForm" class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Sales Return</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="return_invoice" class="form-label">Invoice No</label>
-                    <input type="text" id="return_invoice" name="return_invoice" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="reason" class="form-label">Reason</label>
-                    <textarea name="reason" class="form-control" required></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Process Return</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            </div>
-        </form>
-    </div>
-</div> -->
-
-
 
 <!-- Return Modal -->
 <div class="modal fade" id="returnModal" tabindex="-1">

@@ -38,11 +38,6 @@ class Profitloss extends BaseController
         return view('report/profitloss_report', $data);
     }
 
-
-
-
-    
-
 //     // =========================
 //     // PROFIT LOSS REPORT
 //     // =========================
@@ -90,8 +85,6 @@ class Profitloss extends BaseController
 //         ON rs.sales_invoice = rsd.sales_details_invoice
 //     WHERE rs.return_date BETWEEN ? AND ?
 // ", [$start_date, $end_date])->getRowArray();
-
-
 
 // $expense = $this->db->query("
 //     SELECT IFNULL(SUM(expense_amount),0) AS total_expense
@@ -142,42 +135,47 @@ class Profitloss extends BaseController
 //         exit();
 //     }
 
+    public function profitlosspdfcreate()
+    {
+        $start = $this->request->getVar('start_date');
+        $end = $this->request->getVar('end_date');
 
-public function profitlosspdfcreate()
-{
-    $start = $this->request->getVar('start_date');
-    $end   = $this->request->getVar('end_date');
+        // =========================
+        // VALIDATION
+        // =========================
+        if (!$start || !$end) {
 
-    // =========================
-    // VALIDATION
-    // =========================
-    if (!$start || !$end) {
+            return redirect()->back()
+                ->with('error', 'Date range is required');
+        }
 
-        return redirect()->back()
-            ->with('error', 'Date range is required');
-    }
+        $start_date = date('Y-m-d 00:00:00', strtotime($start));
+        $end_date = date('Y-m-d 23:59:59', strtotime($end));
 
-    $start_date = date('Y-m-d 00:00:00', strtotime($start));
-    $end_date   = date('Y-m-d 23:59:59', strtotime($end));
-
-    // =====================================================
-    // SALES
-    // IMPORTANT:
-    // DO NOT FILTER return_status
-    // =====================================================
-    $sales = $this->db->query("
+        if (empty($start_date) || empty($end_date)) {
+            return redirect()->to('dashboard')
+                ->with('error', 'Please select a date range first.');
+        }
+        // =====================================================
+        // SALES
+        // IMPORTANT:
+        // DO NOT FILTER return_status
+        // =====================================================
+        $sales = $this->db->query("
         SELECT
             IFNULL(SUM(total_amount),0) AS gross_sales,
-            IFNULL(SUM(discountOnTotalPrice),0) AS total_discount,
-            IFNULL(SUM(vatOnTotalPrice),0) AS total_vat
+            IFNULL(SUM(product_discount),0) AS product_discount,
+            IFNULL(SUM(discount_on_all),0) AS invoice_discount,
+            IFNULL(SUM(product_vat),0) AS total_vat,
+            IFNULL(SUM(other_charge_on_all),0) AS other_charge
         FROM sales
         WHERE sales_date BETWEEN ? AND ?
     ", [$start_date, $end_date])->getRowArray();
 
-    // =====================================================
-    // COST OF GOODS SOLD (COGS)
-    // =====================================================
-    $cogs = $this->db->query("
+        // =====================================================
+        // COST OF GOODS SOLD (COGS)
+        // =====================================================
+        $cogs = $this->db->query("
         SELECT
             IFNULL(SUM(sd.total_buy_price),0) AS total_cogs
         FROM sales_details sd
@@ -186,10 +184,10 @@ public function profitlosspdfcreate()
         WHERE s.sales_date BETWEEN ? AND ?
     ", [$start_date, $end_date])->getRowArray();
 
-    // =====================================================
-    // SALES RETURNS
-    // =====================================================
-    $returns = $this->db->query("
+        // =====================================================
+        // SALES RETURNS
+        // =====================================================
+        $returns = $this->db->query("
         SELECT
             IFNULL(SUM(rsd.total_sale_price),0) AS return_sales,
             IFNULL(SUM(rsd.total_buy_price),0) AS return_cost
@@ -201,165 +199,174 @@ public function profitlosspdfcreate()
         WHERE rs.return_date BETWEEN ? AND ?
     ", [$start_date, $end_date])->getRowArray();
 
-    // =====================================================
-    // EXPENSES
-    // =====================================================
-    $expense = $this->db->query("
+        // =====================================================
+        // EXPENSES
+        // =====================================================
+        $expense = $this->db->query("
         SELECT
             IFNULL(SUM(expense_amount),0) AS total_expense
         FROM expense
         WHERE expense_date BETWEEN ? AND ?
         ", [
             date('Y-m-d', strtotime($start)),
-            date('Y-m-d', strtotime($end))
+            date('Y-m-d', strtotime($end)),
         ])->getRowArray();
 
-    // =====================================================
-    // FINAL CALCULATIONS
-    // =====================================================
+        // =====================================================
+        // FINAL CALCULATIONS
+        // =====================================================
 
-    // --------------------------------
-    // GROSS SALES
-    // --------------------------------
-    $gross_sales = (float)$sales['gross_sales'];
+       //=====================================================
+// SALES
+//=====================================================
 
-    // --------------------------------
-    // DISCOUNT
-    // --------------------------------
-    $total_discount = (float)$sales['total_discount'];
+$gross_sales       = (float)$sales['gross_sales'];
+$product_discount  = (float)$sales['product_discount'];
+$invoice_discount  = (float)$sales['invoice_discount'];
+$total_vat         = (float)$sales['total_vat'];
+$other_charge      = (float)$sales['other_charge'];
 
-    // --------------------------------
-    // VAT
-    // --------------------------------
-    $total_vat = (float)$sales['total_vat'];
+//=====================================================
+// RETURNS
+//=====================================================
 
-    // --------------------------------
-    // RETURNS
-    // --------------------------------
-    $return_sales = (float)$returns['return_sales'];
+$return_sales = (float)$returns['return_sales'];
+$return_cost  = (float)$returns['return_cost'];
 
-    // --------------------------------
-    // RETURN COST
-    // --------------------------------
-    $return_cost = (float)$returns['return_cost'];
+//=====================================================
+// COGS
+//=====================================================
 
-    // --------------------------------
-    // COGS
-    // --------------------------------
-    $total_cogs = (float)$cogs['total_cogs'];
+$total_cogs = (float)$cogs['total_cogs'];
 
-    // --------------------------------
-    // EXPENSE
-    // --------------------------------
-    $total_expense = (float)$expense['total_expense'];
+//=====================================================
+// EXPENSE
+//=====================================================
 
-    // =====================================================
-    // NET SALES
-    //
-    // Formula:
-    // Gross Sales
-    // - Discount
-    // - VAT
-    // - Returns
-    // =====================================================
-    $net_sales =
-        $gross_sales
-        - $total_discount
-        - $total_vat
-        - $return_sales;
+$total_expense = (float)$expense['total_expense'];
 
-    // =====================================================
-    // NET COGS
-    //
-    // Return products come back to stock,
-    // so return cost reduces COGS
-    // =====================================================
-    $net_cogs =
-        $total_cogs
-        - $return_cost;
+//=====================================================
+// OTHER INCOME & FINANCIAL COST
+//=====================================================
 
-    // =====================================================
-    // GROSS PROFIT
-    // =====================================================
-    $gross_profit =
-        $net_sales
-        - $net_cogs;
+$other_income  = 0;
+$financial_cost = 0;
 
-    // =====================================================
-    // NET PROFIT
-    // =====================================================
-    $net_profit =
-        $gross_profit
-        - $total_expense;
+//=====================================================
+// NET SALES
+//=====================================================
 
-    // =====================================================
-    // DATA FOR VIEW
-    // =====================================================
+// If total_amount ALREADY excludes VAT, use this:
+$net_sales =
+    $gross_sales
+    - $product_discount
+    - $invoice_discount
+    - $return_sales
+    + $other_charge;
+
+/*
+If your total_amount INCLUDES VAT, use this instead:
+
+$net_sales =
+    $gross_sales
+    - $product_discount
+    - $invoice_discount
+    - $total_vat
+    - $return_sales
+    + $other_charge;
+*/
+
+//=====================================================
+// NET COGS
+//=====================================================
+
+$net_cogs =
+    $total_cogs
+    - $return_cost;
+
+//=====================================================
+// GROSS PROFIT
+//=====================================================
+
+$gross_profit =
+    $net_sales
+    - $net_cogs;
+
+//=====================================================
+// OPERATING PROFIT
+//=====================================================
+
+$operating_profit =
+    $gross_profit
+    - $total_expense;
+
+//=====================================================
+// NET PROFIT
+//=====================================================
+
+$net_profit =
+    $operating_profit
+    + $other_income
+    - $financial_cost;
+
+
+
     $data = [
 
-        // SALES
-        'gross_sales' => $gross_sales,
-
-        // DISCOUNT
-        'discount' => $total_discount,
-
-        // VAT
-        'vat' => $total_vat,
-
-        // RETURNS
-        'return_sales' => $return_sales,
-
-        'return_cost' => $return_cost,
-
-        // NET SALES
-        'net_sales' => $net_sales,
-
-        // COGS
-        'total_cogs' => $net_cogs,
-
-        // PROFITS
-        'gross_profit' => $gross_profit,
-
-        'net_profit' => $net_profit,
-
-        // EXPENSES
-        'expense' => $total_expense,
-
-        // OTHER
-        'credit' => 0,
-
-        // DATE
-        'start_date' => $start,
-
-        'end_date' => $end,
+        'gross_sales'       => $gross_sales,
+    
+        'product_discount'  => $product_discount,
+    
+        'invoice_discount'  => $invoice_discount,
+    
+        'vat'               => $total_vat,
+    
+        'other_charge'      => $other_charge,
+    
+        'return_sales'      => $return_sales,
+    
+        'return_cost'       => $return_cost,
+    
+        'net_sales'         => $net_sales,
+    
+        'total_cogs'        => $total_cogs,
+    
+        'net_cogs'          => $net_cogs,
+    
+        'gross_profit'      => $gross_profit,
+    
+        'expense'           => $total_expense,
+    
+        'operating_profit'  => $operating_profit,
+    
+        'other_income'      => $other_income,
+    
+        'financial_cost'    => $financial_cost,
+    
+        'net_profit'        => $net_profit,
+    
+        'start_date'        => $start,
+    
+        'end_date'          => $end,
     ];
 
-    // =====================================================
-    // PDF VIEW
-    // =====================================================
-    $html = view('report/profitloss_pdf', $data);
+        // =====================================================
+        // PDF VIEW
+        // =====================================================
+        $html = view('report/profitloss_pdf', $data);
 
-    // =====================================================
-    // DOMPDF
-    // =====================================================
-    $dompdf = new \Dompdf\Dompdf();
-
-    $dompdf->loadHtml($html);
-
-    $dompdf->setPaper('A4', 'portrait');
-
-    $dompdf->render();
-
-    $dompdf->stream(
-        "profit_loss.pdf",
-        ["Attachment" => false]
-    );
-
-    exit();
-}
-
-
-
+        $dompdf = new \Dompdf\Dompdf();
+        
+        $dompdf->loadHtml($html);
+        
+        $dompdf->setPaper('A4', 'portrait');
+        
+        $dompdf->render();
+        
+        $dompdf->stream("profit_loss.pdf", ["Attachment" => false]);
+        
+        exit();
+    }
 
     private function getDiscount($start, $end)
     {

@@ -23,50 +23,6 @@ class ReturnController extends BaseController
         $db = \Config\Database::connect();
 
 
-// $invoice = $this->request->getPost('invoice');
-
-// $builder = $db->query("
-//     SELECT
-//         sd.sales_details_invoice,
-//         sd.product_id,
-//         p.product_name,   -- ✅ added
-
-//         sd.unit_price,
-//         sd.total_buy_price,
-//         sd.total_sale_price,
-//         sd.product_quantity_sold AS sold_qty,
-
-//         IFNULL(r.return_qty,0) AS return_qty,
-//         sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
-
-//     FROM sales_details sd
-
-//     -- ✅ JOIN product table
-//     LEFT JOIN product_inital_stock p 
-//         ON p.product_id = sd.product_id
-
-//     LEFT JOIN (
-//         SELECT
-//             sales_details_invoice,
-//             product_id,
-//             SUM(return_qty) AS return_qty
-//         FROM return_sales_details
-//         GROUP BY sales_details_invoice, product_id
-//     ) r
-//         ON r.sales_details_invoice = sd.sales_details_invoice
-//         AND r.product_id = sd.product_id
-
-//     WHERE sd.sales_details_invoice = ?
-// ", [$invoice]);
-
-// $products = $builder->getResultArray();
-
-// return $this->response->setJSON($products);
-
-
-
-
-
 $invoice = $this->request->getPost('invoice');
 
 $builder = $db->query("
@@ -112,39 +68,6 @@ $products = $builder->getResultArray();
 
 return $this->response->setJSON($products);
 
-
-
-        // $invoice = $this->request->getPost('invoice');
-
-        // $builder = $db->query("
-        //     SELECT
-        //         sd.sales_details_invoice,
-        //         sd.product_id,
-        //         sd.unit_price,
-        //         sd.total_buy_price,
-        //         sd.total_sale_price,
-        //         sd.product_quantity_sold AS sold_qty,
-
-        //         IFNULL(r.return_qty,0) AS return_qty,
-        //         sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty
-        //     FROM sales_details sd
-
-        //     LEFT JOIN (
-        //         SELECT
-        //             sales_details_invoice,
-        //             product_id,
-        //             SUM(return_qty) AS return_qty
-        //         FROM return_sales_details
-        //         GROUP BY sales_details_invoice, product_id
-        //     ) r
-        //     ON r.sales_details_invoice = sd.sales_details_invoice
-        //     AND r.product_id = sd.product_id
-        //     WHERE sd.sales_details_invoice = ?
-        // ", [$invoice]);
-
-        // $products = $builder->getResultArray();
-
-        // return $this->response->setJSON($products);
     }
 
     public function process()
@@ -259,8 +182,12 @@ return $this->response->setJSON($products);
                 'customer_type' => $sale['customer_type'],
                 'return_date' => $sale['sales_date'],
                 'payment_type' => $sale['payment_type'],
-                'discountOnTotalPrice' => $sale['discountOnTotalPrice'],
-                'vatOnTotalPrice' => $sale['vatOnTotalPrice'],
+                'product_discount' => $sale['product_discount'],
+                'product_vat' => $sale['product_vat'],
+                'discount_on_all' => $sale['discount_on_all'],
+                'other_charge_on_all' => $sale['other_charge_on_all'],
+                // 'discountOnTotalPrice' => $sale['discountOnTotalPrice'],
+                // 'vatOnTotalPrice' => $sale['vatOnTotalPrice'],
                 'paid_amount' => $sale['paid_amount'],
                 'due_amount' => $sale['due_amount'],
                 'return_by' => $sale['seller_id'] ?? 0,
@@ -286,8 +213,6 @@ return $this->response->setJSON($products);
                 'unit_price' => $detail['unit_price'],
                 'total_buy_price' => $detail['total_buy_price'],
                 'total_sale_price' => $detail['total_sale_price'],
-                'productwiseVatPercnt' => $detail['productwiseVatPercnt'],
-                'productwiseDiscountPercnt' => $detail['productwiseDiscountPercnt'],
             ]);
 
             // STOCK UPDATE// calculating stock by run time so do not need this code

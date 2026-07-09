@@ -13,8 +13,6 @@ class ReturnSaleDetailsModel extends Model
                                 'return_qty', 
                                 'unit_price', 
                                 'total_buy_price', 
-                                'total_sale_price',
-                                'productwiseVatPercnt',
-                                'productwiseDiscountPercnt'
+                                'total_sale_price'
                                ];
 }

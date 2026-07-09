@@ -98,18 +98,18 @@ echo $this->section('content');
 
                                             <tbody>
                                                 <?php
-                                                foreach ($sales_summery_report_show as $row) {
-                                                    //$date_time = $row['sales_date'];
-                                                    //$new_date = date("Y-m-d H:i:s",strtotime($date_time));
-                                                    $date = $row['sales_date'];
-                                                    $new_date = explode(" ", $date);
-                                                    //echo $new_date[0];
-                                                    $str = explode('-', $new_date[0]);
-                                                    $year = $str[0];
-                                                    $month = $str[1];
-                                                    $day = $str[2];
-                                                    $only_date = $day . "/" . $month . "/" . $year;
-                                                    ?>
+foreach ($sales_summery_report_show as $row) {
+    //$date_time = $row['sales_date'];
+    //$new_date = date("Y-m-d H:i:s",strtotime($date_time));
+    $date = $row['sales_date'];
+    $new_date = explode(" ", $date);
+    //echo $new_date[0];
+    $str = explode('-', $new_date[0]);
+    $year = $str[0];
+    $month = $str[1];
+    $day = $str[2];
+    $only_date = $day . "/" . $month . "/" . $year;
+    ?>
                                                 <tr>
                                                     <td>
                                                         <?php echo $row['sales_invoice']; ?>
@@ -129,8 +129,8 @@ echo $this->section('content');
                                                 </tr>
 
                                                 <?php
-                                                }
-                                                ?>
+}
+?>
 
                                             </tbody>
                                         </table>
@@ -195,10 +195,10 @@ echo $this->section('content');
                                     <th scope="col">Stock</th>
                                     <th scope="col">Quantity</th>
                                     <th scope="col">SalePrice</th>
-                                  
+
                                     <th class="vat-column-header hide">Vat%</th>
                                     <th class="discount-column-header hide">Disc%</th>
-                                       <th scope="col">Avg Pur.Price</th> 
+                                       <th scope="col">Avg Pur.Price</th>
                                     <th scope="col" onkeypress="return accept_digit_only(event)" class="text-right">
                                         Sub-Total
                                     </th>
@@ -228,8 +228,8 @@ echo $this->section('content');
                                     <th class="vat-column-header hide">Vat %</th>
                                     <th class="discount-column-header hide">Disc %</th>
 
-                                    <th>Avg Pur. Price</th>
-                                    <th class="text-end">Sub Total</th>
+                                    <th>Avg Pur.Price</th>
+                                    <th class="text-end">Amount</th>
                                     <th width="60" class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -251,13 +251,13 @@ echo $this->section('content');
                     <select id="product_category" class="form-control select2">
                         <option value="all_category">All Category</option>
                         <?php
-                        foreach ($product_category_show as $row) {
-                            ?>
+foreach ($product_category_show as $row) {
+    ?>
                         <option value="<?php echo $row["product_category_id"] ?>"><?php echo $row["category_name"] ?>
                         </option>
                         <?php
-                        }
-                        ?>
+}
+?>
                     </select>
 
                 </div>
@@ -267,11 +267,11 @@ echo $this->section('content');
                 <div class="col bg-white rounded text-black pt-2">
                     <div class="row all_products">
                         <?php
-                        foreach ($product_show_for_sale as $key => $row) {
-                            ?>
+foreach ($product_show_for_sale as $key => $row) {
+    ?>
                         <?php
-                        if ($row["total_stock"] > '0') {
-                            ?>
+if ($row["total_stock"] > '0') {
+        ?>
 
                         <div class="col-3 mb-3 text-center">
                             <!-- Product Image -->
@@ -294,9 +294,9 @@ echo $this->section('content');
                         </div>
 
                         <?php
-                        }
-                        }
-                        ?>
+}
+}
+?>
                     </div>
                 </div>
             </div>
@@ -320,104 +320,67 @@ echo $this->section('content');
                         Product Wise VAT & Discount
                     </p>
 
-
-                    <!-- <div class="row">
-                        <div class="col-sm-4">Sub Total Cost</div>
-                        <div class="col-sm-8" id="subTotalCost">0.00</div>
-                    </div> -->
-
                     <div class="d-flex justify-content-between">
-    <span><b>Sub Total Cost</b></span>
-    <strong id="subTotalCost">0.00</strong>
-</div>
-<!-- <hr style="border: none; border-top: 1px dashed #000;"> -->
- <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
-
-                    <!-- <div class="row">
-                        <div class="col-sm-4">Discount</div>
-                        <div class="col-sm-8" id="discount_amount">0.00</div>
+                        <span><b>Sub Total Cost</b></span>
+                        <strong id="subTotalCost">0.00</strong>
                     </div>
+                    <!-- <hr style="border: none; border-top: 1px dashed #000;"> -->
+                    <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
 
-                    <div class="row">
-                        <div class="col-sm-4">VAT</div>
-                        <div class="col-sm-8" id="vat_amount">0.00</div>
-                    </div> -->
-
-                    <!-- <div class="row mb-2">
-                        <div class="col-7">
-                            <strong>Product Discount</strong>
-                        </div>
-                        <div class="col-5 text-end">
-                            <strong id="productDiscount">0.00</strong>
-                        </div>
-                    </div> -->
+                  <div class="productVatDiscountSection" style="display:none;">
 
                     <div class="d-flex justify-content-between text-danger">
-    <span>(-) Product Discount</span>
-    <strong id="productDiscount">0.00</strong>
-</div>
+                        <span>(-) Product Discount</span>
+                        <strong id="productDiscount">0.00</strong>
+                    </div>
 
-                    <!-- <div class="row mb-2">
-                        <div class="col-7">
-                            <strong>Product VAT</strong>
-                        </div>
-                        <div class="col-5 text-end">
-                            <strong id="productVat">0.00</strong>
-                        </div>
-                    </div> -->
 
                     <div class="d-flex justify-content-between text-success">
-    <span>(+) Product VAT</span>
-    <strong id="productVat">0.00</strong>
-</div>
- <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
+                        <span>(+) Product VAT</span>
+                        <strong id="productVat">0.00</strong>
+                    </div>
+                    <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
+                    </div>
 
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center">
+                                <span class="charge-label text-danger">(-) Discount on All</span>
 
-<div class="row mb-2">
-    <div class="col-sm-12">
-        <div class="d-flex align-items-center">
-            <span class="charge-label text-danger">(-) Discount on All</span>
+                                <select id="discountType" class="form-select form-select-sm me-2"
+                                    onchange="calculateDiscountOnAll()">
+                                    <option value="%">%</option>
+                                    <option value="flat">Flat</option>
+                                </select>
 
-            <select id="discountType"
-                class="form-select form-select-sm me-2"
-                onchange="calculateDiscountOnAll()">
-                <option value="%">%</option>
-                <option value="flat">Flat</option>
-            </select>
+                                <input type="number" id="discountOnAllValue"
+                                    class="form-control form-control-sm me-2 extra-fields" value="0.00"
+                                    oninput="calculateDiscountOnAll()">
 
-            <input type="number"
-                id="discountOnAllValue"
-                class="form-control form-control-sm me-2 extra-fields"
-                value="0.00"
-                oninput="calculateDiscountOnAll()">
+                                <span id="discountOnAllPrice">0.00</span>
+                            </div>
+                        </div>
+                    </div>
 
-            <span id="discountOnAllPrice">0.00</span>
-        </div>
-    </div>
-</div>
+                    <div class="row mb-2">
+                        <div class="col-sm-12">
+                            <div class="d-flex align-items-center">
+                                <span class="charge-label text-success">(+) Other Charge on All</span>
 
-<div class="row mb-2">
-    <div class="col-sm-12">
-        <div class="d-flex align-items-center">
-            <span class="charge-label text-success">(+) Other Charge on All</span>
+                                <select id="otherCharge" class="form-select form-select-sm me-2"
+                                    onchange="calculateotherCharge()">
+                                    <option value="%">%</option>
+                                    <option value="flat">Flat</option>
+                                </select>
 
-            <select id="otherCharge"
-                class="form-select form-select-sm me-2"
-                onchange="calculateotherCharge()">
-                <option value="%">%</option>
-                <option value="flat">Flat</option>
-            </select>
+                                <input type="number" id="otherChargeValue"
+                                    class="form-control form-control-sm me-2 extra-fields" value="0.00"
+                                    oninput="calculateotherCharge()">
 
-            <input type="number"
-                id="otherChargeValue"
-                class="form-control form-control-sm me-2 extra-fields"
-                value="0.00"
-                oninput="calculateotherCharge()">
-
-            <span id="otherChargeOnTotalPrice">0.00</span>
-        </div>
-    </div>
-</div>
+                                <span id="otherChargeOnTotalPrice">0.00</span>
+                            </div>
+                        </div>
+                    </div>
 
 
                     <!-- <div class="row">
@@ -425,13 +388,13 @@ echo $this->section('content');
                         <div class="col-sm-8" id="netTotalPrice"><strong>0.00</strong></div>
                     </div> -->
 
- <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
+                    <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
 
                     <div class="d-flex justify-content-between">
-    <strong>Net Total</strong>
-    <strong id="netTotalPrice">0.00</strong>
-</div>
- <hr style="border:0; border-top:1px dashed #b5b5b5; margin:6px 0;">
+                        <strong>Net Total</strong>
+                        <strong id="netTotalPrice">0.00</strong>
+                    </div>
+                    <hr style="border:0; border-top:1px dashed #b5b5b5; margin:6px 0;">
 
 
                     <div class="row text-success">
@@ -491,11 +454,11 @@ echo $this->section('content');
                                         <?php foreach ($heldSales as $sale): ?>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
                                             <div>
-                                                <strong><?= $sale['hold_id'] ?></strong><br>
-                                                <small><?= $sale['customer_type'] ?></small>
+                                                <strong><?=$sale['hold_id']?></strong><br>
+                                                <small><?=$sale['customer_type']?></small>
                                             </div>
                                             <a href="javascript:void(0)" class="btn btn-sm btn-primary resume-sale"
-                                                data-id="<?= $sale['id'] ?>">
+                                                data-id="<?=$sale['id']?>">
                                                 Resume
                                             </a>
                                         </li>
@@ -625,6 +588,26 @@ $(document).ready(function() {
 
     $("body").addClass("sidenav-toggled");
     $("#search_product").focus();
+
+
+//################################Product Vat and Discount show/hide##############################//////////////////
+function toggleProductVatDiscount() {
+        if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+            $(".productVatDiscountSection").slideDown(200);
+        } else {
+            $(".productVatDiscountSection").slideUp(200);
+        }
+    }
+
+    // Initial state
+    toggleProductVatDiscount();
+
+    // On checkbox change
+    $("#ProductWiseVatAndDiscount").change(function () {
+        toggleProductVatDiscount();
+    });
+/////////////#########################################################################///////////////////////////////////////////
+ 
 
     /*--- Sound -------------------*/
     const obj = new Audio("<?php echo site_url('public/sounds/success.mp3') ?>");
@@ -784,7 +767,7 @@ $(document).ready(function() {
         var itemsInCartObject = Object.assign({}, itemsInCart);
 
         $.ajax({
-            url: '<?= site_url("pos/hold_sale") ?>',
+            url: '<?=site_url("pos/hold_sale")?>',
             method: 'POST',
             dataType: 'json',
             data: {
@@ -845,7 +828,7 @@ $(document).ready(function() {
         var $clickedButton = $(this);
 
         $.ajax({
-            url: '<?= site_url("pos/resume_sale") ?>/' + saleId,
+            url: '<?=site_url("pos/resume_sale")?>/' + saleId,
             method: 'POST',
             data: {
                 id: saleId
@@ -1087,7 +1070,8 @@ $(document).ready(function() {
         $.each(itemsInCart, function(key, item) {
 
             // var baseTotal = parseInt(item.quantity) * parseFloat(item.sales_price_for_customer);
-            var baseTotal = (parseFloat(item.quantity) || 0) * (parseFloat(item.sales_price_for_customer) || 0);
+            var baseTotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
+                .sales_price_for_customer) || 0);
             var subtotalPrice = baseTotal; // default, no VAT/Discount
 
             // ✅ Only apply VAT/Discount if toggle is ON
@@ -1250,8 +1234,9 @@ $(document).ready(function() {
         ////////////////////////////////////////////////
 
 
-       // var netTotalPrice = (subTotalCost + otherChargeOnTotalPrice) - discountOnAllPrice;
-        var netTotalPrice = subTotalCost - productTotalDiscount + productTotalVat - discountOnAllPrice + otherChargeOnTotalPrice;
+        // var netTotalPrice = (subTotalCost + otherChargeOnTotalPrice) - discountOnAllPrice;
+        var netTotalPrice = subTotalCost - productTotalDiscount + productTotalVat - discountOnAllPrice +
+            otherChargeOnTotalPrice;
 
         ///////////////////////////
         var paid = $("#paid").val();
@@ -1265,9 +1250,9 @@ $(document).ready(function() {
         // $("#netTotalPrice").html(netTotalPrice.toFixed(2));
 
         $("#subTotalCost").html(subTotalCost.toFixed(2));
-$("#productDiscount").html(productTotalDiscount.toFixed(2));
-$("#productVat").html(productTotalVat.toFixed(2));
-$("#netTotalPrice").html(netTotalPrice.toFixed(2));
+        $("#productDiscount").html(productTotalDiscount.toFixed(2));
+        $("#productVat").html(productTotalVat.toFixed(2));
+        $("#netTotalPrice").html(netTotalPrice.toFixed(2));
     }
     /*
     Chek Is the selected Item Exist in List
@@ -1335,7 +1320,7 @@ $("#netTotalPrice").html(netTotalPrice.toFixed(2));
     ///////////////////////////////////////////////////////////////////////////////////
     // function resumeHold(hold_id) {
     //     $.ajax({
-    //         url: '<?= site_url("pos/resume_hold") ?>',
+    //         url: '<?=site_url("pos/resume_hold")?>',
     //         method: 'POST',
     //         dataType: 'json',
     //         data: { hold_id: hold_id },
@@ -1552,25 +1537,26 @@ $("#netTotalPrice").html(netTotalPrice.toFixed(2));
 }
 
 
-.charge-label{
-    width:180px;      /* Same width for both labels */
-    font-weight:600;
-    margin-right:10px;
+.charge-label {
+    width: 180px;
+    /* Same width for both labels */
+    font-weight: 600;
+    margin-right: 10px;
 }
 
-.form-select{
-    width:70px;
+.form-select {
+    width: 70px;
 }
 
-.extra-fields{
-    width:120px;
+.extra-fields {
+    width: 120px;
 }
 
 #discountOnAllPrice,
-#otherChargeOnTotalPrice{
-    width:60px;
-    text-align:right;
-    font-weight:600;
+#otherChargeOnTotalPrice {
+    width: 60px;
+    text-align: right;
+    font-weight: 600;
 }
 
 

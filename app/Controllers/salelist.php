@@ -28,9 +28,9 @@ class salelist extends BaseController
                             s.seller_id,
                             u.user_name AS seller_name,    -- ✅ Added seller name
                             sd.total_sale,
-                            sd.product_wise_vatPercent_SUM,
-                            s.discountOnTotalPrice,
-                            s.vatOnTotalPrice,
+                            s.product_vat,
+                            s.discount_on_all,
+                            s.other_charge_on_all,
                             s.paid_amount,
                             IFNULL(cd.customer_due, 0) AS customer_due,
                             IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
@@ -49,8 +49,7 @@ class salelist extends BaseController
                         JOIN (
                             SELECT 
                                 sales_details_invoice, 
-                                SUM(total_sale_price) AS total_sale, 
-                                SUM(productwiseVatPercnt) AS product_wise_vatPercent_SUM
+                                SUM(total_sale_price) AS total_sale
                             FROM sales_details
                             GROUP BY sales_details_invoice
                         ) sd ON s.sales_invoice = sd.sales_details_invoice

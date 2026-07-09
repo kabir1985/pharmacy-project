@@ -55,13 +55,13 @@ echo $this->section('content');
                                     <?= number_format($row['total_sale'], 2) ?>
                                 </td>
                                 <td>
-                                    <?= number_format($row['product_wise_vatPercent_SUM'], 2) ?>
+                                    <?= number_format($row['product_vat'], 2) ?>
                                 </td>
                                 <td>
-                                    <?= number_format($row['discountOnTotalPrice'], 2) ?>
+                                    <?= number_format($row['discount_on_all'], 2) ?>
                                 </td>
                                 <td>
-                                    <?= number_format($row['vatOnTotalPrice'], 2) ?>
+                                    <?= number_format($row['other_charge_on_all'], 2) ?>
                                 </td>
                                 <td>
                                     <?= number_format($row['total_paid'], 2) ?>
