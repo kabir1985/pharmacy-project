@@ -14,7 +14,7 @@ class ReturnSaleModel extends Model
                                  'payment_type',
                                  'product_discount',
                                  'product_vat',
-                                 'discount_on_all',
+                                // 'discount_on_all',
                                  'other_charge_on_all',
                                  'paid_amount',
                                  'due_amount',

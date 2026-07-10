@@ -40,7 +40,7 @@ echo $this->section('content');
                             <th class="vat-column-header">P.Vat%</th>
                             <th>V.Amt</th>
                             <th>S.Price</th>
-                            <th>Dis%</th>
+                            <th id="discountHeader">Dis%</th>
                             <th class="text-end">SubTotal</th>
                             <th></th>
                         </tr>
@@ -76,9 +76,9 @@ echo $this->section('content');
                             </tr>
                             <tr>
                                 <td colspan="4"></td>
-                                <td class="text-end p-0 m-0">VAT % on Total</td>
+                                <td class="text-end p-0 m-0">VAT Amt on Total</td>
                                 <td class="text-end p-0 m-0">
-                                    <span id="vat_percent_on_total" class="badge bg-light">0.00 </span>%
+                                    <span id="vat_amt_on_total" class="badge bg-light">0.00 </span>Tk.
                                 </td>
                             </tr>
                             <tr class="table-warning">
@@ -239,10 +239,13 @@ echo $this->section('scripts');
         // ================= DRAW TABLE ================= //
         function drawTable() {
 
+        totalPrice = 0;
+let totalVat = 0;
+
             const tbody = $("#cartTableBody");
             tbody.empty();
 
-            totalPrice = 0;
+          //  totalPrice = 0;
             let rows = "";
 
             $.each(itemsInCart, function (key, item) {
@@ -283,6 +286,7 @@ echo $this->section('scripts');
 
                 // 👉 Grand total
                 totalPrice += rowTotal;
+                totalVat += vatAfterDiscount;
 
                 rows += `<tr data-index="${key}">
                 <td>${item.product_name}</td>
@@ -383,10 +387,21 @@ echo $this->section('scripts');
             </tr>`;
             });
 
+            // tbody.html(rows);
+
+            // totalCalculation();
+            // enableButton();
+
+
             tbody.html(rows);
 
-            totalCalculation();
-            enableButton();
+// Update Total VAT Amount
+$("#vat_amt_on_total")
+    .data("value", totalVat)
+    .text(totalVat.toFixed(2));
+
+totalCalculation();
+enableButton();
         }
 
 
@@ -406,7 +421,20 @@ echo $this->section('scripts');
 
             let purchaseTotal = totalQty * unitPrice;
 
-            let discountAmount = purchaseTotal * discountPercent / 100;
+           // let discountAmount = purchaseTotal * discountPercent / 100;
+
+let discountAmount = 0;
+
+if (item.discount_type === "fixed") {
+
+    // Fixed amount per product
+    discountAmount = Number(item.discount_fixed) || 0;
+
+} else {
+
+    discountAmount = purchaseTotal * (Number(item.discount_percent) || 0) / 100;
+
+}
 
             let discountedBase = purchaseTotal - discountAmount;
 
@@ -424,16 +452,39 @@ echo $this->section('scripts');
 
 
 
-        function updateGrandTotal() {
+        // function updateGrandTotal() {
 
-            totalPrice = 0;
+        //     totalPrice = 0;
 
-            itemsInCart.forEach(function (item) {
-                totalPrice += calculateRow(item).rowTotal;
-            });
+        //     itemsInCart.forEach(function (item) {
+        //         totalPrice += calculateRow(item).rowTotal;
+        //     });
 
-            totalCalculation();
-        }
+        //     totalCalculation();
+        // }
+
+
+function updateGrandTotal() {
+
+    totalPrice = 0;
+    let totalVat = 0;
+
+    itemsInCart.forEach(function(item){
+
+        let calc = calculateRow(item);
+
+        totalPrice += calc.rowTotal;
+        totalVat += calc.vatAmount;
+    });
+
+    $("#vat_amt_on_total")
+        .data("value", totalVat)
+        .text(totalVat.toFixed(2));
+
+    totalCalculation();
+}
+
+
 
 
         function updateRow(index, skipTradePrice = false) {
@@ -476,7 +527,7 @@ echo $this->section('scripts');
 
             var subtotal = $("#totalPrice").data("value") || 0;
             var discount = $("#discount_on_total_price").data("value") || 0;
-            var vatPercent = $("#vat_percent_on_total").data("value") || 0;
+            var vatPercent = $("#vat_amt_on_total").data("value") || 0;
 
             var afterDiscount = Math.max(0, subtotal - discount);
             var vatAmount = afterDiscount * (vatPercent / 100);
@@ -601,22 +652,44 @@ echo $this->section('scripts');
         // ================= VAT on total price MODAL ================= //
 
         $("#openVatModal").on("click", function () {
-            var currentVat = $("#vat_percent_on_total").data("value", vatPercent).text(vatPercent.toFixed(
+            var currentVat = $("#vat_amt_on_total").data("value", vatPercent).text(vatPercent.toFixed(
                 2));
-            //parseFloat($("#vat_percent_on_total").text()) || 0;
+            //parseFloat($("#vat_amt_on_total").text()) || 0;
             $("#vatInput").val(currentVat);
         });
 
-        $("#saveVatBtn").on("click", function () {
-            var vatPercent = parseFloat($("#vatInput").val()) || 0;
-            $("#vat_percent_on_total").data("value", vatPercent).text(vatPercent.toFixed(2));
-            recalcNetTotal();
-            $("#vatModal").modal("hide");
-        });
+        // $("#saveVatBtn").on("click", function () {
+        //     var vatPercent = parseFloat($("#vatInput").val()) || 0;
+        //     $("#vat_amt_on_total").data("value", vatPercent).text(vatPercent.toFixed(2));
+        //     recalcNetTotal();
+        //     $("#vatModal").modal("hide");
+        // });
+
+$("#saveVatBtn").on("click", function () {
+
+    let vatPercent = parseFloat($("#vatInput").val()) || 0;
+
+    // Update summary
+    $("#vat_amt_on_total")
+        .data("value", vatPercent)
+        .text(vatPercent.toFixed(2));
+
+    // Apply to every product
+    itemsInCart.forEach(function(item){
+        item.tax_percentage = vatPercent;
+    });
+
+    drawTable();
+
+    $("#vatModal").modal("hide");
+});
+
+
+
 
         $("#vatInput").on("input", function () {
             var vatPercent = parseFloat($(this).val()) || 0;
-            $("#vat_percent_on_total").data("value", vatPercent).text(vatPercent.toFixed(2));
+            $("#vat_amt_on_total").data("value", vatPercent).text(vatPercent.toFixed(2));
             recalcNetTotal();
         });
 
@@ -627,11 +700,21 @@ echo $this->section('scripts');
             var total = parseFloat($("#totalPrice").data("value")) || 0;
             var discountValue = 0;
 
+            // if ($("#fixedType").is(":checked")) {
+
+            //     discountValue = parseFloat($("#fixedAmount").val()) || 0;
+
+            // } 
+            // 
             if ($("#fixedType").is(":checked")) {
 
-                discountValue = parseFloat($("#fixedAmount").val()) || 0;
+    let fixed = parseFloat($("#fixedAmount").val()) || 0;
 
-            } else {
+    // Total discount = fixed amount × number of products
+    discountValue = fixed * itemsInCart.length;
+
+}
+            else {
 
                 var percent = parseFloat($("#percentAmount").val()) || 0;
 
@@ -665,11 +748,44 @@ echo $this->section('scripts');
         });
 
 
-        $("#discountOnTotalModal .btn-primary").on("click", function () {
-            updateLivePreview();
-            $("#discountOnTotalModal").modal("hide");
+        // $("#discountOnTotalModal .btn-primary").on("click", function () {
+        //     updateLivePreview();
+        //     $("#discountOnTotalModal").modal("hide");
+        // });
+
+
+$("#discountOnTotalModal .btn-primary").on("click", function () {
+
+    if ($("#percentType").is(":checked")) {
+
+        let discountPercent = parseFloat($("#percentAmount").val()) || 0;
+
+        $("#discountHeader").text("Dis%");
+
+        itemsInCart.forEach(function(item){
+            item.discount_type = "percent";
+            item.discount_percent = discountPercent;
+            item.discount_fixed = 0;
         });
 
+    } else {
+
+        let fixed = parseFloat($("#fixedAmount").val()) || 0;
+
+        $("#discountHeader").text("Disc");
+
+        itemsInCart.forEach(function(item){
+            item.discount_type = "fixed";
+            item.discount_fixed = fixed;      // 10 Tk for EVERY product
+            item.discount_percent = fixed;    // Display 10 in the Disc column
+        });
+    }
+
+    drawTable();
+    updateLivePreview();
+    $("#discountOnTotalModal").modal("hide");
+
+});
  // ========================= DISCOUNT on total price Modal End =========================== //
 
 
@@ -743,7 +859,7 @@ echo $this->section('scripts');
                 data: {
                     cart_data: JSON.stringify(itemsInCart),
                     discount_on_total_price: $("#discount_on_total_price").text(),
-                    vat_percent_on_total: $("#vat_percent_on_total").text(),
+                    vat_amt_on_total: $("#vat_amt_on_total").text(),
                     supplier_id: supplier_id
                 },
                 success: function () {

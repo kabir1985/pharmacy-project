@@ -3,17 +3,43 @@ echo $this->extend('layout');
 echo $this->section('content');
 ?>
 <style>
-.table th {
-    font-size: 12px;
-}
+    .table th {
+        font-size: 12px;
+    }
 
-#cartTableBody td {
-    vertical-align: middle !important;
-}
+    #cartTableBody td {
+        vertical-align: middle !important;
+    }
 
-#cartTableBody .btn_item_delete {
-    display: inline-block;
-}
+    #cartTableBody .btn_item_delete {
+        display: inline-block;
+    }
+
+    .charge-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+    }
+
+ 
+
+    .charge-type {
+        width: 70px;
+        margin-right: 8px;
+    }
+
+    .charge-input {
+        width: 80px;
+        text-align: center;
+        margin-right: 8px;
+    }
+
+    .charge-total {
+        margin-left: auto;
+        min-width: 70px;
+        text-align: right;
+        font-weight: 600;
+    }
 </style>
 <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery-ui.min.css') ?>" />
 
@@ -98,18 +124,18 @@ echo $this->section('content');
 
                                             <tbody>
                                                 <?php
-foreach ($sales_summery_report_show as $row) {
-    //$date_time = $row['sales_date'];
-    //$new_date = date("Y-m-d H:i:s",strtotime($date_time));
-    $date = $row['sales_date'];
-    $new_date = explode(" ", $date);
-    //echo $new_date[0];
-    $str = explode('-', $new_date[0]);
-    $year = $str[0];
-    $month = $str[1];
-    $day = $str[2];
-    $only_date = $day . "/" . $month . "/" . $year;
-    ?>
+                                                foreach ($sales_summery_report_show as $row) {
+                                                    //$date_time = $row['sales_date'];
+                                                    //$new_date = date("Y-m-d H:i:s",strtotime($date_time));
+                                                    $date = $row['sales_date'];
+                                                    $new_date = explode(" ", $date);
+                                                    //echo $new_date[0];
+                                                    $str = explode('-', $new_date[0]);
+                                                    $year = $str[0];
+                                                    $month = $str[1];
+                                                    $day = $str[2];
+                                                    $only_date = $day . "/" . $month . "/" . $year;
+                                                    ?>
                                                 <tr>
                                                     <td>
                                                         <?php echo $row['sales_invoice']; ?>
@@ -129,8 +155,8 @@ foreach ($sales_summery_report_show as $row) {
                                                 </tr>
 
                                                 <?php
-}
-?>
+                                                }
+                                                ?>
 
                                             </tbody>
                                         </table>
@@ -162,9 +188,9 @@ foreach ($sales_summery_report_show as $row) {
                         <select id="customer_type" class="form-control select2" name="customer_type">
                             <option value="Walk-In-Customer">Walk-In Customer</option>
                             <?php foreach ($customer_show as $row): ?>
-                            <option value="<?php echo htmlspecialchars($row['customer_id']) ?>">
-                                <?php echo htmlspecialchars($row['cus_first_name']) ?>
-                            </option>
+                                <option value="<?php echo htmlspecialchars($row['customer_id']) ?>">
+                                    <?php echo htmlspecialchars($row['cus_first_name']) ?>
+                                </option>
                             <?php endforeach; ?>
                         </select>
                         <span class="input-group-text" style="1px solid #ced4da; !important" data-toggle="modal"
@@ -225,7 +251,7 @@ foreach ($sales_summery_report_show as $row) {
                                     <th>Quantity</th>
                                     <th>Sale Price</th>
 
-                                    <th class="vat-column-header hide">Vat %</th>
+                                    <!-- <th class="vat-column-header hide">Vat %</th> -->
                                     <th class="discount-column-header hide">Disc %</th>
 
                                     <th>Avg Pur.Price</th>
@@ -251,13 +277,13 @@ foreach ($sales_summery_report_show as $row) {
                     <select id="product_category" class="form-control select2">
                         <option value="all_category">All Category</option>
                         <?php
-foreach ($product_category_show as $row) {
-    ?>
-                        <option value="<?php echo $row["product_category_id"] ?>"><?php echo $row["category_name"] ?>
-                        </option>
-                        <?php
-}
-?>
+                        foreach ($product_category_show as $row) {
+                            ?>
+                            <option value="<?php echo $row["product_category_id"] ?>"><?php echo $row["category_name"] ?>
+                            </option>
+                            <?php
+                        }
+                        ?>
                     </select>
 
                 </div>
@@ -267,36 +293,36 @@ foreach ($product_category_show as $row) {
                 <div class="col bg-white rounded text-black pt-2">
                     <div class="row all_products">
                         <?php
-foreach ($product_show_for_sale as $key => $row) {
-    ?>
+                        foreach ($product_show_for_sale as $key => $row) {
+                            ?>
                         <?php
-if ($row["total_stock"] > '0') {
-        ?>
+                        if ($row["total_stock"] > '0') {
+                            ?>
 
                         <div class="col-3 mb-3 text-center">
                             <!-- Product Image -->
-                            <img data-stock="<?php echo $row["total_stock"] ?>"
-                                data-id="<?php echo $row["product_id"] ?>"
-                                src="<?php echo base_url() ?>/public/uploads/<?php echo $row["product_image"] ?>"
-                                class="img-thumbnail cart_item_image shadow-sm" alt="<?php echo $row["product_name"] ?>"
-                                style="width: 100px; height: 80px; object-fit: cover;">
+                                    <img data-stock="<?php echo $row["total_stock"] ?>"
+                                        data-id="<?php echo $row["product_id"] ?>"
+                                        src="<?php echo base_url() ?>/public/uploads/<?php echo $row["product_image"] ?>"
+                                        class="img-thumbnail cart_item_image shadow-sm" alt="<?php echo $row["product_name"] ?>"
+                                        style="width: 100px; height: 80px; object-fit: cover;">
 
-                            <!-- Product Name -->
-                            <p class="mt-2 mb-1 fw-semibold text-dark"
-                                style="font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                <?php echo $row["product_name"] ?>
-                            </p>
+                                    <!-- Product Name -->
+                                    <p class="mt-2 mb-1 fw-semibold text-dark"
+                                        style="font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        <?php echo $row["product_name"] ?>
+                                    </p>
 
-                            <!-- Product Price -->
-                            <p class="text-primary mb-0" style="font-size: 0.7rem; font-weight: 600;">
-                                ৳<?php echo number_format($row["sales_price_for_customer"], 2) ?>
-                            </p>
-                        </div>
+                                    <!-- Product Price -->
+                                    <p class="text-primary mb-0" style="font-size: 0.7rem; font-weight: 600;">
+                                        ৳<?php echo number_format($row["sales_price_for_customer"], 2) ?>
+                                    </p>
+                                </div>
 
-                        <?php
-}
-}
-?>
+                                <?php
+                        }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -317,32 +343,35 @@ if ($row["total_stock"] > '0') {
                             <input type="checkbox" id="ProductWiseVatAndDiscount">
                             <span class="slider round"></span>
                         </label>
-                        Product Wise VAT & Discount
+                        Product Wise <!--VAT &--> Discount
                     </p>
 
                     <div class="d-flex justify-content-between">
                         <span><b>Sub Total Cost</b></span>
                         <strong id="subTotalCost">0.00</strong>
                     </div>
-                    <!-- <hr style="border: none; border-top: 1px dashed #000;"> -->
                     <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
+                    <div class="productVatDiscountSection" style="display:none;">
 
-                  <div class="productVatDiscountSection" style="display:none;">
+                        <div class="charge-row text-danger">
+                            <span class="charge-label">(-)Discount</span>
 
-                    <div class="d-flex justify-content-between text-danger">
-                        <span>(-) Product Discount</span>
-                        <strong id="productDiscount">0.00</strong>
+                            <select id="productDiscountType" class="form-select form-select-sm charge-type"
+                                onchange="calculateDiscountEachProdcut()">
+                                <option value="%">%</option>
+                                <option value="flat">Flat</option>
+                            </select>
+
+                            <input type="text" id="discount_apply" style="mx-size:70px;" class="form-control form-control-sm charge-input">
+
+                            <span id="productDiscount" class="charge-total">0.00</span>
+                        </div>
+
+                        <hr style="border:0;border-top:1px dashed #b5b5b5;margin:4px 0;">
+
                     </div>
 
-
-                    <div class="d-flex justify-content-between text-success">
-                        <span>(+) Product VAT</span>
-                        <strong id="productVat">0.00</strong>
-                    </div>
-                    <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
-                    </div>
-
-                    <div class="row mb-2">
+                    <!-- <div class="row mb-2">
                         <div class="col-sm-12">
                             <div class="d-flex align-items-center">
                                 <span class="charge-label text-danger">(-) Discount on All</span>
@@ -360,33 +389,26 @@ if ($row["total_stock"] > '0') {
                                 <span id="discountOnAllPrice">0.00</span>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-sm-12">
-                            <div class="d-flex align-items-center">
-                                <span class="charge-label text-success">(+) Other Charge on All</span>
-
-                                <select id="otherCharge" class="form-select form-select-sm me-2"
-                                    onchange="calculateotherCharge()">
-                                    <option value="%">%</option>
-                                    <option value="flat">Flat</option>
-                                </select>
-
-                                <input type="number" id="otherChargeValue"
-                                    class="form-control form-control-sm me-2 extra-fields" value="0.00"
-                                    oninput="calculateotherCharge()">
-
-                                <span id="otherChargeOnTotalPrice">0.00</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!-- <div class="row">
-                        <div class="col-sm-4">Net Total</div>
-                        <div class="col-sm-8" id="netTotalPrice"><strong>0.00</strong></div>
                     </div> -->
+
+                    <div class="charge-row text-success">
+
+                        <span class="charge-label">(+) Other Charge</span>
+
+                        <select id="otherCharge" class="form-select form-select-sm charge-type"
+                            onchange="calculateotherCharge()">
+                            <option value="%">%</option>
+                            <option value="flat">Flat</option>
+                        </select>
+
+                        <input type="number" id="otherChargeValue"
+                            class="form-control form-control-sm charge-input extra-fields" style="mx-size:70px;" value="0.00"
+                            oninput="calculateotherCharge()">
+
+                        <span id="otherChargeOnTotalPrice" class="charge-total">0.00</span>
+
+                    </div>
+
 
                     <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
 
@@ -436,9 +458,7 @@ if ($row["total_stock"] > '0') {
                                 </button>
                             </div>
                         </div>
-
                     </div>
-
 
                     <div class="row">
                         <div class="col">
@@ -450,23 +470,23 @@ if ($row["total_stock"] > '0') {
 
                                 <div class="card-body" style="max-height: 200px; overflow-y:auto;">
                                     <?php if (!empty($heldSales)): ?>
-                                    <ul class="list-group held-sale-list" id="heldSaleSection">
-                                        <?php foreach ($heldSales as $sale): ?>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <div>
-                                                <strong><?=$sale['hold_id']?></strong><br>
-                                                <small><?=$sale['customer_type']?></small>
-                                            </div>
-                                            <a href="javascript:void(0)" class="btn btn-sm btn-primary resume-sale"
-                                                data-id="<?=$sale['id']?>">
-                                                Resume
-                                            </a>
-                                        </li>
-                                        <?php endforeach; ?>
-                                    </ul>
+                                        <ul class="list-group held-sale-list" id="heldSaleSection">
+                                            <?php foreach ($heldSales as $sale): ?>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <strong><?= $sale['hold_id'] ?></strong><br>
+                                                        <small><?= $sale['customer_type'] ?></small>
+                                                    </div>
+                                                    <a href="javascript:void(0)" class="btn btn-sm btn-primary resume-sale"
+                                                        data-id="<?= $sale['id'] ?>">
+                                                        Resume
+                                                    </a>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
                                     <?php else: ?>
-                                    <ul class="list-group held-sale-list" id="heldSaleSection"></ul>
-                                    <p class="text-muted">No held sales found</p>
+                                        <ul class="list-group held-sale-list" id="heldSaleSection"></ul>
+                                        <p class="text-muted">No held sales found</p>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -579,220 +599,219 @@ echo $this->section('scripts');
 
 
 <script type='text/javascript'>
-$('#sampleTable').DataTable();
-var productsList = <?php echo json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
+    $('#sampleTable').DataTable();
+    var productsList = <?php echo json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
 
-//document.write(productsList);
+    //document.write(productsList);
 
-$(document).ready(function() {
+    $(document).ready(function () {
 
-    $("body").addClass("sidenav-toggled");
-    $("#search_product").focus();
+        $("body").addClass("sidenav-toggled");
+        $("#search_product").focus();
 
 
-//################################Product Vat and Discount show/hide##############################//////////////////
-function toggleProductVatDiscount() {
-        if ($("#ProductWiseVatAndDiscount").is(":checked")) {
-            $(".productVatDiscountSection").slideDown(200);
-        } else {
-            $(".productVatDiscountSection").slideUp(200);
+        //################################Product Vat and Discount show/hide##############################//////////////////
+        function toggleProductVatDiscount() {
+            if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+                $(".productVatDiscountSection").slideDown(200);
+            } else {
+                $(".productVatDiscountSection").slideUp(200);
+            }
         }
-    }
 
-    // Initial state
-    toggleProductVatDiscount();
-
-    // On checkbox change
-    $("#ProductWiseVatAndDiscount").change(function () {
+        // Initial state
         toggleProductVatDiscount();
-    });
-/////////////#########################################################################///////////////////////////////////////////
- 
 
-    /*--- Sound -------------------*/
-    const obj = new Audio("<?php echo site_url('public/sounds/success.mp3') ?>");
-    const obj_warning = new Audio("<?php echo site_url('public/sounds/warning.mp3') ?>");
-
-    obj.volume = 1.0;
-
-    /*--- Product Search -------------------*/
-    $("#search_product").autocomplete({
-        source: function(request, response) {
-
-            $.ajax({
-                url: "<?php echo site_url('pos/product_call') ?>",
-                dataType: "json",
-                data: {
-                    term: request.term
-                },
-                success: function(data) {
-                    response(data);
-                },
-                error: function() {
-                    response([]);
-                }
-            });
-
-        },
-        minLength: 1,
-        autoFocus: true,
-        delay: 150,
-
-        select: function(event, ui) {
-
-            productAddToCart(ui.item.id, ui.item.total_stock);
-
-            obj.play();
-
-            $(this).val("");
-
-            return false;
-        }
-    });
-    var itemsInCart = [];
-    var subTotalCost = 0;
-
-    $("#productSale").on("click", function() {
-
-        var discountOnAllPrice = $("#discountOnAllPrice").text();
-        var otherChargeOnTotalPrice = $("#otherChargeOnTotalPrice").text();
-        //alert(vatOnTotalPrice);
-
-        var customer_type = $("#customer_type").val();
-        var paid = $("#paid").val();
-        var due = $("#due").val();
-
-        if (customer_type == 'Walk-In-Customer' && due != 0) {
-            alert("Due is not Allow for Walk-In Customer");
-            $("#due").focus();
-            return;
-        }
-
-        if (itemsInCart.length == 0) {
-            alert("Please Add Product To Sale")
-            //swal("Please Add Product To Sale");
-            $("#search_product").focus();
-            return;
-        }
-        if (due == "") {
-            alert("Due is Empty")
-            $("#paid").focus();
-            return;
-        }
-
-        //var itemsInCartObject = Object.assign({}, itemsInCart);
-        //console.log(itemsInCartObject);
-
-        var itemsInCartObject = JSON.parse(JSON.stringify(itemsInCart)); // deep copy
-
-        $.each(itemsInCartObject, function(key, item) {
-            item.discount_on_each_product = parseFloat(item.discount_percent || 0);
-            item.vat = parseFloat(item.vat_input || 0);
-            // if (item.hold_id) {
-            // hold_id = item.hold_id; // send hold_id if exists
-            //}
+        // On checkbox change
+        $("#ProductWiseVatAndDiscount").change(function () {
+            toggleProductVatDiscount();
         });
-
-        var hold_id = itemsInCartObject[0].hold_id || null; // take from first product if exists
-
-        var base_url = "<?php echo rtrim(base_url(), '/') ?>";
-
-        var sales_process_url = "<?php echo site_url('pos/sale') ?>";
-        $.ajax({
-            url: sales_process_url,
-            method: 'POST',
-            dataType: "json",
-            data: {
-                cart_data: itemsInCartObject,
-                discountOnAllPrice: parseFloat(discountOnAllPrice) || 0,
-                otherChargeOnTotalPrice: parseFloat(otherChargeOnTotalPrice) || 0,
-                customer_type: customer_type,
-                due: parseFloat(due) || 0,
-                paid: parseFloat(paid) || 0,
-                hold_id: hold_id // ✅ send hold_id
-
-            },
-            success: function(data) {
-                //console.log('output is:'+data);
-                // alert(data);
-
-                if (data.sales_id && data.sales_id > 0) {
-                    const url = base_url + "/invoice/" + data.sales_id;
-                    window.open(url, "_blank", "noopener,noreferrer");
-                }
+        /////////////#########################################################################///////////////////////////////////////////
 
 
-                // location.reload();
+        /*--- Sound -------------------*/
+        const obj = new Audio("<?php echo site_url('public/sounds/success.mp3') ?>");
+        const obj_warning = new Audio("<?php echo site_url('public/sounds/warning.mp3') ?>");
 
-                // var index = $(this).data("index");
-                // itemsInCart.splice(index);
-                itemsInCart = [];
-                drawTable();
+        obj.volume = 1.0;
 
-                $('#discountOnAllPrice').text('');
-                $('#otherChargeOnTotalPrice').text('');
-                $('#paid').val('');
-                $('#due').val('');
+        /*--- Product Search -------------------*/
+        $("#search_product").autocomplete({
+            source: function (request, response) {
 
-                // --- Remove held sale from list dynamically ---
-                $(".resume-sale").each(function() {
-                    if ($(this).data('id') == itemsInCartObject[0].hold_id) {
-                        $(this).closest('li').remove();
+                $.ajax({
+                    url: "<?php echo site_url('pos/product_call') ?>",
+                    dataType: "json",
+                    data: {
+                        term: request.term
+                    },
+                    success: function (data) {
+                        response(data);
+                    },
+                    error: function () {
+                        response([]);
                     }
                 });
 
-                location.reload(); // optional
             },
-            error: function() {
-                alert('error');
+            minLength: 1,
+            autoFocus: true,
+            delay: 150,
+
+            select: function (event, ui) {
+
+                productAddToCart(ui.item.id, ui.item.total_stock);
+
+                obj.play();
+
+                $(this).val("");
+
+                return false;
             }
         });
+        var itemsInCart = [];
+        var subTotalCost = 0;
 
-    });
+        $("#productSale").on("click", function () {
+
+           // var discountOnAllPrice = $("#discountOnAllPrice").text();
+            var otherChargeOnTotalPrice = $("#otherChargeOnTotalPrice").text();
+            //alert(vatOnTotalPrice);
+
+            var customer_type = $("#customer_type").val();
+            var paid = $("#paid").val();
+            var due = $("#due").val();
+
+            if (customer_type == 'Walk-In-Customer' && due != 0) {
+                alert("Due is not Allow for Walk-In Customer");
+                $("#due").focus();
+                return;
+            }
+
+            if (itemsInCart.length == 0) {
+                alert("Please Add Product To Sale")
+                //swal("Please Add Product To Sale");
+                $("#search_product").focus();
+                return;
+            }
+            if (due == "") {
+                alert("Due is Empty")
+                $("#paid").focus();
+                return;
+            }
+
+            //var itemsInCartObject = Object.assign({}, itemsInCart);
+            //console.log(itemsInCartObject);
+
+            var itemsInCartObject = JSON.parse(JSON.stringify(itemsInCart)); // deep copy
+
+            $.each(itemsInCartObject, function (key, item) {
+                item.discount_on_each_product = parseFloat(item.discount_percent || 0);
+                 item.discount_type = item.discount_type || $("#productDiscountType").val();
+                item.vat = parseFloat(item.vat_input || 0);
+
+            });
+
+            var hold_id = itemsInCartObject[0].hold_id || null; // take from first product if exists
+
+            var base_url = "<?php echo rtrim(base_url(), '/') ?>";
+
+            var sales_process_url = "<?php echo site_url('pos/sale') ?>";
+            $.ajax({
+                url: sales_process_url,
+                method: 'POST',
+                dataType: "json",
+                data: {
+                    cart_data: itemsInCartObject,
+                   // discountOnAllPrice: parseFloat(discountOnAllPrice) || 0,
+                    otherChargeOnTotalPrice: parseFloat(otherChargeOnTotalPrice) || 0,
+                    customer_type: customer_type,
+                    due: parseFloat(due) || 0,
+                    paid: parseFloat(paid) || 0,
+                    hold_id: hold_id // ✅ send hold_id
+
+                },
+                success: function (data) {
+                    //console.log('output is:'+data);
+                    // alert(data);
+
+                    if (data.sales_id && data.sales_id > 0) {
+                        const url = base_url + "/invoice/" + data.sales_id;
+                        window.open(url, "_blank", "noopener,noreferrer");
+                    }
 
 
-    /////////////////////////////////////Sale HOLD Section//////////////////////////////////////////////////////////////
+                    // location.reload();
 
-    $('#holdSale').on('click', function() {
-        if (itemsInCart.length === 0) {
-            alert('Cart is empty. Add products first!');
-            return;
-        }
-
-        // Define these inside the function
-        var discountOnAllPrice = parseFloat($("#discountOnAllPrice").text()) || 0;
-        var otherChargeOnTotalPrice = parseFloat($("#otherChargeOnTotalPrice").text()) || 0;
-        var customer_type = $("#customer_type").val();
-
-        var itemsInCartObject = Object.assign({}, itemsInCart);
-
-        $.ajax({
-            url: '<?=site_url("pos/hold_sale")?>',
-            method: 'POST',
-            dataType: 'json',
-            data: {
-                cart_data: itemsInCartObject,
-                discountOnAllPrice: discountOnAllPrice,
-                otherChargeOnTotalPrice: otherChargeOnTotalPrice,
-                customer_type: customer_type
-            },
-            success: function(response) {
-                if (response.status === 'success') {
-                    alert('Sale has been put on hold!');
-
-                    // clear current cart
+                    // var index = $(this).data("index");
+                    // itemsInCart.splice(index);
                     itemsInCart = [];
                     drawTable();
 
-                    // ---------------- FIX: ensure resume list exists ----------------
-                    if ($(".held-sale-list").length === 0) {
-                        $("#heldSaleSection").html(`
+                   // $('#discountOnAllPrice').text('');
+                    $('#otherChargeOnTotalPrice').text('');
+                    $('#paid').val('');
+                    $('#due').val('');
+
+                    // --- Remove held sale from list dynamically ---
+                    $(".resume-sale").each(function () {
+                        if ($(this).data('id') == itemsInCartObject[0].hold_id) {
+                            $(this).closest('li').remove();
+                        }
+                    });
+
+                    location.reload(); // optional
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+
+        });
+
+
+        /////////////////////////////////////Sale HOLD Section//////////////////////////////////////////////////////////////
+
+        $('#holdSale').on('click', function () {
+            if (itemsInCart.length === 0) {
+                alert('Cart is empty. Add products first!');
+                return;
+            }
+
+            // Define these inside the function
+           // var discountOnAllPrice = parseFloat($("#discountOnAllPrice").text()) || 0;
+            var otherChargeOnTotalPrice = parseFloat($("#otherChargeOnTotalPrice").text()) || 0;
+            var customer_type = $("#customer_type").val();
+
+            var itemsInCartObject = Object.assign({}, itemsInCart);
+
+            $.ajax({
+                url: '<?= site_url("pos/hold_sale") ?>',
+                method: 'POST',
+                dataType: 'json',
+                data: {
+                    cart_data: itemsInCartObject,
+                    //discountOnAllPrice: discountOnAllPrice,
+                    otherChargeOnTotalPrice: otherChargeOnTotalPrice,
+                    customer_type: customer_type
+                },
+                success: function (response) {
+                    if (response.status === 'success') {
+                        alert('Sale has been put on hold!');
+
+                        // clear current cart
+                        itemsInCart = [];
+                        drawTable();
+
+                        // ---------------- FIX: ensure resume list exists ----------------
+                        if ($(".held-sale-list").length === 0) {
+                            $("#heldSaleSection").html(`
                 <ul class="list-group held-sale-list"></ul>
             `);
-                    }
+                        }
 
-                    // ---------------- UI UPDATE WITHOUT REFRESH ----------------
-                    let li = `
+                        // ---------------- UI UPDATE WITHOUT REFRESH ----------------
+                        let li = `
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div>
                                     <strong>${response.hold_id}</strong><br>
@@ -803,293 +822,300 @@ function toggleProductVatDiscount() {
                                 </a>
                             </li>`;
 
-                    $(".held-sale-list").prepend(li);
-                    // ------------------------------------------------------------
+                        $(".held-sale-list").prepend(li);
+                        // ------------------------------------------------------------
 
-                } else {
-                    alert('Failed to hold the sale!');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-                alert('AJAX error: ' + error);
-            }
-        });
-    });
-
-
-
-
-    // // Resume Sale
-
-    $(document).on('click', '.resume-sale', function() {
-        var saleId = $(this).data('id');
-        // alert(saleId);
-        var $clickedButton = $(this);
-
-        $.ajax({
-            url: '<?=site_url("pos/resume_sale")?>/' + saleId,
-            method: 'POST',
-            data: {
-                id: saleId
-            },
-            dataType: 'json',
-            success: function(res) {
-                if (res.status === 'success') {
-                    itemsInCart = res.cart_data || [];
-                    // ✅ ADD THIS — attach hold_id to cart
-                    $.each(itemsInCart, function(i, item) {
-                        item.hold_id = saleId;
-                    });
-
-                    discountOnAllPrice = parseFloat(res.discountOnAllPrice) || 0;
-                    otherChargeOnTotalPrice = parseFloat(res.otherChargeOnTotalPrice) || 0;
-                    customer_type = res.customer_type || 'Walk-In-Customer';
-
-                    drawTable();
-                    $("#discountOnAllValue").val(discountOnAllPrice);
-                    $("#otherChargeValue").val(otherChargeOnTotalPrice);
-                    calculateDiscountOnAll();
-                    calculateotherCharge();
-                    $("#customer_type").val(customer_type).trigger('change');
-
-                    // ✅ Remove the resumed sale from Held Sales list immediately
-                    $clickedButton.closest('li').remove();
-
-                    alert("Sale resumed successfully!");
-                } else {
-                    alert(res.message);
-                }
-            }
-        });
-    });
-
-
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-    //Product show Category-wise
-    $("#product_category").change(function() {
-        var product_category = $(this).val();
-
-        var product_show_url = "<?php echo site_url('pos/products') ?>";
-        $.ajax({
-            url: product_show_url,
-            method: 'POST',
-            data: "product_category=" + product_category,
-            success: function(data) {
-                $(".all_products").html(data);
-            },
-            error: function() {
-                alert('error');
-            }
-        });
-
-    });
-
-
-    $(".extra-fields").on("input", function() {
-        totalCalculation();
-    });
-
-    $('body').on("input", ".product_quantity_change", function() {
-
-        let index = $(this).data("id");
-        let qty = parseFloat($(this).val()) || 0;
-        let stock = parseFloat($(this).data("current_stock"));
-
-        if (qty <= 0) {
-            itemsInCart.splice(index, 1);
-            drawTable(); // Only when deleting a row
-            return;
-        }
-
-        if (qty > stock) {
-            qty = stock;
-            $(this).val(stock);
-            obj_warning.play();
-            alert("Your Stock is Exceeded!");
-        }
-
-        itemsInCart[index].quantity = qty;
-
-        updateRow(index); // Smooth update only
-    });
-
-    /* Product Delete Strat */
-    $('body').on("click", ".btn_item_delete", function() {
-        if (confirm("Really Want to Delete ?")) {
-            var index = $(this).data("index");
-            itemsInCart.splice(index, 1);
-            drawTable();
-            obj_warning.play();
-        }
-    });
-    /* Product Delete End */
-
-
-    // VAT and Discount toggle handler
-    $("#ProductWiseVatAndDiscount").on('change', function() {
-        var enabled = $(this).is(":checked");
-        toggleVatAndDiscount(enabled);
-    });
-
-
-    /* Image e click kore product add kora strat */
-    $('body').on("click", ".cart_item_image", function() {
-        var product_id = $(this).data("id");
-        var stock = Number.parseInt($(this).data('stock'));
-        if (stock <= 0) {
-            obj_warning.play();
-            alert("Stock not Available for Sale");
-            $(this).val("");
-            return false;
-        } else {
-            productAddToCart(product_id, stock);
-            obj.play();
-        }
-    });
-    /* Image e click kore product add kora End */
-    /*
-    Cart Initialize the cart
-    */
-    function productAddToCart(product_id, stock) {
-        $.each(productsList, function(key, value) {
-            if (value.product_id == product_id) {
-                var response = itemExist(product_id);
-                if (response.inCart) {
-                    if ((itemsInCart[response.productIndex].quantity + 1) <= stock) {
-                        itemsInCart[response.productIndex].quantity = itemsInCart[response.productIndex]
-                            .quantity + 1;
                     } else {
-                        obj_warning.play();
-                        alert("Your Stock is Exceeded ----------------!");
+                        alert('Failed to hold the sale!');
                     }
-                } else {
-                    value.quantity = 1;
-                    itemsInCart.push(value);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                    alert('AJAX error: ' + error);
                 }
+            });
+        });
+
+
+
+
+        // // Resume Sale
+
+        $(document).on('click', '.resume-sale', function () {
+            var saleId = $(this).data('id');
+            // alert(saleId);
+            var $clickedButton = $(this);
+
+            $.ajax({
+                url: '<?= site_url("pos/resume_sale") ?>/' + saleId,
+                method: 'POST',
+                data: {
+                    id: saleId
+                },
+                dataType: 'json',
+                success: function (res) {
+                    if (res.status === 'success') {
+                        itemsInCart = res.cart_data || [];
+                        // ✅ ADD THIS — attach hold_id to cart
+                        $.each(itemsInCart, function (i, item) {
+                            item.hold_id = saleId;
+                        });
+
+                       // discountOnAllPrice = parseFloat(res.discountOnAllPrice) || 0;
+                        otherChargeOnTotalPrice = parseFloat(res.otherChargeOnTotalPrice) || 0;
+                        customer_type = res.customer_type || 'Walk-In-Customer';
+
+                        drawTable();
+                        //$("#discountOnAllValue").val(discountOnAllPrice);
+                        $("#otherChargeValue").val(otherChargeOnTotalPrice);
+                        // calculateDiscountOnAll();
+                        calculateotherCharge();
+                        $("#customer_type").val(customer_type).trigger('change');
+
+                        // ✅ Remove the resumed sale from Held Sales list immediately
+                        $clickedButton.closest('li').remove();
+
+                        alert("Sale resumed successfully!");
+                    } else {
+                        alert(res.message);
+                    }
+                }
+            });
+        });
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+        //Product show Category-wise
+        $("#product_category").change(function () {
+            var product_category = $(this).val();
+
+            var product_show_url = "<?php echo site_url('pos/products') ?>";
+            $.ajax({
+                url: product_show_url,
+                method: 'POST',
+                data: "product_category=" + product_category,
+                success: function (data) {
+                    $(".all_products").html(data);
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+
+        });
+
+
+        $(".extra-fields").on("input", function () {
+            totalCalculation();
+        });
+
+        $('body').on("input", ".product_quantity_change", function () {
+
+            let index = $(this).data("id");
+            let qty = parseFloat($(this).val()) || 0;
+            let stock = parseFloat($(this).data("current_stock"));
+
+            if (qty <= 0) {
+                itemsInCart.splice(index, 1);
+                drawTable(); // Only when deleting a row
+                return;
+            }
+
+            if (qty > stock) {
+                qty = stock;
+                $(this).val(stock);
+                obj_warning.play();
+                alert("Your Stock is Exceeded!");
+            }
+
+            itemsInCart[index].quantity = qty;
+
+            updateRow(index); // Smooth update only
+        });
+
+        /* Product Delete Strat */
+        $('body').on("click", ".btn_item_delete", function () {
+            if (confirm("Really Want to Delete ?")) {
+                var index = $(this).data("index");
+                itemsInCart.splice(index, 1);
                 drawTable();
+                obj_warning.play();
             }
         });
-    }
+        /* Product Delete End */
 
 
-
-    $(document).on("input", ".sale_price_change", function() {
-
-        let index = $(this).data("id");
-
-        itemsInCart[index].sales_price_for_customer = parseFloat($(this).val()) || 0;
-
-        updateRow(index);
-    });
-
-    $(document).on("input", ".vat_input", function() {
-
-        let index = $(this).closest("tr").find(".btn_item_delete").data("index");
-
-        itemsInCart[index].vat_input = parseFloat($(this).val()) || 0;
-
-        updateRow(index);
-    });
-
-    $(document).on("input", ".discount_percent", function() {
-
-        let index = $(this).closest("tr").find(".btn_item_delete").data("index");
-
-        itemsInCart[index].discount_percent = parseFloat($(this).val()) || 0;
-
-        updateRow(index);
-    });
-
-
-    /////##############################################################
-
-    function updateRow(index) {
-
-        const item = itemsInCart[index];
-        if (!item) return;
-
-        let subtotal =
-            (parseFloat(item.quantity) || 0) *
-            (parseFloat(item.sales_price_for_customer) || 0);
-
-        if ($("#ProductWiseVatAndDiscount").is(":checked")) {
-
-            const vat = parseFloat(item.vat_input) || 0;
-            const discount = parseFloat(item.discount_percent) || 0;
-
-            subtotal += subtotal * vat / 100;
-            subtotal -= subtotal * discount / 100;
-        }
-
-        const $row = $('.product_quantity_change[data-id="' + index + '"]').closest('tr');
-
-        if ($row.length) {
-            $row.find(".subtotal_td").text(subtotal.toFixed(2));
-        }
-
-        updateGrandTotal();
-    }
-
-    function updateGrandTotal() {
-
-        subTotalCost = 0;
-
-        itemsInCart.forEach(function(item) {
-
-            //let subtotal = item.quantity * item.sales_price_for_customer;
-            let subtotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
-                .sales_price_for_customer) || 0);
-
-            // if ($("#ProductWiseVatAndDiscount").is(":checked")) {
-            //     subtotal += subtotal * ((parseFloat(item.vat_input) || 0) / 100);
-            //     subtotal -= subtotal * ((parseFloat(item.discount_percent) || 0) / 100);
-            // }
-
-            subTotalCost += subtotal;
+        // VAT and Discount toggle handler
+        $("#ProductWiseVatAndDiscount").on('change', function () {
+            var enabled = $(this).is(":checked");
+            toggleVatAndDiscount(enabled);
         });
 
-        totalCalculation();
-    }
-    /////###############################################################
+
+        /* Image e click kore product add kora strat */
+        $('body').on("click", ".cart_item_image", function () {
+            var product_id = $(this).data("id");
+            var stock = Number.parseInt($(this).data('stock'));
+            if (stock <= 0) {
+                obj_warning.play();
+                alert("Stock not Available for Sale");
+                $(this).val("");
+                return false;
+            } else {
+                productAddToCart(product_id, stock);
+                obj.play();
+            }
+        });
+        /* Image e click kore product add kora End */
+        /*
+        Cart Initialize the cart
+        */
+        function productAddToCart(product_id, stock) {
+            $.each(productsList, function (key, value) {
+                if (value.product_id == product_id) {
+                    var response = itemExist(product_id);
+                    if (response.inCart) {
+                        if ((itemsInCart[response.productIndex].quantity + 1) <= stock) {
+                            itemsInCart[response.productIndex].quantity = itemsInCart[response.productIndex]
+                                .quantity + 1;
+                        } else {
+                            obj_warning.play();
+                            alert("Your Stock is Exceeded ----------------!");
+                        }
+                    } else {
+                        value.quantity = 1;
+                        itemsInCart.push(value);
+                    }
+                    drawTable();
+                }
+            });
+        }
 
 
-    /*
-    Draw / Redraw Table
-    */
-    function drawTable() {
-        $("#cartTableBody").empty();
-        $("#subTotalCost").html("0.00");
-        subTotalCost = 0;
-        $.each(itemsInCart, function(key, item) {
 
-            // var baseTotal = parseInt(item.quantity) * parseFloat(item.sales_price_for_customer);
-            var baseTotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
-                .sales_price_for_customer) || 0);
-            var subtotalPrice = baseTotal; // default, no VAT/Discount
+        $(document).on("input", ".sale_price_change", function () {
 
-            // ✅ Only apply VAT/Discount if toggle is ON
-            // if ($("#ProductWiseVatAndDiscount").is(":checked")) {
-            //     var vatPercent = parseFloat(item.vat_input) || 0;
-            //     var discountPercent = parseFloat(item.discount_percent) || 0;
+            let index = $(this).data("id");
 
-            //     var vatAmount = baseTotal * (vatPercent / 100);
-            //     var discountAmount = baseTotal * (discountPercent / 100);
+            itemsInCart[index].sales_price_for_customer = parseFloat($(this).val()) || 0;
 
-            //     subtotalPrice = (baseTotal + vatAmount) - discountAmount;
-            // }
+            updateRow(index);
+        });
 
-            // Add to total
-            subTotalCost += subtotalPrice;
+        $(document).on("input", ".vat_input", function () {
 
-            // Append Row
-            $("#cartTableBody").append(`
+            let index = $(this).closest("tr").find(".btn_item_delete").data("index");
+
+            itemsInCart[index].vat_input = parseFloat($(this).val()) || 0;
+
+            updateRow(index);
+        });
+
+        $(document).on("input", ".discount_percent", function () {
+
+            let index = $(this).closest("tr").find(".btn_item_delete").data("index");
+
+            itemsInCart[index].discount_percent = parseFloat($(this).val()) || 0;
+
+            updateRow(index);
+        });
+
+
+        /////##############################################################
+
+        function updateRow(index) {
+
+            const item = itemsInCart[index];
+            if (!item) return;
+
+            let subtotal =
+                (parseFloat(item.quantity) || 0) *
+                (parseFloat(item.sales_price_for_customer) || 0);
+
+            if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+
+                const vat = parseFloat(item.vat_input) || 0;
+                const discount = parseFloat(item.discount_percent) || 0;
+
+                subtotal += subtotal * vat / 100;
+                //subtotal -= subtotal * discount / 100;
+
+                if (item.discount_type === "%") {
+                    subtotal -= subtotal * discount / 100;
+                } else {
+                    subtotal -= discount;
+                }
+
+            }
+
+            const $row = $('.product_quantity_change[data-id="' + index + '"]').closest('tr');
+
+            if ($row.length) {
+                $row.find(".subtotal_td").text(subtotal.toFixed(2));
+            }
+
+            updateGrandTotal();
+        }
+
+        function updateGrandTotal() {
+
+            subTotalCost = 0;
+
+            itemsInCart.forEach(function (item) {
+
+                //let subtotal = item.quantity * item.sales_price_for_customer;
+                let subtotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
+                    .sales_price_for_customer) || 0);
+
+                // if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+                //     subtotal += subtotal * ((parseFloat(item.vat_input) || 0) / 100);
+                //     subtotal -= subtotal * ((parseFloat(item.discount_percent) || 0) / 100);
+                // }
+
+                subTotalCost += subtotal;
+            });
+
+            totalCalculation();
+        }
+        /////###############################################################
+
+
+        /*
+        Draw / Redraw Table
+        */
+        function drawTable() {
+            $("#cartTableBody").empty();
+            $("#subTotalCost").html("0.00");
+            subTotalCost = 0;
+            $.each(itemsInCart, function (key, item) {
+
+                // var baseTotal = parseInt(item.quantity) * parseFloat(item.sales_price_for_customer);
+                var baseTotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
+                    .sales_price_for_customer) || 0);
+                var subtotalPrice = baseTotal; // default, no VAT/Discount
+
+                // ✅ Only apply VAT/Discount if toggle is ON
+                // if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+                //     var vatPercent = parseFloat(item.vat_input) || 0;
+                //     var discountPercent = parseFloat(item.discount_percent) || 0;
+
+                //     var vatAmount = baseTotal * (vatPercent / 100);
+                //     var discountAmount = baseTotal * (discountPercent / 100);
+
+                //     subtotalPrice = (baseTotal + vatAmount) - discountAmount;
+                // }
+
+                // Add to total
+                subTotalCost += subtotalPrice;
+
+                // Append Row
+                $("#cartTableBody").append(`
 <tr>
 
     <!-- Product Name -->
@@ -1124,13 +1150,10 @@ function toggleProductVatDiscount() {
 </td>
 
     <!-- VAT -->
-    <td class="vat-column hide">
-        <input
-            type="number"
-            class="vat_input form-control form-control-sm text-center"
-            data-id="${key}"
-            value="${item.vat_input || 0}">
-    </td>
+    <!--- <td class="vat-column hide">-->
+       <!---  <input-->
+        <!---     type="number"class="vat_input form-control form-control-sm text-center" data-id="${key}" value="${item.vat_input || 0}">-->
+  <!---   </td>-->
 
     <!-- Discount -->
     <td class="discount-column hide">
@@ -1164,130 +1187,179 @@ function toggleProductVatDiscount() {
 </tr>
 `);
 
-        });
-        totalCalculation();
-        // Show/hide VAT and Discount columns and inputs based on toggle state
-        toggleVatAndDiscount($("#ProductWiseVatAndDiscount").is(":checked"));
+            });
+            totalCalculation();
+            // Show/hide VAT and Discount columns and inputs based on toggle state
+            toggleVatAndDiscount($("#ProductWiseVatAndDiscount").is(":checked"));
 
-    }
-
-    // Show or hide VAT and Discount UI elements
-    function toggleVatAndDiscount(show) {
-        if (show) {
-            $("th.vat-column-header, td.vat-column").removeClass('hide');
-            $("th.discount-column-header, td.discount-column").removeClass('hide');
-            $(".vat_input, .discount_percent").prop("disabled", false);
-        } else {
-            $("th.vat-column-header, td.vat-column").addClass('hide');
-            $("th.discount-column-header, td.discount-column").addClass('hide');
-            $(".vat_input, .discount_percent").prop("disabled", true);
-        }
-    }
-
-    /*
-    Calculate Table Total / SUbtotal
-    */
-    function totalCalculation() {
-        var discountOnAllPrice = $("#discountOnAllPrice").text();
-        if (discountOnAllPrice != "") {
-            discountOnAllPrice = parseFloat((Number.isNaN(discountOnAllPrice)) ? 0 : discountOnAllPrice);
-        } else {
-            discountOnAllPrice = 0;
-        }
-        var otherChargeOnTotalPrice = $("#otherChargeOnTotalPrice").text();
-        if (otherChargeOnTotalPrice != "") {
-            otherChargeOnTotalPrice = parseFloat((Number.isNaN(otherChargeOnTotalPrice)) ? 0 :
-                otherChargeOnTotalPrice);
-        } else {
-            otherChargeOnTotalPrice = 0;
         }
 
+        // Show or hide VAT and Discount UI elements
+        function toggleVatAndDiscount(show) {
+            if (show) {
+                $("th.vat-column-header, td.vat-column").removeClass('hide');
+                $("th.discount-column-header, td.discount-column").removeClass('hide');
+                $(".vat_input, .discount_percent").prop("disabled", false);
+            } else {
+                $("th.vat-column-header, td.vat-column").addClass('hide');
+                $("th.discount-column-header, td.discount-column").addClass('hide');
+                $(".vat_input, .discount_percent").prop("disabled", true);
+            }
+        }
 
-        //////////////////////////////////////////////////
-        subTotalCost = 0;
-        var productTotalVat = 0;
-        var productTotalDiscount = 0;
-
-        itemsInCart.forEach(function(item) {
-
-            let qty = parseFloat(item.quantity) || 0;
-            let price = parseFloat(item.sales_price_for_customer) || 0;
-
-            // Basic subtotal (without VAT & Discount)
-            let lineTotal = qty * price;
-
-            subTotalCost += lineTotal;
-
-            if ($("#ProductWiseVatAndDiscount").is(":checked")) {
-
-                let vatPercent = parseFloat(item.vat_input) || 0;
-                let discountPercent = parseFloat(item.discount_percent) || 0;
-
-                let vatAmount = lineTotal * vatPercent / 100;
-                let discountAmount = lineTotal * discountPercent / 100;
-
-                productTotalVat += vatAmount;
-                productTotalDiscount += discountAmount;
+        /*
+        Calculate Table Total / SUbtotal
+        */
+        function totalCalculation() {
+            // var discountOnAllPrice = $("#discountOnAllPrice").text();
+            // if (discountOnAllPrice != "") {
+            //     discountOnAllPrice = parseFloat((Number.isNaN(discountOnAllPrice)) ? 0 : discountOnAllPrice);
+            // } else {
+            //     discountOnAllPrice = 0;
+            // }
+            var otherChargeOnTotalPrice = $("#otherChargeOnTotalPrice").text();
+            if (otherChargeOnTotalPrice != "") {
+                otherChargeOnTotalPrice = parseFloat((Number.isNaN(otherChargeOnTotalPrice)) ? 0 :
+                    otherChargeOnTotalPrice);
+            } else {
+                otherChargeOnTotalPrice = 0;
             }
 
-        });
-        ////////////////////////////////////////////////
+
+            //////////////////////////////////////////////////
+            subTotalCost = 0;
+            var productTotalVat = 0;
+            var productTotalDiscount = 0;
+
+            itemsInCart.forEach(function (item) {
+
+                let qty = parseFloat(item.quantity) || 0;
+                let price = parseFloat(item.sales_price_for_customer) || 0;
+
+                // Basic subtotal (without VAT & Discount)
+                let lineTotal = qty * price;
+
+                subTotalCost += lineTotal;
+
+                if ($("#ProductWiseVatAndDiscount").is(":checked")) {
+
+                    let vatPercent = parseFloat(item.vat_input) || 0;
+                    let vatAmount = lineTotal * vatPercent / 100;
 
 
-        // var netTotalPrice = (subTotalCost + otherChargeOnTotalPrice) - discountOnAllPrice;
-        var netTotalPrice = subTotalCost - productTotalDiscount + productTotalVat - discountOnAllPrice +
-            otherChargeOnTotalPrice;
+                    // let discountPercent = parseFloat(item.discount_percent) || 0;
+                    // let discountAmount = lineTotal * discountPercent / 100;
 
-        ///////////////////////////
-        var paid = $("#paid").val();
-        var due = netTotalPrice - paid;
-        $("#due").val(due.toFixed(2));
-        ////////////////////////////////
-        // $("#subTotalCost").html(subTotalCost.toFixed(2));
-        // $("#productDiscount").html(productTotalDiscount.toFixed(2));
-        // $("#productVat").html(productTotalVat.toFixed(2));
+                    let discount = parseFloat(item.discount_percent) || 0;
+                    let discountAmount = 0;
 
-        // $("#netTotalPrice").html(netTotalPrice.toFixed(2));
+                    if (item.discount_type === "%") {
+                        discountAmount = lineTotal * discount / 100;
+                    } else {
+                        discountAmount = discount;
+                    }
 
-        $("#subTotalCost").html(subTotalCost.toFixed(2));
-        $("#productDiscount").html(productTotalDiscount.toFixed(2));
-        $("#productVat").html(productTotalVat.toFixed(2));
-        $("#netTotalPrice").html(netTotalPrice.toFixed(2));
-    }
-    /*
-    Chek Is the selected Item Exist in List
-    */
-    function itemExist(product_id) {
-        var response = {
-            inCart: false,
-            productIndex: null
-        };
-        $.each(itemsInCart, function(key, item) {
-            if (item.product_id == product_id) {
-                if (!response.inCart) {
-                    response.inCart = true;
-                    response.productIndex = key;
+                    productTotalVat += vatAmount;
+                    productTotalDiscount += discountAmount;
                 }
+
+            });
+            ////////////////////////////////////////////////
+
+
+            // var netTotalPrice = (subTotalCost + otherChargeOnTotalPrice) - discountOnAllPrice;
+            var netTotalPrice = subTotalCost - productTotalDiscount + productTotalVat +
+                otherChargeOnTotalPrice;
+
+            ///////////////////////////
+            var paid = $("#paid").val();
+            var due = netTotalPrice - paid;
+            $("#due").val(due.toFixed(2));
+            ////////////////////////////////
+            // $("#subTotalCost").html(subTotalCost.toFixed(2));
+            // $("#productDiscount").html(productTotalDiscount.toFixed(2));
+            // $("#productVat").html(productTotalVat.toFixed(2));
+
+            // $("#netTotalPrice").html(netTotalPrice.toFixed(2));
+
+            $("#subTotalCost").html(subTotalCost.toFixed(2));
+            $("#productDiscount").html(productTotalDiscount.toFixed(2));
+            $("#productVat").html(productTotalVat.toFixed(2));
+            $("#netTotalPrice").html(netTotalPrice.toFixed(2));
+        }
+        /*
+        Chek Is the selected Item Exist in List
+        */
+        function itemExist(product_id) {
+            var response = {
+                inCart: false,
+                productIndex: null
+            };
+            $.each(itemsInCart, function (key, item) {
+                if (item.product_id == product_id) {
+                    if (!response.inCart) {
+                        response.inCart = true;
+                        response.productIndex = key;
+                    }
+                }
+            });
+            return response;
+        }
+
+
+        //===========================discount apply equally on all product==================================
+        $("#discount_apply, #productDiscountType").on("input change", function () {
+
+            let value = parseFloat($("#discount_apply").val()) || 0;
+            let type = $("#productDiscountType").val();
+
+            if (itemsInCart.length === 0) return;
+
+            itemsInCart.forEach(function (item) {
+
+                item.discount_type = type;
+
+                if (type === "%") {
+                    // Same percentage for all products
+                    item.discount_percent = value;
+                } else {
+                    // Same flat amount for all products
+                    item.discount_percent = value;
+                }
+
+            });
+
+            drawTable();
+
+        });
+
+
+        $("#productDiscountType").on("change", function () {
+            if ($(this).val() == "%") {
+                $(".discount-column-header").text("Disc %");
+            } else {
+                $(".discount-column-header").text("Disc");
             }
         });
-        return response;
-    }
+        //=========================================================================================
 
-    ////////////////////New Customer Add//////////////////////////////
-    var allowSubmit = true;
 
-    //product_group_edit_form
 
-    $('#CustomerModalEntry_Form').submit(function(event) {
-        // stop the form from submitting the normal way and refreshing the page
-        event.preventDefault();
+        ////////////////////New Customer Add//////////////////////////////
+        var allowSubmit = true;
 
-        if (allowSubmit) {
-            allowSubmit = false;
-            //for modal close variable after submit
-            var parentMOdal = $(this).closest('.modal');
-            var postData = new FormData(this);
-            $.ajax({
+        //product_group_edit_form
+
+        $('#CustomerModalEntry_Form').submit(function (event) {
+            // stop the form from submitting the normal way and refreshing the page
+            event.preventDefault();
+
+            if (allowSubmit) {
+                allowSubmit = false;
+                //for modal close variable after submit
+                var parentMOdal = $(this).closest('.modal');
+                var postData = new FormData(this);
+                $.ajax({
                     type: $(this).attr("method"),
                     url: $(this).attr("action"),
                     data: postData,
@@ -1295,101 +1367,101 @@ function toggleProductVatDiscount() {
                     processData: false,
                     contentType: false,
                 })
-                .done(function(data) {
-                    if (data == 1) {
-                        parentMOdal.modal('toggle');
-                        location.reload();
-                    } else if (data == "duplicate") {
-                        alert("Customer already exists with same Phone or Email");
-                    }
+                    .done(function (data) {
+                        if (data == 1) {
+                            parentMOdal.modal('toggle');
+                            location.reload();
+                        } else if (data == "duplicate") {
+                            alert("Customer already exists with same Phone or Email");
+                        }
 
-                });
+                    });
+            }
+
+        });
+
+        //.........................................................................
+
+        // ...............For Date Show.............................
+        $('.datePicker').datepicker({
+            format: "dd/mm/yyyy",
+            autoclose: true,
+            todayHighlight: true
+        });
+        //.................For Date show end........................
+        ///////////////////////////////////////////////////////////////////////////////////
+        // function resumeHold(hold_id) {
+        //     $.ajax({
+        //         url: '<?= site_url("pos/resume_hold") ?>',
+        //         method: 'POST',
+        //         dataType: 'json',
+        //         data: { hold_id: hold_id },
+        //         success: function(response) {
+        //             itemsInCart = response.cart_data;
+        //             discountOnAllPrice = response.discountOnAllPrice;
+        //             vatOnTotalPrice = response.vatOnTotalPrice;
+        //             drawTable();
+        //         }
+        //     });
+        // }
+
+        ///////////////////////////////////////////////////////////////////////////////////
+
+        // function calculateDiscountOnAll() {
+        //     let subTotalCost = parseFloat($("#subTotalCost").text()) || 0;
+        //     let discountType = $("#discountType").val();
+        //     let discountOnAllValue = parseFloat($("#discountOnAllValue").val()) || 0;
+
+        //     let discountPrice = 0;
+
+        //     if (discountType === "%") {
+        //         discountPrice = subTotalCost * (discountOnAllValue / 100);
+        //     } else if (discountType === "flat") {
+        //         discountPrice = discountOnAllValue;
+        //     }
+
+        //     if (discountPrice < 0) discountPrice = 0;
+
+        //     // set value into input box instead of span
+        //     $("#discountOnAllPrice").text(discountPrice.toFixed(2));
+        //     totalCalculation(); // 🔥 update net total immediately
+        // }
+
+        // // Auto update when user types or changes values
+        // $("#subTotalCost, #discountType, #discountOnAllValue").on("input change", calculateDiscountOnAll);
+
+        // // Run once on page load
+        // calculateDiscountOnAll();
+
+
+
+        function calculateotherCharge() {
+            let subTotalCost = parseFloat($("#subTotalCost").text()) || 0;
+            let otherCharge = $("#otherCharge").val();
+            let otherChargeValue = parseFloat($("#otherChargeValue").val()) || 0;
+
+            let totalVat = 0;
+
+            if (otherCharge === "%") {
+                totalVat = subTotalCost * (otherChargeValue / 100);
+            } else if (otherCharge === "flat") {
+                totalVat = otherChargeValue;
+            }
+
+            if (totalVat < 0) totalVat = 0; // prevent negative
+            // set value into input box instead of span
+            $("#otherChargeOnTotalPrice").text(totalVat.toFixed(2));
+            totalCalculation(); // 🔥 update net total immediately
         }
+        // Auto update when values change
+        // $("#discountType, #discountOnAllValue").on("input change", calculateDiscountOnAll);
+        $("#otherCharge, #otherChargeValue").on("input change", calculateotherCharge);
+
+        // Run once on page load
+        // calculateDiscountOnAll();
+        calculateotherCharge();
 
     });
-
-    //.........................................................................
-
-    // ...............For Date Show.............................
-    $('.datePicker').datepicker({
-        format: "dd/mm/yyyy",
-        autoclose: true,
-        todayHighlight: true
-    });
-    //.................For Date show end........................
-    ///////////////////////////////////////////////////////////////////////////////////
-    // function resumeHold(hold_id) {
-    //     $.ajax({
-    //         url: '<?=site_url("pos/resume_hold")?>',
-    //         method: 'POST',
-    //         dataType: 'json',
-    //         data: { hold_id: hold_id },
-    //         success: function(response) {
-    //             itemsInCart = response.cart_data;
-    //             discountOnAllPrice = response.discountOnAllPrice;
-    //             vatOnTotalPrice = response.vatOnTotalPrice;
-    //             drawTable();
-    //         }
-    //     });
-    // }
-
-    ///////////////////////////////////////////////////////////////////////////////////
-
-    function calculateDiscountOnAll() {
-        let subTotalCost = parseFloat($("#subTotalCost").text()) || 0;
-        let discountType = $("#discountType").val();
-        let discountOnAllValue = parseFloat($("#discountOnAllValue").val()) || 0;
-
-        let discountPrice = 0;
-
-        if (discountType === "%") {
-            discountPrice = subTotalCost * (discountOnAllValue / 100);
-        } else if (discountType === "flat") {
-            discountPrice = discountOnAllValue;
-        }
-
-        if (discountPrice < 0) discountPrice = 0;
-
-        // set value into input box instead of span
-        $("#discountOnAllPrice").text(discountPrice.toFixed(2));
-        totalCalculation(); // 🔥 update net total immediately
-    }
-
-    // Auto update when user types or changes values
-    $("#subTotalCost, #discountType, #discountOnAllValue").on("input change", calculateDiscountOnAll);
-
-    // Run once on page load
-    calculateDiscountOnAll();
-
-
-
-    function calculateotherCharge() {
-        let subTotalCost = parseFloat($("#subTotalCost").text()) || 0;
-        let otherCharge = $("#otherCharge").val();
-        let otherChargeValue = parseFloat($("#otherChargeValue").val()) || 0;
-
-        let totalVat = 0;
-
-        if (otherCharge === "%") {
-            totalVat = subTotalCost * (otherChargeValue / 100);
-        } else if (otherCharge === "flat") {
-            totalVat = otherChargeValue;
-        }
-
-        if (totalVat < 0) totalVat = 0; // prevent negative
-        // set value into input box instead of span
-        $("#otherChargeOnTotalPrice").text(totalVat.toFixed(2));
-        totalCalculation(); // 🔥 update net total immediately
-    }
-    // Auto update when values change
-    $("#discountType, #discountOnAllValue").on("input change", calculateDiscountOnAll);
-    $("#otherCharge, #otherChargeValue").on("input change", calculateotherCharge);
-
-    // Run once on page load
-    calculateDiscountOnAll();
-    calculateotherCharge();
-
-});
 </script>
 
 
@@ -1399,315 +1471,313 @@ function toggleProductVatDiscount() {
 
 
 <style>
-/* ==============================
+    /* ==============================
    GLOBAL CLEAN LOOK
 ============================== */
 
 
-/* ==============================
+    /* ==============================
    CARD DESIGN (Right Panel)
 ============================== */
-.card {
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
+    .card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
 
-.card-header {
-    background: #ffffff !important;
-    border-bottom: 1px solid #eee;
-    font-weight: 600;
-}
+    .card-header {
+        background: #ffffff !important;
+        border-bottom: 1px solid #eee;
+        font-weight: 600;
+    }
 
-.card-header h2 {
-    font-size: 18px;
-    margin: 0;
-}
+    .card-header h2 {
+        font-size: 18px;
+        margin: 0;
+    }
 
-/* ==============================
+    /* ==============================
    TABLE CLEAN ALIGNMENT
 ============================== */
-.table {
-    background: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    font-size: 13px;
-}
+    .table {
+        background: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        font-size: 13px;
+    }
 
-.table thead th {
-    text-align: center;
-    vertical-align: middle;
-    font-weight: 600;
-}
+    .table thead th {
+        text-align: center;
+        vertical-align: middle;
+        font-weight: 600;
+    }
 
-.table tbody td {
-    vertical-align: middle !important;
-    text-align: center;
-}
+    .table tbody td {
+        vertical-align: middle !important;
+        text-align: center;
+    }
 
-.table tbody td:last-child {
-    text-align: right;
-    font-weight: 600;
-}
+    .table tbody td:last-child {
+        text-align: right;
+        font-weight: 600;
+    }
 
-.form-control:not(.sale_price_change) {
-    text-align: left;
-}
+    .form-control:not(.sale_price_change) {
+        text-align: left;
+    }
 
-.sale_price_change.form-control {
-    text-align: center !important;
-    width: 80% !important;
-}
+    .sale_price_change.form-control {
+        text-align: center !important;
+        width: 80% !important;
+    }
 
-/* ==============================
+    /* ==============================
    INPUT & SELECT SMOOTH STYLE
 ============================== */
 
-/* ==============================
+    /* ==============================
    SEARCH + CUSTOMER ALIGNMENT
 ============================== */
 
 
-/* ==============================
+    /* ==============================
    PRODUCT GRID CLEAN
 ============================== */
-.all_products {
-    max-height: 450px;
-    overflow-y: auto;
-    padding: 5px;
-}
+    .all_products {
+        max-height: 450px;
+        overflow-y: auto;
+        padding: 5px;
+    }
 
-.all_products .col-3 {
-    transition: 0.2s ease;
-}
+    .all_products .col-3 {
+        transition: 0.2s ease;
+    }
 
-.all_products .col-3:hover {
-    transform: translateY(-3px);
-}
+    .all_products .col-3:hover {
+        transform: translateY(-3px);
+    }
 
-.cart_item_image {
-    border-radius: 8px;
-    border: 1px solid #eee;
-    transition: 0.2s ease;
-}
+    .cart_item_image {
+        border-radius: 8px;
+        border: 1px solid #eee;
+        transition: 0.2s ease;
+    }
 
-.cart_item_image:hover {
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-}
+    .cart_item_image:hover {
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    }
 
-/* ==============================
+    /* ==============================
    BILLING ALIGNMENT FIX
 ============================== */
-.card-body .row {
-    margin-bottom: 8px;
-}
+    .card-body .row {
+        margin-bottom: 8px;
+    }
 
-.card-body .col-sm-4 {
-    font-weight: 600;
-}
+    .card-body .col-sm-4 {
+        font-weight: 600;
+    }
 
-#subTotalCost,
-#netTotalPrice {
-    text-align: right;
-    font-weight: 600;
-    font-size: 15px;
-}
+    #subTotalCost,
+    #netTotalPrice {
+        text-align: right;
+        font-weight: 600;
+        font-size: 15px;
+    }
 
-#paid,
-#due {
-    width: 100% !important;
-    text-align: right;
-}
+    #paid,
+    #due {
+        width: 100% !important;
+        text-align: right;
+    }
 
-/* ==============================
+    /* ==============================
    DISCOUNT & VAT ALIGNMENT
 ============================== */
-.d-flex.align-items-center {
-    gap: 8px;
-}
+    .d-flex.align-items-center {
+        gap: 8px;
+    }
 
-#discountType,
-#otherCharge {
-    width: 65px;
-}
+    #otherCharge {
+        width: 65px;
+    }
 
-#discountOnAllValue,
-#otherChargeValue {
-    width: 80%;
-}
+    #otherChargeValue {
+        width: 80%;
+    }
 
 
-.charge-label {
-    width: 180px;
-    /* Same width for both labels */
-    font-weight: 600;
-    margin-right: 10px;
-}
+    .charge-label {
+        width: 470px;
+        /* Same width for both labels */
+        font-weight: 600;
+        margin-right: 10px;
+    }
 
-.form-select {
-    width: 70px;
-}
+    .form-select {
+        width: 70px;
+    }
 
-.extra-fields {
-    width: 120px;
-}
+    .extra-fields {
+        width: 120px;
+    }
 
-#discountOnAllPrice,
-#otherChargeOnTotalPrice {
-    width: 60px;
-    text-align: right;
-    font-weight: 600;
-}
+    /* #discountOnAllPrice, */
+    #otherChargeOnTotalPrice {
+        width: 60px;
+        text-align: right;
+        font-weight: 600;
+    }
 
 
-/* ==============================
+    /* ==============================
    BUTTON STYLE CLEAN
 ============================== */
-.btn {
-    border-radius: 8px;
-    font-weight: 600;
-    transition: 0.2s ease;
-}
+    .btn {
+        border-radius: 8px;
+        font-weight: 600;
+        transition: 0.2s ease;
+    }
 
-.btn-info {
-    background: #17a2b8;
-    border: none;
-}
+    .btn-info {
+        background: #17a2b8;
+        border: none;
+    }
 
-.btn-info:hover {
-    background: #138496;
-}
+    .btn-info:hover {
+        background: #138496;
+    }
 
-.btn-danger:hover,
-.btn-primary:hover {
-    opacity: 0.9;
-}
+    .btn-danger:hover,
+    .btn-primary:hover {
+        opacity: 0.9;
+    }
 
-/* ==============================
+    /* ==============================
    HELD SALE SECTION
 ============================== */
-.held-sale-list .list-group-item {
-    border-radius: 8px;
-    margin-bottom: 5px;
-    border: 1px solid #eee;
-}
+    .held-sale-list .list-group-item {
+        border-radius: 8px;
+        margin-bottom: 5px;
+        border: 1px solid #eee;
+    }
 
-/* ==============================
+    /* ==============================
    MODAL CLEAN LOOK
 ============================== */
-.modal-content {
-    border-radius: 12px;
-    border: none;
-}
+    .modal-content {
+        border-radius: 12px;
+        border: none;
+    }
 
-.modal-header {
-    border-bottom: 1px solid #eee;
-}
+    .modal-header {
+        border-bottom: 1px solid #eee;
+    }
 
-.modal-footer {
-    border-top: 1px solid #eee;
-}
+    .modal-footer {
+        border-top: 1px solid #eee;
+    }
 
-/* ==============================
+    /* ==============================
    SCROLLBAR LIGHT
 ============================== */
-.all_products::-webkit-scrollbar {
-    width: 6px;
-}
+    .all_products::-webkit-scrollbar {
+        width: 6px;
+    }
 
-.all_products::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 10px;
-}
+    .all_products::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 10px;
+    }
 
 
 
-.discount-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin: 10px 0;
-}
+    .discount-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin: 10px 0;
+    }
 
-select,
-input[type="number"] {
-    padding: 6px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
+    select,
+    input[type="number"] {
+        padding: 6px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
 
-select {
-    width: 70px;
-    text-align: center;
-}
+    select {
+        width: 70px;
+        text-align: center;
+    }
 
-/*input[type="number"] {
+    /*input[type="number"] {
     width: 80px;
 }*/
 
-.result {
-    margin-top: 15px;
-    font-size: 16px;
-    font-weight: bold;
-}
+    .result {
+        margin-top: 15px;
+        font-size: 16px;
+        font-weight: bold;
+    }
 
-/* Toggle switch styling */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 20px;
-    vertical-align: middle;
-    margin-right: 8px;
-}
+    /* Toggle switch styling */
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 20px;
+        vertical-align: middle;
+        margin-right: 8px;
+    }
 
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 20px;
-}
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 20px;
+    }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 14px;
-    width: 14px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-}
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 14px;
+        width: 14px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+    }
 
-input:checked+.slider {
-    background-color: #17a2b8;
-}
+    input:checked+.slider {
+        background-color: #17a2b8;
+    }
 
-input:checked+.slider:before {
-    transform: translateX(30px);
-}
+    input:checked+.slider:before {
+        transform: translateX(30px);
+    }
 
-.slider.round {
-    border-radius: 20px;
-}
+    .slider.round {
+        border-radius: 20px;
+    }
 
-/* Hide elements with this class */
-.hide {
-    display: none !important;
-}
+    /* Hide elements with this class */
+    .hide {
+        display: none !important;
+    }
 </style>
 
 

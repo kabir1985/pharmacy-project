@@ -59,21 +59,22 @@
             border-top: 1px dashed #000;
             margin: 4px 0;
         }
+        
     </style>
 
 </head>
 
 <body>
 
-    <div class="text-center">
-        <strong style="font-size:18px;">YOUR PHARMACY NAME</strong><br>
-
-        House #10, Road #05, Dhaka<br>
-
-        Phone: 017XXXXXXXX<br>
-
-        info@yourpharmacy.com
+<div class="text-center">
+    <div style="font-size:18px;font-weight:bold;">
+        YOUR PHARMACY NAME
     </div>
+
+    House #10, Road #05, Dhaka<br>
+    Phone: 017XXXXXXXX<br>
+    Email: info@yourpharmacy.com
+</div>
 
     <hr>
 
@@ -89,10 +90,21 @@
             <td class="text-right"><?= date('d-m-Y h:i A', strtotime($invoice_info[0]['sales_date'])) ?></td>
         </tr>
 
-        <tr>
-            <td>Customer</td>
-            <td class="text-right"><?= esc($invoice_info[0]['customer_name']) ?></td>
-        </tr>
+<tr>
+    <td>Customer</td>
+    <td class="text-right">
+        <?= esc($invoice_info[0]['customer_name']) ?>
+    </td>
+</tr>
+
+<?php if (!empty($invoice_info[0]['cus_phone'])): ?>
+<tr>
+    <td>Phone</td>
+    <td class="text-right">
+        <?= esc($invoice_info[0]['cus_phone']) ?>
+    </td>
+</tr>
+<?php endif; ?>
 
         <tr>
             <td>Payment</td>
@@ -103,34 +115,36 @@
 
     <hr>
 
-    <?php
-    $subTotal = 0;
-    ?>
+   <?php
+$subTotal = 0;
+$sl = 1;
+?>
 
-    <table>
-        <?php foreach ($product_info as $row): ?>
+<table>
 
-            <?php $subTotal += $row['total_sale_price']; ?>
+<?php foreach ($product_info as $row): ?>
 
-            <tr>
-                <td colspan="2" class="product-name">
-                    <?= esc($row['product_name']) ?>
-                </td>
-            </tr>
+<?php $subTotal += $row['total_sale_price']; ?>
 
-            <tr>
-                <td>
-                    <?= $row['product_quantity_sold'] ?> × <?= number_format($row['unit_price'], 2) ?>
-                </td>
+<tr>
+    <td colspan="2" class="product-name">
+        <?= $sl++ ?>. <?= esc($row['product_name']) ?>
+    </td>
+</tr>
 
-                <td class="text-right">
-                    <?= number_format($row['total_sale_price'], 2) ?>
-                </td>
-            </tr>
+<tr>
+    <td>
+        <?= $row['product_quantity_sold'] ?> × <?= number_format($row['unit_price'],2) ?>
+    </td>
 
-        <?php endforeach; ?>
-    </table>
+    <td class="text-right">
+        <?= number_format($row['total_sale_price'],2) ?>
+    </td>
+</tr>
 
+<?php endforeach; ?>
+
+</table>
 
 
    <hr>
@@ -151,7 +165,12 @@
             <td class="text-right"><?= number_format($invoice_info[0]['other_charge_on_all'], 2) ?></td>
         </tr>
 
-
+<tr class="grand-total">
+    <td><strong>Grand Total</strong></td>
+    <td class="text-right">
+        <strong><?= number_format($invoice_info[0]['total_amount'], 2) ?></strong>
+    </td>
+</tr>
 
         <tr>
             <td>Paid</td>
@@ -179,6 +198,14 @@
         Developed By<br>
         <strong>Pharmacy Management System</strong>
     </div>
+
+
+
+    <script>
+window.onload = function () {
+    window.print();
+};
+</script>
 
 </body>
 

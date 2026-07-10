@@ -43,7 +43,6 @@ class Pos extends BaseController
                     sales.sales_id,
                     sales.sales_invoice,
                     sales.sales_date,
-                    sales.discount_on_all,
                     sales.other_charge_on_all,
                     SUM(sales_details.product_quantity_sold) AS Sale_Quantity,
                     SUM(sales_details.total_sale_price) AS Total_Sale_Value,
@@ -51,7 +50,7 @@ class Pos extends BaseController
                 FROM sales
                 LEFT JOIN sales_details
                     ON sales.sales_invoice = sales_details.sales_details_invoice
-                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.discount_on_all, sales.other_charge_on_all
+                GROUP BY sales.sales_id, sales.sales_invoice, sales.sales_date, sales.other_charge_on_all
                 ORDER BY sales_id DESC
                 LIMIT 5";
 
@@ -73,7 +72,7 @@ class Pos extends BaseController
 
         $productsList = $request->getPost('cart_data');
 
-        $discountOnTotalPrice = (float) $request->getPost('discountOnTotalPrice');
+       // $discountOnTotalPrice = (float) $request->getPost('discountOnTotalPrice');
         $otherChargeOnTotalPrice = (float) $request->getPost('otherChargeOnTotalPrice');
         $paid = (float) $request->getPost('paid');
         $customer_type = $request->getPost('customer_type');
@@ -103,10 +102,20 @@ class Pos extends BaseController
             $line_total = round($qty * $price, 2);
 
             $vat_percent = (float) ($row['vat'] ?? 0);
-            $discount_percent = (float) ($row['discount_on_each_product'] ?? 0);
+            $discount_on_each_product = (float) ($row['discount_on_each_product'] ?? 0);
 
             $vat_amount = round(($line_total * $vat_percent) / 100, 2);
-            $discount_amount = round(($line_total * $discount_percent) / 100, 2);
+            ////////////////////
+              $discount_type  = $row['discount_type']; // "%" or "flat"
+           // $lineTotal = $quantity * $sales_price;
+
+if ($discount_type == '%') {
+    $discount_amount = ($line_total * $discount_on_each_product) / 100;
+} else {
+    $discount_amount = $discount_on_each_product;
+}
+            //////////////////////////
+          //  $discount_amount = round(($line_total * $discount_percent) / 100, 2);
 
             $subtotal += $line_total;
             $total_vat += $vat_amount;
@@ -135,7 +144,7 @@ class Pos extends BaseController
 
         $calculated_total = $subtotal - $total_discount + $total_vat;
 
-        $grand_total = $calculated_total + $otherChargeOnTotalPrice - $discountOnTotalPrice;
+        $grand_total = $calculated_total + $otherChargeOnTotalPrice;
 
         $due = $grand_total - $paid;
 
@@ -176,7 +185,7 @@ class Pos extends BaseController
             'product_vat'      => round($total_vat, 2),
         
             // Invoice-level adjustments
-            'discount_on_all'      => round($discountOnTotalPrice, 2),
+           // 'discount_on_all'      => round($discountOnTotalPrice, 2),
             'other_charge_on_all'  => round($otherChargeOnTotalPrice, 2),
         
             'paid_amount' => $paid,
@@ -251,7 +260,7 @@ class Pos extends BaseController
         $session = session();
         $productsList = $this->request->getVar('cart_data');
 
-        $discountOnTotalPrice = $this->request->getVar('discountOnTotalPrice');
+       // $discountOnTotalPrice = $this->request->getVar('discountOnTotalPrice');
         $otherChargeOnTotalPrice = $this->request->getVar('otherChargeOnTotalPrice');
         $customer_type = $this->request->getVar('customer_type');
         $seller_id = $session->get('user_id');
@@ -264,7 +273,7 @@ class Pos extends BaseController
             'seller_id' => $seller_id,
             'customer_type' => $customer_type,
             'cart_data' => json_encode($productsList),
-            'discountOnTotalPrice' => $discountOnTotalPrice,
+           // 'discountOnTotalPrice' => $discountOnTotalPrice,
             'otherChargeOnTotalPrice' => $otherChargeOnTotalPrice,
             'created_at' => date('Y-m-d H:i:s'),
         ];
@@ -281,7 +290,7 @@ class Pos extends BaseController
                 'hold_id' => $hold_id,
                 'customer_type' => $customer_type,
                 'cart_data' => json_decode($hold_data['cart_data'], true),
-                'discountOnTotalPrice' => $discountOnTotalPrice,
+                //'discountOnTotalPrice' => $discountOnTotalPrice,
                 'otherChargeOnTotalPrice' => $otherChargeOnTotalPrice,
             ]);
 
@@ -304,7 +313,7 @@ class Pos extends BaseController
                 'status' => 'success',
                 'cart_data' => $cartData ?? [],
                 'customer_type' => $sale['customer_type'] ?? 'regular',
-                'discountOnTotalPrice' => $sale['discountOnTotalPrice'] ?? 0,
+                //'discountOnTotalPrice' => $sale['discountOnTotalPrice'] ?? 0,
                 'otherChargeOnTotalPrice' => $sale['otherChargeOnTotalPrice'] ?? 0,
             ]);
         } else {

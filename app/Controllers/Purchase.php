@@ -110,7 +110,7 @@ $data['product_show_for_sale'] = $this->db->query($sql)->getResultArray();
     }
 
     $discount_on_total_price = (float) $this->request->getPost('discount_on_total_price') ?? 0;
-    $vat_percent_on_total = (float) $this->request->getPost('vat_percent_on_total') ?? 0;
+    $vat_amt_on_total = (float) $this->request->getPost('vat_amt_on_total') ?? 0;
     $supplier_id = $this->request->getPost('supplier_id');
 
     $purchaser_id = $session->get('user_id');
@@ -181,9 +181,9 @@ $data['product_show_for_sale'] = $this->db->query($sql)->getResultArray();
 
     // Update master table with totals
     $net_total = ($total_purchase_amount - $discount_on_total_price);
-    $net_total += ($net_total * ($vat_percent_on_total / 100));
+    $net_total += ($net_total * ($vat_amt_on_total / 100));
 
-    $vat_amount_on_total_price = $total_purchase_amount * ( $vat_percent_on_total / 100);
+    $vat_amount_on_total_price = $total_purchase_amount * ( $vat_amt_on_total / 100);
 
 
     // Insert Master Purchase
