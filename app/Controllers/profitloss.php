@@ -165,7 +165,6 @@ class Profitloss extends BaseController
         SELECT
             IFNULL(SUM(total_amount),0) AS gross_sales,
             IFNULL(SUM(product_discount),0) AS product_discount,
-            IFNULL(SUM(discount_on_all),0) AS invoice_discount,
             IFNULL(SUM(product_vat),0) AS total_vat,
             IFNULL(SUM(other_charge_on_all),0) AS other_charge
         FROM sales
@@ -222,7 +221,6 @@ class Profitloss extends BaseController
 
 $gross_sales       = (float)$sales['gross_sales'];
 $product_discount  = (float)$sales['product_discount'];
-$invoice_discount  = (float)$sales['invoice_discount'];
 $total_vat         = (float)$sales['total_vat'];
 $other_charge      = (float)$sales['other_charge'];
 
@@ -260,7 +258,6 @@ $financial_cost = 0;
 $net_sales =
     $gross_sales
     - $product_discount
-    - $invoice_discount
     - $return_sales
     + $other_charge;
 
@@ -270,7 +267,6 @@ If your total_amount INCLUDES VAT, use this instead:
 $net_sales =
     $gross_sales
     - $product_discount
-    - $invoice_discount
     - $total_vat
     - $return_sales
     + $other_charge;
@@ -316,8 +312,6 @@ $net_profit =
         'gross_sales'       => $gross_sales,
     
         'product_discount'  => $product_discount,
-    
-        'invoice_discount'  => $invoice_discount,
     
         'vat'               => $total_vat,
     

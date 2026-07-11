@@ -155,11 +155,6 @@ td {
 </tr>
 
 <tr>
-    <td class="particular indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Less : Invoice Discount</td>
-    <td class="amount negative">(<?= number_format($invoice_discount,2) ?>)</td>
-</tr>
-
-<tr>
     <td class="particular indent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Less : VAT</td>
     <td class="amount negative">(<?= number_format($vat,2) ?>)</td>
 </tr>

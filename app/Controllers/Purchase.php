@@ -44,46 +44,124 @@ class Purchase extends BaseController
         // $data['product_show_for_sale'] = $this->db->query($sql)->getResult('array');
 
 
+// $sql = "SELECT
+//             piq.*,
+
+//             pc.category_name,
+//             pb.product_brand_name,
+//             pg.group_name,
+//              ps.strength_name,
+
+//             tx.tax_percentage,
+//             tx.tax_name,
+
+//             (piq.productinitial_quantity + IFNULL(ppd.new_purchased,0)) AS total_stock
+
+//         FROM product_inital_stock AS piq
+
+//         LEFT JOIN (
+//             SELECT
+//                 product_id,
+//                 SUM(IFNULL(quantity_per_pack, 0) + IFNULL(free_qty, 0)) AS new_purchased
+//             FROM product_purchase_details
+//             GROUP BY product_id
+//         ) AS ppd
+//             ON piq.product_id = ppd.product_id
+
+//         LEFT JOIN tax AS tx
+//             ON piq.tax_id = tx.tax_id
+
+//         LEFT JOIN product_category AS pc
+//             ON piq.product_category = pc.product_category_id
+
+//         LEFT JOIN product_brand AS pb
+//             ON piq.product_brand = pb.brand_id
+
+//         LEFT JOIN product_group AS pg
+//             ON piq.product_group = pg.product_group_id
+
+//          LEFT JOIN product_strength AS ps
+//              ON piq.product_strength = ps.strength_id
+
+//         ORDER BY piq.product_id DESC";
+
+
+
 $sql = "SELECT
-            piq.*,
+    piq.*,
 
-            pc.category_name,
-            pb.product_brand_name,
-            pg.group_name,
-             ps.strength_name,
+    pc.category_name,
+    pb.product_brand_name,
+    pg.group_name,
+    ps.strength_name,
 
-            tx.tax_percentage,
-            tx.tax_name,
+    tx.tax_percentage,
+    tx.tax_name,
 
-            (piq.productinitial_quantity + IFNULL(ppd.new_purchased,0)) AS total_stock
+    -- ================= CURRENT STOCK =================
+    GREATEST(
+        COALESCE(piq.productinitial_quantity,0)
+        + COALESCE(ppd.total_purchase_qty,0)
+        + COALESCE(rs.total_return,0)
+        - COALESCE(sd.total_sale,0),
+    0) AS total_stock
 
-        FROM product_inital_stock AS piq
+FROM product_inital_stock AS piq
 
-        LEFT JOIN (
-            SELECT
-                product_id,
-                SUM(IFNULL(quantity_per_pack, 0) + IFNULL(free_qty, 0)) AS new_purchased
-            FROM product_purchase_details
-            GROUP BY product_id
-        ) AS ppd
-            ON piq.product_id = ppd.product_id
+-- ================= PURCHASE =================
+LEFT JOIN (
+    SELECT
+        product_id,
+        SUM(
+            (IFNULL(quantity_per_pack,0) * IFNULL(box_quantity,1))
+            + IFNULL(free_qty,0)
+        ) AS total_purchase_qty
+    FROM product_purchase_details
+    GROUP BY product_id
+) ppd
+ON piq.product_id = ppd.product_id
 
-        LEFT JOIN tax AS tx
-            ON piq.tax_id = tx.tax_id
+-- ================= SALES =================
+LEFT JOIN (
+    SELECT
+        product_id,
+        SUM(product_quantity_sold) AS total_sale
+    FROM sales_details
+    GROUP BY product_id
+) sd
+ON piq.product_id = sd.product_id
 
-        LEFT JOIN product_category AS pc
-            ON piq.product_category = pc.product_category_id
+-- ================= SALES RETURN =================
+LEFT JOIN (
+    SELECT
+        product_id,
+        SUM(return_qty) AS total_return
+    FROM return_sales_details
+    GROUP BY product_id
+) rs
+ON piq.product_id = rs.product_id
 
-        LEFT JOIN product_brand AS pb
-            ON piq.product_brand = pb.brand_id
+-- ================= TAX =================
+LEFT JOIN tax AS tx
+ON piq.tax_id = tx.tax_id
 
-        LEFT JOIN product_group AS pg
-            ON piq.product_group = pg.product_group_id
+-- ================= CATEGORY =================
+LEFT JOIN product_category AS pc
+ON piq.product_category = pc.product_category_id
 
-         LEFT JOIN product_strength AS ps
-             ON piq.product_strength = ps.strength_id
+-- ================= BRAND =================
+LEFT JOIN product_brand AS pb
+ON piq.product_brand = pb.brand_id
 
-        ORDER BY piq.product_id DESC";
+-- ================= GROUP =================
+LEFT JOIN product_group AS pg
+ON piq.product_group = pg.product_group_id
+
+-- ================= STRENGTH =================
+LEFT JOIN product_strength AS ps
+ON piq.product_strength = ps.strength_id
+
+ORDER BY piq.product_id DESC";
 
 $data['product_show_for_sale'] = $this->db->query($sql)->getResultArray();
 

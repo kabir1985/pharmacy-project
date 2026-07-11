@@ -357,7 +357,37 @@ public function unitCreateAjax()
     ]);
 }
 
-//strengthCreateAjax
+//vatTax
+
+
+public function vatTaxCreateAjax()
+{
+    $model = new TaxModel();
+
+    $tax_name = trim($this->request->getPost('tax_name'));
+    $tax_percentage = (float) $this->request->getPost('tax_percentage');
+
+    if ($tax_name == '') {
+        return $this->response->setJSON([
+            'status' => false,
+            'message' => 'Tax name is required.'
+        ]);
+    }
+
+    $data = [
+        'tax_name'       => $tax_name,
+        'tax_percentage' => $tax_percentage
+    ];
+
+    $id = $model->insert($data);
+
+    return $this->response->setJSON([
+        'status'         => true,
+        'id'             => $id,
+        'tax_name'       => $tax_name,
+        'tax_percentage' => $tax_percentage
+    ]);
+}
 
 public function strengthCreateAjax()
 {

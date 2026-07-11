@@ -1,0 +1,390 @@
+DEBUG - 2026-07-11 05:35:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 05:35:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 05:35:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 05:35:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 05:37:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-11 05:37:48 --> mysqli_sql_exception: Unknown column 'otherChargeOnTotalPrice' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `he...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `he...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `he...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `he...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(281): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->hold_sale()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-07-11 05:37:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otherChargeOnTotalPrice' in 'field list'
+[Method: POST, Route: pos/hold_sale]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (:hold_id:, :seller_id:, :customer_type:, :cart_data:, :otherChargeOnTotalPrice:, :created_at:)', [...], false)
+ 2 APPPATH\Controllers\pos.php(281): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->hold_sale()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-11 05:37:48 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otherChargeOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053748884\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:37:48\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053748884\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:37:48\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (:hold_id:, :seller_id:, :customer_type:, :cart_data:, :otherChargeOnTotalPrice:, :created_at:)', [...], false)
+ 4 APPPATH\Controllers\pos.php(281): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->hold_sale()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-11 05:37:48 --> [Caused by] mysqli_sql_exception: Unknown column 'otherChargeOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053748884\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:37:48\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053748884\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:37:48\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053748884\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:37:48\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (:hold_id:, :seller_id:, :customer_type:, :cart_data:, :otherChargeOnTotalPrice:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\pos.php(281): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->hold_sale()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-11 05:37:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-11 05:37:58 --> mysqli_sql_exception: Unknown column 'otherChargeOnTotalPrice' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `he...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `he...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `he...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `he...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(281): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->hold_sale()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-07-11 05:37:58 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otherChargeOnTotalPrice' in 'field list'
+[Method: POST, Route: pos/hold_sale]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (:hold_id:, :seller_id:, :customer_type:, :cart_data:, :otherChargeOnTotalPrice:, :created_at:)', [...], false)
+ 2 APPPATH\Controllers\pos.php(281): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->hold_sale()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-11 05:37:58 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otherChargeOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053758439\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:37:58\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053758439\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:37:58\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (:hold_id:, :seller_id:, :customer_type:, :cart_data:, :otherChargeOnTotalPrice:, :created_at:)', [...], false)
+ 4 APPPATH\Controllers\pos.php(281): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->hold_sale()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-11 05:37:58 --> [Caused by] mysqli_sql_exception: Unknown column 'otherChargeOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053758439\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:37:58\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053758439\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:37:58\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053758439\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:37:58\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (:hold_id:, :seller_id:, :customer_type:, :cart_data:, :otherChargeOnTotalPrice:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\pos.php(281): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->hold_sale()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-11 05:39:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-11 05:39:59 --> mysqli_sql_exception: Unknown column 'otherChargeOnTotalPrice' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `he...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `he...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `he...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `he...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(281): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->hold_sale()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-07-11 05:39:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otherChargeOnTotalPrice' in 'field list'
+[Method: POST, Route: pos/hold_sale]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (:hold_id:, :seller_id:, :customer_type:, :cart_data:, :otherChargeOnTotalPrice:, :created_at:)', [...], false)
+ 2 APPPATH\Controllers\pos.php(281): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->hold_sale()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-11 05:39:59 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'otherChargeOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053959391\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:39:59\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053959391\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:39:59\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (:hold_id:, :seller_id:, :customer_type:, :cart_data:, :otherChargeOnTotalPrice:, :created_at:)', [...], false)
+ 4 APPPATH\Controllers\pos.php(281): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->hold_sale()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-11 05:39:59 --> [Caused by] mysqli_sql_exception: Unknown column 'otherChargeOnTotalPrice' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053959391\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:39:59\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053959391\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:39:59\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (\'HLD260711053959391\', \'18\', \'Walk-In-Customer\', \'[{\\"product_id\\":\\"574\\",\\"product_name\\":\\"Cef-3\\",\\"product_image\\":\\"cef-3.jpg\\",\\"sales_price_for_customer\\":\\"40.00\\",\\"purchase_price\\":\\"33.00\\",\\"total_stock\\":\\"472.00\\",\\"total_purchase_cost\\":\\"0.00\\",\\"unit_purchase_price\\":\\"33.000000\\",\\"stock_value\\":\\"15576.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"},{\\"product_id\\":\\"573\\",\\"product_name\\":\\"Napa 500\\",\\"product_image\\":\\"napa 500.jpg\\",\\"sales_price_for_customer\\":\\"1.20\\",\\"purchase_price\\":\\"1.00\\",\\"total_stock\\":\\"5224.00\\",\\"total_purchase_cost\\":\\"200.00\\",\\"unit_purchase_price\\":\\"1.000000\\",\\"stock_value\\":\\"5224.00000000\\",\\"quantity\\":\\"1\\",\\"discount_type\\":\\"flat\\",\\"discount_percent\\":\\"7\\"}]\', \'0\', \'2026-07-11 05:39:59\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `held_sales` (`hold_id`, `seller_id`, `customer_type`, `cart_data`, `otherChargeOnTotalPrice`, `created_at`) VALUES (:hold_id:, :seller_id:, :customer_type:, :cart_data:, :otherChargeOnTotalPrice:, :created_at:)', [...], false)
+ 5 APPPATH\Controllers\pos.php(281): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->hold_sale()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-11 05:49:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 05:49:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 05:56:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:17:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:17:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:23:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:23:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:23:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:24:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:24:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:25:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:25:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:26:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:26:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:27:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:27:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:28:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:38:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:38:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:38:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:39:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:42:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:42:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:43:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:54:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 06:58:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 07:49:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:06:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:10:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:15:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:17:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:23:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:24:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:27:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:30:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:36:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:36:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:37:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:47:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 08:47:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 11:51:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 11:51:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 11:51:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 11:51:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 11:51:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 11:51:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 11:52:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 11:56:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 11:57:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 12:33:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 12:33:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:25:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:26:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:26:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:26:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:27:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:28:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:28:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:28:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-11 13:28:53 --> mysqli_sql_exception: Unknown column 'discount_on_all' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\profitloss.php(173): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...', Array)
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-07-11 13:28:53 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'discount_on_all' in 'field list'
+[Method: POST, Route: PLReport]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\profitloss.php(173): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(product_discount),0) AS product_discount,
+            IFNULL(SUM(discount_on_all),0) AS invoice_discount,
+            IFNULL(SUM(product_vat),0) AS total_vat,
+            IFNULL(SUM(other_charge_on_all),0) AS other_charge
+        FROM sales
+        WHERE sales_date BETWEEN ? AND ?
+    ', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-11 13:28:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'discount_on_all' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(product_discount),0) AS product_discount,
+            IFNULL(SUM(discount_on_all),0) AS invoice_discount,
+            IFNULL(SUM(product_vat),0) AS total_vat,
+            IFNULL(SUM(other_charge_on_all),0) AS other_charge
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-07-01 00:00:00\' AND \'2026-07-11 23:59:59\'
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(product_discount),0) AS product_discount,
+            IFNULL(SUM(discount_on_all),0) AS invoice_discount,
+            IFNULL(SUM(product_vat),0) AS total_vat,
+            IFNULL(SUM(other_charge_on_all),0) AS other_charge
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-07-01 00:00:00\' AND \'2026-07-11 23:59:59\'
+    ')
+ 3 APPPATH\Controllers\profitloss.php(173): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(product_discount),0) AS product_discount,
+            IFNULL(SUM(discount_on_all),0) AS invoice_discount,
+            IFNULL(SUM(product_vat),0) AS total_vat,
+            IFNULL(SUM(other_charge_on_all),0) AS other_charge
+        FROM sales
+        WHERE sales_date BETWEEN ? AND ?
+    ', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-11 13:28:53 --> [Caused by] mysqli_sql_exception: Unknown column 'discount_on_all' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(product_discount),0) AS product_discount,
+            IFNULL(SUM(discount_on_all),0) AS invoice_discount,
+            IFNULL(SUM(product_vat),0) AS total_vat,
+            IFNULL(SUM(other_charge_on_all),0) AS other_charge
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-07-01 00:00:00\' AND \'2026-07-11 23:59:59\'
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(product_discount),0) AS product_discount,
+            IFNULL(SUM(discount_on_all),0) AS invoice_discount,
+            IFNULL(SUM(product_vat),0) AS total_vat,
+            IFNULL(SUM(other_charge_on_all),0) AS other_charge
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-07-01 00:00:00\' AND \'2026-07-11 23:59:59\'
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(product_discount),0) AS product_discount,
+            IFNULL(SUM(discount_on_all),0) AS invoice_discount,
+            IFNULL(SUM(product_vat),0) AS total_vat,
+            IFNULL(SUM(other_charge_on_all),0) AS other_charge
+        FROM sales
+        WHERE sales_date BETWEEN \'2026-07-01 00:00:00\' AND \'2026-07-11 23:59:59\'
+    ')
+ 4 APPPATH\Controllers\profitloss.php(173): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(product_discount),0) AS product_discount,
+            IFNULL(SUM(discount_on_all),0) AS invoice_discount,
+            IFNULL(SUM(product_vat),0) AS total_vat,
+            IFNULL(SUM(other_charge_on_all),0) AS other_charge
+        FROM sales
+        WHERE sales_date BETWEEN ? AND ?
+    ', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-11 13:33:02 --> ErrorException: Undefined variable $invoice_discount
+[Method: POST, Route: PLReport]
+in APPPATH\Views\report\profitloss_pdf.php on line 159.
+ 1 APPPATH\Views\report\profitloss_pdf.php(159): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $invoice_discount', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\profitloss_pdf.php', 159)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\profitloss_pdf.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/profitloss_pdf', [], true)
+ 5 APPPATH\Controllers\profitloss.php(350): view('report/profitloss_pdf', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-11 13:33:52 --> ErrorException: Undefined variable $invoice_discount
+[Method: POST, Route: PLReport]
+in APPPATH\Views\report\profitloss_pdf.php on line 159.
+ 1 APPPATH\Views\report\profitloss_pdf.php(159): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $invoice_discount', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\profitloss_pdf.php', 159)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\profitloss_pdf.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/profitloss_pdf', [], true)
+ 5 APPPATH\Controllers\profitloss.php(350): view('report/profitloss_pdf', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Profitloss->profitlosspdfcreate()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Profitloss))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-11 13:35:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:36:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:36:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:37:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:37:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:39:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:40:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:40:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:40:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:41:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:42:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:47:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:52:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:55:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:58:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 13:59:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 14:00:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 14:01:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 14:04:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 14:05:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 14:07:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 14:11:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 14:12:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 14:23:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 14:26:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 14:28:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-11 14:29:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -14,6 +14,10 @@ $routes->post('pos/sale', 'Pos::sale');
 $routes->post('pos/hold_sale', 'Pos::hold_sale');
 $routes->post('pos/resume_sale/(:num)', 'Pos::resume_sale/$1');
 
+$routes->post('pos/delete_held_sale/(:num)', 'Pos::delete_held_sale/$1');
+
+$routes->post('pos/update_hold_sale', 'Pos::update_hold_sale');
+
 $routes->get('pos/product_call', 'Pos::product_call');
 $routes->post('pos/products', 'Pos::products');
 $routes->get('invoice/(:num)', 'PdfController::invoice/$1');
@@ -38,6 +42,7 @@ $routes->post('group-create-ajax', 'Product::groupCreateAjax');
 $routes->post('unit-create-ajax', 'Product::unitCreateAjax');
 //strength-create-ajax
 $routes->post('strength-create-ajax', 'Product::strengthCreateAjax');
+$routes->post('vatTax-create-ajax', 'Product::vatTaxCreateAjax');
 
 
 

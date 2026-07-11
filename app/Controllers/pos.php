@@ -39,6 +39,11 @@ class Pos extends BaseController
         $data['product_brand_show'] = $this->ProductBrand_object->findAll();
         $data['customer_show'] = $this->customerModel_object->findAll();
 
+        // echo "<pre>";
+        // print_r($data['product_show_for_sale']);
+        // echo "</pre>";
+        // exit();
+
         $sql_Sale = "SELECT
                     sales.sales_id,
                     sales.sales_invoice,
@@ -247,11 +252,6 @@ if ($discount_type == '%') {
             'total' => round($grand_total, 2),
         ]);
     }
-
-
-
-
-
 
 
 
@@ -552,5 +552,44 @@ LOWER(CONCAT(
             $builder->get()->getResultArray()
         );
     }
+
+
+
+public function update_hold_sale()
+{
+    $id = $this->request->getPost('id');
+    $cartData = $this->request->getPost('cart_data');
+
+    if (empty($id)) {
+        return $this->response->setJSON([
+            'status' => 'error',
+            'message' => 'Invalid Hold ID'
+        ]);
+    }
+
+    // If no products remain, delete the held sale
+    if (empty($cartData)) {
+
+        $this->db->table('held_sales')
+            ->where('id', $id)
+            ->delete();
+
+        return $this->response->setJSON([
+            'status' => 'deleted'
+        ]);
+    }
+
+    $this->db->table('held_sales')
+        ->where('id', $id)
+        ->update([
+            'cart_data' => json_encode($cartData)
+        ]);
+
+    return $this->response->setJSON([
+        'status' => 'success'
+    ]);
+}
+
+
 
 }

@@ -21,7 +21,7 @@ echo $this->section('content');
         margin-bottom: 6px;
     }
 
- 
+
 
     .charge-type {
         width: 70px;
@@ -362,7 +362,8 @@ echo $this->section('content');
                                 <option value="flat">Flat</option>
                             </select>
 
-                            <input type="text" id="discount_apply" style="mx-size:70px;" class="form-control form-control-sm charge-input">
+                            <input type="text" id="discount_apply" style="mx-size:70px;"
+                                class="form-control form-control-sm charge-input">
 
                             <span id="productDiscount" class="charge-total">0.00</span>
                         </div>
@@ -402,8 +403,8 @@ echo $this->section('content');
                         </select>
 
                         <input type="number" id="otherChargeValue"
-                            class="form-control form-control-sm charge-input extra-fields" style="mx-size:70px;" value="0.00"
-                            oninput="calculateotherCharge()">
+                            class="form-control form-control-sm charge-input extra-fields" style="mx-size:70px;"
+                            value="0.00" oninput="calculateotherCharge()">
 
                         <span id="otherChargeOnTotalPrice" class="charge-total">0.00</span>
 
@@ -477,10 +478,25 @@ echo $this->section('content');
                                                         <strong><?= $sale['hold_id'] ?></strong><br>
                                                         <small><?= $sale['customer_type'] ?></small>
                                                     </div>
-                                                    <a href="javascript:void(0)" class="btn btn-sm btn-primary resume-sale"
+                                                    <!-- <a href="javascript:void(0)" class="btn btn-sm btn-primary resume-sale"
                                                         data-id="<?= $sale['id'] ?>">
                                                         Resume
-                                                    </a>
+                                                    </a> -->
+
+                                                    <div class="btn-group">
+                                                        <a href="javascript:void(0)" class="btn btn-sm btn-primary resume-sale"
+                                                            data-id="<?= $sale['id'] ?>">
+                                                            Resume
+                                                        </a>
+
+                                                        <a href="javascript:void(0)"
+                                                            class="btn btn-sm btn-danger delete-held-sale"
+                                                            data-id="<?= $sale['id'] ?>">
+                                                            <i class="fa fa-trash"></i>
+                                                        </a>
+                                                    </div>
+
+
                                                 </li>
                                             <?php endforeach; ?>
                                         </ul>
@@ -674,7 +690,7 @@ echo $this->section('scripts');
 
         $("#productSale").on("click", function () {
 
-           // var discountOnAllPrice = $("#discountOnAllPrice").text();
+            // var discountOnAllPrice = $("#discountOnAllPrice").text();
             var otherChargeOnTotalPrice = $("#otherChargeOnTotalPrice").text();
             //alert(vatOnTotalPrice);
 
@@ -707,7 +723,7 @@ echo $this->section('scripts');
 
             $.each(itemsInCartObject, function (key, item) {
                 item.discount_on_each_product = parseFloat(item.discount_percent || 0);
-                 item.discount_type = item.discount_type || $("#productDiscountType").val();
+                item.discount_type = item.discount_type || $("#productDiscountType").val();
                 item.vat = parseFloat(item.vat_input || 0);
 
             });
@@ -723,7 +739,7 @@ echo $this->section('scripts');
                 dataType: "json",
                 data: {
                     cart_data: itemsInCartObject,
-                   // discountOnAllPrice: parseFloat(discountOnAllPrice) || 0,
+                    // discountOnAllPrice: parseFloat(discountOnAllPrice) || 0,
                     otherChargeOnTotalPrice: parseFloat(otherChargeOnTotalPrice) || 0,
                     customer_type: customer_type,
                     due: parseFloat(due) || 0,
@@ -748,7 +764,7 @@ echo $this->section('scripts');
                     itemsInCart = [];
                     drawTable();
 
-                   // $('#discountOnAllPrice').text('');
+                    // $('#discountOnAllPrice').text('');
                     $('#otherChargeOnTotalPrice').text('');
                     $('#paid').val('');
                     $('#due').val('');
@@ -779,7 +795,7 @@ echo $this->section('scripts');
             }
 
             // Define these inside the function
-           // var discountOnAllPrice = parseFloat($("#discountOnAllPrice").text()) || 0;
+            // var discountOnAllPrice = parseFloat($("#discountOnAllPrice").text()) || 0;
             var otherChargeOnTotalPrice = parseFloat($("#otherChargeOnTotalPrice").text()) || 0;
             var customer_type = $("#customer_type").val();
 
@@ -812,15 +828,26 @@ echo $this->section('scripts');
 
                         // ---------------- UI UPDATE WITHOUT REFRESH ----------------
                         let li = `
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <strong>${response.hold_id}</strong><br>
-                                    <small>${response.customer_type}</small>
-                                </div>
-                                <a href="javascript:void(0)" class="btn btn-sm btn-primary resume-sale" data-id="${response.id}">
-                                    Resume
-                                </a>
-                            </li>`;
+<li class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+        <strong>${response.hold_id}</strong><br>
+        <small>${response.customer_type}</small>
+    </div>
+
+    <div class="btn-group">
+        <a href="javascript:void(0)"
+           class="btn btn-sm btn-primary resume-sale"
+           data-id="${response.id}">
+            Resume
+        </a>
+
+        <a href="javascript:void(0)"
+           class="btn btn-sm btn-danger delete-held-sale"
+           data-id="${response.id}">
+            <i class="fa fa-trash"></i>
+        </a>
+    </div>
+</li>`;
 
                         $(".held-sale-list").prepend(li);
                         // ------------------------------------------------------------
@@ -836,7 +863,46 @@ echo $this->section('scripts');
             });
         });
 
+        //==========================Delete from HOld============================================
+        $(document).on("click", ".delete-held-sale", function () {
 
+            if (!confirm("Delete this held sale?")) {
+                return;
+            }
+
+            let id = $(this).data("id");
+            let row = $(this).closest("li");
+
+            $.ajax({
+
+                url: "<?= site_url('pos/delete_held_sale') ?>/" + id,
+                type: "POST",
+                dataType: "json",
+
+                success: function (res) {
+
+                    if (res.status == "success") {
+
+                        row.remove();
+
+                    } else {
+
+                        alert(res.message);
+
+                    }
+
+                },
+
+                error: function () {
+
+                    alert("Unable to delete.");
+
+                }
+
+            });
+
+        });
+        //============================================================================
 
 
         // // Resume Sale
@@ -861,7 +927,7 @@ echo $this->section('scripts');
                             item.hold_id = saleId;
                         });
 
-                       // discountOnAllPrice = parseFloat(res.discountOnAllPrice) || 0;
+                        // discountOnAllPrice = parseFloat(res.discountOnAllPrice) || 0;
                         otherChargeOnTotalPrice = parseFloat(res.otherChargeOnTotalPrice) || 0;
                         customer_type = res.customer_type || 'Walk-In-Customer';
 
@@ -883,14 +949,7 @@ echo $this->section('scripts');
             });
         });
 
-
-
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
         //Product show Category-wise
         $("#product_category").change(function () {
             var product_category = $(this).val();
@@ -935,18 +994,59 @@ echo $this->section('scripts');
             }
 
             itemsInCart[index].quantity = qty;
+            //=====================================================
+            if (itemsInCart[index].hold_id) {
+
+                $.ajax({
+                    url: "<?= site_url('pos/update_hold_sale') ?>",
+                    type: "POST",
+                    data: {
+                        id: itemsInCart[index].hold_id,
+                        cart_data: itemsInCart
+                    }
+                });
+
+            }
+            //===========================================================
 
             updateRow(index); // Smooth update only
         });
 
         /* Product Delete Strat */
         $('body').on("click", ".btn_item_delete", function () {
-            if (confirm("Really Want to Delete ?")) {
-                var index = $(this).data("index");
-                itemsInCart.splice(index, 1);
+
+            if (!confirm("Really Want to Delete?")) {
+                return;
+            }
+
+            var index = $(this).data("index");
+            var holdId = itemsInCart[index].hold_id || 0;
+
+            itemsInCart.splice(index, 1);
+
+            if (holdId > 0) {
+
+                $.ajax({
+                    url: "<?= site_url('pos/update_hold_sale') ?>",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        id: holdId,
+                        cart_data: itemsInCart
+                    },
+                    success: function (res) {
+                        drawTable();
+                        obj_warning.play();
+                    }
+                });
+
+            } else {
+
                 drawTable();
                 obj_warning.play();
+
             }
+
         });
         /* Product Delete End */
 
@@ -1004,6 +1104,20 @@ echo $this->section('scripts');
             let index = $(this).data("id");
 
             itemsInCart[index].sales_price_for_customer = parseFloat($(this).val()) || 0;
+            ////==============================================================================
+            if (itemsInCart[index].hold_id) {
+
+                $.ajax({
+                    url: "<?= site_url('pos/update_hold_sale') ?>",
+                    type: "POST",
+                    data: {
+                        id: itemsInCart[index].hold_id,
+                        cart_data: itemsInCart
+                    }
+                });
+
+            }
+            ///==================================================================================
 
             updateRow(index);
         });
@@ -1013,6 +1127,20 @@ echo $this->section('scripts');
             let index = $(this).closest("tr").find(".btn_item_delete").data("index");
 
             itemsInCart[index].vat_input = parseFloat($(this).val()) || 0;
+            ///===============================================================
+            if (itemsInCart[index].hold_id) {
+
+                $.ajax({
+                    url: "<?= site_url('pos/update_hold_sale') ?>",
+                    type: "POST",
+                    data: {
+                        id: itemsInCart[index].hold_id,
+                        cart_data: itemsInCart
+                    }
+                });
+
+            }
+            //======================================================================
 
             updateRow(index);
         });
@@ -1022,6 +1150,20 @@ echo $this->section('scripts');
             let index = $(this).closest("tr").find(".btn_item_delete").data("index");
 
             itemsInCart[index].discount_percent = parseFloat($(this).val()) || 0;
+            //=============================================================================
+            if (itemsInCart[index].hold_id) {
+
+                $.ajax({
+                    url: "<?= site_url('pos/update_hold_sale') ?>",
+                    type: "POST",
+                    data: {
+                        id: itemsInCart[index].hold_id,
+                        cart_data: itemsInCart
+                    }
+                });
+
+            }
+            //===============================================================================
 
             updateRow(index);
         });
@@ -1099,17 +1241,6 @@ echo $this->section('scripts');
                 var baseTotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
                     .sales_price_for_customer) || 0);
                 var subtotalPrice = baseTotal; // default, no VAT/Discount
-
-                // ✅ Only apply VAT/Discount if toggle is ON
-                // if ($("#ProductWiseVatAndDiscount").is(":checked")) {
-                //     var vatPercent = parseFloat(item.vat_input) || 0;
-                //     var discountPercent = parseFloat(item.discount_percent) || 0;
-
-                //     var vatAmount = baseTotal * (vatPercent / 100);
-                //     var discountAmount = baseTotal * (discountPercent / 100);
-
-                //     subtotalPrice = (baseTotal + vatAmount) - discountAmount;
-                // }
 
                 // Add to total
                 subTotalCost += subtotalPrice;
