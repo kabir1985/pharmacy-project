@@ -29,7 +29,6 @@ class salelist extends BaseController
                             u.user_name AS seller_name,    -- ✅ Added seller name
                             sd.total_sale,
                             s.product_vat,
-                            s.discount_on_all,
                             s.other_charge_on_all,
                             s.paid_amount,
                             IFNULL(cd.customer_due, 0) AS customer_due,

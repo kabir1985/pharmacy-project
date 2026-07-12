@@ -70,10 +70,8 @@ class salereturnlist extends BaseController
     {
           $sql = " SELECT 
                     rs.sales_invoice,
-                    rs.sales_date,
+                    rs.return_date,
                     rsd.total_sale,
-                    rsd.product_vat,
-                    rs.discount_on_all,
                     rs.other_charge_on_all,
                     rs.paid_amount,
                     IFNULL(rcd.customer_due, 0) AS customer_due,
@@ -93,8 +91,7 @@ class salereturnlist extends BaseController
                 JOIN (
                     SELECT 
                         sales_details_invoice, 
-                        SUM(total_sale_price) AS total_sale, 
-                        SUM(productwiseVatPercnt) AS productwiseVatPercnt
+                        SUM(total_sale_price) AS total_sale
                     FROM return_sales_details
                     GROUP BY sales_details_invoice
                 ) rsd ON rs.sales_invoice = rsd.sales_details_invoice

@@ -29,7 +29,7 @@ echo $this->section('content');
                                 <th>Customer</th>
                                 <th>Total Sale</th>
                                 <th>Tax</th>
-                                <th>Discount</th>
+                              
                                 <th>Other Cost</th>
                                 <th>Paid</th>
 
@@ -57,9 +57,7 @@ echo $this->section('content');
                                 <td>
                                     <?= number_format($row['product_vat'], 2) ?>
                                 </td>
-                                <td>
-                                    <?= number_format($row['discount_on_all'], 2) ?>
-                                </td>
+
                                 <td>
                                     <?= number_format($row['other_charge_on_all'], 2) ?>
                                 </td>

@@ -28,9 +28,7 @@ echo $this->section('content');
                                 <th>Invoice</th>
                                 <th>Customer</th>
                                 <th>Total Sale</th>
-                                <th>ProductwiseVat%</th>
-                                <th>DiscountOnTotalPrice</th>
-                                <th>VatOnTotalPrice</th>
+                               
                                 <th>Paid</th>
                                 
                                 <th>Due</th>
@@ -44,7 +42,7 @@ echo $this->section('content');
                             <?php foreach ($saleReturnList as $row): ?>
                             <tr>
                                 <td>
-                                    <?= esc($row['sales_date']) ?>
+                                    <?= esc($row['return_date']) ?>
                                 </td>
                                  <td>
                                     <?= esc($row['sales_invoice']) ?>
@@ -55,15 +53,9 @@ echo $this->section('content');
                                 <td>
                                     <?= number_format($row['total_sale'], 2) ?>
                                 </td>
-                                <td>
-                                    <?= number_format($row['productwiseVatPercnt'], 2) ?>
-                                </td>
-                                <td>
-                                    <?= number_format($row['discountOnTotalPrice'], 2) ?>
-                                </td>
-                                <td>
-                                    <?= number_format($row['vatOnTotalPrice'], 2) ?>
-                                </td>
+                            
+                               
+                               
                                 <td>
                                     <?= number_format($row['total_paid'], 2) ?>
                                 </td>

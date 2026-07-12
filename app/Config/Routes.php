@@ -87,7 +87,7 @@ $routes->POST('ExpenseAdd', 'Expense::create');
 $routes->POST('ExpenseUpdate', 'Expense::update');
 $routes->POST('ExpenseDelete', 'Expense::delete');
 
-$routes->post('expense/getSubCategory', 'Expense::getSubCategory');
+$routes->POST('expense/getSubCategory', 'Expense::getSubCategory');
 
 $routes->get('customergroup', 'customergroup::index');
 $routes->POST('customergroupAdd', 'customergroup::create');

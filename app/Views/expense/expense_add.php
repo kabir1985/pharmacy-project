@@ -147,7 +147,16 @@ echo $this->section('content');
                         <div class='form-group col-md-6'>
                             <label>Expense Sub Category</label>
                             <select id="expense_sub_category_add" name="expense_sub_category_add" class="form-control" required>
-                                <option value="">Select Sub Category</option>
+                                    <option value="">Select Category</option>
+                                <?php
+                                foreach ($expense_sub_category_show as $row) {
+                                    ?>
+                                    <option value="<?php echo $row['expense_sub_category_id'] ?>">
+                                        <?php echo $row['expense_sub_category_name'] ?>
+                                    </option>
+                                    <?php
+                                }
+                                ?>
                             </select>
                         </div>
 
@@ -350,60 +359,60 @@ echo $this->section('scripts');
         });
 
         //////Get Sub category by category from database/////////////////////////////////
-       $('.expense_category').change(function () {
+//        $('.expense_category').change(function () {
 
-    var expense_category_id = $(this).val();
+//     var expense_category_id = $(this).val();
 
-    if (expense_category_id != '') {
+//     if (expense_category_id != '') {
 
-        $.ajax({
-            url: "<?= base_url('expense/getSubCategory') ?>",
-            type: "POST",
-            data: {
-                expense_category_id: expense_category_id
-            },
-            dataType: "json",
+//         $.ajax({
+//             url: "<?= base_url('expense/getSubCategory') ?>",
+//             type: "POST",
+//             data: {
+//                 expense_category_id: expense_category_id
+//             },
+//             dataType: "json",
 
-            success: function (response) {
+//             success: function (response) {
 
-                // Add Modal
-                $('#expense_sub_category_add').html(
-                    '<option value="">Select Sub Category</option>'
-                );
+//                 // Add Modal
+//                 $('#expense_sub_category_add').html(
+//                     '<option value="">Select Sub Category</option>'
+//                 );
 
-                // Edit Modal
-                $('#expense_sub_category_edit').html(
-                    '<option value="">Select Sub Category</option>'
-                );
+//                 // Edit Modal
+//                 $('#expense_sub_category_edit').html(
+//                     '<option value="">Select Sub Category</option>'
+//                 );
 
-                $.each(response, function (index, row) {
+//                 $.each(response, function (index, row) {
 
-                    var option =
-                        '<option value="' + row.expense_sub_category_id + '">' +
-                        row.expense_sub_category_name +
-                        '</option>';
+//                     var option =
+//                         '<option value="' + row.expense_sub_category_id + '">' +
+//                         row.expense_sub_category_name +
+//                         '</option>';
 
-                    $('#expense_sub_category_add').append(option);
-                    $('#expense_sub_category_edit').append(option);
+//                     $('#expense_sub_category_add').append(option);
+//                     $('#expense_sub_category_edit').append(option);
 
-                });
+//                 });
 
-            }
-        });
+//             }
+//         });
 
-    } else {
+//     } else {
 
-        $('#expense_sub_category_add').html(
-            '<option value="">Select Sub Category</option>'
-        );
+//         $('#expense_sub_category_add').html(
+//             '<option value="">Select Sub Category</option>'
+//         );
 
-        $('#expense_sub_category_edit').html(
-            '<option value="">Select Sub Category</option>'
-        );
+//         $('#expense_sub_category_edit').html(
+//             '<option value="">Select Sub Category</option>'
+//         );
 
-    }
+//     }
 
-});
+// });
 
         //////////////////////////////////////////////////////////////////////////////
 
