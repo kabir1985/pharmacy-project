@@ -1,0 +1,658 @@
+DEBUG - 2026-07-14 09:20:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 09:36:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 09:36:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 09:36:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-14 09:38:06 --> mysqli_sql_exception: Unknown column 's.discount_on_all' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT \r\n     ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT \r\n     ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT \r\n     ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\salereturnlist.php(64): CodeIgniter\Database\BaseConnection->query(' SELECT \r\n     ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\salereturnlist->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-07-14 09:38:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.discount_on_all' in 'field list'
+[Method: GET, Route: salereturnlist]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\salereturnlist.php(64): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    s.product_vat,
+                    s.discount_on_all,
+                    s.other_charge_on_all,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale 
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+           where s.return_status != \'FULL\'
+            ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-14 09:38:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.discount_on_all' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    s.product_vat,
+                    s.discount_on_all,
+                    s.other_charge_on_all,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale 
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+           where s.return_status != \'FULL\'
+            ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    s.product_vat,
+                    s.discount_on_all,
+                    s.other_charge_on_all,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale 
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+           where s.return_status != \'FULL\'
+            ')
+ 3 APPPATH\Controllers\salereturnlist.php(64): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    s.product_vat,
+                    s.discount_on_all,
+                    s.other_charge_on_all,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale 
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+           where s.return_status != \'FULL\'
+            ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-14 09:38:06 --> [Caused by] mysqli_sql_exception: Unknown column 's.discount_on_all' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    s.product_vat,
+                    s.discount_on_all,
+                    s.other_charge_on_all,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale 
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+           where s.return_status != \'FULL\'
+            ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    s.product_vat,
+                    s.discount_on_all,
+                    s.other_charge_on_all,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale 
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+           where s.return_status != \'FULL\'
+            ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    s.product_vat,
+                    s.discount_on_all,
+                    s.other_charge_on_all,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale 
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+           where s.return_status != \'FULL\'
+            ')
+ 4 APPPATH\Controllers\salereturnlist.php(64): CodeIgniter\Database\BaseConnection->query(' SELECT 
+                    s.sales_invoice,
+                    s.sales_date,
+                    sd.total_sale,
+                    s.product_vat,
+                    s.discount_on_all,
+                    s.other_charge_on_all,
+                    s.paid_amount,
+                    IFNULL(cd.customer_due, 0) AS customer_due,
+                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
+                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+                    s.due_amount,
+                    CASE 
+                        WHEN s.customer_type REGEXP \'^[0-9]+$\' THEN c.cus_first_name
+                        ELSE s.customer_type
+                    END AS customer_name,
+                    CASE
+                        WHEN s.customer_type = \'Walk-In-Customer\' THEN \'Fully Paid\'
+                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN \'Fully Paid\'
+                        ELSE \'Partially Paid\'
+                    END AS payment_status
+                FROM sales s
+                
+                JOIN (
+                    SELECT 
+                        sales_details_invoice, 
+                        SUM(total_sale_price) AS total_sale 
+                    FROM sales_details
+                    GROUP BY sales_details_invoice
+                ) sd ON s.sales_invoice = sd.sales_details_invoice
+                LEFT JOIN (
+                    SELECT 
+                        due_invoice_no, 
+                        SUM(due_amount - due_paid_amount) AS customer_due,
+                        SUM(due_paid_amount) AS total_due_paid
+                    FROM customer_due
+                    GROUP BY due_invoice_no
+                ) cd ON s.sales_invoice = cd.due_invoice_no
+                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP \'^[0-9]+\'
+           where s.return_status != \'FULL\'
+            ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\salereturnlist->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\salereturnlist))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 09:38:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 09:39:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 09:42:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 09:42:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 09:50:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-14 09:50:52 --> ErrorException: Undefined array key "privileges"
+[Method: GET, Route: Expense]
+in APPPATH\Views\partial\sidebar.php on line 168.
+ 1 APPPATH\Views\partial\sidebar.php(168): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "privileges"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php', 168)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partial/sidebar', null, true)
+ 5 APPPATH\Views\layout.php(51): CodeIgniter\View\View->include('partial/sidebar')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\layout.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\View\View.php(242): CodeIgniter\View\View->render('layout', [], true)
+ 9 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('expense/expense_add', [], true)
+10 APPPATH\Controllers\Expense.php(40): view('expense/expense_add', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Expense->index()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expense))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 09:51:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-14 09:51:14 --> ErrorException: Undefined array key "privileges"
+[Method: GET, Route: Expense]
+in APPPATH\Views\partial\sidebar.php on line 168.
+ 1 APPPATH\Views\partial\sidebar.php(168): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "privileges"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php', 168)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partial/sidebar', null, true)
+ 5 APPPATH\Views\layout.php(51): CodeIgniter\View\View->include('partial/sidebar')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\layout.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\View\View.php(242): CodeIgniter\View\View->render('layout', [], true)
+ 9 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('expense/expense_add', [], true)
+10 APPPATH\Controllers\Expense.php(40): view('expense/expense_add', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Expense->index()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expense))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 09:51:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-14 09:51:15 --> ErrorException: Undefined array key "privileges"
+[Method: GET, Route: Expense]
+in APPPATH\Views\partial\sidebar.php on line 168.
+ 1 APPPATH\Views\partial\sidebar.php(168): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "privileges"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php', 168)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partial/sidebar', null, true)
+ 5 APPPATH\Views\layout.php(51): CodeIgniter\View\View->include('partial/sidebar')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\layout.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\View\View.php(242): CodeIgniter\View\View->render('layout', [], true)
+ 9 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('expense/expense_add', [], true)
+10 APPPATH\Controllers\Expense.php(40): view('expense/expense_add', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Expense->index()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expense))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 09:51:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-14 09:51:18 --> ErrorException: Undefined array key "privileges"
+[Method: GET, Route: Expensesubcategory]
+in APPPATH\Views\partial\sidebar.php on line 168.
+ 1 APPPATH\Views\partial\sidebar.php(168): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "privileges"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php', 168)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partial/sidebar', null, true)
+ 5 APPPATH\Views\layout.php(51): CodeIgniter\View\View->include('partial/sidebar')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\layout.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\View\View.php(242): CodeIgniter\View\View->render('layout', [], true)
+ 9 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('expense/ExpenseSubCategoryAdd', [], true)
+10 APPPATH\Controllers\Expensesubcategory.php(27): view('expense/ExpenseSubCategoryAdd', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Expensesubcategory->index()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Expensesubcategory))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 09:51:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-14 09:51:19 --> ErrorException: Undefined array key "privileges"
+[Method: GET, Route: purchase]
+in APPPATH\Views\partial\sidebar.php on line 168.
+ 1 APPPATH\Views\partial\sidebar.php(168): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "privileges"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php', 168)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partial/sidebar', null, true)
+ 5 APPPATH\Views\layout.php(51): CodeIgniter\View\View->include('partial/sidebar')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\layout.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\View\View.php(242): CodeIgniter\View\View->render('layout', [], true)
+ 9 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('purchase/purchase_add', [], true)
+10 APPPATH\Controllers\Purchase.php(170): view('purchase/purchase_add', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 09:51:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-14 09:51:21 --> ErrorException: Undefined array key "privileges"
+[Method: GET, Route: purchase]
+in APPPATH\Views\partial\sidebar.php on line 168.
+ 1 APPPATH\Views\partial\sidebar.php(168): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "privileges"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php', 168)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partial/sidebar', null, true)
+ 5 APPPATH\Views\layout.php(51): CodeIgniter\View\View->include('partial/sidebar')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\layout.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\View\View.php(242): CodeIgniter\View\View->render('layout', [], true)
+ 9 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('purchase/purchase_add', [], true)
+10 APPPATH\Controllers\Purchase.php(170): view('purchase/purchase_add', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Purchase->index()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Purchase))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 09:51:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-14 09:51:24 --> ErrorException: Undefined array key "privileges"
+[Method: GET, Route: pos]
+in APPPATH\Views\partial\sidebar.php on line 168.
+ 1 APPPATH\Views\partial\sidebar.php(168): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "privileges"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php', 168)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partial/sidebar', null, true)
+ 5 APPPATH\Views\layout.php(51): CodeIgniter\View\View->include('partial/sidebar')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\layout.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\View\View.php(242): CodeIgniter\View\View->render('layout', [], true)
+ 9 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('pos/pos_add', [], true)
+10 APPPATH\Controllers\pos.php(69): view('pos/pos_add', [...])
+11 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->index()
+12 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+13 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+15 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+16 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 09:51:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-14 09:51:25 --> ErrorException: Undefined array key "privileges"
+[Method: GET, Route: dashboard]
+in APPPATH\Views\partial\sidebar.php on line 168.
+ 1 APPPATH\Views\partial\sidebar.php(168): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "privileges"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php', 168)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partial/sidebar', [...], true)
+ 5 APPPATH\Views\ViewDashboard.php(11): CodeIgniter\View\View->include('partial/sidebar', [...])
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\ViewDashboard.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 9 APPPATH\Controllers\Dashboard.php(76): view('ViewDashboard', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 09:51:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-14 09:51:52 --> TypeError: Cannot access offset of type string on string
+[Method: GET, Route: dashboard]
+in APPPATH\Views\partial\sidebar.php on line 148.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partial/sidebar', [...], true)
+ 4 APPPATH\Views\ViewDashboard.php(11): CodeIgniter\View\View->include('partial/sidebar', [...])
+ 5 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\ViewDashboard.php')
+ 6 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 8 APPPATH\Controllers\Dashboard.php(76): view('ViewDashboard', [...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 09:53:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 09:53:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 09:57:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-14 09:57:05 --> ErrorException: Undefined array key "privileges"
+[Method: GET, Route: dashboard]
+in APPPATH\Views\partial\sidebar.php on line 159.
+ 1 APPPATH\Views\partial\sidebar.php(159): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "privileges"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php', 159)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partial/sidebar', [...], true)
+ 5 APPPATH\Views\ViewDashboard.php(11): CodeIgniter\View\View->include('partial/sidebar', [...])
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\ViewDashboard.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 9 APPPATH\Controllers\Dashboard.php(76): view('ViewDashboard', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 09:57:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-14 09:57:10 --> ErrorException: Undefined array key "privileges"
+[Method: GET, Route: dashboard]
+in APPPATH\Views\partial\sidebar.php on line 159.
+ 1 APPPATH\Views\partial\sidebar.php(159): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "privileges"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php', 159)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\partial\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partial/sidebar', [...], true)
+ 5 APPPATH\Views\ViewDashboard.php(11): CodeIgniter\View\View->include('partial/sidebar', [...])
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\ViewDashboard.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('ViewDashboard', [], true)
+ 9 APPPATH\Controllers\Dashboard.php(76): view('ViewDashboard', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 09:57:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 09:57:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 10:20:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-14 10:20:52 --> ErrorException: Undefined variable $data
+[Method: GET, Route: stockAdjustment]
+in APPPATH\Controllers\stockAdjustmentController.php on line 39.
+ 1 APPPATH\Controllers\stockAdjustmentController.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\stockAdjustmentController.php', 39)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockAdjustmentController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockAdjustmentController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-14 10:21:58 --> ErrorException: Undefined variable $data
+[Method: GET, Route: stockAdjustment]
+in APPPATH\Controllers\stockAdjustmentController.php on line 39.
+ 1 APPPATH\Controllers\stockAdjustmentController.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\stockAdjustmentController.php', 39)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockAdjustmentController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockAdjustmentController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-14 10:21:59 --> ErrorException: Undefined variable $data
+[Method: GET, Route: stockAdjustment]
+in APPPATH\Controllers\stockAdjustmentController.php on line 39.
+ 1 APPPATH\Controllers\stockAdjustmentController.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\stockAdjustmentController.php', 39)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockAdjustmentController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockAdjustmentController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-14 10:22:17 --> ErrorException: Undefined variable $row
+[Method: GET, Route: stockAdjustment]
+in APPPATH\Views\product\StockAdjustMent.php on line 42.
+ 1 APPPATH\Views\product\StockAdjustMent.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $row', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\StockAdjustMent.php', 42)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\StockAdjustMent.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/StockAdjustMent', [], true)
+ 5 APPPATH\Controllers\stockAdjustmentController.php(39): view('product/StockAdjustMent')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockAdjustmentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockAdjustmentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-14 10:22:19 --> ErrorException: Undefined variable $row
+[Method: GET, Route: stockAdjustment]
+in APPPATH\Views\product\StockAdjustMent.php on line 42.
+ 1 APPPATH\Views\product\StockAdjustMent.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $row', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\StockAdjustMent.php', 42)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\StockAdjustMent.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/StockAdjustMent', [], true)
+ 5 APPPATH\Controllers\stockAdjustmentController.php(39): view('product/StockAdjustMent')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockAdjustmentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockAdjustmentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-14 10:22:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 10:23:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 10:26:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 10:28:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 10:28:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-14 10:28:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

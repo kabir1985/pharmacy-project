@@ -43,6 +43,7 @@ $menuSections = [
             ['label'=>'Product Brand','url'=>'productbrandView','privileges'=>['product_brand']],
             ['label'=>'Group/Generic Name','url'=>'Group','privileges'=>['product_group']],
             ['label'=>'Product Unit','url'=>'Unit','privileges'=>['product_unit']],
+            ['label'=>'Stock Adjustment','url'=>'stockAdjustment','privileges'=>['product_unit']],
         ]
     ],
     [
@@ -67,6 +68,7 @@ $menuSections = [
             ['label'=>'Expense Add','url'=>'Expense','privileges'=>['expense_add']],
         ]
     ],
+
     [
         'label'=>'People Section',
         'icon'=>'fa fa-user-o',
