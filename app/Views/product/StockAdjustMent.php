@@ -18,45 +18,166 @@ echo $this->section('content');
 
 
 <!---------------Data Table start Here----..............................................--------------------------->
-<div class='row'>
-    <div class='col-md-12'>
-        <div class='tile collapseable show animate__animated  animate__fadeInUp'>
-            <div class='tile-body'>
-                <div class='table-responsive'>
-                    <table class='table table-hover table-bordered' id='sampleTable'>
-                        <thead>
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="tile">
+            <div class="tile-header d-flex justify-content-between align-items-center mb-3">
+                <h4 class="mb-0">
+                    <i class="fa fa-exchange-alt"></i> Stock Adjustment List
+                </h4>
+
+                <button class="btn btn-primary" data-toggle="modal" data-target="#StockAdjustmentModal">
+                    <i class="fa fa-plus"></i> New Adjustment
+                </button>
+            </div>
+
+            <div class="tile-body">
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-hover table-striped" id="sampleTable">
+
+                        <thead class="thead-dark">
                             <tr>
-                                <th>Name</th>
-                                <th>Action</th>
+                                <th>#</th>
+                                <th>Date</th>
+                                <th>Adjustment No</th>
+                                <th>Product</th>
+                                <th>Type</th>
+                                <th class="text-center">Previous Stock</th>
+                                <th class="text-center">Qty</th>
+                                <th class="text-center">Current Stock</th>
+                                <th>Reason</th>
+                                <th>User</th>
+                                <th width="150">Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <?php
-                           // foreach ($unit_show as $row) {
-                            ?>
-                                <tr>
-                                    <td><?php //echo $row['product_unit_name']; ?></td>
-                                    <td>
-                                        <!-- Button to invoke the modal -->
-                                        <a href="#" class="btn btn-primary btn-sm btn-edit" data-product_unit_id="<?php //echo $row['product_unit_id'] ?>" data-product_unit_name="<?php //echo $row['product_unit_name'] ?>">
-                                            <i class="fa fa-edit"></i></a>
 
-                                        <a href="#" class="btn btn-danger btn-sm btn-delete" data-delete_id="<?php //echo $row['product_unit_id'] ?>">
-                                            <i class="fa fa-trash-o"></i></a>
+                            <tr>
+                                <td>1</td>
+                                <td>13-Jul-2026</td>
+                                <td>SA-000001</td>
+                                <td>Napa 500 mg</td>
+                                <td>
+                                    <span class="badge badge-danger">Stock Out</span>
+                                </td>
+                                <td class="text-center">120</td>
+                                <td class="text-center">10</td>
+                                <td class="text-center">110</td>
+                                <td>Expired</td>
+                                <td>Admin</td>
+                                <td>
+                                    <a href="#" class="btn btn-info btn-sm">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
 
-                                    </td>
-                                </tr>
+                                    <a href="#" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
 
-                            <?php
-                           // }
-                            ?>
+                                    <a href="#" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>13-Jul-2026</td>
+                                <td>SA-000002</td>
+                                <td>Ace 500 mg</td>
+                                <td>
+                                    <span class="badge badge-success">Stock In</span>
+                                </td>
+                                <td class="text-center">75</td>
+                                <td class="text-center">20</td>
+                                <td class="text-center">95</td>
+                                <td>Physical Count</td>
+                                <td>Manager</td>
+                                <td>
+                                    <a href="#" class="btn btn-info btn-sm">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+
+                                    <a href="#" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+
+                                    <a href="#" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>12-Jul-2026</td>
+                                <td>SA-000003</td>
+                                <td>Seclo 20 mg</td>
+                                <td>
+                                    <span class="badge badge-danger">Stock Out</span>
+                                </td>
+                                <td class="text-center">50</td>
+                                <td class="text-center">5</td>
+                                <td class="text-center">45</td>
+                                <td>Damaged</td>
+                                <td>Admin</td>
+                                <td>
+                                    <a href="#" class="btn btn-info btn-sm">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+
+                                    <a href="#" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+
+                                    <a href="#" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>4</td>
+                                <td>11-Jul-2026</td>
+                                <td>SA-000004</td>
+                                <td>ORS Powder</td>
+                                <td>
+                                    <span class="badge badge-success">Stock In</span>
+                                </td>
+                                <td class="text-center">30</td>
+                                <td class="text-center">15</td>
+                                <td class="text-center">45</td>
+                                <td>Supplier Return</td>
+                                <td>Pharmacist</td>
+                                <td>
+                                    <a href="#" class="btn btn-info btn-sm">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+
+                                    <a href="#" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+
+                                    <a href="#" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
 
                         </tbody>
+
                     </table>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
 </div>
 
