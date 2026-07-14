@@ -64,6 +64,7 @@ class Product extends BaseController
 
     //--------------------------------------------------------------------
 
+
     public function create()
     {
 

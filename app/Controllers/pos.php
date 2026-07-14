@@ -592,4 +592,16 @@ public function update_hold_sale()
 
 
 
+
+
+
+
+public function stockAdjustmentForm()
+{
+ $data['product_show_for_sale'] = $this->products(); //products function called
+return view('product/StockAdjustMent', $data);
+}
+
+
+
 }

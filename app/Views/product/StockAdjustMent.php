@@ -5,13 +5,12 @@ echo $this->section('content');
 
 <div class='app-title'>
     <div>
-        <h1><i class='fa fa-th-list'></i> Product Unit List, Edit, Delete & Add Section</h1>
+        <h1><i class='fa fa-th-list'></i> Stock Adjustment List</h1>
     </div>
 
     <!-- Button trigger modal -->
-    <button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#StockAdjustmentModal'>
-        <i class='fa fa-plus'></i>
-        Unit Add
+    <button class="btn btn-primary" data-toggle="modal" data-target="#StockAdjustmentModal">
+        <i class="fa fa-plus"></i> New Adjustment
     </button>
 </div>
 
@@ -22,15 +21,15 @@ echo $this->section('content');
     <div class="col-md-12">
 
         <div class="tile">
-            <div class="tile-header d-flex justify-content-between align-items-center mb-3">
-                <h4 class="mb-0">
+            <!-- <div class="tile-header d-flex justify-content-between align-items-center mb-3">
+                 <h4 class="mb-0">
                     <i class="fa fa-exchange-alt"></i> Stock Adjustment List
-                </h4>
+                </h4> 
 
                 <button class="btn btn-primary" data-toggle="modal" data-target="#StockAdjustmentModal">
                     <i class="fa fa-plus"></i> New Adjustment
                 </button>
-            </div>
+            </div> -->
 
             <div class="tile-body">
 
@@ -210,61 +209,70 @@ echo $this->section('content');
 
                         <div class="form-group col-md-6">
                             <label>Adjustment Date</label>
-                            <input type="date"
-                                   class="form-control"
-                                   name="adjustment_date"
-                                   value="<?= date('Y-m-d'); ?>"
-                                   required>
+                            <input type="date" class="form-control" name="adjustment_date" value="<?= date('Y-m-d'); ?>"
+                                required>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label>Adjustment Type</label>
-                            <select class="form-control" name="adjustment_type" required>
-                                <option value="">Select Type</option>
-                                <option value="Stock In">Stock In</option>
-                                <option value="Stock Out">Stock Out</option>
-                            </select>
-                        </div>
+        <label>Adjustment Type</label>
+        <select class="form-control" name="adjustment_type" id="adjustment_type" required>
+            <option value="" selected disabled>Select Type</option>
+            <option value="stock_in">Stock In</option>
+            <option value="stock_out">Stock Out</option>
+        </select>
+    </div>
 
                     </div>
 
+                   <div class="form-group">
+    <label>Product</label>
 
-                    <div class="form-group">
-                        <label>Product</label>
-                        <select class="form-control select2" name="product_id" required>
-                            <option value="">Select Product</option>
-                        </select>
-                    </div>
+    <select class="form-control select2" name="product_id" id="product_id" required>
+
+        <option value="" selected disabled>Select Product</option>
+
+        <?php foreach($product_show_for_sale as $row){ ?>
+
+            <option
+                value="<?= $row['product_id']; ?>"
+                data-total_stock="<?= $row['total_stock']; ?>">
+
+                <?= $row['product_name']; ?>
+                (Stock : <?= $row['total_stock']; ?>)
+
+            </option>
+
+        <?php } ?>
+
+    </select>
+
+</div>
 
 
-                    <div class="form-row">
+<div class="form-row">
 
-                        <div class="form-group col-md-4">
-                            <label>Current Stock</label>
-                            <input type="text"
-                                   class="form-control"
-                                   id="current_stock"
-                                   readonly>
-                        </div>
+    <div class="form-group col-md-4">
+        <label>Current Stock</label>
+        <input type="number" class="form-control" id="current_stock" readonly>
+    </div>
 
-                        <div class="form-group col-md-4">
-                            <label>Adjustment Qty</label>
-                            <input type="number"
-                                   class="form-control"
-                                   name="adjustment_qty"
-                                   min="1"
-                                   required>
-                        </div>
+    <div class="form-group col-md-4">
+        <label>Adjustment Qty</label>
+        <input type="number" class="form-control"
+               id="adjustment_qty"
+               name="adjustment_qty"
+               min="0">
+    </div>
 
-                        <div class="form-group col-md-4">
-                            <label>New Stock</label>
-                            <input type="text"
-                                   class="form-control"
-                                   id="new_stock"
-                                   readonly>
-                        </div>
+    <div class="form-group col-md-4">
+        <label>New Stock</label>
+        <input type="number"
+               class="form-control"
+               id="new_stock"
+               min="0">
+    </div>
 
-                    </div>
+</div>
 
 
                     <div class="form-row">
@@ -285,10 +293,7 @@ echo $this->section('content');
 
                         <div class="form-group col-md-6">
                             <label>Reference No</label>
-                            <input type="text"
-                                   class="form-control"
-                                   name="reference_no"
-                                   placeholder="Reference Number">
+                            <input type="text" class="form-control" name="reference_no" placeholder="Reference Number">
                         </div>
 
                     </div>
@@ -296,24 +301,19 @@ echo $this->section('content');
 
                     <div class="form-group">
                         <label>Remarks</label>
-                        <textarea class="form-control"
-                                  rows="3"
-                                  name="remarks"
-                                  placeholder="Remarks (Optional)"></textarea>
+                        <textarea class="form-control" rows="3" name="remarks"
+                            placeholder="Remarks (Optional)"></textarea>
                     </div>
 
                 </div>
 
                 <div class="modal-footer">
 
-                    <button type="button"
-                            class="btn btn-secondary"
-                            data-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
                         Close
                     </button>
 
-                    <button type="submit"
-                            class="btn btn-success">
+                    <button type="submit" class="btn btn-success">
                         <i class="fa fa-save"></i>
                         Save Adjustment
                     </button>
@@ -329,10 +329,10 @@ echo $this->section('content');
 
 <!---------------------------Modal Form Unit Edit Start---------------------------------------->
 <!-- Modal -->
-<div class='modal fade' id='unit_edit_modal' tabindex='-1' role='dialog' aria-labelledby='unit_edit_modal' aria-hidden='true'>
+<!-- <div class='modal fade' id='unit_edit_modal' tabindex='-1' role='dialog' aria-labelledby='unit_edit_modal' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form method='post' action="<?php// echo site_url('/unitUpdate') ?>">
+            <form method='post' action="<? php// echo site_url('/unitUpdate') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Product Unit Update</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -357,12 +357,12 @@ echo $this->section('content');
         </div>
 
     </div>
-</div>
+</div> -->
 <!----------------------Modal Form Edit Section  End------------------------------------------>
 
 <!-- Modal Delete Product-->
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -385,7 +385,7 @@ echo $this->section('content');
             </form>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- End Modal Delete Product-->
 
@@ -403,46 +403,109 @@ echo $this->section('scripts');
 <script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
 <script type='text/javascript'>
-    $(document).ready(function() {
-        $('#sampleTable').DataTable();
+    $(document).ready(function () {
 
-        // get Edit Product
-        $('.btn-edit').on('click', function() {
-            // get data from button edit
-            const product_unit_id = $(this).data('product_unit_id');
-           // alert(product_unit_id);
-            const product_unit_name = $(this).data('product_unit_name');
+    $('.select2').select2({
+        width: '100%'
+    });
 
-            // Set data to Form Edit
-            $('#product_unit_id').val(product_unit_id);
-            $('#product_unit_name').val(product_unit_name);
-            // Call Modal Edit
-            $('#unit_edit_modal').modal('show');
+    function calculateNewStock() {
 
-        });
+        let current = Number($('#current_stock').val()) || 0;
+        let qty = Number($('#adjustment_qty').val()) || 0;
+        let type = $('#adjustment_type').val();
 
-        // get Delete Product
-        $('.btn-delete').on('click', function() {
-            // get data from button edit
-            const delete_id = $(this).data('delete_id');
-            //alert(delete_id);
-            // Set data to Form Edit
-            $('#delete_id').val(delete_id);
-            // Call Modal Edit
-            $('#deleteModal').modal('show');
-        });
+        let newStock = current;
+
+        if (type == "stock_in") {
+
+            newStock = current + qty;
+
+        } else if (type == "stock_out") {
+
+            if (qty > current) {
+                qty = current;
+                $('#adjustment_qty').val(qty);
+            }
+
+            newStock = current - qty;
+        }
+
+        $('#new_stock').val(newStock);
+    }
+
+    function calculateQty() {
+
+        let current = Number($('#current_stock').val()) || 0;
+        let newStock = Number($('#new_stock').val()) || 0;
+        let type = $('#adjustment_type').val();
+
+        let qty = 0;
+
+        if (type == "stock_in") {
+
+            if (newStock < current) {
+                newStock = current;
+                $('#new_stock').val(newStock);
+            }
+
+            qty = newStock - current;
+
+        } else if (type == "stock_out") {
+
+            if (newStock > current) {
+                newStock = current;
+                $('#new_stock').val(current);
+            }
+
+            if (newStock < 0) {
+                newStock = 0;
+                $('#new_stock').val(0);
+            }
+
+            qty = current - newStock;
+        }
+
+        $('#adjustment_qty').val(qty);
+    }
 
 
-        //................ JQuery modal Edit & Delete end here........................................
-        // ...............For Date Show.............................
-        $('.datePicker').datepicker({
-            format: "dd/mm/yyyy",
-            autoclose: true,
-            todayHighlight: true
-        });
-        //.................For Date show end........................ 
+    // Product Change
+    $('#product_id').change(function () {
+
+        let stock = Number($('#product_id option:selected').data('total_stock')) || 0;
+
+        $('#current_stock').val(stock);
+        $('#adjustment_qty').val('');
+        $('#new_stock').val(stock);
 
     });
+
+
+    // Adjustment Type Change
+    $('#adjustment_type').change(function () {
+
+        $('#adjustment_qty').trigger('input');
+
+    });
+
+
+    // Qty Change
+    $('#adjustment_qty').on('input', function () {
+
+        calculateNewStock();
+
+    });
+
+
+    // New Stock Change
+    $('#new_stock').on('input', function () {
+
+        calculateQty();
+
+    });
+
+});
 </script>
 
 <!-- For Calendar start -->
