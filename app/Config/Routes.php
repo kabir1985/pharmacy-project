@@ -78,9 +78,12 @@ $routes->POST('ExpensecategoryDelete', 'Expensecategory::delete');
 $routes->POST('ExpensecategoryUpdate', 'Expensecategory::update');
 
 $routes->get('stockAdjustment', 'Pos::stockAdjustmentForm');
-
-//createStockAdjustment
 $routes->POST('createStockAdjustment', 'Pos::createStockAdjustment');
+
+$routes->get('stockAdjustmentView/(:num)', 'Pos::view/$1');
+$routes->get('stockAdjustmentEdit/(:num)', 'Pos::edit/$1');
+$routes->post('stockAdjustmentUpdate/(:num)', 'Pos::update/$1');
+$routes->get('stockAdjustmentDelete/(:num)', 'Pos::delete/$1');
 
 $routes->get('Expensesubcategory', 'Expensesubcategory::index');
 $routes->POST('ExpensesubcategoryAdd', 'Expensesubcategory::create');

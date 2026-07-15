@@ -73,7 +73,7 @@ echo $this->section('content');
 
     <td>
 
-        <?php if($row['adjustment_type']=="Stock In"){ ?>
+        <?php if($row['adjustment_type']=="stock_in"){ ?>
 
             <span class="badge badge-success">
                 Stock In
@@ -174,11 +174,11 @@ echo $this->section('content');
 
                         <div class="form-group col-md-6">
                             <label>Adjustment Type</label>
-                            <select class="form-control" name="adjustment_type" id="adjustment_type" required>
-                                <option value="" selected disabled>Select Type</option>
-                                <option value="stock_in">Stock In</option>
-                                <option value="stock_out">Stock Out</option>
-                            </select>
+                        <select name="adjustment_type" id="adjustment_type" class="form-control" required>
+    <option value="">Select Type</option>
+    <option value="stock_in">Stock In</option>
+    <option value="stock_out">Stock Out</option>
+</select>
                         </div>
 
                     </div>

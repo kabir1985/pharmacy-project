@@ -716,9 +716,40 @@ public function createStockAdjustment()
         ]);
 
     }
+    
 
 }
 
+
+public function view($id)
+{
+    $StockAdjustmentModel = new \App\Models\StockAdjustmentModel();
+
+    $data['adjustment'] = $StockAdjustmentModel
+                            ->where('adjustment_id', $id)
+                            ->first();
+
+    if (!$data['adjustment']) {
+        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
+    return view('stock_adjustment/view', $data);
+}
+
+public function edit($id)
+{
+    $StockAdjustmentModel = new \App\Models\StockAdjustmentModel();
+
+    $data['adjustment'] = $StockAdjustmentModel
+                            ->where('adjustment_id', $id)
+                            ->first();
+
+    if (!$data['adjustment']) {
+        return redirect()->back()->with('error', 'Record not found');
+    }
+
+    return view('stock_adjustment/edit', $data);
+}
 
 
 
