@@ -79,6 +79,9 @@ $routes->POST('ExpensecategoryUpdate', 'Expensecategory::update');
 
 $routes->get('stockAdjustment', 'Pos::stockAdjustmentForm');
 
+//createStockAdjustment
+$routes->POST('createStockAdjustment', 'Pos::createStockAdjustment');
+
 $routes->get('Expensesubcategory', 'Expensesubcategory::index');
 $routes->POST('ExpensesubcategoryAdd', 'Expensesubcategory::create');
 $routes->POST('ExpensesubcategoryUpdate', 'Expensesubcategory::update');

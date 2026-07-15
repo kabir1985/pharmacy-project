@@ -21,6 +21,8 @@ echo $this->section('content');
     <div class="col-md-12">
 
         <div class="tile">
+
+
             <!-- <div class="tile-header d-flex justify-content-between align-items-center mb-3">
                  <h4 class="mb-0">
                     <i class="fa fa-exchange-alt"></i> Stock Adjustment List
@@ -29,7 +31,7 @@ echo $this->section('content');
                 <button class="btn btn-primary" data-toggle="modal" data-target="#StockAdjustmentModal">
                     <i class="fa fa-plus"></i> New Adjustment
                 </button>
-            </div> -->
+            </div>  -->
 
             <div class="tile-body">
 
@@ -55,120 +57,77 @@ echo $this->section('content');
 
                         <tbody>
 
-                            <tr>
-                                <td>1</td>
-                                <td>13-Jul-2026</td>
-                                <td>SA-000001</td>
-                                <td>Napa 500 mg</td>
-                                <td>
-                                    <span class="badge badge-danger">Stock Out</span>
-                                </td>
-                                <td class="text-center">120</td>
-                                <td class="text-center">10</td>
-                                <td class="text-center">110</td>
-                                <td>Expired</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a href="#" class="btn btn-info btn-sm">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
+<?php $sl = 1; ?>
 
-                                    <a href="#" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+<?php foreach($adjustments as $row){ ?>
 
-                                    <a href="#" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+<tr>
 
-                            <tr>
-                                <td>2</td>
-                                <td>13-Jul-2026</td>
-                                <td>SA-000002</td>
-                                <td>Ace 500 mg</td>
-                                <td>
-                                    <span class="badge badge-success">Stock In</span>
-                                </td>
-                                <td class="text-center">75</td>
-                                <td class="text-center">20</td>
-                                <td class="text-center">95</td>
-                                <td>Physical Count</td>
-                                <td>Manager</td>
-                                <td>
-                                    <a href="#" class="btn btn-info btn-sm">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
+    <td><?= $sl++; ?></td>
 
-                                    <a href="#" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+    <td><?= date('d-M-Y', strtotime($row['adjustment_date'])); ?></td>
 
-                                    <a href="#" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+    <td><?= $row['adjustment_no']; ?></td>
 
-                            <tr>
-                                <td>3</td>
-                                <td>12-Jul-2026</td>
-                                <td>SA-000003</td>
-                                <td>Seclo 20 mg</td>
-                                <td>
-                                    <span class="badge badge-danger">Stock Out</span>
-                                </td>
-                                <td class="text-center">50</td>
-                                <td class="text-center">5</td>
-                                <td class="text-center">45</td>
-                                <td>Damaged</td>
-                                <td>Admin</td>
-                                <td>
-                                    <a href="#" class="btn btn-info btn-sm">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
+    <td><?= $row['product_name']; ?></td>
 
-                                    <a href="#" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+    <td>
 
-                                    <a href="#" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+        <?php if($row['adjustment_type']=="Stock In"){ ?>
 
-                            <tr>
-                                <td>4</td>
-                                <td>11-Jul-2026</td>
-                                <td>SA-000004</td>
-                                <td>ORS Powder</td>
-                                <td>
-                                    <span class="badge badge-success">Stock In</span>
-                                </td>
-                                <td class="text-center">30</td>
-                                <td class="text-center">15</td>
-                                <td class="text-center">45</td>
-                                <td>Supplier Return</td>
-                                <td>Pharmacist</td>
-                                <td>
-                                    <a href="#" class="btn btn-info btn-sm">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
+            <span class="badge badge-success">
+                Stock In
+            </span>
 
-                                    <a href="#" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+        <?php }else{ ?>
 
-                                    <a href="#" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+            <span class="badge badge-danger">
+                Stock Out
+            </span>
 
-                        </tbody>
+        <?php } ?>
 
+    </td>
+
+    <td class="text-center">
+        <?= number_format($row['current_stock'],2); ?>
+    </td>
+
+    <td class="text-center">
+        <?= number_format($row['adjustment_qty'],2); ?>
+    </td>
+
+    <td class="text-center">
+        <?= number_format($row['new_stock'],2); ?>
+    </td>
+
+    <td><?= $row['reason']; ?></td>
+
+    <td><?= $row['user_name']; ?></td>
+
+    <td>
+
+        <a href="<?= site_url('stockAdjustmentView/'.$row['adjustment_id']) ?>" class="btn btn-info btn-sm">
+            <i class="fa fa-eye"></i>
+        </a>
+
+        <a href="<?= site_url('stockAdjustmentEdit/'.$row['adjustment_id']) ?>" class="btn btn-primary btn-sm">
+            <i class="fa fa-edit"></i>
+        </a>
+
+        <a href="<?= site_url('stockAdjustmentDelete/'.$row['adjustment_id']) ?>"
+           onclick="return confirm('Delete this adjustment?')"
+           class="btn btn-danger btn-sm">
+            <i class="fa fa-trash"></i>
+        </a>
+
+    </td>
+
+</tr>
+
+<?php } ?>
+
+</tbody>
                     </table>
 
                 </div>
@@ -190,7 +149,7 @@ echo $this->section('content');
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
 
-            <form method="post" action="<?= site_url('stock-adjustment/store'); ?>">
+            <form action="#" id="stockAdjustmentForm">
 
                 <div class="modal-header bg-primary text-white">
                     <h5 class="modal-title">
@@ -214,69 +173,62 @@ echo $this->section('content');
                         </div>
 
                         <div class="form-group col-md-6">
-        <label>Adjustment Type</label>
-        <select class="form-control" name="adjustment_type" id="adjustment_type" required>
-            <option value="" selected disabled>Select Type</option>
-            <option value="stock_in">Stock In</option>
-            <option value="stock_out">Stock Out</option>
-        </select>
-    </div>
+                            <label>Adjustment Type</label>
+                            <select class="form-control" name="adjustment_type" id="adjustment_type" required>
+                                <option value="" selected disabled>Select Type</option>
+                                <option value="stock_in">Stock In</option>
+                                <option value="stock_out">Stock Out</option>
+                            </select>
+                        </div>
 
                     </div>
 
-                   <div class="form-group">
-    <label>Product</label>
+                    <div class="form-group">
+                        <label>Product</label>
 
-    <select class="form-control select2" name="product_id" id="product_id" required>
+                        <select class="form-control" name="product_id" id="product_id" required>
 
-        <option value="" selected disabled>Select Product</option>
+                            <option value="" selected disabled>Select Product</option>
 
-        <?php foreach($product_show_for_sale as $row){ ?>
+                            <?php foreach($product_show_for_sale as $row){ ?>
 
-            <option
-                value="<?= $row['product_id']; ?>"
-                data-total_stock="<?= $row['total_stock']; ?>">
+                            <option value="<?= $row['product_id']; ?>" data-total_stock="<?= $row['total_stock']; ?>">
 
-                <?= $row['product_name']; ?>
-                (Stock : <?= $row['total_stock']; ?>)
+                                <?= $row['product_name']; ?>
+                                (Stock : <?= $row['total_stock']; ?>)
 
-            </option>
+                            </option>
 
-        <?php } ?>
+                            <?php } ?>
 
-    </select>
+                        </select>
 
-</div>
-
-
-<div class="form-row">
-
-    <div class="form-group col-md-4">
-        <label>Current Stock</label>
-        <input type="number" class="form-control" id="current_stock" readonly>
-    </div>
-
-    <div class="form-group col-md-4">
-        <label>Adjustment Qty</label>
-        <input type="number" class="form-control"
-               id="adjustment_qty"
-               name="adjustment_qty"
-               min="0">
-    </div>
-
-    <div class="form-group col-md-4">
-        <label>New Stock</label>
-        <input type="number"
-               class="form-control"
-               id="new_stock"
-               min="0">
-    </div>
-
-</div>
+                    </div>
 
 
                     <div class="form-row">
 
+                        <div class="form-group col-md-4">
+                            <label>Current Stock</label>
+                            <input type="number" class="form-control" id="current_stock" name="current_stock" readonly>
+                        </div>
+
+
+                        <div class="form-group col-md-4">
+                            <label>New Stock</label>
+                            <input type="number" class="form-control" id="new_stock" name="new_stock" min="0">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Adjustment Qty</label>
+                            <input type="number" class="form-control" id="adjustment_qty" name="adjustment_qty"
+                                readonly>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Reason</label>
                             <select class="form-control" name="reason">
@@ -295,7 +247,6 @@ echo $this->section('content');
                             <label>Reference No</label>
                             <input type="text" class="form-control" name="reference_no" placeholder="Reference Number">
                         </div>
-
                     </div>
 
 
@@ -403,107 +354,177 @@ echo $this->section('scripts');
 <script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
 <script type='text/javascript'>
-    $(document).ready(function () {
+$(document).ready(function() {
 
-    $('.select2').select2({
-        width: '100%'
-    });
+    //===========================
+    // Calculate Adjustment
+    //===========================
+    function calculateAdjustment() {
 
-    function calculateNewStock() {
-
-        let current = Number($('#current_stock').val()) || 0;
-        let qty = Number($('#adjustment_qty').val()) || 0;
+        let current = parseFloat($('#current_stock').val()) || 0;
+        let newStock = parseFloat($('#new_stock').val()) || 0;
         let type = $('#adjustment_type').val();
-
-        let newStock = current;
 
         if (type == "stock_in") {
 
-            newStock = current + qty;
+            // Only calculate
+            if (newStock >= current) {
+                $('#adjustment_qty').val(newStock - current);
+            } else {
+                $('#adjustment_qty').val(0);
+            }
 
         } else if (type == "stock_out") {
 
-            if (qty > current) {
-                qty = current;
-                $('#adjustment_qty').val(qty);
+            if (newStock <= current) {
+                $('#adjustment_qty').val(current - newStock);
+            } else {
+                $('#adjustment_qty').val(0);
             }
 
-            newStock = current - qty;
         }
 
-        $('#new_stock').val(newStock);
     }
 
-    function calculateQty() {
-
-        let current = Number($('#current_stock').val()) || 0;
-        let newStock = Number($('#new_stock').val()) || 0;
-        let type = $('#adjustment_type').val();
-
-        let qty = 0;
-
-        if (type == "stock_in") {
-
-            if (newStock < current) {
-                newStock = current;
-                $('#new_stock').val(newStock);
-            }
-
-            qty = newStock - current;
-
-        } else if (type == "stock_out") {
-
-            if (newStock > current) {
-                newStock = current;
-                $('#new_stock').val(current);
-            }
-
-            if (newStock < 0) {
-                newStock = 0;
-                $('#new_stock').val(0);
-            }
-
-            qty = current - newStock;
-        }
-
-        $('#adjustment_qty').val(qty);
-    }
-
-
+    //===========================
     // Product Change
-    $('#product_id').change(function () {
+    //===========================
+    $('#product_id').change(function() {
 
         let stock = Number($('#product_id option:selected').data('total_stock')) || 0;
 
         $('#current_stock').val(stock);
-        $('#adjustment_qty').val('');
         $('#new_stock').val(stock);
 
+        calculateAdjustment();
+
     });
 
-
+    //===========================
     // Adjustment Type Change
-    $('#adjustment_type').change(function () {
+    //===========================
+    $('#adjustment_type').change(function() {
 
-        $('#adjustment_qty').trigger('input');
-
-    });
-
-
-    // Qty Change
-    $('#adjustment_qty').on('input', function () {
-
-        calculateNewStock();
+        calculateAdjustment();
 
     });
 
-
+    //===========================
     // New Stock Change
-    $('#new_stock').on('input', function () {
+    //===========================
+    $('#new_stock').on('input', function() {
 
-        calculateQty();
+        calculateAdjustment();
 
     });
+
+    //===========================
+    // Validation on Blur
+    //===========================
+    $('#new_stock').on('blur', function() {
+
+        let current = parseFloat($('#current_stock').val()) || 0;
+        let newStock = parseFloat($(this).val()) || 0;
+        let type = $('#adjustment_type').val();
+
+        if (type == 'stock_in') {
+
+            if (newStock < current) {
+
+                alert('New Stock must be greater than or equal to Current Stock.');
+
+                $(this).val(current);
+
+            }
+
+        } else if (type == 'stock_out') {
+
+            if (newStock > current) {
+
+                alert('New Stock cannot be greater than Current Stock.');
+
+                $(this).val(current);
+
+            }
+
+            if (newStock < 0) {
+
+                $(this).val(0);
+
+            }
+
+        }
+
+        calculateAdjustment();
+
+    });
+
+
+
+
+
+    //====================================
+    // Save Stock Adjustment
+    //====================================
+    $('#stockAdjustmentForm').submit(function(e) {
+
+        e.preventDefault();
+
+        $.ajax({
+
+            url: "<?= site_url('createStockAdjustment'); ?>",
+            type: "POST",
+            data: $(this).serialize(),
+            dataType: "json",
+
+            beforeSend: function() {
+
+                $('button[type=submit]').prop('disabled', true);
+
+            },
+
+            success: function(response) {
+
+                $('button[type=submit]').prop('disabled', false);
+
+                if (response.status == "success") {
+
+                    alert(response.message);
+
+                    $('#stockAdjustmentModal').modal('hide');
+
+                    $('#stockAdjustmentForm')[0].reset();
+
+                    $('.select2').val('').trigger('change');
+
+                    // Reload DataTable
+                    $('#sampleTable').DataTable().ajax.reload(null, false);
+
+                } else {
+
+                    alert(response.message);
+
+                }
+
+            },
+
+            error: function(xhr) {
+
+                $('button[type=submit]').prop('disabled', false);
+
+                alert("Something went wrong.");
+
+                console.log(xhr.responseText);
+
+            }
+
+        });
+
+    });
+
+
+
+
 
 });
 </script>

@@ -1,0 +1,672 @@
+DEBUG - 2026-07-15 04:05:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:05:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:05:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:06:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:12:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:12:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:13:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:15:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:28:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:33:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:38:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:38:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:42:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:47:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:48:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:51:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 04:54:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:02:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:02:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:08:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:10:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:14:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:19:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:22:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:30:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:49:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:49:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:50:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:50:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:53:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 05:53:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 06:37:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 06:38:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-15 06:39:06 --> Error: Class "App\Models\ProductInitialStockModel" not found
+[Method: POST, Route: createStockAdjustment]
+in APPPATH\Controllers\pos.php on line 612.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->createStockAdjustment()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-15 06:41:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 06:41:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 06:49:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 06:49:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 06:50:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 06:51:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 06:52:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-15 06:52:25 --> mysqli_sql_exception: Column 'product_id' cannot be null in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `st...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `st...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `st...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `st...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\pharmacy-project\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(663): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->createStockAdjustment()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+DEBUG - 2026-07-15 06:54:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 06:54:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-15 06:54:53 --> mysqli_sql_exception: Column 'product_id' cannot be null in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `st...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `st...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `st...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `st...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\pharmacy-project\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(663): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->createStockAdjustment()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+DEBUG - 2026-07-15 06:56:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 06:56:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-15 06:56:37 --> mysqli_sql_exception: Column 'adjustment_date' cannot be null in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `st...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `st...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `st...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `st...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\pharmacy-project\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(647): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->createStockAdjustment()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2026-07-15 06:56:37 --> mysqli_sql_exception: Column 'product_id' cannot be null in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `st...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `st...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `st...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `st...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\pharmacy-project\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(663): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->createStockAdjustment()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+DEBUG - 2026-07-15 07:00:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 07:00:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 07:00:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-15 07:05:54 --> mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sa`.`ad...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`ad...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`ad...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`ad...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-07-15 07:05:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+[Method: GET, Route: stockAdjustment]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-15 07:05:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-15 07:05:54 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-07-15 07:06:13 --> mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sa`.`ad...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`ad...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`ad...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`ad...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-07-15 07:06:13 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+[Method: GET, Route: stockAdjustment]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-15 07:06:13 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-15 07:06:13 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-07-15 07:06:15 --> mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sa`.`ad...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`ad...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`ad...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`ad...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-07-15 07:06:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+[Method: GET, Route: stockAdjustment]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-15 07:06:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-15 07:06:15 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.users' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`name` AS `user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `users` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-07-15 07:07:47 --> mysqli_sql_exception: Unknown column 'u.id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sa`.`ad...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`ad...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`ad...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`ad...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-07-15 07:07:47 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u.id' in 'on clause'
+[Method: GET, Route: stockAdjustment]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-15 07:07:47 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'u.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-15 07:07:47 --> [Caused by] mysqli_sql_exception: Unknown column 'u.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-07-15 07:08:30 --> mysqli_sql_exception: Unknown column 'sad.adjustment_no' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sa`.`ad...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`ad...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`ad...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`ad...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-07-15 07:08:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sad.adjustment_no' in 'on clause'
+[Method: GET, Route: stockAdjustment]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-15 07:08:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sad.adjustment_no' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-15 07:08:30 --> [Caused by] mysqli_sql_exception: Unknown column 'sad.adjustment_no' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2026-07-15 07:08:34 --> mysqli_sql_exception: Unknown column 'sad.adjustment_no' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sa`.`ad...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`ad...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`ad...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`ad...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-07-15 07:08:34 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sad.adjustment_no' in 'on clause'
+[Method: GET, Route: stockAdjustment]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 2 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-15 07:08:34 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'sad.adjustment_no' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 4 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-15 07:08:34 --> [Caused by] mysqli_sql_exception: Unknown column 'sad.adjustment_no' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `sa`.`adjustment_id`, `sa`.`adjustment_no`, `sa`.`adjustment_date`, `sa`.`adjustment_type`, `sa`.`reason`, `sa`.`adjusted_by`, `sad`.`current_stock`, `sad`.`adjustment_qty`, `sad`.`new_stock`, `p`.`product_name`, `u`.`user_name`
+FROM `stock_adjustment` `sa`
+JOIN `stock_adjustment_details` `sad` ON `sad`.`adjustment_no` = `sa`.`adjustment_no`
+JOIN `product_inital_stock` `p` ON `p`.`product_id` = `sad`.`product_id`
+LEFT JOIN `user` `u` ON `u`.`user_id` = `sa`.`adjusted_by`
+ORDER BY `sa`.`adjustment_id` DESC', [], false)
+ 5 APPPATH\Controllers\pos.php(625): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Pos->stockAdjustmentForm()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pos))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-15 07:10:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 07:10:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 07:11:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 07:12:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 07:12:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 07:12:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-15 08:55:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
