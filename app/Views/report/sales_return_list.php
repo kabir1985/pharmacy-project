@@ -40,25 +40,29 @@
                                     <td>
                                         <?= esc($row['customer_name']) ?>
                                     </td>
-                                    <td>
-                                        <?= number_format($row['total_sale'], 2) ?>
-                                    </td>
-                                    <td>
-                                        <?= number_format($row['product_vat'], 2) ?>
-                                    </td>
-                                    <td>
-                                        <?= number_format($row['discount_on_all'], 2) ?>
-                                    </td>
-                                    <td>
-                                        <?= number_format($row['other_charge_on_all'], 2) ?>
-                                    </td>
-                                    <td>
-                                        <?= number_format($row['total_paid'], 2) ?>
-                                    </td>
+                                    <td class="text-end">
+    <?= number_format($row['total_sale'],2) ?>
+</td>
 
-                                    <td>
-                                        <?= number_format($row['customer_due'], 2) ?>
-                                    </td>
+<td class="text-end">
+    <?= number_format($row['product_vat'],2) ?>
+</td>
+
+<td class="text-end">
+    <?= number_format($row['product_discount'],2) ?>
+</td>
+
+<td class="text-end">
+    <?= number_format($row['other_charge_on_all'],2) ?>
+</td>
+
+<td class="text-end text-success">
+    <?= number_format($row['total_paid'],2) ?>
+</td>
+
+<td class="text-end text-danger">
+    <?= number_format($row['customer_due'],2) ?>
+</td>
                                     <td>
                                         <?php if ($row['payment_status'] === 'Fully Paid'): ?>
                                             <span class="badge bg-success text-white">Fully Paid</span>
@@ -147,7 +151,11 @@
 
 <script>
     $(document).ready(function () {
-        $('#sampleTable').DataTable();
+        $('#sampleTable').DataTable({
+    responsive: true,
+    pageLength: 25,
+    order: [[0, 'desc']]
+});
 
         ///////////////////////////
 

@@ -115,6 +115,24 @@ $menuSections = [
             ['label'=>'% Tax Setup','url'=>'tax','privileges'=>['tax_setup']],
         ]
     ],
+
+    [
+        'label'      => 'Backup Database',
+        'icon'       => 'fa fa-download',
+        'url'        => 'database-backup',
+        'roles'      => ['Admin'],
+        'privileges' => [],
+        'children'   => []
+    ],
+
+    [
+        'label' => 'Help & Support',
+        'icon' => 'fa fa-life-ring',
+        'url' => 'help-support',
+        'privileges' => [],
+        'children' => []
+    ],
+
     [
         'label'=>'Logout',
         'icon'=>'fa fa-sign-out',

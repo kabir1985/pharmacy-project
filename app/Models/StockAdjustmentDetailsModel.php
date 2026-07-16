@@ -15,7 +15,7 @@ class StockAdjustmentDetailsModel extends Model
 
     protected $allowedFields = [
 
-        'adjustment_no',
+        'adjustment_id',
         'product_id',
         'current_stock',
         'adjustment_qty',

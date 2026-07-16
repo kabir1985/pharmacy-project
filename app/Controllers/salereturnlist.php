@@ -20,49 +20,89 @@ class salereturnlist extends BaseController
 
     public function index()
     {
-        $sql = " SELECT 
+        $sql = "SELECT
+    
                     s.sales_invoice,
                     s.sales_date,
+    
+                    s.seller_id,
+                    u.user_name AS seller_name,
+    
                     sd.total_sale,
+    
                     s.product_vat,
-                    s.discount_on_all,
+                    s.product_discount,
                     s.other_charge_on_all,
+    
                     s.paid_amount,
-                    IFNULL(cd.customer_due, 0) AS customer_due,
-                    IFNULL(cd.total_due_paid, 0) AS due_paid_amount,
-                    (s.paid_amount + IFNULL(cd.total_due_paid, 0)) AS total_paid,
+    
+                    IFNULL(cd.customer_due,0) AS customer_due,
+                    IFNULL(cd.total_due_paid,0) AS due_paid_amount,
+    
+                    (s.paid_amount + IFNULL(cd.total_due_paid,0)) AS total_paid,
+    
                     s.due_amount,
-                    CASE 
-                        WHEN s.customer_type REGEXP '^[0-9]+$' THEN c.cus_first_name
+    
+                    CASE
+                        WHEN s.customer_type REGEXP '^[0-9]+$'
+                        THEN c.cus_first_name
                         ELSE s.customer_type
                     END AS customer_name,
+    
                     CASE
                         WHEN s.customer_type = 'Walk-In-Customer' THEN 'Fully Paid'
-                        WHEN IFNULL(cd.customer_due, 0) = 0 THEN 'Fully Paid'
+                        WHEN IFNULL(cd.customer_due,0)=0 THEN 'Fully Paid'
                         ELSE 'Partially Paid'
                     END AS payment_status
+    
                 FROM sales s
-                
-                JOIN (
-                    SELECT 
-                        sales_details_invoice, 
-                        SUM(total_sale_price) AS total_sale 
+    
+                LEFT JOIN
+                (
+                    SELECT
+    
+                        sales_details_invoice,
+    
+                        SUM(total_sale_price) AS total_sale
+    
                     FROM sales_details
+    
                     GROUP BY sales_details_invoice
-                ) sd ON s.sales_invoice = sd.sales_details_invoice
-                LEFT JOIN (
-                    SELECT 
-                        due_invoice_no, 
+    
+                ) sd
+                    ON s.sales_invoice = sd.sales_details_invoice
+    
+                LEFT JOIN
+                (
+                    SELECT
+    
+                        due_invoice_no,
+    
                         SUM(due_amount - due_paid_amount) AS customer_due,
+    
                         SUM(due_paid_amount) AS total_due_paid
+    
                     FROM customer_due
+    
                     GROUP BY due_invoice_no
-                ) cd ON s.sales_invoice = cd.due_invoice_no
-                LEFT JOIN customer c ON c.customer_id = s.customer_type AND s.customer_type REGEXP '^[0-9]+'
-           where s.return_status != 'FULL'
-            ";
-        $query = $this->db->query($sql);
-        $data['saleReturnList'] = $query->getResultArray();
+    
+                ) cd
+                    ON s.sales_invoice = cd.due_invoice_no
+    
+                LEFT JOIN customer c
+                    ON c.customer_id = s.customer_type
+                    AND s.customer_type REGEXP '^[0-9]+$'
+    
+                LEFT JOIN user u
+                    ON u.user_id = s.seller_id
+    
+                WHERE s.return_status <> 'FULL'
+    
+                ORDER BY s.sales_date DESC,
+                         s.sales_invoice DESC";
+    
+        $data['saleReturnList'] = $this->db->query($sql)->getResultArray();
+    
         return view('report/sales_return_list', $data);
     }
 

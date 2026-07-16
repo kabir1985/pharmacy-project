@@ -184,7 +184,7 @@ return $this->response->setJSON($products);
                 'payment_type' => $sale['payment_type'],
                 'product_discount' => $sale['product_discount'],
                 'product_vat' => $sale['product_vat'],
-                'discount_on_all' => $sale['discount_on_all'],
+                //'discount_on_all' => $sale['discount_on_all'],
                 'other_charge_on_all' => $sale['other_charge_on_all'],
                 // 'discountOnTotalPrice' => $sale['discountOnTotalPrice'],
                 // 'vatOnTotalPrice' => $sale['vatOnTotalPrice'],

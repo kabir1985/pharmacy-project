@@ -1,140 +1,308 @@
-<?php
-echo $this->extend('layout');
-echo $this->section('content');
-?>
+<?= $this->extend('layout'); ?>
+<?= $this->section('content'); ?>
 
-<div class='app-title'>
+<div class="app-title">
     <div>
-        <h1><i class='fa fa-th-list'></i> Customer Payment Report</h1>
+        <h1><i class="fa fa-money"></i> Customer Payment Report</h1>
     </div>
-    <div class="mt-3 mb-3 d-flex gap-2">
-        <button id="exportCsvBtn" class="btn btn-outline-success">
-            <i class="fa fa-file-csv"></i> Export as CSV
+
+    <div class="mt-3 mb-3">
+        <button id="exportCsvBtn" class="btn btn-success btn-sm">
+            <i class="fa fa-file-csv"></i> Export CSV
         </button>
-        <button id="exportPdfBtn" class="btn btn-outline-danger">
-            <i class="fa fa-file-pdf"></i> Export as PDF
+
+        <button id="exportPdfBtn" class="btn btn-danger btn-sm">
+            <i class="fa fa-file-pdf"></i> Export PDF
         </button>
     </div>
 </div>
 
-<div class='row'>
-    <div class='col-md-12'>
-        <div class='tile collapseable show animate__animated animate__fadeInUp'>
-            <div class='tile-body'>
-                <div class='table-responsive'>
-                    <table class='table table-hover table-bordered' id='sampleTable'>
-                        <thead>
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="tile collapseable show animate__animated animate__fadeInUp">
+
+            <div class="tile-body">
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-hover" id="sampleTable">
+
+                        <thead class="table-primary">
+
                             <tr>
+
                                 <th>ID</th>
+
                                 <th>Customer</th>
+
                                 <th>Phone</th>
-                                <th>Total Due</th>
-                                <th>Total Paid</th>
-                                <th>Balance</th>
+
+                                <th class="text-end">Total Due</th>
+
+                                <th class="text-end">Total Paid</th>
+
+                                <th class="text-end">Balance</th>
+
+                                <th>Status</th>
+
                             </tr>
+
                         </thead>
+
                         <tbody>
+
+                            <?php
+                            $grandDue = 0;
+                            $grandPaid = 0;
+                            $grandBalance = 0;
+                            ?>
+
                             <?php foreach ($customers as $row): ?>
-                            <tr>
-                                <td><?=$row->customer_id?></td>
-                                <td><?=$row->customer_name?></td>
-                                <td><?=$row->cus_phone?></td>
-                                <td><?=$row->total_due?></td>
-                                <td><?=$row->total_paid?></td>
-                                <td><?=$row->current_balance?></td>
-                            </tr>
+
+                                <?php
+
+                                $totalDue = $row->total_due ?? 0;
+                                $totalPaid = $row->total_paid ?? 0;
+                                $balance = $row->current_balance ?? 0;
+
+                                $grandDue += $totalDue;
+                                $grandPaid += $totalPaid;
+                                $grandBalance += $balance;
+
+                                ?>
+
+                                <tr>
+
+                                    <td><?= $row->customer_id ?></td>
+
+                                    <td><?= esc($row->customer_name) ?></td>
+
+                                    <td><?= esc($row->cus_phone) ?></td>
+
+                                    <td class="text-end">
+                                        <?= number_format($totalDue, 2) ?>
+                                    </td>
+
+                                    <td class="text-end text-success">
+                                        <?= number_format($totalPaid, 2) ?>
+                                    </td>
+
+                                    <td class="text-end">
+
+                                        <?php if ($balance > 0): ?>
+
+                                            <span class="badge bg-danger text-white">
+                                                <?= number_format($balance, 2) ?>
+                                            </span>
+
+                                        <?php else: ?>
+
+                                            <span class="badge bg-success">
+                                                0.00
+                                            </span>
+
+                                        <?php endif; ?>
+
+                                    </td>
+
+                                    <td>
+
+                                        <?php if ($balance > 0): ?>
+
+                                            <span class="badge bg-warning text-dark">
+                                                Due
+                                            </span>
+
+                                        <?php else: ?>
+
+                                            <span class="badge bg-success">
+                                                Paid
+                                            </span>
+
+                                        <?php endif; ?>
+
+                                    </td>
+
+                                </tr>
+
                             <?php endforeach; ?>
+
                         </tbody>
+
+                        <tfoot>
+
+                            <tr class="table-info fw-bold">
+
+                                <td colspan="3" class="text-end">
+
+                                    Grand Total
+
+                                </td>
+
+                                <td class="text-end">
+
+                                    <?= number_format($grandDue, 2) ?>
+
+                                </td>
+
+                                <td class="text-end">
+
+                                    <?= number_format($grandPaid, 2) ?>
+
+                                </td>
+
+                                <td class="text-end">
+
+                                    <?= number_format($grandBalance, 2) ?>
+
+                                </td>
+
+                                <td></td>
+
+                            </tr>
+
+                        </tfoot>
+
                     </table>
+
                 </div>
+
             </div>
+
         </div>
+
     </div>
 </div>
 
-<?php
-echo $this->endSection();
-?>
+<?= $this->endSection(); ?>
 
-<?php
-echo $this->section('scripts');
-?>
+<?= $this->section('scripts'); ?>
 
-<!-- DataTables -->
-<script src="<?=base_url('assets/js/plugins/jquery.dataTables.min.js')?>"></script>
-<script src="<?=base_url('assets/js/plugins/dataTables.bootstrap.min.js')?>"></script>
+<script src="<?= base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
+<script src="<?= base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
-<!-- jsPDF & jsPDF-AutoTable from CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 
 <script>
-$(document).ready(function() {
-    $('#sampleTable').DataTable();
+$(function(){
 
-    // CSV Export function
-    function downloadCSV(csv, filename) {
-        var csvFile = new Blob([csv], {
-            type: "text/csv"
-        });
-        var downloadLink = document.createElement("a");
-        downloadLink.download = filename;
-        downloadLink.href = window.URL.createObjectURL(csvFile);
-        downloadLink.style.display = "none";
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-    }
+    $('#sampleTable').DataTable({
 
-    function exportTableToCSV(filename) {
-        var csv = [];
-        var rows = document.querySelectorAll("#sampleTable tr");
+        responsive:true,
 
-        for (var i = 0; i < rows.length; i++) {
-            var row = [],
-                cols = rows[i].querySelectorAll("td, th");
+        autoWidth:false,
 
-            for (var j = 0; j < cols.length; j++) {
-                var data = cols[j].innerText.replace(/"/g, '""'); // Escape quotes
-                row.push('"' + data + '"');
-            }
-            csv.push(row.join(","));
-        }
-        downloadCSV(csv.join("\n"), filename);
-    }
+        pageLength:25,
 
-    $('#exportCsvBtn').click(function() {
-        exportTableToCSV('stock_report.csv');
+        order:[[0,'asc']]
+
     });
 
-    // PDF Export
-    $('#exportPdfBtn').click(function() {
-        const {
-            jsPDF
-        } = window.jspdf;
-        const doc = new jsPDF();
+
+    // ================= CSV ===================
+
+    function downloadCSV(csv, filename){
+
+        let csvFile = new Blob([csv], {type:'text/csv'});
+
+        let downloadLink = document.createElement('a');
+
+        downloadLink.download = filename;
+
+        downloadLink.href = URL.createObjectURL(csvFile);
+
+        downloadLink.style.display='none';
+
+        document.body.appendChild(downloadLink);
+
+        downloadLink.click();
+
+        document.body.removeChild(downloadLink);
+
+    }
+
+
+    function exportTableToCSV(filename){
+
+        let csv=[];
+
+        let rows=document.querySelectorAll('#sampleTable tr');
+
+        rows.forEach(function(row){
+
+            let cols=row.querySelectorAll('td,th');
+
+            let data=[];
+
+            cols.forEach(function(col){
+
+                data.push('"' + col.innerText.replace(/"/g,'""') + '"');
+
+            });
+
+            csv.push(data.join(','));
+
+        });
+
+        downloadCSV(csv.join('\n'),filename);
+
+    }
+
+
+    $('#exportCsvBtn').click(function(){
+
+        exportTableToCSV('customer_payment_report.csv');
+
+    });
+
+
+
+    // ================= PDF ===================
+
+    $('#exportPdfBtn').click(function(){
+
+        const {jsPDF}=window.jspdf;
+
+        let doc=new jsPDF('l','mm','a4');
+
+        doc.setFontSize(16);
+
+        doc.text('Customer Payment Report',14,15);
 
         doc.autoTable({
-            html: '#sampleTable',
-            styles: {
-                fontSize: 8
+
+            html:'#sampleTable',
+
+            startY:22,
+
+            theme:'grid',
+
+            styles:{
+
+                fontSize:8,
+
+                cellPadding:2
+
             },
-            headStyles: {
-                fillColor: [40, 116, 166]
-            },
-            margin: {
-                top: 20
-            },
-            didDrawPage: function(data) {
-                doc.text("Customer Payment Report", data.settings.margin.left, 10);
+
+            headStyles:{
+
+                fillColor:[40,116,166],
+
+                textColor:255
+
             }
+
         });
 
         doc.save('customer_payment_report.pdf');
+
     });
+
 });
 </script>
 
-<?php
-echo $this->endSection();
-?>
+<?= $this->endSection(); ?>

@@ -22,65 +22,77 @@ echo $this->section('content');
             <div class='tile-body'>
                 <div class='table-responsive'>
                     <table class='table table-hover table-bordered' id='sampleTable'>
-                        <thead>
-                            <tr>
-                                <th>Sales Date</th>
-                                <th>Invoice</th>
-                                <th>Customer</th>
-                                <th>Total Sale</th>
-                                <th>Tax</th>
-                              
-                                <th>Other Cost</th>
-                                <th>Paid</th>
+                    <thead>
+    <tr>
+        <th>Sales Date</th>
+        <th>Invoice</th>
+        <th>Customer</th>
+        <th>Sub Total</th>
+        <th>VAT</th>
+        <th>Other Cost</th>
+        <th>Grand Total</th>
+        <th>Paid</th>
+        <th>Due</th>
+        <th>Sale By</th>
+        <th>Status</th>
+    </tr>
+</thead>
 
-                                <th>Due</th>
-                                <th>Sale By</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
+<tbody>
+<?php foreach ($saleList as $row): ?>
+<tr>
 
-                        <tbody>
-                            <?php foreach ($saleList as $row): ?>
-                            <tr>
-                                <td>
-                                    <?= esc($row['sales_date']) ?>
-                                </td>
-                                <td>
-                                    <?= esc($row['sales_invoice']) ?>
-                                </td>
-                                <td>
-                                    <?= esc($row['customer_name']) ?>
-                                </td>
-                                <td>
-                                    <?= number_format($row['total_sale'], 2) ?>
-                                </td>
-                                <td>
-                                    <?= number_format($row['product_vat'], 2) ?>
-                                </td>
+    <td><?= date('d-m-Y', strtotime($row['sales_date'])) ?></td>
 
-                                <td>
-                                    <?= number_format($row['other_charge_on_all'], 2) ?>
-                                </td>
-                                <td>
-                                    <?= number_format($row['total_paid'], 2) ?>
-                                </td>
+    <td><?= esc($row['sales_invoice']) ?></td>
 
-                                <td>
-                                    <?= number_format($row['customer_due'], 2) ?>
-                                </td>
-                                <td>
-                                    <?= esc($row['seller_name']) ?>
-                                </td>
-                                <td>
-                                    <?php if ($row['payment_status'] === 'Fully Paid'): ?>
-                                    <span class="badge bg-success text-white">Fully Paid</span>
-                                    <?php else: ?>
-                                    <span class="badge bg-danger text-white">Partially Paid</span>
-                                    <?php endif; ?>
-                                </td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
+    <td><?= esc($row['customer_name']) ?></td>
+
+    <td class="text-end">
+        <?= number_format($row['total_sale'],2) ?>
+    </td>
+
+    <td class="text-end">
+        <?= number_format($row['product_vat'],2) ?>
+    </td>
+
+    <td class="text-end">
+        <?= number_format($row['other_charge_on_all'],2) ?>
+    </td>
+
+    <td class="text-end">
+        <strong><?= number_format($row['grand_total'],2) ?></strong>
+    </td>
+
+    <td class="text-end text-success">
+        <?= number_format($row['total_paid'],2) ?>
+    </td>
+
+    <td class="text-end text-danger">
+        <?= number_format($row['customer_due'],2) ?>
+    </td>
+
+    <td><?= esc($row['seller_name']) ?></td>
+
+    <td class="text-center">
+        <?php if($row['payment_status']=='Fully Paid'): ?>
+
+            <span class="badge bg-success">
+                Fully Paid
+            </span>
+
+        <?php else: ?>
+
+            <span class="badge bg-warning text-dark">
+                Partially Paid
+            </span>
+
+        <?php endif; ?>
+    </td>
+
+</tr>
+<?php endforeach; ?>
+</tbody>
                     </table>
                 </div>
             </div>
@@ -102,7 +114,12 @@ echo $this->section('scripts');
 
 <!-- Google analytics script-->
 <script type='text/javascript'>
-    $('#sampleTable').DataTable();
+  $('#sampleTable').DataTable({
+    order: [[0, 'desc']],
+    pageLength: 25,
+    responsive: true,
+    autoWidth: false
+});
 
     // ...............For Date Show.............................
     $('.datePicker').datepicker({

@@ -153,3 +153,8 @@ $routes->post('taxAdd', 'tax::create');
 $routes->post('taxUpdate', 'tax::update');
 $routes->post('taxDelete', 'tax::delete');
 
+$routes->get('database-backup', 'BackupController::databaseBackup');
+
+$routes->get('help-support', 'HelpSupportController::index');
+$routes->get('help-support/pdf', 'HelpSupportController::pdf');
+

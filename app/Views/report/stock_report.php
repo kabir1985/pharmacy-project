@@ -23,42 +23,61 @@ echo $this->section('content');
             <div class='tile-body'>
                 <div class='table-responsive'>
                     <table class='table table-hover table-bordered' id='sampleTable'>
-                        <thead>
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Current Stock</th>
-                                <th>Base Price</th>
-                                <th>Tax Amt</th>
-                                <th>Purchase Price</th>
-                                
-                                <th>Profit-margin%</th>
-                                <th>Sales Price</th>
-                              
-                                <th>Stock Value</th>
-                                <th>purchase by</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($stock_report_show as $row): 
-                                $total_stock = $row['initial_stock'] + $row['newPurchase'];
-                                $current_stock = $total_stock - $row['totalSale'];
-                                $stock_value = $current_stock * $row['sales_price_for_customer'];
-                            ?>
-                                <tr>
-                                    <td><?= esc($row['product_name']); ?></td>
-                                    <td><?= $current_stock; ?></td>
-                                    <td><?= esc($row['base_price']); ?></td>
-                                    <td><?= esc($row['tax_amount']); ?></td>
-                                    <td><?= esc($row['purchase_price']); ?></td>
-                                    
-                                    <td><?= esc($row['profit_margin']); ?></td>
-                                    <td><?= esc($row['sales_price_for_customer']); ?></td>
-                                    
-                                    <td><?= $stock_value; ?></td>
-                                    <td><?= esc($row['purchaser_name']); ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
+                    <thead>
+<tr>
+    <th>Product Name</th>
+    <th>Opening</th>
+    <th>Purchase</th>
+    <th>Return</th>
+    <th>Stock In</th>
+    <th>Sale</th>
+    <th>Stock Out</th>
+    <th>Current Stock</th>
+    <th>Purchase Price</th>
+    <th>Sales Price</th>
+    <th>Stock Value</th>
+    <th>Purchased By</th>
+</tr>
+</thead>
+<tbody>
+<?php foreach ($stock_report_show as $row):
+
+    $stock_value = $row['current_stock'] * $row['purchase_price'];
+
+?>
+<tr>
+
+    <td><?= esc($row['product_name']) ?></td>
+
+    <td><?= number_format($row['initial_stock'],2) ?></td>
+
+    <td><?= number_format($row['newPurchase'],2) ?></td>
+
+    <td><?= number_format($row['totalReturn'],2) ?></td>
+
+    <td><?= number_format($row['stockIn'],2) ?></td>
+
+    <td><?= number_format($row['totalSale'],2) ?></td>
+
+    <td><?= number_format($row['stockOut'],2) ?></td>
+
+    <td>
+        <span class="badge bg-primary text-white">
+            <?= number_format($row['current_stock'],2) ?>
+        </span>
+    </td>
+
+    <td><?= number_format($row['purchase_price'],2) ?></td>
+
+    <td><?= number_format($row['sales_price_for_customer'],2) ?></td>
+
+    <td><?= number_format($stock_value,2) ?></td>
+
+    <td><?= esc($row['purchaser_name']) ?></td>
+
+</tr>
+<?php endforeach; ?>
+</tbody>
                     </table>
                 </div>
             </div>
