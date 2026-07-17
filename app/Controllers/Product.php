@@ -75,23 +75,38 @@ class Product extends BaseController
         $this->db = db_connect();
         $builder = $this->db->table('product_inital_stock');
 
-        $validated = $this->validate([
-            'file' => [
-                'uploaded[file]',
-                'mime_in[file,image/jpg,image/jpeg,image/gif,image/png]',
-                'max_size[file,4096]',
-            ],
-        ]);
+        // $validated = $this->validate([
+        //     'file' => [
+        //         'uploaded[file]',
+        //         'mime_in[file,image/jpg,image/jpeg,image/gif,image/png]',
+        //         'max_size[file,4096]',
+        //     ],
+        // ]);
 
-        $msg = 'Please select a valid file';
-        //exit(WRITEPATH);
-        if ($validated) {
-            $avatar = $this->request->getFile('file');
-            // $avatar->move(WRITEPATH . 'uploads');
+        // $msg = 'Please select a valid file';
+        // //exit(WRITEPATH);
+        // if ($validated) {
+        //     $avatar = $this->request->getFile('file');
+        //     // $avatar->move(WRITEPATH . 'uploads');
 
-            //$avatar->move(WRITEPATH . 'assets/images');
-            $avatar->move(ROOTPATH . 'public/uploads/');
-        }
+        //     //$avatar->move(WRITEPATH . 'assets/images');
+        //     $avatar->move(ROOTPATH . 'public/uploads/');
+        // }
+
+
+$productImage = 'default-medicine.png'; // Default image
+
+$file = $this->request->getFile('file');
+
+if ($file && $file->isValid() && !$file->hasMoved()) {
+
+    $productImage = $file->getRandomName();
+
+    $file->move(ROOTPATH . 'public/uploads/', $productImage);
+}
+
+
+
 
         $tax_id = $this->request->getPost('tax_id');
         $tax_percentage = $this->request->getPost('tax_percentage');
@@ -147,7 +162,8 @@ class Product extends BaseController
             'profit_margin_%' => $profit_margin,
             'sales_price_for_customer' => $sales_price,
             'alert_quantity' => (int) $this->request->getVar('alert_quantity'),
-            'product_image' => $avatar->getClientName(),
+           // 'product_image' => $avatar->getClientName(),
+           'product_image' => $productImage,
         ];
 
         $id = $this->NewProductAddModel_Object->insert($data);

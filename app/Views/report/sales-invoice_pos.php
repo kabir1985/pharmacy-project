@@ -168,7 +168,7 @@ $sl = 1;
 <tr class="grand-total">
     <td><strong>Grand Total</strong></td>
     <td class="text-right">
-        <strong><?= number_format($invoice_info[0]['total_amount'], 2) ?></strong>
+<strong><?= number_format(round($invoice_info[0]['total_amount']), 0) ?></strong>
     </td>
 </tr>
 
@@ -179,7 +179,7 @@ $sl = 1;
 
         <tr>
             <td>Due</td>
-            <td class="text-right"><?= number_format($invoice_info[0]['due_amount'], 2) ?></td>
+            <td class="text-right"><?= number_format(round($invoice_info[0]['due_amount']), 2) ?></td>
         </tr>
 
     </table>

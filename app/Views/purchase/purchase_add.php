@@ -467,7 +467,7 @@ if (item.discount_type === "fixed") {
 function updateGrandTotal() {
 
     totalPrice = 0;
-    let totalVat = 0;
+    totalVat = 0;
 
     itemsInCart.forEach(function(item){
 
@@ -475,13 +475,12 @@ function updateGrandTotal() {
 
         totalPrice += calc.rowTotal;
         totalVat += calc.vatAmount;
+
     });
 
-    $("#vat_amt_on_total")
-        .data("value", totalVat)
-        .text(totalVat.toFixed(2));
-
-    totalCalculation();
+    $("#totalPrice").text(totalPrice.toFixed(2));
+    $("#vat_amt_on_total").text(totalVat.toFixed(2));
+    $("#netTotalPrice").html("<strong>"+totalPrice.toFixed(2)+"</strong>");
 }
 
 
@@ -536,6 +535,7 @@ function updateGrandTotal() {
 
             $("#netTotalPrice").text(netTotal.toFixed(2));
         }
+        
 
         function totalCalculation() {
 

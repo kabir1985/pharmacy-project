@@ -301,11 +301,21 @@ echo $this->section('content');
 
                         <div class="col-3 mb-3 text-center">
                             <!-- Product Image -->
-                                    <img data-stock="<?php echo $row["total_stock"] ?>"
+                                    <!-- <img data-stock="<?php echo $row["total_stock"] ?>"
                                         data-id="<?php echo $row["product_id"] ?>"
                                         src="<?php echo base_url() ?>/public/uploads/<?php echo $row["product_image"] ?>"
                                         class="img-thumbnail cart_item_image shadow-sm" alt="<?php echo $row["product_name"] ?>"
-                                        style="width: 100px; height: 80px; object-fit: cover;">
+                                        style="width: 100px; height: 80px; object-fit: cover;"> -->
+
+                                        <img
+                                            data-stock="<?= $row['total_stock'] ?>"
+                                            data-id="<?= $row['product_id'] ?>"
+                                            src="<?= !empty($row['product_image'])
+                                                    ? base_url('public/uploads/' . $row['product_image'])
+                                                    : base_url('public/uploads/default-medicine.png') ?>"
+                                            class="img-thumbnail cart_item_image shadow-sm"
+                                            alt="<?= $row['product_name'] ?>"
+                                            style="width:100px;height:80px;object-fit:cover;">
 
                                     <!-- Product Name -->
                                     <p class="mt-2 mb-1 fw-semibold text-dark"
@@ -1403,9 +1413,14 @@ echo $this->section('scripts');
                 otherChargeOnTotalPrice;
 
             ///////////////////////////
-            var paid = $("#paid").val();
-            var due = netTotalPrice - paid;
-            $("#due").val(due.toFixed(2));
+            // var paid = $("#paid").val();
+            // var due = netTotalPrice - paid;
+            // $("#due").val(due.toFixed(2));
+
+            var paid = parseFloat($("#paid").val()) || 0;
+var due = Math.round(netTotalPrice - paid);
+
+$("#due").val(due);
             ////////////////////////////////
             // $("#subTotalCost").html(subTotalCost.toFixed(2));
             // $("#productDiscount").html(productTotalDiscount.toFixed(2));
@@ -1439,39 +1454,99 @@ echo $this->section('scripts');
 
 
         //===========================discount apply equally on all product==================================
+        // $("#discount_apply, #productDiscountType").on("input change", function () {
+
+        //     let value = parseFloat($("#discount_apply").val()) || 0;
+        //     let type = $("#productDiscountType").val();
+
+        //     if (itemsInCart.length === 0) return;
+
+        //     itemsInCart.forEach(function (item) {
+
+        //         item.discount_type = type;
+
+        //         if (type === "%") {
+        //             // Same percentage for all products
+        //             item.discount_percent = value;
+        //         } else {
+        //             // Same flat amount for all products
+        //             item.discount_percent = value;
+        //         }
+
+        //     });
+
+        //     drawTable();
+
+        // });
+
+
+        // $("#productDiscountType").on("change", function () {
+        //     if ($(this).val() == "%") {
+        //         $(".discount-column-header").text("Disc %");
+        //     } else {
+        //         $(".discount-column-header").text("Disc");
+        //     }
+        // });
+
+
+
         $("#discount_apply, #productDiscountType").on("input change", function () {
 
-            let value = parseFloat($("#discount_apply").val()) || 0;
-            let type = $("#productDiscountType").val();
+    let value = parseFloat($("#discount_apply").val()) || 0;
+    let type = $("#productDiscountType").val();
 
-            if (itemsInCart.length === 0) return;
+    if (itemsInCart.length === 0) return;
 
-            itemsInCart.forEach(function (item) {
+    // Calculate current subtotal
+    let subTotal = 0;
+    itemsInCart.forEach(function (item) {
+        subTotal += (parseFloat(item.quantity) || 0) *
+                    (parseFloat(item.sales_price_for_customer) || 0);
+    });
 
-                item.discount_type = type;
+    if (type === "%") {
 
-                if (type === "%") {
-                    // Same percentage for all products
-                    item.discount_percent = value;
-                } else {
-                    // Same flat amount for all products
-                    item.discount_percent = value;
-                }
+        // Percentage cannot exceed 50
+        if (value > 50) {
+            value = 50;
+            $("#discount_apply").val(50);
+            alert("Discount percentage cannot exceed 50%.");
+        }
 
-            });
+    } else {
 
-            drawTable();
+let maxDiscount = subTotal / 2;
 
-        });
+if (value > maxDiscount) {
+    value = maxDiscount;
+    $("#discount_apply").val(maxDiscount.toFixed(2));
+    alert("Discount cannot be greater than 50% of the Sub Total.");
+}
+    }
 
+    // itemsInCart.forEach(function (item) {
+    //     item.discount_type = type;
+    //     item.discount_percent = value;
+    // });
+    itemsInCart.forEach(function (item) {
+    item.discount_type = type;
 
-        $("#productDiscountType").on("change", function () {
-            if ($(this).val() == "%") {
-                $(".discount-column-header").text("Disc %");
-            } else {
-                $(".discount-column-header").text("Disc");
-            }
-        });
+    if (type === "%") {
+        item.discount_percent = value;
+    } else {
+       // item.discount_percent = value / itemsInCart.length;
+       item.discount_percent = +(value / itemsInCart.length).toFixed(2);
+    }
+});
+
+    drawTable();
+});
+
+$("#productDiscountType").on("change", function () {
+    $(".discount-column-header").text(
+        $(this).val() === "%" ? "Disc %" : "Disc"
+    );
+});
         //=========================================================================================
 
 
