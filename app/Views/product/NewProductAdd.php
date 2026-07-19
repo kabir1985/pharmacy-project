@@ -1541,7 +1541,7 @@ echo $this->section('scripts');
                     if (result.isConfirmed && result.value.trim() != "") {
 
                         $.ajax({
-                            url: "<?= site_url('strength-create-ajax') ?>",
+                            url: "<?= site_url('strengthCreateAjax') ?>",
                             type: "POST",
                             dataType: "json",
                             data: {

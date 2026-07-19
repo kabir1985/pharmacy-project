@@ -35,17 +35,27 @@ $menuSections = [
         'label' => 'Product Section',
         'icon'  => 'fa fa-cubes',
         'url'   => '#',
-        'privileges' => ['initial_product','barcode_generate','product_category','product_brand','product_group','product_unit'],
+        'privileges' => ['barcode_generate','product_category','product_brand','product_group','product_unit'],
         'children' => [
-            ['label'=>'Opening Stock','url'=>'product','privileges'=>['initial_product']],
             ['label'=>'Barcode Generate','url'=>'barcodegenerate','privileges'=>['barcode_generate']],
             ['label'=>'Category/Dosage Form','url'=>'productcategoryView','privileges'=>['product_category']],
             ['label'=>'Product Brand','url'=>'productbrandView','privileges'=>['product_brand']],
             ['label'=>'Group/Generic Name','url'=>'Group','privileges'=>['product_group']],
             ['label'=>'Product Unit','url'=>'Unit','privileges'=>['product_unit']],
+        ]
+    ],
+
+    [
+        'label' => 'Stock Section',
+        'icon'  => 'fa fa-cubes',
+        'url'   => '#',
+        'privileges' => ['initial_product','product_unit'],
+        'children' => [
+            ['label'=>'Opening Stock','url'=>'openingStock','privileges'=>['initial_product']],
             ['label'=>'Stock Adjustment','url'=>'stockAdjustment','privileges'=>['product_unit']],
         ]
     ],
+
     [
         'label'=>'Purchase Section',
         'icon'=>'fa fa-laptop',

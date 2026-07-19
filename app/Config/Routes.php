@@ -9,17 +9,20 @@ $routes->post('login/auth', 'Login::auth');
 $routes->get('logout', 'Login::logout');
 $routes->get('dashboard', 'Dashboard::index');
 
-$routes->get('pos', 'Pos::index');
-$routes->post('pos/sale', 'Pos::sale');
-$routes->post('pos/hold_sale', 'Pos::hold_sale');
-$routes->post('pos/resume_sale/(:num)', 'Pos::resume_sale/$1');
+$routes->get('pos', 'PosController::index');
+$routes->post('pos/sale', 'PosController::sale');
+$routes->post('pos/hold_sale', 'PosController::hold_sale');
+$routes->post('pos/resume_sale/(:num)', 'PosController::resume_sale/$1');
+$routes->post('filterProducts', 'PosController::filterProducts');
 
-$routes->post('pos/delete_held_sale/(:num)', 'Pos::delete_held_sale/$1');
+$routes->post('pos/delete_held_sale/(:num)', 'PosController::delete_held_sale/$1');
 
-$routes->post('pos/update_hold_sale', 'Pos::update_hold_sale');
+$routes->post('pos/update_hold_sale', 'PosController::update_hold_sale');
 
-$routes->get('pos/product_call', 'Pos::product_call');
-$routes->post('pos/products', 'Pos::products');
+//$routes->get('product_search', 'PosController::product_call');
+$routes->get('product_search', 'PosController::productSearch');
+
+$routes->post('pos/products', 'PosController::products');
 $routes->get('invoice/(:num)', 'PdfController::invoice/$1');
 $routes->get('salelist', 'salelist::index');
 $routes->get('salereturnlist', 'salereturnlist::index');
@@ -28,56 +31,55 @@ $routes->get('salereturnlistshow', 'salereturnlist::saleReturnListShow');
 //ReturnController/process
 $routes->post('ReturnController/process', 'ReturnController::process');
 
-$routes->get('product', 'Product::index');
-$routes->post('initial-product-create', 'Product::create');
-$routes->post('initial-product-update', 'Product::update');
-$routes->post('initial-product-delete', 'Product::delete');
-$routes->post('initial-product-brand', 'Product::brand_call');
+$routes->get('openingStock', 'ProductController::index');
+$routes->post('initial-product-create', 'ProductController::create');
+$routes->post('initial-product-update', 'ProductController::update');
+$routes->post('initial-product-delete', 'ProductController::delete');
 
-$routes->post('category-create-ajax', 'Product::categoryCreateAjax');
-$routes->get('get-category-list', 'Product::getCategoryList');
-//brand-create-ajax
-$routes->post('brand-create-ajax', 'Product::brandCreateAjax');
-$routes->post('group-create-ajax', 'Product::groupCreateAjax');
-$routes->post('unit-create-ajax', 'Product::unitCreateAjax');
-//strength-create-ajax
-$routes->post('strength-create-ajax', 'Product::strengthCreateAjax');
-$routes->post('vatTax-create-ajax', 'Product::vatTaxCreateAjax');
+$routes->get('barcodegenerate', 'BarcodeGenerateController::index');
+$routes->post('barcodeprint', 'BarcodeGenerateController::barcodeprint');
 
+$routes->get('productcategoryView', 'ProductCategoryController::index');
+$routes->post('productcategoryAdd', 'ProductCategoryController::create');
+$routes->post('productcategoryUpdate', 'ProductCategoryController::update');
+$routes->post('productcategoryDelete', 'ProductCategoryController::delete');
+$routes->post('category-create-ajax', 'ProductCategoryController::categoryCreateAjax');
+$routes->get('get-category-list', 'ProductCategoryController::getCategoryList');
 
 
-$routes->get('barcodegenerate', 'barcodegenerate::index');
-$routes->post('barcodeprint', 'barcodegenerate::barcodeprint');
-$routes->get('productcategoryView', 'Category::index');
-$routes->post('productcategoryAdd', 'Category::create');
-$routes->post('productcategoryUpdate', 'Category::update');
-$routes->post('productcategoryDelete', 'Category::delete');
+$routes->get('productbrandView', 'ProductBrandController::index');
+$routes->post('productbrandAdd', 'ProductBrandController::create');
+$routes->post('productbrandUpdate', 'ProductBrandController::update');
+$routes->post('productbrandDelete', 'ProductBrandController::delete');
+$routes->post('brand-create-ajax', 'ProductBrandController::brandCreateAjax');
+$routes->post('initial-product-brand', 'ProductBrandController::brand_call');
+
+$routes->get('Group', 'ProductGroupController::index');
+$routes->post('groupAdd', 'ProductGroupController::create');
+$routes->post('groupUpdate', 'ProductGroupController::update');
+$routes->post('groupDelete', 'ProductGroupController::delete');
+$routes->post('group-create-ajax', 'ProductGroupController::groupCreateAjax');
 
 
-$routes->get('productbrandView', 'Brand::index');
-$routes->post('productbrandAdd', 'Brand::create');
-$routes->post('productbrandUpdate', 'Brand::update');
-$routes->post('productbrandDelete', 'Brand::delete');
 
-$routes->get('Group', 'Group::index');
-$routes->post('groupAdd', 'Group::create');
-$routes->post('groupUpdate', 'Group::update');
-$routes->post('groupDelete', 'Group::delete');
-
-$routes->get('Unit', 'Unit::index');
-$routes->post('unitAdd', 'Unit::create');
-$routes->post('unitUpdate', 'Unit::update');
-$routes->post('unitDelete', 'Unit::delete');
+$routes->get('Unit', 'ProductUnitController::index');
+$routes->post('unitAdd', 'ProductUnitController::create');
+$routes->post('unitUpdate', 'ProductUnitController::update');
+$routes->post('unitDelete', 'ProductUnitController::delete');
+$routes->post('unit-create-ajax', 'ProductUnitController::unitCreateAjax');
 
 $routes->get('purchase', 'Purchase::index');
 $routes->post('purchase-product', 'Purchase::purchase_product');
+
+$routes->post('strengthCreateAjax', 'ProductStrengthController::strengthCreateAjax');
+
 
 $routes->get('Expensecategory', 'Expensecategory::index');
 $routes->POST('ExpensecategoryAdd', 'Expensecategory::create');
 $routes->POST('ExpensecategoryDelete', 'Expensecategory::delete');
 $routes->POST('ExpensecategoryUpdate', 'Expensecategory::update');
 
-$routes->get('stockAdjustment', 'Pos::stockAdjustmentForm');
+$routes->get('stockAdjustment', 'StockAdjustmentController::stockAdjustmentForm');
 $routes->POST('createStockAdjustment', 'Pos::createStockAdjustment');
 
 $routes->get('stockAdjustmentView/(:num)', 'Pos::view/$1');
@@ -148,10 +150,11 @@ $routes->post('currencyAdd', 'currency::create');
 $routes->post('currencyUpdate', 'currency::update');
 $routes->post('currencyDelete', 'currency::delete');
 
-$routes->get('tax', 'tax::index');
-$routes->post('taxAdd', 'tax::create');
-$routes->post('taxUpdate', 'tax::update');
-$routes->post('taxDelete', 'tax::delete');
+$routes->get('tax', 'TaxController::index');
+$routes->post('taxAdd', 'TaxController::create');
+$routes->post('taxUpdate', 'TaxController::update');
+$routes->post('taxDelete', 'TaxController::delete');
+$routes->post('vatTax-create-ajax', 'TaxController::vatTaxCreateAjax');
 
 $routes->get('database-backup', 'BackupController::databaseBackup');
 
