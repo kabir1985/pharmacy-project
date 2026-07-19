@@ -234,7 +234,6 @@ class PosController extends BaseController
     }
 
 
-
     public function productSearch()
     {
         $search = $this->request->getGet('term');
@@ -322,7 +321,6 @@ class PosController extends BaseController
             return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to delete held sale']);
         }
     }
-
 
 
     public function update_hold_sale()

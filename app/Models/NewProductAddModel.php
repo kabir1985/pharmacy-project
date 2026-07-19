@@ -243,4 +243,88 @@ public function searchProducts($search)
     return $builder->get()->getResultArray();
 }
 
+
+
+
+public function getProductsWithCurrentStock()
+{
+    $sql = "SELECT
+        piq.*,
+
+        pc.category_name,
+        pb.product_brand_name,
+        pg.group_name,
+        ps.strength_name,
+
+        tx.tax_percentage,
+        tx.tax_name,
+
+        GREATEST(
+            COALESCE(piq.productinitial_quantity,0)
+            + COALESCE(ppd.total_purchase_qty,0)
+            + COALESCE(rs.total_return,0)
+            + COALESCE(adj.total_stock_in,0)
+            - COALESCE(sd.total_sale,0)
+            - COALESCE(adj.total_stock_out,0)
+        ,0) AS total_stock
+
+    FROM product_inital_stock AS piq
+
+    LEFT JOIN (
+        SELECT
+            product_id,
+            SUM((IFNULL(quantity_per_pack,0) * IFNULL(box_quantity,1)) + IFNULL(free_qty,0)) AS total_purchase_qty
+        FROM product_purchase_details
+        GROUP BY product_id
+    ) ppd ON piq.product_id = ppd.product_id
+
+    LEFT JOIN (
+        SELECT
+            product_id,
+            SUM(product_quantity_sold) AS total_sale
+        FROM sales_details
+        GROUP BY product_id
+    ) sd ON piq.product_id = sd.product_id
+
+    LEFT JOIN (
+        SELECT
+            product_id,
+            SUM(return_qty) AS total_return
+        FROM return_sales_details
+        GROUP BY product_id
+    ) rs ON piq.product_id = rs.product_id
+
+    LEFT JOIN (
+        SELECT
+            sad.product_id,
+            SUM(CASE WHEN sa.adjustment_type='stock_in' THEN sad.adjustment_qty ELSE 0 END) AS total_stock_in,
+            SUM(CASE WHEN sa.adjustment_type='stock_out' THEN sad.adjustment_qty ELSE 0 END) AS total_stock_out
+        FROM stock_adjustment_details sad
+        INNER JOIN stock_adjustment sa
+            ON sa.adjustment_id = sad.adjustment_id
+        GROUP BY sad.product_id
+    ) adj ON piq.product_id = adj.product_id
+
+    LEFT JOIN tax tx
+        ON piq.tax_id = tx.tax_id
+
+    LEFT JOIN product_category pc
+        ON piq.product_category = pc.product_category_id
+
+    LEFT JOIN product_brand pb
+        ON piq.product_brand = pb.brand_id
+
+    LEFT JOIN product_group pg
+        ON piq.product_group = pg.product_group_id
+
+    LEFT JOIN product_strength ps
+        ON piq.product_strength = ps.strength_id
+
+    ORDER BY piq.product_id DESC";
+
+    return $this->db->query($sql)->getResultArray();
+}
+
+
+
 }

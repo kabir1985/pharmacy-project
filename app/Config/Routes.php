@@ -68,51 +68,51 @@ $routes->post('unitUpdate', 'ProductUnitController::update');
 $routes->post('unitDelete', 'ProductUnitController::delete');
 $routes->post('unit-create-ajax', 'ProductUnitController::unitCreateAjax');
 
-$routes->get('purchase', 'Purchase::index');
-$routes->post('purchase-product', 'Purchase::purchase_product');
+$routes->get('purchase', 'PurchaseController::index');
+$routes->post('purchase-product', 'PurchaseController::purchase_product');
 
 $routes->post('strengthCreateAjax', 'ProductStrengthController::strengthCreateAjax');
 
 
-$routes->get('Expensecategory', 'Expensecategory::index');
-$routes->POST('ExpensecategoryAdd', 'Expensecategory::create');
-$routes->POST('ExpensecategoryDelete', 'Expensecategory::delete');
-$routes->POST('ExpensecategoryUpdate', 'Expensecategory::update');
+$routes->get('Expensecategory', 'ExpenseCategoryController::index');
+$routes->POST('ExpensecategoryAdd', 'ExpenseCategoryController::create');
+$routes->POST('ExpensecategoryDelete', 'ExpenseCategoryController::delete');
+$routes->POST('ExpensecategoryUpdate', 'ExpenseCategoryController::update');
 
 $routes->get('stockAdjustment', 'StockAdjustmentController::stockAdjustmentForm');
-$routes->POST('createStockAdjustment', 'Pos::createStockAdjustment');
+$routes->POST('createStockAdjustment', 'StockAdjustmentController::createStockAdjustment');
 
-$routes->get('stockAdjustmentView/(:num)', 'Pos::view/$1');
-$routes->get('stockAdjustmentEdit/(:num)', 'Pos::edit/$1');
-$routes->post('stockAdjustmentUpdate/(:num)', 'Pos::update/$1');
-$routes->get('stockAdjustmentDelete/(:num)', 'Pos::delete/$1');
+$routes->get('stockAdjustmentView/(:num)', 'StockAdjustmentController::view/$1');
+$routes->get('stockAdjustmentEdit/(:num)', 'StockAdjustmentController::edit/$1');
+//$routes->post('stockAdjustmentUpdate/(:num)', 'Pos::update/$1');
+//$routes->get('stockAdjustmentDelete/(:num)', 'Pos::delete/$1');
 
-$routes->get('Expensesubcategory', 'Expensesubcategory::index');
-$routes->POST('ExpensesubcategoryAdd', 'Expensesubcategory::create');
-$routes->POST('ExpensesubcategoryUpdate', 'Expensesubcategory::update');
-$routes->POST('ExpensesubcategoryDelete', 'Expensesubcategory::delete');
+$routes->get('Expensesubcategory', 'ExpenseSubCategoryController::index');
+$routes->POST('ExpensesubcategoryAdd', 'ExpenseSubCategoryController::create');
+$routes->POST('ExpensesubcategoryUpdate', 'ExpenseSubCategoryController::update');
+$routes->POST('ExpensesubcategoryDelete', 'ExpenseSubCategoryController::delete');
 
-$routes->get('Expense', 'Expense::index');
-$routes->POST('ExpenseAdd', 'Expense::create');
-$routes->POST('ExpenseUpdate', 'Expense::update');
-$routes->POST('ExpenseDelete', 'Expense::delete');
+$routes->get('Expense', 'ExpenseController::index');
+$routes->POST('ExpenseAdd', 'ExpenseController::create');
+$routes->POST('ExpenseUpdate', 'ExpenseController::update');
+$routes->POST('ExpenseDelete', 'ExpenseController::delete');
 
 $routes->POST('expense/getSubCategory', 'Expense::getSubCategory');
 
-$routes->get('customergroup', 'customergroup::index');
-$routes->POST('customergroupAdd', 'customergroup::create');
-$routes->POST('customergroupUpdate', 'customergroup::update');
-$routes->POST('customergroupDelete', 'customergroup::delete');
+$routes->get('customergroup', 'CustomerGroupController::index');
+$routes->POST('customergroupAdd', 'CustomerGroupController::create');
+$routes->POST('customergroupUpdate', 'CustomerGroupController::update');
+$routes->POST('customergroupDelete', 'CustomerGroupController::delete');
 
-$routes->get('customer', 'customer::index');
-$routes->POST('customerAdd', 'customer::create');
-$routes->POST('customerUpdate', 'customer::update');
-$routes->POST('customerDelete', 'customer::delete');
+$routes->get('customer', 'CustomerController::index');
+$routes->POST('customerAdd', 'CustomerController::create');
+$routes->POST('customerUpdate', 'CustomerController::update');
+$routes->POST('customerDelete', 'CustomerController::delete');
 
-$routes->get('supplier', 'supplier::index');
-$routes->POST('supplierAdd', 'supplier::create');
-$routes->POST('supplierUpdate', 'supplier::update');
-$routes->POST('supplierDelete', 'supplier::delete');
+$routes->get('supplier', 'SupplierController::index');
+$routes->POST('supplierAdd', 'SupplierController::create');
+$routes->POST('supplierUpdate', 'SupplierController::update');
+$routes->POST('supplierDelete', 'SupplierController::delete');
 
 
 $routes->get('user', 'User::index');
@@ -145,10 +145,10 @@ $routes->post('generalsettingsAdd', 'generalsettings::create');
 $routes->post('generalsettingsUpdate', 'generalsettings::update');
 $routes->post('generalsettingsDelete', 'generalsettings::delete');
 
-$routes->get('currency', 'currency::index');
-$routes->post('currencyAdd', 'currency::create');
-$routes->post('currencyUpdate', 'currency::update');
-$routes->post('currencyDelete', 'currency::delete');
+$routes->get('currency', 'CurrencyController::index');
+$routes->post('currencyAdd', 'CurrencyController::create');
+$routes->post('currencyUpdate', 'CurrencyController::update');
+$routes->post('currencyDelete', 'CurrencyController::delete');
 
 $routes->get('tax', 'TaxController::index');
 $routes->post('taxAdd', 'TaxController::create');

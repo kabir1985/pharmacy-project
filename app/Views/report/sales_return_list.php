@@ -214,52 +214,116 @@
             });
         });
 
-        /////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////
+        // $('#returnForm').on('submit', function (e) {
+        //     e.preventDefault();
+
+        //     let form = $(this);
+
+        //     $.ajax({
+        //         url: '<?= base_url("ReturnController/process") ?>',
+        //         type: 'POST',
+        //         data: form.serialize(),
+        //         dataType: 'json', // ✅ MUST for res.status
+        //         beforeSend: function () {
+        //             // ✅ prevent double click submit
+        //             form.find('button[type="submit"]').prop('disabled', true);
+        //         },
+        //         success: function (res) {
+
+        //             if (res.status === 'success') {
+
+        //                 // ✅ Better than alert
+        //                 alert(res.message);
+
+        //                 $('#returnModal').modal('hide');
+
+        //                 // ✅ Optional: reset form
+        //                 form[0].reset();
+
+        //                 // ✅ Smooth reload
+        //                 setTimeout(() => location.reload(), 500);
+
+        //             } else {
+        //                 alert('Error: ' + res.message);
+        //             }
+        //         },
+        //         error: function (xhr) {
+        //             console.error(xhr.responseText); // debug
+        //             alert('Server Error! Check console.');
+        //         },
+        //         complete: function () {
+        //             // ✅ enable button again
+        //             form.find('button[type="submit"]').prop('disabled', false);
+        //         }
+        //     });
+        // });
+
+        ////////////////////////////////////////////////////////////
+
         $('#returnForm').on('submit', function (e) {
-            e.preventDefault();
+    e.preventDefault();
 
-            let form = $(this);
+    let form = $(this);
 
-            $.ajax({
-                url: '<?= base_url("ReturnController/process") ?>',
-                type: 'POST',
-                data: form.serialize(),
-                dataType: 'json', // ✅ MUST for res.status
-                beforeSend: function () {
-                    // ✅ prevent double click submit
-                    form.find('button[type="submit"]').prop('disabled', true);
-                },
-                success: function (res) {
+    // ===========================
+    // Validate Return Quantity
+    // ===========================
+    let hasReturnQty = false;
 
-                    if (res.status === 'success') {
+    $('input[name^="return_qty"]').each(function () {
+        let qty = parseInt($(this).val()) || 0;
 
-                        // ✅ Better than alert
-                        alert(res.message);
+        if (qty > 0) {
+            hasReturnQty = true;
+            return false; // stop loop
+        }
+    });
 
-                        $('#returnModal').modal('hide');
+    if (!hasReturnQty) {
+        alert('Please enter at least one Return Quantity greater than 0.');
+        return;
+    }
 
-                        // ✅ Optional: reset form
-                        form[0].reset();
+    // ===========================
+    // Ajax Submit
+    // ===========================
+    $.ajax({
+        url: '<?= base_url("ReturnController/process") ?>',
+        type: 'POST',
+        data: form.serialize(),
+        dataType: 'json',
+        beforeSend: function () {
+            form.find('button[type="submit"]').prop('disabled', true);
+        },
+        success: function (res) {
 
-                        // ✅ Smooth reload
-                        setTimeout(() => location.reload(), 500);
+            if (res.status === 'success') {
 
-                    } else {
-                        alert('Error: ' + res.message);
-                    }
-                },
-                error: function (xhr) {
-                    console.error(xhr.responseText); // debug
-                    alert('Server Error! Check console.');
-                },
-                complete: function () {
-                    // ✅ enable button again
-                    form.find('button[type="submit"]').prop('disabled', false);
-                }
-            });
-        });
+                alert(res.message);
 
-        ////////////////////////////////
+                $('#returnModal').modal('hide');
+                form[0].reset();
+
+                setTimeout(() => location.reload(), 500);
+
+            } else {
+                alert(res.message);
+            }
+
+        },
+        error: function (xhr) {
+            console.error(xhr.responseText);
+            alert('Server Error! Check console.');
+        },
+        complete: function () {
+            form.find('button[type="submit"]').prop('disabled', false);
+        }
+    });
+
+});
+
+        //////////////////////////////////////////////////////////////////////
 
     });
 </script>
