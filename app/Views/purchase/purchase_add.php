@@ -203,8 +203,7 @@ echo $this->endSection();
 echo $this->section('scripts');
 ?>
 <script src="<?= base_url('assets/js/jquery.mycart.js') ?>"></script>
-<script src="<?= base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script src="<?= base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
+
 <script>
     var productsList = <?= json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
 
@@ -448,20 +447,6 @@ if (item.discount_type === "fixed") {
                 rowTotal
             };
         }
-
-
-
-
-        // function updateGrandTotal() {
-
-        //     totalPrice = 0;
-
-        //     itemsInCart.forEach(function (item) {
-        //         totalPrice += calculateRow(item).rowTotal;
-        //     });
-
-        //     totalCalculation();
-        // }
 
 
 function updateGrandTotal() {
@@ -854,7 +839,7 @@ $("#discountOnTotalModal .btn-primary").on("click", function () {
             $(this).prop("disabled", true).text("Processing...");
 
             $.ajax({
-                url: "<?= site_url('purchase-product') ?>",
+                url: "<?= site_url('purchase/purchase-product') ?>",
                 type: "POST",
                 data: {
                     cart_data: JSON.stringify(itemsInCart),

@@ -72,7 +72,7 @@ echo $this->section('content');
         <div class="modal-content">
             <form
                   method="post"
-                  action="<?= site_url('productcategoryAdd') ?>">
+                  action="<?= site_url('categories/create') ?>">
                   <?= csrf_field(); ?>
 
                 <div class="modal-header">
@@ -105,7 +105,7 @@ echo $this->section('content');
         <div class="modal-content">
             <form
                   method="post"
-                  action="<?= site_url('/productcategoryUpdate') ?>">
+                  action="<?= site_url('categories/update') ?>">
                   <?= csrf_field(); ?>
 
                 <div class="modal-header">
@@ -136,7 +136,7 @@ echo $this->section('content');
 <div class="modal fade" id="deleteModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form method="post" action="<?= site_url('/productcategoryDelete') ?>">
+            <form method="post" action="<?= site_url('categories/delete') ?>">
             <?= csrf_field(); ?>
                 <div class="modal-header">
                     <h5 class="modal-title">Confirm Delete</h5>

@@ -38,10 +38,10 @@ $menuSections = [
         'privileges' => ['barcode_generate','product_category','product_brand','product_group','product_unit'],
         'children' => [
             ['label'=>'Barcode Generate','url'=>'barcodegenerate','privileges'=>['barcode_generate']],
-            ['label'=>'Category/Dosage Form','url'=>'productcategoryView','privileges'=>['product_category']],
-            ['label'=>'Product Brand','url'=>'productbrandView','privileges'=>['product_brand']],
-            ['label'=>'Group/Generic Name','url'=>'Group','privileges'=>['product_group']],
-            ['label'=>'Product Unit','url'=>'Unit','privileges'=>['product_unit']],
+            ['label'=>'Category/Dosage Form','url'=>'categories','privileges'=>['product_category']],
+            ['label'=>'Product Brand','url'=>'brands','privileges'=>['product_brand']],
+            ['label'=>'Group/Generic Name','url'=>'groups','privileges'=>['product_group']],
+            ['label'=>'Product Unit','url'=>'units','privileges'=>['product_unit']],
         ]
     ],
 
@@ -64,7 +64,7 @@ $menuSections = [
         'children'=>[
             ['label'=>'Purchase Product','url'=>'purchase','privileges'=>['purchase_product']],
             //allpurchase
-            ['label'=>'Purchase List','url'=>'purchaseList','privileges'=>['stock_report']],
+            ['label'=>'Purchase List','url'=>'reports/purchaseList','privileges'=>['stock_report']],
         ]
     ],
     [
@@ -98,11 +98,11 @@ $menuSections = [
         'url'=>'#',
         'privileges'=>['stock_report','sale_report','profit_loss','expense_report','customer_report'],
         'children'=>[
-            ['label'=>'Stock/Purchase','url'=>'stockreport','privileges'=>['stock_report']  ],
-            ['label'=>'Sales Report','url'=>'salesummeryreport','privileges'=>['sale_report']],
-            ['label'=>'Profit & Loss','url'=>'profitloss','privileges'=>['profit_loss']],
-            ['label'=>'Expense Report','url'=>'expensereport','privileges'=>['expense_report']],
-            ['label'=>'Customer Report','url'=>'customerreport','privileges'=>['customer_report']],
+            ['label'=>'Stock/Purchase','url'=>'reports/stock','privileges'=>['stock_report']  ],
+            ['label'=>'Sales Report','url'=>'reports/sales-summary','privileges'=>['sale_report']],
+            ['label'=>'Profit & Loss','url'=>'reports/profit-loss','privileges'=>['profit_loss']],
+            ['label'=>'Expense Report','url'=>'reports/expense','privileges'=>['expense_report']],
+            ['label'=>'Customer Report','url'=>'reports/customer','privileges'=>['customer_report']],
         ]
     ],
     [
@@ -111,7 +111,7 @@ $menuSections = [
         'url'=>'#',
         'privileges'=>['receive_customer'],
         'children'=>[
-            ['label'=>'Receive Customer','url'=>'fromcustomer','privileges'=>['receive_customer']],
+            ['label'=>'Receive Customer','url'=>'receive','privileges'=>['receive_customer']],
         ]
     ],
     [

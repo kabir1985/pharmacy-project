@@ -40,7 +40,7 @@ class ProductCategoryController extends BaseController
         ]);
 
         if ($id) {
-            return redirect()->to(site_url('productcategoryView'));
+            return redirect()->to(site_url('categories'));
         }
 
         return redirect()
@@ -78,7 +78,7 @@ class ProductCategoryController extends BaseController
         ]);
 
         if ($updated) {
-            return redirect()->to(site_url('productcategoryView'))
+            return redirect()->to(site_url('categories'))
                 ->with('success', 'Category updated successfully.');
         }
 
@@ -95,7 +95,7 @@ class ProductCategoryController extends BaseController
         $this->productCategory_object->delete($id);
 
         return redirect()
-            ->to(site_url('productcategoryView'))
+            ->to(site_url('categories'))
             ->with('success', 'Category deleted successfully.');
     }
 

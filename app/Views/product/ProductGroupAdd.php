@@ -72,7 +72,7 @@ echo $this->section('content');
 <div class='modal fade' id='GroupAdd' tabindex='-1' role='dialog' aria-labelledby='GroupAdd' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form method='post' action="<?php echo site_url('/groupAdd') ?>">
+            <form method='post' action="<?php echo site_url('groups/create') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='exampleModalLabel'>Please Enter Product Group</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -105,7 +105,7 @@ echo $this->section('content');
 <div class='modal fade' id='product_group_edit' tabindex='-1' role='dialog' aria-labelledby='product_group_edit' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form method='post' action="<?php echo site_url('/groupUpdate') ?>">
+            <form method='post' action="<?php echo site_url('groups/update') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Udate Category Details</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -150,7 +150,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Customer?</h4>
 
             </div>
-            <form action="<?php echo site_url('/groupDelete') ?>" method="post">
+            <form action="<?php echo site_url('groups/delete') ?>" method="post">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

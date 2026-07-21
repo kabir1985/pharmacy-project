@@ -1,23 +1,61 @@
-<?php
-echo $this->extend('layout');
-echo $this->section('content');
-?>
+<?=$this->extend('layout')?>
+<?=$this->section('content')?>
 
-<div class='app-title'>
+<div class="app-title">
     <div>
         <h1><i class='fa fa-th-list'></i> Product Unit List, Edit, Delete & Add Section</h1>
     </div>
 
     <!-- Button trigger modal -->
-    <button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#UnitAdd'>
+    <button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#unitAddModal'>
         <i class='fa fa-plus'></i>
         Unit Add
     </button>
 </div>
 
 
+<!-- Validation Errors -->
+<?php if (session()->has('errors')): ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong><i class="fa fa-exclamation-circle"></i> Validation Error!</strong>
 
-<!---------------Data Table start Here----..............................................--------------------------->
+        <ul class="mb-0 mt-2">
+            <?php foreach (session('errors') as $error): ?>
+                <li><?= esc($error) ?></li>
+            <?php endforeach; ?>
+        </ul>
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+<?php endif; ?>
+
+<!-- Success Message -->
+<?php if (session()->has('success')): ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fa fa-check-circle"></i>
+        <?= esc(session('success')) ?>
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+<?php endif; ?>
+
+<!-- Error Message -->
+<?php if (session()->has('error')): ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fa fa-times-circle"></i>
+        <?= esc(session('error')) ?>
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+<?php endif; ?>
+
+<!-- Product Unit Table -->
 <div class='row'>
     <div class='col-md-12'>
         <div class='tile collapseable show animate__animated  animate__fadeInUp'>
@@ -26,31 +64,38 @@ echo $this->section('content');
                     <table class='table table-hover table-bordered' id='sampleTable'>
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Unit Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <?php
-                            foreach ($unit_show as $row) {
-                            ?>
-                                <tr>
-                                    <td><?php echo $row['product_unit_name']; ?></td>
-                                    <td>
-                                        <!-- Button to invoke the modal -->
-                                        <a href="#" class="btn btn-primary btn-sm btn-edit" data-product_unit_id="<?php echo $row['product_unit_id'] ?>" data-product_unit_name="<?php echo $row['product_unit_name'] ?>">
-                                            <i class="fa fa-edit"></i></a>
+                            <?php if (! empty($unit_show)): ?>
+                            <?php foreach ($unit_show as $row): ?>
+                            <tr>
+                                <td><?=esc($row['product_unit_name'])?></td>
+                                <td>
+                                    <!-- Button to invoke the modal -->
+                                    <button type="button" class="btn btn-primary btn-sm btn-edit"
+                                        data-id="<?=$row['product_unit_id']?>"
+                                        data-name="<?=esc($row['product_unit_name'])?>">
+                                        <i class="fa fa-edit"></i></button>
 
-                                        <a href="#" class="btn btn-danger btn-sm btn-delete" data-delete_id="<?php echo $row['product_unit_id'] ?>">
-                                            <i class="fa fa-trash-o"></i></a>
+                                    <button type="button" class="btn btn-danger btn-sm btn-delete"
+                                        data-id="<?=$row['product_unit_id']?>">
+                                        <i class="fa fa-trash-o"></i></button>
 
-                                    </td>
-                                </tr>
+                                </td>
+                            </tr>
 
-                            <?php
-                            }
-                            ?>
+                            <?php endforeach; ?>
+                            <?php else: ?>
+                            <tr>
+                                <td colspan="2" class="text-center">
+                                    No product units found.
+                                </td>
+                            </tr>
+                            <?php endif; ?>
 
                         </tbody>
                     </table>
@@ -59,19 +104,19 @@ echo $this->section('content');
         </div>
     </div>
 </div>
-
-<!---------------Data Table End Here-----------............................................-------------------->
-
+<!-- Product Unit Table -->
 
 
-<!---------------------------Modal Form unitAdd Start---------------------------------------->
-<!-- Modal -->
-<div class='modal fade' id='UnitAdd' tabindex='-1' role='dialog' aria-labelledby='UnitAdd' aria-hidden='true'>
+
+<!---Modal Form unitAdd Start---->
+<div class="modal fade" id='unitAddModal' tabindex='-1' role='dialog' aria-labelledby='unitAddModalLabel'
+    aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form method='post' action="<?php echo site_url('/unitAdd') ?>">
+            <form method='post' action="<?=site_url('units/create')?>">
+                <?=csrf_field()?>
                 <div class='modal-header'>
-                    <h5 class='modal-title' id='exampleModalLabel'>Please Enter Product Unit</h5>
+                    <h5 class="modal-title" id="unitAddModalLabel">Please Enter Product Unit</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                         <span aria-hidden='true'>&times;
                         </span>
@@ -81,7 +126,8 @@ echo $this->section('content');
                     <div class='form-row'>
                         <div class='form-group col-md-12'>
                             <label>Product Unit</label>
-                            <input required type='text' required class='form-control' name='product_unit' placeholder='Product Unit'>
+                            <input type="text" class="form-control" name="product_unit" placeholder="Product Unit"
+                                value="<?= old('product_unit') ?>" required>
                         </div>
                     </div>
                 </div>
@@ -93,28 +139,29 @@ echo $this->section('content');
         </div>
     </div>
 </div>
+<!---Modal Form unitAdd End---->
 
-<!----------------------Modal Form End------------------------------------------>
-
-<!---------------------------Modal Form Unit Edit Start---------------------------------------->
-<!-- Modal -->
-<div class='modal fade' id='unit_edit_modal' tabindex='-1' role='dialog' aria-labelledby='unit_edit_modal' aria-hidden='true'>
+<!-----Modal Form Unit Edit Start------->
+<div class="modal fade" id='unitEditModal' tabindex='-1' role='dialog' aria-labelledby='unitEditModalLabel'
+    aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form method='post' action="<?php echo site_url('/unitUpdate') ?>">
+            <form method='post' action="<?=site_url('units/update')?>">
+                <?=csrf_field()?>
                 <div class='modal-header'>
-                    <h5 class='modal-title' id='#'>Product Unit Update</h5>
+                    <h5 class='modal-title' id='unitEditModalLabel'>Product Unit Update</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                         <span aria-hidden='true'>&times;
                         </span>
                     </button>
                 </div>
-                <div class='modal-body' id="#">
-                    <input type='hidden' required class='form-control' name='product_unit_id' id='product_unit_id'>
+                <div class='modal-body'>
+                    <input type='hidden' class='form-control' name='product_unit_id' id='product_unit_id' required>
                     <div class='form-row'>
                         <div class='form-group col-md-12'>
                             <label>Product Unit</label>
-                            <input type='text' required class='form-control' name='product_unit_name' id='product_unit_name'>
+                            <input type='text' class='form-control' name='product_unit_name' id='product_unit_name'
+                                required>
                         </div>
                     </div>
                 </div>
@@ -127,27 +174,29 @@ echo $this->section('content');
 
     </div>
 </div>
-<!----------------------Modal Form Edit Section  End------------------------------------------>
+<!-------Modal Form Edit Section  End----->
 
 <!-- Modal Delete Product-->
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
+                <h5 class="modal-title" id="deleteModalLabel">Delete Product Unit</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 
-                <h4>Are you sure want to delete this Customer?</h4>
+                <h4>Are you sure you want to delete this product unit?</h4>
 
             </div>
-            <form action="<?php echo site_url('/unitDelete') ?>" method="post">
+            <form action="<?=site_url('units/delete')?>" method="post">
+                <?=csrf_field()?>
                 <div class="modal-footer">
-                    <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
+                    <input type="hidden" class='form-control' name="delete_id" id="delete_id" required>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                     <button type="submit" class="btn btn-primary">Yes</button>
                 </div>
@@ -159,65 +208,66 @@ echo $this->section('content');
 <!-- End Modal Delete Product-->
 
 
-<?php
-echo $this->endSection();
-?>
+<?=$this->endSection()?>
 
-<?php
-echo $this->section('scripts');
-?>
 
-<!-- Data table plugin-->
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
+<?=$this->section('scripts')?>
 
 <script type='text/javascript'>
-    $(document).ready(function() {
-        $('#sampleTable').DataTable();
+$(document).ready(function() {
 
-        // get Edit Product
-        $('.btn-edit').on('click', function() {
-            // get data from button edit
-            const product_unit_id = $(this).data('product_unit_id');
-           // alert(product_unit_id);
-            const product_unit_name = $(this).data('product_unit_name');
+    $('#sampleTable').DataTable({
+    responsive: true,
+    processing: true,
+    pageLength: 10,
+    lengthMenu: [
+        [10,25,50,100,-1],
+        [10,25,50,100,"All"]
+    ],
+    order: [[0,'asc']],
+    autoWidth: false,
+    language: {
+        search: "Search Unit:",
+        lengthMenu: "Show _MENU_ entries",
+        zeroRecords: "No matching units found",
+        info: "Showing _START_ to _END_ of _TOTAL_ units",
+        infoEmpty: "No units available",
+        infoFiltered: "(filtered from _MAX_ total units)"
+    },
+    columnDefs: [{
+        targets: 1,
+        orderable: false,
+        searchable: false,
+        width: "120px"
+    }]
+});
 
-            // Set data to Form Edit
-            $('#product_unit_id').val(product_unit_id);
-            $('#product_unit_name').val(product_unit_name);
-            // Call Modal Edit
-            $('#unit_edit_modal').modal('show');
-
-        });
-
-        // get Delete Product
-        $('.btn-delete').on('click', function() {
-            // get data from button edit
-            const delete_id = $(this).data('delete_id');
-            //alert(delete_id);
-            // Set data to Form Edit
-            $('#delete_id').val(delete_id);
-            // Call Modal Edit
-            $('#deleteModal').modal('show');
-        });
-
-
-        //................ JQuery modal Edit & Delete end here........................................
-        // ...............For Date Show.............................
-        $('.datePicker').datepicker({
-            format: "dd/mm/yyyy",
-            autoclose: true,
-            todayHighlight: true
-        });
-        //.................For Date show end........................ 
+    // get Edit Product
+    $(document).on('click', '.btn-edit', function() {
+        const id = $(this).data('id');
+        const name = $(this).data('name');
+        $('#product_unit_id').val(id);
+        $('#product_unit_name').val(name);
+        $('#unitEditModal').modal('show');
 
     });
+
+
+    // get Delete Product
+    $(document).on('click', '.btn-delete', function() {
+        const id = $(this).data('id');
+        $('#delete_id').val(id);
+        $('#deleteModal').modal('show');
+    });
+
+    setTimeout(function () {
+    $('.alert').slideUp(300, function () {
+        $(this).remove();
+    });
+}, 3000);
+
+});
 </script>
 
-<!-- For Calendar start -->
 
-<!-- For Calendar End -->
-
-<?php
-echo $this->endSection();
-?>
+<?=$this->endSection()?>

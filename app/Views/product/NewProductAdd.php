@@ -941,7 +941,7 @@ echo $this->section('scripts');
             var categoryId = this.value;
 
             $.ajax({
-                url: "<?= site_url('/initial-product-brand') ?>",
+                url: "<?= site_url('brands/initial-product-brand') ?>",
                 type: "POST",
                 data: {
                     categoryId: categoryId
@@ -1182,7 +1182,7 @@ echo $this->section('scripts');
                     if (result.isConfirmed) {
 
                         $.ajax({
-                            url: "<?= site_url('category-create-ajax') ?>",
+                            url: "<?= site_url('categories/category-create-ajax') ?>",
                             type: "POST",
                             dataType: "json",
                             data: {
@@ -1229,7 +1229,7 @@ echo $this->section('scripts');
             setTimeout(function () {
 
                 $.ajax({
-                    url: "<?= site_url('get-category-list') ?>",
+                    url: "<?= site_url('categories/get-category-list') ?>",
                     type: "GET",
                     dataType: "json",
                     success: function (categories) {
@@ -1316,7 +1316,7 @@ echo $this->section('scripts');
                             if (result.isConfirmed) {
 
                                 $.ajax({
-                                    url: "<?= site_url('brand-create-ajax') ?>",
+                                    url: "<?= site_url('brands/brand-create-ajax') ?>",
                                     type: "POST",
                                     dataType: "json",
                                     data: {
@@ -1425,7 +1425,7 @@ echo $this->section('scripts');
                     if (result.isConfirmed) {
 
                         $.ajax({
-                            url: "<?= site_url('group-create-ajax') ?>",
+                            url: "<?= site_url('groups/group-create-ajax') ?>",
                             type: "POST",
                             dataType: "json",
                             data: {
@@ -1484,7 +1484,7 @@ echo $this->section('scripts');
                     if (result.isConfirmed) {
 
                         $.ajax({
-                            url: "<?= site_url('unit-create-ajax') ?>",
+                            url: "<?= site_url('units/unit-create-ajax') ?>",
                             type: "POST",
                             dataType: "json",
                             data: {

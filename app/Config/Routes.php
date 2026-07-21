@@ -22,7 +22,6 @@ $routes->group('pos', function ($routes) {
 
 });
 
-
 $routes->get('invoice/(:num)', 'PdfController::invoice/$1');
 $routes->get('salelist', 'salelist::index');
 $routes->get('salereturnlist', 'salereturnlist::index');
@@ -31,30 +30,17 @@ $routes->get('salereturnlistshow', 'salereturnlist::saleReturnListShow');
 //ReturnController/process
 $routes->post('ReturnController/process', 'ReturnController::process');
 
-
 $routes->group('products', function ($routes) {
 
     $routes->get('opening-stock', 'ProductController::index');
-
     $routes->post('create', 'ProductController::create');
     $routes->post('update', 'ProductController::update');
     $routes->post('delete', 'ProductController::delete');
-
     $routes->get('search', 'PosController::productSearch');
-
 });
-
-
-
-
-//$routes->get('openingStock', 'ProductController::index');
-//$routes->post('initial-product-create', 'ProductController::create');
-//$routes->post('initial-product-update', 'ProductController::update');
-//$routes->post('initial-product-delete', 'ProductController::delete');
 
 $routes->get('barcodegenerate', 'BarcodeGenerateController::index');
 $routes->post('barcodeprint', 'BarcodeGenerateController::barcodeprint');
-
 
 $routes->group('categories', function ($routes) {
 
@@ -62,17 +48,10 @@ $routes->group('categories', function ($routes) {
     $routes->post('create', 'ProductCategoryController::create');
     $routes->post('update', 'ProductCategoryController::update');
     $routes->post('delete', 'ProductCategoryController::delete');
+    $routes->post('category-create-ajax', 'ProductCategoryController::categoryCreateAjax'); // From view/product/NewProductAdd.php
+    $routes->get('get-category-list', 'ProductCategoryController::getCategoryList'); // From view/product/NewProductAdd.php
 
 });
-
-
-$routes->get('productcategoryView', 'ProductCategoryController::index');
-$routes->post('productcategoryAdd', 'ProductCategoryController::create');
-$routes->post('productcategoryUpdate', 'ProductCategoryController::update');
-$routes->post('productcategoryDelete', 'ProductCategoryController::delete');
-$routes->post('category-create-ajax', 'ProductCategoryController::categoryCreateAjax');
-$routes->get('get-category-list', 'ProductCategoryController::getCategoryList');
-
 
 $routes->group('brands', function ($routes) {
 
@@ -80,45 +59,36 @@ $routes->group('brands', function ($routes) {
     $routes->post('create', 'ProductBrandController::create');
     $routes->post('update', 'ProductBrandController::update');
     $routes->post('delete', 'ProductBrandController::delete');
+    $routes->post('brand-create-ajax', 'ProductBrandController::brandCreateAjax'); //From Views/product/NewProductAdd.php
+    $routes->post('initial-product-brand', 'ProductBrandController::brand_call'); //From Views/product/NewProductAdd.php
 
 });
 
+$routes->group('groups', function ($routes) {
+    $routes->get('/', 'ProductGroupController::index');
+    $routes->post('create', 'ProductGroupController::create');
+    $routes->post('update', 'ProductGroupController::update');
+    $routes->post('delete', 'ProductGroupController::delete');
+    $routes->post('group-create-ajax', 'ProductGroupController::groupCreateAjax'); //From Views/product/NewProductAdd.php
 
+});
 
-$routes->get('productbrandView', 'ProductBrandController::index');
-$routes->post('productbrandAdd', 'ProductBrandController::create');
-$routes->post('productbrandUpdate', 'ProductBrandController::update');
-$routes->post('productbrandDelete', 'ProductBrandController::delete');
-$routes->post('brand-create-ajax', 'ProductBrandController::brandCreateAjax');
-$routes->post('initial-product-brand', 'ProductBrandController::brand_call');
+$routes->group('units', function ($routes) {
+    $routes->get('/', 'ProductUnitController::index');
+    $routes->post('create', 'ProductUnitController::create');
+    $routes->post('update', 'ProductUnitController::update');
+    $routes->post('delete', 'ProductUnitController::delete');
+    $routes->post('unit-create-ajax', 'ProductUnitController::unitCreateAjax'); //From Views/product/NewProductAdd.php
 
-$routes->get('Group', 'ProductGroupController::index');
-$routes->post('groupAdd', 'ProductGroupController::create');
-$routes->post('groupUpdate', 'ProductGroupController::update');
-$routes->post('groupDelete', 'ProductGroupController::delete');
-$routes->post('group-create-ajax', 'ProductGroupController::groupCreateAjax');
-
-
-
-$routes->get('Unit', 'ProductUnitController::index');
-$routes->post('unitAdd', 'ProductUnitController::create');
-$routes->post('unitUpdate', 'ProductUnitController::update');
-$routes->post('unitDelete', 'ProductUnitController::delete');
-$routes->post('unit-create-ajax', 'ProductUnitController::unitCreateAjax');
-
+});
 
 $routes->group('purchase', function ($routes) {
-
     $routes->get('/', 'PurchaseController::index');
-    $routes->post('create', 'PurchaseController::purchase_product');
+    $routes->post('purchase-product', 'PurchaseController::purchase_product');
 
 });
 
-$routes->get('purchase', 'PurchaseController::index');
-$routes->post('purchase-product', 'PurchaseController::purchase_product');
-
 $routes->post('strengthCreateAjax', 'ProductStrengthController::strengthCreateAjax');
-
 
 $routes->get('Expensecategory', 'ExpenseCategoryController::index');
 $routes->POST('ExpensecategoryAdd', 'ExpenseCategoryController::create');
@@ -130,8 +100,6 @@ $routes->POST('createStockAdjustment', 'StockAdjustmentController::createStockAd
 
 $routes->get('stockAdjustmentView/(:num)', 'StockAdjustmentController::view/$1');
 $routes->get('stockAdjustmentEdit/(:num)', 'StockAdjustmentController::edit/$1');
-//$routes->post('stockAdjustmentUpdate/(:num)', 'Pos::update/$1');
-//$routes->get('stockAdjustmentDelete/(:num)', 'Pos::delete/$1');
 
 $routes->get('Expensesubcategory', 'ExpenseSubCategoryController::index');
 $routes->POST('ExpensesubcategoryAdd', 'ExpenseSubCategoryController::create');
@@ -160,8 +128,6 @@ $routes->POST('supplierAdd', 'SupplierController::create');
 $routes->POST('supplierUpdate', 'SupplierController::update');
 $routes->POST('supplierDelete', 'SupplierController::delete');
 
-
-
 $routes->group('users', function ($routes) {
 
     $routes->get('/', 'User::index');
@@ -170,7 +136,6 @@ $routes->group('users', function ($routes) {
     $routes->post('delete', 'User::delete');
 
 });
-
 
 $routes->get('user', 'User::index');
 $routes->post('userCreate', 'User::create');
@@ -182,7 +147,6 @@ $routes->get('role', 'Role::index');
 $routes->post('roleCreate', 'Role::create');
 $routes->post('roleUpdate', 'Role::updateUserRole');
 
-
 $routes->group('reports', function ($routes) {
 
     $routes->get('stock', 'Stockreport::index');
@@ -190,30 +154,15 @@ $routes->group('reports', function ($routes) {
     $routes->get('profit-loss', 'profitloss::index');
     $routes->get('expense', 'expensereport::index');
     $routes->get('customer', 'customerreport::index');
-
+    $routes->get('purchaseList', 'Stockreport::index');
+    $routes->post('PLReport', 'profitloss::profitlosspdfcreate'); // From report/profitloss_report.php
 });
 
+$routes->group('receive', function ($routes) {
+    $routes->get('/', 'ReceiveFromCustomerController::index');
+    $routes->post('create', 'ReceiveFromCustomerController::create');
 
-
-//Remove Duplicate Routes
-
-//For example:
-
-$routes->get('stockreport', 'Stockreport::index');
-$routes->get('purchaseList', 'Stockreport::index');
-
-$routes->get('salesummeryreport', 'SaleSummeryReport::index');
-$routes->get('profitloss', 'profitloss::index');
-//expensereport
-$routes->get('expensereport', 'expensereport::index');
-$routes->post('PLReport', 'profitloss::profitlosspdfcreate');
-
-$routes->get('customerreport', 'customerreport::index');
-
-$routes->get('fromcustomer', 'fromcustomer::index');
-//generalsettings
-$routes->post('customer_received', 'fromcustomer::create');
-
+});
 
 $routes->group('settings', function ($routes) {
 
@@ -223,7 +172,6 @@ $routes->group('settings', function ($routes) {
     $routes->get('tax', 'TaxController::index');
 
 });
-
 
 $routes->get('generalsettings', 'generalsettings::index');
 $routes->post('generalsettingsAdd', 'generalsettings::create');
@@ -245,4 +193,3 @@ $routes->get('database-backup', 'BackupController::databaseBackup');
 
 $routes->get('help-support', 'HelpSupportController::index');
 $routes->get('help-support/pdf', 'HelpSupportController::pdf');
-

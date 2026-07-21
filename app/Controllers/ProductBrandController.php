@@ -64,7 +64,7 @@ class ProductBrandController extends BaseController
 
         if ($id > 0) {
             // Redirect to category list page
-            return redirect()->to(site_url('/productbrandView'));
+            return redirect()->to(site_url('brands'));
         } else {
             // Redirect back with error message
             return redirect()->back()->with('error', 'Product Brand creation failed');
@@ -107,7 +107,7 @@ class ProductBrandController extends BaseController
     
         if ($updated) {
             return redirect()
-                ->to(site_url('/productbrandView'))
+                ->to(site_url('brands'))
                 ->with('success', 'Product Brand updated successfully.');
         }
     
@@ -126,7 +126,7 @@ class ProductBrandController extends BaseController
         $this->product_brand_object->delete($id);
 
         //return into Brand page
-        return $this->response->redirect(site_url('/productbrandView'));
+        return $this->response->redirect(site_url('brands'));
     }
 
     public function brand_call()

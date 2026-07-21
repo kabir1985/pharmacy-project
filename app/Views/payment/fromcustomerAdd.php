@@ -82,7 +82,7 @@ echo $this->section('content');
 <div class='modal fade' id='customerPaymentModal' tabindex='-1' role='dialog' aria-labelledby='customerPaymentModal' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog' role='document'>
         <div class='modal-content'>
-            <form id="customer_payment_receive_submit" method='post' action="<?= site_url('customer_received') ?>">
+            <form id="customer_payment_receive_submit" method='post' action="<?= site_url('receive/create') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Receive Due From Customer</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>

@@ -84,7 +84,7 @@ foreach ($product_brand_show as $row) {
 
 
 <!---------------------------Modal Brand Add---------------------------------------->
-<form method='post' action="<?php echo site_url('/productbrandAdd') ?>">
+<form method='post' action="<?php echo site_url('brands/create') ?>">
     <div class='modal fade' id='BrandAdd' tabindex='-1' role='dialog' aria-labelledby='BrandAdd' aria-hidden='true'>
         <div class='modal-dialog  modal-dialog-centered' role='document'>
             <div class='modal-content'>
@@ -143,7 +143,7 @@ foreach ($category_show as $row) {
 
         <div class="modal-content">
 
-            <form method="post" action="<?=site_url('/productbrandUpdate')?>">
+            <form method="post" action="<?=site_url('brands/update')?>">
 
                 <div class="modal-header">
                     <h5 class="modal-title">Update Brand Details</h5>
@@ -220,7 +220,7 @@ foreach ($category_show as $row) {
                 <h4>Are you sure want to delete this Customer?</h4>
 
             </div>
-            <form action="<?php echo site_url('/productbrandDelete') ?>" method="post">
+            <form action="<?php echo site_url('brands/delete') ?>" method="post">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

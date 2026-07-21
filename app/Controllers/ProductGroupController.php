@@ -34,7 +34,7 @@ class ProductGroupController extends BaseController
       $id = $this->productgroup_object->insert($data);
       if ($id > 0) {
          // Redirect to category list page
-         return redirect()->to(site_url('/Group'));
+         return redirect()->to(site_url('groups'));
      } else {
          // Redirect back with error message
          return redirect()->back()->with('error', 'Product Group create failed');
@@ -55,7 +55,7 @@ class ProductGroupController extends BaseController
 
       if ($update_id > 0) {
          // Redirect to category list page
-         return redirect()->to(site_url('/Group'));
+         return redirect()->to(site_url('groups'));
      } else {
          // Redirect back with error message
          return redirect()->back()->with('error', 'Product Group update failed');
@@ -71,7 +71,7 @@ class ProductGroupController extends BaseController
       $this->productgroup_object->where('product_group_id', $id)->delete();
 
       //return into supplier page
-      return $this->response->redirect(site_url('/Group'));
+      return $this->response->redirect(site_url('groups'));
    }
 
    public function groupCreateAjax()

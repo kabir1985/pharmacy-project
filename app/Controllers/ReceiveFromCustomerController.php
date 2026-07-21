@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\CustomerDueModel;
 use CodeIgniter\HTTP\IncomingRequest;
 
-class fromcustomer extends BaseController
+class ReceiveFromCustomerController extends BaseController
 {
 
     private $customerduepayment_obj;

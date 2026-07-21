@@ -3,89 +3,213 @@
 namespace App\Controllers;
 
 use App\Models\ProductUnitModel;
-
-
-use CodeIgniter\HTTP\IncomingRequest;
+use Exception;
 
 class ProductUnitController extends BaseController
 {
-   private $productunit_object;
+    private ProductUnitModel $productunit_object;
 
+    public function __construct()
+    {
+        $this->productunit_object = new ProductUnitModel();
+    }
 
-   public function __construct()
-   {
-      $this->productunit_object   = new ProductUnitModel();
-   }
+    public function index()
+    {
+        $data['unit_show'] = $this->productunit_object
+            ->orderBy('product_unit_name', 'ASC')
+            ->findAll();
 
-   public function index()
-   {
-      $data['unit_show'] = $this->productunit_object->findAll();
+        return view('product/ProductUnitAdd', $data);
+    }
 
-      return view('product/ProductUnitAdd', $data);
-   }
-   //--------------------------------------------------------------------//
-   public function create()
-   {
-      $data = [
-         'product_unit_name'   => $this->request->getVar('product_unit'),
-      ];
-      $id = $this->productunit_object->insert($data);
-      if ($id > 0) {
-         // Redirect to category list page
-         return redirect()->to(site_url('/Unit'));
-     } else {
-         // Redirect back with error message
-         return redirect()->back()->with('error', 'Unit creation failed');
-     }
-   }
+    /**
+     * Create Product Unit
+     */
+    public function create()
+    {
+        $rules = [
+            'product_unit' => [
+                'label' => 'Product Unit',
+                'rules' => 'required|min_length[2]|max_length[100]|is_unique[product_unit.product_unit_name]',
+            ],
+        ];
 
-   public function update($id = 0)
-   {
+        if (! $this->validate($rules)) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('errors', $this->validator->getErrors());
+        }
 
-      $id   = $this->request->getVar('product_unit_id');
+        try {
 
-      $data = [
-         'product_unit_name'   => $this->request->getVar('product_unit_name'),
-      ];
-      $id =  $this->productunit_object->update($id, $data);
-      if ($id > 0) {
-         // Redirect to category list page
-         return redirect()->to(site_url('/Unit'));
-     } else {
-         // Redirect back with error message
-         return redirect()->back()->with('error', 'Unit update failed');
-     }
-   }
+            $insertId = $this->productunit_object->insert([
+                'product_unit_name' => trim($this->request->getPost('product_unit')),
+            ]);
 
+            if (! $insertId) {
+                return redirect()
+                    ->back()
+                    ->withInput()
+                    ->with('error', 'Unable to create product unit.');
+            }
 
-   public function delete($id = 0)
-   {
+            return redirect()
+                ->to(site_url('units'))
+                ->with('success', 'Product unit added successfully.');
 
-      $id = $this->request->getVar('delete_id');
+        } catch (Exception $e) {
 
-      $this->productunit_object->where('product_unit_id', $id)->delete();
+            log_message('error', 'Product Unit Create Error: ' . $e->getMessage());
 
-      //return into supplier page
-      return $this->response->redirect(site_url('/Unit'));
-   }
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('error', 'Something went wrong. Please try again.');
+        }
+    }
 
+    /**
+     * Update Product Unit
+     */
+    public function update()
+    {
+        $rules = [
+            'product_unit_id' => 'required|integer',
+            'product_unit_name' => 'required|min_length[2]|max_length[100]',
+        ];
 
-   public function unitCreateAjax()
-   {
-       $model = new ProductUnitModel();
+        if (! $this->validate($rules)) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('errors', $this->validator->getErrors());
+        }
 
-       $data = [
-           'product_unit_name' => $this->request->getPost('product_unit'),
-       ];
+        try {
 
-       $id = $model->insert($data);
+            $id = (int) $this->request->getPost('product_unit_id');
 
-       return $this->response->setJSON([
-           'status' => true,
-           'id' => $id,
-           'name' => $data['product_unit_name'],
-       ]);
-   }
+            $updated = $this->productunit_object->update($id, [
+                'product_unit_name' => trim($this->request->getPost('product_unit_name')),
+            ]);
 
+            if (! $updated) {
+                return redirect()
+                    ->back()
+                    ->with('error', 'Unable to update product unit.');
+            }
 
+            return redirect()
+                ->to(site_url('units'))
+                ->with('success', 'Product unit updated successfully.');
+
+        } catch (Exception $e) {
+
+            log_message('error', 'Product Unit Update Error: ' . $e->getMessage());
+
+            return redirect()
+                ->back()
+                ->with('error', 'Something went wrong. Please try again.');
+        }
+    }
+
+    /**
+     * Delete Product Unit
+     */
+    public function delete()
+    {
+        $rules = [
+            'delete_id' => 'required|integer',
+        ];
+
+        if (! $this->validate($rules)) {
+            return redirect()
+                ->back()
+                ->with('error', 'Invalid product unit.');
+        }
+
+        try {
+
+            $id = (int) $this->request->getPost('delete_id');
+
+            if (! $this->productunit_object->delete($id)) {
+                return redirect()
+                    ->back()
+                    ->with('error', 'Unable to delete product unit.');
+            }
+
+            return redirect()
+                ->to(site_url('units'))
+                ->with('success', 'Product unit deleted successfully.');
+
+        } catch (Exception $e) {
+
+            log_message('error', 'Product Unit Delete Error: ' . $e->getMessage());
+
+            return redirect()
+                ->back()
+                ->with('error', 'Something went wrong. Please try again.');
+        }
+    }
+
+    /**
+     * Ajax Create Product Unit
+     */
+    public function unitCreateAjax()
+    {
+        $rules = [
+            'product_unit' => [
+                'label' => 'Product Unit',
+                'rules' => 'required|min_length[2]|max_length[100]|is_unique[product_unit.product_unit_name]',
+            ],
+        ];
+
+        if (! $this->validate($rules)) {
+
+            return $this->response
+                ->setStatusCode(422)
+                ->setJSON([
+                    'status' => false,
+                    'errors' => $this->validator->getErrors(),
+                ]);
+        }
+
+        try {
+
+            $name = trim($this->request->getPost('product_unit'));
+
+            $id = $this->productunit_object->insert([
+                'product_unit_name' => $name,
+            ]);
+
+            if (! $id) {
+
+                return $this->response
+                    ->setStatusCode(500)
+                    ->setJSON([
+                        'status' => false,
+                        'message' => 'Unable to create product unit.',
+                    ]);
+            }
+
+            return $this->response->setJSON([
+                'status' => true,
+                'id'     => $id,
+                'name'   => $name,
+            ]);
+
+        } catch (Exception $e) {
+
+            log_message('error', 'Ajax Product Unit Create Error: ' . $e->getMessage());
+
+            return $this->response
+                ->setStatusCode(500)
+                ->setJSON([
+                    'status' => false,
+                    'message' => 'Something went wrong.',
+                ]);
+        }
+    }
 }
