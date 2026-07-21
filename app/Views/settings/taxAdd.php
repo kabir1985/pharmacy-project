@@ -69,7 +69,7 @@ echo $this->section('content');
 <div class='modal fade' id='taxAdd' tabindex='-1' role='dialog' aria-labelledby='taxAdd' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="tax_submit_form" method='post' action="<?= site_url('taxAdd') ?>">
+            <form id="tax_submit_form" method='post' action="<?= site_url('tax/create') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='exampleModalLabel'>Please Enter Tax Info</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -108,7 +108,7 @@ echo $this->section('content');
 <div class='modal fade' id='tax_edit_form' tabindex='-1' role='dialog' aria-labelledby='tax_edit_form' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="tax_edit_submit_form" method='post' action="<?= site_url('taxUpdate') ?>">
+            <form id="tax_edit_submit_form" method='post' action="<?= site_url('tax/update') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Udate Tax Details</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -164,7 +164,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Customer?</h4>
 
             </div>
-            <form action="<?= site_url('taxDelete') ?>" method="post">
+            <form action="<?= site_url('tax/delete') ?>" method="post">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -185,10 +185,6 @@ echo $this->endSection();
 <?php
 echo $this->section('scripts');
 ?>
-
-<!-- Data table plugin-->
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
 <script type='text/javascript'>
     $(document).ready(function() {

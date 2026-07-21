@@ -437,7 +437,7 @@ echo $this->section('content');
 <div class="modal fade" id="user_previlege_edit" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form method="POST" action= "<?php echo site_url('roleUpdate') ?>">
+            <form method="POST" action= "<?php echo site_url('role/update') ?>">
                 <div class="modal-header">
                     <h5 class="modal-title">Edit Role</h5>
                 </div>
@@ -563,7 +563,7 @@ echo $this->section('scripts');
 
             // Send data
             $.ajax({
-                url: '<?= site_url("roleCreate") ?>',
+                url: '<?= site_url("role/create") ?>',
                 type: 'POST',
                 dataType: 'json',
                 data: {

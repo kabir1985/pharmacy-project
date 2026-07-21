@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\CurrencyAddModel;
 use App\Models\GeneralSettingsModel;
 
-class generalsettings extends BaseController
+class GeneralSettingsController extends BaseController
 {
     private $generalsetting_obj;
     private $currency_obj;

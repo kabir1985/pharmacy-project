@@ -6,7 +6,7 @@ use App\Models\UserModel;
 
 use CodeIgniter\HTTP\IncomingRequest;
 
-class User extends BaseController
+class UserController extends BaseController
 {
    private $user_model_object;
    private $db;

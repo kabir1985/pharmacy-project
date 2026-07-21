@@ -110,7 +110,7 @@ echo $this->section('content');
 <div class='modal fade' id='ExpenseAdd' tabindex='-1' role='dialog' aria-labelledby='ExpenseAdd' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="Expense_add_submit_form" method='post' action="<?= site_url('ExpenseAdd') ?>">
+            <form id="Expense_add_submit_form" method='post' action="<?= site_url('expense/create') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='exampleModalLabel'>Please Enter Expense Info</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -201,7 +201,7 @@ echo $this->section('content');
     aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="expense_update_submit_form" method='post' action="<?= site_url('ExpenseUpdate') ?>">
+            <form id="expense_update_submit_form" method='post' action="<?= site_url('expense/update') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Please Update Expense Details</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -295,7 +295,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Expense?</h4>
 
             </div>
-            <form action="<?= site_url('ExpenseDelete') ?>" method="post">
+            <form action="<?= site_url('expense/delete') ?>" method="post">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -317,9 +317,6 @@ echo $this->endSection();
 echo $this->section('scripts');
 ?>
 
-<!-- Data table plugin-->
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
 <!-- Google analytics script-->
 <script type='text/javascript'>

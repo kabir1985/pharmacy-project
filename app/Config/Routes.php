@@ -31,7 +31,6 @@ $routes->get('salereturnlistshow', 'salereturnlist::saleReturnListShow');
 $routes->post('ReturnController/process', 'ReturnController::process');
 
 $routes->group('products', function ($routes) {
-
     $routes->get('opening-stock', 'ProductController::index');
     $routes->post('create', 'ProductController::create');
     $routes->post('update', 'ProductController::update');
@@ -39,8 +38,10 @@ $routes->group('products', function ($routes) {
     $routes->get('search', 'PosController::productSearch');
 });
 
-$routes->get('barcodegenerate', 'BarcodeGenerateController::index');
-$routes->post('barcodeprint', 'BarcodeGenerateController::barcodeprint');
+$routes->group('barcode', function ($routes) {
+    $routes->get('/', 'BarcodeGenerateController::index');
+    $routes->post('print', 'BarcodeGenerateController::barcodeprint');
+});
 
 $routes->group('categories', function ($routes) {
 
@@ -54,7 +55,6 @@ $routes->group('categories', function ($routes) {
 });
 
 $routes->group('brands', function ($routes) {
-
     $routes->get('/', 'ProductBrandController::index');
     $routes->post('create', 'ProductBrandController::create');
     $routes->post('update', 'ProductBrandController::update');
@@ -90,62 +90,80 @@ $routes->group('purchase', function ($routes) {
 
 $routes->post('strengthCreateAjax', 'ProductStrengthController::strengthCreateAjax');
 
-$routes->get('Expensecategory', 'ExpenseCategoryController::index');
-$routes->POST('ExpensecategoryAdd', 'ExpenseCategoryController::create');
-$routes->POST('ExpensecategoryDelete', 'ExpenseCategoryController::delete');
-$routes->POST('ExpensecategoryUpdate', 'ExpenseCategoryController::update');
-
-$routes->get('stockAdjustment', 'StockAdjustmentController::stockAdjustmentForm');
-$routes->POST('createStockAdjustment', 'StockAdjustmentController::createStockAdjustment');
-
-$routes->get('stockAdjustmentView/(:num)', 'StockAdjustmentController::view/$1');
-$routes->get('stockAdjustmentEdit/(:num)', 'StockAdjustmentController::edit/$1');
-
-$routes->get('Expensesubcategory', 'ExpenseSubCategoryController::index');
-$routes->POST('ExpensesubcategoryAdd', 'ExpenseSubCategoryController::create');
-$routes->POST('ExpensesubcategoryUpdate', 'ExpenseSubCategoryController::update');
-$routes->POST('ExpensesubcategoryDelete', 'ExpenseSubCategoryController::delete');
-
-$routes->get('Expense', 'ExpenseController::index');
-$routes->POST('ExpenseAdd', 'ExpenseController::create');
-$routes->POST('ExpenseUpdate', 'ExpenseController::update');
-$routes->POST('ExpenseDelete', 'ExpenseController::delete');
-
-$routes->POST('expense/getSubCategory', 'Expense::getSubCategory');
-
-$routes->get('customergroup', 'CustomerGroupController::index');
-$routes->POST('customergroupAdd', 'CustomerGroupController::create');
-$routes->POST('customergroupUpdate', 'CustomerGroupController::update');
-$routes->POST('customergroupDelete', 'CustomerGroupController::delete');
-
-$routes->get('customer', 'CustomerController::index');
-$routes->POST('customerAdd', 'CustomerController::create');
-$routes->POST('customerUpdate', 'CustomerController::update');
-$routes->POST('customerDelete', 'CustomerController::delete');
-
-$routes->get('supplier', 'SupplierController::index');
-$routes->POST('supplierAdd', 'SupplierController::create');
-$routes->POST('supplierUpdate', 'SupplierController::update');
-$routes->POST('supplierDelete', 'SupplierController::delete');
-
-$routes->group('users', function ($routes) {
-
-    $routes->get('/', 'User::index');
-    $routes->post('create', 'User::create');
-    $routes->post('update', 'User::update');
-    $routes->post('delete', 'User::delete');
+$routes->group('expense', function ($routes) {
+    $routes->get('/', 'ExpenseController::index');
+    $routes->POST('create', 'ExpenseController::create');
+    $routes->POST('update', 'ExpenseController::update');
+    $routes->POST('delete', 'ExpenseController::delete');
+    $routes->POST('getSubCategory', 'ExpenseController::getSubCategory'); //From Views/expense/expense_add.php
 
 });
 
-$routes->get('user', 'User::index');
-$routes->post('userCreate', 'User::create');
-$routes->post('userDelete', 'user::delete');
-$routes->post('userUpdate', 'user::update');
-//update
+$routes->group('expenseCategory', function ($routes) {
 
-$routes->get('role', 'Role::index');
-$routes->post('roleCreate', 'Role::create');
-$routes->post('roleUpdate', 'Role::updateUserRole');
+    $routes->get('/', 'ExpenseCategoryController::index');
+    $routes->POST('create', 'ExpenseCategoryController::create');
+    $routes->POST('update', 'ExpenseCategoryController::update');
+    $routes->POST('delete', 'ExpenseCategoryController::delete');
+});
+
+$routes->group('Expensesubcategory', function ($routes) {
+
+    $routes->get('/', 'ExpenseSubCategoryController::index');
+    $routes->POST('create', 'ExpenseSubCategoryController::create');
+    $routes->POST('update', 'ExpenseSubCategoryController::update');
+    $routes->POST('delete', 'ExpenseSubCategoryController::delete');
+});
+
+
+$routes->group('customer', function ($routes) {
+
+    $routes->get('/', 'CustomerController::index');
+    $routes->POST('create', 'CustomerController::create');
+    $routes->POST('update', 'CustomerController::update');
+    $routes->POST('delete', 'CustomerController::delete');
+});
+
+
+$routes->group('customergroup', function ($routes) {
+
+    $routes->get('/', 'CustomerGroupController::index');
+    $routes->POST('create', 'CustomerGroupController::create');
+    $routes->POST('update', 'CustomerGroupController::update');
+    $routes->POST('delete', 'CustomerGroupController::delete');
+});
+
+$routes->group('supplier', function ($routes) {
+
+    $routes->get('/', 'SupplierController::index');
+    $routes->POST('create', 'SupplierController::create');
+    $routes->POST('update', 'SupplierController::update');
+    $routes->POST('delete', 'SupplierController::delete');
+});
+
+$routes->group('stockAdjustment', function ($routes) {
+
+    $routes->get('/', 'StockAdjustmentController::index');
+    $routes->POST('create', 'StockAdjustmentController::createStockAdjustment');
+    $routes->get('view/(:num)', 'StockAdjustmentController::view/$1');
+    $routes->get('edit/(:num)', 'StockAdjustmentController::edit/$1');
+});
+
+
+$routes->group('user', function ($routes) {
+    $routes->get('/', 'UserController::index');
+    $routes->post('create', 'UserController::create');
+    $routes->post('delete', 'UserController::delete');
+    $routes->post('update', 'UserController::update');
+});
+
+
+$routes->group('role', function ($routes) {
+    $routes->get('/', 'Role::index');
+    $routes->post('create', 'RoleController::create');
+    $routes->post('update', 'RoleController::updateUserRole');
+});
+
 
 $routes->group('reports', function ($routes) {
 
@@ -165,29 +183,29 @@ $routes->group('receive', function ($routes) {
 });
 
 $routes->group('settings', function ($routes) {
-
-    $routes->get('general', 'generalsettings::index');
-
-    $routes->get('currency', 'CurrencyController::index');
-    $routes->get('tax', 'TaxController::index');
+    $routes->get('/', 'GeneralSettingsController::index');
+    $routes->post('create', 'GeneralSettingsController::create');
+    $routes->post('update', 'GeneralSettingsController::update');
+    $routes->post('delete', 'GeneralSettingsController::delete');
 
 });
 
-$routes->get('generalsettings', 'generalsettings::index');
-$routes->post('generalsettingsAdd', 'generalsettings::create');
-$routes->post('generalsettingsUpdate', 'generalsettings::update');
-$routes->post('generalsettingsDelete', 'generalsettings::delete');
+$routes->group('currency', function ($routes) {
+    $routes->get('/', 'CurrencyController::index');
+    $routes->post('create', 'CurrencyController::create');
+    $routes->post('update', 'CurrencyController::update');
+    $routes->post('delete', 'CurrencyController::delete');
+});
 
-$routes->get('currency', 'CurrencyController::index');
-$routes->post('currencyAdd', 'CurrencyController::create');
-$routes->post('currencyUpdate', 'CurrencyController::update');
-$routes->post('currencyDelete', 'CurrencyController::delete');
 
-$routes->get('tax', 'TaxController::index');
-$routes->post('taxAdd', 'TaxController::create');
-$routes->post('taxUpdate', 'TaxController::update');
-$routes->post('taxDelete', 'TaxController::delete');
-$routes->post('vatTax-create-ajax', 'TaxController::vatTaxCreateAjax');
+$routes->group('tax', function ($routes) {
+    $routes->get('/', 'TaxController::index');
+    $routes->post('create', 'TaxController::create');
+    $routes->post('update', 'TaxController::update');
+    $routes->post('delete', 'TaxController::delete');
+    $routes->post('vatTax-create-ajax', 'TaxController::vatTaxCreateAjax');//From Views/product/NewProductAdd.php
+});
+
 
 $routes->get('database-backup', 'BackupController::databaseBackup');
 

@@ -1621,7 +1621,7 @@ echo $this->section('scripts');
 
                     $.ajax({
 
-                        url: "<?= site_url('vatTax-create-ajax') ?>",
+                        url: "<?= site_url('tax/vatTax-create-ajax') ?>",
                         type: "POST",
                         dataType: "json",
                         data: result.value,

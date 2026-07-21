@@ -131,7 +131,7 @@ $(document).ready(function() {
         // console.log(itemsInCartObject);
 
         //var sales_process_url = "http://localhost/codeigniter4/Purchase/purchase_product";
-        var barcodeprinturl = "<?= site_url('barcodeprint') ?>";
+        var barcodeprinturl = "<?= site_url('barcode/print') ?>";
 
         $.ajax({
             url: barcodeprinturl, // complete url from siteurl/constroller/function

@@ -165,7 +165,7 @@ echo $this->section('content');
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
 
-            <form id="userCreate_form" method="post" action="<?= site_url('userCreate') ?>">
+            <form id="userCreate_form" method="post" action="<?= site_url('user/create') ?>">
                 <div class="modal-header">
                     <h5 class="modal-title">Please Enter New User Details</h5>
                     <button type="button" class="close" data-dismiss="modal">
@@ -239,7 +239,7 @@ echo $this->section('content');
     aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="user_update_submit" method='post' action="<?= site_url('userUpdate') ?>">
+            <form id="user_update_submit" method='post' action="<?= site_url('user/update') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Udate User Role</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -321,7 +321,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Customer?</h4>
 
             </div>
-            <form action="<?= site_url('userDelete') ?>" method="post">
+            <form action="<?= site_url('user/delete') ?>" method="post">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

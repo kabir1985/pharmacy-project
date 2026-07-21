@@ -2,7 +2,7 @@
 namespace App\Controllers;
 use App\Models\UserRoleModel;
 use CodeIgniter\HTTP\IncomingRequest;
-class Role extends BaseController
+class RoleController extends BaseController
 {
    private $user_role_model_obj;
    private $db;

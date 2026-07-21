@@ -70,7 +70,7 @@ echo $this->section('content');
 <div class='modal fade' id='CategoryAdd' tabindex='-1' role='dialog' aria-labelledby='CategoryAdd' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="expense_category_add_form" method='post' action="<?= site_url('ExpensecategoryAdd') ?>">
+            <form id="expense_category_add_form" method='post' action="<?= site_url('expenseCategory/create') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='exampleModalLabel'>Please Enter Expense Category</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -107,7 +107,7 @@ echo $this->section('content');
 <div class='modal fade' id='ExpenseCategoryEditModal' tabindex='-1' role='dialog' aria-labelledby='ExpenseCategoryEditModal' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="expense_category_edit_form" method='post' action="<?= site_url('ExpensecategoryUpdate') ?>">
+            <form id="expense_category_edit_form" method='post' action="<?= site_url('expenseCategory/update') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Udate Expense Category Details</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -152,7 +152,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Customer?</h4>
 
             </div>
-            <form action="<?php echo site_url('ExpensecategoryDelete') ?>" method="post">
+            <form action="<?php echo site_url('expenseCategory/delete') ?>" method="post">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -174,11 +174,6 @@ echo $this->endSection();
 echo $this->section('scripts');
 ?>
 
-<!-- Data table plugin-->
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
-
-<!-- Google analytics script-->
 <script type='text/javascript'>
     $(document).ready(function() {
         $('#sampleTable').DataTable();

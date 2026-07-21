@@ -57,77 +57,79 @@ echo $this->section('content');
 
                         <tbody>
 
-<?php $sl = 1; ?>
+                            <?php $sl = 1; ?>
 
-<?php foreach($adjustments as $row){ ?>
+                            <?php foreach ($adjustments as $row) { ?>
 
-<tr>
+                                <tr>
 
-    <td><?= $sl++; ?></td>
+                                    <td><?= $sl++; ?></td>
 
-    <td><?= date('d-M-Y', strtotime($row['adjustment_date'])); ?></td>
+                                    <td><?= date('d-M-Y', strtotime($row['adjustment_date'])); ?></td>
 
-    <td><?= $row['adjustment_no']; ?></td>
+                                    <td><?= $row['adjustment_no']; ?></td>
 
-    <td><?= $row['product_name']; ?></td>
+                                    <td><?= $row['product_name']; ?></td>
 
-    <td>
+                                    <td>
 
-        <?php if($row['adjustment_type']=="stock_in"){ ?>
+                                        <?php if ($row['adjustment_type'] == "stock_in") { ?>
 
-            <span class="badge badge-success">
-                Stock In
-            </span>
+                                            <span class="badge badge-success">
+                                                Stock In
+                                            </span>
 
-        <?php }else{ ?>
+                                        <?php } else { ?>
 
-            <span class="badge badge-danger">
-                Stock Out
-            </span>
+                                            <span class="badge badge-danger">
+                                                Stock Out
+                                            </span>
 
-        <?php } ?>
+                                        <?php } ?>
 
-    </td>
+                                    </td>
 
-    <td class="text-center">
-        <?= number_format($row['current_stock'],2); ?>
-    </td>
+                                    <td class="text-center">
+                                        <?= number_format($row['current_stock'], 2); ?>
+                                    </td>
 
-    <td class="text-center">
-        <?= number_format($row['adjustment_qty'],2); ?>
-    </td>
+                                    <td class="text-center">
+                                        <?= number_format($row['adjustment_qty'], 2); ?>
+                                    </td>
 
-    <td class="text-center">
-        <?= number_format($row['new_stock'],2); ?>
-    </td>
+                                    <td class="text-center">
+                                        <?= number_format($row['new_stock'], 2); ?>
+                                    </td>
 
-    <td><?= $row['reason']; ?></td>
+                                    <td><?= $row['reason']; ?></td>
 
-    <td><?= $row['user_name']; ?></td>
+                                    <td><?= $row['user_name']; ?></td>
 
-    <td>
+                                    <td>
 
-        <a href="<?= site_url('stockAdjustmentView/'.$row['adjustment_id']) ?>" class="btn btn-info btn-sm">
-            <i class="fa fa-eye"></i>
-        </a>
+                                        <a href="<?= site_url('stockAdjustment/view/' . $row['adjustment_id']) ?>"
+                                            class="btn btn-info btn-sm">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
 
-        <a href="<?= site_url('stockAdjustmentEdit/'.$row['adjustment_id']) ?>" class="btn btn-primary btn-sm">
-            <i class="fa fa-edit"></i>
-        </a>
+                                        <a href="<?= site_url('stockAdjustment/edit/' . $row['adjustment_id']) ?>"
+                                            class="btn btn-primary btn-sm">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
 
-        <a href="<?= site_url('stockAdjustmentDelete/'.$row['adjustment_id']) ?>"
-           onclick="return confirm('Delete this adjustment?')"
-           class="btn btn-danger btn-sm">
-            <i class="fa fa-trash"></i>
-        </a>
+                                        <a href="<?= site_url('stockAdjustmentDelete/' . $row['adjustment_id']) ?>"
+                                            onclick="return confirm('Delete this adjustment?')"
+                                            class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
 
-    </td>
+                                    </td>
 
-</tr>
+                                </tr>
 
-<?php } ?>
+                            <?php } ?>
 
-</tbody>
+                        </tbody>
                     </table>
 
                 </div>
@@ -174,11 +176,11 @@ echo $this->section('content');
 
                         <div class="form-group col-md-6">
                             <label>Adjustment Type</label>
-                        <select name="adjustment_type" id="adjustment_type" class="form-control" required>
-    <option value="">Select Type</option>
-    <option value="stock_in">Stock In</option>
-    <option value="stock_out">Stock Out</option>
-</select>
+                            <select name="adjustment_type" id="adjustment_type" class="form-control" required>
+                                <option value="">Select Type</option>
+                                <option value="stock_in">Stock In</option>
+                                <option value="stock_out">Stock Out</option>
+                            </select>
                         </div>
 
                     </div>
@@ -190,14 +192,14 @@ echo $this->section('content');
 
                             <option value="" selected disabled>Select Product</option>
 
-                            <?php foreach($product_show_for_sale as $row){ ?>
+                            <?php foreach ($product_show_for_sale as $row) { ?>
 
-                            <option value="<?= $row['product_id']; ?>" data-total_stock="<?= $row['total_stock']; ?>">
+                                <option value="<?= $row['product_id']; ?>" data-total_stock="<?= $row['total_stock']; ?>">
 
-                                <?= $row['product_name']; ?>
-                                (Stock : <?= $row['total_stock']; ?>)
+                                    <?= $row['product_name']; ?>
+                                    (Stock : <?= $row['total_stock']; ?>)
 
-                            </option>
+                                </option>
 
                             <?php } ?>
 
@@ -349,184 +351,180 @@ echo $this->endSection();
 echo $this->section('scripts');
 ?>
 
-<!-- Data table plugin-->
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
-
 <script type='text/javascript'>
-$(document).ready(function() {
+    $(document).ready(function () {
 
-    //===========================
-    // Calculate Adjustment
-    //===========================
-    function calculateAdjustment() {
+        //===========================
+        // Calculate Adjustment
+        //===========================
+        function calculateAdjustment() {
 
-        let current = parseFloat($('#current_stock').val()) || 0;
-        let newStock = parseFloat($('#new_stock').val()) || 0;
-        let type = $('#adjustment_type').val();
+            let current = parseFloat($('#current_stock').val()) || 0;
+            let newStock = parseFloat($('#new_stock').val()) || 0;
+            let type = $('#adjustment_type').val();
 
-        if (type == "stock_in") {
+            if (type == "stock_in") {
 
-            // Only calculate
-            if (newStock >= current) {
-                $('#adjustment_qty').val(newStock - current);
-            } else {
-                $('#adjustment_qty').val(0);
-            }
-
-        } else if (type == "stock_out") {
-
-            if (newStock <= current) {
-                $('#adjustment_qty').val(current - newStock);
-            } else {
-                $('#adjustment_qty').val(0);
-            }
-
-        }
-
-    }
-
-    //===========================
-    // Product Change
-    //===========================
-    $('#product_id').change(function() {
-
-        let stock = Number($('#product_id option:selected').data('total_stock')) || 0;
-
-        $('#current_stock').val(stock);
-        $('#new_stock').val(stock);
-
-        calculateAdjustment();
-
-    });
-
-    //===========================
-    // Adjustment Type Change
-    //===========================
-    $('#adjustment_type').change(function() {
-
-        calculateAdjustment();
-
-    });
-
-    //===========================
-    // New Stock Change
-    //===========================
-    $('#new_stock').on('input', function() {
-
-        calculateAdjustment();
-
-    });
-
-    //===========================
-    // Validation on Blur
-    //===========================
-    $('#new_stock').on('blur', function() {
-
-        let current = parseFloat($('#current_stock').val()) || 0;
-        let newStock = parseFloat($(this).val()) || 0;
-        let type = $('#adjustment_type').val();
-
-        if (type == 'stock_in') {
-
-            if (newStock < current) {
-
-                alert('New Stock must be greater than or equal to Current Stock.');
-
-                $(this).val(current);
-
-            }
-
-        } else if (type == 'stock_out') {
-
-            if (newStock > current) {
-
-                alert('New Stock cannot be greater than Current Stock.');
-
-                $(this).val(current);
-
-            }
-
-            if (newStock < 0) {
-
-                $(this).val(0);
-
-            }
-
-        }
-
-        calculateAdjustment();
-
-    });
-
-
-
-
-
-    //====================================
-    // Save Stock Adjustment
-    //====================================
-    $('#stockAdjustmentForm').submit(function(e) {
-
-        e.preventDefault();
-
-        $.ajax({
-
-            url: "<?= site_url('createStockAdjustment'); ?>",
-            type: "POST",
-            data: $(this).serialize(),
-            dataType: "json",
-
-            beforeSend: function() {
-
-                $('button[type=submit]').prop('disabled', true);
-
-            },
-
-            success: function(response) {
-
-                $('button[type=submit]').prop('disabled', false);
-
-                if (response.status == "success") {
-
-                    alert(response.message);
-
-                    $('#stockAdjustmentModal').modal('hide');
-
-                    $('#stockAdjustmentForm')[0].reset();
-
-                    $('.select2').val('').trigger('change');
-
-                    // Reload DataTable
-                    $('#sampleTable').DataTable().ajax.reload(null, false);
-
+                // Only calculate
+                if (newStock >= current) {
+                    $('#adjustment_qty').val(newStock - current);
                 } else {
-
-                    alert(response.message);
-
+                    $('#adjustment_qty').val(0);
                 }
 
-            },
+            } else if (type == "stock_out") {
 
-            error: function(xhr) {
-
-                $('button[type=submit]').prop('disabled', false);
-
-                alert("Something went wrong.");
-
-                console.log(xhr.responseText);
+                if (newStock <= current) {
+                    $('#adjustment_qty').val(current - newStock);
+                } else {
+                    $('#adjustment_qty').val(0);
+                }
 
             }
+
+        }
+
+        //===========================
+        // Product Change
+        //===========================
+        $('#product_id').change(function () {
+
+            let stock = Number($('#product_id option:selected').data('total_stock')) || 0;
+
+            $('#current_stock').val(stock);
+            $('#new_stock').val(stock);
+
+            calculateAdjustment();
 
         });
 
+        //===========================
+        // Adjustment Type Change
+        //===========================
+        $('#adjustment_type').change(function () {
+
+            calculateAdjustment();
+
+        });
+
+        //===========================
+        // New Stock Change
+        //===========================
+        $('#new_stock').on('input', function () {
+
+            calculateAdjustment();
+
+        });
+
+        //===========================
+        // Validation on Blur
+        //===========================
+        $('#new_stock').on('blur', function () {
+
+            let current = parseFloat($('#current_stock').val()) || 0;
+            let newStock = parseFloat($(this).val()) || 0;
+            let type = $('#adjustment_type').val();
+
+            if (type == 'stock_in') {
+
+                if (newStock < current) {
+
+                    alert('New Stock must be greater than or equal to Current Stock.');
+
+                    $(this).val(current);
+
+                }
+
+            } else if (type == 'stock_out') {
+
+                if (newStock > current) {
+
+                    alert('New Stock cannot be greater than Current Stock.');
+
+                    $(this).val(current);
+
+                }
+
+                if (newStock < 0) {
+
+                    $(this).val(0);
+
+                }
+
+            }
+
+            calculateAdjustment();
+
+        });
+
+
+
+
+
+        //====================================
+        // Save Stock Adjustment
+        //====================================
+        $('#stockAdjustmentForm').submit(function (e) {
+
+            e.preventDefault();
+
+            $.ajax({
+
+                url: "<?= site_url('stockAdjustment/create'); ?>",
+                type: "POST",
+                data: $(this).serialize(),
+                dataType: "json",
+
+                beforeSend: function () {
+
+                    $('button[type=submit]').prop('disabled', true);
+
+                },
+
+                success: function (response) {
+
+                    $('button[type=submit]').prop('disabled', false);
+
+                    if (response.status == "success") {
+
+                        alert(response.message);
+
+                        $('#stockAdjustmentModal').modal('hide');
+
+                        $('#stockAdjustmentForm')[0].reset();
+
+                        $('.select2').val('').trigger('change');
+
+                        // Reload DataTable
+                        $('#sampleTable').DataTable().ajax.reload(null, false);
+
+                    } else {
+
+                        alert(response.message);
+
+                    }
+
+                },
+
+                error: function (xhr) {
+
+                    $('button[type=submit]').prop('disabled', false);
+
+                    alert("Something went wrong.");
+
+                    console.log(xhr.responseText);
+
+                }
+
+            });
+
+        });
+
+
+
+
+
     });
-
-
-
-
-
-});
 </script>
 
 <!-- For Calendar start -->

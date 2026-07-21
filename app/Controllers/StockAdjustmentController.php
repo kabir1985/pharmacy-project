@@ -18,7 +18,7 @@ class StockAdjustmentController extends BaseController
         $this->db = \Config\Database::connect();
     }
 
-    public function stockAdjustmentForm()
+    public function index()
     {
         $category = $this->request->getPost('product_category');
         $data['product_show_for_sale'] = $this->products_object->getProducts($category);

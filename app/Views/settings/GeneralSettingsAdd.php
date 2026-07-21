@@ -76,7 +76,7 @@ echo $this->section('content');
 <div class='modal fade' id='SystemSettingsAdd' tabindex='-1' role='dialog' aria-hidden='true'>
     <div class='modal-dialog modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="system_settings_submit_form" method='post' action="<?= site_url('generalsettingsAdd') ?>" enctype="multipart/form-data">
+            <form id="system_settings_submit_form" method='post' action="<?= site_url('settings/create') ?>" enctype="multipart/form-data">
                 <div class='modal-header'>
                     <h5 class='modal-title'>Please Enter Company Info</h5>
                     <button type='button' class='close' data-dismiss='modal'>&times;</button>
@@ -137,7 +137,7 @@ echo $this->section('content');
 <div class='modal fade' id='system_setting_edit_modal' tabindex='-1' role='dialog' aria-hidden='true'>
     <div class='modal-dialog modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="systemSettings_edit_submit_form" method='post' action="<?= site_url('generalsettingsUpdate') ?>" enctype="multipart/form-data">
+            <form id="systemSettings_edit_submit_form" method='post' action="<?= site_url('settings/update') ?>" enctype="multipart/form-data">
                 <div class='modal-header'>
                     <h5 class='modal-title'>System Settings Update</h5>
                     <button type='button' class='close' data-dismiss='modal'>&times;</button>
@@ -198,7 +198,7 @@ echo $this->section('content');
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <form action="<?= site_url('generalsettingsDelete') ?>" method="post">
+            <form action="<?= site_url('settings/delete') ?>" method="post">
                 <div class="modal-header">
                     <h5 class="modal-title">Delete Company</h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>

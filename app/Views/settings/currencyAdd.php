@@ -65,15 +65,13 @@ echo $this->section('content');
 
 <!---------------Data Table End Here-----------............................................-------------------->
 
-
-
 <!---------------------------Modal Form for entry Load Start---------------------------------------->
 <!-- Modal -->
 
 <div class='modal fade' id='currencyAdd' tabindex='-1' role='dialog' aria-labelledby='currencyAdd' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="currency_add_form" method='post' action="<?= site_url('currencyAdd') ?>">
+            <form id="currency_add_form" method='post' action="<?= site_url('currency/create') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='exampleModalLabel'>Please Enter Currency Details</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -122,7 +120,7 @@ echo $this->section('content');
 <div class='modal fade' id='CurrencyEditModel' tabindex='-1' role='dialog' aria-labelledby='CurrencyEditModel' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="currency_update_submission" method='post' action="<?= site_url('currencyUpdate') ?>">
+            <form id="currency_update_submission" method='post' action="<?= site_url('currency/update') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Udate Currency Details</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -179,7 +177,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Customer?</h4>
 
             </div>
-            <form action="<?= site_url('currencyDelete') ?>" method="post">
+            <form action="<?= site_url('currency/delete') ?>" method="post">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

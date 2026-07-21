@@ -108,7 +108,7 @@ echo $this->section('content');
 
 <!---------------------------Modal Form for entry Load Start---------------------------------------->
 <!-- Modal -->
-<form id="CustomerModalEntry_Form" method='post' action="<?= site_url('customerAdd') ?>">
+<form id="CustomerModalEntry_Form" method='post' action="<?= site_url('customer/create') ?>">
     <div class='modal fade' id='CustomerAdd' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'
         aria-hidden='true'>
         <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
@@ -194,7 +194,7 @@ echo $this->section('content');
     aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="customer_edit_submit_form" method='post' action="<?php echo site_url('customerUpdate') ?>">
+            <form id="customer_edit_submit_form" method='post' action="<?php echo site_url('customer/update') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Please Enter Customer Edit Details</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -268,7 +268,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Customer?</h4>
 
             </div>
-            <form action="<?= site_url('customerDelete') ?>" method="post">
+            <form action="<?= site_url('customer/delete') ?>" method="post">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -289,10 +289,6 @@ echo $this->endSection();
 <?php
 echo $this->section('scripts');
 ?>
-
-<!-- Data table plugin-->
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
 <script type='text/javascript'>
 

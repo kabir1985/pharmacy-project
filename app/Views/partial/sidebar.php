@@ -37,7 +37,7 @@ $menuSections = [
         'url'   => '#',
         'privileges' => ['barcode_generate','product_category','product_brand','product_group','product_unit'],
         'children' => [
-            ['label'=>'Barcode Generate','url'=>'barcodegenerate','privileges'=>['barcode_generate']],
+            ['label'=>'Barcode Generate','url'=>'barcode','privileges'=>['barcode_generate']],
             ['label'=>'Category/Dosage Form','url'=>'categories','privileges'=>['product_category']],
             ['label'=>'Product Brand','url'=>'brands','privileges'=>['product_brand']],
             ['label'=>'Group/Generic Name','url'=>'groups','privileges'=>['product_group']],
@@ -73,7 +73,7 @@ $menuSections = [
         'url'=>'#',
         'privileges'=>['expense_add','expense_category','expense_sub_category'],
         'children'=>[
-            ['label'=>'Expense Category','url'=>'Expensecategory','privileges'=>['expense_category']],
+            ['label'=>'Expense Category','url'=>'expenseCategory','privileges'=>['expense_category']],
             ['label'=>'Expense Sub Category','url'=>'Expensesubcategory','privileges'=>['expense_sub_category']],
             ['label'=>'Expense Add','url'=>'Expense','privileges'=>['expense_add']],
         ]
@@ -120,7 +120,7 @@ $menuSections = [
         'url'=>'#',
         'privileges'=>['general_settings','currency_settings','tax_setup'],
         'children'=>[
-            ['label'=>'General Settings','url'=>'generalsettings','privileges'=>['general_settings']],
+            ['label'=>'General Settings','url'=>'settings','privileges'=>['general_settings']],
             ['label'=>'Currency Settings','url'=>'currency','privileges'=>['currency_settings']],
             ['label'=>'% Tax Setup','url'=>'tax','privileges'=>['tax_setup']],
         ]

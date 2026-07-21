@@ -103,7 +103,7 @@ echo $this->section('content');
                 </button>
             </div>
 
-            <form id="modalForm" method='post' action="<?= site_url('supplierAdd') ?>">
+            <form id="modalForm" method='post' action="<?= site_url('supplier/create') ?>">
                 <div class='modal-body'>
 
                     <div class='form-row'>
@@ -159,7 +159,7 @@ echo $this->section('content');
 
 <!---------------------------Modal Form for Edit Section Load Start---------------------------------------->
 <!-- Modal -->
-<form id="#" method='post' action="<?= site_url('supplierUpdate') ?>">
+<form id="#" method='post' action="<?= site_url('supplier/update') ?>">
     <div class='modal fade' id='ModalEditSectionID' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'
         aria-hidden='true'>
         <div class='modal-dialog  modal-dialog-centered' role='document'>
@@ -235,7 +235,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Supplier?</h4>
 
             </div>
-            <form action="<?= site_url('supplierDelete') ?>" method="post">
+            <form action="<?= site_url('supplier/delete') ?>" method="post">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
@@ -257,15 +257,11 @@ echo $this->endSection();
 echo $this->section('scripts');
 ?>
 
-<!-- Data table plugin-->
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
-<script type='text/javascript'>
-$('#sampleTable').DataTable();
-</script>
-<!-- Google analytics script-->
+
 <script type='text/javascript'>
 $(document).ready(function() {
+
+$('#sampleTable').DataTable();
     // -----------------For Modal Not Disappear after submit start--------------------------------
 
     $('#modalForm').submit(function(event) {
