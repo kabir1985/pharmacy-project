@@ -51,7 +51,7 @@ $menuSections = [
         'url'   => '#',
         'privileges' => ['initial_product','product_unit'],
         'children' => [
-            ['label'=>'Opening Stock','url'=>'openingStock','privileges'=>['initial_product']],
+            ['label'=>'Opening Stock','url'=>'products/opening-stock','privileges'=>['initial_product']],
             ['label'=>'Stock Adjustment','url'=>'stockAdjustment','privileges'=>['product_unit']],
         ]
     ],

@@ -286,7 +286,7 @@ echo $this->section('content');
             </div>
             <?php endif ?>
             <!-----for image upload------------------->
-            <form id="NewProductAdd_Form" method='post' action="<?php echo site_url('/initial-product-create') ?>"
+            <form id="NewProductAdd_Form" method='post' action="<?php echo site_url('products/create') ?>"
                 accept-charset="utf-8" enctype="multipart/form-data">
                 <!---------------------------Header------------------------------------>
                 <div class="modal-header bg-primary text-white">
@@ -707,7 +707,7 @@ echo $this->section('content');
     aria-hidden='true'>
     <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="ProductEdit_submit_form" method='post' action="<?php echo base_url('/initial-product-update') ?>">
+            <form id="ProductEdit_submit_form" method='post' action="<?php echo base_url('products/update') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='EditProductModalLabel'>Please Update Product</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -819,7 +819,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Customer?</h4>
 
             </div>
-            <form method="post" action="<?php echo site_url('/initial-product-delete') ?>">
+            <form method="post" action="<?php echo site_url('products/delete') ?>">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

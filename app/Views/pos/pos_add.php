@@ -661,7 +661,7 @@ $(document).ready(function() {
     $("#search_product").autocomplete({
         source: function(request, response) {
             $.ajax({
-                url: "<?=site_url('product_search')?>",
+                url: "<?=site_url('pos/product-search')?>",
                 dataType: "json",
                 data: {
                     term: request.term
@@ -806,7 +806,7 @@ $(document).ready(function() {
         var itemsInCartObject = Object.assign({}, itemsInCart);
 
         $.ajax({
-            url: '<?=site_url("pos/hold_sale")?>',
+            url: '<?=site_url("pos/hold-sale")?>',
             method: 'POST',
             dataType: 'json',
             data: {
@@ -879,7 +879,7 @@ $(document).ready(function() {
 
         $.ajax({
 
-            url: "<?=site_url('pos/delete_held_sale')?>/" + id,
+            url: "<?=site_url('pos/delete-held-sale')?>/" + id,
             type: "POST",
             dataType: "json",
 
@@ -917,7 +917,7 @@ $(document).ready(function() {
         var $clickedButton = $(this);
 
         $.ajax({
-            url: '<?=site_url("pos/resume_sale")?>/' + saleId,
+            url: '<?=site_url("pos/resume-sale")?>/' + saleId,
             method: 'POST',
             data: {
                 id: saleId
@@ -958,7 +958,7 @@ $(document).ready(function() {
     $("#product_category").change(function() {
         var product_category = $(this).val();
 
-        var product_show_url = "<?php echo site_url('filterProducts') ?>";
+        var product_show_url = "<?php echo site_url('pos/filterProducts') ?>";
         $.ajax({
             url: product_show_url,
             method: 'POST',
@@ -1002,7 +1002,7 @@ $(document).ready(function() {
         if (itemsInCart[index].hold_id) {
 
             $.ajax({
-                url: "<?=site_url('pos/update_hold_sale')?>",
+                url: "<?=site_url('pos/update-hold-sale')?>",
                 type: "POST",
                 data: {
                     id: itemsInCart[index].hold_id,

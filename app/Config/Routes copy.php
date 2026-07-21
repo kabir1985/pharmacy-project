@@ -9,20 +9,20 @@ $routes->post('login/auth', 'Login::auth');
 $routes->get('logout', 'Login::logout');
 $routes->get('dashboard', 'Dashboard::index');
 
-$routes->group('pos', function ($routes) {
-    $routes->get('/', 'PosController::index');
-    $routes->post('sale', 'PosController::sale');
-    $routes->post('hold-sale', 'PosController::hold_sale');
-    $routes->post('resume-sale/(:num)', 'PosController::resume_sale/$1');
-    $routes->post('delete-held-sale/(:num)', 'PosController::delete_held_sale/$1');
-    $routes->post('update-hold-sale', 'PosController::update_hold_sale');
-    //$routes->post('products', 'PosController::products');
-    $routes->post('filterProducts', 'PosController::filterProducts');
-    $routes->get('product-search', 'PosController::productSearch');
+$routes->get('pos', 'PosController::index');
+$routes->post('pos/sale', 'PosController::sale');
+$routes->post('pos/hold_sale', 'PosController::hold_sale');
+$routes->post('pos/resume_sale/(:num)', 'PosController::resume_sale/$1');
+$routes->post('filterProducts', 'PosController::filterProducts');
 
-});
+$routes->post('pos/delete_held_sale/(:num)', 'PosController::delete_held_sale/$1');
 
+$routes->post('pos/update_hold_sale', 'PosController::update_hold_sale');
 
+//$routes->get('product_search', 'PosController::product_call');
+$routes->get('product_search', 'PosController::productSearch');
+
+$routes->post('pos/products', 'PosController::products');
 $routes->get('invoice/(:num)', 'PdfController::invoice/$1');
 $routes->get('salelist', 'salelist::index');
 $routes->get('salereturnlist', 'salereturnlist::index');
@@ -31,40 +31,13 @@ $routes->get('salereturnlistshow', 'salereturnlist::saleReturnListShow');
 //ReturnController/process
 $routes->post('ReturnController/process', 'ReturnController::process');
 
-
-$routes->group('products', function ($routes) {
-
-    $routes->get('opening-stock', 'ProductController::index');
-
-    $routes->post('create', 'ProductController::create');
-    $routes->post('update', 'ProductController::update');
-    $routes->post('delete', 'ProductController::delete');
-
-    $routes->get('search', 'PosController::productSearch');
-
-});
-
-
-
-
-//$routes->get('openingStock', 'ProductController::index');
-//$routes->post('initial-product-create', 'ProductController::create');
-//$routes->post('initial-product-update', 'ProductController::update');
-//$routes->post('initial-product-delete', 'ProductController::delete');
+$routes->get('openingStock', 'ProductController::index');
+$routes->post('initial-product-create', 'ProductController::create');
+$routes->post('initial-product-update', 'ProductController::update');
+$routes->post('initial-product-delete', 'ProductController::delete');
 
 $routes->get('barcodegenerate', 'BarcodeGenerateController::index');
 $routes->post('barcodeprint', 'BarcodeGenerateController::barcodeprint');
-
-
-$routes->group('categories', function ($routes) {
-
-    $routes->get('/', 'ProductCategoryController::index');
-    $routes->post('create', 'ProductCategoryController::create');
-    $routes->post('update', 'ProductCategoryController::update');
-    $routes->post('delete', 'ProductCategoryController::delete');
-
-});
-
 
 $routes->get('productcategoryView', 'ProductCategoryController::index');
 $routes->post('productcategoryAdd', 'ProductCategoryController::create');
@@ -72,17 +45,6 @@ $routes->post('productcategoryUpdate', 'ProductCategoryController::update');
 $routes->post('productcategoryDelete', 'ProductCategoryController::delete');
 $routes->post('category-create-ajax', 'ProductCategoryController::categoryCreateAjax');
 $routes->get('get-category-list', 'ProductCategoryController::getCategoryList');
-
-
-$routes->group('brands', function ($routes) {
-
-    $routes->get('/', 'ProductBrandController::index');
-    $routes->post('create', 'ProductBrandController::create');
-    $routes->post('update', 'ProductBrandController::update');
-    $routes->post('delete', 'ProductBrandController::delete');
-
-});
-
 
 
 $routes->get('productbrandView', 'ProductBrandController::index');
@@ -105,14 +67,6 @@ $routes->post('unitAdd', 'ProductUnitController::create');
 $routes->post('unitUpdate', 'ProductUnitController::update');
 $routes->post('unitDelete', 'ProductUnitController::delete');
 $routes->post('unit-create-ajax', 'ProductUnitController::unitCreateAjax');
-
-
-$routes->group('purchase', function ($routes) {
-
-    $routes->get('/', 'PurchaseController::index');
-    $routes->post('create', 'PurchaseController::purchase_product');
-
-});
 
 $routes->get('purchase', 'PurchaseController::index');
 $routes->post('purchase-product', 'PurchaseController::purchase_product');
@@ -161,17 +115,6 @@ $routes->POST('supplierUpdate', 'SupplierController::update');
 $routes->POST('supplierDelete', 'SupplierController::delete');
 
 
-
-$routes->group('users', function ($routes) {
-
-    $routes->get('/', 'User::index');
-    $routes->post('create', 'User::create');
-    $routes->post('update', 'User::update');
-    $routes->post('delete', 'User::delete');
-
-});
-
-
 $routes->get('user', 'User::index');
 $routes->post('userCreate', 'User::create');
 $routes->post('userDelete', 'user::delete');
@@ -181,23 +124,6 @@ $routes->post('userUpdate', 'user::update');
 $routes->get('role', 'Role::index');
 $routes->post('roleCreate', 'Role::create');
 $routes->post('roleUpdate', 'Role::updateUserRole');
-
-
-$routes->group('reports', function ($routes) {
-
-    $routes->get('stock', 'Stockreport::index');
-    $routes->get('sales-summary', 'SaleSummeryReport::index');
-    $routes->get('profit-loss', 'profitloss::index');
-    $routes->get('expense', 'expensereport::index');
-    $routes->get('customer', 'customerreport::index');
-
-});
-
-
-
-//Remove Duplicate Routes
-
-//For example:
 
 $routes->get('stockreport', 'Stockreport::index');
 $routes->get('purchaseList', 'Stockreport::index');
@@ -213,17 +139,6 @@ $routes->get('customerreport', 'customerreport::index');
 $routes->get('fromcustomer', 'fromcustomer::index');
 //generalsettings
 $routes->post('customer_received', 'fromcustomer::create');
-
-
-$routes->group('settings', function ($routes) {
-
-    $routes->get('general', 'generalsettings::index');
-
-    $routes->get('currency', 'CurrencyController::index');
-    $routes->get('tax', 'TaxController::index');
-
-});
-
 
 $routes->get('generalsettings', 'generalsettings::index');
 $routes->post('generalsettingsAdd', 'generalsettings::create');
