@@ -10,7 +10,7 @@ h4 {
 </style>
 <?php 
 //$allowedMenus = session()->get('allowedMenus');
-echo $this->include('partial/sidebar', ['allowedMenus' => $allowedMenus]); ?>
+//echo $this->include('partial/sidebar', ['allowedMenus' => $allowedMenus]); ?>
 <?php //echo $this->include('partial/sidebar'); ?>
 
 <div class="app-title">
