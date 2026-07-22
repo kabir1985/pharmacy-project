@@ -25,6 +25,8 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/select2.min.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/select2-bootstrap.css') ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/invoice.css') ?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.responsive.min.css') ?>">
+
 
 
 <!-- Bootstrap 5 JS (bundle includes Popper) -->
@@ -65,6 +67,8 @@
   <script src="<?php echo base_url('assets/js/main.js') ?>"></script>
   <!-- The javascript plugin to display page loading on top-->
   <script src="<?php echo base_url('assets/js/plugins/pace.min.js') ?>"></script>
+
+
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

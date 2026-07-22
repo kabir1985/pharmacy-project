@@ -22,13 +22,8 @@ class LoginController extends BaseController
         return view('login/login_form');
     }
 
-    // echo "<pre>";
-
-    // Handle AJAX login
     public function auth()
     {
-        // $login_id = $this->request->getPost('username');
-        // $login_pw = $this->request->getPost('password');
 
         $login_id = trim((string) $this->request->getPost('username'));
         $login_pw = (string) $this->request->getPost('password');
@@ -40,17 +35,13 @@ class LoginController extends BaseController
             ]);
         }
 
-        // $builder = $this->db->table('user');
-        // $builder->where('login_id', $login_id);
-        // $query = $builder->get();
-        // $result = $query->getRow();
         $result = $this->db
-        ->table('user')
-        ->select('user_id, login_id, login_password, user_role_id')
-        ->where('login_id', $login_id)
-        ->limit(1)
-        ->get()
-        ->getRow();
+            ->table('user')
+            ->select('user_id, login_id, login_password, user_role_id, user_name')
+            ->where('login_id', $login_id)
+            ->limit(1)
+            ->get()
+            ->getRow();
 
         if ($result) {
             //if ($login_pw === $result->login_password) {
@@ -61,8 +52,9 @@ class LoginController extends BaseController
                     'user_id' => $result->user_id,
                     'login_id' => $result->login_id,
                     'user_role_id' => $result->user_role_id,
+                    'user_name' => $result->user_name,
                     'isLoggedIn' => true,
-                    'login_time'   => date('Y-m-d H:i:s'),
+                    'login_time' => date('Y-m-d H:i:s'),
                 ]);
 
                 // Get and store allowed menus in session
@@ -87,33 +79,33 @@ class LoginController extends BaseController
     private function getUserPrivileges()
     {
         $role_id = $this->session->get('user_role_id');
-    
+
         if (!$role_id) {
             return [];
         }
-    
+
         $role = $this->db->table('user_role')
             ->select('user_previlege')
             ->where('user_role_id', $role_id)
             ->get()
             ->getRow();
-    
+
         if (!$role || empty($role->user_previlege)) {
             return [];
         }
-    
+
         $menu_ids = array_filter(array_map('trim', explode(',', $role->user_previlege)));
-    
+
         if ($menu_ids === []) {
             return [];
         }
-    
+
         $menus = $this->db->table('menu_id')
             ->select('menu_name')
             ->whereIn('menu_id', $menu_ids)
             ->get()
             ->getResultArray();
-    
+
         return array_column($menus, 'menu_name');
     }
 

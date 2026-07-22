@@ -74,12 +74,6 @@ class DashboardController extends BaseController
 
         return view('ViewDashboard', $data);
 
-        // return view('ViewDashboard', [
-        //     'allowedMenus' => $allowedMenus,
-        //     'today_sales' => $today_sales['today_sales'],
-        //     'today_purchase' => $today_purchase['today_purchase'],
-        //     $data
-        // ]);
     }
 
 }

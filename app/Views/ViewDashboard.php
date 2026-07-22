@@ -4,7 +4,9 @@ $this->section('content');
 ?>
 
 <style>
-    h4{font-size: 14px;}
+h4 {
+    font-size: 14px;
+}
 </style>
 <?php 
 //$allowedMenus = session()->get('allowedMenus');
@@ -13,7 +15,10 @@ echo $this->include('partial/sidebar', ['allowedMenus' => $allowedMenus]); ?>
 
 <div class="app-title">
     <div>
-        <h3><i class="fa fa-cubes"></i> Welcome &nbsp; <?= esc(session('login_id')) ?>&nbsp; To POS Pharmacy Software</h3>
+        <h3>
+            <i class="fa fa-cubes"></i>
+            Welcome <?= esc(session('user_name') ?? session('login_id')) ?> To POS Pharmacy Software
+        </h3>
         <!-- <p>Welcome to View Dashboard </p>
         <p>
             <?//= $userId = session()->get('user_id');?>
@@ -68,16 +73,16 @@ echo $this->include('partial/sidebar', ['allowedMenus' => $allowedMenus]); ?>
             </div>
         </div>
     </div>
-<div class="col-md-6">
-    <div class="tile">
-        <h3 class="tile-title">Support Team</h3>
+    <div class="col-md-6">
+        <div class="tile">
+            <h3 class="tile-title">Support Team</h3>
 
-        <div class="text-center" style="padding:50px 20px;">
-            <h2>📞 01913-69-11-85</h2>
-            <p>Support Hotline</p>
+            <div class="text-center" style="padding:50px 20px;">
+                <h2>📞 01913-69-11-85</h2>
+                <p>Support Hotline</p>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 

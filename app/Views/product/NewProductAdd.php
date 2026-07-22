@@ -205,13 +205,13 @@ echo $this->section('content');
 
                         <tbody>
                             <?php
-                            // print_r($product_show);
+// print_r($product_show);
 // exit();
-                            if (count($product_show) > 0) {
-                                foreach ($product_show as $row11) {
-                                    ?>
+if (count($product_show) > 0) {
+    foreach ($product_show as $row11) {
+        ?>
                             <tr>
-                                <td><img src="<?= base_url() ?>/public/uploads/<?= $row11["product_image"] ?>"
+                                <td><img src="<?=base_url()?>/public/uploads/<?=$row11["product_image"]?>"
                                         class="img-thumbnail" style="width:40px;height:35px;"></td>
                                 <!-- <td><?php //echo $row11['codefor_barcode'] ?></td> -->
                                         <td class="product-name"><?php echo $row11['product_name']; ?></td>
@@ -253,12 +253,12 @@ echo $this->section('content');
                                         </td>
                                     </tr>
                                     <?php
-                                }
-                            } else {
-                                echo "Data not Found";
-                            }
+}
+} else {
+    echo "Data not Found";
+}
 
-                            ?>
+?>
                         </tbody>
 
                     </table>
@@ -281,10 +281,10 @@ echo $this->section('content');
             <!-----for image upload------------------->
             <?php if (session('msg')): ?>
             <div class="alert alert-success alert-dismissible">
-                <?= session('msg') ?>
+                <?=session('msg')?>
                 <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
             </div>
-            <?php endif ?>
+            <?php endif?>
             <!-----for image upload------------------->
             <form id="NewProductAdd_Form" method='post' action="<?php echo site_url('products/create') ?>"
                 accept-charset="utf-8" enctype="multipart/form-data">
@@ -336,8 +336,8 @@ echo $this->section('content');
 
                                             <?php foreach ($category_show as $category): ?>
 
-                                                <option value="<?= $category['product_category_id'] ?>">
-                                                    <?= $category['category_name'] ?>
+                                                <option value="<?=$category['product_category_id']?>">
+                                                    <?=$category['category_name']?>
                                                 </option>
 
                                             <?php endforeach; ?>
@@ -397,14 +397,14 @@ echo $this->section('content');
                                         <select id="product_group" name="product_group" class="form-control" required>
                                             <option value="">Select Group </option>
                                             <?php
-                                            foreach ($group_show as $group) {
-                                                ?>
+foreach ($group_show as $group) {
+    ?>
                                             <option value="<?php echo $group['product_group_id'] ?>">
                                                 <?php echo $group['group_name'] ?>
                                             </option>
                                             <?php
-                                            }
-                                            ?>
+}
+?>
                                         </select>
 
                                         <div class="input-group-append">
@@ -434,15 +434,15 @@ echo $this->section('content');
                                         <select id="strength" name="strength" class="form-control" required>
                                             <option value="">Select Strength </option>
                                             <?php
-                                            foreach ($strength_show as $row) {
-                                                ?>
+foreach ($strength_show as $row) {
+    ?>
                                                 <option value="<?php echo $row['strength_id'] ?>">
                                                     <?php echo $row['strength_name'] ?>
                                                 </option>
 
                                                 <?php
-                                            }
-                                            ?>
+}
+?>
                                         </select>
 
 
@@ -470,15 +470,15 @@ echo $this->section('content');
                                         <select id="product_unit" name="product_unit" class="form-control" required>
                                             <option value="">Select Unit </option>
                                             <?php
-                                            foreach ($unit_show as $unit) {
-                                                ?>
+foreach ($unit_show as $unit) {
+    ?>
                                             <option value="<?php echo $unit['product_unit_id'] ?>">
                                                 <?php echo $unit['product_unit_name'] ?>
                                             </option>
 
                                             <?php
-                                            }
-                                            ?>
+}
+?>
                                         </select>
 
                                         <div class="input-group-append">
@@ -528,7 +528,7 @@ echo $this->section('content');
                                 <!--------------------------Purchase VAT/Tax------------------------------------------------------>
                                 <!-- <div class='form-group col-md-4'>
                             <label>Purchase (VAT/TAX) %</label>
-                        
+
                             <input type="hidden" name="tax_percentage" id="tax_percentage">
                         </div> -->
 
@@ -540,10 +540,10 @@ echo $this->section('content');
                                         <select id="tax_id" name="tax_id" class="form-control" required>
                                             <option value="">Select Tax</option>
                                             <?php foreach ($tax_show as $row): ?>
-                                                <option value="<?= $row['tax_id']; ?>"
-                                                    data-percent="<?= $row['tax_percentage']; ?>">
-                                                    <?= $row['tax_name']; ?> (
-                                                    <?= $row['tax_percentage']; ?>%)
+                                                <option value="<?=$row['tax_id'];?>"
+                                                    data-percent="<?=$row['tax_percentage'];?>">
+                                                    <?=$row['tax_name'];?> (
+                                                    <?=$row['tax_percentage'];?>%)
                                                 </option>
                                             <?php endforeach; ?>
                                         </select>
@@ -724,20 +724,20 @@ echo $this->section('content');
                         <div class='form-group col-md-4'>
                             <label>Category Name</label>
                             <select id="product_category12" name="product_category12" class="form-control">
-                                <?php foreach ($category_show as $row22) { ?>
+                                <?php foreach ($category_show as $row22) {?>
                                     <option value="<?php echo $row22['product_category_id'] ?>">
                                         <?php echo $row22['category_name'] ?>
                                     </option>
-                                <?php } ?>
+                                <?php }?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Brand</label>
                             <select id="product_brand12" name="product_brand12" class="form-control">
-                                <?php foreach ($brand_show as $row) { ?>
+                                <?php foreach ($brand_show as $row) {?>
                                     <option value="<?php echo $row['brand_id'] ?>"><?php echo $row['product_brand_name'] ?>
                                     </option>
-                                <?php } ?>
+                                <?php }?>
                             </select>
                         </div>
                     </div>
@@ -745,29 +745,29 @@ echo $this->section('content');
                         <div class='form-group col-md-4'>
                             <label>Group</label>
                             <select id="product_group12" name="product_group12" class="form-control">
-                                <?php foreach ($group_show as $row) { ?>
+                                <?php foreach ($group_show as $row) {?>
                                     <option value="<?php echo $row['product_group_id'] ?>"><?php echo $row['group_name'] ?>
                                     </option>
-                                <?php } ?>
+                                <?php }?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Unit</label>
                             <select id="product_unit12" name="product_unit12" class="form-control">
-                                <?php foreach ($unit_show as $row) { ?>
+                                <?php foreach ($unit_show as $row) {?>
                                     <option value="<?php echo $row['product_unit_id'] ?>">
                                         <?php echo $row['product_unit_name'] ?>
                                     </option>
-                                <?php } ?>
+                                <?php }?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>TAX</label>
                             <select id="tax_percentage12" name="tax_percentage12" class="form-control">
-                                <?php foreach ($tax_show as $row) { ?>
+                                <?php foreach ($tax_show as $row) {?>
                                     <option value="<?php echo $row['tax_percentage'] ?>"><?php echo $row['tax_name'] ?>
                                     </option>
-                                <?php } ?>
+                                <?php }?>
                             </select>
                         </div>
                     </div>
@@ -842,9 +842,6 @@ echo $this->section('scripts');
 ?>
 
 <!-- Data table plugin-->
-<link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.responsive.min.css') ?>">
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
 <script type='text/javascript'>
     // Fix modal close buttons
@@ -925,7 +922,7 @@ echo $this->section('scripts');
         // $("#product_category").on("change", function() {
         //     var categoryId = this.value;
 
-        //     var brand_call_url = "<?= site_url('/initial-product-brand') ?>";
+        //     var brand_call_url = "<?=site_url('/initial-product-brand')?>";
         //     $.ajax({
         //         url: brand_call_url,
         //         type: "POST",
@@ -941,7 +938,7 @@ echo $this->section('scripts');
             var categoryId = this.value;
 
             $.ajax({
-                url: "<?= site_url('brands/initial-product-brand') ?>",
+                url: "<?=site_url('brands/initial-product-brand')?>",
                 type: "POST",
                 data: {
                     categoryId: categoryId
@@ -1182,7 +1179,7 @@ echo $this->section('scripts');
                     if (result.isConfirmed) {
 
                         $.ajax({
-                            url: "<?= site_url('categories/category-create-ajax') ?>",
+                            url: "<?=site_url('categories/category-create-ajax')?>",
                             type: "POST",
                             dataType: "json",
                             data: {
@@ -1229,7 +1226,7 @@ echo $this->section('scripts');
             setTimeout(function () {
 
                 $.ajax({
-                    url: "<?= site_url('categories/get-category-list') ?>",
+                    url: "<?=site_url('categories/get-category-list')?>",
                     type: "GET",
                     dataType: "json",
                     success: function (categories) {
@@ -1316,7 +1313,7 @@ echo $this->section('scripts');
                             if (result.isConfirmed) {
 
                                 $.ajax({
-                                    url: "<?= site_url('brands/brand-create-ajax') ?>",
+                                    url: "<?=site_url('brands/brand-create-ajax')?>",
                                     type: "POST",
                                     dataType: "json",
                                     data: {
@@ -1372,7 +1369,7 @@ echo $this->section('scripts');
 
         function loadCategory(selected_category = null, selected_brand = null) {
             $.ajax({
-                url: "<?= site_url('get-category-list') ?>",
+                url: "<?=site_url('get-category-list')?>",
                 type: "GET",
                 dataType: "json",
                 success: function (response) {
@@ -1425,7 +1422,7 @@ echo $this->section('scripts');
                     if (result.isConfirmed) {
 
                         $.ajax({
-                            url: "<?= site_url('groups/group-create-ajax') ?>",
+                            url: "<?=site_url('groups/group-create-ajax')?>",
                             type: "POST",
                             dataType: "json",
                             data: {
@@ -1484,7 +1481,7 @@ echo $this->section('scripts');
                     if (result.isConfirmed) {
 
                         $.ajax({
-                            url: "<?= site_url('units/unit-create-ajax') ?>",
+                            url: "<?=site_url('units/unit-create-ajax')?>",
                             type: "POST",
                             dataType: "json",
                             data: {
@@ -1541,7 +1538,7 @@ echo $this->section('scripts');
                     if (result.isConfirmed && result.value.trim() != "") {
 
                         $.ajax({
-                            url: "<?= site_url('ajax/strength') ?>",
+                            url: "<?=site_url('ajax/strength')?>",
                             type: "POST",
                             dataType: "json",
                             data: {
@@ -1621,7 +1618,7 @@ echo $this->section('scripts');
 
                     $.ajax({
 
-                        url: "<?= site_url('tax/vatTax-create-ajax') ?>",
+                        url: "<?=site_url('tax/vatTax-create-ajax')?>",
                         type: "POST",
                         dataType: "json",
                         data: result.value,
