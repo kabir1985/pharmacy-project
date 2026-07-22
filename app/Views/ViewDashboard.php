@@ -13,7 +13,7 @@ echo $this->include('partial/sidebar', ['allowedMenus' => $allowedMenus]); ?>
 
 <div class="app-title">
     <div>
-        <h3><i class="fa fa-cubes"></i> Welcome To POS Inventory Management System</h3>
+        <h3><i class="fa fa-cubes"></i> Welcome &nbsp; <?= esc(session('login_id')) ?>&nbsp; To POS Pharmacy Software</h3>
         <!-- <p>Welcome to View Dashboard </p>
         <p>
             <?//= $userId = session()->get('user_id');?>

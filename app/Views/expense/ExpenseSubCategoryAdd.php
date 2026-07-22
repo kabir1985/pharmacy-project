@@ -70,7 +70,7 @@ echo $this->section('content');
 <div class='modal fade' id='SubCategoryAdd' tabindex='-1' role='dialog' aria-labelledby='SubCategoryAdd' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="expense_sub_category_add_form" method='post' action="<?= site_url('Expensesubcategory/create') ?>" class="was-validated">
+            <form id="expense_sub_category_add_form" method='post' action="<?= site_url('expense-subcategory/create') ?>" class="was-validated">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='exampleModalLabel'>Please Enter Expense Sub Category</h5>
                      <button type='button' class='btn-close' data-dismiss='modal' aria-label='Close'>
@@ -125,7 +125,7 @@ echo $this->section('content');
 <div class='modal fade' id='ExpenseSubCategoryEditModal' tabindex='-1' role='dialog' aria-labelledby='ExpenseSubCategoryEditModal' aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="expense_sub_category_edit_form" method='post' action="<?= site_url('Expensesubcategory/update') ?>">
+            <form id="expense_sub_category_edit_form" method='post' action="<?= site_url('expense-subcategory/update') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Udate Expense Sub Category Details</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -171,7 +171,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Sub Category?</h4>
 
             </div>
-            <form action="<?= site_url('Expensesubcategory/delete') ?>" method="post">
+            <form action="<?= site_url('expense-subcategory/delete') ?>" method="post">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

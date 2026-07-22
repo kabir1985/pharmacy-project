@@ -71,7 +71,7 @@ echo $this->section('content');
 <div class='modal fade' id='CustomerGroupAdd' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
     <div class='modal-dialog modal-dialog-centered' role='document'>
         <div class='modal-content'>
-        <form id="CustomerGroupAdd_Form" method='post' action="<?= site_url('customergroup/create') ?>">
+        <form id="CustomerGroupAdd_Form" method='post' action="<?= site_url('customer-group/create') ?>">
             <div class='modal-header'>
                 <h5 class='modal-title' id='exampleModalLabel'>Please Enter Customer Group</h5>
                 <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -122,7 +122,7 @@ echo $this->section('content');
     <div class='modal fade' id='customer_group_edit_modal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
         <div class='modal-dialog  modal-dialog-centered' role='document'>
             <div class='modal-content'>
-                <form id="customer_group_edit_submit" method='post' action="<?= site_url('customergroup/update') ?>">
+                <form id="customer_group_edit_submit" method='post' action="<?= site_url('customer-group/update') ?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Please Edit Customer Group  Details</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -176,7 +176,7 @@ echo $this->section('content');
                 <h4>Are you sure want to delete this Customer?</h4>
 
             </div>
-            <form action="<?= site_url('customergroup/delete') ?>" method="post">
+            <form action="<?= site_url('customer-group/delete') ?>" method="post">
                 <div class="modal-footer">
                     <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

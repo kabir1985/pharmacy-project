@@ -60,6 +60,6 @@ class ExpenseCategoryController extends BaseController
       //$this->NewProductAddModel_Object->where('product_id', $id)->delete();
 
       //return into supplier page
-      return $this->response->redirect(site_url('expenseCategory'));
+      return $this->response->redirect(site_url('expense-category'));
    }
 }

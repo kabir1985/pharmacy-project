@@ -107,17 +107,17 @@ echo $this->section('content');
 
                                     <td>
 
-                                        <a href="<?= site_url('stockAdjustment/view/' . $row['adjustment_id']) ?>"
+                                        <a href="<?= site_url('stock-adjustment/view/' . $row['adjustment_id']) ?>"
                                             class="btn btn-info btn-sm">
                                             <i class="fa fa-eye"></i>
                                         </a>
 
-                                        <a href="<?= site_url('stockAdjustment/edit/' . $row['adjustment_id']) ?>"
+                                        <a href="<?= site_url('stock-adjustment/edit/' . $row['adjustment_id']) ?>"
                                             class="btn btn-primary btn-sm">
                                             <i class="fa fa-edit"></i>
                                         </a>
 
-                                        <a href="<?= site_url('stockAdjustmentDelete/' . $row['adjustment_id']) ?>"
+                                        <a href="<?= site_url('stock-adjustment/delete/' . $row['adjustment_id']) ?>"
                                             onclick="return confirm('Delete this adjustment?')"
                                             class="btn btn-danger btn-sm">
                                             <i class="fa fa-trash"></i>

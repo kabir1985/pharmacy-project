@@ -60,7 +60,7 @@ public function createStockAdjustment()
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
 
-        return view('stockAdjustment/view', $data);
+        return view('stock-adjustment/view', $data);
     }
 
     public function edit($id)
@@ -71,7 +71,7 @@ public function createStockAdjustment()
             return redirect()->back()->with('error', 'Record not found');
         }
 
-        return view('stockAdjustment/edit', $data);
+        return view('stock-adjustment/edit', $data);
     }
 
 }

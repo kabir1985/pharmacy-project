@@ -839,7 +839,7 @@ $("#discountOnTotalModal .btn-primary").on("click", function () {
             $(this).prop("disabled", true).text("Processing...");
 
             $.ajax({
-                url: "<?= site_url('purchase/purchase-product') ?>",
+                url: "<?= site_url('purchase/product') ?>",
                 type: "POST",
                 data: {
                     cart_data: JSON.stringify(itemsInCart),

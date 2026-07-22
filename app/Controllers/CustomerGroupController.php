@@ -74,6 +74,6 @@ class CustomerGroupController extends BaseController
         $this->customerGroupObject->where('customer_group_id', $id)->delete();
 
         //return into supplier page
-        return $this->response->redirect(site_url('/Customergroup'));
+        return $this->response->redirect(site_url('customer-group'));
     } 
 }

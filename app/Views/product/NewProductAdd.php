@@ -845,7 +845,7 @@ echo $this->section('scripts');
 <link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.responsive.min.css') ?>">
 <script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
 <script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script type='text/javascript'>
     // Fix modal close buttons
     $('.modal .btn-secondary[data-dismiss="modal"], .modal .close').on('click', function () {
@@ -1541,7 +1541,7 @@ echo $this->section('scripts');
                     if (result.isConfirmed && result.value.trim() != "") {
 
                         $.ajax({
-                            url: "<?= site_url('strengthCreateAjax') ?>",
+                            url: "<?= site_url('ajax/strength') ?>",
                             type: "POST",
                             dataType: "json",
                             data: {

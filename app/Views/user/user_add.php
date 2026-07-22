@@ -15,57 +15,50 @@ echo $this->section('content');
     </button>
 </div>
 <!---------------Data Table start Here----..............................................--------------------------->
-<div class='row'>
-    <div class='col-md-12'>
-        <div class='tile collapseable show animate__animated  animate__fadeInUp'>
-            <div class='tile-body'>
-                <div class='table-responsive'>
-                    <table class='table table-hover table-bordered' id='sampleTable'>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile collapseable show animate__animated animate__fadeInUp">
+            <div class="tile-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Login ID</th>
                                 <th>Role</th>
-                                <th>Action</th>
+                                <th width="120">Action</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <?php
-                            foreach ($user_show as $row) {
-                                ?>
+                            <?php $i = 1; ?>
+
+                            <?php foreach ($user_show as $row): ?>
                             <tr>
+                                <td><?=$i++?></td>
+                                <td><?=esc($row['user_name'])?></td>
+                                <td><?=esc($row['user_email'])?></td>
+                                <td><?=esc($row['login_id'])?></td>
+                                <td><?=esc($row['role_holder'])?></td>
                                 <td>
-                                    <?php echo $row['user_name'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['user_email'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['login_id'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['role_holder'] ?>
-                                </td>
-                                <td>
-                                    <!-- Button to invoke the modal -->
                                     <a href="#" class="btn btn-primary btn-sm btn-edit"
-                                        data-user_id="<?php echo $row['user_id'] ?>"
-                                        data-user_name="<?php echo $row['user_name'] ?>"
-                                        data-user_email="<?php echo $row['user_email'] ?>"
-                                        data-login_id="<?php echo $row['login_id'] ?>"
-                                        data-login_password="<?php echo $row['login_password'] ?>"
-                                        data-user_role_id="<?php echo $row['user_role_id'] ?>">
-                                        <i class="fa fa-edit"></i></a>
+                                        data-user_id="<?=$row['user_id']?>" data-user_name="<?=esc($row['user_name'])?>"
+                                        data-user_email="<?=esc($row['user_email'])?>"
+                                        data-login_id="<?=esc($row['login_id'])?>"
+                                        data-user_role_id="<?=$row['user_role_id']?>">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
 
                                     <a href="#" class="btn btn-danger btn-sm btn-delete"
-                                        data-delete_id="<?php echo $row['user_id'] ?>"><i class="fa fa-trash-o"></i></a>
-
+                                        data-delete_id="<?=$row['user_id']?>">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
                                 </td>
                             </tr>
-                            <?php
-                            }
-                            ?>
+                            <?php endforeach; ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -76,96 +69,11 @@ echo $this->section('content');
 
 <!---------------Data Table End Here-----------............................................-------------------->
 
-
-<!---------------------------Modal Form for entry Load Start---------------------------------------->
-<!-- Modal -->
-<!-- <div class='modal fade' id='UserAdd' tabindex='-1' role='dialog' aria-labelledby='UserAdd' aria-hidden='true'>
-    <div class='modal-dialog  modal-dialog-centered' role='document'>
-        <div class='modal-content'>
-            <form id="userCreate_form" method='post' action="<?php //echo site_url('userCreate') ?>">
-                <div class='modal-header'>
-                    <h5 class='modal-title' id='exampleModalLabel'>Please Enter New User Details</h5>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                        <span aria-hidden='true'>&times;
-                        </span>
-                    </button>
-                </div>
-                <div class='modal-body'>
-                    <div class='form-row'>
-                        <div class='form-group col-md-12'>
-                            <label>Name</label>
-                            <input required type='text' required class='form-control' name='user_name'
-                                placeholder='User Full Name'>
-                        </div>
-                    </div>
-                    <div class='form-row'>
-                        <div class='form-group col-md-12'>
-                            <label>Email</label>
-                            <input type='email' required class='form-control' name='user_email' required
-                                placeholder='User Email Address'>
-                        </div>
-                    </div>
-                    <div class='form-row'>
-                        <div class='form-group col-md-12'>
-                            <label>User Name/Login ID</label>
-                            <input required type='text' required class='form-control' name='login_id'
-                                placeholder='Login ID'>
-                        </div>
-                    </div>
-                    <div class='form-row'>
-                        <div class='form-group col-md-12'>
-                            <label>Password</label>
-                            <input required type='password' required class='form-control' name='login_password'
-                                placeholder='Login Password'>
-                        </div>
-                    </div>
-                    <div class='form-row'>
-                        <div class='form-group col-md-12'>
-                            <label>Confirm Password</label>
-                            <input required type='password' required class='form-control' name='confirm_login_password'
-                                placeholder='Confirm Login Password'>
-                        </div>
-                    </div>
-                    <div class='form-row'>
-                        <div class='form-group col-md-12'>
-                            <label>User Role</label>
-                           user_type_show 
-                            <select id="user_role_id" name="user_role_id" class="form-control">
-                                <?php
-                                // $db = \Config\Database::connect();
-                                // $builder = $db->table('user_role');
-                                // $query = $builder->select('user_role_id, role_holder')->get();
-                                // $results = $query->getResultArray();
-                                // foreach ($results as $row) {
-                                //     ?>
-                                <option value="<?php //echo $row["user_role_id"] ?>"><?php //echo $row["role_holder"] ?>
-                                </option>
-                                <?php
-                                //}
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class='modal-footer'>
-                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
-                    <button type='submit' class='btn btn-primary'>Save changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div> -->
-
-
-
-
-
-
 <div class="modal fade" id="UserAdd" tabindex="-1" role="dialog" aria-labelledby="UserAdd" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
 
-            <form id="userCreate_form" method="post" action="<?= site_url('user/create') ?>">
+            <form id="userCreate_form" method="post" action="<?=site_url('user/create')?>">
                 <div class="modal-header">
                     <h5 class="modal-title">Please Enter New User Details</h5>
                     <button type="button" class="close" data-dismiss="modal">
@@ -192,31 +100,30 @@ echo $this->section('content');
 
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" name="login_password" class="form-control" required placeholder="Password">
+                        <input type="password" name="login_password" class="form-control" required
+                            placeholder="Password">
                     </div>
 
                     <div class="form-group">
                         <label>Confirm Password</label>
-                        <input type="password" name="confirm_login_password" class="form-control" required placeholder="Confirm Password">
+                        <input type="password" name="confirm_login_password" class="form-control" required
+                            placeholder="Confirm Password">
+                        <small id="password-error" class="text-danger"></small>
                     </div>
- 
+
+
                     <div class="form-group">
                         <label>User Role</label>
                         <select id="user_role_id" name="user_role_id" class="form-control" required>
-                        <?php
-                                $db = \Config\Database::connect();
-                                $builder = $db->table('user_role');
-                                $query = $builder->select('user_role_id, role_holder')->get();
-                                $results = $query->getResultArray();
-                                foreach ($results as $row) {
-                                    ?>
+                            <?php foreach ($roles as $role): ?>
 
-                                <option value="<?= $row['user_role_id'] ?>">
-                                    <?= $row['role_holder'] ?>
-                                </option>
-                            <?php } ?>
+                            <option value="<?=$role['user_role_id'];?>">
+                                <?=esc($role['role_holder']);?>
+                            </option>
+
+                            <?php endforeach; ?>
                         </select>
-                    </div> 
+                    </div>
                 </div>
 
                 <div class="modal-footer">
@@ -239,7 +146,7 @@ echo $this->section('content');
     aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
         <div class='modal-content'>
-            <form id="user_update_submit" method='post' action="<?= site_url('user/update') ?>">
+            <form id="user_update_submit" method='post' action="<?=site_url('user/update')?>">
                 <div class='modal-header'>
                     <h5 class='modal-title' id='#'>Udate User Role</h5>
                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
@@ -266,28 +173,25 @@ echo $this->section('content');
                         </div>
                         <div class='form-group col-md-6'>
                             <label>User Login Password</label>
-                            <input type='password' required class='form-control' name='login_password'
-                                id='login_password' pattern=".{6,}" required title="6 characters minimum">
+                            <!-- <input type='password' required class='form-control' name='login_password'
+                                id='login_password' pattern=".{6,}" required title="6 characters minimum"> -->
+                            <input type="password" class="form-control" name="login_password" id="login_password"
+                                autocomplete="new-password" placeholder="Leave blank to keep current password">
                         </div>
                     </div>
                     <div class='form-row'>
-                        <!-- <div class='form-group col-md-6'>
-                            <label>Confirm Login Password</label>
-                            <input type='password' required class='form-control' name='confirm_login_password'
-                                id='confirm_login_password'>
-                            <div id="confirmpasswordmatch">Password Not Match</div>
-                        </div> -->
+
                         <div class='form-group col-md-12'>
                             <label>User Role</label>
                             <select id="user_role_id_edit" name="user_role_id_edit" class="form-control">
-                                <?php
-                                foreach ($results as $row) {
-                                    ?>
-                                <option value="<?php echo $row['user_role_id'] ?>"><?php echo $row['role_holder'] ?>
+
+                                <?php foreach ($roles as $role): ?>
+
+                                <option value="<?=$role['user_role_id'];?>">
+                                    <?=esc($role['role_holder']);?>
                                 </option>
-                                <?php
-                                }
-                                ?>
+
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -305,29 +209,39 @@ echo $this->section('content');
 <!----------------------Modal Form Edit Section  End------------------------------------------>
 
 <!-- Modal Delete Product-->
-
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                <h5 class="modal-title">Delete User</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
                 </button>
             </div>
+
             <div class="modal-body">
-
-                <h4>Are you sure want to delete this Customer?</h4>
-
+                <h5>Are you sure you want to delete this user?</h5>
             </div>
-            <form action="<?= site_url('user/delete') ?>" method="post">
+
+            <form id="deleteForm" action="<?= site_url('user/delete') ?>" method="post">
+
                 <div class="modal-footer">
-                    <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary">Yes</button>
+
+                    <input type="hidden" name="delete_id" id="delete_id">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        No
+                    </button>
+
+                    <button type="submit" class="btn btn-danger">
+                        Yes, Delete
+                    </button>
+
                 </div>
+
             </form>
+
         </div>
     </div>
 </div>
@@ -343,10 +257,6 @@ echo $this->endSection();
 echo $this->section('scripts');
 ?>
 
-<!-- Data table plugin-->
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
-
 <script type='text/javascript'>
 $(document).ready(function() {
 
@@ -361,20 +271,35 @@ $(document).ready(function() {
     submitBtn.prop('disabled', true);
 
     function validatePasswords() {
+
         let password = $("input[name='login_password']").val();
         let confirmPassword = $("input[name='confirm_login_password']").val();
 
-        if (password.length > 0 && password === confirmPassword) {
-            submitBtn.prop('disabled', false);
+        if (password === confirmPassword && password.length > 0) {
+
+            $("input[name='confirm_login_password']")
+                .removeClass("is-invalid")
+                .addClass("is-valid");
+
             $("#password-error").text("");
+            submitBtn.prop("disabled", false);
+
             return true;
+
         } else {
-            submitBtn.prop('disabled', true);
+
+            $("input[name='confirm_login_password']")
+                .removeClass("is-valid")
+                .addClass("is-invalid");
+
             if (confirmPassword.length > 0) {
-                $("#password-error").text("Passwords do not match");
+                $("#password-error").text("Passwords do not match.");
             } else {
                 $("#password-error").text("");
             }
+
+            submitBtn.prop("disabled", true);
+
             return false;
         }
     }
@@ -397,14 +322,56 @@ $(document).ready(function() {
                     data: postData,
                     processData: false,
                     contentType: false,
-                }).done(function(data) {
+                }).done(function(res) {
+
                     allowSubmit = true;
-                    if (data == 1) {
+
+                    if (res.status === "success") {
+
                         parentModal.modal('hide');
-                        location.reload();
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: res.message,
+                            timer: 1500,
+                            showConfirmButton: false
+                        }).then(() => {
+                            location.reload();
+                        });
+
+                    } else if (res.status === "exists") {
+
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Duplicate Login ID',
+                            text: res.message
+                        });
+
+                    } else if (res.status === "validation") {
+
+                        let msg = "";
+
+                        $.each(res.errors, function(key, value) {
+                            msg += value + "<br>";
+                        });
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Validation Error',
+                            html: msg
+                        });
+
                     } else {
-                        alert("Error saving user. Please try again.");
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: res.message
+                        });
+
                     }
+
                 });
             }
         }
@@ -425,14 +392,56 @@ $(document).ready(function() {
                 data: postData,
                 processData: false,
                 contentType: false,
-            }).done(function(data) {
+            }).done(function(res) {
+
                 allowSubmit = true;
-                if (data == 1) {
+
+                if (res.status === "success") {
+
                     parentModal.modal('hide');
-                    location.reload();
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Updated',
+                        text: res.message,
+                        timer: 1500,
+                        showConfirmButton: false
+                    }).then(() => {
+                        location.reload();
+                    });
+
+                } else if (res.status === "exists") {
+
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Duplicate Login ID',
+                        text: res.message
+                    });
+
+                } else if (res.status === "validation") {
+
+                    let msg = "";
+
+                    $.each(res.errors, function(key, value) {
+                        msg += value + "<br>";
+                    });
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Validation Error',
+                        html: msg
+                    });
+
                 } else {
-                    alert("Error updating user. Please try again.");
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: res.message
+                    });
+
                 }
+
             });
         }
     });
@@ -451,8 +460,8 @@ $(document).ready(function() {
         $('#user_name').val(user_name);
         $('#user_email').val(user_email);
         $('#login_id').val(login_id);
-        $('#login_password').val(login_password);
-        $('#confirm_login_password').val(login_password);
+        // $('#login_password').val(login_password);
+        // $('#confirm_login_password').val(login_password);
         $('#user_role_id_edit').val(user_role_id);
 
         // Show edit modal
@@ -460,18 +469,80 @@ $(document).ready(function() {
     });
 
     // ---------------- Delete Button Click ----------------
-    $(document).on('click', '.btn-delete', function() {
-        const delete_id = $(this).data('delete_id');
-        $('#delete_id').val(delete_id);
-        $('#deleteModal').modal('show');
-    });
+    // $(document).on('click', '.btn-delete', function() {
+    //     const delete_id = $(this).data('delete_id');
+    //     $('#delete_id').val(delete_id);
+    //     $('#deleteModal').modal('show');
+    // });
 
-    // ---------------- Datepicker ----------------
-    $('.datePicker').datepicker({
-        format: "dd/mm/yyyy",
-        autoclose: true,
-        todayHighlight: true
-    });
+    $("#deleteForm").submit(function (e) {
+
+e.preventDefault();
+
+let form = $(this);
+
+$.ajax({
+
+    url: form.attr("action"),
+    type: "POST",
+    data: form.serialize(),
+    dataType: "json",
+
+    success: function (res) {
+
+        if (res.status === "success") {
+
+            $("#deleteModal").modal("hide");
+
+            Swal.fire({
+                icon: "success",
+                title: "Deleted",
+                text: res.message,
+                timer: 1500,
+                showConfirmButton: false
+            }).then(function () {
+                location.reload();
+            });
+
+        } else {
+
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: res.message
+            });
+
+        }
+
+    },
+
+    error: function () {
+
+        Swal.fire({
+            icon: "error",
+            title: "Server Error",
+            text: "Something went wrong."
+        });
+
+    }
+
+});
+
+});
+
+
+
+
+    $(document).on('click', '.btn-delete', function () {
+
+$('#delete_id').val($(this).data('delete_id'));
+
+$('#deleteModal').modal('show');
+
+});
+
+
+
 
 });
 </script>

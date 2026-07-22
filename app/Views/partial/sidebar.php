@@ -27,8 +27,8 @@ $menuSections = [
         'children' => [
             ['label'=>'POS/Genarel Sale','url'=>'pos','privileges'=>['pos_sale'] ],
             ['label'=>'Sales List','url'=>'salelist','privileges'=>['sale_list']],
-            ['label'=>'Sales Return','url'=>'salereturnlist','privileges'=>['sale_return']],
-            ['label'=>'Sales Return List','url'=>'salereturnlistshow','privileges'=>['sale_return_list']],
+            ['label'=>'Sales Return','url'=>'return','privileges'=>['sale_return']],
+            ['label'=>'Sales Return List','url'=>'return/sale-return','privileges'=>['sale_return_list']],
         ]
     ],
     [
@@ -52,7 +52,7 @@ $menuSections = [
         'privileges' => ['initial_product','product_unit'],
         'children' => [
             ['label'=>'Opening Stock','url'=>'products/opening-stock','privileges'=>['initial_product']],
-            ['label'=>'Stock Adjustment','url'=>'stockAdjustment','privileges'=>['product_unit']],
+            ['label'=>'Stock Adjustment','url'=>'stock-adjustment','privileges'=>['product_unit']],
         ]
     ],
 
@@ -64,7 +64,7 @@ $menuSections = [
         'children'=>[
             ['label'=>'Purchase Product','url'=>'purchase','privileges'=>['purchase_product']],
             //allpurchase
-            ['label'=>'Purchase List','url'=>'reports/purchaseList','privileges'=>['stock_report']],
+            ['label'=>'Purchase List','url'=>'reports/purchase-list','privileges'=>['stock_report']],
         ]
     ],
     [
@@ -73,8 +73,8 @@ $menuSections = [
         'url'=>'#',
         'privileges'=>['expense_add','expense_category','expense_sub_category'],
         'children'=>[
-            ['label'=>'Expense Category','url'=>'expenseCategory','privileges'=>['expense_category']],
-            ['label'=>'Expense Sub Category','url'=>'Expensesubcategory','privileges'=>['expense_sub_category']],
+            ['label'=>'Expense Category','url'=>'expense-category','privileges'=>['expense_category']],
+            ['label'=>'Expense Sub Category','url'=>'expense-subcategory','privileges'=>['expense_sub_category']],
             ['label'=>'Expense Add','url'=>'Expense','privileges'=>['expense_add']],
         ]
     ],
@@ -85,7 +85,7 @@ $menuSections = [
         'url'=>'#',
         'privileges'=>['customer_group','customer_add','supplier_add','user_creation','user_role_set'],
         'children'=>[
-            ['label'=>'Customer Group','url'=>'customergroup','privileges'=>['customer_group']],
+            ['label'=>'Customer Group','url'=>'customer-group','privileges'=>['customer_group']],
             ['label'=>'Customer Add','url'=>'customer','privileges'=>['customer_add']],
             ['label'=>'Supplier Add','url'=>'supplier','privileges'=>['supplier_add']],
             ['label'=>'User Creation','url'=>'user','privileges'=>['user_creation']],
