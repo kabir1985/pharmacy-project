@@ -36,7 +36,9 @@
   <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
+  <!-- Sidebar CSS -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/sidebar.css') ?>">
+    
   <style type="text/css">
     .height-fix {
       height: 34px !important;

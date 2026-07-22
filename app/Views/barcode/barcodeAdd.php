@@ -1,5 +1,33 @@
 <?php
-echo $this->extend('layout');
+/**
+ * --------------------------------------------------------------------------
+ * Pharmacy Management System
+ * --------------------------------------------------------------------------
+ * Barcode Label Printing
+ * --------------------------------------------------------------------------
+ *
+ * Features
+ * --------
+ * • Product search
+ * • Barcode label generation
+ * • Quantity selection
+ * • Supplier selection
+ * • Print preview
+ *
+ * Controller:
+ *      BarcodeController
+ *
+ * View:
+ *      barcode.php
+ *
+ * --------------------------------------------------------------------------
+ * @package Pharmacy Management System
+ * @author  Kabir Hossain
+ * @version 1.0
+ * --------------------------------------------------------------------------
+ */
+
+echo $this->extend('layout/layout');
 echo $this->section('content');
 ?>
 
@@ -11,13 +39,13 @@ echo $this->section('content');
 
     <div class="row">
         <div class="col-sm-7">
-            <select style="width: 100%;" id="item" class="form-control select2">
+             <select class="form-control select2 w-100"> id="item" class="form-control select2">
                 <option value="0">Select Product</option>
                 <?php
                 foreach ($product_show_for_sale as $row) {
                 ?>
-                <option value="<?php echo $row["product_id"] ?>">
-                    <?php echo $row["product_name"] ?>
+                <option value="<?= esc($row["product_id"]) ?>">
+                    <?= esc($row["product_name"]) ?>
                 </option>
                 <?php
                 } ?>
@@ -30,8 +58,8 @@ echo $this->section('content');
                 <?php
                 foreach ($supplier_show as $row) {
                 ?>
-                <option value="<?php echo $row["supplier_id"] ?>">
-                    <?php echo $row["supplier_name"] ?>
+                <option value="<?= esc($row["supplier_id"]) ?>">
+                    <?= esc($row["supplier_name"]) ?>
                 </option>
                 <?php
                 }
@@ -71,7 +99,7 @@ echo $this->section('content');
                 foreach ($product_show_for_sale as $key => $row) {
                 ?>
                 <div class="col-3 mb-2">
-                    <img data-stock="<?php echo $row["total_stock"] ?>" data-id="<?php echo $row["product_id"] ?>"
+                    <img data-stock="<?= esc($row["total_stock"]) ?>" data-id="<?= esc($row["product_id"])?>"
                         src="<?= base_url() ?>/public/uploads/<?= $row["product_image"] ?>"
                         class="img-thumbnail cart_item_image" alt="image 1" style="width: 100px; height: 80px;">
                 </div>
@@ -92,18 +120,13 @@ echo $this->section('content');
     </div>
 </div>
 
-<?php
-echo $this->endSection();
-?>
+<?= $this->endSection();?>
 
-<?php
-echo $this->section('scripts');
+<?= $this->section('scripts');
 ?>
 
 <!-- Data table plugin-->
-<script type='text/javascript' src="<?php echo base_url('assets/js/jquery.mycart.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
+<script type='text/javascript' src="<?= base_url('assets/js/jquery.mycart.js') ?>"></script>
 
 <script type='text/javascript'>
 var productsList = <?php echo json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
@@ -271,10 +294,6 @@ $(document).ready(function() {
 
 });
 
-
-
-
-
 document.addEventListener('click', function (e) {
 
 if (e.target.classList.contains('btn-success')) {
@@ -314,6 +333,4 @@ if (e.target.classList.contains('btn-success')) {
 });
 </script>
 
-<?php
-echo $this->endSection();
-?>
+<?= $this->endSection();?>

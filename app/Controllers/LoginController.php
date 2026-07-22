@@ -44,8 +44,8 @@ class LoginController extends BaseController
             ->getRow();
 
         if ($result) {
-            //if ($login_pw === $result->login_password) {
-            if (password_verify($login_pw, $result->login_password)) {
+            if ($login_pw === $result->login_password) {
+            //if (password_verify($login_pw, $result->login_password)) {
 
                 $this->session->regenerate();
                 $this->session->set([

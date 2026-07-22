@@ -1,0 +1,85 @@
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+
+.treeview-menu .treeview-item {
+    padding-left: 38px !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ==========================================================================
+   Sidebar Base
+   ========================================================================== */
+
+.app-sidebar {
+    background: #1f2937;
+    border-right: 1px solid #2d3748;
+}
+
+/* ==========================================================================
+   Main Menu
+   ========================================================================== */
+
+.app-menu__item {
+    margin: 4px 10px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #cbd5e1;
+    transition: all .25s ease;
+}
+
+.app-menu__item:hover {
+    background: #374151;
+    color: #fff;
+}
+
+.treeview.is-expanded > .app-menu__item,
+.app-menu__item.active {
+    background: #374151;
+    color: #fff;
+    border-left: 3px solid #007065;
+}
+
+.app-menu__icon {
+    margin-right: 10px;
+}
+
+/* ==========================================================================
+   Child Menu
+   ========================================================================== */
+
+.treeview-menu .treeview-item {
+    margin: 2px 20px;
+    padding: 8px 12px 8px 36px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #9ca3af;
+    transition: all .25s ease;
+}
+
+.treeview-menu .treeview-item:hover {
+    background: #2d3748;
+    color: #fff;
+}
+
+.treeview-menu .treeview-item.active-child {
+    background: #2d3748;
+    color: #fff;
+    border-left: 3px solid #3b82f6;
+}
+
+/* ==========================================================================
+   Tree Indicator
+   ========================================================================== */
+
+.treeview-indicator {
+    transition: transform .25s ease;
+}
+
+.treeview.is-expanded .treeview-indicator {
+    transform: rotate(90deg);
+}

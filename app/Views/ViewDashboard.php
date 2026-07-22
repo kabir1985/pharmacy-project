@@ -1,5 +1,5 @@
 <?php
-$this->extend('layout');
+$this->extend('layout/layout');
 $this->section('content');
 ?>
 

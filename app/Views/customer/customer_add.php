@@ -1,5 +1,27 @@
 <?php
-echo $this->extend('layout');
+
+/**
+ * --------------------------------------------------------------------
+ * Pharmacy Management System
+ * --------------------------------------------------------------------
+ *
+ * Customer Management
+ *
+ * Features:
+ * - Customer List
+ * - Add Customer
+ * - Edit Customer
+ * - Delete Customer
+ * - DataTable Search
+ * - AJAX CRUD
+ *
+ * Author  : Kabir Hossain
+ * Version : 1.0.0
+ *
+ * --------------------------------------------------------------------
+ */
+
+echo $this->extend('layout/layout');
 echo $this->section('content');
 ?>
 
@@ -17,7 +39,9 @@ echo $this->section('content');
 
 
 
-<!---------------Data Table start Here----..............................................--------------------------->
+<!-- ========================================================= -->
+<!-- Customer Data shoe -->
+<!-- ========================================================= -->
 <div class='row'>
     <div class='col-md-12'>
         <div class='tile collapseable show animate__animated  animate__fadeInUp'>
@@ -42,44 +66,46 @@ echo $this->section('content');
                             if (count($customer_show) > 0) {
                                 foreach ($customer_show as $row) {
                                     ?>
-                            <tr>
-                                <td>
-                                    <?php echo $row['cus_first_name'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['cus_last_name'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['cus_email'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['cus_phone'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['cus_address'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['cus_tin'] ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['cus_company'] ?>
-                                </td>
-                                <td>
-                                    <!-- Button to invoke the modal -->
+                                    <tr>
+                                        <td>
+                                            <?= esc($row['cus_first_name']) ?>
+                                        </td>
+                                        <td>
+                                            <?= esc($row['cus_last_name']) ?>
+                                        </td>
+                                        <td>
+                                            <?= esc($row['cus_email']) ?>
+                                        </td>
+                                        <td>
+                                            <?= esc($row['cus_phone']) ?>
+                                        </td>
+                                        <td>
+                                            <?= esc($row['cus_address']) ?>
+                                        </td>
+                                        <td>
+                                            <?= esc($row['cus_tin']) ?>
+                                        </td>
+                                        <td>
+                                            <?= esc($row['cus_company']) ?>
+                                        </td>
+                                        <td>
+                                            <!-- Button to invoke the modal -->
                                             <a href="#" class="btn btn-primary btn-sm btn-edit"
-                                                data-customer_id="<?php echo $row['customer_id'] ?>"
-                                                data-cus_first_name="<?php echo $row['cus_first_name'] ?>"
-                                                data-cus_last_name="<?php echo $row['cus_last_name'] ?>"
-                                                data-cus_email="<?php echo $row['cus_email'] ?>"
-                                                data-cus_phone="<?php echo $row['cus_phone'] ?>"
-                                                data-cus_address="<?php echo $row['cus_address'] ?>"
-                                                data-cus_tin="<?php echo $row['cus_tin'] ?>"
-                                                data-cus_company="<?php echo $row['cus_company'] ?>"><i
-                                                    class="fa fa-edit"></i></a>
+                                                data-customer_id="<?= esc($row['customer_id']) ?>"
+                                                data-cus_first_name="<?= esc($row['cus_first_name']) ?>"
+                                                data-cus_last_name="<?= esc($row['cus_last_name']) ?>"
+                                                data-cus_email="<?= esc($row['cus_email']) ?>"
+                                                data-cus_phone="<?= esc($row['cus_phone']) ?>"
+                                                data-cus_address="<?= esc($row['cus_address']) ?>"
+                                                data-cus_tin="<?= esc($row['cus_tin']) ?>"
+                                                data-cus_company="<?= esc($row['cus_company']) ?>">
+
+                                                <i class="fa fa-edit"></i>
+
+                                            </a>
 
                                             <a href="#" class="btn btn-danger btn-sm btn-delete"
-                                                data-delete_id="<?php echo $row['customer_id'] ?>"><i
-                                                    class="fa fa-trash-o"></i></a>
+                                                data-delete_id="<?= $row['customer_id'] ?>"><i class="fa fa-trash-o"></i></a>
 
                                         </td>
                                     </tr>
@@ -102,12 +128,12 @@ echo $this->section('content');
     </div>
 </div>
 
-<!---------------Data Table End Here-----------............................................-------------------->
 
 
 
-<!---------------------------Modal Form for entry Load Start---------------------------------------->
-<!-- Modal -->
+<!-- ========================================================= -->
+<!-- Add Customer Modal -->
+<!-- ========================================================= -->
 <form id="CustomerModalEntry_Form" method='post' action="<?= site_url('customer/create') ?>">
     <div class='modal fade' id='CustomerAdd' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'
         aria-hidden='true'>
@@ -182,14 +208,11 @@ echo $this->section('content');
         </div>
     </div>
 </form>
-<!----------------------Modal Form End------------------------------------------>
 
 
-
-
-
-<!---------------------------Modal Form for Edit Section Load Start---------------------------------------->
-<!-- Modal -->
+<!-- ========================================================= -->
+<!-- Edit Customer Modal -->
+<!-- ========================================================= -->
 <div class='modal fade' id='customer_edit_modal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'
     aria-hidden='true'>
     <div class='modal-dialog  modal-dialog-centered' role='document'>
@@ -249,9 +272,9 @@ echo $this->section('content');
 
     </div>
 </div>
-<!----------------------Modal Form Edit Section  End------------------------------------------>
-
-<!-- Modal Delete Product-->
+<!-- ========================================================= -->
+<!-- Delete Customer Modal -->
+<!-- ========================================================= -->
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
