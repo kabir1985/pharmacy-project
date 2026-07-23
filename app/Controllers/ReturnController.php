@@ -22,51 +22,49 @@ class ReturnController extends BaseController
     {
         $db = \Config\Database::connect();
 
+        $invoice = $this->request->getPost('invoice');
 
-$invoice = $this->request->getPost('invoice');
+        $builder = $db->query("
+                    SELECT
+                        sd.sales_details_invoice,
+                        sd.product_id,
+                        p.product_name,
+                        sd.unit_price,
+                        sd.total_buy_price,
+                        sd.total_sale_price,
+                        sd.product_quantity_sold AS sold_qty,
 
-$builder = $db->query("
-    SELECT
-        sd.sales_details_invoice,
-        sd.product_id,
-        p.product_name,
+                        IFNULL(r.return_qty,0) AS return_qty,
+                        sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty,
 
-        sd.unit_price,
-        sd.total_buy_price,
-        sd.total_sale_price,
-        sd.product_quantity_sold AS sold_qty,
+                        CASE
+                            WHEN IFNULL(r.return_qty,0) = 0 THEN 'ACTIVE'
+                            WHEN IFNULL(r.return_qty,0) < sd.product_quantity_sold THEN 'PARTIAL'
+                            WHEN IFNULL(r.return_qty,0) = sd.product_quantity_sold THEN 'FULL'
+                        END AS return_status
 
-        IFNULL(r.return_qty,0) AS return_qty,
-        sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty,
+                    FROM sales_details sd
 
-        CASE
-            WHEN IFNULL(r.return_qty,0) = 0 THEN 'ACTIVE'
-            WHEN IFNULL(r.return_qty,0) < sd.product_quantity_sold THEN 'PARTIAL'
-            WHEN IFNULL(r.return_qty,0) = sd.product_quantity_sold THEN 'FULL'
-        END AS return_status
+                    LEFT JOIN product_inital_stock p
+                        ON p.product_id = sd.product_id
 
-    FROM sales_details sd
+                    LEFT JOIN (
+                        SELECT
+                            sales_details_invoice,
+                            product_id,
+                            SUM(return_qty) AS return_qty
+                        FROM return_sales_details
+                        GROUP BY sales_details_invoice, product_id
+                    ) r
+                        ON r.sales_details_invoice = sd.sales_details_invoice
+                        AND r.product_id = sd.product_id
 
-    LEFT JOIN product_inital_stock p 
-        ON p.product_id = sd.product_id
+                    WHERE sd.sales_details_invoice = ?
+                ", [$invoice]);
 
-    LEFT JOIN (
-        SELECT
-            sales_details_invoice,
-            product_id,
-            SUM(return_qty) AS return_qty
-        FROM return_sales_details
-        GROUP BY sales_details_invoice, product_id
-    ) r
-        ON r.sales_details_invoice = sd.sales_details_invoice
-        AND r.product_id = sd.product_id
+        $products = $builder->getResultArray();
 
-    WHERE sd.sales_details_invoice = ?
-", [$invoice]);
-
-$products = $builder->getResultArray();
-
-return $this->response->setJSON($products);
+        return $this->response->setJSON($products);
 
     }
 
@@ -109,8 +107,9 @@ return $this->response->setJSON($products);
         // ---------------- VALIDATE BEFORE TRANSACTION ----------------
         foreach ($return_qty as $pid => $qty) {
 
-            if ($qty <= 0)
+            if ($qty <= 0) {
                 continue;
+            }
 
             $product = $db->table('sales_details')
                 ->where('sales_details_invoice', $invoice)
@@ -202,8 +201,9 @@ return $this->response->setJSON($products);
             $pid = $detail['product_id'];
             $qty = $return_qty[$pid] ?? 0;
 
-            if ($qty <= 0)
+            if ($qty <= 0) {
                 continue;
+            }
 
             // insert return details
             $returnSaleDetailsModel->insert([
@@ -244,7 +244,7 @@ return $this->response->setJSON($products);
             // $ProductSaleDetailsModel->where('sales_details_invoice', $invoice)->delete();
             // $CustomerDueModel->where('due_invoice_no', $invoice)->delete();
             // $ProductSaleModel->where('sales_invoice', $invoice)->delete();
-                 $ProductSaleModel
+            $ProductSaleModel
                 ->where('sales_invoice', $invoice)
                 ->set('return_status', 'FULL')
                 ->update();
@@ -270,8 +270,8 @@ return $this->response->setJSON($products);
         return $this->response->setJSON([
             'status' => 'success',
             'message' => $isFullReturn
-                ? 'Full return completed successfully.'
-                : 'Partial return completed successfully.',
+            ? 'Full return completed successfully.'
+            : 'Partial return completed successfully.',
         ]);
     }
     ////////////////////////////////////////////////////////////////////////////

@@ -2,45 +2,33 @@
 
 namespace App\Controllers;
 
-//use App\Models\NewProductAddModel;
-
-
 use CodeIgniter\HTTP\IncomingRequest;
 
 class SaleReturnListController extends BaseController
 {
-    // private $product_initial_stock_object;
     private $db;
 
     public function __construct()
     {
-        //$this->product_initial_stock_object = new NewProductAddModel();
         $this->db = db_connect();
     }
 
     public function index()
     {
         $sql = "SELECT
-    
                     s.sales_invoice,
                     s.sales_date,
-    
                     s.seller_id,
                     u.user_name AS seller_name,
-    
                     sd.total_sale,
-    
                     s.product_vat,
                     s.product_discount,
                     s.other_charge_on_all,
-    
                     s.paid_amount,
     
                     IFNULL(cd.customer_due,0) AS customer_due,
                     IFNULL(cd.total_due_paid,0) AS due_paid_amount,
-    
                     (s.paid_amount + IFNULL(cd.total_due_paid,0)) AS total_paid,
-    
                     s.due_amount,
     
                     CASE
@@ -75,17 +63,11 @@ class SaleReturnListController extends BaseController
                 LEFT JOIN
                 (
                     SELECT
-    
                         due_invoice_no,
-    
                         SUM(due_amount - due_paid_amount) AS customer_due,
-    
                         SUM(due_paid_amount) AS total_due_paid
-    
                     FROM customer_due
-    
                     GROUP BY due_invoice_no
-    
                 ) cd
                     ON s.sales_invoice = cd.due_invoice_no
     
@@ -105,6 +87,9 @@ class SaleReturnListController extends BaseController
     
         return view('return/sales_return_list', $data);
     }
+
+
+
 
     public function saleReturnListShow()
     {

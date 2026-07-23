@@ -2,8 +2,8 @@
 -- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 19, 2026 at 08:18 PM
+-- Host: localhost:3306
+-- Generation Time: Jul 23, 2026 at 09:33 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -106,13 +106,11 @@ INSERT INTO `customer_due` (`due_id`, `due_date`, `customer_id`, `due_invoice_no
 (489, '2026-07-11', '15', 'INV261923BA2A', 38, 0, 0),
 (490, '2026-07-11', '18', 'INV261927CA8D', 40, 0, 0),
 (491, '2026-07-11', '15', 'INV261928106A', 41, 0, 0),
-(492, '2026-07-17', '15', 'INV261983F59F', 41, 0, 0),
-(493, '2026-07-17', '18', 'INV26198D0A51', 41, 0, 0),
-(494, '2026-07-18', '18', 'INV26199E9821', 87, 0, 0),
-(495, '2026-07-18', '15', 'INV26199F292C', 3, 0, 0),
-(496, '2026-07-18', '18', 'INV26199E9821', 0, 400, 0),
-(497, '2026-07-18', '15', 'INV261994FC9E', 45, 0, 0),
-(498, '2026-07-18', '18', 'INV26199E9821', 0, 22, 0);
+(492, '2026-07-19', '15', 'INV26200CB90E', 39, 0, 0),
+(493, '2026-07-19', '15', 'INV26200D9860', 86, 0, 0),
+(494, '2026-07-21', '18', 'INV261927CA8D', 0, 94, 0),
+(495, '2026-07-22', '15', 'INV262038BBB0', 86, 0, 0),
+(496, '2026-07-23', '15', 'INV26204E78B7', 110, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -344,17 +342,19 @@ CREATE TABLE `product_brand` (
 --
 
 INSERT INTO `product_brand` (`brand_id`, `product_brand_name`, `product_category_id`, `created_at`, `updated_at`) VALUES
-(37, 'Incepta', 132, '2026-05-24 08:04:27', '2026-07-06 07:01:14'),
-(38, 'Renata', 132, '2026-05-24 08:04:27', '2026-05-24 08:04:27'),
 (39, 'Incepta', 133, '2026-05-24 08:04:27', '2026-05-24 08:04:27'),
-(40, 'Square Pharma', 138, '2026-05-24 08:04:27', '2026-05-24 08:04:27'),
+(40, 'Square Pharma12', 138, '2026-05-24 08:04:27', '2026-07-21 04:48:53'),
 (41, 'ayan', 140, '2026-07-03 14:39:15', '2026-07-03 14:39:15'),
 (42, 'Aristopharma', 135, '2026-07-03 16:15:02', '2026-07-06 07:00:47'),
-(43, 'Square Pharma', 132, '2026-07-06 07:01:36', '2026-07-06 07:01:36'),
 (44, 'ACI', 133, '2026-07-06 07:02:02', '2026-07-06 07:02:02'),
 (45, 'Opsonin', 133, '2026-07-06 07:02:30', '2026-07-06 07:02:30'),
 (46, 'Novartis', 133, '2026-07-06 07:02:59', '2026-07-06 07:02:59'),
-(47, 'Beximco', 132, '2026-07-06 07:16:47', '2026-07-06 07:16:47');
+(48, 'cef3', 134, '2026-07-19 04:49:38', '2026-07-19 04:49:38'),
+(52, 'napa syrup', 133, '2026-07-19 08:19:07', '2026-07-19 08:19:07'),
+(54, 'sdfdsf', 138, '2026-07-22 10:38:07', '2026-07-22 10:38:07'),
+(55, 'sdfdsf', 155, '2026-07-23 06:32:51', '2026-07-23 06:32:51'),
+(56, 'dfdsff', 153, '2026-07-23 06:33:39', '2026-07-23 06:33:39'),
+(57, 'testbrand', 158, '2026-07-23 06:39:43', '2026-07-23 06:39:43');
 
 -- --------------------------------------------------------
 
@@ -372,13 +372,17 @@ CREATE TABLE `product_category` (
 --
 
 INSERT INTO `product_category` (`product_category_id`, `category_name`) VALUES
-(132, 'Tablets'),
-(133, 'Syrups'),
 (134, 'Injections'),
 (135, 'Gels & Lotions'),
-(136, 'Suppositories'),
+(136, 'Suppositories 123'),
 (137, 'Drops'),
-(138, 'Capsule');
+(138, 'Capsule'),
+(153, 'sdfdsfdsf'),
+(154, 'hello category'),
+(155, 'sdfdsfd'),
+(156, 'dd2222'),
+(157, 'sdfdsf'),
+(158, 'testcategory');
 
 -- --------------------------------------------------------
 
@@ -405,7 +409,9 @@ INSERT INTO `product_group` (`product_group_id`, `group_name`) VALUES
 (46, 'Paracetamol'),
 (47, 'Omeprazole'),
 (48, 'Lotion'),
-(49, 'Cefixime');
+(49, 'Cefixime'),
+(50, 'gggg'),
+(51, 'tstgroup');
 
 -- --------------------------------------------------------
 
@@ -443,9 +449,9 @@ CREATE TABLE `product_inital_stock` (
 
 INSERT INTO `product_inital_stock` (`product_id`, `product_name`, `product_category`, `product_brand`, `product_group`, `product_strength`, `product_unit`, `codefor_barcode`, `productinitial_quantity`, `base_price`, `cost_without_vat`, `tax_type`, `tax_id`, `tax_amount`, `purchase_price`, `profit_margin_%`, `sales_price_for_customer`, `alert_quantity`, `product_image`, `created_at`, `updated_at`) VALUES
 (573, 'Napa 500', 132, 47, 46, 1, 22, 'barcode-napa', 5000.00, 1.00, 1.00, 'without_tax', 11, 0.00, 1.00, 20.00, 1.20, 5.00, 'napa 500.jpg', '2026-07-06 07:21:17', '2026-07-06 07:21:17'),
-(574, 'Cef-3', 132, 43, 49, 5, 22, 'barcode-cef', 500.00, 33.00, 33.00, 'without_tax', 11, 0.00, 33.00, 21.00, 40.00, 5.00, 'cef-3.jpg', '2026-07-06 08:40:58', '2026-07-06 08:40:58'),
-(575, 'Losectill', 132, 37, 42, 2, 20, 'barcode', 300.00, 4.00, 4.00, 'without_tax', 8, 0.00, 4.00, 19.00, 5.00, 3.00, NULL, '2026-07-17 15:43:07', '2026-07-17 16:04:33'),
-(576, 'syrup', 133, 44, 38, 1, 22, 'barcode-syrup', 2.00, 30.00, 30.00, 'without_tax', 14, 0.00, 30.00, 66.00, 50.00, 2.00, 'default-medicine.png', '2026-07-17 17:13:58', '2026-07-17 17:13:58');
+(574, 'Cef-3', NULL, NULL, 49, 5, 22, 'barcode-cef', 500.00, 33.00, 33.00, 'without_tax', 11, 0.00, 33.00, 21.00, 40.00, 5.00, 'cef-3.jpg', '2026-07-06 08:40:58', '2026-07-23 05:15:04'),
+(575, 'test', 134, 48, 43, 5, 22, 'barcode-cef', 100.00, 34.00, 34.00, 'without_tax', 14, 0.00, 34.00, 32.00, 45.00, 5.00, 'default-medicine.png', '2026-07-19 04:50:47', '2026-07-19 04:50:47'),
+(576, 'testproduct', 158, 57, 51, 17, 49, 'bar', 100.00, 20.00, 20.00, 'without_tax', 15, 0.00, 20.00, 22.00, 25.00, 4.00, '1784788875_43542eaa92d9178fe46d.png', '2026-07-23 06:41:15', '2026-07-23 07:02:47');
 
 -- --------------------------------------------------------
 
@@ -474,10 +480,11 @@ INSERT INTO `product_purchase` (`product_purchase_id`, `purchase_invoice`, `purc
 (112, 'PUR2618793170', '18', 'Cash', '106', 100.00, 0.00, 0.00, 100.00, '2026-07-06 07:23:23'),
 (113, 'PUR26187A2715', '18', 'Cash', '124', 100.00, 0.00, 0.00, 100.00, '2026-07-06 08:46:33'),
 (114, 'PUR26192608F1', '18', 'Cash', '106', 36.38, 1.09, 1.20, 36.45, '2026-07-11 06:42:50'),
-(115, 'PUR26199EA0AC', '18', 'Cash', '106', 63.00, 6.00, 1.15, 58.04, '2026-07-18 11:53:46'),
-(116, 'PUR262004A186', '18', 'Cash', '106', 31.00, 0.62, 0.19, 30.57, '2026-07-19 18:41:16'),
-(117, 'PUR262000DAF5', '18', 'Cash', '106', 64.26, 0.00, 0.81, 65.07, '2026-07-19 19:01:39'),
-(118, 'PUR26200B189C', '18', 'Cash', '106', 31.62, 0.00, 0.20, 31.82, '2026-07-19 19:03:53');
+(115, 'PUR2620051541', '18', 'Cash', '106', 327.69, 8.00, 31.75, 350.67, '2026-07-19 04:27:11'),
+(116, 'PUR26202C8A31', '18', 'Cash', '124', 35.02, 0.00, 0.36, 35.38, '2026-07-21 08:32:38'),
+(117, 'PUR2620211803', '18', 'Cash', '106', 35.02, 0.00, 0.36, 35.38, '2026-07-21 08:33:47'),
+(118, 'PUR26202D0964', '18', 'Cash', '106', 67.99, 0.00, 0.67, 68.66, '2026-07-21 08:53:48'),
+(119, 'PUR262048E221', '18', 'Cash', '106', 54390.00, 0.00, 598290.00, 652680.00, '2026-07-23 07:07:46');
 
 -- --------------------------------------------------------
 
@@ -507,14 +514,16 @@ INSERT INTO `product_purchase_details` (`purchase_id`, `purchase_invoice_id`, `p
 (180, 'PUR26187A2715', 573, 100, 1, 1.00, 50, 0.00, 0.00, 100.00),
 (181, 'PUR26192608F1', 574, 1, 1, 33.00, 10, 3.30, 0.99, 35.31),
 (182, 'PUR26192608F1', 573, 1, 1, 1.00, 0, 0.10, 0.03, 1.07),
-(183, 'PUR26199EA0AC', 576, 1, 1, 30.00, 0, 0.90, 0.90, 30.00),
-(184, 'PUR26199EA0AC', 574, 1, 1, 33.00, 0, 0.99, 0.99, 33.00),
-(185, 'PUR262004A186', 576, 1, 1, 30.00, 0, 0.60, 0.60, 30.00),
-(186, 'PUR262004A186', 573, 1, 1, 1.00, 0, 0.02, 0.02, 1.00),
-(187, 'PUR262000DAF5', 576, 1, 1, 30.00, 0, 0.60, 0.00, 30.60),
-(188, 'PUR262000DAF5', 574, 1, 1, 33.00, 0, 0.66, 0.00, 33.66),
-(189, 'PUR26200B189C', 576, 1, 1, 30.00, 0, 0.60, 0.00, 30.60),
-(190, 'PUR26200B189C', 573, 1, 1, 1.00, 0, 0.02, 0.00, 1.02);
+(183, 'PUR2620051541', 574, 1, 10, 33.00, 0, 9.90, 13.20, 326.70),
+(184, 'PUR2620051541', 573, 1, 1, 1.00, 0, 0.03, 0.04, 0.99),
+(185, 'PUR26202C8A31', 574, 1, 1, 33.00, 0, 0.99, 0.00, 33.99),
+(186, 'PUR26202C8A31', 573, 1, 1, 1.00, 0, 0.03, 0.00, 1.03),
+(187, 'PUR2620211803', 574, 1, 1, 33.00, 0, 0.99, 0.00, 33.99),
+(188, 'PUR2620211803', 573, 1, 1, 1.00, 0, 0.03, 0.00, 1.03),
+(189, 'PUR26202D0964', 575, 1, 1, 34.00, 0, 0.00, 0.00, 34.00),
+(190, 'PUR26202D0964', 574, 1, 1, 33.00, 0, 0.99, 0.00, 33.99),
+(191, 'PUR262048E221', 576, 1000, 1, 20.00, 0, 400.00, 0.00, 20400.00),
+(192, 'PUR262048E221', 574, 1000, 1, 33.00, 0, 990.00, 0.00, 33990.00);
 
 -- --------------------------------------------------------
 
@@ -564,7 +573,10 @@ INSERT INTO `product_strength` (`strength_id`, `strength_name`) VALUES
 (11, '120 mg'),
 (12, '1%'),
 (13, '100 IU/ml'),
-(14, '5 ml');
+(14, '5 ml'),
+(15, '23mg'),
+(16, 'strddd'),
+(17, 'teststrength');
 
 -- --------------------------------------------------------
 
@@ -586,20 +598,16 @@ INSERT INTO `product_unit` (`product_unit_id`, `product_unit_name`) VALUES
 (21, 'Capsule (Cap)'),
 (22, 'Piece (Pcs)'),
 (23, 'Strip (e.g., 10 tablets per strip)'),
-(24, 'Box (multiple strips)'),
-(25, 'ml (Milliliter)'),
-(26, 'Bottle'),
-(27, 'Vial'),
+(26, 'Bottle11'),
 (28, 'Ampoule'),
 (29, 'mg (Milligram)'),
-(30, 'g (Gram)'),
+(30, 'g (Gram)111'),
 (31, 'kg (Kilogram)'),
-(32, 'Sachet'),
-(33, 'Pack'),
 (34, 'Pair (for gloves)'),
-(35, 'Roll (bandage)'),
 (36, 'kg'),
-(41, 'Tube');
+(41, 'Tube'),
+(48, 'dasdsad'),
+(49, 'tstunit');
 
 -- --------------------------------------------------------
 
@@ -628,11 +636,8 @@ INSERT INTO `return_customer_due` (`due_id`, `return_due_date`, `customer_id`, `
 (128, '16-07-2026', '15', 'INV26191D02AC', 31, 0, 0),
 (129, '16-07-2026', '15', 'INV26191D02AC', 31, 0, 0),
 (130, '16-07-2026', '15', 'INV261914A4CC', 33, 0, 0),
-(131, '18-07-2026', '18', 'INV26199E9821', 87, 0, 0),
-(132, '18-07-2026', '15', 'INV26191060CE', 48, 0, 0),
-(133, '18-07-2026', '18', 'INV26198D0A51', 41, 0, 0),
-(134, '18-07-2026', '15', 'INV261983F59F', 41, 0, 0),
-(135, '18-07-2026', '18', 'INV26198D0A51', 41, 0, 0);
+(131, '23-07-2026', '15', 'INV26204E78B7', 110, 0, 0),
+(132, '23-07-2026', '15', 'INV26204E78B7', 110, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -668,10 +673,7 @@ INSERT INTO `return_sales` (`return_id`, `sales_invoice`, `customer_type`, `retu
 (119, 'INV261908D965', '18', '2026-07-08 23:31:30', 'Cash', 0.00, 0.00, 0, 0.00, 240.00, 18, 'PARTIAL', 'sdff', '2026-07-16 05:29:03'),
 (120, 'INV26191D02AC', '15', '2026-07-10 06:15:52', 'Cash', 10.00, 0.00, 0, 0.00, 31.20, 18, 'PARTIAL', 'fdgdgd', '2026-07-16 05:29:24'),
 (121, 'INV261914A4CC', '15', '2026-07-10 06:16:56', 'Cash', 10.00, 0.00, 2, 0.00, 33.20, 18, 'FULL', 'hjjhk', '2026-07-16 05:29:50'),
-(122, 'INV26199E9821', '18', '2026-07-18 06:00:43', 'Cash', 9.50, 0.00, 0, 0.00, 86.70, 18, 'FULL', 'test', '2026-07-18 12:12:36'),
-(123, 'INV26191060CE', '15', '2026-07-10 04:29:21', 'Cash', 4.00, 12.00, 0, 0.00, 48.00, 18, 'PARTIAL', 'ttt', '2026-07-18 12:14:17'),
-(124, 'INV26198D0A51', '18', '2026-07-17 06:28:31', 'Cash', 2.06, 0.00, 2, 0.00, 40.79, 18, 'PARTIAL', 'gg', '2026-07-18 12:15:25'),
-(125, 'INV261983F59F', '15', '2026-07-17 06:25:49', 'Cash', 0.00, 0.00, 0, 0.00, 41.20, 18, 'PARTIAL', 'ttt', '2026-07-18 12:34:36');
+(122, 'INV26204E78B7', '15', '2026-07-23 01:03:14', 'Cash', 0.00, 0.00, 0, 0.00, 110.00, 18, 'PARTIAL', 'test', '2026-07-23 07:08:56');
 
 -- --------------------------------------------------------
 
@@ -704,13 +706,9 @@ INSERT INTO `return_sales_details` (`return_detail_id`, `sales_details_invoice`,
 (109, 'INV26191D02AC', 574, 1, 40.00, 33.00, 40.00),
 (110, 'INV261914A4CC', 574, 1, 40.00, 33.00, 40.00),
 (111, 'INV261914A4CC', 573, 1, 1.20, 1.00, 1.20),
-(112, 'INV26199E9821', 573, 1, 1.20, 1.00, 1.20),
-(113, 'INV26199E9821', 574, 1, 40.00, 33.00, 40.00),
-(114, 'INV26199E9821', 575, 1, 5.00, 4.00, 5.00),
-(115, 'INV26199E9821', 576, 1, 50.00, 30.00, 50.00),
-(116, 'INV261983F59F', 574, 1, 40.00, 33.00, 40.00),
-(117, 'INV26198D0A51', 573, 1, 1.20, 1.00, 1.20),
-(118, 'INV26198D0A51', 574, 1, 40.00, 33.00, 40.00);
+(112, 'INV26204E78B7', 576, 1, 25.00, 20.00, 25.00),
+(113, 'INV26204E78B7', 575, 1, 45.00, 34.00, 45.00),
+(114, 'INV26204E78B7', 574, 1, 40.00, 33.00, 40.00);
 
 -- --------------------------------------------------------
 
@@ -746,7 +744,7 @@ INSERT INTO `sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales_date`,
 (764, 'INV26188F1917', 'Walk-In-Customer', '2026-07-07 03:52:30', 'Cash', 438.90, 0.00, 0.00, 0.00, 437.40, 1.50, 18, 'ACTIVE', '2026-07-07 09:52:30'),
 (765, 'INV26188117BA', '15', '2026-07-07 04:34:43', 'Cash', 176.00, 0.00, 16.00, 0.00, 0.00, 176.00, 18, 'FULL', '2026-07-07 10:34:43'),
 (766, 'INV261908D965', '18', '2026-07-08 23:31:30', 'Cash', 240.00, 0.00, 0.00, 0.00, 0.00, 240.00, 18, 'PARTIAL', '2026-07-09 05:31:30'),
-(767, 'INV26191060CE', '15', '2026-07-10 04:29:21', 'Cash', 48.00, 4.00, 12.00, 0.00, 0.00, 48.00, 18, 'PARTIAL', '2026-07-10 10:29:21'),
+(767, 'INV26191060CE', '15', '2026-07-10 04:29:21', 'Cash', 48.00, 4.00, 12.00, 0.00, 0.00, 48.00, 18, 'ACTIVE', '2026-07-10 10:29:21'),
 (768, 'INV26191173E3', 'Walk-In-Customer', '2026-07-10 04:57:28', 'Cash', 45.14, 2.06, 0.00, 6.00, 45.14, 0.00, 18, 'ACTIVE', '2026-07-10 10:57:28'),
 (769, 'INV2619120D8B', '15', '2026-07-10 05:52:20', 'Cash', 38.32, 2.88, 0.00, 0.00, 0.00, 38.32, 18, 'ACTIVE', '2026-07-10 11:52:20'),
 (770, 'INV26191BE3CD', '15', '2026-07-10 05:53:39', 'Cash', 38.32, 2.88, 0.00, 0.00, 0.00, 38.32, 18, 'ACTIVE', '2026-07-10 11:53:39'),
@@ -759,12 +757,11 @@ INSERT INTO `sales` (`sales_id`, `sales_invoice`, `customer_type`, `sales_date`,
 (777, 'INV261923BA2A', '15', '2026-07-11 00:24:10', 'Cash', 38.00, 2.00, 0.00, 0.00, 0.00, 38.00, 18, 'ACTIVE', '2026-07-11 06:24:10'),
 (778, 'INV261927CA8D', '18', '2026-07-11 00:27:21', 'Cash', 40.00, 0.00, 0.00, 0.00, 0.00, 40.00, 18, 'ACTIVE', '2026-07-11 06:27:21'),
 (779, 'INV261928106A', '15', '2026-07-11 07:26:12', 'Cash', 41.20, 0.00, 0.00, 0.00, 0.00, 41.20, 18, 'ACTIVE', '2026-07-11 13:26:12'),
-(780, 'INV261982DF0C', 'Walk-In-Customer', '2026-07-17 06:20:25', 'Cash', 81.40, 0.00, 0.00, 0.20, 81.00, 0.40, 18, 'ACTIVE', '2026-07-17 12:20:25'),
-(781, 'INV261983F59F', '15', '2026-07-17 06:25:49', 'Cash', 41.20, 0.00, 0.00, 0.00, 0.00, 41.20, 18, 'PARTIAL', '2026-07-17 12:25:49'),
-(782, 'INV26198D0A51', '18', '2026-07-17 06:28:31', 'Cash', 40.79, 2.06, 0.00, 1.65, 0.00, 40.79, 18, 'FULL', '2026-07-17 12:28:31'),
-(783, 'INV26199E9821', '18', '2026-07-18 06:00:43', 'Cash', 86.70, 9.50, 0.00, 0.00, 0.00, 86.70, 18, 'FULL', '2026-07-18 12:00:43'),
-(784, 'INV26199F292C', '15', '2026-07-18 08:42:38', 'Cash', 92.65, 3.55, 0.00, 0.00, 90.00, 2.65, 18, 'ACTIVE', '2026-07-18 14:42:38'),
-(785, 'INV261994FC9E', '15', '2026-07-18 08:52:00', 'Cash', 45.00, 0.00, 0.00, 0.00, 0.00, 45.00, 18, 'ACTIVE', '2026-07-18 14:52:00');
+(780, 'INV26200CB90E', '15', '2026-07-18 22:28:09', 'Cash', 39.14, 2.06, 0.00, 0.00, 0.00, 39.14, 18, 'ACTIVE', '2026-07-19 04:28:09'),
+(781, 'INV2620011E52', 'Walk-In-Customer', '2026-07-18 22:51:13', 'Cash', 86.20, 0.00, 0.00, 0.00, 86.00, 0.20, 18, 'ACTIVE', '2026-07-19 04:51:13'),
+(782, 'INV26200D9860', '15', '2026-07-19 03:22:31', 'Cash', 86.20, 0.00, 0.00, 0.00, 0.00, 86.20, 18, 'ACTIVE', '2026-07-19 09:22:31'),
+(783, 'INV262038BBB0', '15', '2026-07-22 00:23:02', 'Cash', 86.20, 0.00, 0.00, 0.00, 0.00, 86.20, 18, 'ACTIVE', '2026-07-22 06:23:02'),
+(784, 'INV26204E78B7', '15', '2026-07-23 01:03:14', 'Cash', 110.00, 0.00, 0.00, 0.00, 0.00, 110.00, 18, 'PARTIAL', '2026-07-23 07:03:14');
 
 -- --------------------------------------------------------
 
@@ -820,22 +817,20 @@ INSERT INTO `sales_details` (`sales_details_id`, `sales_details_invoice`, `produ
 (1141, 'INV261927CA8D', 574, 1, 40.00, 40.00, 33.00),
 (1142, 'INV261928106A', 574, 1, 40.00, 40.00, 33.00),
 (1143, 'INV261928106A', 573, 1, 1.20, 1.20, 1.00),
-(1144, 'INV261982DF0C', 574, 2, 40.00, 80.00, 66.00),
-(1145, 'INV261982DF0C', 573, 1, 1.20, 1.20, 1.00),
-(1146, 'INV261983F59F', 574, 1, 40.00, 40.00, 33.00),
-(1147, 'INV261983F59F', 573, 1, 1.20, 1.20, 1.00),
-(1148, 'INV26198D0A51', 573, 1, 1.20, 1.20, 1.00),
-(1149, 'INV26198D0A51', 574, 1, 40.00, 40.00, 33.00),
-(1150, 'INV26199E9821', 573, 1, 1.20, 1.20, 1.00),
-(1151, 'INV26199E9821', 574, 1, 40.00, 40.00, 33.00),
-(1152, 'INV26199E9821', 575, 1, 5.00, 5.00, 4.00),
-(1153, 'INV26199E9821', 576, 1, 50.00, 50.00, 30.00),
-(1154, 'INV26199F292C', 573, 1, 1.20, 1.20, 1.00),
-(1155, 'INV26199F292C', 574, 1, 40.00, 40.00, 33.00),
-(1156, 'INV26199F292C', 575, 1, 5.00, 5.00, 4.00),
-(1157, 'INV26199F292C', 576, 1, 50.00, 50.00, 30.00),
-(1158, 'INV261994FC9E', 574, 1, 40.00, 40.00, 33.00),
-(1159, 'INV261994FC9E', 575, 1, 5.00, 5.00, 4.00);
+(1144, 'INV26200CB90E', 574, 1, 40.00, 40.00, 33.00),
+(1145, 'INV26200CB90E', 573, 1, 1.20, 1.20, 1.00),
+(1146, 'INV2620011E52', 575, 1, 45.00, 45.00, 34.00),
+(1147, 'INV2620011E52', 574, 1, 40.00, 40.00, 33.00),
+(1148, 'INV2620011E52', 573, 1, 1.20, 1.20, 1.00),
+(1149, 'INV26200D9860', 575, 1, 45.00, 45.00, 34.00),
+(1150, 'INV26200D9860', 574, 1, 40.00, 40.00, 33.00),
+(1151, 'INV26200D9860', 573, 1, 1.20, 1.20, 1.00),
+(1152, 'INV262038BBB0', 573, 1, 1.20, 1.20, 1.00),
+(1153, 'INV262038BBB0', 574, 1, 40.00, 40.00, 33.00),
+(1154, 'INV262038BBB0', 575, 1, 45.00, 45.00, 34.00),
+(1155, 'INV26204E78B7', 576, 1, 25.00, 25.00, 20.00),
+(1156, 'INV26204E78B7', 575, 1, 45.00, 45.00, 34.00),
+(1157, 'INV26204E78B7', 574, 1, 40.00, 40.00, 33.00);
 
 -- --------------------------------------------------------
 
@@ -865,9 +860,7 @@ CREATE TABLE `stock_adjustment` (
 
 INSERT INTO `stock_adjustment` (`adjustment_id`, `adjustment_no`, `adjustment_date`, `adjustment_type`, `reason`, `reference_no`, `remarks`, `adjusted_by`, `total_items`, `total_qty`, `status`, `created_at`, `updated_at`) VALUES
 (6, 'SA-000001', '2026-07-16', 'stock_in', 'Physical Count', '123', 'tet', 18, 0, 0.00, 'Approved', '2026-07-16 05:05:45', '2026-07-16 05:14:08'),
-(7, 'SA-000002', '2026-07-16', 'stock_out', '', '', '', 18, 0, 0.00, 'Approved', '2026-07-16 05:05:58', '2026-07-16 05:14:08'),
-(8, 'SA-000003', '2026-07-19', 'stock_in', 'Stock Correction', '888hhh', 'test', 18, 0, 0.00, 'Approved', '2026-07-19 17:10:07', '2026-07-19 17:10:07'),
-(9, 'SA-000004', '2026-07-19', 'stock_out', 'Lost', 'dasds', 'sada', 18, 0, 0.00, 'Approved', '2026-07-19 17:15:18', '2026-07-19 17:15:18');
+(7, 'SA-000002', '2026-07-16', 'stock_out', '', '', '', 18, 0, 0.00, 'Approved', '2026-07-16 05:05:58', '2026-07-16 05:14:08');
 
 -- --------------------------------------------------------
 
@@ -893,9 +886,7 @@ CREATE TABLE `stock_adjustment_details` (
 
 INSERT INTO `stock_adjustment_details` (`id`, `adjustment_id`, `product_id`, `current_stock`, `adjustment_qty`, `new_stock`, `unit_cost`, `created_at`, `remarks`) VALUES
 (6, 6, 573, 5224.00, 4.00, 5228.00, 0.00, '2026-07-16 05:05:45', NULL),
-(7, 7, 574, 480.00, 10.00, 470.00, 0.00, '2026-07-16 05:05:58', NULL),
-(8, 8, 576, 2.00, 3.00, 5.00, 0.00, '2026-07-19 17:10:07', NULL),
-(9, 9, 574, 470.00, 10.00, 460.00, 0.00, '2026-07-19 17:15:18', NULL);
+(7, 7, 574, 480.00, 10.00, 470.00, 0.00, '2026-07-16 05:05:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -940,9 +931,10 @@ CREATE TABLE `tax` (
 INSERT INTO `tax` (`tax_id`, `tax_name`, `tax_percentage`) VALUES
 (8, 'Tax', 5.00),
 (9, 'VAT', 10.00),
-(11, 'None', 2.00),
+(11, 'None', 3.00),
 (13, 'test tax', 20.00),
-(14, 'No VAT', 2.00);
+(14, 'vat', 0.00),
+(15, 'tst', 2.00);
 
 -- --------------------------------------------------------
 
@@ -953,10 +945,10 @@ INSERT INTO `tax` (`tax_id`, `tax_name`, `tax_percentage`) VALUES
 CREATE TABLE `user` (
   `user_id` int NOT NULL,
   `user_name` varchar(100) NOT NULL,
-  `user_email` varchar(80) NOT NULL,
+  `user_email` varchar(100) NOT NULL,
   `login_id` varchar(80) NOT NULL,
-  `login_password` varchar(80) NOT NULL,
-  `user_role_id` varchar(70) NOT NULL
+  `login_password` varchar(255) NOT NULL,
+  `user_role_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -964,8 +956,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `login_id`, `login_password`, `user_role_id`) VALUES
-(18, 'Md. Kabir Hossain', 'kabir@gmail.com', 'kabir', '123456', '46'),
-(19, 'Nafisa Tabassom', 'nafisa@gmail.com', 'nafisa1', '589674', '48');
+(18, 'Md. Kabir Hossain', 'kabir@gmail.com', 'kabir', '$2y$10$DwWwcEb41BOiHKwPit4C2.hY4ym8Bkab7g.KLn/25sAOihc7PCCCe', 46),
+(19, 'Nafisa Tabassom123', 'nafisa@gmail.com', 'nafisa1', '$2y$10$DwWwcEb41BOiHKwPit4C2.hY4ym8Bkab7g.KLn/25sAOihc7PCCCe', 46),
+(26, 'ayan', 'ayan@gmail.com', 'ayan', '$2y$10$DwWwcEb41BOiHKwPit4C2.hY4ym8Bkab7g.KLn/25sAOihc7PCCCe', 48);
 
 -- --------------------------------------------------------
 
@@ -1182,7 +1175,8 @@ ALTER TABLE `tax`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `uk_login_id` (`login_id`);
 
 --
 -- Indexes for table `user_role`
@@ -1210,7 +1204,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer_due`
 --
 ALTER TABLE `customer_due`
-  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=499;
+  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=497;
 
 --
 -- AUTO_INCREMENT for table `customer_group`
@@ -1264,19 +1258,19 @@ ALTER TABLE `payment_receive`
 -- AUTO_INCREMENT for table `product_brand`
 --
 ALTER TABLE `product_brand`
-  MODIFY `brand_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `brand_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `product_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
+  MODIFY `product_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 
 --
 -- AUTO_INCREMENT for table `product_group`
 --
 ALTER TABLE `product_group`
-  MODIFY `product_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `product_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `product_inital_stock`
@@ -1288,13 +1282,13 @@ ALTER TABLE `product_inital_stock`
 -- AUTO_INCREMENT for table `product_purchase`
 --
 ALTER TABLE `product_purchase`
-  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `product_purchase_details`
 --
 ALTER TABLE `product_purchase_details`
-  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 
 --
 -- AUTO_INCREMENT for table `product_stock`
@@ -1306,55 +1300,55 @@ ALTER TABLE `product_stock`
 -- AUTO_INCREMENT for table `product_strength`
 --
 ALTER TABLE `product_strength`
-  MODIFY `strength_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `strength_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `product_unit`
 --
 ALTER TABLE `product_unit`
-  MODIFY `product_unit_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `product_unit_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `return_customer_due`
 --
 ALTER TABLE `return_customer_due`
-  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `due_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `return_sales`
 --
 ALTER TABLE `return_sales`
-  MODIFY `return_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `return_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT for table `return_sales_details`
 --
 ALTER TABLE `return_sales_details`
-  MODIFY `return_detail_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `return_detail_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=786;
+  MODIFY `sales_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=785;
 
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1160;
+  MODIFY `sales_details_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1158;
 
 --
 -- AUTO_INCREMENT for table `stock_adjustment`
 --
 ALTER TABLE `stock_adjustment`
-  MODIFY `adjustment_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `adjustment_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `stock_adjustment_details`
 --
 ALTER TABLE `stock_adjustment_details`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -1366,13 +1360,13 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `tax`
 --
 ALTER TABLE `tax`
-  MODIFY `tax_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `tax_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `user_role`

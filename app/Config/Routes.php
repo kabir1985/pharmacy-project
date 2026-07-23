@@ -67,6 +67,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->get('get-category-list', 'ProductCategoryController::getCategoryList'); // From view/product/NewProductAdd.php
     
     });
+
     
     $routes->group('brands', function ($routes) {
         $routes->get('/', 'ProductBrandController::index');
@@ -214,6 +215,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     });
     
     $routes->get('salelist', 'SaleListController::index');
+    $routes->get('get-category-list', 'ProductCategoryController::getCategoryList'); //From NewProductAdd.php page
     
     $routes->get('database-backup', 'BackupController::databaseBackup');
     
