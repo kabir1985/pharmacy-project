@@ -12,9 +12,24 @@ class ReturnController extends BaseController
 {
 
     private $db;
+    private $ProductSaleModel;
+    private $ProductSaleDetailsModel;
+    private $CustomerDueModel;
+    private $ReturnSaleModel;
+    private $ReturnSaleDetailsModel;
+    private $ReturnCustomerDueModel;
+
     public function __construct()
     {
-        $this->db = db_connect();
+          $this->db = db_connect();
+
+    $this->ProductSaleModel = new ProductSaleModel();
+    $this->ProductSaleDetailsModel = new ProductSaleDetailsModel();
+    $this->CustomerDueModel = new CustomerDueModel();
+
+    $this->ReturnSaleModel = new ReturnSaleModel();
+    $this->ReturnSaleDetailsModel = new ReturnSaleDetailsModel();
+    $this->ReturnCustomerDueModel = new ReturnCustomerDueModel();
     }
 
     // Get products for an invoice
@@ -70,17 +85,6 @@ class ReturnController extends BaseController
 
     public function process()
     {
-
-        $db = \Config\Database::connect();
-
-        $ProductSaleModel = new ProductSaleModel();
-        $ProductSaleDetailsModel = new ProductSaleDetailsModel();
-        $CustomerDueModel = new CustomerDueModel();
-
-        $returnSaleModel = new ReturnSaleModel();
-        $returnSaleDetailsModel = new ReturnSaleDetailsModel();
-        $returnCustomerDueModel = new ReturnCustomerDueModel();
-
         $invoice = $this->request->getPost('return_invoice');
         $return_qty = $this->request->getPost('return_qty');
         $reason = $this->request->getPost('reason');
@@ -93,7 +97,7 @@ class ReturnController extends BaseController
             ]);
         }
 
-        $saleDetails = $ProductSaleDetailsModel
+        $saleDetails = $this->ProductSaleDetailsModel
             ->where('sales_details_invoice', $invoice)
             ->findAll();
 
@@ -144,7 +148,7 @@ class ReturnController extends BaseController
         }
 
         // ---------------- GET MASTER DATA ----------------
-        $sale = $ProductSaleModel
+        $sale = $this->ProductSaleModel
             ->where('sales_invoice', $invoice)
             ->first();
 
@@ -171,7 +175,7 @@ class ReturnController extends BaseController
         $db->transStart();
 
         // ---------------- INSERT RETURN MASTER (NO DUPLICATE) ----------------
-        $existingReturn = $returnSaleModel
+        $existingReturn = $this->returnSaleModel
             ->where('sales_invoice', $invoice)
             ->first();
 
@@ -215,11 +219,6 @@ class ReturnController extends BaseController
                 'total_sale_price' => $detail['total_sale_price'],
             ]);
 
-            // STOCK UPDATE// calculating stock by run time so do not need this code
-            // $db->table('product_inital_stock')
-            //     ->set('productinitial_quantity', 'productinitial_quantity + ' . $qty, false)
-            //     ->where('product_id', $pid)
-            //     ->update();
         }
 
         // ---------------- CUSTOMER DUE RETURN ----------------
@@ -240,10 +239,6 @@ class ReturnController extends BaseController
 
         // ---------------- UPDATE/DELETE SALE ----------------
         if ($isFullReturn) {
-
-            // $ProductSaleDetailsModel->where('sales_details_invoice', $invoice)->delete();
-            // $CustomerDueModel->where('due_invoice_no', $invoice)->delete();
-            // $ProductSaleModel->where('sales_invoice', $invoice)->delete();
             $ProductSaleModel
                 ->where('sales_invoice', $invoice)
                 ->set('return_status', 'FULL')
