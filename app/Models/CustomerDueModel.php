@@ -8,7 +8,7 @@ class CustomerDueModel extends Model
 
     protected $primaryKey = 'due_id';
 
-    protected $allowedFields = ['due_date', 'customer_id', 'due_invoice_no', 'due_amount', 'due_paid_amount', 'current_balance'];
+    protected $allowedFields = ['customer_id', 'sales_id', 'due_amount', 'paid_amount'];
 
 } 
 

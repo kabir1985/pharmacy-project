@@ -444,7 +444,7 @@ class Menu extends BaseConfig
             'label'      => 'Backup Database',
             'icon'       => 'fa fa-download',
             'url'        => 'database-backup',
-            'roles'      => ['Admin'],
+           // 'roles'      => ['Administrator'],
             'privileges' => [],
             'children'   => []
         ],

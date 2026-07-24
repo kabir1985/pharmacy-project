@@ -60,7 +60,7 @@ echo $this->section('content');
     <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
         <div class='modal-content'>
             <div class='modal-header'>
-                <h5 class='modal-title' id='exampleModalLabel'>Please Add User Role1122</h5>
+                <h5 class='modal-title' id='exampleModalLabel'>Please Add User Role</h5>
                 <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                     <span aria-hidden='true'>&times;
                     </span>
@@ -437,7 +437,7 @@ echo $this->section('content');
 <div class="modal fade" id="user_previlege_edit" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form method="POST" action= "<?php echo site_url('role/update') ?>">
+            <form method="POST" action= "<?= site_url('role/update') ?>">
                 <div class="modal-header">
                     <h5 class="modal-title">Edit Role</h5>
                 </div>
@@ -516,15 +516,8 @@ echo $this->endSection();
 echo $this->section('scripts');
 ?>
 
-<!-- Data table plugin-->
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
-
 <script type='text/javascript'>
     $(document).ready(function () {
-
-
-        $('#sampleTable').DataTable();
 
         ////-------------------Product Group Entry Form-------------------------//
 
@@ -572,11 +565,27 @@ echo $this->section('scripts');
                 },
                 success: function (response) {
                     //alert(response);
-                    alert(response.message);
+                    //alert(response.message);
+
+Swal.fire({
+    icon: 'success',
+    title: response.message,
+    timer:1500,
+    showConfirmButton:false
+});
+
                     if (response.status === 'success') {
-                        $('#UserAdd').modal('hide');
-                        $('#UserAdd').find('input').prop('checked', false);
-                        $('#role_holder_name').val('');
+
+setTimeout(function(){
+    location.reload();
+},500);
+
+                       // $('#UserAdd').modal('hide');
+                       // $('#UserAdd').find('input').prop('checked', false);
+$('#UserAdd input[type=checkbox]').prop('checked', false);
+$('#role_holder_name').val('');
+
+                       
                     }
                 },
                 error: function () {

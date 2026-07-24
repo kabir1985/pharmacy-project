@@ -12,7 +12,7 @@ class ProductSaleModel extends Model
 
     protected $allowedFields = [
                                 'sales_invoice',
-                                'customer_type',
+                                'customer_id',
                                 'sales_date',
                                 'payment_type',
                                 'total_amount', 

@@ -21,7 +21,7 @@
  * --------------------------------------------------------------------
  */
 
-echo $this->extend('layout/layout');
+echo $this->extend('layout');
 echo $this->section('content');
 ?>
 
@@ -50,13 +50,12 @@ echo $this->section('content');
                     <table class='table table-hover table-bordered' id='sampleTable'>
                         <thead>
                             <tr>
-                                <th>First Name</th>
-                                <th>Last</th>
-                                <th>Email</th>
+                                
+                                <th> Name</th>
                                 <th>Phone</th>
                                 <th>Address</th>
-                                <th>TIN</th>
-                                <th>Company</th>
+                                <th> Group</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -67,42 +66,40 @@ echo $this->section('content');
                                 foreach ($customer_show as $row) {
                                     ?>
                                     <tr>
+
                                         <td>
-                                            <?= esc($row['cus_first_name']) ?>
+                                            <?= esc($row['customer_name']) ?>
                                         </td>
                                         <td>
-                                            <?= esc($row['cus_last_name']) ?>
+                                            <?= esc($row['phone']) ?>
                                         </td>
                                         <td>
-                                            <?= esc($row['cus_email']) ?>
+                                            <?= esc($row['address']) ?>
                                         </td>
-                                        <td>
-                                            <?= esc($row['cus_phone']) ?>
+
+                                      <td>
+                                            <?= esc($row['group_name']) ?>
                                         </td>
-                                        <td>
-                                            <?= esc($row['cus_address']) ?>
-                                        </td>
-                                        <td>
-                                            <?= esc($row['cus_tin']) ?>
-                                        </td>
-                                        <td>
-                                            <?= esc($row['cus_company']) ?>
-                                        </td>
+                                    <td>
+                                        <?php if ($row['status'] == 1): ?>
+                                            <span class="badge badge-success">Active</span>
+                                        <?php else: ?>
+                                            <span class="badge badge-danger">Inactive</span>
+                                        <?php endif; ?>
+                                    </td>
+                                                                    
+                                
                                         <td>
                                             <!-- Button to invoke the modal -->
-                                            <a href="#" class="btn btn-primary btn-sm btn-edit"
-                                                data-customer_id="<?= esc($row['customer_id']) ?>"
-                                                data-cus_first_name="<?= esc($row['cus_first_name']) ?>"
-                                                data-cus_last_name="<?= esc($row['cus_last_name']) ?>"
-                                                data-cus_email="<?= esc($row['cus_email']) ?>"
-                                                data-cus_phone="<?= esc($row['cus_phone']) ?>"
-                                                data-cus_address="<?= esc($row['cus_address']) ?>"
-                                                data-cus_tin="<?= esc($row['cus_tin']) ?>"
-                                                data-cus_company="<?= esc($row['cus_company']) ?>">
-
-                                                <i class="fa fa-edit"></i>
-
-                                            </a>
+                                 <a href="#" class="btn btn-primary btn-sm btn-edit"
+    data-customer_id="<?= esc($row['customer_id']) ?>"
+    data-customer_group_id="<?= esc($row['customer_group_id']) ?>"
+    data-customer_name="<?= esc($row['customer_name']) ?>"
+    data-phone="<?= esc($row['phone']) ?>"
+    data-address="<?= esc($row['address']) ?>"
+    data-status="<?= esc($row['status']) ?>">
+    <i class="fa fa-edit"></i>
+</a>
 
                                             <a href="#" class="btn btn-danger btn-sm btn-delete"
                                                 data-delete_id="<?= $row['customer_id'] ?>"><i class="fa fa-trash-o"></i></a>
@@ -134,76 +131,103 @@ echo $this->section('content');
 <!-- ========================================================= -->
 <!-- Add Customer Modal -->
 <!-- ========================================================= -->
-<form id="CustomerModalEntry_Form" method='post' action="<?= site_url('customer/create') ?>">
-    <div class='modal fade' id='CustomerAdd' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'
-        aria-hidden='true'>
-        <div class='modal-dialog modal-lg modal-dialog-centered' role='document'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <h5 class='modal-title' id='exampleModalLabel'>Please Enter Customer Details</h5>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                        <span aria-hidden='true'>&times;
-                        </span>
+<form id="CustomerModalEntry_Form" method="post" action="<?= site_url('customer/create') ?>">
+    <?= csrf_field() ?>
+
+    <div class="modal fade" id="CustomerAdd" tabindex="-1" role="dialog" aria-labelledby="CustomerAddLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="CustomerAddLabel">
+                        Add New Customer
+                    </h5>
+
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
                     </button>
                 </div>
-                <div class='modal-body'>
 
-                    <div class='form-row'>
-                        <div class='form-group col-md-4'>
-                            <label>First Name</label>
-                            <input required type='text' required class='form-control' name='cus_first_name'
-                                placeholder='First Name'>
-                        </div>
-                        <div class='form-group col-md-4'>
-                            <label>Last Name</label>
-                            <input type='text' class='form-control' name='cus_last_name' placeholder='Last Name'>
-                        </div>
-                        <div class='form-group col-md-4'>
-                            <label>Email</label>
-                            <input type='email' class='form-control' name='cus_email' placeholder='Email'>
-                        </div>
-                    </div>
-                    <div class='form-row'>
-                        <div class='form-group col-md-4'>
-                            <label> Phone Number</label>
-                            <input type='text' pattern="\d{1,13}" class='form-control' name='cus_phone'
-                                placeholder='Phone'>
-                        </div>
-                        <div class='form-group col-md-4'>
-                            <label> Address</label>
-                            <input type='text' class='form-control' name='cus_address' placeholder='Address'>
-                        </div>
-                        <div class='form-group col-md-4'>
-                            <label> TIN</label>
-                            <input type='text' class='form-control ' name='cus_tin'
-                                placeholder='Tax Identification Number'>
-                        </div>
-                    </div>
+                <div class="modal-body">
 
-                    <div class='form-row'>
-                        <div class='form-group col-md-4'>
-                            <label>Company</label>
-                            <input type='text' class='form-control' name='cus_company' placeholder='Company'>
-                        </div>
-                        <div class='form-group col-md-4'>
-                            <label for="inputState">Customer Type</label>
-                            <select id="CustomerType" name="cus_type" class="form-control">
+                    <div class="form-row">
 
-                                <option value="general">General</option>
-                                <option value="special">Special</option>
+                        <div class="form-group col-md-6">
+                            <label>Customer Group <span class="text-danger">*</span></label>
+
+                            <select name="customer_group_id" class="form-control" required>
+                                <option value="">Select Customer Group</option>
+
+                                <?php foreach ($customer_group_show as $group): ?>
+                                    <option value="<?= esc($group['customer_group_id']) ?>">
+                                        <?= esc($group['group_name']) ?>
+                                    </option>
+                                <?php endforeach; ?>
+
                             </select>
                         </div>
-                        <div class='form-group col-md-4'>
-                            <label>Date</label>
-                            <input type='text' class='form-control datePicker' name='cus_creation_date'
-                                placeholder='Creation Date'>
+
+                        <div class="form-group col-md-6">
+                            <label>Customer Name <span class="text-danger">*</span></label>
+
+                            <input
+                                type="text"
+                                name="customer_name"
+                                class="form-control"
+                                placeholder="Customer Name"
+                                required>
                         </div>
+
                     </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <label>Phone</label>
+
+                            <input
+                                type="text"
+                                name="phone"
+                                class="form-control"
+                                maxlength="20"
+                                placeholder="Phone Number">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Status</label>
+
+                            <select name="status" class="form-control">
+                                <option value="1" selected>Active</option>
+                                <option value="0">Inactive</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Address</label>
+
+                        <textarea
+                            name="address"
+                            class="form-control"
+                            rows="3"
+                            placeholder="Customer Address"></textarea>
+                    </div>
+
                 </div>
-                <div class='modal-footer'>
-                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
-                    <button type='submit' class='btn btn-primary'>Save changes</button>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        Close
+                    </button>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-save"></i> Save Customer
+                    </button>
+
                 </div>
+
             </div>
         </div>
     </div>
@@ -213,91 +237,189 @@ echo $this->section('content');
 <!-- ========================================================= -->
 <!-- Edit Customer Modal -->
 <!-- ========================================================= -->
-<div class='modal fade' id='customer_edit_modal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'
-    aria-hidden='true'>
-    <div class='modal-dialog  modal-dialog-centered' role='document'>
-        <div class='modal-content'>
-            <form id="customer_edit_submit_form" method='post' action="<?php echo site_url('customer/update') ?>">
-                <div class='modal-header'>
-                    <h5 class='modal-title' id='#'>Please Enter Customer Edit Details</h5>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                        <span aria-hidden='true'>&times;
-                        </span>
+<div class="modal fade" id="customer_edit_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <form id="customer_edit_submit_form" method="post" action="<?= site_url('customer/update') ?>">
+
+                <?= csrf_field(); ?>
+
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        Edit Customer
+                    </h5>
+
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
                     </button>
                 </div>
-                <div class='modal-body' id="#">
-                    <input type='hidden' required class='form-control' name='customer_id' id='customer_id'>
-                    <div class='form-row'>
-                        <div class='form-group col-md-6'>
-                            <label>First Name </label>
-                            <input type='text' required class='form-control' name='cus_first_name' id='cus_first_name'>
+
+                <div class="modal-body">
+
+                    <input type="hidden"
+                           name="customer_id"
+                           id="customer_id">
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <label>Customer Group</label>
+
+                            <select class="form-control"
+                                    name="customer_group_id"
+                                    id="customer_group_id"
+                                    required>
+
+                                <?php foreach ($customer_group_show as $group): ?>
+
+                                    <option value="<?= esc($group['customer_group_id']) ?>">
+                                        <?= esc($group['group_name']) ?>
+                                    </option>
+
+                                <?php endforeach; ?>
+
+                            </select>
+
                         </div>
-                        <div class='form-group col-md-6'>
-                            <label>Last Name </label>
-                            <input type='text' class='form-control' name='cus_last_name' id='cus_last_name'>
+
+                        <div class="form-group col-md-6">
+                            <label>Customer Name</label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   name="customer_name"
+                                   id="customer_name"
+                                   required>
+
                         </div>
+
                     </div>
-                    <div class='form-row'>
-                        <div class='form-group col-md-6'>
-                            <label>Email</label>
-                            <input type='text' required class='form-control' name='cus_email' id='cus_email'>
-                        </div>
-                        <div class='form-group col-md-6'>
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
                             <label>Phone</label>
-                            <input type='text' class='form-control' name='cus_phone' id='cus_phone'>
+
+                            <input type="text"
+                                   class="form-control"
+                                   name="phone"
+                                   id="phone">
+
                         </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Status</label>
+
+                            <select class="form-control"
+                                    name="status"
+                                    id="status">
+
+                                <option value="1">Active</option>
+                                <option value="0">Inactive</option>
+
+                            </select>
+
+                        </div>
+
                     </div>
 
-                    <div class='form-row'>
-                        <div class='form-group col-md-4'>
+                    <div class="form-row">
+
+                        <div class="form-group col-md-12">
                             <label>Address</label>
-                            <input type='text' required class='form-control' name='cus_address' id='cus_address'>
-                        </div>
-                        <div class='form-group col-md-4'>
-                            <label>TIN</label>
-                            <input type='text' class='form-control ' name='cus_tin' id='cus_tin'>
-                        </div>
-                        <div class='form-group col-md-4'>
-                            <label>Company</label>
-                            <input type='text' class='form-control ' name='cus_company' id='cus_company'>
-                        </div>
-                    </div>
-                </div>
-                <div class='modal-footer'>
-                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
-                    <button type='submit' class='btn btn-primary'>Save Edit</button>
-                </div>
-            </form>
-        </div>
 
+                            <textarea class="form-control"
+                                      rows="3"
+                                      name="address"
+                                      id="address"></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+                        Close
+                    </button>
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        <i class="fa fa-save"></i>
+                        Update Customer
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
     </div>
 </div>
 <!-- ========================================================= -->
 <!-- Delete Customer Modal -->
 <!-- ========================================================= -->
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteModalLabel">
+                    <i class="fa fa-trash"></i> Delete Customer
+                </h5>
+
+                <button type="button" class="close text-white" data-dismiss="modal">
+                    <span>&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
 
-                <h4>Are you sure want to delete this Customer?</h4>
+            <form id="customer_delete_form"
+                  action="<?= site_url('customer/delete') ?>"
+                  method="post">
 
-            </div>
-            <form action="<?= site_url('customer/delete') ?>" method="post">
-                <div class="modal-footer">
-                    <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary">Yes</button>
+                <?= csrf_field(); ?>
+
+                <div class="modal-body">
+
+                    <input type="hidden"
+                           name="delete_id"
+                           id="delete_id">
+
+                    <h5 class="text-danger">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        Are you sure you want to delete this customer?
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        This action cannot be undone.
+                    </p>
+
                 </div>
+
+                <div class="modal-footer">
+
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+                        No
+                    </button>
+
+                    <button type="submit"
+                            class="btn btn-danger">
+                        <i class="fa fa-trash"></i>
+                        Yes, Delete
+                    </button>
+
+                </div>
+
             </form>
+
         </div>
     </div>
 </div>
@@ -389,56 +511,31 @@ echo $this->section('scripts');
         });
 
 
-        //...................JQuery for Modal Edit & Delete option...................................
+//...................JQuery for Modal Edit & Delete option...................................
+$(document).on('click', '.btn-edit', function () {
 
-        // get Edit Product
-        $('.btn-edit').on('click', function () {
-            // get data from button edit
-            const customer_id = $(this).data('customer_id');
-            const cus_first_name = $(this).data('cus_first_name');
-            const cus_last_name = $(this).data('cus_last_name');
+    $('#customer_id').val($(this).data('customer_id'));
+    $('#customer_group_id').val($(this).data('customer_group_id'));
+    $('#customer_name').val($(this).data('customer_name'));
+    $('#phone').val($(this).data('phone'));
+    $('#address').val($(this).data('address'));
+    $('#status').val($(this).data('status'));
 
-            const cus_email = $(this).data('cus_email');
-            const cus_phone = $(this).data('cus_phone');
-            const cus_address = $(this).data('cus_address');
-            const cus_tin = $(this).data('cus_tin');
-            const cus_company = $(this).data('cus_company');
+    $('#customer_edit_modal').modal('show');
 
-            // Set data to Form Edit
-            $('#customer_id').val(customer_id);
-            $('#cus_first_name').val(cus_first_name);
-            $('#cus_last_name').val(cus_last_name);
+});
 
-            $('#cus_email').val(cus_email);
-            $('#cus_phone').val(cus_phone);
-            $('#cus_address').val(cus_address);
-            $('#cus_tin').val(cus_tin);
-            $('#cus_company').val(cus_company);
-            // Call Modal Edit
-            $('#customer_edit_modal').modal('show');
+        $(document).on('click', '.btn-delete', function (e) {
+    e.preventDefault();
 
-        });
+    $('#delete_id').val($(this).data('delete_id'));
 
-        // get Delete Product
-        $('.btn-delete').on('click', function () {
-            // get data from button edit
-            const delete_id = $(this).data('delete_id');
-            //alert(delete_id);
-            // Set data to Form Edit
-            $('#delete_id').val(delete_id);
-            // Call Modal Edit
-            $('#deleteModal').modal('show');
-        });
+    $('#deleteModal').modal('show');
+});
 
 
         //................ JQuery modal Edit & Delete end here........................................
-        // ...............For Date Show.............................
-        $('.datePicker').datepicker({
-            format: "dd/mm/yyyy",
-            autoclose: true,
-            todayHighlight: true
-        });
-        //.................For Date show end........................ 
+  
 
     });
 </script>

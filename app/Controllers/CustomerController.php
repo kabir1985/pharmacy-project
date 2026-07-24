@@ -3,109 +3,137 @@
 namespace App\Controllers;
 
 use App\Models\CustomerModel;
-use CodeIgniter\HTTP\IncomingRequest;
+use App\Models\CustomerGroupModel;
 
 class CustomerController extends BaseController
 {
-
-   private $customerModelObject;
+    private $customerModelObject;
+    private $customerGroupObject;
 
     public function __construct()
     {
         $this->customerModelObject = new CustomerModel();
-    } 
- 
+        $this->customerGroupObject = new CustomerGroupModel();
+    }
+
+    /**
+     * Customer List
+     */
     public function index()
     {
-		
-        ## Fetch all records from database
-       $data['customer_show'] = $this->customerModelObject->findAll();
-	   return view('customer/customer_add', $data);
-       //return view('report/pdftest', $data);
+        $data['customer_group_show'] = $this->customerGroupObject->findAll();
+        $data['customer_show']       = $this->customerModelObject->getCustomers();
+
+        return view('customer/customer_add', $data);
     }
 
-    // insert Supplier data
-
-public function create()
-{
-    $phone = $this->request->getPost('cus_phone');
-    $email = $this->request->getPost('cus_email');
-
-    // Check duplicate
-    $check = $this->customerModelObject
-            ->where('cus_phone', $phone)
-            ->orWhere('cus_email', $email)
-            ->first();
-
-    if($check)
+    /**
+     * Create Customer
+     */
+    public function create()
     {
-        echo "duplicate";
-        return;
-    }
+        $customer_name     = trim($this->request->getPost('customer_name'));
+        $phone             = trim($this->request->getPost('phone'));
+        $customer_group_id = $this->request->getPost('customer_group_id');
 
-    $data = [
-        'cus_first_name' => $this->request->getPost('cus_first_name'),
-        'cus_last_name'  => $this->request->getPost('cus_last_name'),
-        'cus_email'      => $this->request->getPost('cus_email'),
-        'cus_phone'      => $this->request->getPost('cus_phone'),
-        'cus_address'    => $this->request->getPost('cus_address'),
-        'cus_tin'        => $this->request->getPost('cus_tin'),
-        'cus_company'    => $this->request->getPost('cus_company'),
-        'cus_type'       => $this->request->getPost('cus_type'),
-        'cus_creation_date' => $this->request->getPost('cus_creation_date')
-    ];
+        if ($customer_name == '') {
+            return $this->response->setBody('0');
+        }
 
-    $insert = $this->customerModelObject->insert($data);
+        // Duplicate phone check
+        if ($phone != '') {
 
-    if($insert){
-        echo "1";
-    }else{
-        echo "0";
-    }
-}
+            $exists = $this->customerModelObject
+                ->where('phone', $phone)
+                ->first();
 
+            if ($exists) {
+                return $this->response->setBody('duplicate');
+            }
+        }
 
-    public function update($id = 0)
-    {
-        $id = $this->request->getVar('customer_id');
-        //echo $id;
         $data = [
-            'cus_first_name'    => $this->request->getVar('cus_first_name'),
-            'cus_last_name'     => $this->request->getVar('cus_last_name'),
-            'cus_email'        => $this->request->getVar('cus_email'),
-            'cus_phone'        => $this->request->getVar('cus_phone'),
-            'cus_address'      => $this->request->getVar('cus_address'),
-            'cus_tin'          => $this->request->getVar('cus_tin'),
-            'cus_company'     => $this->request->getVar('cus_company')
+            'customer_group_id' => !empty($customer_group_id) ? $customer_group_id : null,
+            'customer_name'     => $customer_name,
+            'phone'             => $phone,
+            'address'           => trim($this->request->getPost('address')),
+            'status'            => $this->request->getPost('status') ?? 1,
         ];
 
-        $d =  $this->customerModelObject->update($id, $data);
-                //$d = $this->customerModelObject->insert($data);
-        if($d>0)
-        { 
-            echo "1";
-        }
-        else
-        {
-            echo "0";
+        if ($this->customerModelObject->insert($data)) {
+            return $this->response->setBody('1');
         }
 
-        //return into supplier page
-        //return $this->response->redirect(site_url('/Customer'));
+        return $this->response->setBody('0');
     }
 
-
-    public function delete($id = 0)
+    /**
+     * Update Customer
+     */
+    public function update()
     {
+        $id = $this->request->getPost('customer_id');
 
-        $id = $this->request->getVar('delete_id');
+        if (!$id) {
+            return $this->response->setBody('0');
+        }
 
-        // echo $id;
-        // exit();
+        $customer = $this->customerModelObject->find($id);
 
-        $this->customerModelObject->where('customer_id', $id)->delete();
+        if (!$customer) {
+            return $this->response->setBody('0');
+        }
 
-        //return into supplier page
-        return $this->response->redirect(site_url('/customer'));
-    } 
+        $phone = trim($this->request->getPost('phone'));
+
+        // Duplicate phone except current customer
+        if ($phone != '') {
+
+            $exists = $this->customerModelObject
+                ->where('phone', $phone)
+                ->where('customer_id !=', $id)
+                ->first();
+
+            if ($exists) {
+                return $this->response->setBody('duplicate');
+            }
+        }
+
+        $data = [
+            'customer_group_id' => !empty($this->request->getPost('customer_group_id'))
+                ? $this->request->getPost('customer_group_id')
+                : null,
+
+            'customer_name' => trim($this->request->getPost('customer_name')),
+            'phone'         => $phone,
+            'address'       => trim($this->request->getPost('address')),
+            'status'        => $this->request->getPost('status'),
+        ];
+
+        if ($this->customerModelObject->update($id, $data)) {
+            return $this->response->setBody('1');
+        }
+
+        return $this->response->setBody('0');
+    }
+
+    /**
+     * Delete Customer
+     */
+    public function delete()
+    {
+        $id = $this->request->getPost('delete_id');
+
+        if (!$id) {
+            return redirect()->to('/customer');
+        }
+
+        $customer = $this->customerModelObject->find($id);
+
+        if ($customer) {
+            $this->customerModelObject->delete($id);
+        }
+
+        return redirect()->to('/customer');
+    }
 }

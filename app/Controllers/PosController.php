@@ -8,6 +8,7 @@ use App\Models\ProductBrandModel;
 use App\Models\ProductCategoryModel;
 use App\Models\ProductSaleDetailsModel;
 use App\Models\ProductSaleModel;
+use App\Models\CustomerGroupModel;
 
 class PosController extends BaseController
 {
@@ -18,6 +19,7 @@ class PosController extends BaseController
     protected ProductBrandModel $ProductBrand_object;
     protected CustomerModel $customerModel_object;
     protected CustomerDueModel $customer_due_model_obj;
+     protected CustomerGroupModel $customerGroupObject;
     protected \CodeIgniter\Database\BaseConnection $db;
 
     public function __construct()
@@ -29,6 +31,7 @@ class PosController extends BaseController
         $this->ProductBrand_object = new ProductBrandModel();
         $this->customerModel_object = new CustomerModel();
         $this->customer_due_model_obj = new CustomerDueModel();
+        $this->customerGroupObject = new CustomerGroupModel();
         // $this->db = db_connect();
         $this->db = \Config\Database::connect();
     }
@@ -42,6 +45,7 @@ class PosController extends BaseController
         $data['product_category_show'] = $this->productCategory_object->findAll();
         $data['product_brand_show'] = $this->ProductBrand_object->findAll();
         $data['customer_show'] = $this->customerModel_object->findAll();
+        $data['customer_group_show'] = $this->customerGroupObject->findAll();
 
         $sql_Sale = "SELECT
                         sales.sales_id,
@@ -67,171 +71,338 @@ class PosController extends BaseController
         return view('pos/pos_add', $data);
     }
 
-    public function sale()
-    {
-        $session = session();
-        $request = $this->request;
-        $db = $this->db;
+    // public function sale()
+    // {
+    //     $session = session();
+    //     $request = $this->request;
+    //     $db = $this->db;
 
-        $productsList = $request->getPost('cart_data');
+    //     $productsList = $request->getPost('cart_data');
 
-        // $discountOnTotalPrice = (float) $request->getPost('discountOnTotalPrice');
-        $otherChargeOnTotalPrice = (float) $request->getPost('otherChargeOnTotalPrice');
-        $paid = (float) $request->getPost('paid');
-        $customer_type = $request->getPost('customer_type');
-        $seller_id = $session->get('user_id');
+    //     // $discountOnTotalPrice = (float) $request->getPost('discountOnTotalPrice');
+    //     $otherChargeOnTotalPrice = (float) $request->getPost('otherChargeOnTotalPrice');
+    //     $paid = (float) $request->getPost('paid');
+    //     $customer_id = $request->getPost('customer_id');
+    //     $seller_id = $session->get('user_id');
 
-        // =========================
-        // AUTO INVOICE GENERATE
-        // =========================
-        $day_no = date('z') + 1;
-        $unique_text = substr(md5(microtime(true) . mt_rand()), -5);
-        $invoice_id = strtoupper('INV' . date('y') . str_pad($day_no, 3, '0', STR_PAD_LEFT) . $unique_text);
+    //     // =========================
+    //     // AUTO INVOICE GENERATE
+    //     // =========================
+    //     $day_no = date('z') + 1;
+    //     $unique_text = substr(md5(microtime(true) . mt_rand()), -5);
+    //     $invoice_id = strtoupper('INV' . date('y') . str_pad($day_no, 3, '0', STR_PAD_LEFT) . $unique_text);
 
-        // =========================
-        // CALCULATION START
-        // =========================
-        $subtotal = 0;
-        $total_vat = 0;
-        $total_discount = 0;
+    //     // =========================
+    //     // CALCULATION START
+    //     // =========================
+    //     $subtotal = 0;
+    //     $total_vat = 0;
+    //     $total_discount = 0;
 
-        $sales_details_invoice_data = [];
+    //     $sales_details_invoice_data = [];
 
-        foreach ($productsList as $row) {
+    //     foreach ($productsList as $row) {
 
-            $qty = (int) $row['quantity'];
-            $price = (float) $row['sales_price_for_customer'];
+    //         $qty = (int) $row['quantity'];
+    //         $price = (float) $row['sales_price_for_customer'];
 
-            $line_total = round($qty * $price, 2);
+    //         $line_total = round($qty * $price, 2);
 
-            $vat_percent = (float) ($row['vat'] ?? 0);
-            $discount_on_each_product = (float) ($row['discount_on_each_product'] ?? 0);
+    //         $vat_percent = (float) ($row['vat'] ?? 0);
+    //         $discount_on_each_product = (float) ($row['discount_on_each_product'] ?? 0);
 
-            $vat_amount = round(($line_total * $vat_percent) / 100, 2);
-            ////////////////////
-            $discount_type = $row['discount_type']; // "%" or "flat"
-            // $lineTotal = $quantity * $sales_price;
+    //         $vat_amount = round(($line_total * $vat_percent) / 100, 2);
+    //         ////////////////////
+    //         $discount_type = $row['discount_type']; // "%" or "flat"
+    //         // $lineTotal = $quantity * $sales_price;
 
-            if ($discount_type == '%') {
-                $discount_amount = ($line_total * $discount_on_each_product) / 100;
-            } else {
-                $discount_amount = $discount_on_each_product;
-            }
-            //////////////////////////
-            //  $discount_amount = round(($line_total * $discount_percent) / 100, 2);
+    //         if ($discount_type == '%') {
+    //             $discount_amount = ($line_total * $discount_on_each_product) / 100;
+    //         } else {
+    //             $discount_amount = $discount_on_each_product;
+    //         }
+    //         //////////////////////////
+    //         //  $discount_amount = round(($line_total * $discount_percent) / 100, 2);
 
-            $subtotal += $line_total;
-            $total_vat += $vat_amount;
-            $total_discount += $discount_amount;
+    //         $subtotal += $line_total;
+    //         $total_vat += $vat_amount;
+    //         $total_discount += $discount_amount;
 
-            $sales_details_invoice_data[] = [
-                'sales_details_invoice' => $invoice_id,
-                'product_id' => $row['product_id'],
-                'product_quantity_sold' => $qty,
-                'unit_price' => $price,
-                'total_sale_price' => $line_total,
-                'total_buy_price' => $row['purchase_price'] * $qty,
-                // 'productwiseDiscountPercnt' => $discount_percent,
-                // 'productwiseDiscountAmount' => $discount_amount,
+    //         $sales_details_invoice_data[] = [
+    //             'sales_details_invoice' => $invoice_id,
+    //             'product_id' => $row['product_id'],
+    //             'product_quantity_sold' => $qty,
+    //             'unit_price' => $price,
+    //             'total_sale_price' => $line_total,
+    //             'total_buy_price' => $row['purchase_price'] * $qty,
+    //             // 'productwiseDiscountPercnt' => $discount_percent,
+    //             // 'productwiseDiscountAmount' => $discount_amount,
 
-                // 'productwiseVatPercnt' => $vat_percent,
-                // 'productwiseVatAmount' => $vat_amount,
-            ];
+    //             // 'productwiseVatPercnt' => $vat_percent,
+    //             // 'productwiseVatAmount' => $vat_amount,
+    //         ];
+    //     }
+
+    //     // =========================
+    //     // FINAL TOTAL CALCULATION
+    //     // =========================
+    //     // $calculated_total = $subtotal - $total_discount + $total_vat;
+    //     // $due = $calculated_total + $otherChargeOnTotalPrice - $discountOnTotalPrice - $paid;
+
+    //     $calculated_total = $subtotal - $total_discount + $total_vat;
+
+    //     $grand_total = $calculated_total + $otherChargeOnTotalPrice;
+
+    //     $due = $grand_total - $paid;
+
+    //     // =========================
+    //     // SALES MASTER DATA
+    //     // =========================
+
+    //     $sales_data = [
+
+    //         'sales_invoice' => $invoice_id,
+    //         'customer_id' => $customer_id,  // when customer is walk-in then customer_id will be NULL
+    //         'sales_date' => date('Y-m-d H:i:s'),
+    //         'payment_type' => 'Cash',
+
+    //         // Final invoice amount
+    //         'total_amount' => round($grand_total, 2),
+
+    //         // Product-wise totals
+    //         'product_discount' => round($total_discount, 2),
+    //         'product_vat' => round($total_vat, 2),
+
+    //         // Invoice-level adjustments
+    //         // 'discount_on_all'      => round($discountOnTotalPrice, 2),
+    //         'other_charge_on_all' => round($otherChargeOnTotalPrice, 2),
+
+    //         'paid_amount' => $paid,
+    //         'due_amount' => round($due, 2),
+
+    //         'seller_id' => $seller_id,
+    //         'return_status' => 'ACTIVE',
+    //     ];
+    //     // =========================
+    //     // DATABASE TRANSACTION
+    //     // =========================
+    //     $db->transStart();
+
+    //     // insert sales
+    //     $this->product_sale_object->insert($sales_data);
+    //     $sales_id = $this->product_sale_object->insertID();
+
+    //     // insert details
+    //     $this->product_sale_details_object->insertBatch($sales_details_invoice_data);
+
+    //     // =========================
+    //     // CUSTOMER DUE (optional)
+    //     // =========================
+    //     if ($customer_id !== 'Walk-In-Customer') {
+    //         $this->customer_due_model_obj->insert([
+    //             //'due_date' => date('Y-m-d H:i:s'),
+    //             'customer_id' => $customer_id,
+    //             'sales_id' => $sales_id,
+    //             'due_amount' => $due,
+    //             'paid_amount' => 0,
+    //         ]);
+    //     }
+
+    //     // =========================
+    //     // REMOVE HELD SALES (optional)
+    //     // =========================
+    //     $hold_id = $request->getPost('hold_id');
+
+    //     if (!empty($hold_id) && is_numeric($hold_id)) {
+    //         $db->table('held_sales')->where('id', $hold_id)->delete();
+    //     }
+
+    //     $db->transComplete();
+
+    //     // =========================
+    //     // RESPONSE
+    //     // =========================
+    //     if ($db->transStatus() === false) {
+    //         return $this->response->setJSON([
+    //             'status' => 'error',
+    //         ]);
+    //     }
+
+    //     return $this->response->setJSON([
+    //         'status' => 'success',
+    //         'invoice' => $invoice_id,
+    //         'sales_id' => $sales_id,
+    //         'total' => round($grand_total, 2),
+    //     ]);
+    // }
+
+
+public function sale()
+{
+    $session = session();
+    $request = $this->request;
+    $db = $this->db;
+
+    $productsList = $request->getPost('cart_data');
+
+    if (empty($productsList) || !is_array($productsList)) {
+        return $this->response->setJSON([
+            'status'  => 'error',
+            'message' => 'Cart is empty.'
+        ]);
+    }
+
+    $otherChargeOnTotalPrice = (float) $request->getPost('otherChargeOnTotalPrice');
+    $paid                    = (float) $request->getPost('paid');
+    $customer_id             = $request->getPost('customer_id');
+    $seller_id               = $session->get('user_id');
+
+    // Walk-In Customer
+$customer_id = $request->getPost('customer_id');
+
+if (empty($customer_id)) {
+    $customer_id = null;
+}
+
+    // =========================
+    // AUTO INVOICE GENERATE
+    // =========================
+    $day_no      = date('z') + 1;
+    $unique_text = strtoupper(substr(md5(microtime(true) . mt_rand()), -5));
+    $invoice_id  = 'INV' . date('y') . str_pad($day_no, 3, '0', STR_PAD_LEFT) . $unique_text;
+
+    // =========================
+    // CALCULATION
+    // =========================
+    $subtotal       = 0;
+    $total_vat      = 0;
+    $total_discount = 0;
+
+    $sales_details_invoice_data = [];
+
+    foreach ($productsList as $row) {
+
+        $qty   = (int) $row['quantity'];
+        $price = (float) $row['sales_price_for_customer'];
+
+        $line_total = round($qty * $price, 2);
+
+        $vat_percent = (float) ($row['vat'] ?? 0);
+        $vat_amount  = round(($line_total * $vat_percent) / 100, 2);
+
+        $discount_value = (float) ($row['discount_on_each_product'] ?? 0);
+        $discount_type  = $row['discount_type'] ?? '%';
+
+        if ($discount_type === '%') {
+            $discount_amount = round(($line_total * $discount_value) / 100, 2);
+        } else {
+            $discount_amount = round($discount_value, 2);
         }
 
-        // =========================
-        // FINAL TOTAL CALCULATION
-        // =========================
-        // $calculated_total = $subtotal - $total_discount + $total_vat;
-        // $due = $calculated_total + $otherChargeOnTotalPrice - $discountOnTotalPrice - $paid;
+        $subtotal       += $line_total;
+        $total_vat      += $vat_amount;
+        $total_discount += $discount_amount;
 
-        $calculated_total = $subtotal - $total_discount + $total_vat;
-
-        $grand_total = $calculated_total + $otherChargeOnTotalPrice;
-
-        $due = $grand_total - $paid;
-
-        // =========================
-        // SALES MASTER DATA
-        // =========================
-
-        $sales_data = [
-
-            'sales_invoice' => $invoice_id,
-            'customer_type' => $customer_type,
-            'sales_date' => date('Y-m-d H:i:s'),
-            'payment_type' => 'Cash',
-
-            // Final invoice amount
-            'total_amount' => round($grand_total, 2),
-
-            // Product-wise totals
-            'product_discount' => round($total_discount, 2),
-            'product_vat' => round($total_vat, 2),
-
-            // Invoice-level adjustments
-            // 'discount_on_all'      => round($discountOnTotalPrice, 2),
-            'other_charge_on_all' => round($otherChargeOnTotalPrice, 2),
-
-            'paid_amount' => $paid,
-            'due_amount' => round($due, 2),
-
-            'seller_id' => $seller_id,
-            'return_status' => 'ACTIVE',
+        $sales_details_invoice_data[] = [
+            'sales_details_invoice' => $invoice_id,
+            'product_id'            => $row['product_id'],
+            'product_quantity_sold' => $qty,
+            'unit_price'            => $price,
+            'total_sale_price'      => $line_total,
+            'total_buy_price'       => $row['purchase_price'] * $qty,
         ];
-        // =========================
-        // DATABASE TRANSACTION
-        // =========================
-        $db->transStart();
+    }
 
-        // insert sales
+    // =========================
+    // FINAL TOTAL
+    // =========================
+    $calculated_total = $subtotal - $total_discount + $total_vat;
+
+    $grand_total = $calculated_total + $otherChargeOnTotalPrice;
+
+    $due = max(0, round($grand_total - $paid, 2));
+
+    // =========================
+    // SALES MASTER
+    // =========================
+    $sales_data = [
+        'sales_invoice'        => $invoice_id,
+        'customer_id'          => $customer_id, // NULL for Walk-In Customer
+        'sales_date'           => date('Y-m-d H:i:s'),
+        'payment_type'         => 'Cash',
+
+        'total_amount'         => round($grand_total, 2),
+
+        'product_discount'     => round($total_discount, 2),
+        'product_vat'          => round($total_vat, 2),
+
+        'other_charge_on_all'  => round($otherChargeOnTotalPrice, 2),
+
+        'paid_amount'          => round($paid, 2),
+        'due_amount'           => $due,
+
+        'seller_id'            => $seller_id,
+        'return_status'        => 'ACTIVE',
+    ];
+
+    // =========================
+    // DATABASE TRANSACTION
+    // =========================
+    $db->transBegin();
+
+    try {
+
+        // Sales Master
         $this->product_sale_object->insert($sales_data);
         $sales_id = $this->product_sale_object->insertID();
 
-        // insert details
+        // Sales Details
         $this->product_sale_details_object->insertBatch($sales_details_invoice_data);
 
-        // =========================
-        // CUSTOMER DUE (optional)
-        // =========================
-        if ($customer_type !== 'Walk-In-Customer') {
-            $this->customer_due_model_obj->insert([
-                'due_date' => date('Y-m-d H:i:s'),
-                'customer_id' => $customer_type,
-                'due_invoice_no' => $invoice_id,
-                'due_amount' => $due,
-                'due_paid_amount' => 0,
-                'current_balance' => 0,
-            ]);
-        }
+        //customer due
 
-        // =========================
-        // REMOVE HELD SALES (optional)
-        // =========================
+  if ($customer_id !== null && $due > 0) {
+    $this->customer_due_model_obj->insert([
+        'customer_id' => $customer_id,
+        'sales_id'    => $sales_id,
+        'due_amount'  => $due,
+        'paid_amount' => 0,
+    ]);
+}
+
+        // Remove Held Sale
         $hold_id = $request->getPost('hold_id');
 
         if (!empty($hold_id) && is_numeric($hold_id)) {
-            $db->table('held_sales')->where('id', $hold_id)->delete();
+            $db->table('held_sales')
+                ->where('id', $hold_id)
+                ->delete();
         }
 
-        $db->transComplete();
-
-        // =========================
-        // RESPONSE
-        // =========================
         if ($db->transStatus() === false) {
-            return $this->response->setJSON([
-                'status' => 'error',
-            ]);
+            throw new \Exception('Transaction failed.');
         }
+
+        $db->transCommit();
 
         return $this->response->setJSON([
-            'status' => 'success',
-            'invoice' => $invoice_id,
+            'status'   => 'success',
+            'invoice'  => $invoice_id,
             'sales_id' => $sales_id,
-            'total' => round($grand_total, 2),
+            'total'    => round($grand_total, 2),
+            'message'  => 'Sale completed successfully.'
+        ]);
+
+    } catch (\Throwable $e) {
+
+        $db->transRollback();
+
+        return $this->response->setJSON([
+            'status'  => 'error',
+            'message' => $e->getMessage()
         ]);
     }
+}
 
 
     public function productSearch()
@@ -250,7 +421,7 @@ class PosController extends BaseController
 
         // $discountOnTotalPrice = $this->request->getVar('discountOnTotalPrice');
         $otherChargeOnTotalPrice = $this->request->getVar('otherChargeOnTotalPrice');
-        $customer_type = $this->request->getVar('customer_type');
+        $customer_id = $this->request->getVar('customer_id');
         $seller_id = $session->get('user_id');
 
         // Auto Hold ID
@@ -259,7 +430,7 @@ class PosController extends BaseController
         $hold_data = [
             'hold_id' => $hold_id,
             'seller_id' => $seller_id,
-            'customer_type' => $customer_type,
+            'customer_id' => $customer_id,
             'cart_data' => json_encode($productsList),
             // 'discountOnTotalPrice' => $discountOnTotalPrice,
             'otherChargeOnTotalPrice' => $otherChargeOnTotalPrice,
@@ -276,7 +447,7 @@ class PosController extends BaseController
                 'status' => 'success',
                 'id' => $id,
                 'hold_id' => $hold_id,
-                'customer_type' => $customer_type,
+                'customer_id' => $customer_id,
                 'cart_data' => json_decode($hold_data['cart_data'], true),
                 //'discountOnTotalPrice' => $discountOnTotalPrice,
                 'otherChargeOnTotalPrice' => $otherChargeOnTotalPrice,
@@ -290,24 +461,34 @@ class PosController extends BaseController
         }
     }
 
-    public function resume_sale($id)
-    {
-        $sale = $this->db->table('held_sales')->where('id', $id)->get()->getRowArray();
-
-        if ($sale) {
-            $cartData = json_decode($sale['cart_data'], true);
-
-            return $this->response->setJSON([
-                'status' => 'success',
-                'cart_data' => $cartData ?? [],
-                'customer_type' => $sale['customer_type'] ?? 'regular',
-                //'discountOnTotalPrice' => $sale['discountOnTotalPrice'] ?? 0,
-                'otherChargeOnTotalPrice' => $sale['otherChargeOnTotalPrice'] ?? 0,
-            ]);
-        } else {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Held sale not found']);
-        }
+public function resume_sale($id = null)
+{
+    if (empty($id) || !is_numeric($id)) {
+        return $this->response->setJSON([
+            'status'  => 'error',
+            'message' => 'Invalid Hold Sale ID.'
+        ]);
     }
+
+    $sale = $this->db->table('held_sales')
+        ->where('id', $id)
+        ->get()
+        ->getRowArray();
+
+    if (!$sale) {
+        return $this->response->setJSON([
+            'status'  => 'error',
+            'message' => 'Held sale not found.'
+        ]);
+    }
+
+    return $this->response->setJSON([
+        'status'                  => 'success',
+        'cart_data'               => json_decode($sale['cart_data'], true) ?? [],
+        'customer_id'             => !empty($sale['customer_id']) ? (int) $sale['customer_id'] : '',
+        'otherChargeOnTotalPrice' => (float) ($sale['otherChargeOnTotalPrice'] ?? 0),
+    ]);
+}
 
     public function delete_held_sale($hold_id)
     {

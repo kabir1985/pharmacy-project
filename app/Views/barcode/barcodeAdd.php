@@ -27,7 +27,7 @@
  * --------------------------------------------------------------------------
  */
 
-echo $this->extend('layout/layout');
+echo $this->extend('layout');
 echo $this->section('content');
 ?>
 

@@ -97,11 +97,11 @@
     </td>
 </tr>
 
-<?php if (!empty($invoice_info[0]['cus_phone'])): ?>
+<?php if (!empty($invoice_info[0]['phone'])): ?>
 <tr>
     <td>Phone</td>
     <td class="text-right">
-        <?= esc($invoice_info[0]['cus_phone']) ?>
+        <?= esc($invoice_info[0]['phone']) ?>
     </td>
 </tr>
 <?php endif; ?>

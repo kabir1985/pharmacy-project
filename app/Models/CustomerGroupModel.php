@@ -10,5 +10,5 @@ class CustomerGroupModel extends Model
 
     protected $primaryKey = 'customer_group_id';
 
-    protected $allowedFields = ['cus_group_name', 'cus_due_limit', 'discount_percent'];
+    protected $allowedFields = ['group_name', 'discount_percent'];
 }

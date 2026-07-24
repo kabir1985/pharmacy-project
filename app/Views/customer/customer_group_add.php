@@ -27,33 +27,41 @@ echo $this->section('content');
                         <thead>
                             <tr>
                                 <th>Group Name</th>
-                                <th>Due Limit</th>
-								<th>Discount Amount</th>
+                                <th>Discount Amount</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
 
-                                <?php
-                                foreach ($customer_group_show as $row) {
+                            <?php
+                            foreach ($customer_group_show as $row) {
                                 ?>
-								<tr>
-								   <td><?php echo $row['cus_group_name'];?></td>
-                                   <td><?php echo $row['cus_due_limit'];?></td>
-								   <td><?php echo $row['discount_percent'];?></td>
-                                        <td>
-                                            <!-- Button to invoke the modal -->
-                                            <a href="#" class="btn btn-primary btn-sm btn-edit" data-customer_group_id="<?php echo $row['customer_group_id'] ?>" data-cus_group_name="<?php echo $row['cus_group_name'] ?>" data-cus_due_limit="<?php echo $row['cus_due_limit'] ?>" data-discount_percent="<?php echo $row['discount_percent'] ?>" ><i class="fa fa-edit"></i></a>
+                            <tr>
+                                <td>
+                                    <?= esc($row['group_name']) ?>
+                                </td>
+                                <td>
+                                    <?= esc($row['discount_percent']) ?>
+                                </td>
+                                <td>
+                                    <!-- Button to invoke the modal -->
+                                        <a href="#" class="btn btn-primary btn-sm btn-edit"
+                                            data-customer_group_id="<?= esc($row['customer_group_id']) ?>"
+                                            data-group_name="<?= esc($row['group_name']) ?>"
+                                            data-discount_percent="<?= esc($row['discount_percent']) ?>"><i
+                                                class="fa fa-edit"></i></a>
 
-                                            <a href="#" class="btn btn-danger btn-sm btn-delete" data-delete_id="<?php echo $row['customer_group_id'] ?>"><i class="fa fa-trash-o"></i></a>
+                                        <a href="#" class="btn btn-danger btn-sm btn-delete"
+                                            data-delete_id="<?= esc($row['customer_group_id']) ?>"><i
+                                                class="fa fa-trash-o"></i></a>
 
-                                        </td>
-								</tr>
-								
+                                    </td>
+                                </tr>
+
                                 <?php
-                                }
-                                ?>
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -68,33 +76,33 @@ echo $this->section('content');
 
 <!---------------------------Modal Form for entry Load Start---------------------------------------->
 <!-- Modal -->
-<div class='modal fade' id='CustomerGroupAdd' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+<div class='modal fade' id='CustomerGroupAdd' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel'
+    aria-hidden='true'>
     <div class='modal-dialog modal-dialog-centered' role='document'>
         <div class='modal-content'>
-        <form id="CustomerGroupAdd_Form" method='post' action="<?= site_url('customer-group/create') ?>">
-            <div class='modal-header'>
-                <h5 class='modal-title' id='exampleModalLabel'>Please Enter Customer Group</h5>
-                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                    <span aria-hidden='true'>&times;
-                    </span>
-                </button>
-            </div>
+            <form id="CustomerGroupAdd_Form" method="post" action="<?= site_url('customer-group/create') ?>">
+                <?= csrf_field() ?>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalLabel'>Please Enter Customer Group</h5>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                        <span aria-hidden='true'>&times;
+                        </span>
+                    </button>
+                </div>
                 <div class='modal-body'>
 
                     <div class='form-row'>
-                        <div class='form-group col-md-6'>
+                        <div class='form-group col-md-12'>
                             <label>Group Name</label>
-                            <input required type='text' required class='form-control' name='cus_group_name' placeholder='Group Name' >
+                            <input type='text' class='form-control' name='group_name' placeholder='Group Name' required>
                         </div>
-                        <div class='form-group col-md-6'>
-                            <label>Due Limit</label>
-                            <input required type='text' required class='form-control' name='cus_due_limit' placeholder='Due Limit' onkeypress="return accept_digit_only(event)">
-                        </div>
+
                     </div>
-					   <div class='form-row'>
+                    <div class='form-row'>
                         <div class='form-group col-md-12'>
                             <label>Discount %</label>
-                            <input type='text' class='form-control' name='discount_percent' placeholder='Discount Percentage' onkeypress="return accept_digit_only(event)">
+                            <input type="number" class="form-control" name="discount_percent" min="0" max="100"
+                                step="0.01">
                         </div>
                     </div>
                 </div>
@@ -104,7 +112,7 @@ echo $this->section('content');
                 </div>
             </form>
         </div>
-        
+
     </div>
 </div>
 <!----------------------Modal Form End------------------------------------------>
@@ -118,221 +126,337 @@ echo $this->section('content');
 
 
 <!---------------------------Modal Form for Edit Section Load Start---------------------------------------->
-<!-- Modal -->
-    <div class='modal fade' id='customer_group_edit_modal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-        <div class='modal-dialog  modal-dialog-centered' role='document'>
-            <div class='modal-content'>
-                <form id="customer_group_edit_submit" method='post' action="<?= site_url('customer-group/update') ?>">
-                <div class='modal-header'>
-                    <h5 class='modal-title' id='#'>Please Edit Customer Group  Details</h5>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                        <span aria-hidden='true'>&times;
-                        </span>
+<div class="modal fade" id="customer_group_edit_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <form id="customer_group_edit_submit"
+                  method="post"
+                  action="<?= site_url('customer-group/update') ?>">
+
+                <?= csrf_field() ?>
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Please Edit Customer Group Details</h5>
+
+                    <button type="button"
+                            class="close"
+                            data-dismiss="modal">
+                        <span>&times;</span>
                     </button>
                 </div>
-                <div class='modal-body' id="#">
-                    <input type='hidden' required class='form-control' name='customer_group_id' id='customer_group_id'>
-                    <div class='form-row'>
-                        <div class='form-group col-md-6'>
-                            <label>Group Name Edit</label>
-                            <input type='text' required class='form-control' name='cus_group_name' id='cus_group_name'>
-                        </div>
-                        <div class='form-group col-md-6'>
-                            <label>Due Limit Edit</label>
-                            <input type='text' class='form-control' name='cus_due_limit' id='cus_due_limit'>
-                        </div>
+
+                <div class="modal-body">
+
+                    <input type="hidden"
+                           name="customer_group_id"
+                           id="customer_group_id">
+
+                    <div class="form-group">
+                        <label>Group Name</label>
+
+                        <input type="text"
+                               class="form-control"
+                               name="group_name"
+                               id="group_name"
+                               required>
                     </div>
-                    <div class='form-row'>
-                        <div class='form-group col-md-12'>
-                            <label>Discount Percentage</label>
-                            <input type='text' required class='form-control' name='discount_percent' id='discount_percent'>
-                        </div>
+
+                    <div class="form-group">
+                        <label>Discount Percentage</label>
+
+                        <input type="number"
+                               class="form-control"
+                               name="discount_percent"
+                               id="discount_percent"
+                               min="0"
+                               max="100"
+                               step="0.01"
+                               required>
                     </div>
-                <div class='modal-footer'>
-                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
-                    <button type='submit' class='btn btn-primary'>Save Edit</button>
+
                 </div>
-                </form>
-            </div>
+
+                <div class="modal-footer">
+
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+                        Close
+                    </button>
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
     </div>
+</div>
 
 <!----------------------Modal Form Edit Section  End------------------------------------------>
 
 <!-- Modal Delete Product-->
 
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Customer</h5>
+                <h5 class="modal-title" id="deleteModalLabel">
+                    Delete Customer Group
+                </h5>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
 
-                <h4>Are you sure want to delete this Customer?</h4>
+            <form id="customer_group_delete_form"
+                  action="<?= site_url('customer-group/delete') ?>"
+                  method="post">
 
-            </div>
-            <form action="<?= site_url('customer-group/delete') ?>" method="post">
-                <div class="modal-footer">
-                    <input type="hidden" required class='form-control' name="delete_id" id="delete_id">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary">Yes</button>
+                <?= csrf_field() ?>
+
+                <div class="modal-body">
+
+                    <input type="hidden"
+                           name="delete_id"
+                           id="delete_id">
+
+                    <h5 class="text-danger">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        Are you sure you want to delete this Customer Group?
+                    </h5>
+
                 </div>
+
+                <div class="modal-footer">
+
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+                        No
+                    </button>
+
+                    <button type="submit"
+                            class="btn btn-danger">
+                        <i class="fa fa-trash"></i>
+                        Yes, Delete
+                    </button>
+
+                </div>
+
             </form>
+
         </div>
     </div>
 </div>
 
 <!-- End Modal Delete Product-->
 
+<?= $this->endSection(); ?>
 
+<?= $this->section('scripts'); ?>
 
+<script type="text/javascript">
+$(document).ready(function () {
 
-<?php
-echo $this->endSection();
-?>
+    // ===================== DataTable =====================
+    $('#sampleTable').DataTable({
+        responsive: true,
+        autoWidth: false
+    });
 
-<?php
-echo $this->section('scripts');
-?>
+    let allowSubmit = true;
 
-<script type='text/javascript'>
-    $(document).ready(function() {
+    // ===================== Add Customer Group =====================
+    $('#CustomerGroupAdd_Form').on('submit', function (event) {
 
-        $('#sampleTable').DataTable();
+        event.preventDefault();
 
-        ////-------------------Product Entry Form-------------------------//
-        var allowSubmit = true;
+        if (!allowSubmit) return;
 
-        $('#CustomerGroupAdd_Form').submit(function(event) {
-            event.preventDefault();
+        allowSubmit = false;
 
-            if (allowSubmit) {
-                allowSubmit = false;
-                var parentMOdal = $(this).closest('.modal');
-                var postData = new FormData(this);
-                $.ajax({
-                        //alert("ddd");
-                        type: $(this).attr("method"),
-                        url: $(this).attr("action"),
-                        // alert(;
-                        data: postData,
-                        //dataType: 'json',
-                        encode: true,
-                        processData: false,
-                        contentType: false,
-                    })
-                    // using the done promise callback
-                    .done(function(data) {
-                        // alert(data);
-                        if (data == 1) {
-                            parentMOdal.modal('toggle');
-                            //page refresh after submission
-                            location.reload();
-                            // alert("Success");
-                        }
-                    });
+        const parentModal = $(this).closest('.modal');
+        const postData = new FormData(this);
 
-            }
-        });
+        $.ajax({
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: postData,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            cache: false
+        })
+        .done(function (response) {
 
+            if (response.status) {
 
-        //////Product Edit submit into database start/////////////////////////////////
+                parentModal.modal('hide');
 
-        $('#customer_group_edit_submit').submit(function(event) {
-            event.preventDefault();
+                alert(response.message);
 
-            if (allowSubmit) {
-                allowSubmit = false;
-                var parentMOdal = $(this).closest('.modal');
-                var postData = new FormData(this);
-                $.ajax({
-                        //alert("ddd");
-                        type: $(this).attr("method"),
-                        url: $(this).attr("action"),
-                        // alert(;
-                        data: postData,
-                        //dataType: 'json',
-                        encode: true,
-                        processData: false,
-                        contentType: false,
-                    })
-                    // using the done promise callback
-                    .done(function(data) {
-                        // alert(data);
-                            parentMOdal.modal('toggle');
-                            //page refresh after submission
-                            location.reload();
-                    });
+                location.reload();
+
+            } else {
+
+                alert(response.message);
 
             }
-        });
 
-        /////////Product Edit Submit inot database end here//////////////////////
+        })
+        .fail(function (xhr) {
 
+            alert('Something went wrong.');
 
+            console.log(xhr.responseText);
 
-        //...................JQuery for Modal Edit & Delete option...................................
+        })
+        .always(function () {
 
-
-
-        // get Edit Product
-        $('.btn-edit').on('click', function() {
-            // get data from button edit
-            const customer_group_id = $(this).data('customer_group_id');
-            const cus_group_name = $(this).data('cus_group_name');
-            const cus_due_limit = $(this).data('cus_due_limit');
-            const discount_percent = $(this).data('discount_percent');
-
-
-            // Set data to Form Edit
-            $('#customer_group_id').val(customer_group_id);
-            $('#cus_group_name').val(cus_group_name);
-            $('#cus_due_limit').val(cus_due_limit);
-            $('#discount_percent').val(discount_percent);
-
-            // Call Modal Edit
-            $('#customer_group_edit_modal').modal('show');
+            allowSubmit = true;
 
         });
-
-
-
-
-
-        // get Delete Product
-        $('.btn-delete').on('click', function() {
-            // get data from button edit
-            const delete_id = $(this).data('delete_id');
-            alert(delete_id);
-            // Set data to Form Edit
-            $('#delete_id').val(delete_id);
-            // Call Modal Edit
-            $('#deleteModal').modal('show');
-        });
-
-
-
-        //................ JQuery modal Edit & Delete end here........................................
-        // ...............For Date Show.............................
-        $('.datePicker').datepicker({
-            format: "dd/mm/yyyy",
-            autoclose: true,
-            todayHighlight: true
-        });
-        //.................For Date show end........................ 
 
     });
+
+    // ===================== Edit Customer Group =====================
+    $('#customer_group_edit_submit').on('submit', function (event) {
+
+        event.preventDefault();
+
+        if (!allowSubmit) return;
+
+        allowSubmit = false;
+
+        const parentModal = $(this).closest('.modal');
+        const postData = new FormData(this);
+
+        $.ajax({
+            type: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: postData,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            cache: false
+        })
+        .done(function (response) {
+
+            if (response.status) {
+
+                parentModal.modal('hide');
+
+                alert(response.message);
+
+                location.reload();
+
+            } else {
+
+                alert(response.message);
+
+            }
+
+        })
+        .fail(function (xhr) {
+
+            alert('Something went wrong.');
+
+            console.log(xhr.responseText);
+
+        })
+        .always(function () {
+
+            allowSubmit = true;
+
+        });
+
+    });
+
+    // ===================== Edit Button =====================
+    $(document).on('click', '.btn-edit', function () {
+
+        $('#customer_group_id').val($(this).data('customer_group_id'));
+        $('#group_name').val($(this).data('group_name'));
+        $('#discount_percent').val($(this).data('discount_percent'));
+
+        $('#customer_group_edit_modal').modal('show');
+
+    });
+
+   // Open Delete Modal
+$(document).on('click', '.btn-delete', function () {
+
+    let delete_id = $(this).data('delete_id');
+
+    $('#delete_id').val(delete_id);
+
+    $('#deleteModal').modal('show');
+
+});
+
+// Delete Form Submit
+$('#customer_group_delete_form').on('submit', function (e) {
+
+    e.preventDefault();
+
+    if (!allowSubmit) return;
+
+    allowSubmit = false;
+
+    const postData = new FormData(this);
+
+    $.ajax({
+        type: $(this).attr('method'),
+        url: $(this).attr('action'),
+        data: postData,
+        dataType: 'json',
+        processData: false,
+        contentType: false
+    })
+    .done(function (response) {
+
+        if (response.status) {
+
+            $('#deleteModal').modal('hide');
+
+            alert(response.message);
+
+            location.reload();
+
+        } else {
+
+            alert(response.message);
+
+        }
+
+    })
+    .fail(function (xhr) {
+
+        alert('Something went wrong.');
+        console.log(xhr.responseText);
+
+    })
+    .always(function () {
+
+        allowSubmit = true;
+
+    });
+
+});
+
+});
 </script>
 
 <!-- For Calendar start -->
 
 <!-- For Calendar End -->
 
-<?php
-echo $this->endSection();
-?>
+<?= $this->endSection(); ?>
