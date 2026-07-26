@@ -11,9 +11,7 @@ echo $this->section('content');
                     <select id="item" class="form-control select2" style="width:100%">
                         <option value="0">Select Product</option>
                         <?php foreach ($product_show_for_sale as $row): ?>
-                            <option value="<?= $row['product_id'] ?>">
-                                <?= $row['product_name'] . "&nbsp;|&nbsp;" . $row['category_name'] . "&nbsp;|&nbsp;" . $row['group_name'] . "&nbsp;|&nbsp;" . $row['strength_name'] ?>
-                            </option>
+                            <option value="<?= $row['product_id'] ?>"><?= $row['product_name']."&nbsp;|&nbsp;".$row['category_name']."&nbsp;|&nbsp;".$row['group_name'] ."&nbsp;|&nbsp;".$row['strength_name'] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -23,14 +21,8 @@ echo $this->section('content');
                         <i class="fa fa-plus"></i> Opening Stock
                     </button> -->
 
-                    <!-- <a href="<?= base_url('product') ?>" class="btn btn-primary btn-sm">
-                         Opening Stock  &nbsp; <i class="fa fa-arrow-right"></i></a> -->
-
-                    <button type='button' class='btn btn-primary btn-sm' data-toggle='modal'
-                        data-target='#AddNewProduct'>
-                        <i class='fa fa-plus-circle'></i>
-                        Opening Stock
-                    </button>
+                    <a href="<?= base_url('product') ?>" class="btn btn-primary btn-sm">
+                         Opening Stock  &nbsp; <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
             <!-- Cart Table -->
@@ -82,7 +74,6 @@ echo $this->section('content');
                                     <span id="discount_on_total_price" class="badge bg-light">0.00</span>Tk.
                                 </td>
                             </tr>
-
                             <tr>
                                 <td colspan="4"></td>
                                 <td class="text-end p-0 m-0">VAT Amt on Total</td>
@@ -204,422 +195,14 @@ echo $this->section('content');
 
 
 
-
-
-<!-- ==========================================================
-     ADD PRODUCT /Opening Stock MODAL
-=========================================================== -->
-<div class="modal fade" id='AddNewProduct' role='dialog' aria-labelledby='AddNewProduct' aria-hidden='true'>
-    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-        <div class='modal-content'>
-            <!-----for image upload------------------->
-            <?php if (session('msg')): ?>
-            <div class="alert alert-success alert-dismissible">
-                <?= session('msg') ?>
-                <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
-            </div>
-            <?php endif ?>
-            <!-----for image upload------------------->
-            <form id="NewProductAdd_Form" method='post' action="<?= site_url('products/create') ?>"
-                accept-charset="utf-8" enctype="multipart/form-data">
-                <?= csrf_field() ?>
-                <!---------------------------Header------------------------------------>
-                <div class="modal-header bg-primary text-white">
-
-                    <h5 class="modal-title">
-                        <i class="fa fa-cube"></i>
-                        Add New Product
-                    </h5>
-                    <img id="preview" src="" style="width:40px; display:block; margin:auto; display:none;">
-                    <button class="close text-white" data-dismiss="modal">
-                        &times;
-                    </button>
-
-                </div>
-                <!------------------------------------------------------------------------------------------->
-
-                <div class="modal-body">
-
-                    <!-- ================= Product Information ================= -->
-
-                    <div class="card shadow-sm mb-3">
-
-                        <div class="card-header bg-primary text-white">
-                            <i class="fa fa-cube"></i> Product Information
-                        </div>
-
-                        <div class="card-body">
-
-                            <!-- Product Name, Category, Brand -->
-
-                            <div class='form-row'>
-                                <div class='form-group col-md-4'>
-                                    <label>Product Name</label>
-                                    <input type='text' required class="form-control" name='product_name'
-                                        placeholder='Product Name'>
-                                </div>
-                                <!-----------------------Product Category Select Start------------------------------>
-                                <div class="form-group col-md-4">
-                                    <label>Category / Dosage Form</label>
-
-                                    <div class="input-group">
-
-                                        <select id="product_category" name="product_category" class="form-control"
-                                            required>
-
-                                            <option value="">Select Category</option>
-
-                                            <?php foreach ($category_show as $category): ?>
-
-                                                <option value="<?= $category['product_category_id'] ?>">
-                                                    <?= $category['category_name'] ?>
-                                                </option>
-
-                                            <?php endforeach; ?>
-
-                                        </select>
-
-                                        <div class="input-group-append">
-
-                                            <button class="btn btn-success" id="btnAddCategory" type="button"
-                                                title="Add Category">
-
-                                                <i class="fa fa-plus"></i>
-
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                                <!-----------------------Product Category Select End------------------------------>
-
-
-                                <div class='form-group col-md-4'>
-                                    <label for="inputState">Brand</label>
-                                    <div class="input-group">
-
-                                        <select id="product_brand" name="product_brand" class="form-control" required>
-                                        </select>
-
-                                        <div class="input-group-append">
-
-                                            <button class="btn btn-success" id="btnAddBrand" type="button"
-                                                title="Add Brand">
-
-                                                <i class="fa fa-plus"></i>
-
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-
-                            <!-- Group, Strength, Unit -->
-                            <div class='form-row'>
-                                <!-------------------------------------Product Group /Generic Name--------------------------------->
-                                <div class="form-group col-md-4">
-                                    <label>Generic Name (Group)</label>
-
-                                    <div class="input-group">
-
-                                        <select id="product_group" name="product_group" class="form-control" required>
-                                            <option value="">Select Group </option>
-                                            <?php foreach ($group_show as $group): ?>
-                                            <option value="<?= esc($group['product_group_id']) ?>">
-                                                <?= esc($group['group_name']) ?>
-                                            </option>
-                                            <?php endforeach; ?>
-                                        </select>
-
-                                        <div class="input-group-append">
-
-                                            <button class="btn btn-success" id="btnAddGroup" type="button"
-                                                title="Add Generic/Group">
-
-                                                <i class="fa fa-plus"></i>
-
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <!--------------------product Strenght----------------------------------->
-                                <div class="form-group col-md-4">
-                                    <label>Strength</label>
-
-                                    <div class="input-group">
-
-                                        <select id="strength" name="strength" class="form-control" required>
-                                            <option value="">Select Strength </option>
-                                            <?php foreach ($strength_show as $strength): ?>
-                                            <option value="<?= esc($strength['strength_id']) ?>">
-                                                <?= esc($strength['strength_name']) ?>
-                                            </option>
-
-                                            <?php endforeach; ?>
-                                        </select>
-
-
-                                        <div class="input-group-append">
-
-                                            <button class="btn btn-success" id="btnAddStrength" type="button"
-                                                title="Add Strength">
-
-                                                <i class="fa fa-plus"></i>
-
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <!----------------------------------Product Unit----------------------------------------------------->
-                                <div class="form-group col-md-4">
-                                    <label>Product Unit</label>
-
-                                    <div class="input-group">
-
-                                        <select id="product_unit" name="product_unit" class="form-control" required>
-                                            <option value="">Select Unit </option>
-                                            <?php foreach ($unit_show as $unit): ?>
-                                            <option value="<?= esc($unit['product_unit_id']) ?>">
-                                                <?= esc($unit['product_unit_name']) ?>
-                                            </option>
-
-                                            <?php endforeach; ?>
-                                        </select>
-
-                                        <div class="input-group-append">
-
-                                            <button class="btn btn-success" id="btnAddUnit" type="button"
-                                                title="Add Unit">
-
-                                                <i class="fa fa-plus"></i>
-
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!------------------------------------------------------------------------------------------->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ================= Purchase & Pricing ================= -->
-
-                    <div class="card shadow-sm mb-3">
-
-                        <div class="card-header bg-success text-white">
-                            <i class="fa fa-money"></i> Purchase & Pricing
-                        </div>
-
-                        <div class="card-body">
-
-                            <!-- Base Price, VAT, Purchase Price, Tax Type, Profit margin, Sales price -->
-
-                            <div class='form-row'>
-                                <div class='form-group col-md-4'>
-                                    <label>Base Price/Purchase Price (Without VAT)</label>
-                                    <input type='text' required class="form-control" name='base_price' id="base_price"
-                                        onkeypress="return accept_digit_only(event)" placeholder='Base Price' required>
-                                </div>
-
-                                <!--------------------------Purchase VAT/Tax------------------------------------------------------>
-                                <div class="form-group col-md-4">
-                                    <label>Purchase (VAT/TAX) %</label>
-
-                                    <div class="input-group">
-
-                                        <select id="tax_id" name="tax_id" class="form-control" required>
-                                            <option value="">Select Tax</option>
-                                            <?php foreach ($tax_show as $tax): ?>
-                                                <option value="<?= $tax['tax_id']; ?>"
-                                                    data-percent="<?= $tax['tax_percentage']; ?>">
-                                                    <?= $tax['tax_name']; ?> (
-                                                    <?= $tax['tax_percentage']; ?>%)
-                                                </option>
-                                            <?php endforeach; ?>
-                                        </select>
-
-                                        <div class="input-group-append">
-
-                                            <button class="btn btn-success" id="btnAddVatTax" type="button"
-                                                title="Add VAT/TAX">
-
-                                                <i class="fa fa-plus"></i>
-
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <!---------------------------------------------------------------------------------------------------->
-
-                                <div class='form-group col-md-4'>
-                                    <label>Purchase Price (Per Product-With VAT)</label>
-                                    <input type='text' required class="form-control" id="purchase_price"
-                                        name='purchase_price' onkeypress="return accept_digit_only(event)"
-                                        placeholder='Unit Price' readonly>
-                                </div>
-                            </div>
-
-                            <div class='form-row'>
-                                <div class='form-group col-md-4'>
-                                    <label>Tax Type</label>
-                                    <select class="form-control" id="tax_type" name="tax_type" required>
-                                        <option value="without_tax" selected>Without Tax (Exclusive)</option>
-                                        <option value="with_tax">With Tax (Inclusive)</option>
-                                    </select>
-                                </div>
-                                <div class='form-group col-md-4'>
-                                    <label>Profit Margin(%)</label>
-                                    <input type='text' required class="form-control" id="profit_margin"
-                                        name='profit_margin' onkeypress="return accept_digit_only(event)"
-                                        placeholder="Selling Price">
-                                </div>
-                                <div class='form-group col-md-4'>
-                                    <label>Sales Price(vat/tax সহ)</label>
-                                    <input type='text' required class="form-control" id="sales_price" name='sales_price'
-                                        onkeypress="return accept_digit_only(event)" placeholder="Selling Price">
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- ================= Inventory ================= -->
-
-                    <div class="card shadow-sm mb-3">
-
-                        <div class="card-header bg-warning text-dark">
-                            <i class="fa fa-archive"></i>
-                            Inventory Information
-                        </div>
-
-                        <div class="card-body">
-
-                            <!-- Opening Qty, SKU, Barcode -->
-                            <div class='form-row'>
-
-                                <div class='form-group col-md-4'>
-                                    <label>Opening /Initial Quantity</label>
-                                    <input type='text' required class="form-control" name='productinitial_quantity'
-                                        onkeypress="return accept_digit_only(event)" placeholder='Product Quantity'>
-                                </div>
-
-                                <div class='form-group col-md-4'>
-                                    <label>SKU(Stock Keeping Unit)</label>
-                                    <input type="text" class="form-control" name="sku" placeholder="SKU Code">
-                                </div>
-                                <div class='form-group col-md-4'>
-                                    <label>Barcode</label>
-                                    <input type='text' required class="form-control" name='codefor_barcode'
-                                        placeholder='Code for Barcode'>
-                                </div>
-                            </div>
-
-
-
-                            <div class="form-row">
-                                <div class='form-group col-md-4'>
-                                    <label>Alert Quantity</label>
-                                    <input type="number" class="form-control" name="alert_quantity" min="0" required>
-                                </div>
-
-                                <div class="form-group col-md-8">
-                                    <label>Product Image</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="file" name="file">
-                                        <label class="custom-file-label">
-                                            Choose Product Image
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div> <!-- END modal-body -->
-                    <!-------------------------------------------------------------------------------------------->
-
-                </div>
-
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        <i class="fa fa-times"></i> Close
-                    </button>
-
-
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-save"></i> Save Product
-                    </button>
-
-
-                </div>
-
-
-            </form>
-        </div>
-    </div>
-</div>
-
-
-
-
-
 <?php
 echo $this->endSection();
 ?>
-
-<!--=============== For Opening Stock -->
-
-<?= $this->section('css') ?>
-<link rel="stylesheet" href="<?= base_url('assets/css/product.css') ?>">
-<?= $this->endSection() ?>
-<!--=============== For Opening Stock -->
 
 <?php
 echo $this->section('scripts');
 ?>
 <script src="<?= base_url('assets/js/jquery.mycart.js') ?>"></script>
-
-<!--=============== For Opening Stock -->
-<script>
-    window.APP_URLS = {
-        categoryCreate: "<?= site_url('categories/category-create-ajax') ?>",
-        initialbrand: "<?= site_url('brands/initial-product-brand') ?>",
-        brandCreate: "<?= site_url('brands/brand-create-ajax') ?>",
-        getCategory: "<?= site_url('categories/get-category-list') ?>",
-        categoryList: "<?= site_url('get-category-list') ?>",
-        groupCreate: "<?= site_url('groups/group-create-ajax') ?>",
-        unitCreate: "<?= site_url('units/unit-create-ajax') ?>",
-        strengthCreate: "<?= site_url('ajax/strength') ?>",
-        taxCreate: "<?= site_url('tax/vatTax-create-ajax') ?>"
-    };
-</script>
-
-<script src="<?= base_url('assets/js/product-opening-stock.js') ?>"></script>
-
-<!-- ===================For Opening Stock -->
-
 
 <script>
     var productsList = <?= json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
@@ -655,13 +238,13 @@ echo $this->section('scripts');
         // ================= DRAW TABLE ================= //
         function drawTable() {
 
-            // totalPrice = 0;
-            //let totalVat = 0;
+        totalPrice = 0;
+let totalVat = 0;
 
             const tbody = $("#cartTableBody");
             tbody.empty();
 
-            //  totalPrice = 0;
+          //  totalPrice = 0;
             let rows = "";
 
             $.each(itemsInCart, function (key, item) {
@@ -669,11 +252,11 @@ echo $this->section('scripts');
                 var qtyPerPack = Number(item.quantity_per_pack) || 0;
                 var Boxqty = Number(item.box_quantity) || 1;
                 var UnitPrice = Number(item.cost_without_vat) || 0;
-                // var cost_without_vat = Number(item.cost_without_vat) || 0;
-                //var vatPercent = Number(item.tax_percentage) || 0;
-                //  var discountPercent = Number(item.discount_percent) || 0;
+                var cost_without_vat = Number(item.cost_without_vat) || 0;
+                var vatPercent = Number(item.tax_percentage) || 0;
+                var discountPercent = Number(item.discount_percent) || 0;
 
-                //var taxType = item.tax_type;
+                var taxType = item.tax_type;
 
                 // alert(cost_without_vat);
 
@@ -681,38 +264,28 @@ echo $this->section('scripts');
                 // var PricePerBox = qtyPerPack * basePrice;
 
                 // 👉 Total quantity
-                // var totalQty = qtyPerPack * Boxqty;
+                var totalQty = qtyPerPack * Boxqty;
                 //var totalQty = qty;
 
                 var Trade_Price_Per_Box = qtyPerPack * 1 * UnitPrice;
 
                 // 👉 Base total price
-                // var purchaseTotal = totalQty * UnitPrice;
-                // var productDiscountAmt = 0;
-                // var vatAfterDiscount = 0;
-                // var rowTotal = 0;
+                var purchaseTotal = totalQty * UnitPrice;
+                var productDiscountAmt = 0;
+                var vatAfterDiscount = 0;
+                var rowTotal = 0;
 
-                // productDiscountAmt = purchaseTotal * (discountPercent / 100);
+                productDiscountAmt = purchaseTotal * (discountPercent / 100);
 
-                // var discountedBase = purchaseTotal - productDiscountAmt;
+                var discountedBase = purchaseTotal - productDiscountAmt;
 
-                // vatAfterDiscount = discountedBase * (vatPercent / 100);
+                vatAfterDiscount = discountedBase * (vatPercent / 100);
 
-                // rowTotal = discountedBase + vatAfterDiscount;
-
-
-                let calc = calculateRow(item);
-
-                //let purchaseTotal = calc.purchaseTotal;
-                let vatAfterDiscount = calc.vat;
-                let rowTotal = calc.subtotal;
-
-                //totalPrice += calc.subtotal;
-                //totalVat += calc.vat;
+                rowTotal = discountedBase + vatAfterDiscount;
 
                 // 👉 Grand total
-                // totalPrice += rowTotal;
-                // totalVat += vatAfterDiscount;
+                totalPrice += rowTotal;
+                totalVat += vatAfterDiscount;
 
                 rows += `<tr data-index="${key}">
                 <td>${item.product_name}</td>
@@ -821,95 +394,79 @@ echo $this->section('scripts');
 
             tbody.html(rows);
 
+// Update Total VAT Amount
+$("#vat_amt_on_total")
+    .data("value", totalVat)
+    .text(totalVat.toFixed(2));
 
-
-            updateGrandTotal();
-            enableButton();
+totalCalculation();
+enableButton();
         }
 
 
 
         //-- -- -- -- -- -- -- -- -- -- --For Subtotal Update Automatically-- -- -- -- -- -- -- -- -- -- -- -- -- --
 
+
         function calculateRow(item) {
 
-            let qty = (Number(item.quantity_per_pack) || 0) *
-                (Number(item.box_quantity) || 1);
-
+            let qtyPerPack = Number(item.quantity_per_pack) || 0;
+            let boxQty = Number(item.box_quantity) || 1;
             let unitPrice = Number(item.cost_without_vat) || 0;
+            let vatPercent = Number(item.tax_percentage) || 0;
+            let discountPercent = Number(item.discount_percent) || 0;
 
-            let purchaseTotal = qty * unitPrice;
+            let totalQty = qtyPerPack * boxQty;
 
-            // Product Discount
-            let discount = 0;
+            let purchaseTotal = totalQty * unitPrice;
 
-            if (item.discount_type === "fixed") {
-                discount = Number(item.discount_fixed) || 0;
-            } else {
-                discount = purchaseTotal * (Number(item.discount_percent) || 0) / 100;
-            }
+           // let discountAmount = purchaseTotal * discountPercent / 100;
 
-            let taxable = Math.max(0, purchaseTotal - discount);
+let discountAmount = 0;
 
-            // Product VAT
-            let vat = taxable * (Number(item.tax_percentage) || 0) / 100;
+if (item.discount_type === "fixed") {
 
-            let subtotal = taxable + vat;
+    // Fixed amount per product
+    discountAmount = Number(item.discount_fixed) || 0;
+
+} else {
+
+    discountAmount = purchaseTotal * (Number(item.discount_percent) || 0) / 100;
+
+}
+
+            let discountedBase = purchaseTotal - discountAmount;
+
+            let vatAmount = discountedBase * vatPercent / 100;
+
+            let rowTotal = discountedBase + vatAmount;
 
             return {
-                purchaseTotal,
-                discount,
-                taxable,
-                vat,
-                subtotal,
-                tradePrice: unitPrice * (Number(item.quantity_per_pack) || 0)
+                tradePrice: qtyPerPack * unitPrice,
+                vatAmount,
+                rowTotal
             };
         }
 
 
-        // function updateGrandTotal() {
+function updateGrandTotal() {
 
-        //     totalPrice = 0;
-        //     totalVat = 0;
+    totalPrice = 0;
+    totalVat = 0;
 
-        //     itemsInCart.forEach(function(item){
+    itemsInCart.forEach(function(item){
 
-        //         let calc = calculateRow(item);
+        let calc = calculateRow(item);
 
-        //         totalPrice += calc.rowTotal;
-        //         totalVat += calc.vatAmount;
+        totalPrice += calc.rowTotal;
+        totalVat += calc.vatAmount;
 
-        //     });
+    });
 
-        //     $("#totalPrice").text(totalPrice.toFixed(2));
-        //     $("#vat_amt_on_total").text(totalVat.toFixed(2));
-        //     $("#netTotalPrice").html("<strong>"+totalPrice.toFixed(2)+"</strong>");
-        // }
-
-        function updateGrandTotal() {
-
-            let totalPrice = 0;      // Without VAT & Discount
-            let totalVat = 0;
-
-            itemsInCart.forEach(function (item) {
-
-                let c = calculateRow(item);
-
-                totalPrice += c.purchaseTotal;
-                totalVat += c.vat;
-
-            });
-
-            $("#totalPrice")
-                .data("value", totalPrice)
-                .text(totalPrice.toFixed(2));
-
-            $("#vat_amt_on_total")
-                .data("value", totalVat)
-                .text(totalVat.toFixed(2));
-
-            recalcNetTotal();
-        }
+    $("#totalPrice").text(totalPrice.toFixed(2));
+    $("#vat_amt_on_total").text(totalVat.toFixed(2));
+    $("#netTotalPrice").html("<strong>"+totalPrice.toFixed(2)+"</strong>");
+}
 
 
 
@@ -932,20 +489,13 @@ echo $this->section('scripts');
                     .val(calc.tradePrice.toFixed(2));
             }
 
-            // // Update VAT Amount
-            // row.find(".vatAmount")
-            //     .text(calc.vatAmount.toFixed(2));
-
-            // // Update Subtotal
-            // row.find(".rowTotal")
-            //     .text(calc.rowTotal.toFixed(2));
-
+            // Update VAT Amount
             row.find(".vatAmount")
-                .text(calc.vat.toFixed(2));
+                .text(calc.vatAmount.toFixed(2));
 
+            // Update Subtotal
             row.find(".rowTotal")
-                .text(calc.subtotal.toFixed(2));
-
+                .text(calc.rowTotal.toFixed(2));
 
             // Update Grand Total
             updateGrandTotal();
@@ -953,36 +503,24 @@ echo $this->section('scripts');
 
         //-- -- -- -- -- -- -- -- -- -- -- -- -- --For automatically subtotal update End-- -- -- -- -- -- -- -- -- --
 
-function recalcNetTotal(){
 
-    let totalPrice =
-        parseFloat($("#totalPrice").data("value")) || 0;
 
-    let discount =
-        parseFloat($("#discount_on_total_price").data("value")) || 0;
 
-    let vatPercent =
-        parseFloat($("#vatInput").val()) || 0;
 
-    let taxable = totalPrice - discount;
+        function recalcNetTotal() {
 
-    if (taxable < 0) {
-        taxable = 0;
-    }
+            var subtotal = $("#totalPrice").data("value") || 0;
+            var discount = $("#discount_on_total_price").data("value") || 0;
+            var vatPercent = $("#vat_amt_on_total").data("value") || 0;
 
-    let vat = taxable * vatPercent / 100;
+            var afterDiscount = Math.max(0, subtotal - discount);
+            var vatAmount = afterDiscount * (vatPercent / 100);
 
-    let netTotal = taxable + vat;
+            var netTotal = afterDiscount + vatAmount;
 
-    $("#taxableAmount").text(taxable.toFixed(2));
-
-    $("#vat_amt_on_total")
-        .data("value", vat)
-        .text(vat.toFixed(2));
-
-    $("#netTotalPrice")
-        .html("<strong>" + netTotal.toFixed(2) + "</strong>");
-}
+            $("#netTotalPrice").text(netTotal.toFixed(2));
+        }
+        
 
         function totalCalculation() {
 
@@ -1112,24 +650,24 @@ function recalcNetTotal(){
         //     $("#vatModal").modal("hide");
         // });
 
-        $("#saveVatBtn").on("click", function () {
+$("#saveVatBtn").on("click", function () {
 
-            let vatPercent = parseFloat($("#vatInput").val()) || 0;
+    let vatPercent = parseFloat($("#vatInput").val()) || 0;
 
-            // Update summary
-            $("#vat_amt_on_total")
-                .data("value", vatPercent)
-                .text(vatPercent.toFixed(2));
+    // Update summary
+    $("#vat_amt_on_total")
+        .data("value", vatPercent)
+        .text(vatPercent.toFixed(2));
 
-            // Apply to every product
-            itemsInCart.forEach(function (item) {
-                item.tax_percentage = vatPercent;
-            });
+    // Apply to every product
+    itemsInCart.forEach(function(item){
+        item.tax_percentage = vatPercent;
+    });
 
-            drawTable();
+    drawTable();
 
-            $("#vatModal").modal("hide");
-        });
+    $("#vatModal").modal("hide");
+});
 
 
 
@@ -1155,12 +693,12 @@ function recalcNetTotal(){
             // 
             if ($("#fixedType").is(":checked")) {
 
-                let fixed = parseFloat($("#fixedAmount").val()) || 0;
+    let fixed = parseFloat($("#fixedAmount").val()) || 0;
 
-                // Total discount = fixed amount × number of products
-                discountValue = fixed * itemsInCart.length;
+    // Total discount = fixed amount × number of products
+    discountValue = fixed * itemsInCart.length;
 
-            }
+}
             else {
 
                 var percent = parseFloat($("#percentAmount").val()) || 0;
@@ -1201,39 +739,39 @@ function recalcNetTotal(){
         // });
 
 
-        $("#discountOnTotalModal .btn-primary").on("click", function () {
+$("#discountOnTotalModal .btn-primary").on("click", function () {
 
-            if ($("#percentType").is(":checked")) {
+    if ($("#percentType").is(":checked")) {
 
-                let discountPercent = parseFloat($("#percentAmount").val()) || 0;
+        let discountPercent = parseFloat($("#percentAmount").val()) || 0;
 
-                $("#discountHeader").text("Dis%");
+        $("#discountHeader").text("Dis%");
 
-                itemsInCart.forEach(function (item) {
-                    item.discount_type = "percent";
-                    item.discount_percent = discountPercent;
-                    item.discount_fixed = 0;
-                });
-
-            } else {
-
-                let fixed = parseFloat($("#fixedAmount").val()) || 0;
-
-                $("#discountHeader").text("Disc");
-
-                itemsInCart.forEach(function (item) {
-                    item.discount_type = "fixed";
-                    item.discount_fixed = fixed;      // 10 Tk for EVERY product
-                    item.discount_percent = fixed;    // Display 10 in the Disc column
-                });
-            }
-
-            drawTable();
-            updateGrandTotal();
-            $("#discountOnTotalModal").modal("hide");
-
+        itemsInCart.forEach(function(item){
+            item.discount_type = "percent";
+            item.discount_percent = discountPercent;
+            item.discount_fixed = 0;
         });
-        // ========================= DISCOUNT on total price Modal End =========================== //
+
+    } else {
+
+        let fixed = parseFloat($("#fixedAmount").val()) || 0;
+
+        $("#discountHeader").text("Disc");
+
+        itemsInCart.forEach(function(item){
+            item.discount_type = "fixed";
+            item.discount_fixed = fixed;      // 10 Tk for EVERY product
+            item.discount_percent = fixed;    // Display 10 in the Disc column
+        });
+    }
+
+    drawTable();
+    updateLivePreview();
+    $("#discountOnTotalModal").modal("hide");
+
+});
+ // ========================= DISCOUNT on total price Modal End =========================== //
 
 
         // ================= ADD PRODUCT ================= //

@@ -1,0 +1,79 @@
+DEBUG - 2026-07-25 23:33:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:33:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:33:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:34:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:34:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:34:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:34:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:34:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:34:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:35:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:35:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:35:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:35:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:44:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:44:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:45:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:45:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:46:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-25 23:49:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-25 23:49:13 --> ErrorException: Undefined variable $category_show
+[Method: GET, Route: purchase]
+in APPPATH\Views\purchase\purchase_add.php on line 268.
+ 1 APPPATH\Views\purchase\purchase_add.php(268): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $category_show', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\purchase\\purchase_add.php', 268)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\purchase\\purchase_add.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('purchase/purchase_add', [], true)
+ 5 APPPATH\Controllers\PurchaseController.php(25): view('purchase/purchase_add', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-25 23:54:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-25 23:54:26 --> ErrorException: Undefined variable $group_show
+[Method: GET, Route: purchase]
+in APPPATH\Views\purchase\purchase_add.php on line 330.
+ 1 APPPATH\Views\purchase\purchase_add.php(330): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $group_show', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\purchase\\purchase_add.php', 330)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\purchase\\purchase_add.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('purchase/purchase_add', [], true)
+ 5 APPPATH\Controllers\PurchaseController.php(35): view('purchase/purchase_add', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-25 23:56:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-25 23:56:27 --> ErrorException: Undefined variable $strength_show
+[Method: GET, Route: purchase]
+in APPPATH\Views\purchase\purchase_add.php on line 360.
+ 1 APPPATH\Views\purchase\purchase_add.php(360): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $strength_show', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\purchase\\purchase_add.php', 360)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\purchase\\purchase_add.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('purchase/purchase_add', [], true)
+ 5 APPPATH\Controllers\PurchaseController.php(41): view('purchase/purchase_add', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-25 23:57:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-25 23:57:46 --> ErrorException: Undefined variable $unit_show
+[Method: GET, Route: purchase]
+in APPPATH\Views\purchase\purchase_add.php on line 392.
+ 1 APPPATH\Views\purchase\purchase_add.php(392): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $unit_show', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\purchase\\purchase_add.php', 392)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\purchase\\purchase_add.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('purchase/purchase_add', [], true)
+ 5 APPPATH\Controllers\PurchaseController.php(45): view('purchase/purchase_add', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-25 23:59:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
