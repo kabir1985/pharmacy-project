@@ -1,4 +1,10 @@
-<form action="<?= base_url('due-collection/save') ?>" method="post">
+<?php
+echo $this->extend('layout');
+echo $this->section('content');
+?>
+
+
+<form action="<?= base_url('payment/save') ?>" method="post">
 
     <?= csrf_field() ?>
 
@@ -134,3 +140,10 @@
     </button>
 
 </form>
+
+<?php
+echo $this->endSection();
+?>
+
+
+

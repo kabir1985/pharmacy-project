@@ -137,14 +137,11 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->post('delete', 'CustomerController::delete');
     });
 
-
-    $routes->group('payment', function ($routes) {
-
-        $routes->get('customer-due', 'DuePaymentController::index');
-    
-        $routes->post('save', 'DuePaymentController::save');
-    
-    });
+$routes->group('payment', function ($routes) {
+    $routes->get('due-collection', 'DuePaymentController::index');
+    $routes->get('collect/(:num)', 'DuePaymentController::collect/$1');
+    $routes->post('save', 'DuePaymentController::save');
+});
     
     $routes->group('customer-group', function ($routes) {
     

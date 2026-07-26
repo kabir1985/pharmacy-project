@@ -4,22 +4,44 @@ namespace App\Controllers;
 
 use App\Models\CustomerDueModel;
 use App\Models\CustomerDuePaymentModel;
-use App\Models\SalesModel;
+use App\Models\ProductSaleModel;
 
 class DuePaymentController extends BaseController
 {
     protected $db;
-    protected $salesModel;
+    protected $productSaleModel;
     protected $customerDueModel;
-    protected $paymentModel;
+    protected $customerDuePaymentModel;
 
     public function __construct()
     {
         $this->db               = db_connect();
-        $this->salesModel       = new SalesModel();
+        $this->productSaleModel = new ProductSaleModel();
         $this->customerDueModel = new CustomerDueModel();
-        $this->paymentModel     = new CustomerDuePaymentModel();
+        $this->customerDuePaymentModel = new CustomerDuePaymentModel();
     }
+
+public function index()
+{
+    $data = [
+        'due_list' => $this->customerDueModel->getAllDue()
+    ];
+
+    return view('payment/due-list', $data);
+}
+
+public function collect($dueId)
+{
+    $due = $this->customerDueModel->getDueById($dueId);
+
+    if (empty($due)) {
+        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Due record not found.');
+    }
+
+    return view('payment/due-collection', [
+        'due' => $due
+    ]);
+}
 
     /**
      * Save Due Payment
@@ -41,7 +63,7 @@ class DuePaymentController extends BaseController
             return redirect()->back()->with('error', 'Invalid payment amount.');
         }
 
-        $sale = $this->salesModel->find($salesId);
+        $sale = $this->productSaleModel->find($salesId);
 
         if (!$sale) {
             return redirect()->back()->with('error', 'Invoice not found.');
@@ -59,7 +81,7 @@ class DuePaymentController extends BaseController
             // Insert Payment History
             //---------------------------------------
 
-            $this->paymentModel->insert([
+            $this->customerDuePaymentModel->insert([
                 'due_id'         => $dueId,
                 'sales_id'       => $salesId,
                 'customer_id'    => $customerId,
@@ -75,7 +97,7 @@ class DuePaymentController extends BaseController
             // Update Sales
             //---------------------------------------
 
-            $this->salesModel->update($salesId, [
+            $this->productSaleModel->update($salesId, [
 
                 'paid_amount' => $sale['paid_amount'] + $paymentAmount,
 

@@ -132,13 +132,16 @@ echo $this->section('content');
 echo $this->endSection();
 ?>
 
+
+
+
+
+
+
+
 <?php
 echo $this->section('scripts');
 ?>
-
-<!-- Data table plugin-->
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
 <script type='text/javascript'>
     $(document).ready(function() {

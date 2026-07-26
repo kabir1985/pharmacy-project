@@ -6661,3 +6661,1070 @@ in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
  8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
  9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 13:31:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:31:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:31:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:40:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:48:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:48:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:48:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:48:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:48:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:49:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:49:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:51:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:51:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:52:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:52:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-26 13:52:10 --> ErrorException: Undefined variable $due
+[Method: GET, Route: payment]
+in APPPATH\Views\payment\due-collection.php on line 5.
+ 1 APPPATH\Views\payment\due-collection.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $due', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('payment/due-collection', [], true)
+ 5 APPPATH\Controllers\DuePaymentController.php(28): view('payment/due-collection')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 13:53:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-26 13:53:20 --> ErrorException: Undefined variable $due
+[Method: GET, Route: payment]
+in APPPATH\Views\payment\due-collection.php on line 5.
+ 1 APPPATH\Views\payment\due-collection.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $due', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('payment/due-collection', [], true)
+ 5 APPPATH\Controllers\DuePaymentController.php(28): view('payment/due-collection')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 13:53:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:54:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 13:54:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-26 13:54:25 --> ErrorException: Undefined variable $due
+[Method: GET, Route: payment/due-collection]
+in APPPATH\Views\payment\due-collection.php on line 5.
+ 1 APPPATH\Views\payment\due-collection.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $due', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('payment/due-collection', [], true)
+ 5 APPPATH\Controllers\DuePaymentController.php(28): view('payment/due-collection')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 13:59:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-26 13:59:36 --> mysqli_sql_exception: Unknown column 'customer.id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `custome...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `custome...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `custome...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `custome...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\pharmacy-project\app\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\pharmacy-project\app\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2026-07-26 13:59:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'customer.id' in 'on clause'
+[Method: GET, Route: payment/due-collection]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 13:59:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'customer.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 13:59:36 --> [Caused by] mysqli_sql_exception: Unknown column 'customer.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:00:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-26 14:00:31 --> mysqli_sql_exception: Unknown column 'customer.cutomer_id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `custome...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `custome...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `custome...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `custome...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\pharmacy-project\app\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\pharmacy-project\app\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2026-07-26 14:00:31 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'customer.cutomer_id' in 'on clause'
+[Method: GET, Route: payment/due-collection]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`cutomer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:00:31 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'customer.cutomer_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`cutomer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`cutomer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`cutomer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:00:31 --> [Caused by] mysqli_sql_exception: Unknown column 'customer.cutomer_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`cutomer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`cutomer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`cutomer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`cutomer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:00:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-26 14:00:50 --> mysqli_sql_exception: Unknown column 'customer_due_payment.id' in 'order clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `custome...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `custome...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `custome...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `custome...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\pharmacy-project\app\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\pharmacy-project\app\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2026-07-26 14:00:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'customer_due_payment.id' in 'order clause'
+[Method: GET, Route: payment/due-collection]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:00:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'customer_due_payment.id' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:00:50 --> [Caused by] mysqli_sql_exception: Unknown column 'customer_due_payment.id' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:00:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-26 14:00:51 --> mysqli_sql_exception: Unknown column 'customer_due_payment.id' in 'order clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `custome...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `custome...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `custome...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `custome...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\pharmacy-project\app\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\pharmacy-project\app\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2026-07-26 14:00:51 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'customer_due_payment.id' in 'order clause'
+[Method: GET, Route: payment/due-collection]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:00:51 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'customer_due_payment.id' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:00:51 --> [Caused by] mysqli_sql_exception: Unknown column 'customer_due_payment.id' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `customer_due_payment`.*, `customer`.`customer_name`
+FROM `customer_due_payment`
+LEFT JOIN `customer` ON `customer`.`customer_id` = `customer_due_payment`.`customer_id`
+ORDER BY `customer_due_payment`.`id` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(677): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\CustomerDuePaymentModel.php(36): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\DuePaymentController.php(26): App\Models\CustomerDuePaymentModel->getDuePayments()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:01:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-26 14:01:31 --> ErrorException: Undefined variable $due
+[Method: GET, Route: payment/due-collection]
+in APPPATH\Views\payment\due-collection.php on line 5.
+ 1 APPPATH\Views\payment\due-collection.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $due', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('payment/due-collection', [], true)
+ 5 APPPATH\Controllers\DuePaymentController.php(28): view('payment/due-collection', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:02:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-26 14:02:41 --> ErrorException: Undefined variable $due
+[Method: GET, Route: payment/due-collection]
+in APPPATH\Views\payment\due-collection.php on line 11.
+ 1 APPPATH\Views\payment\due-collection.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $due', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php', 11)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('payment/due-collection', [], true)
+ 5 APPPATH\Controllers\DuePaymentController.php(28): view('payment/due-collection', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:04:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-26 14:04:26 --> ErrorException: Undefined variable $due
+[Method: GET, Route: payment/due-collection]
+in APPPATH\Views\payment\due-collection.php on line 35.
+ 1 APPPATH\Views\payment\due-collection.php(35): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $due', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php', 35)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('payment/due-collection', [], true)
+ 5 APPPATH\Controllers\DuePaymentController.php(28): view('payment/due-collection', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:04:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:05:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:05:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:06:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:13:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-26 14:13:39 --> ErrorException: Undefined variable $due
+[Method: GET, Route: payment/due-collection]
+in APPPATH\Views\payment\due-collection.php on line 11.
+ 1 APPPATH\Views\payment\due-collection.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $due', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php', 11)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\payment\\due-collection.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('payment/due-collection', [], true)
+ 5 APPPATH\Controllers\DuePaymentController.php(28): view('payment/due-collection', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:17:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:27:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-26 14:27:42 --> mysqli_sql_exception: Unknown column 'c.id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `cd`.*, ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, ...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, ...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-07-26 14:27:42 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.id' in 'on clause'
+[Method: GET, Route: payment/due-collection]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 2 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:27:42 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 4 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:27:42 --> [Caused by] mysqli_sql_exception: Unknown column 'c.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 5 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:28:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-26 14:28:12 --> mysqli_sql_exception: Unknown column 'c.id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `cd`.*, ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, ...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, ...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-07-26 14:28:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.id' in 'on clause'
+[Method: GET, Route: payment/due-collection]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 2 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:28:12 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 4 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:28:12 --> [Caused by] mysqli_sql_exception: Unknown column 'c.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 5 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:28:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-26 14:28:14 --> mysqli_sql_exception: Unknown column 'c.id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `cd`.*, ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, ...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, ...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-07-26 14:28:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.id' in 'on clause'
+[Method: GET, Route: payment/due-collection]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 2 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:28:14 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 4 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:28:14 --> [Caused by] mysqli_sql_exception: Unknown column 'c.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 5 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:28:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:28:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:28:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-26 14:28:27 --> mysqli_sql_exception: Unknown column 'c.id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `cd`.*, ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, ...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, ...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-07-26 14:28:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.id' in 'on clause'
+[Method: GET, Route: payment/due-collection]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 2 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:28:27 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'c.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 4 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:28:27 --> [Caused by] mysqli_sql_exception: Unknown column 'c.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 5 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:28:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-26 14:28:47 --> mysqli_sql_exception: Unknown column 's.id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `cd`.*, ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, ...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, ...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-07-26 14:28:47 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.id' in 'on clause'
+[Method: GET, Route: payment/due-collection]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 2 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:28:47 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 4 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:28:47 --> [Caused by] mysqli_sql_exception: Unknown column 's.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 5 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:28:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-26 14:28:49 --> mysqli_sql_exception: Unknown column 's.id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `cd`.*, ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, ...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, ...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-07-26 14:28:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.id' in 'on clause'
+[Method: GET, Route: payment/due-collection]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 2 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:28:49 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 4 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-26 14:28:49 --> [Caused by] mysqli_sql_exception: Unknown column 's.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > 0
+ORDER BY `cd`.`due_id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `cd`.*, `s`.`sales_invoice`, `s`.`total_amount`, `c`.`customer_name`
+FROM `customer_due` `cd`
+JOIN `sales` `s` ON `s`.`id` = `cd`.`sales_id`
+JOIN `customer` `c` ON `c`.`customer_id` = `cd`.`customer_id`
+WHERE `cd`.`due_amount` > :cd.due_amount:
+ORDER BY `cd`.`due_id` DESC', [...], false)
+ 5 APPPATH\Models\CustomerDueModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DuePaymentController.php(27): App\Models\CustomerDueModel->getAllDue()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:30:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-26 14:30:44 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "payment/due-list.php"
+[Method: GET, Route: payment/due-collection]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('payment/due-list.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('payment/due-list', [], true)
+ 3 APPPATH\Controllers\DuePaymentController.php(30): view('payment/due-list', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DuePaymentController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DuePaymentController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-26 14:32:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:32:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:32:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:32:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:32:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:33:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:33:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-26 14:33:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

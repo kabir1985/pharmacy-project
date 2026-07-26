@@ -25,4 +25,14 @@ class CustomerDuePaymentModel extends Model
         'received_by'
 
     ];
+
+
+
+    public function getDuePayments()
+{
+    return $this->select('customer_due_payment.*, customer.customer_name')
+                ->join('customer', 'customer.customer_id = customer_due_payment.customer_id', 'left')
+                ->orderBy('customer_due_payment.payment_id', 'DESC')
+                ->findAll();
+}
 }

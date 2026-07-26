@@ -380,15 +380,15 @@ class Menu extends BaseConfig
             'url'   => '#',
 
             'privileges' => [
-                'receive_customer'
+                'due_collection'
             ],
 
             'children' => [
 
                 [
-                    'label'      => 'Receive Customer',
-                    'url'        => 'receive',
-                    'privileges' => ['receive_customer']
+                    'label'      => 'Due Collection',
+                    'url'        => 'payment/due-collection',
+                    'privileges' => ['due_collection']
                 ]
 
             ]
