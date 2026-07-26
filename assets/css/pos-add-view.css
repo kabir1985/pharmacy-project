@@ -1,0 +1,39 @@
+
+
+.table th {
+    font-size: 12px;
+}
+
+#cartTableBody td {
+    vertical-align: middle !important;
+}
+
+#cartTableBody .btn_item_delete {
+    display: inline-block;
+}
+
+.charge-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+
+
+.charge-type {
+    width: 70px;
+    margin-right: 8px;
+}
+
+.charge-input {
+    width: 80px;
+    text-align: center;
+    margin-right: 8px;
+}
+
+.charge-total {
+    margin-left: auto;
+    min-width: 70px;
+    text-align: right;
+    font-weight: 600;
+}

@@ -8,12 +8,6 @@ echo $this->section('content');
         <h1><i class='fa fa-th-list'></i> See All Sales List</h1>
         <!-- <p>Table to display analytical data effectively</p> -->
     </div>
-
-    <!-- Button trigger modal -->
-    <!-- <button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#'>
-        <i class='fa fa-plus'></i>
-        Button
-    </button> -->
 </div>
 <!---------------Data Table start Here----..............................................--------------------------->
 <div class='row'>
@@ -49,11 +43,15 @@ echo $this->section('content');
                                 <td><?=esc($row['customer_name'])?></td>
 
                                 <td class="text-end">
-                                    <?=number_format($row['total_sale'], 2)?>
+                                    <?=number_format(
+    $row['total_amount']
+     - $row['product_vat']
+     - $row['other_charge_on_all'],
+    2
+)?>
                                 </td>
-
                                 <td class="text-end">
-                                    <?=number_format($row['product_vat'], 2)?>
+                                    <strong><?=number_format($row['product_vat'], 2)?></strong>
                                 </td>
 
                                 <td class="text-end">
@@ -61,33 +59,35 @@ echo $this->section('content');
                                 </td>
 
                                 <td class="text-end">
-                                    <strong><?=number_format($row['grand_total'], 2)?></strong>
+                                    <strong><?=number_format($row['total_amount'], 2)?></strong>
                                 </td>
 
                                 <td class="text-end text-success">
-                                    <?=number_format($row['total_paid'], 2)?>
+                                    <?=number_format($row['paid_amount'], 2)?>
                                 </td>
 
                                 <td class="text-end text-danger">
-                                    <?=number_format($row['customer_due'], 2)?>
+                                    <?=number_format($row['due_amount'], 2)?>
                                 </td>
 
                                 <td><?=esc($row['seller_name'])?></td>
 
                                 <td class="text-center">
+
                                     <?php if ($row['payment_status'] == 'Fully Paid'): ?>
 
-                                    <span class="badge bg-success">
-                                        Fully Paid
-                                    </span>
+                                    <span class="badge bg-success">Fully Paid</span>
+
+                                    <?php elseif ($row['payment_status'] == 'Unpaid'): ?>
+
+                                    <span class="badge bg-danger">Unpaid</span>
 
                                     <?php else: ?>
 
-                                    <span class="badge bg-warning text-dark">
-                                        Partially Paid
-                                    </span>
+                                    <span class="badge bg-warning text-dark">Partially Paid</span>
 
                                     <?php endif; ?>
+
                                 </td>
 
                             </tr>
@@ -108,28 +108,17 @@ echo $this->endSection();
 echo $this->section('scripts');
 ?>
 
-<!-- Data table plugin-->
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script type='text/javascript' src="<?php echo base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
-
 <!-- Google analytics script-->
 <script type='text/javascript'>
 $('#sampleTable').DataTable({
     order: [
         [0, 'desc']
     ],
-    pageLength: 25,
+    pageLength: 10,
     responsive: true,
     autoWidth: false
 });
 
-// ...............For Date Show.............................
-$('.datePicker').datepicker({
-    format: "dd-mm-yyyy",
-    autoclose: true,
-    todayHighlight: true
-});
-//.................For Date show end........................
 </script>
 
 <!-- For Calendar start -->

@@ -1,0 +1,312 @@
+
+
+
+
+
+/* ==============================
+   GLOBAL CLEAN LOOK
+============================== */
+
+
+/* ==============================
+   CARD DESIGN (Right Panel)
+============================== */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+    background: #ffffff !important;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+}
+
+.card-header h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+/* ==============================
+   TABLE CLEAN ALIGNMENT
+============================== */
+.table {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 13px;
+}
+
+.table thead th {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 600;
+}
+
+.table tbody td {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.table tbody td:last-child {
+    text-align: right;
+    font-weight: 600;
+}
+
+.form-control:not(.sale_price_change) {
+    text-align: left;
+}
+
+.sale_price_change.form-control {
+    text-align: center !important;
+    width: 80% !important;
+}
+
+/* ==============================
+   INPUT & SELECT SMOOTH STYLE
+============================== */
+
+/* ==============================
+   SEARCH + CUSTOMER ALIGNMENT
+============================== */
+
+
+/* ==============================
+   PRODUCT GRID CLEAN
+============================== */
+.all_products {
+    max-height: 450px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.all_products .col-3 {
+    transition: 0.2s ease;
+}
+
+.all_products .col-3:hover {
+    transform: translateY(-3px);
+}
+
+.cart_item_image {
+    border-radius: 8px;
+    border: 1px solid #eee;
+    transition: 0.2s ease;
+}
+
+.cart_item_image:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* ==============================
+   BILLING ALIGNMENT FIX
+============================== */
+.card-body .row {
+    margin-bottom: 8px;
+}
+
+.card-body .col-sm-4 {
+    font-weight: 600;
+}
+
+#subTotalCost,
+#netTotalPrice {
+    text-align: right;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+#paid,
+#due {
+    width: 100% !important;
+    text-align: right;
+}
+
+/* ==============================
+   DISCOUNT & VAT ALIGNMENT
+============================== */
+.d-flex.align-items-center {
+    gap: 8px;
+}
+
+#otherCharge {
+    width: 65px;
+}
+
+#otherChargeValue {
+    width: 80%;
+}
+
+
+.charge-label {
+    width: 470px;
+    /* Same width for both labels */
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.form-select {
+    width: 70px;
+}
+
+.extra-fields {
+    width: 120px;
+}
+
+/* #discountOnAllPrice, */
+#otherChargeOnTotalPrice {
+    width: 60px;
+    text-align: right;
+    font-weight: 600;
+}
+
+
+/* ==============================
+   BUTTON STYLE CLEAN
+============================== */
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.btn-info {
+    background: #17a2b8;
+    border: none;
+}
+
+.btn-info:hover {
+    background: #138496;
+}
+
+.btn-danger:hover,
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* ==============================
+   HELD SALE SECTION
+============================== */
+.held-sale-list .list-group-item {
+    border-radius: 8px;
+    margin-bottom: 5px;
+    border: 1px solid #eee;
+}
+
+/* ==============================
+   MODAL CLEAN LOOK
+============================== */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+}
+
+.modal-header {
+    border-bottom: 1px solid #eee;
+}
+
+.modal-footer {
+    border-top: 1px solid #eee;
+}
+
+/* ==============================
+   SCROLLBAR LIGHT
+============================== */
+.all_products::-webkit-scrollbar {
+    width: 6px;
+}
+
+.all_products::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+
+
+.discount-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+select,
+input[type="number"] {
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+select {
+    width: 70px;
+    text-align: center;
+}
+
+/*input[type="number"] {
+    width: 80px;
+}*/
+
+.result {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Toggle switch styling */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #17a2b8;
+}
+
+input:checked+.slider:before {
+    transform: translateX(30px);
+}
+
+.slider.round {
+    border-radius: 20px;
+}
+
+/* Hide elements with this class */
+.hide {
+    display: none !important;
+}
