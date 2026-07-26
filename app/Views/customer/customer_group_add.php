@@ -117,14 +117,6 @@ echo $this->section('content');
 </div>
 <!----------------------Modal Form End------------------------------------------>
 
-<!-- Modal Delete Product-->
-<!-- 
-<div id="DeleteProductModal"> Hello</div> -->
-
-<!-- End Modal Delete Product-->
-
-
-
 <!---------------------------Modal Form for Edit Section Load Start---------------------------------------->
 <div class="modal fade" id="customer_group_edit_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

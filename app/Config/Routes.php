@@ -136,6 +136,15 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->post('update', 'CustomerController::update');
         $routes->post('delete', 'CustomerController::delete');
     });
+
+
+    $routes->group('payment', function ($routes) {
+
+        $routes->get('customer-due', 'DuePaymentController::index');
+    
+        $routes->post('save', 'DuePaymentController::save');
+    
+    });
     
     $routes->group('customer-group', function ($routes) {
     
