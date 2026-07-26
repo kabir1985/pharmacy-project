@@ -1,0 +1,202 @@
+.trade_price_per_box,
+.product_quantity_change,
+.product_boxqty_change,
+.discount_percent,
+.sale_price {
+    /* min-width:90px;*/
+    text-align: center;
+}
+
+/* Your existing styles for cols */
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col,
+.col-auto,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm,
+.col-sm-auto,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md,
+.col-md-auto,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg,
+.col-lg-auto,
+.col-xl-1,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl,
+.col-xl-auto {
+    position: relative;
+    width: 100%;
+    padding-right: 6px !important;
+    padding-left: 7px !important;
+}
+
+/* Toggle switch styling */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #17a2b8;
+}
+
+input:checked+.slider:before {
+    transform: translateX(30px);
+}
+
+.slider.round {
+    border-radius: 20px;
+}
+
+/* Hide elements with this class */
+.hide {
+    display: none !important;
+}
+
+.blur-field {
+    background-color: #f5f5f5;
+    /* light gray background */
+    opacity: 0.7;
+    /* slightly transparent */
+    color: #000;
+    /* keep text fully visible */
+}
+
+.modal-body input {
+    height: 45px;
+    font-size: 16px;
+}
+
+
+/* ============================= */
+/* MOBILE RESPONSIVE IMPROVEMENT */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    /* Make table font smaller */
+    table {
+        font-size: 12px;
+    }
+
+    /* Reduce padding inside table */
+    .table td,
+    .table th {
+        padding: 4px !important;
+    }
+
+    /* Input fields smaller */
+    .table input {
+        min-width: 70px;
+        font-size: 12px;
+    }
+
+    /* Make summary card sticky bottom */
+    .card {
+        margin-top: 15px;
+    }
+
+    /* Buttons full width on mobile */
+    .btn {
+        font-size: 13px;
+    }
+
+    /* Reduce select height */
+    .select2-container .select2-selection--single {
+        height: 34px !important;
+    }
+
+    /* Cart scroll fix */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
