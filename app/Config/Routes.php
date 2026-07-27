@@ -37,6 +37,8 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->post('products', 'ReturnController::getProducts'); // From View/return/sales_return_list.php
         $routes->post('process', 'ReturnController::process');// From View/return/sales_return_list.php
     });
+
+    $routes->get('salelist', 'SaleListController::index');
     
     $routes->group('products', function ($routes) {
         $routes->get('opening-stock', 'ProductController::index');
@@ -139,8 +141,8 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
 
 $routes->group('payment', function ($routes) {
     $routes->get('due-collection', 'DuePaymentController::index');
-    $routes->get('collect/(:num)', 'DuePaymentController::collect/$1');
-    $routes->post('save', 'DuePaymentController::save');
+   // $routes->get('collect/(:num)', 'DuePaymentController::collect/$1');
+    $routes->post('collection-save', 'DuePaymentController::save');
 });
     
     $routes->group('customer-group', function ($routes) {
@@ -220,7 +222,6 @@ $routes->group('payment', function ($routes) {
         $routes->post('vatTax-create-ajax', 'TaxController::vatTaxCreateAjax'); //From Views/product/NewProductAdd.php
     });
     
-    $routes->get('salelist', 'SaleListController::index');
     $routes->get('get-category-list', 'ProductCategoryController::getCategoryList'); //From NewProductAdd.php page
     
     $routes->get('database-backup', 'BackupController::databaseBackup');

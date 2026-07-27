@@ -67,9 +67,8 @@ class Menu extends BaseConfig
             'privileges' => [
                 'pos_sale',
                 'general_sale',
-                'sale_list',
-                'sale_return',
-                'sale_return_list'
+                'sale_list'
+
             ],
 
             'children' => [
@@ -84,18 +83,6 @@ class Menu extends BaseConfig
                     'label'      => 'Sales List',
                     'url'        => 'salelist',
                     'privileges' => ['sale_list']
-                ],
-
-                [
-                    'label'      => 'Sales Return',
-                    'url'        => 'return',
-                    'privileges' => ['sale_return']
-                ],
-
-                [
-                    'label'      => 'Sales Return List',
-                    'url'        => 'return/sale-return',
-                    'privileges' => ['sale_return_list']
                 ],
 
             ]
@@ -393,6 +380,44 @@ class Menu extends BaseConfig
 
             ]
         ],
+
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Return Section
+        |--------------------------------------------------------------------------
+        */
+
+        [
+            'label' => 'Return Section',
+            'icon'  => 'fa fa-money',
+            'url'   => '#',
+
+            'privileges' => [
+                'sale_return',
+                'sale_return_list'
+            ],
+
+            'children' => [
+
+                [
+                    'label'      => 'Sales Return',
+                    'url'        => 'return',
+                    'privileges' => ['sale_return']
+                ],
+
+                [
+                    'label'      => 'Sales Return List',
+                    'url'        => 'return/sale-return',
+                    'privileges' => ['sale_return_list']
+                ],
+
+
+            ]
+        ],
+
+
 
         /*
         |--------------------------------------------------------------------------
