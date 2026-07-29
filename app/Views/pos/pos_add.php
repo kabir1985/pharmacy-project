@@ -294,7 +294,7 @@ if ($row["total_stock"] > '0') {
                     </p>
 
                     <div class="d-flex justify-content-between">
-                        <span><b>Sub Total Cost</b></span>
+                        <span><b>Sub Total</b></span>
                         <strong id="subTotalCost">0.00</strong>
                     </div>
                     <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">

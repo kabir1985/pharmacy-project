@@ -177,7 +177,7 @@ if (empty($customer_id)) {
         'due_amount'           => $due,
 
         'seller_id'            => $seller_id,
-        'return_status'        => 'ACTIVE',
+        'return_status'        => 'NO_RETURN',
     ];
 
     // =========================
