@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\NewProductAddModel;
+use App\Models\ProductModel;
 use App\Models\ProductBrandModel;
 use App\Models\ProductCategoryModel;
 use App\Models\ProductGroupModel;
@@ -12,7 +12,7 @@ use App\Models\TaxModel;
 
 class ProductController extends BaseController
 {
-    protected NewProductAddModel $NewProductAddModel_Object;
+    protected ProductModel $productModelObject;
     protected ProductCategoryModel $productCategory_object;
     protected ProductBrandModel $ProductBrandModel;
     protected ProductGroupModel $productgroup_object;
@@ -23,7 +23,7 @@ class ProductController extends BaseController
 
     public function __construct()
     {
-        $this->NewProductAddModel_Object = new NewProductAddModel();
+        $this->productModelObject = new ProductModel();
         $this->productCategory_object = new ProductCategoryModel();
         $this->ProductBrandModel = new ProductBrandModel();
         $this->productgroup_object = new ProductGroupModel();
@@ -43,10 +43,10 @@ class ProductController extends BaseController
             'unit_show' => $this->productunit_object->findAll(),
             'strength_show' => $this->ProductStrengthModel_object->findAll(),
             'tax_show' => $this->tax_object->findAll(),
-            'product_show' => $this->NewProductAddModel_Object->getProductList(),
+            'product_show' => $this->productModelObject->getProductList(),
         ];
 
-        return view('product/NewProductAdd', $data);
+        return view('product/productAdd', $data);
     }
 
     //--------------------------------------------------------------------
@@ -150,7 +150,7 @@ class ProductController extends BaseController
             // Insert Product
             // =====================================================
 
-            $id = $this->NewProductAddModel_Object->insert($data);
+            $id = $this->productModelObject->insert($data);
 
             echo($id > 0) ? "1" : "0";
 
@@ -186,7 +186,7 @@ class ProductController extends BaseController
 
             ];
 
-            $updated = $this->NewProductAddModel_Object->update($id, $data);
+            $updated = $this->productModelObject->update($id, $data);
 
             echo($updated) ? "1" : "0";
 
@@ -205,7 +205,7 @@ class ProductController extends BaseController
 
         if ($id) {
             // Delete product from database
-            $this->NewProductAddModel_Object->where('product_id', $id)->delete();
+            $this->productModelObject->where('product_id', $id)->delete();
 
             // Optional: set a flash message
             session()->setFlashdata('msg', 'Product deleted successfully.');

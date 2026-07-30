@@ -104,15 +104,24 @@ class Menu extends BaseConfig
                 'product_category',
                 'product_brand',
                 'product_group',
-                'product_unit'
+                'product_unit',
+                'product_entry'
             ],
 
             'children' => [
+
 
                 [
                     'label'      => 'Barcode Generate',
                     'url'        => 'barcode',
                     'privileges' => ['barcode_generate']
+                ],
+
+                
+                [
+                    'label'      => 'Product Master',
+                    'url'        => 'products',
+                    'privileges' => ['product_entry']
                 ],
 
                 [
@@ -162,7 +171,7 @@ class Menu extends BaseConfig
 
                 [
                     'label'      => 'Opening Stock',
-                    'url'        => 'products/opening-stock',
+                    'url'        => 'opening-stock',
                     'privileges' => ['initial_product']
                 ],
 

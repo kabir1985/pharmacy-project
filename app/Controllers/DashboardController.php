@@ -27,7 +27,7 @@ class DashboardController extends BaseController
         $today = date('Y-m-d');
 
         $today_sales = $this->db->query("
-            SELECT IFNULL(SUM(total_amount),0) AS today_sales
+            SELECT IFNULL(SUM(grand_total),0) AS today_sales
             FROM sales
             WHERE DATE(sales_date) = ?
         ", [$today])->getRowArray();
@@ -45,7 +45,7 @@ class DashboardController extends BaseController
           SELECT
             MONTH(sales_date) AS month_no,
             MONTHNAME(sales_date) AS month_name,
-            SUM(total_amount) AS total_sale
+            SUM(grand_total) AS total_sale
             FROM sales
             WHERE YEAR(sales_date) = YEAR(CURDATE())
             GROUP BY MONTH(sales_date), MONTHNAME(sales_date)

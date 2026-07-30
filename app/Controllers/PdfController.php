@@ -92,9 +92,53 @@ class PdfController extends BaseController
 //         'product_info' => $products
 //     ]);
 // }
+// public function invoice($salesId)
+// {
+//     // Invoice Header
+//     $invoice = $this->db->table('sales')
+//         ->select("
+//             sales.*,
+//             IF(
+//                 sales.customer_id IS NULL,
+//                 'Walk-In Customer',
+//                 customer.customer_name
+//             ) AS customer_name,
+//             customer.phone,
+//             customer.address
+//         ")
+//         ->join('customer', 'customer.customer_id = sales.customer_id', 'left')
+//         ->where('sales.sales_id', $salesId)
+//         ->get()
+//         ->getRowArray();
+
+//     if (!$invoice) {
+//         throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Invoice not found.');
+//     }
+
+//     // Invoice Products
+//     $products = $this->db->table('sales_details sd')
+//         ->select("
+//             sd.*,
+//             pis.product_name
+//         ")
+//         ->join('product_inital_stock pis', 'pis.product_id = sd.product_id')
+//         ->where('sd.sales_details_invoice', $invoice['sales_invoice'])
+//         ->get()
+//         ->getResultArray();
+
+//     return view('report/sales-invoice_pos', [
+//         'invoice_info' => [$invoice],
+//         'product_info' => $products
+//     ]);
+// }
+
+
+
 public function invoice($salesId)
 {
+    // ==========================
     // Invoice Header
+    // ==========================
     $invoice = $this->db->table('sales')
         ->select("
             sales.*,
@@ -115,20 +159,43 @@ public function invoice($salesId)
         throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Invoice not found.');
     }
 
+    // ==========================
     // Invoice Products
+    // ==========================
     $products = $this->db->table('sales_details sd')
         ->select("
             sd.*,
             pis.product_name
         ")
         ->join('product_inital_stock pis', 'pis.product_id = sd.product_id')
-        ->where('sd.sales_details_invoice', $invoice['sales_invoice'])
+        ->where('sd.sales_id', $salesId)
         ->get()
         ->getResultArray();
 
+    // ==========================
+    // Invoice Due
+    // ==========================
+    $due = $this->db->table('customer_due')
+        ->selectSum('due_amount')
+        ->selectSum('paid_amount')
+        ->where('sales_id', $salesId)
+        ->get()
+        ->getRowArray();
+
+    $invoiceDue = 0;
+
+    if ($due) {
+        $invoiceDue = max(
+            0,
+            (float) $due['due_amount'] - (float) $due['paid_amount']
+        );
+    }
+
     return view('report/sales-invoice_pos', [
         'invoice_info' => [$invoice],
-        'product_info' => $products
+        'product_info' => $products,
+        'invoice_due'  => $invoiceDue,
     ]);
 }
+
 }

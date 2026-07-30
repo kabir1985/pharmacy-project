@@ -798,10 +798,9 @@ $(document).ready(function() {
         });
         ////////////////////////////////////////////////
 
-
-        // var netTotalPrice = (subTotalCost + otherChargeOnTotalPrice) - discountOnAllPrice;
-        var netTotalPrice = subTotalCost - productTotalDiscount + productTotalVat +
-            otherChargeOnTotalPrice;
+            var netTotalPrice = Math.round(
+                subTotalCost - productTotalDiscount + productTotalVat + otherChargeOnTotalPrice
+            );
 
 
         var paid = parseFloat($("#paid").val()) || 0;

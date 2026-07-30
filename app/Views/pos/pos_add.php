@@ -341,7 +341,7 @@ if ($row["total_stock"] > '0') {
                     <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
 
                     <div class="d-flex justify-content-between">
-                        <strong>Net Total</strong>
+                        <strong>Grand Total</strong>
                         <strong id="netTotalPrice">0.00</strong>
                     </div>
                     <hr style="border:0; border-top:1px dashed #b5b5b5; margin:6px 0;">
