@@ -524,19 +524,19 @@
                             <!-- Opening Qty, SKU, Barcode -->
                             <div class='form-row'>
 
-                                <div class='form-group col-md-4'>
+                                <!-- <div class='form-group col-md-4'>
                                     <label>Opening /Initial Quantity</label>
                                     <input type='text' required class="form-control" name='productinitial_quantity'
                                         onkeypress="return accept_digit_only(event)" placeholder='Product Quantity'>
-                                </div>
+                                </div> -->
 
-                                <div class='form-group col-md-4'>
+                                <div class='form-group col-md-6'>
                                     <label>SKU(Stock Keeping Unit)</label>
                                     <input type="text" class="form-control" name="sku" placeholder="SKU Code">
                                 </div>
-                                <div class='form-group col-md-4'>
+                                <div class='form-group col-md-6'>
                                     <label>Barcode</label>
-                                    <input type='text' required class="form-control" name='codefor_barcode'
+                                    <input type='text' required class="form-control" name='barcode'
                                         placeholder='Code for Barcode'>
                                 </div>
                             </div>
@@ -614,7 +614,7 @@
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Category Name</label>
-                            <select id="product_category12" name="product_category12" class="form-control">
+                            <select id="product_category" name="product_category" class="form-control">
                                 <?php foreach ($category_show as $category) :?>
                                 <option value="<?= esc($category['product_category_id']) ?>">
                                     <?= esc($category['category_name']) ?>
@@ -624,7 +624,7 @@
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Brand</label>
-                            <select id="product_brand12" name="product_brand12" class="form-control">
+                            <select id="product_brand" name="product_brand" class="form-control">
                                 <?php foreach ($brand_show as $brand) :?>
                                 <option value="<?= esc($brand['brand_id']) ?>"><?= esc($brand['product_brand_name']) ?>
                                 </option>
@@ -635,7 +635,7 @@
                     <div class='form-row'>
                         <div class='form-group col-md-4'>
                             <label>Group</label>
-                            <select id="product_group12" name="product_group12" class="form-control">
+                            <select id="product_group" name="product_group" class="form-control">
                                 <?php foreach ($group_show as $group) :?>
                                 <option value="<?= esc($group['product_group_id']) ?>"><?= esc($group['group_name']) ?>
                                 </option>
@@ -644,7 +644,7 @@
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Unit</label>
-                            <select id="product_unit12" name="product_unit12" class="form-control">
+                            <select id="product_unit" name="product_unit" class="form-control">
                                 <?php foreach ($unit_show as $unit) :?>
                                 <option value="<?= esc($unit['product_unit_id']) ?>">
                                     <?= esc($unit['product_unit_name']) ?>
@@ -654,7 +654,7 @@
                         </div>
                         <div class='form-group col-md-4'>
                             <label>TAX</label>
-                            <select id="tax_percentage12" name="tax_percentage12" class="form-control">
+                            <select id="tax_percentage" name="tax_percentage" class="form-control">
                                 <?php foreach ($tax_show as $tax) :?>
                                 <option value="<?= esc($tax['tax_percentage']) ?>"><?= esc($tax['tax_name']) ?>
                                 </option>
@@ -664,16 +664,16 @@
                     </div>
 
                     <div class='form-row'>
-                        <div class='form-group col-md-4'>
+                        <!-- <div class='form-group col-md-4'>
                             <label>Initial Quantity</label>
                             <input type="number" class="form-control" id="productinitial_quantity"
                                 name="productinitial_quantity" min="0" required placeholder="Opening Quantity">
-                        </div>
-                        <div class='form-group col-md-4'>
+                        </div> -->
+                        <div class='form-group col-md-6'>
                             <label>Barcode</label>
-                            <input type='text' class="form-control" name='codefor_barcode' id='codefor_barcode'>
+                            <input type='text' class="form-control" name='barcode' id='barcode'>
                         </div>
-                        <div class='form-group col-md-4'>
+                        <div class='form-group col-md-6'>
                             <label>Alert Quantity</label>
                             <input type='text' class="form-control" name='alert_quantity' id='alert_quantity'
                                 onkeypress="return accept_digit_only(event)">

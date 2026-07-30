@@ -71,6 +71,16 @@ class PosController extends BaseController
         return view('pos/pos_add', $data);
     }
 
+
+        public function productSearch()
+    {
+        $search = $this->request->getGet('term');
+
+        return $this->response->setJSON(
+            $this->products_object->searchProducts($search)
+        );
+    }
+
     public function sale()
     {
         $session = session();
@@ -117,7 +127,7 @@ class PosController extends BaseController
         foreach ($productsList as $row) {
 
             $qty = (float) $row['quantity'];
-            $price = (float) $row['sales_price_for_customer'];
+            $price = (float) $row['selling_price'];
 
             $line_total = round($qty * $price, 2);
 
@@ -262,14 +272,7 @@ class PosController extends BaseController
         }
     }
 
-    public function productSearch()
-    {
-        $search = $this->request->getGet('term');
 
-        return $this->response->setJSON(
-            $this->products_object->searchProducts($search)
-        );
-    }
 
     public function hold_sale()
     {

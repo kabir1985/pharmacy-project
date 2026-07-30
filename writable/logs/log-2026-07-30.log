@@ -3670,3 +3670,1635 @@ Stack trace:
 #9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 #10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 #11 {main}
+DEBUG - 2026-07-30 15:40:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 15:40:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 15:40:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 15:41:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-30 15:41:24 --> ErrorException: Undefined array key "sales_price_for_customer"
+[Method: GET, Route: pos]
+in APPPATH\Views\pos\pos_add.php on line 264.
+ 1 APPPATH\Views\pos\pos_add.php(264): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "sales_price_for_customer"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\pos\\pos_add.php', 264)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\pos\\pos_add.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('pos/pos_add', [], true)
+ 5 APPPATH\Controllers\PosController.php(71): view('pos/pos_add', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PosController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PosController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-30 15:46:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 15:46:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 15:55:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 15:57:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 15:58:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-07-30 15:58:27 --> ErrorException: Undefined array key "sales_price_for_customer"
+[Method: POST, Route: pos/sale]
+in APPPATH\Controllers\PosController.php on line 120.
+ 1 APPPATH\Controllers\PosController.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "sales_price_for_customer"', 'C:\\laragon\\www\\pharmacy-project\\app\\Controllers\\PosController.php', 120)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PosController->sale()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PosController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-30 16:07:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:11:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:11:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:13:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-30 16:13:40 --> mysqli_sql_exception: Table 'pharmacy_db.product_inital_stock' doesn't exist in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pis`.`p...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pis`.`p...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pis`.`p...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pis`.`p...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\ProductModel.php(301): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\PosController.php(270): App\Models\ProductModel->searchProducts('m')
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\PosController->productSearch()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PosController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-07-30 16:13:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.product_inital_stock' doesn't exist
+[Method: GET, Route: pos/product-search]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%m%\'
+    
+ )
+HAVING `total_stock` >= :total_stock:
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'m\' THEN 1
+            WHEN pis.product_name=\'m\' THEN 2
+            WHEN pis.product_name LIKE \'%m%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'m%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'m%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'m%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20', [...], false)
+ 2 APPPATH\Models\ProductModel.php(301): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\PosController.php(270): App\Models\ProductModel->searchProducts('m')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PosController->productSearch()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PosController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-30 16:13:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.product_inital_stock' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%m%\'
+    
+ )
+HAVING `total_stock` >= 0
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'m\' THEN 1
+            WHEN pis.product_name=\'m\' THEN 2
+            WHEN pis.product_name LIKE \'%m%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'m%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'m%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'m%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%m%\'
+    
+ )
+HAVING `total_stock` >= 0
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'m\' THEN 1
+            WHEN pis.product_name=\'m\' THEN 2
+            WHEN pis.product_name LIKE \'%m%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'m%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'m%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'m%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%m%\'
+    
+ )
+HAVING `total_stock` >= :total_stock:
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'m\' THEN 1
+            WHEN pis.product_name=\'m\' THEN 2
+            WHEN pis.product_name LIKE \'%m%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'m%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'m%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'m%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20', [...], false)
+ 4 APPPATH\Models\ProductModel.php(301): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\PosController.php(270): App\Models\ProductModel->searchProducts('m')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PosController->productSearch()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PosController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-30 16:13:40 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.product_inital_stock' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%m%\'
+    
+ )
+HAVING `total_stock` >= 0
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'m\' THEN 1
+            WHEN pis.product_name=\'m\' THEN 2
+            WHEN pis.product_name LIKE \'%m%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'m%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'m%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'m%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%m%\'
+    
+ )
+HAVING `total_stock` >= 0
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'m\' THEN 1
+            WHEN pis.product_name=\'m\' THEN 2
+            WHEN pis.product_name LIKE \'%m%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'m%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'m%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'m%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%m%\'
+    
+ )
+HAVING `total_stock` >= 0
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'m\' THEN 1
+            WHEN pis.product_name=\'m\' THEN 2
+            WHEN pis.product_name LIKE \'%m%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'m%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'m%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'m%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%m%\'
+    
+ )
+HAVING `total_stock` >= :total_stock:
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'m\' THEN 1
+            WHEN pis.product_name=\'m\' THEN 2
+            WHEN pis.product_name LIKE \'%m%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'m%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'m%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'m%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20', [...], false)
+ 5 APPPATH\Models\ProductModel.php(301): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\PosController.php(270): App\Models\ProductModel->searchProducts('m')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PosController->productSearch()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PosController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-30 16:13:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-07-30 16:13:43 --> mysqli_sql_exception: Table 'pharmacy_db.product_inital_stock' doesn't exist in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pis`.`p...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pis`.`p...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pis`.`p...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pis`.`p...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\ProductModel.php(301): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\PosController.php(270): App\Models\ProductModel->searchProducts('mo')
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\PosController->productSearch()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PosController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-07-30 16:13:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.product_inital_stock' doesn't exist
+[Method: GET, Route: pos/product-search]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%mo%\'
+    
+ )
+HAVING `total_stock` >= :total_stock:
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'mo\' THEN 1
+            WHEN pis.product_name=\'mo\' THEN 2
+            WHEN pis.product_name LIKE \'%mo%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'mo%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'mo%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'mo%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20', [...], false)
+ 2 APPPATH\Models\ProductModel.php(301): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\PosController.php(270): App\Models\ProductModel->searchProducts('mo')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PosController->productSearch()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PosController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-30 16:13:43 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.product_inital_stock' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%mo%\'
+    
+ )
+HAVING `total_stock` >= 0
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'mo\' THEN 1
+            WHEN pis.product_name=\'mo\' THEN 2
+            WHEN pis.product_name LIKE \'%mo%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'mo%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'mo%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'mo%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%mo%\'
+    
+ )
+HAVING `total_stock` >= 0
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'mo\' THEN 1
+            WHEN pis.product_name=\'mo\' THEN 2
+            WHEN pis.product_name LIKE \'%mo%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'mo%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'mo%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'mo%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%mo%\'
+    
+ )
+HAVING `total_stock` >= :total_stock:
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'mo\' THEN 1
+            WHEN pis.product_name=\'mo\' THEN 2
+            WHEN pis.product_name LIKE \'%mo%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'mo%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'mo%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'mo%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20', [...], false)
+ 4 APPPATH\Models\ProductModel.php(301): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\PosController.php(270): App\Models\ProductModel->searchProducts('mo')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PosController->productSearch()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PosController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-07-30 16:13:43 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.product_inital_stock' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%mo%\'
+    
+ )
+HAVING `total_stock` >= 0
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'mo\' THEN 1
+            WHEN pis.product_name=\'mo\' THEN 2
+            WHEN pis.product_name LIKE \'%mo%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'mo%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'mo%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'mo%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%mo%\'
+    
+ )
+HAVING `total_stock` >= 0
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'mo\' THEN 1
+            WHEN pis.product_name=\'mo\' THEN 2
+            WHEN pis.product_name LIKE \'%mo%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'mo%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'mo%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'mo%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%mo%\'
+    
+ )
+HAVING `total_stock` >= 0
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'mo\' THEN 1
+            WHEN pis.product_name=\'mo\' THEN 2
+            WHEN pis.product_name LIKE \'%mo%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'mo%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'mo%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'mo%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pis`.`product_id` AS `id`, `pis`.`product_name` AS `name`, CONCAT(
+            pis.product_name, \' | \', `pb`.`product_brand_name`, \' | \', `pc`.`category_name`, \' | \', `pg`.`group_name`, \' | Stock: \', (
+                COALESCE(pis.productinitial_quantity, 0)
+                + COALESCE(ppd.new_purchased, 0)
+                - COALESCE(sd.total_sale, 0)
+            )
+        ) AS label, (
+            COALESCE(pis.productinitial_quantity, 0)
+            + COALESCE(ppd.new_purchased, 0)
+            - COALESCE(sd.total_sale, 0)
+        ) AS total_stock
+FROM `product_inital_stock` `pis`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(product_quantity_sold) total_sale
+            FROM sales_details
+            GROUP BY product_id
+        ) sd
+     ON `pis`.`product_id`=`sd`.`product_id`
+LEFT JOIN 
+        (
+            SELECT product_id,
+                   SUM(quantity_per_pack*box_quantity) new_purchased
+            FROM product_purchase_details
+            GROUP BY product_id
+        ) ppd
+     ON `pis`.`product_id`=`ppd`.`product_id`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id`=`pis`.`product_brand`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id`=`pis`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id`=`pis`.`product_group`
+WHERE   (
+
+        LOWER(CONCAT(
+            pis.product_name,\' \',
+            IFNULL(pb.product_brand_name,\'\'),\' \',
+            IFNULL(pc.category_name,\'\'),\' \',
+            IFNULL(pg.group_name,\'\'),\' \',
+            IFNULL(pis.codefor_barcode,\'\')
+        )) LIKE \'%mo%\'
+    
+ )
+HAVING `total_stock` >= :total_stock:
+ORDER BY CASE
+            WHEN pis.codefor_barcode=\'mo\' THEN 1
+            WHEN pis.product_name=\'mo\' THEN 2
+            WHEN pis.product_name LIKE \'%mo%\' THEN 3
+            WHEN pb.product_brand_name LIKE \'mo%\'
+                THEN 4
+            WHEN pc.category_name LIKE \'mo%\'
+                THEN 5
+            WHEN pg.group_name LIKE \'mo%\'
+                THEN 6
+            ELSE 7
+        END
+ LIMIT 20', [...], false)
+ 5 APPPATH\Models\ProductModel.php(301): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\PosController.php(270): App\Models\ProductModel->searchProducts('mo')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PosController->productSearch()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PosController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-30 16:14:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:14:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:14:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:14:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:15:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:15:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:28:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:28:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:28:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:28:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:29:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:29:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:29:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:35:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:35:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:35:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:35:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:40:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:40:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:40:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:44:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:47:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:47:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:47:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:47:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:47:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:55:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:55:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:55:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 16:55:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 17:07:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 17:17:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-07-30 17:17:24 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:17:24 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:17:24 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:17:24 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:17:24 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:17:24 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:17:24 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:17:24 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:17:24 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:17:24 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-30 17:19:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 17:21:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 17:21:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 17:28:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 17:28:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-07-30 17:28:55 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:28:55 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:28:55 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:28:55 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:28:55 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:28:55 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:28:55 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:28:55 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:28:55 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:28:55 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-30 17:55:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-07-30 17:55:08 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:55:08 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:55:08 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:55:08 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:55:08 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:55:08 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:55:08 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:55:08 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:55:08 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:55:08 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-30 17:55:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 17:56:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-07-30 17:56:44 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:44 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:44 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:44 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:44 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:44 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:44 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:44 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:44 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-07-30 17:56:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-07-30 17:56:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-07-30 17:56:51 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:51 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:51 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:51 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:51 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:51 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:51 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2026-07-30 17:56:51 --> [DEPRECATED] number_format(): Passing null to parameter #1 ($num) of type float is deprecated in APPPATH\Views\product\productAdd.php on line 109.
+ 1 APPPATH\Views\product\productAdd.php(109): number_format(null, 2)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

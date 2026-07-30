@@ -55,6 +55,8 @@ class ProductController extends BaseController
     {
         helper(['form', 'url']);
 
+        $this->db->transBegin();
+
         try {
 
             // =====================================================
@@ -74,7 +76,6 @@ class ProductController extends BaseController
                     $productImage = $file->getRandomName();
 
                     $file->move(ROOTPATH . 'public/uploads/', $productImage);
-
                 }
             }
 
@@ -82,42 +83,42 @@ class ProductController extends BaseController
             // Get Form Data
             // =====================================================
 
-            $tax_id = (int) $this->request->getPost('tax_id');
-            $tax_percentage = (float) $this->request->getPost('tax_percentage');
+            $taxId = (int) $this->request->getPost('tax_id');
+            $taxPercentage = (float) $this->request->getPost('tax_percentage');
 
-            $base_price = (float) $this->request->getPost('base_price');
-            $purchase_price = (float) $this->request->getPost('purchase_price');
+            $basePrice = (float) $this->request->getPost('base_price');
+            $purchasePrice = (float) $this->request->getPost('purchase_price');
+            $sellingPrice = (float) $this->request->getPost('sales_price');
+            $profitMargin = (float) $this->request->getPost('profit_margin');
 
-            $tax_type_db = $this->request->getPost('tax_type') === 'with_tax'
-            ? 'with_tax'
-            : 'without_tax';
-
-            $profit_margin = (int) $this->request->getPost('profit_margin');
-            $sales_price = (float) $this->request->getPost('sales_price');
+            $taxType = ($this->request->getPost('tax_type') === 'with_tax')
+                ? 'with_tax'
+                : 'without_tax';
 
             // =====================================================
             // Tax Calculation
             // =====================================================
 
-            if ($tax_type_db === 'with_tax') {
+            if ($taxType === 'with_tax') {
 
-                $tax_amount = $base_price * $tax_percentage / (100 + $tax_percentage);
+                $taxAmount = ($basePrice * $taxPercentage) / (100 + $taxPercentage);
 
-                $cost_without_vat = $base_price - $tax_amount;
+                $costWithoutVat = $basePrice - $taxAmount;
 
             } else {
 
-                $tax_amount = ($base_price * $tax_percentage) / 100;
+                $taxAmount = ($basePrice * $taxPercentage) / 100;
 
-                $purchase_price = $base_price + $tax_amount;
+                $purchasePrice = $basePrice + $taxAmount;
 
-                $cost_without_vat = $base_price;
+                $costWithoutVat = $basePrice;
             }
 
-            $base_price = round($base_price, 2);
-            $tax_amount = round($tax_amount, 2);
-            $purchase_price = round($purchase_price, 2);
-            $cost_without_vat = round($cost_without_vat, 2);
+            $basePrice = round($basePrice, 2);
+            $taxAmount = round($taxAmount, 2);
+            $purchasePrice = round($purchasePrice, 2);
+            $costWithoutVat = round($costWithoutVat, 2);
+            $sellingPrice = round($sellingPrice, 2);
 
             // =====================================================
             // Prepare Insert Data
@@ -128,33 +129,65 @@ class ProductController extends BaseController
                 'product_name' => trim($this->request->getPost('product_name')),
                 'product_category' => $this->request->getPost('product_category'),
                 'product_brand' => $this->request->getPost('product_brand'),
-                'product_group' => (int) $this->request->getPost('product_group'),
-                'product_strength' => (int) $this->request->getPost('strength'),
+                'product_group' => $this->request->getPost('product_group'),
+                'product_strength' => $this->request->getPost('strength'),
                 'product_unit' => $this->request->getPost('product_unit'),
-                'codefor_barcode' => trim($this->request->getPost('codefor_barcode')),
-                'productinitial_quantity' => (int) $this->request->getPost('productinitial_quantity'),
-                'base_price' => $base_price,
-                'cost_without_vat' => $cost_without_vat,
-                'tax_type' => $tax_type_db,
-                'tax_id' => $tax_id,
-                'tax_amount' => $tax_amount,
-                'purchase_price' => $purchase_price,
-                'profit_margin_%' => $profit_margin,
-                'sales_price_for_customer' => $sales_price,
-                'alert_quantity' => (int) $this->request->getPost('alert_quantity'),
-                'product_image' => $productImage,
 
+                'barcode' => trim($this->request->getPost('barcode')),
+
+                'base_price' => $basePrice,
+                'cost_without_vat' => $costWithoutVat,
+
+                'tax_type' => $taxType,
+                'tax_id' => $taxId,
+                'tax_amount' => $taxAmount,
+
+                'purchase_price' => $purchasePrice,
+
+                'profit_margin_percent' => $profitMargin,
+
+                'selling_price' => $sellingPrice,
+
+                'alert_quantity' => (float) $this->request->getPost('alert_quantity'),
+
+                'product_image' => $productImage
             ];
+
+            // =====================================================
+            // Duplicate Barcode Check
+            // =====================================================
+
+            $exists = $this->productModelObject
+                ->where('barcode', $data['barcode'])
+                ->countAllResults();
+
+            if ($exists > 0) {
+
+                $this->db->transRollback();
+
+                echo "2"; // Barcode already exists
+
+                return;
+            }
 
             // =====================================================
             // Insert Product
             // =====================================================
 
-            $id = $this->productModelObject->insert($data);
+            $productId = $this->productModelObject->insert($data);
 
-            echo($id > 0) ? "1" : "0";
+            if (!$productId) {
+
+                throw new \Exception('Product insert failed.');
+            }
+
+            $this->db->transCommit();
+
+            echo "1";
 
         } catch (\Throwable $e) {
+
+            $this->db->transRollback();
 
             log_message('error', '[ProductController::create] ' . $e->getMessage());
 
@@ -162,7 +195,7 @@ class ProductController extends BaseController
         }
     }
 
-    public function update($id = 0)
+    public function update()
     {
         try {
 
@@ -171,24 +204,34 @@ class ProductController extends BaseController
             $data = [
 
                 'product_name' => trim($this->request->getPost('product_name')),
-                'product_category' => $this->request->getPost('product_category12'),
-                'product_brand' => $this->request->getPost('product_brand12'),
-                'product_group' => $this->request->getPost('product_group12'),
-                'product_unit' => $this->request->getPost('product_unit12'),
-                'codefor_barcode' => trim($this->request->getPost('codefor_barcode')),
-                'tax_perchantage' => $this->request->getPost('tax_perchantage12'),
-                'productinitial_quantity' => (int) $this->request->getPost('productinitial_quantity'),
-                'buying_unit_price' => (float) $this->request->getPost('buying_unit_price'),
-                'selling_unit_price' => (float) $this->request->getPost('selling_unit_price'),
-                'alert_quantity' => (int) $this->request->getPost('alert_quantity'),
+                'product_category' => $this->request->getPost('product_category'),
+                'product_brand' => $this->request->getPost('product_brand'),
+                'product_group' => $this->request->getPost('product_group'),
+                'product_strength' => $this->request->getPost('product_strength'),
+                'product_unit' => $this->request->getPost('product_unit'),
 
-                // 'product_image' => $this->request->getPost('product_image'),
+                'barcode' => trim($this->request->getPost('barcode')),
+
+                'base_price' => (float) $this->request->getPost('base_price'),
+                'cost_without_vat' => (float) $this->request->getPost('cost_without_vat'),
+
+                'tax_type' => $this->request->getPost('tax_type'),
+                'tax_id' => (int) $this->request->getPost('tax_id'),
+                'tax_amount' => (float) $this->request->getPost('tax_amount'),
+
+                'purchase_price' => (float) $this->request->getPost('purchase_price'),
+
+                'profit_margin_percent' => (float) $this->request->getPost('profit_margin'),
+
+                'selling_price' => (float) $this->request->getPost('sales_price'),
+
+                'alert_quantity' => (float) $this->request->getPost('alert_quantity'),
 
             ];
 
             $updated = $this->productModelObject->update($id, $data);
 
-            echo($updated) ? "1" : "0";
+            echo $updated ? "1" : "0";
 
         } catch (\Throwable $e) {
 
@@ -197,24 +240,45 @@ class ProductController extends BaseController
             echo "0";
         }
     }
-
-    public function delete($id = 0)
+    public function delete()
     {
-        // Get delete_id from POST request
-        $id = $this->request->getPost('delete_id'); // safer than getVar() for POST form
+        try {
 
-        if ($id) {
-            // Delete product from database
-            $this->productModelObject->where('product_id', $id)->delete();
+            $productId = (int) $this->request->getPost('delete_id');
 
-            // Optional: set a flash message
-            session()->setFlashdata('msg', 'Product deleted successfully.');
-        } else {
-            session()->setFlashdata('msg', 'Invalid product ID.');
+            if ($productId <= 0) {
+                session()->setFlashdata('msg', 'Invalid Product ID.');
+                return redirect()->to(site_url('product'));
+            }
+
+            // Already inactive?
+            $product = $this->productModelObject->find($productId);
+
+            if (!$product) {
+                session()->setFlashdata('msg', 'Product not found.');
+                return redirect()->to(site_url('product'));
+            }
+
+            if ($product['status'] === 'inactive') {
+                session()->setFlashdata('msg', 'Product is already inactive.');
+                return redirect()->to(site_url('product'));
+            }
+
+            // Soft Delete (Deactivate Product)
+            $this->productModelObject->update($productId, [
+                'status' => 'inactive'
+            ]);
+
+            session()->setFlashdata('msg', 'Product deactivated successfully.');
+
+        } catch (\Throwable $e) {
+
+            log_message('error', '[ProductController::delete] ' . $e->getMessage());
+
+            session()->setFlashdata('msg', 'Something went wrong.');
         }
 
-        // Redirect back to product list page
-        return redirect()->to(site_url('/product'));
+        return redirect()->to(site_url('products'));
     }
 
     // public function barcodegenerate()

@@ -511,7 +511,7 @@ $(document).ready(function() {
 
         let index = $(this).data("id");
 
-        itemsInCart[index].sales_price_for_customer = parseFloat($(this).val()) || 0;
+        itemsInCart[index].selling_price = parseFloat($(this).val()) || 0;
         ////==============================================================================
         if (itemsInCart[index].hold_id) {
 
@@ -589,7 +589,7 @@ $(document).ready(function() {
 
         let subtotal =
             (parseFloat(item.quantity) || 0) *
-            (parseFloat(item.sales_price_for_customer) || 0);
+            (parseFloat(item.selling_price) || 0);
 
         if ($("#ProductWiseVatAndDiscount").is(":checked")) {
 
@@ -622,9 +622,9 @@ $(document).ready(function() {
 
         itemsInCart.forEach(function(item) {
 
-            //let subtotal = item.quantity * item.sales_price_for_customer;
+            //let subtotal = item.quantity * item.selling_price;
             let subtotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
-                .sales_price_for_customer) || 0);
+                .selling_price) || 0);
 
             subTotalCost += subtotal;
         });
@@ -643,9 +643,9 @@ $(document).ready(function() {
         subTotalCost = 0;
         $.each(itemsInCart, function(key, item) {
 
-            // var baseTotal = parseInt(item.quantity) * parseFloat(item.sales_price_for_customer);
+            // var baseTotal = parseInt(item.quantity) * parseFloat(item.selling_price);
             var baseTotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
-                .sales_price_for_customer) || 0);
+                .selling_price) || 0);
             var subtotalPrice = baseTotal; // default, no VAT/Discount
 
             // Add to total
@@ -682,8 +682,8 @@ $(document).ready(function() {
         inputmode="decimal"
         class="form-control form-control-sm sale_price_change text-center"
         data-id="${key}"
-        name="sales_price_for_customer"
-        value="${parseFloat(item.sales_price_for_customer || 1).toFixed(2)}">
+        name="selling_price"
+        value="${parseFloat(item.selling_price || 1).toFixed(2)}">
 </td>
 
     <!-- VAT -->
@@ -703,7 +703,7 @@ $(document).ready(function() {
 
     <!-- Purchase Price -->
     <td class="text-end">
-        ${parseFloat(item.unit_purchase_price || 0).toFixed(2)}
+        ${parseFloat(item.purchase_price || 0).toFixed(2)}
     </td>
 
     <!-- Subtotal -->
@@ -766,7 +766,7 @@ $(document).ready(function() {
         itemsInCart.forEach(function(item) {
 
             let qty = parseFloat(item.quantity) || 0;
-            let price = parseFloat(item.sales_price_for_customer) || 0;
+            let price = parseFloat(item.selling_price) || 0;
 
             // Basic subtotal (without VAT & Discount)
             let lineTotal = qty * price;
@@ -845,7 +845,7 @@ $(document).ready(function() {
         let subTotal = 0;
         itemsInCart.forEach(function(item) {
             subTotal += (parseFloat(item.quantity) || 0) *
-                (parseFloat(item.sales_price_for_customer) || 0);
+                (parseFloat(item.selling_price) || 0);
         });
 
         if (type === "%") {

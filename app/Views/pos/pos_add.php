@@ -194,7 +194,7 @@ foreach ($sales_summery_report_show as $row) {
                                     <!-- <th class="vat-column-header hide">Vat %</th> -->
                                     <th class="discount-column-header hide">Disc %</th>
 
-                                    <th>Avg Pur.Price</th>
+                                    <th>Pur.Price</th>
                                     <th class="text-end">Amount</th>
                                     <th width="60" class="text-center">Action</th>
                                 </tr>
@@ -261,7 +261,7 @@ if ($row["total_stock"] > '0') {
 
                             <!-- Product Price -->
                             <p class="text-primary mb-0" style="font-size: 0.7rem; font-weight: 600;">
-                                ৳<?php echo number_format($row["sales_price_for_customer"], 2) ?>
+                                ৳<?php echo number_format($row["selling_price"], 2) ?>
                             </p>
                         </div>
 
@@ -579,7 +579,11 @@ window.APP_URLS = {
 
 window.APP = {
     productsList : <?= json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>
+
+    //console.log('Products List:', window.APP.productsList);
 };
+
+//console.log('Products List:', window.APP.productsList);
 </script>
 
 <script src="<?= base_url('assets/js/pos-add.js') ?>"></script>
