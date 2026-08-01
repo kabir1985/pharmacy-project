@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers;
-use App\Models\NewProductAddModel;
+use App\Models\ProductModel;
 use App\Models\ProductPurchaseModel;
 use App\Models\SupplierModel;
 
@@ -15,7 +15,7 @@ use App\Models\TaxModel;
 class PurchaseController extends BaseController
 {
     protected ProductPurchaseModel $product_purchase_object;
-    protected NewProductAddModel $product_add_object;
+    protected ProductModel $product_add_object;
     protected SupplierModel $supplier_object;
 //============For Opening Stock=========================
     protected ProductCategoryModel $productCategory_object;
@@ -28,7 +28,7 @@ class PurchaseController extends BaseController
     public function __construct()
     {
         $this->product_purchase_object = new ProductPurchaseModel();
-        $this->product_add_object = new NewProductAddModel();
+        $this->product_add_object = new ProductModel();
         $this->supplier_object = new SupplierModel();
 
 //============For Opening Stock=========================

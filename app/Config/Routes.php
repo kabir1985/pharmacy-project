@@ -54,7 +54,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->group('opening-stock', ['namespace' => 'App\Controllers'], function($routes) {
 
         $routes->get('/', 'OpeningStockController::index');
-        $routes->get('create', 'OpeningStockController::create');
+       // $routes->get('create', 'OpeningStockController::create');
         $routes->post('store', 'OpeningStockController::store');
         $routes->get('edit/(:num)', 'OpeningStockController::edit/$1');
         $routes->post('update/(:num)', 'OpeningStockController::update/$1');

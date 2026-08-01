@@ -6,29 +6,41 @@ use CodeIgniter\Model;
 
 class ProductOpeningStockModel extends Model
 {
-    protected $table = 'product_opening_stock';
-
-    protected $primaryKey = 'opening_stock_id';
-
+  protected $table            = 'product_opening_stock';
+    protected $primaryKey       = 'opening_stock_id';
     protected $useAutoIncrement = true;
 
-    protected $returnType = 'array';
+    protected $returnType       = 'array';
+    protected $useSoftDeletes   = false;
 
-    protected $useTimestamps = true;
-
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
+    protected $protectFields    = true;
 
     protected $allowedFields = [
         'product_id',
+        'supplier_id',
         'batch_no',
         'manufacturing_date',
         'expiry_date',
         'quantity',
-        'unit_cost',
-        'total_cost',
+        'bonus_quantity',
+
+        'tax_type',
+        'tax_id',
+        'tax_percentage',
+
+        'purchase_price_without_vat',
+        'tax_amount',
+        'purchase_price_with_vat',
+
+        'profit_margin_percent',
+        'selling_price',
+        'mrp',
+
         'stock_date',
-        'created_by'
+        'remarks',
+
+        'created_by',
+        'status',
     ];
 
 

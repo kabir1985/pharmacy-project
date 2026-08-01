@@ -46,126 +46,165 @@
 
                     <table class="table table-bordered table-sm dt-responsive nowrap" id="sampleTable" width="100%">
 
-                    <thead>
-<tr>
-    <th>Image</th>
-    <th>Product Name</th>
-    <th>Category</th>
-    <th>Current Stock</th>
-    <th>Purchase Price</th>
-    <th>Selling Price</th>
-    <th>MRP</th>
-    <th>Batch No</th>
-    <th>Status</th>
-    <th width="100">Action</th>
-</tr>
-</thead>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Opening Stock</th>
+                                <th>Price Without VAT</th>
+                                <th>Tax %</th>
+                                <th>Tax Amount</th>
+                                <th>Purchase Price</th>
+                                <th>Profit Margin %</th>
+                                <th>Selling Price</th>
+                                <th width="100">Action</th>
+                            </tr>
+                        </thead>
 
-                       <tbody>
+                        <tbody>
 
-<?php if (!empty($product_show)): ?>
+                            <?php if (!empty($product_show)) : ?>
 
-<?php foreach ($product_show as $product): ?>
+                                <?php foreach ($product_show as $product) : ?>
 
-<tr>
+                                    <tr>
 
-    <td width="70">
+                                        <td width="70">
 
-        <img src="<?= base_url('public/uploads/' . (!empty($product['product_image']) ? $product['product_image'] : 'default-medicine.png')) ?>"
-            class="img-thumbnail"
-            style="width:60px;height:60px;object-fit:cover;">
+                                            <?php if (!empty($product['product_image'])) : ?>
 
-    </td>
+                                                <img src="<?= base_url('public/uploads/' . $product['product_image']) ?>"
+                                                    alt="<?= esc($product['product_name']) ?>"
+                                                    class="img-thumbnail product-thumb"
+                                                    style="width:60px;height:60px;object-fit:cover;">
 
-    <td><?= esc($product['product_name']) ?></td>
+                                            <?php else : ?>
 
-    <td><?= esc($product['category_name']) ?></td>
+                                                <img src="<?= base_url('public/uploads/no-image.png') ?>"
+                                                    class="img-thumbnail product-thumb"
+                                                    style="width:60px;height:60px;object-fit:cover;">
 
-    <td class="text-end">
-        <?= number_format($product['total_stock'],2) ?>
-    </td>
+                                            <?php endif; ?>
 
-    <td class="text-end">
-        <?= number_format($product['purchase_price_with_vat'],2) ?>
-    </td>
+                                        </td>
 
-    <td class="text-end">
-        <?= number_format($product['selling_price'],2) ?>
-    </td>
+                                        <td class="product-name">
+                                            <?= esc($product['product_name']) ?>
+                                        </td>
 
-    <td class="text-end">
-        <?= number_format($product['mrp'],2) ?>
-    </td>
+                                        <td>
+                                            <?= esc($product['category_name']) ?>
+                                        </td>
 
-    <td>
-        <?= esc($product['batch_no']) ?>
-    </td>
+                                        <td class="text-end">
+                                            <?= number_format($product['opening_stock'], 2) ?>
+                                        </td>
 
-    <td>
+                                        <td class="text-end">
+                                            <?= number_format($product['cost_without_vat'], 2) ?>
+                                        </td>
 
-        <?php if($product['status']=='active'): ?>
+                                        <td class="text-end">
+                                            <?= number_format($product['tax_percentage'], 2) ?>%
+                                        </td>
 
-            <span class="badge bg-success">Active</span>
+                                        <td class="text-end">
+                                            <?= number_format($product['tax_amount'], 2) ?>
+                                        </td>
 
-        <?php else: ?>
+                                        <td class="text-end">
+                                            <?= number_format($product['purchase_price'], 2) ?>
+                                        </td>
 
-            <span class="badge bg-danger">Inactive</span>
+                                        <td class="text-end">
+                                            <?= number_format($product['profit_margin_percent'], 2) ?>%
+                                        </td>
 
-        <?php endif; ?>
+                                        <td class="text-end">
+                                            <?= number_format($product['selling_price'], 2) ?>
+                                        </td>
 
-    </td>
+                                        <td>
 
-    <td>
+                                            <div class="btn-group btn-group-sm">
 
-        <div class="btn-group btn-group-sm">
+                                                <a href="#"
+                                                    class="btn btn-primary btn-edit"
 
-            <a href="#"
-                class="btn btn-primary btn-edit"
+                                                    data-product_id="<?= esc($product['product_id']) ?>"
 
-                data-product_id="<?= esc($product['product_id']) ?>"
-                data-product_name="<?= esc($product['product_name']) ?>"
-                data-product_category="<?= esc($product['product_category']) ?>"
-                data-product_brand="<?= esc($product['product_brand']) ?>"
-                data-product_group="<?= esc($product['product_group']) ?>"
-                data-product_strength="<?= esc($product['product_strength']) ?>"
-                data-product_unit="<?= esc($product['product_unit']) ?>"
-                data-sku="<?= esc($product['sku']) ?>"
-                data-barcode="<?= esc($product['barcode']) ?>"
-                data-alert_quantity="<?= esc($product['alert_quantity']) ?>"
-                data-status="<?= esc($product['status']) ?>"
-                data-product_image="<?= esc($product['product_image']) ?>">
+                                                    data-product_name="<?= esc($product['product_name']) ?>"
 
-                <i class="fa fa-edit"></i>
+                                                    data-product_category="<?= esc($product['product_category']) ?>"
 
-            </a>
+                                                    data-product_brand="<?= esc($product['product_brand']) ?>"
 
-            <a href="#"
-                class="btn btn-danger btn-delete"
-                data-delete_id="<?= esc($product['product_id']) ?>">
+                                                    data-product_group="<?= esc($product['product_group']) ?>"
 
-                <i class="fa fa-trash"></i>
+                                                    data-product_strength="<?= esc($product['product_strength']) ?>"
 
-            </a>
+                                                    data-product_unit="<?= esc($product['product_unit']) ?>"
 
-        </div>
+                                                    data-barcode="<?= esc($product['barcode']) ?>"
 
-    </td>
+                                                    data-base_price="<?= esc($product['base_price']) ?>"
 
-</tr>
+                                                    data-cost_without_vat="<?= esc($product['cost_without_vat']) ?>"
 
-<?php endforeach; ?>
+                                                    data-tax_type="<?= esc($product['tax_type']) ?>"
 
-<?php else: ?>
+                                                    data-tax_id="<?= esc($product['tax_id']) ?>"
 
-<tr>
-    <td colspan="10" class="text-center text-muted">
-        No Products Found.
-    </td>
-</tr>
+                                                    data-tax_percentage="<?= esc($product['tax_percentage']) ?>"
 
-<?php endif; ?>
+                                                    data-tax_amount="<?= esc($product['tax_amount']) ?>"
 
-</tbody>
+                                                    data-purchase_price="<?= esc($product['purchase_price']) ?>"
+
+                                                    data-profit_margin_percent="<?= esc($product['profit_margin_percent']) ?>"
+
+                                                    data-selling_price="<?= esc($product['selling_price']) ?>"
+
+                                                    data-alert_quantity="<?= esc($product['alert_quantity']) ?>"
+
+                                                    data-opening_stock="<?= esc($product['opening_stock']) ?>">
+
+                                                    <i class="fa fa-edit"></i>
+
+                                                </a>
+
+                                                <a href="#"
+                                                    class="btn btn-danger btn-delete"
+                                                    data-delete_id="<?= esc($product['product_id']) ?>">
+
+                                                    <i class="fa fa-trash"></i>
+
+                                                </a>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                <?php endforeach; ?>
+
+                            <?php else : ?>
+
+                                <tr>
+
+                                    <td colspan="11" class="text-center text-muted">
+
+                                        No Products Found.
+
+                                    </td>
+
+                                </tr>
+
+                            <?php endif; ?>
+
+                        </tbody>
 
                     </table>
 
@@ -384,6 +423,92 @@
                             </div>
                         </div>
                     </div>
+                    <!-- ================= Purchase & Pricing ================= -->
+
+                    <div class="card shadow-sm mb-3">
+
+                        <div class="card-header bg-success text-white">
+                            <i class="fa fa-money"></i> Purchase & Pricing
+                        </div>
+
+                        <div class="card-body">
+
+                            <!-- Base Price, VAT, Purchase Price, Tax Type, Profit margin, Sales price -->
+
+                            <div class='form-row'>
+                                <div class='form-group col-md-4'>
+                                    <label>Base Price/Purchase Price (Without VAT)</label>
+                                    <input type='text' required class="form-control" name='base_price' id="base_price"
+                                        onkeypress="return accept_digit_only(event)" placeholder='Base Price' required>
+                                </div>
+
+                                <!--------------------------Purchase VAT/Tax------------------------------------------------------>
+                                <div class="form-group col-md-4">
+                                    <label>Purchase (VAT/TAX) %</label>
+
+                                    <div class="input-group">
+
+                                        <select id="tax_id" name="tax_id" class="form-control" required>
+                                            <option value="">Select Tax</option>
+                                            <?php foreach ($tax_show as $tax): ?>
+                                            <option value="<?=$tax['tax_id'];?>"
+                                                data-percent="<?=$tax['tax_percentage'];?>">
+                                                <?=$tax['tax_name'];?> (
+                                                <?=$tax['tax_percentage'];?>%)
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
+
+                                        <div class="input-group-append">
+
+                                            <button class="btn btn-success" id="btnAddVatTax" type="button"
+                                                title="Add VAT/TAX">
+
+                                                <i class="fa fa-plus"></i>
+
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!---------------------------------------------------------------------------------------------------->
+
+                                <div class='form-group col-md-4'>
+                                    <label>Purchase Price (Per Product-With VAT)</label>
+                                    <input type='text' required class="form-control" id="purchase_price"
+                                        name='purchase_price' onkeypress="return accept_digit_only(event)"
+                                        placeholder='Unit Price' readonly>
+                                </div>
+                            </div>
+
+                            <div class='form-row'>
+                                <div class='form-group col-md-4'>
+                                    <label>Tax Type</label>
+                                    <select class="form-control" id="tax_type" name="tax_type" required>
+                                        <option value="without_tax" selected>Without Tax (Exclusive)</option>
+                                        <option value="with_tax">With Tax (Inclusive)</option>
+                                    </select>
+                                </div>
+                                <div class='form-group col-md-4'>
+                                    <label>Profit Margin(%)</label>
+                                    <input type='text' required class="form-control" id="profit_margin"
+                                        name='profit_margin' onkeypress="return accept_digit_only(event)"
+                                        placeholder="Selling Price">
+                                </div>
+                                <div class='form-group col-md-4'>
+                                    <label>Sales Price(vat/tax সহ)</label>
+                                    <input type='text' required class="form-control" id="sales_price" name='sales_price'
+                                        onkeypress="return accept_digit_only(event)" placeholder="Selling Price">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
 
                     <!-- ================= Inventory ================= -->
 
@@ -391,13 +516,20 @@
 
                         <div class="card-header bg-warning text-dark">
                             <i class="fa fa-archive"></i>
-                            Inventory Setup
+                            Inventory Information
                         </div>
 
                         <div class="card-body">
 
                             <!-- Opening Qty, SKU, Barcode -->
                             <div class='form-row'>
+
+                                <!-- <div class='form-group col-md-4'>
+                                    <label>Opening /Initial Quantity</label>
+                                    <input type='text' required class="form-control" name='productinitial_quantity'
+                                        onkeypress="return accept_digit_only(event)" placeholder='Product Quantity'>
+                                </div> -->
+
                                 <div class='form-group col-md-6'>
                                     <label>SKU(Stock Keeping Unit)</label>
                                     <input type="text" class="form-control" name="sku" placeholder="SKU Code">

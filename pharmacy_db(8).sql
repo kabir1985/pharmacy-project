@@ -2,8 +2,8 @@
 -- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jul 30, 2026 at 11:11 AM
+-- Host: 127.0.0.1
+-- Generation Time: Aug 01, 2026 at 04:34 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -318,42 +318,27 @@ INSERT INTO `menu_id` (`id`, `menu_name`, `menu_id`) VALUES
 
 CREATE TABLE `products` (
   `product_id` bigint UNSIGNED NOT NULL,
-  `product_name` varchar(255) NOT NULL,
-  `product_category` int DEFAULT NULL,
-  `product_brand` int DEFAULT NULL,
-  `product_group` int DEFAULT NULL,
-  `product_strength` int NOT NULL,
-  `product_unit` int DEFAULT NULL,
-  `barcode` varchar(100) DEFAULT NULL,
-  `base_price` decimal(15,2) DEFAULT '0.00',
-  `cost_without_vat` decimal(15,2) DEFAULT '0.00',
-  `tax_type` enum('with_tax','without_tax') NOT NULL,
-  `tax_id` int NOT NULL,
-  `tax_amount` decimal(15,2) DEFAULT '0.00',
-  `purchase_price` decimal(15,2) DEFAULT '0.00',
-  `profit_margin_percent` decimal(5,2) DEFAULT NULL,
-  `selling_price` decimal(15,2) DEFAULT '0.00',
-  `alert_quantity` decimal(10,2) DEFAULT '0.00',
-  `product_image` varchar(255) DEFAULT NULL,
+  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_category` bigint UNSIGNED NOT NULL,
+  `product_brand` bigint UNSIGNED NOT NULL,
+  `product_group` bigint UNSIGNED NOT NULL,
+  `product_strength` bigint UNSIGNED DEFAULT NULL,
+  `product_unit` bigint UNSIGNED NOT NULL,
+  `sku` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `barcode` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alert_quantity` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `product_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default-medicine.png',
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_id`, `product_name`, `product_category`, `product_brand`, `product_group`, `product_strength`, `product_unit`, `barcode`, `base_price`, `cost_without_vat`, `tax_type`, `tax_id`, `tax_amount`, `purchase_price`, `profit_margin_percent`, `selling_price`, `alert_quantity`, `product_image`, `created_at`, `updated_at`) VALUES
-(577, 'Paracetamol 500 mg', 1, 1, 1, 1, 1, '890100000001', 9.50, 10.00, 'without_tax', 1, 1.50, 10.00, 25.00, 12.50, 20.00, 'paracetamol.jpg', '2026-07-30 10:57:32', '2026-07-30 10:57:32'),
-(578, 'Napa Extra', 1, 2, 1, 1, 1, '890100000002', 11.50, 12.00, 'without_tax', 1, 1.80, 12.00, 30.00, 15.60, 15.00, 'napa.jpg', '2026-07-30 10:57:32', '2026-07-30 10:57:32'),
-(579, 'Seclo 20 mg', 2, 3, 2, 1, 1, '890100000003', 6.80, 7.00, 'without_tax', 1, 1.05, 7.00, 35.00, 9.45, 25.00, 'seclo.jpg', '2026-07-30 10:57:32', '2026-07-30 10:57:32'),
-(580, 'Ace 500', 1, 4, 1, 1, 1, '890100000004', 10.00, 10.50, 'without_tax', 1, 1.58, 10.50, 28.00, 13.44, 20.00, 'ace.jpg', '2026-07-30 10:57:32', '2026-07-30 10:57:32'),
-(581, 'Monas 10', 3, 5, 3, 1, 1, '890100000005', 13.00, 14.00, 'without_tax', 1, 2.10, 14.00, 30.00, 18.20, 15.00, 'monas.jpg', '2026-07-30 10:57:32', '2026-07-30 10:57:32'),
-(582, 'Ceevit', 4, 6, 4, 1, 1, '890100000006', 4.50, 5.00, 'without_tax', 1, 0.75, 5.00, 40.00, 7.00, 30.00, 'ceevit.jpg', '2026-07-30 10:57:32', '2026-07-30 10:57:32'),
-(583, 'Maxpro 20', 2, 7, 2, 1, 1, '890100000007', 8.00, 8.50, 'without_tax', 1, 1.28, 8.50, 32.00, 11.22, 20.00, 'maxpro.jpg', '2026-07-30 10:57:32', '2026-07-30 10:57:32'),
-(584, 'Histacin', 3, 8, 3, 1, 1, '890100000008', 5.20, 5.50, 'without_tax', 1, 0.83, 5.50, 30.00, 7.15, 15.00, 'histacin.jpg', '2026-07-30 10:57:32', '2026-07-30 10:57:32'),
-(585, 'Ciprocin 500', 5, 9, 5, 1, 1, '890100000009', 17.50, 18.00, 'without_tax', 1, 2.70, 18.00, 35.00, 24.30, 10.00, 'ciprocin.jpg', '2026-07-30 10:57:32', '2026-07-30 10:57:32'),
-(586, 'Amodis', 6, 10, 6, 1, 1, '890100000010', 7.80, 8.00, 'without_tax', 1, 1.20, 8.00, 25.00, 10.00, 20.00, 'amodis.jpg', '2026-07-30 10:57:32', '2026-07-30 10:57:32');
+INSERT INTO `products` (`product_id`, `product_name`, `product_category`, `product_brand`, `product_group`, `product_strength`, `product_unit`, `sku`, `barcode`, `alert_quantity`, `product_image`, `status`, `created_at`, `updated_at`) VALUES
+(7, 'Napa', 161, 60, 46, 1, 22, 'sku-napa', 'barcode-napa', 5.00, 'default-medicine.png', 'active', '2026-08-01 02:30:55', '2026-08-01 02:30:55');
 
 -- --------------------------------------------------------
 
@@ -386,7 +371,10 @@ INSERT INTO `product_brand` (`brand_id`, `product_brand_name`, `product_category
 (54, 'sdfdsf', 138, '2026-07-22 10:38:07', '2026-07-22 10:38:07'),
 (55, 'sdfdsf', 155, '2026-07-23 06:32:51', '2026-07-23 06:32:51'),
 (56, 'dfdsff', 153, '2026-07-23 06:33:39', '2026-07-23 06:33:39'),
-(57, 'testbrand', 158, '2026-07-23 06:39:43', '2026-07-23 06:39:43');
+(57, 'testbrand', 158, '2026-07-23 06:39:43', '2026-07-23 06:39:43'),
+(58, 'Bari-4', 159, '2026-07-31 05:43:07', '2026-07-31 05:43:07'),
+(59, 'Nokia', 160, '2026-07-31 10:03:24', '2026-07-31 10:03:24'),
+(60, 'Reneta', 161, '2026-08-01 02:30:23', '2026-08-01 02:30:23');
 
 -- --------------------------------------------------------
 
@@ -414,7 +402,10 @@ INSERT INTO `product_category` (`product_category_id`, `category_name`) VALUES
 (155, 'sdfdsfd'),
 (156, 'dd2222'),
 (157, 'sdfdsf'),
-(158, 'testcategory');
+(158, 'testcategory'),
+(159, 'Fruits'),
+(160, 'Electric Item'),
+(161, 'Tablet');
 
 -- --------------------------------------------------------
 
@@ -443,7 +434,9 @@ INSERT INTO `product_group` (`product_group_id`, `group_name`) VALUES
 (48, 'Lotion'),
 (49, 'Cefixime'),
 (50, 'gggg'),
-(51, 'tstgroup');
+(51, 'tstgroup'),
+(52, 'Chapai'),
+(53, 'Hangeri');
 
 -- --------------------------------------------------------
 
@@ -454,33 +447,35 @@ INSERT INTO `product_group` (`product_group_id`, `group_name`) VALUES
 CREATE TABLE `product_opening_stock` (
   `opening_stock_id` bigint UNSIGNED NOT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
-  `batch_no` varchar(50) DEFAULT NULL,
+  `supplier_id` bigint UNSIGNED DEFAULT NULL,
+  `batch_no` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `manufacturing_date` date DEFAULT NULL,
   `expiry_date` date DEFAULT NULL,
-  `quantity` decimal(18,2) NOT NULL DEFAULT '0.00',
-  `unit_cost` decimal(15,2) NOT NULL DEFAULT '0.00',
-  `total_cost` decimal(18,2) NOT NULL DEFAULT '0.00',
+  `quantity` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `bonus_quantity` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `tax_type` enum('without_tax','with_tax') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'without_tax',
+  `tax_id` bigint UNSIGNED DEFAULT NULL,
+  `tax_percentage` decimal(5,2) NOT NULL DEFAULT '0.00',
+  `purchase_price_without_vat` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `tax_amount` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `purchase_price_with_vat` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `profit_margin_percent` decimal(8,2) NOT NULL DEFAULT '0.00',
+  `selling_price` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `mrp` decimal(12,2) NOT NULL DEFAULT '0.00',
   `stock_date` date NOT NULL,
-  `created_by` int DEFAULT NULL,
+  `remarks` text COLLATE utf8mb4_unicode_ci,
+  `created_by` bigint UNSIGNED DEFAULT NULL,
+  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `product_opening_stock`
 --
 
-INSERT INTO `product_opening_stock` (`opening_stock_id`, `product_id`, `batch_no`, `manufacturing_date`, `expiry_date`, `quantity`, `unit_cost`, `total_cost`, `stock_date`, `created_by`, `created_at`, `updated_at`) VALUES
-(21, 577, 'PCM240001', '2026-01-01', '2028-01-01', 500.00, 2.50, 1250.00, '2026-07-30', 18, '2026-07-30 11:02:31', '2026-07-30 11:02:31'),
-(22, 578, 'NPE240001', '2026-02-01', '2028-02-01', 300.00, 3.20, 960.00, '2026-07-30', 18, '2026-07-30 11:02:31', '2026-07-30 11:02:31'),
-(23, 579, 'SCL240001', '2026-01-15', '2028-01-15', 200.00, 7.50, 1500.00, '2026-07-30', 18, '2026-07-30 11:02:31', '2026-07-30 11:02:31'),
-(24, 580, 'ACE240001', '2026-03-10', '2028-03-10', 450.00, 2.80, 1260.00, '2026-07-30', 18, '2026-07-30 11:02:31', '2026-07-30 11:02:31'),
-(25, 581, 'MON240001', '2026-02-20', '2028-02-20', 180.00, 8.20, 1476.00, '2026-07-30', 18, '2026-07-30 11:02:31', '2026-07-30 11:02:31'),
-(26, 582, 'CEE240001', '2026-01-05', '2028-01-05', 250.00, 5.40, 1350.00, '2026-07-30', 18, '2026-07-30 11:02:31', '2026-07-30 11:02:31'),
-(27, 583, 'MAX240001', '2026-04-01', '2028-04-01', 150.00, 11.00, 1650.00, '2026-07-30', 18, '2026-07-30 11:02:31', '2026-07-30 11:02:31'),
-(28, 584, 'HIS240001', '2026-03-15', '2028-03-15', 220.00, 6.25, 1375.00, '2026-07-30', 18, '2026-07-30 11:02:31', '2026-07-30 11:02:31'),
-(29, 585, 'CIP240001', '2026-02-10', '2028-02-10', 120.00, 18.50, 2220.00, '2026-07-30', 18, '2026-07-30 11:02:31', '2026-07-30 11:02:31'),
-(30, 586, 'AMD240001', '2026-01-25', '2028-01-25', 160.00, 14.75, 2360.00, '2026-07-30', 18, '2026-07-30 11:02:31', '2026-07-30 11:02:31');
+INSERT INTO `product_opening_stock` (`opening_stock_id`, `product_id`, `supplier_id`, `batch_no`, `manufacturing_date`, `expiry_date`, `quantity`, `bonus_quantity`, `tax_type`, `tax_id`, `tax_percentage`, `purchase_price_without_vat`, `tax_amount`, `purchase_price_with_vat`, `profit_margin_percent`, `selling_price`, `mrp`, `stock_date`, `remarks`, `created_by`, `status`, `created_at`, `updated_at`) VALUES
+(11, 7, 106, 'batch-01', '2026-07-02', '2026-08-31', 500.00, 5.00, 'without_tax', 11, 0.00, 1.00, 0.00, 1.00, 30.00, 1.30, 2.00, '2026-08-01', 'test', 18, 'active', '2026-08-01 10:56:56', '2026-08-01 10:56:56');
 
 -- --------------------------------------------------------
 
@@ -489,7 +484,7 @@ INSERT INTO `product_opening_stock` (`opening_stock_id`, `product_id`, `batch_no
 --
 
 CREATE TABLE `product_purchase` (
-  `product_purchase_id` int NOT NULL,
+  `purchase_id` int NOT NULL,
   `purchase_invoice` varchar(100) NOT NULL,
   `purchaser_id` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `payment_type` varchar(80) NOT NULL,
@@ -498,26 +493,32 @@ CREATE TABLE `product_purchase` (
   `discount_amount_on_invoice_total` decimal(10,2) DEFAULT NULL,
   `vat_amount_on_invoice_total` decimal(10,2) DEFAULT NULL,
   `invoice_net_total` decimal(12,2) DEFAULT NULL,
-  `purchase_date` datetime DEFAULT NULL
+  `paid_amount` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `due_amount` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `purchase_date` datetime DEFAULT NULL,
+  `remarks` text,
+  `status` enum('active','cancelled') NOT NULL DEFAULT 'active',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `product_purchase`
 --
 
-INSERT INTO `product_purchase` (`product_purchase_id`, `purchase_invoice`, `purchaser_id`, `payment_type`, `supplier_id`, `invoice_total`, `discount_amount_on_invoice_total`, `vat_amount_on_invoice_total`, `invoice_net_total`, `purchase_date`) VALUES
-(112, 'PUR2618793170', '18', 'Cash', '106', 100.00, 0.00, 0.00, 100.00, '2026-07-06 07:23:23'),
-(113, 'PUR26187A2715', '18', 'Cash', '124', 100.00, 0.00, 0.00, 100.00, '2026-07-06 08:46:33'),
-(114, 'PUR26192608F1', '18', 'Cash', '106', 36.38, 1.09, 1.20, 36.45, '2026-07-11 06:42:50'),
-(115, 'PUR2620051541', '18', 'Cash', '106', 327.69, 8.00, 31.75, 350.67, '2026-07-19 04:27:11'),
-(116, 'PUR26202C8A31', '18', 'Cash', '124', 35.02, 0.00, 0.36, 35.38, '2026-07-21 08:32:38'),
-(117, 'PUR2620211803', '18', 'Cash', '106', 35.02, 0.00, 0.36, 35.38, '2026-07-21 08:33:47'),
-(118, 'PUR26202D0964', '18', 'Cash', '106', 67.99, 0.00, 0.67, 68.66, '2026-07-21 08:53:48'),
-(119, 'PUR262048E221', '18', 'Cash', '106', 54390.00, 0.00, 598290.00, 652680.00, '2026-07-23 07:07:46'),
-(120, 'PUR26207D16BF', '18', 'Cash', '106', 2161.01, 302.00, 3673.72, 5019.33, '2026-07-26 04:53:14'),
-(121, 'PUR26207227CE', '18', 'Cash', '106', 250.34, 6.00, 51.90, 294.99, '2026-07-26 06:01:34'),
-(122, 'PUR2620774321', '18', 'Cash', '106', 51.94, 4.00, 0.00, 47.94, '2026-07-26 06:37:56'),
-(123, 'PUR26207F7FC6', '18', 'Cash', '106', 20.00, 0.00, 0.00, 20.00, '2026-07-26 06:48:54');
+INSERT INTO `product_purchase` (`purchase_id`, `purchase_invoice`, `purchaser_id`, `payment_type`, `supplier_id`, `invoice_total`, `discount_amount_on_invoice_total`, `vat_amount_on_invoice_total`, `invoice_net_total`, `paid_amount`, `due_amount`, `purchase_date`, `remarks`, `status`, `created_at`, `updated_at`) VALUES
+(112, 'PUR2618793170', '18', 'Cash', '106', 100.00, 0.00, 0.00, 100.00, 0.00, 0.00, '2026-07-06 07:23:23', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
+(113, 'PUR26187A2715', '18', 'Cash', '124', 100.00, 0.00, 0.00, 100.00, 0.00, 0.00, '2026-07-06 08:46:33', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
+(114, 'PUR26192608F1', '18', 'Cash', '106', 36.38, 1.09, 1.20, 36.45, 0.00, 0.00, '2026-07-11 06:42:50', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
+(115, 'PUR2620051541', '18', 'Cash', '106', 327.69, 8.00, 31.75, 350.67, 0.00, 0.00, '2026-07-19 04:27:11', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
+(116, 'PUR26202C8A31', '18', 'Cash', '124', 35.02, 0.00, 0.36, 35.38, 0.00, 0.00, '2026-07-21 08:32:38', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
+(117, 'PUR2620211803', '18', 'Cash', '106', 35.02, 0.00, 0.36, 35.38, 0.00, 0.00, '2026-07-21 08:33:47', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
+(118, 'PUR26202D0964', '18', 'Cash', '106', 67.99, 0.00, 0.67, 68.66, 0.00, 0.00, '2026-07-21 08:53:48', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
+(119, 'PUR262048E221', '18', 'Cash', '106', 54390.00, 0.00, 598290.00, 652680.00, 0.00, 0.00, '2026-07-23 07:07:46', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
+(120, 'PUR26207D16BF', '18', 'Cash', '106', 2161.01, 302.00, 3673.72, 5019.33, 0.00, 0.00, '2026-07-26 04:53:14', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
+(121, 'PUR26207227CE', '18', 'Cash', '106', 250.34, 6.00, 51.90, 294.99, 0.00, 0.00, '2026-07-26 06:01:34', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
+(122, 'PUR2620774321', '18', 'Cash', '106', 51.94, 4.00, 0.00, 47.94, 0.00, 0.00, '2026-07-26 06:37:56', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
+(123, 'PUR26207F7FC6', '18', 'Cash', '106', 20.00, 0.00, 0.00, 20.00, 0.00, 0.00, '2026-07-26 06:48:54', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51');
 
 -- --------------------------------------------------------
 
@@ -526,48 +527,27 @@ INSERT INTO `product_purchase` (`product_purchase_id`, `purchase_invoice`, `purc
 --
 
 CREATE TABLE `product_purchase_details` (
-  `purchase_id` bigint NOT NULL,
-  `purchase_invoice_id` varchar(100) NOT NULL,
+  `purchase_id` bigint UNSIGNED NOT NULL,
+  `purchase_invoice` varchar(100) NOT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
-  `quantity_per_pack` int NOT NULL DEFAULT '0',
-  `box_quantity` int NOT NULL DEFAULT '1',
-  `base_price_per_unit` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `free_qty` bigint NOT NULL,
-  `product_wise_vat_amount` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `product_wise_discount_amount` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `purchase_price` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `batch_no` varchar(50) DEFAULT NULL,
+  `batch_no` varchar(100) DEFAULT NULL,
   `manufacturing_date` date DEFAULT NULL,
-  `expiry_date` date DEFAULT NULL
+  `expiry_date` date DEFAULT NULL,
+  `quantity_per_pack` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `box_quantity` decimal(12,2) NOT NULL DEFAULT '1.00',
+  `free_qty` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `base_price_per_unit` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `tax_id` bigint UNSIGNED DEFAULT NULL,
+  `tax_percentage` decimal(5,2) NOT NULL DEFAULT '0.00',
+  `product_wise_vat_amount` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `product_wise_discount_amount` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `selling_price` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `mrp` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `purchase_price` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `line_total` decimal(14,2) NOT NULL DEFAULT '0.00',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `product_purchase_details`
---
-
-INSERT INTO `product_purchase_details` (`purchase_id`, `purchase_invoice_id`, `product_id`, `quantity_per_pack`, `box_quantity`, `base_price_per_unit`, `free_qty`, `product_wise_vat_amount`, `product_wise_discount_amount`, `purchase_price`, `batch_no`, `manufacturing_date`, `expiry_date`) VALUES
-(179, 'PUR2618793170', 573, 100, 1, 1.00, 0, 0.00, 0.00, 100.00, NULL, NULL, NULL),
-(180, 'PUR26187A2715', 573, 100, 1, 1.00, 50, 0.00, 0.00, 100.00, NULL, NULL, NULL),
-(181, 'PUR26192608F1', 574, 1, 1, 33.00, 10, 3.30, 0.99, 35.31, NULL, NULL, NULL),
-(182, 'PUR26192608F1', 573, 1, 1, 1.00, 0, 0.10, 0.03, 1.07, NULL, NULL, NULL),
-(183, 'PUR2620051541', 574, 1, 10, 33.00, 0, 9.90, 13.20, 326.70, NULL, NULL, NULL),
-(184, 'PUR2620051541', 573, 1, 1, 1.00, 0, 0.03, 0.04, 0.99, NULL, NULL, NULL),
-(185, 'PUR26202C8A31', 574, 1, 1, 33.00, 0, 0.99, 0.00, 33.99, NULL, NULL, NULL),
-(186, 'PUR26202C8A31', 573, 1, 1, 1.00, 0, 0.03, 0.00, 1.03, NULL, NULL, NULL),
-(187, 'PUR2620211803', 574, 1, 1, 33.00, 0, 0.99, 0.00, 33.99, NULL, NULL, NULL),
-(188, 'PUR2620211803', 573, 1, 1, 1.00, 0, 0.03, 0.00, 1.03, NULL, NULL, NULL),
-(189, 'PUR26202D0964', 575, 1, 1, 34.00, 0, 0.00, 0.00, 34.00, NULL, NULL, NULL),
-(190, 'PUR26202D0964', 574, 1, 1, 33.00, 0, 0.99, 0.00, 33.99, NULL, NULL, NULL),
-(191, 'PUR262048E221', 576, 1000, 1, 20.00, 0, 400.00, 0.00, 20400.00, NULL, NULL, NULL),
-(192, 'PUR262048E221', 574, 1000, 1, 33.00, 0, 990.00, 0.00, 33990.00, NULL, NULL, NULL),
-(193, 'PUR26207D16BF', 576, 1, 100, 20.00, 0, 200.00, 40.00, 2160.00, NULL, NULL, NULL),
-(194, 'PUR26207D16BF', 573, 1, 1, 1.00, 0, 0.03, 0.02, 1.01, NULL, NULL, NULL),
-(195, 'PUR26207227CE', 576, 1, 10, 20.00, 0, 20.00, 4.00, 216.00, NULL, NULL, NULL),
-(196, 'PUR26207227CE', 573, 1, 1, 1.00, 0, 0.03, 0.02, 1.01, NULL, NULL, NULL),
-(197, 'PUR26207227CE', 574, 1, 1, 33.00, 0, 0.99, 0.66, 33.33, NULL, NULL, NULL),
-(198, 'PUR2620774321', 576, 1, 1, 20.00, 0, 0.00, 0.40, 19.60, NULL, NULL, NULL),
-(199, 'PUR2620774321', 574, 1, 1, 33.00, 0, 0.00, 0.66, 32.34, NULL, NULL, NULL),
-(200, 'PUR26207F7FC6', 576, 1, 1, 20.00, 0, 0.00, 0.00, 20.00, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -601,7 +581,9 @@ INSERT INTO `product_strength` (`strength_id`, `strength_name`) VALUES
 (14, '5 ml'),
 (15, '23mg'),
 (16, 'strddd'),
-(17, 'teststrength');
+(17, 'teststrength'),
+(18, '500mg'),
+(19, '200gm');
 
 -- --------------------------------------------------------
 
@@ -632,7 +614,8 @@ INSERT INTO `product_unit` (`product_unit_id`, `product_unit_name`) VALUES
 (36, 'kg'),
 (41, 'Tube'),
 (48, 'dasdsad'),
-(49, 'tstunit');
+(49, 'tstunit'),
+(50, 'piece');
 
 -- --------------------------------------------------------
 
@@ -827,24 +810,17 @@ CREATE TABLE `stock_ledger` (
   `qty_out` decimal(18,2) DEFAULT '0.00',
   `balance_qty` decimal(18,2) DEFAULT '0.00',
   `unit_cost` decimal(15,2) DEFAULT '0.00',
-  `transaction_date` datetime DEFAULT CURRENT_TIMESTAMP
+  `transaction_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `remarks` varchar(100) NOT NULL,
+  `created_by` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `stock_ledger`
 --
 
-INSERT INTO `stock_ledger` (`id`, `product_id`, `transaction_type`, `reference_id`, `batch_no`, `qty_in`, `qty_out`, `balance_qty`, `unit_cost`, `transaction_date`) VALUES
-(1, 577, 'OPENING', 21, NULL, 500.00, 0.00, 500.00, 2.50, '2026-07-30 00:00:00'),
-(2, 578, 'OPENING', 22, NULL, 300.00, 0.00, 300.00, 3.20, '2026-07-30 00:00:00'),
-(3, 579, 'OPENING', 23, NULL, 200.00, 0.00, 200.00, 7.50, '2026-07-30 00:00:00'),
-(4, 580, 'OPENING', 24, NULL, 450.00, 0.00, 450.00, 2.80, '2026-07-30 00:00:00'),
-(5, 581, 'OPENING', 25, NULL, 180.00, 0.00, 180.00, 8.20, '2026-07-30 00:00:00'),
-(6, 582, 'OPENING', 26, NULL, 250.00, 0.00, 250.00, 5.40, '2026-07-30 00:00:00'),
-(7, 583, 'OPENING', 27, NULL, 150.00, 0.00, 150.00, 11.00, '2026-07-30 00:00:00'),
-(8, 584, 'OPENING', 28, NULL, 220.00, 0.00, 220.00, 6.25, '2026-07-30 00:00:00'),
-(9, 585, 'OPENING', 29, NULL, 120.00, 0.00, 120.00, 18.50, '2026-07-30 00:00:00'),
-(10, 586, 'OPENING', 30, NULL, 160.00, 0.00, 160.00, 14.75, '2026-07-30 00:00:00');
+INSERT INTO `stock_ledger` (`id`, `product_id`, `transaction_type`, `reference_id`, `batch_no`, `qty_in`, `qty_out`, `balance_qty`, `unit_cost`, `transaction_date`, `remarks`, `created_by`) VALUES
+(19, 7, 'OPENING', 11, 'batch-01', 505.00, 0.00, 505.00, 1.00, '2026-08-01 00:00:00', 'Opening Stock', '18');
 
 -- --------------------------------------------------------
 
@@ -853,7 +829,7 @@ INSERT INTO `stock_ledger` (`id`, `product_id`, `transaction_type`, `reference_i
 --
 
 CREATE TABLE `supplier` (
-  `supplier_id` bigint NOT NULL,
+  `supplier_id` bigint UNSIGNED NOT NULL,
   `supplier_name` varchar(100) NOT NULL,
   `business_name` varchar(100) NOT NULL,
   `contact_number` varchar(50) NOT NULL,
@@ -877,7 +853,7 @@ INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `business_name`, `contac
 --
 
 CREATE TABLE `tax` (
-  `tax_id` int NOT NULL,
+  `tax_id` bigint UNSIGNED NOT NULL,
   `tax_name` varchar(80) NOT NULL,
   `tax_percentage` decimal(5,2) NOT NULL DEFAULT '0.00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -1026,11 +1002,14 @@ ALTER TABLE `menu_id`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`),
-  ADD UNIQUE KEY `uk_barcode` (`barcode`),
-  ADD KEY `idx_product_name` (`product_name`),
+  ADD UNIQUE KEY `barcode` (`barcode`),
   ADD KEY `idx_category` (`product_category`),
   ADD KEY `idx_brand` (`product_brand`),
-  ADD KEY `idx_group` (`product_group`);
+  ADD KEY `idx_group` (`product_group`),
+  ADD KEY `idx_strength` (`product_strength`),
+  ADD KEY `idx_unit` (`product_unit`),
+  ADD KEY `idx_barcode` (`barcode`),
+  ADD KEY `idx_sku` (`sku`);
 
 --
 -- Indexes for table `product_brand`
@@ -1057,24 +1036,31 @@ ALTER TABLE `product_group`
 --
 ALTER TABLE `product_opening_stock`
   ADD PRIMARY KEY (`opening_stock_id`),
-  ADD UNIQUE KEY `unique_product_batch` (`product_id`,`batch_no`),
-  ADD KEY `idx_opening_product` (`product_id`),
+  ADD UNIQUE KEY `uk_product_batch` (`product_id`,`batch_no`),
+  ADD KEY `idx_product` (`product_id`),
+  ADD KEY `idx_supplier` (`supplier_id`),
+  ADD KEY `idx_expiry` (`expiry_date`),
   ADD KEY `idx_stock_date` (`stock_date`),
-  ADD KEY `fk_opening_stock_user` (`created_by`);
+  ADD KEY `idx_tax` (`tax_id`),
+  ADD KEY `idx_status` (`status`);
 
 --
 -- Indexes for table `product_purchase`
 --
 ALTER TABLE `product_purchase`
-  ADD PRIMARY KEY (`product_purchase_id`);
+  ADD PRIMARY KEY (`purchase_id`),
+  ADD UNIQUE KEY `uk_purchase_invoice` (`purchase_invoice`);
 
 --
 -- Indexes for table `product_purchase_details`
 --
 ALTER TABLE `product_purchase_details`
   ADD PRIMARY KEY (`purchase_id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `purchase_invoice_id` (`purchase_invoice_id`);
+  ADD KEY `idx_purchase_invoice` (`purchase_invoice`),
+  ADD KEY `idx_product` (`product_id`),
+  ADD KEY `idx_batch` (`batch_no`),
+  ADD KEY `idx_expiry` (`expiry_date`),
+  ADD KEY `idx_tax` (`tax_id`);
 
 --
 -- Indexes for table `product_strength`
@@ -1242,7 +1228,7 @@ ALTER TABLE `general_settings`
 -- AUTO_INCREMENT for table `held_sales`
 --
 ALTER TABLE `held_sales`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `menu_id`
@@ -1254,55 +1240,55 @@ ALTER TABLE `menu_id`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=587;
+  MODIFY `product_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `product_brand`
 --
 ALTER TABLE `product_brand`
-  MODIFY `brand_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `brand_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `product_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `product_category_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
 
 --
 -- AUTO_INCREMENT for table `product_group`
 --
 ALTER TABLE `product_group`
-  MODIFY `product_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `product_group_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `product_opening_stock`
 --
 ALTER TABLE `product_opening_stock`
-  MODIFY `opening_stock_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `opening_stock_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `product_purchase`
 --
 ALTER TABLE `product_purchase`
-  MODIFY `product_purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `product_purchase_details`
 --
 ALTER TABLE `product_purchase_details`
-  MODIFY `purchase_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `purchase_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product_strength`
 --
 ALTER TABLE `product_strength`
-  MODIFY `strength_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `strength_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `product_unit`
 --
 ALTER TABLE `product_unit`
-  MODIFY `product_unit_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `product_unit_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `return_payment`
@@ -1350,19 +1336,19 @@ ALTER TABLE `stock_adjustment_details`
 -- AUTO_INCREMENT for table `stock_ledger`
 --
 ALTER TABLE `stock_ledger`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `supplier_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `supplier_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT for table `tax`
 --
 ALTER TABLE `tax`
-  MODIFY `tax_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `tax_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -1412,7 +1398,15 @@ ALTER TABLE `expense_sub_category`
 --
 ALTER TABLE `product_opening_stock`
   ADD CONSTRAINT `fk_opening_stock_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_opening_stock_user` FOREIGN KEY (`created_by`) REFERENCES `user` (`user_id`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_opening_stock_supplier` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_product_opening_stock_tax` FOREIGN KEY (`tax_id`) REFERENCES `tax` (`tax_id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `product_purchase_details`
+--
+ALTER TABLE `product_purchase_details`
+  ADD CONSTRAINT `fk_purchase_details_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_purchase_details_tax` FOREIGN KEY (`tax_id`) REFERENCES `tax` (`tax_id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `return_payment`
