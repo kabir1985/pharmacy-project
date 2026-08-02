@@ -13,7 +13,6 @@ protected $primaryKey = 'purchase_id';
 
 protected $allowedFields = [
     'purchase_invoice',
-    'purchaser_id',
     'payment_type',
     'supplier_id',
     'invoice_total',
@@ -23,7 +22,7 @@ protected $allowedFields = [
     'paid_amount',
     'due_amount',
     'purchase_date',
-    'remarks',
+    'purchase_by',
     'status'
 ];
 

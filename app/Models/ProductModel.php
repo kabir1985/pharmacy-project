@@ -432,7 +432,6 @@ public function getProductsWithCurrentStock()
         pg.group_name,
         ps.strength_name,
 
-        pos.batch_no,
         pos.tax_type,
         pos.tax_id,
         pos.tax_percentage,
@@ -441,11 +440,16 @@ public function getProductsWithCurrentStock()
         pos.purchase_price_without_vat,
         pos.purchase_price_with_vat,
         pos.profit_margin_percent,
-        pos.selling_price
-        COALESCE(sl.total_stock,0) AS total_stock
+        pos.selling_price,
+
+        COALESCE(sl.total_stock, 0) AS total_stock
     ");
 
-    // Current Stock
+    /*
+    |--------------------------------------------------------------------------
+    | Current Stock (Stock Ledger)
+    |--------------------------------------------------------------------------
+    */
     $builder->join(
         "(
             SELECT
@@ -459,7 +463,11 @@ public function getProductsWithCurrentStock()
         false
     );
 
-    // Latest Opening Stock (one row per product)
+    /*
+    |--------------------------------------------------------------------------
+    | Latest Opening Stock / Pricing
+    |--------------------------------------------------------------------------
+    */
     $builder->join(
         "(
             SELECT os.*
@@ -470,7 +478,7 @@ public function getProductsWithCurrentStock()
                     product_id,
                     MAX(opening_stock_id) AS opening_stock_id
                 FROM product_opening_stock
-                WHERE status='active'
+                WHERE status = 'active'
                 GROUP BY product_id
             ) x
             ON os.opening_stock_id = x.opening_stock_id
@@ -480,14 +488,22 @@ public function getProductsWithCurrentStock()
         false
     );
 
-    // Tax
+    /*
+    |--------------------------------------------------------------------------
+    | Tax
+    |--------------------------------------------------------------------------
+    */
     $builder->join(
         'tax tx',
         'tx.tax_id = pos.tax_id',
         'left'
     );
 
-    // Masters
+    /*
+    |--------------------------------------------------------------------------
+    | Product Masters
+    |--------------------------------------------------------------------------
+    */
     $builder->join(
         'product_category pc',
         'pc.product_category_id = p.product_category',
@@ -512,6 +528,11 @@ public function getProductsWithCurrentStock()
         'left'
     );
 
+    /*
+    |--------------------------------------------------------------------------
+    | Only Active Products
+    |--------------------------------------------------------------------------
+    */
     $builder->where('p.status', 'active');
 
     $builder->orderBy('p.product_name', 'ASC');

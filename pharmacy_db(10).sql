@@ -2,8 +2,8 @@
 -- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 01, 2026 at 04:34 PM
+-- Host: localhost:3306
+-- Generation Time: Aug 02, 2026 at 10:54 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -318,17 +318,17 @@ INSERT INTO `menu_id` (`id`, `menu_name`, `menu_id`) VALUES
 
 CREATE TABLE `products` (
   `product_id` bigint UNSIGNED NOT NULL,
-  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `product_category` bigint UNSIGNED NOT NULL,
   `product_brand` bigint UNSIGNED NOT NULL,
   `product_group` bigint UNSIGNED NOT NULL,
   `product_strength` bigint UNSIGNED DEFAULT NULL,
   `product_unit` bigint UNSIGNED NOT NULL,
-  `sku` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `barcode` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sku` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `barcode` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `alert_quantity` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `product_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default-medicine.png',
-  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `product_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default-medicine.png',
+  `status` enum('active','inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -448,12 +448,10 @@ CREATE TABLE `product_opening_stock` (
   `opening_stock_id` bigint UNSIGNED NOT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
   `supplier_id` bigint UNSIGNED DEFAULT NULL,
-  `batch_no` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `manufacturing_date` date DEFAULT NULL,
   `expiry_date` date DEFAULT NULL,
   `quantity` decimal(12,2) NOT NULL DEFAULT '0.00',
   `bonus_quantity` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `tax_type` enum('without_tax','with_tax') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'without_tax',
+  `tax_type` enum('without_tax','with_tax') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'without_tax',
   `tax_id` bigint UNSIGNED DEFAULT NULL,
   `tax_percentage` decimal(5,2) NOT NULL DEFAULT '0.00',
   `purchase_price_without_vat` decimal(12,2) NOT NULL DEFAULT '0.00',
@@ -461,11 +459,10 @@ CREATE TABLE `product_opening_stock` (
   `purchase_price_with_vat` decimal(12,2) NOT NULL DEFAULT '0.00',
   `profit_margin_percent` decimal(8,2) NOT NULL DEFAULT '0.00',
   `selling_price` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `mrp` decimal(12,2) NOT NULL DEFAULT '0.00',
   `stock_date` date NOT NULL,
-  `remarks` text COLLATE utf8mb4_unicode_ci,
+  `remarks` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_by` bigint UNSIGNED DEFAULT NULL,
-  `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `status` enum('active','inactive') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -474,8 +471,8 @@ CREATE TABLE `product_opening_stock` (
 -- Dumping data for table `product_opening_stock`
 --
 
-INSERT INTO `product_opening_stock` (`opening_stock_id`, `product_id`, `supplier_id`, `batch_no`, `manufacturing_date`, `expiry_date`, `quantity`, `bonus_quantity`, `tax_type`, `tax_id`, `tax_percentage`, `purchase_price_without_vat`, `tax_amount`, `purchase_price_with_vat`, `profit_margin_percent`, `selling_price`, `mrp`, `stock_date`, `remarks`, `created_by`, `status`, `created_at`, `updated_at`) VALUES
-(11, 7, 106, 'batch-01', '2026-07-02', '2026-08-31', 500.00, 5.00, 'without_tax', 11, 0.00, 1.00, 0.00, 1.00, 30.00, 1.30, 2.00, '2026-08-01', 'test', 18, 'active', '2026-08-01 10:56:56', '2026-08-01 10:56:56');
+INSERT INTO `product_opening_stock` (`opening_stock_id`, `product_id`, `supplier_id`, `expiry_date`, `quantity`, `bonus_quantity`, `tax_type`, `tax_id`, `tax_percentage`, `purchase_price_without_vat`, `tax_amount`, `purchase_price_with_vat`, `profit_margin_percent`, `selling_price`, `stock_date`, `remarks`, `created_by`, `status`, `created_at`, `updated_at`) VALUES
+(12, 7, 124, '2026-08-28', 100.00, 0.00, 'without_tax', 8, 15.00, 2.00, 0.10, 2.10, 19.05, 2.50, '2026-08-02', 'dffdgdg', 18, 'active', '2026-08-02 04:11:04', '2026-08-02 06:36:58');
 
 -- --------------------------------------------------------
 
@@ -486,39 +483,20 @@ INSERT INTO `product_opening_stock` (`opening_stock_id`, `product_id`, `supplier
 CREATE TABLE `product_purchase` (
   `purchase_id` int NOT NULL,
   `purchase_invoice` varchar(100) NOT NULL,
-  `purchaser_id` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `payment_type` varchar(80) NOT NULL,
-  `supplier_id` varchar(50) NOT NULL,
+  `supplier_id` bigint UNSIGNED NOT NULL,
   `invoice_total` decimal(12,2) DEFAULT NULL,
   `discount_amount_on_invoice_total` decimal(10,2) DEFAULT NULL,
   `vat_amount_on_invoice_total` decimal(10,2) DEFAULT NULL,
   `invoice_net_total` decimal(12,2) DEFAULT NULL,
-  `paid_amount` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `due_amount` decimal(12,2) NOT NULL DEFAULT '0.00',
+  `paid_amount` decimal(14,2) NOT NULL DEFAULT '0.00',
+  `due_amount` decimal(14,2) NOT NULL DEFAULT '0.00',
   `purchase_date` datetime DEFAULT NULL,
-  `remarks` text,
+  `purchase_by` bigint UNSIGNED NOT NULL,
   `status` enum('active','cancelled') NOT NULL DEFAULT 'active',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `product_purchase`
---
-
-INSERT INTO `product_purchase` (`purchase_id`, `purchase_invoice`, `purchaser_id`, `payment_type`, `supplier_id`, `invoice_total`, `discount_amount_on_invoice_total`, `vat_amount_on_invoice_total`, `invoice_net_total`, `paid_amount`, `due_amount`, `purchase_date`, `remarks`, `status`, `created_at`, `updated_at`) VALUES
-(112, 'PUR2618793170', '18', 'Cash', '106', 100.00, 0.00, 0.00, 100.00, 0.00, 0.00, '2026-07-06 07:23:23', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
-(113, 'PUR26187A2715', '18', 'Cash', '124', 100.00, 0.00, 0.00, 100.00, 0.00, 0.00, '2026-07-06 08:46:33', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
-(114, 'PUR26192608F1', '18', 'Cash', '106', 36.38, 1.09, 1.20, 36.45, 0.00, 0.00, '2026-07-11 06:42:50', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
-(115, 'PUR2620051541', '18', 'Cash', '106', 327.69, 8.00, 31.75, 350.67, 0.00, 0.00, '2026-07-19 04:27:11', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
-(116, 'PUR26202C8A31', '18', 'Cash', '124', 35.02, 0.00, 0.36, 35.38, 0.00, 0.00, '2026-07-21 08:32:38', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
-(117, 'PUR2620211803', '18', 'Cash', '106', 35.02, 0.00, 0.36, 35.38, 0.00, 0.00, '2026-07-21 08:33:47', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
-(118, 'PUR26202D0964', '18', 'Cash', '106', 67.99, 0.00, 0.67, 68.66, 0.00, 0.00, '2026-07-21 08:53:48', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
-(119, 'PUR262048E221', '18', 'Cash', '106', 54390.00, 0.00, 598290.00, 652680.00, 0.00, 0.00, '2026-07-23 07:07:46', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
-(120, 'PUR26207D16BF', '18', 'Cash', '106', 2161.01, 302.00, 3673.72, 5019.33, 0.00, 0.00, '2026-07-26 04:53:14', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
-(121, 'PUR26207227CE', '18', 'Cash', '106', 250.34, 6.00, 51.90, 294.99, 0.00, 0.00, '2026-07-26 06:01:34', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
-(122, 'PUR2620774321', '18', 'Cash', '106', 51.94, 4.00, 0.00, 47.94, 0.00, 0.00, '2026-07-26 06:37:56', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51'),
-(123, 'PUR26207F7FC6', '18', 'Cash', '106', 20.00, 0.00, 0.00, 20.00, 0.00, 0.00, '2026-07-26 06:48:54', NULL, 'active', '2026-08-01 12:37:51', '2026-08-01 12:37:51');
 
 -- --------------------------------------------------------
 
@@ -527,11 +505,9 @@ INSERT INTO `product_purchase` (`purchase_id`, `purchase_invoice`, `purchaser_id
 --
 
 CREATE TABLE `product_purchase_details` (
-  `purchase_id` bigint UNSIGNED NOT NULL,
-  `purchase_invoice` varchar(100) NOT NULL,
+  `purchase_details_id` bigint UNSIGNED NOT NULL,
+  `purchase_id` bigint UNSIGNED DEFAULT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
-  `batch_no` varchar(100) DEFAULT NULL,
-  `manufacturing_date` date DEFAULT NULL,
   `expiry_date` date DEFAULT NULL,
   `quantity_per_pack` decimal(12,2) NOT NULL DEFAULT '0.00',
   `box_quantity` decimal(12,2) NOT NULL DEFAULT '1.00',
@@ -542,7 +518,6 @@ CREATE TABLE `product_purchase_details` (
   `product_wise_vat_amount` decimal(12,2) NOT NULL DEFAULT '0.00',
   `product_wise_discount_amount` decimal(12,2) NOT NULL DEFAULT '0.00',
   `selling_price` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `mrp` decimal(12,2) NOT NULL DEFAULT '0.00',
   `purchase_price` decimal(12,2) NOT NULL DEFAULT '0.00',
   `line_total` decimal(14,2) NOT NULL DEFAULT '0.00',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -801,26 +776,25 @@ CREATE TABLE `stock_adjustment_details` (
 --
 
 CREATE TABLE `stock_ledger` (
-  `id` bigint UNSIGNED NOT NULL,
+  `stock_ledger_id` bigint UNSIGNED NOT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
   `transaction_type` enum('OPENING','PURCHASE','SALE','SALE_RETURN','PURCHASE_RETURN','ADJUSTMENT') DEFAULT NULL,
   `reference_id` bigint UNSIGNED DEFAULT NULL,
-  `batch_no` varchar(50) DEFAULT NULL,
   `qty_in` decimal(18,2) DEFAULT '0.00',
   `qty_out` decimal(18,2) DEFAULT '0.00',
   `balance_qty` decimal(18,2) DEFAULT '0.00',
   `unit_cost` decimal(15,2) DEFAULT '0.00',
   `transaction_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `remarks` varchar(100) NOT NULL,
-  `created_by` varchar(50) NOT NULL
+  `created_by` bigint UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `stock_ledger`
 --
 
-INSERT INTO `stock_ledger` (`id`, `product_id`, `transaction_type`, `reference_id`, `batch_no`, `qty_in`, `qty_out`, `balance_qty`, `unit_cost`, `transaction_date`, `remarks`, `created_by`) VALUES
-(19, 7, 'OPENING', 11, 'batch-01', 505.00, 0.00, 505.00, 1.00, '2026-08-01 00:00:00', 'Opening Stock', '18');
+INSERT INTO `stock_ledger` (`stock_ledger_id`, `product_id`, `transaction_type`, `reference_id`, `qty_in`, `qty_out`, `balance_qty`, `unit_cost`, `transaction_date`, `remarks`, `created_by`) VALUES
+(20, 7, 'OPENING', 12, 100.00, 0.00, 100.00, 2.10, '2026-08-02 00:00:00', 'Opening Stock', 18);
 
 -- --------------------------------------------------------
 
@@ -1036,7 +1010,6 @@ ALTER TABLE `product_group`
 --
 ALTER TABLE `product_opening_stock`
   ADD PRIMARY KEY (`opening_stock_id`),
-  ADD UNIQUE KEY `uk_product_batch` (`product_id`,`batch_no`),
   ADD KEY `idx_product` (`product_id`),
   ADD KEY `idx_supplier` (`supplier_id`),
   ADD KEY `idx_expiry` (`expiry_date`),
@@ -1055,10 +1028,9 @@ ALTER TABLE `product_purchase`
 -- Indexes for table `product_purchase_details`
 --
 ALTER TABLE `product_purchase_details`
-  ADD PRIMARY KEY (`purchase_id`),
-  ADD KEY `idx_purchase_invoice` (`purchase_invoice`),
+  ADD PRIMARY KEY (`purchase_details_id`),
+  ADD KEY `idx_purchase_invoice` (`purchase_id`),
   ADD KEY `idx_product` (`product_id`),
-  ADD KEY `idx_batch` (`batch_no`),
   ADD KEY `idx_expiry` (`expiry_date`),
   ADD KEY `idx_tax` (`tax_id`);
 
@@ -1137,9 +1109,8 @@ ALTER TABLE `stock_adjustment_details`
 -- Indexes for table `stock_ledger`
 --
 ALTER TABLE `stock_ledger`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_batch_no` (`batch_no`),
-  ADD KEY `idx_product_batch` (`product_id`,`batch_no`);
+  ADD PRIMARY KEY (`stock_ledger_id`),
+  ADD KEY `idx_product_batch` (`product_id`);
 
 --
 -- Indexes for table `supplier`
@@ -1264,19 +1235,13 @@ ALTER TABLE `product_group`
 -- AUTO_INCREMENT for table `product_opening_stock`
 --
 ALTER TABLE `product_opening_stock`
-  MODIFY `opening_stock_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `opening_stock_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `product_purchase`
 --
 ALTER TABLE `product_purchase`
-  MODIFY `purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
-
---
--- AUTO_INCREMENT for table `product_purchase_details`
---
-ALTER TABLE `product_purchase_details`
-  MODIFY `purchase_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `purchase_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT for table `product_strength`
@@ -1336,7 +1301,7 @@ ALTER TABLE `stock_adjustment_details`
 -- AUTO_INCREMENT for table `stock_ledger`
 --
 ALTER TABLE `stock_ledger`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `stock_ledger_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `supplier`

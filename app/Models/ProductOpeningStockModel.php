@@ -19,23 +19,24 @@ class ProductOpeningStockModel extends Model
         'product_id',
         'supplier_id',
         'expiry_date',
+    
         'quantity',
         'bonus_quantity',
-
+    
         'tax_type',
         'tax_id',
         'tax_percentage',
-
-        'purchase_price_without_vat',
         'tax_amount',
+    
+        'purchase_price_without_vat',
         'purchase_price_with_vat',
-
+    
         'profit_margin_percent',
         'selling_price',
-
+    
         'stock_date',
         'remarks',
-
+    
         'created_by',
         'status',
     ];

@@ -109,7 +109,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
 
     $routes->group('purchase', function ($routes) {
         $routes->get('/', 'PurchaseController::index');
-        $routes->post('product', 'PurchaseController::purchase_product');
+        $routes->post('store', 'PurchaseController::store');
 
     });
 

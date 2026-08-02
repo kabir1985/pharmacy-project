@@ -1,6 +1,13 @@
 const productsList = APP.data.productsList;
 
+console.table(productsList);
+
 $(document).ready(function() {
+
+alert("i am product-purchase.js page");
+    // console.log("kaiirsdffsdfdsfdsfdsfs");
+
+    // console.log(productsList.find(p => p.product_id == product_id));
 
     $("body").addClass("sidenav-toggled");
 
@@ -36,7 +43,7 @@ $(document).ready(function() {
         let qty = (Number(item.quantity_per_pack) || 0) *
             (Number(item.box_quantity) || 1);
 
-        let unitPrice = Number(item.cost_without_vat) || 0;
+        let unitPrice = Number(item.purchase_price_without_vat) || 0;
 
         let purchaseTotal = qty * unitPrice;
 
@@ -132,8 +139,8 @@ $(document).ready(function() {
         let row = $("#cartTableBody tr[data-index='" + index + "']");
 
         // Update Buying Price
-        row.find(".buying_price")
-            .val(parseFloat(item.cost_without_vat).toFixed(2));
+        row.find(".purchase_price_no_vat")
+            .val(parseFloat(item.purchase_price_without_vat).toFixed(2));
 
         // Update Trade Price (unless currently typing in it)
         if (!skipTradePrice) {
@@ -208,7 +215,7 @@ $(document).ready(function() {
 
             var qtyPerPack = Number(item.quantity_per_pack) || 0;
             var Boxqty = Number(item.box_quantity) || 1;
-            var UnitPrice = Number(item.cost_without_vat) || 0;
+            var UnitPrice = Number(item.purchase_price_without_vat) || 0;
 
             var Trade_Price_Per_Box = qtyPerPack * 1 * UnitPrice;
 
@@ -246,8 +253,8 @@ $(document).ready(function() {
 <td>
     <input
         type="text"
-        class="buying_price form-control form-control-sm w-100"
-        value="${item.cost_without_vat}"
+        class="purchase_price_no_vat form-control form-control-sm w-100"
+        value="${item.purchase_price_without_vat}"
         min="1"
         data-id="${key}" readonly>
 </td>
@@ -288,7 +295,7 @@ $(document).ready(function() {
     <input
         type="text"
         class="sale_price form-control form-control-sm"
-        value="${item.sales_price_for_customer}"
+        value="${item.selling_price}"
         data-id="${key}"
         disabled>
 </td>
@@ -331,6 +338,8 @@ ${rowTotal.toFixed(2)}
 
     function addProductToCart(product_id) {
 
+        console.log("Draw Item:", itemsInCart[0]);
+
         var found = false;
 
         $.each(itemsInCart, function(key, item) {
@@ -349,6 +358,9 @@ ${rowTotal.toFixed(2)}
                     product.discount_percent = 0;
                     //  product.tax_percentage = 0;
                     product.box_quantity = 1;
+                    // console.log('kabir');
+                    // console.log(product);
+                    // console.log(product.purchase_price_without_vat);
 
                     // itemsInCart.push(product);
                     itemsInCart.push({
@@ -358,6 +370,10 @@ ${rowTotal.toFixed(2)}
                         box_quantity: 1,
                         free_qty: 0 // ✅ Add this
                     });
+
+                    console.log("Product:", product);
+                    console.log("Cart:", itemsInCart[itemsInCart.length - 1]);
+
                     return false;
                 }
             });
@@ -397,7 +413,7 @@ ${rowTotal.toFixed(2)}
         ) || 0;
 
         // Buying Price = Trade Price / Qty Per Box
-        itemsInCart[index].cost_without_vat = tradePrice / qty;
+        itemsInCart[index].purchase_price_without_vat = tradePrice / qty;
 
         updateRow(index);
 
@@ -421,7 +437,7 @@ ${rowTotal.toFixed(2)}
 
         let qty = Number(itemsInCart[index].quantity_per_pack) || 1;
 
-        itemsInCart[index].cost_without_vat = tradePrice / qty;
+        itemsInCart[index].purchase_price_without_vat = tradePrice / qty;
 
         updateRow(index, true);
 
@@ -429,15 +445,15 @@ ${rowTotal.toFixed(2)}
 
 
 
-    $(document).on("input", ".buying_price", function() {
+    $(document).on("input", ".purchase_price_no_vat", function() {
         var index = $(this).closest("tr").data("index");
         var newPrice = Number($(this).val()) || 0;
 
-        // itemsInCart[index].cost_without_vat = newPrice;
+        // itemsInCart[index].purchase_price_without_vat = newPrice;
 
         // drawTable();
 
-        itemsInCart[index].cost_without_vat = newPrice;
+        itemsInCart[index].purchase_price_without_vat = newPrice;
 
         updateRow(index);
     });
@@ -447,7 +463,7 @@ ${rowTotal.toFixed(2)}
 
         itemsInCart[index].free_qty = Number($(this).val()) || 0;
 
-        console.log(itemsInCart);
+        //console.log(itemsInCart);
 
         updateRow(index); // or updateRow(index)
     });

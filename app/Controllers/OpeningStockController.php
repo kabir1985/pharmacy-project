@@ -33,164 +33,387 @@ class OpeningStockController extends BaseController
         ]);
     }
 
-    public function store()
-    {
+//     public function store()
+//     {
 
 
-// echo "<pre>";
-// print_r($this->request->getPost());
-// exit;
+// // echo "<pre>";
+// // print_r($this->request->getPost());
+// // exit;
 
-        if (
-            !$this->validate([
-                'product_id' => 'required|integer',
-                'quantity' => 'required|decimal',
-                'purchase_price_without_vat' => 'required|decimal',
-                'stock_date' => 'required|valid_date',
-            ])
-        ) {
+//         if (
+//             !$this->validate([
+//                 'product_id' => 'required|integer',
+//                 'quantity' => 'required|decimal',
+//                 'purchase_price_without_vat' => 'required|decimal',
+//                 'stock_date' => 'required|valid_date',
+//             ])
+//         ) {
+//             return redirect()
+//                 ->back()
+//                 ->withInput()
+//                 ->with('errors', $this->validator->getErrors());
+//         }
+
+//        // $db = \Config\Database::connect();
+
+//         try {
+
+//            // $this->db->transBegin();
+
+//             // ===============================
+//             // Duplicate Batch Check
+//             // ==
+
+//             $exists = $this->db->table('product_opening_stock')
+//                 ->where('product_id', $this->request->getPost('product_id'))
+//                 ->countAllResults();
+
+//             if ($exists > 0) {
+//                 return redirect()
+//                     ->back()
+//                     ->withInput()
+//                     ->with('error', 'This batch already exists for the selected product.');
+//             }
+
+//             // ===============================
+//             // Continue Processing
+//             // ===============================
+
+//             $quantity = (float) $this->request->getPost('quantity');
+//             $bonusQty = (float) ($this->request->getPost('bonus_quantity') ?? 0);
+
+//             $purchaseWithoutVat = (float) $this->request->getPost('purchase_price_without_vat');
+
+//             $taxType = $this->request->getPost('tax_type');
+//             $taxId = $this->request->getPost('tax_id') ?: null;
+//             $taxPercentage = (float) ($this->request->getPost('tax_percentage') ?? 0);
+
+//             $taxAmount = ($purchaseWithoutVat * $taxPercentage) / 100;
+
+//             $purchaseWithVat = $purchaseWithoutVat + $taxAmount;
+
+//             // Total stock including bonus
+//             $availableQty = $quantity + $bonusQty;
+
+//             $data = [
+
+//                 'product_id' => $this->request->getPost('product_id'),
+//                 'supplier_id' => $this->request->getPost('supplier_id') ?: null,
+
+//                 'expiry_date' => $this->request->getPost('expiry_date') ?: null,
+
+//                 'quantity' => $quantity,
+//                 'bonus_quantity' => $bonusQty,
+
+//                 'tax_type' => $taxType,
+//                 'tax_id' => $taxId,
+//                 'tax_percentage' => $taxPercentage,
+//                 'tax_amount' => $taxAmount,
+
+//                 'purchase_price_without_vat' => $purchaseWithoutVat,
+//                 'purchase_price_with_vat' => $purchaseWithVat,
+
+//                 'profit_margin_percent' => (float) ($this->request->getPost('profit_margin_percent') ?? 0),
+
+//                 'selling_price' => (float) ($this->request->getPost('selling_price') ?? 0),
+
+//                 'stock_date' => $this->request->getPost('stock_date'),
+
+//                 'remarks' => $this->request->getPost('remarks'),
+
+//                 'created_by' => session()->get('user_id'),
+
+//                 'status' => 'active',
+//             ];
+ 
+//  $this->productOpeningStockModel->insert($data);
+
+//  $openingStockId = $this->productOpeningStockModel->db->insertID();
+
+
+//             /*
+//             |--------------------------------------------------------------------------
+//             | Stock Ledger Entry
+//             |--------------------------------------------------------------------------
+//             */
+
+//             $ledger = [
+
+//                 'product_id' => $data['product_id'],
+
+//                 'transaction_type' => 'OPENING',
+
+//                 'reference_id' => $openingStockId,
+
+//                 'qty_in' => $availableQty,
+
+//                 'qty_out' => 0,
+
+//                 'balance_qty' => $availableQty,
+
+//                 'unit_cost' => $purchaseWithVat,
+
+//                 'transaction_date' => $data['stock_date'],
+
+//                 'remarks' => 'Opening Stock',
+
+//                 'created_by' => session()->get('user_id'),
+
+//             ];
+
+//             $this->db->table('stock_ledger')->insert($ledger);
+
+//             if (!$this->db->transStatus()) {
+
+//                 $this->db->transRollback();
+
+//                 return redirect()
+//                     ->back()
+//                     ->withInput()
+//                     ->with('error', 'Failed to save opening stock.');
+//             }
+
+//           //  $this->db->transCommit();
+
+//             return redirect()
+//                 ->to(site_url('opening-stock'))
+//                 ->with('success', 'Opening Stock added successfully.');
+
+//         } catch (\Throwable $e) {
+
+//             $this->db->transRollback();
+
+//             log_message('error', 'Opening Stock Error: ' . $e->getMessage());
+
+//             return redirect()
+//                 ->back()
+//                 ->withInput()
+//                 ->with('error', 'Something went wrong while saving opening stock.');
+//         }
+//     }
+
+
+
+
+
+
+
+public function store()
+{
+    if (
+        !$this->validate([
+            'product_id'                  => 'required|integer',
+            'quantity'                    => 'required|decimal|greater_than[0]',
+            'purchase_price_without_vat'  => 'required|decimal|greater_than[0]',
+            'stock_date'                  => 'required|valid_date',
+            'selling_price'               => 'required|decimal|greater_than[0]',
+        ])
+    ) {
+        return redirect()
+            ->back()
+            ->withInput()
+            ->with('errors', $this->validator->getErrors());
+    }
+
+    $this->db->transBegin();
+
+    try {
+
+        /*
+        |--------------------------------------------------------------------------
+        | Check Existing Opening Stock
+        |--------------------------------------------------------------------------
+        | Remove this block if you want to allow multiple opening stock entries
+        | for the same product.
+        */
+
+        $exists = $this->productOpeningStockModel
+            ->where('product_id', $this->request->getPost('product_id'))
+            ->countAllResults();
+
+        if ($exists > 0) {
+
             return redirect()
                 ->back()
                 ->withInput()
-                ->with('errors', $this->validator->getErrors());
+                ->with('error', 'Opening stock already exists for this product.');
         }
 
-       // $db = \Config\Database::connect();
+        /*
+        |--------------------------------------------------------------------------
+        | Get Form Values
+        |--------------------------------------------------------------------------
+        */
 
-        try {
+        $quantity               = (float) $this->request->getPost('quantity');
+        $bonusQty               = (float) ($this->request->getPost('bonus_quantity') ?: 0);
 
-           // $this->db->transBegin();
+        $purchaseWithoutVat     = (float) $this->request->getPost('purchase_price_without_vat');
 
-            // ===============================
-            // Duplicate Batch Check
-            // ==
+        $taxType                = $this->request->getPost('tax_type');
+        $taxId                  = $this->request->getPost('tax_id') ?: null;
 
-            $exists = $this->db->table('product_opening_stock')
-                ->where('product_id', $this->request->getPost('product_id'))
-                ->countAllResults();
+        $taxPercentage          = (float) ($this->request->getPost('tax_percentage') ?: 0);
 
-            if ($exists > 0) {
-                return redirect()
-                    ->back()
-                    ->withInput()
-                    ->with('error', 'This batch already exists for the selected product.');
-            }
+        /*
+        |--------------------------------------------------------------------------
+        | VAT Calculation
+        |--------------------------------------------------------------------------
+        */
 
-            // ===============================
-            // Continue Processing
-            // ===============================
-
-            $quantity = (float) $this->request->getPost('quantity');
-            $bonusQty = (float) ($this->request->getPost('bonus_quantity') ?? 0);
-
-            $purchaseWithoutVat = (float) $this->request->getPost('purchase_price_without_vat');
-
-            $taxType = $this->request->getPost('tax_type');
-            $taxId = $this->request->getPost('tax_id') ?: null;
-            $taxPercentage = (float) ($this->request->getPost('tax_percentage') ?? 0);
+        if ($taxType == 'without_tax') {
 
             $taxAmount = ($purchaseWithoutVat * $taxPercentage) / 100;
 
             $purchaseWithVat = $purchaseWithoutVat + $taxAmount;
 
-            // Total stock including bonus
-            $availableQty = $quantity + $bonusQty;
+        } else {
 
-            $data = [
+            $purchaseWithVat = $purchaseWithoutVat;
 
-                'product_id' => $this->request->getPost('product_id'),
-                'supplier_id' => $this->request->getPost('supplier_id') ?: null,
+            if ($taxPercentage > 0) {
 
-                'expiry_date' => $this->request->getPost('expiry_date') ?: null,
+                $taxAmount = $purchaseWithVat -
+                    ($purchaseWithVat / (1 + ($taxPercentage / 100)));
 
-                'quantity' => $quantity,
-                'bonus_quantity' => $bonusQty,
+            } else {
 
-                'tax_type' => $taxType,
-                'tax_id' => $taxId,
-                'tax_percentage' => $taxPercentage,
-                'tax_amount' => $taxAmount,
-
-                'purchase_price_without_vat' => $purchaseWithoutVat,
-                'purchase_price_with_vat' => $purchaseWithVat,
-
-                'profit_margin_percent' => (float) ($this->request->getPost('profit_margin_percent') ?? 0),
-
-                'selling_price' => (float) ($this->request->getPost('selling_price') ?? 0),
-
-                'stock_date' => $this->request->getPost('stock_date'),
-
-                'remarks' => $this->request->getPost('remarks'),
-
-                'created_by' => session()->get('user_id'),
-
-                'status' => 'active',
-            ];
- 
- $this->productOpeningStockModel->insert($data);
-
- $openingStockId = $this->productOpeningStockModel->db->insertID();
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Stock Ledger Entry
-            |--------------------------------------------------------------------------
-            */
-
-            $ledger = [
-
-                'product_id' => $data['product_id'],
-
-                'transaction_type' => 'OPENING',
-
-                'reference_id' => $openingStockId,
-
-                'qty_in' => $availableQty,
-
-                'qty_out' => 0,
-
-                'balance_qty' => $availableQty,
-
-                'unit_cost' => $purchaseWithVat,
-
-                'transaction_date' => $data['stock_date'],
-
-                'remarks' => 'Opening Stock',
-
-                'created_by' => session()->get('user_id'),
-
-            ];
-
-            $this->db->table('stock_ledger')->insert($ledger);
-
-            if (!$this->db->transStatus()) {
-
-                $this->db->transRollback();
-
-                return redirect()
-                    ->back()
-                    ->withInput()
-                    ->with('error', 'Failed to save opening stock.');
+                $taxAmount = 0;
             }
+        }
 
-          //  $this->db->transCommit();
+        /*
+        |--------------------------------------------------------------------------
+        | Quantity & Cost
+        |--------------------------------------------------------------------------
+        */
 
-            return redirect()
-                ->to(site_url('opening-stock'))
-                ->with('success', 'Opening Stock added successfully.');
+        $availableQty = $quantity + $bonusQty;
 
-        } catch (\Throwable $e) {
+        // Bonus is free
+        $totalCost = $quantity * $purchaseWithVat;
+
+        /*
+        |--------------------------------------------------------------------------
+        | Opening Stock Insert
+        |--------------------------------------------------------------------------
+        */
+
+        $data = [
+
+            'product_id' => $this->request->getPost('product_id'),
+
+            'supplier_id' => $this->request->getPost('supplier_id') ?: null,
+
+            'expiry_date' => $this->request->getPost('expiry_date') ?: null,
+
+            'quantity' => $quantity,
+
+            'bonus_quantity' => $bonusQty,
+
+            'tax_type' => $taxType,
+
+            'tax_id' => $taxId,
+
+            'tax_percentage' => $taxPercentage,
+
+            'tax_amount' => round($taxAmount, 2),
+
+            'purchase_price_without_vat' => round($purchaseWithoutVat, 2),
+
+            'purchase_price_with_vat' => round($purchaseWithVat, 2),
+
+           // 'total_cost' => round($totalCost, 2),
+
+            'profit_margin_percent' => (float) ($this->request->getPost('profit_margin_percent') ?: 0),
+
+            'selling_price' => (float) $this->request->getPost('selling_price'),
+
+            'stock_date' => $this->request->getPost('stock_date'),
+
+            'remarks' => $this->request->getPost('remarks'),
+
+            'created_by' => session()->get('user_id'),
+
+            'status' => 'active'
+
+        ];
+
+        $this->productOpeningStockModel->insert($data);
+
+        $openingStockId = $this->productOpeningStockModel->getInsertID();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Stock Ledger Entry
+        |--------------------------------------------------------------------------
+        */
+
+        $ledger = [
+
+            'product_id' => $data['product_id'],
+
+            'transaction_type' => 'OPENING',
+
+            'reference_id' => $openingStockId,
+
+            'qty_in' => $availableQty,
+
+            'qty_out' => 0,
+
+            'balance_qty' => $availableQty,
+
+            'unit_cost' => round($purchaseWithVat, 2),
+
+            'transaction_date' => date(
+                'Y-m-d H:i:s',
+                strtotime($data['stock_date'])
+            ),
+
+            'remarks' => 'Opening Stock',
+
+            'created_by' => session()->get('user_id')
+
+        ];
+
+        $this->db->table('stock_ledger')->insert($ledger);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Transaction Check
+        |--------------------------------------------------------------------------
+        */
+
+        if ($this->db->transStatus() === false) {
 
             $this->db->transRollback();
-
-            log_message('error', 'Opening Stock Error: ' . $e->getMessage());
 
             return redirect()
                 ->back()
                 ->withInput()
-                ->with('error', 'Something went wrong while saving opening stock.');
+                ->with('error', 'Failed to save opening stock.');
         }
+
+        $this->db->transCommit();
+
+        return redirect()
+            ->to(site_url('opening-stock'))
+            ->with('success', 'Opening Stock added successfully.');
+
+    } catch (\Throwable $e) {
+
+        $this->db->transRollback();
+
+        log_message('error', 'Opening Stock Error : ' . $e->getMessage());
+
+        return redirect()
+            ->back()
+            ->withInput()
+            ->with('error', $e->getMessage());
     }
+}
+
+
 
 }

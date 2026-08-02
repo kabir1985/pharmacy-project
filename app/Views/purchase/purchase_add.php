@@ -10,7 +10,7 @@ echo $this->section('content');
                 <div class="flex-grow-1 mr-2">
                     <select id="item" class="form-control select2" style="width:100%">
                         <option value="0">Select Product</option>
-                        <?php foreach ($product_show_for_sale as $row): ?>
+                        <?php foreach ($getDefaultOpeningStock as $row): ?>
                         <option value="<?=$row['product_id']?>">
                             <?=$row['product_name'] . "&nbsp;|&nbsp;" . $row['category_name'] . "&nbsp;|&nbsp;" . $row['group_name'] . "&nbsp;|&nbsp;" . $row['strength_name']?>
                         </option>
@@ -599,41 +599,42 @@ echo $this->section('scripts');
 window.APP_URLS = {
 
     // ================= Category =================
-    categoryCreate: "<?= site_url('categories/category-create-ajax') ?>",
-    getCategory: "<?= site_url('categories/get-category-list') ?>",
-    categoryList: "<?= site_url('get-category-list') ?>",
+    // categoryCreate: "<?= site_url('categories/category-create-ajax') ?>",
+    // getCategory: "<?= site_url('categories/get-category-list') ?>",
+    // categoryList: "<?= site_url('get-category-list') ?>",
 
-    // ================= Brand =================
-    initialBrand: "<?= site_url('brands/initial-product-brand') ?>",
-    brandCreate: "<?= site_url('brands/brand-create-ajax') ?>",
+    // // ================= Brand =================
+    // initialBrand: "<?= site_url('brands/initial-product-brand') ?>",
+    // brandCreate: "<?= site_url('brands/brand-create-ajax') ?>",
 
-    // ================= Group =================
-    groupCreate: "<?= site_url('groups/group-create-ajax') ?>",
+    // // ================= Group =================
+    // groupCreate: "<?= site_url('groups/group-create-ajax') ?>",
 
-    // ================= Unit =================
-    unitCreate: "<?= site_url('units/unit-create-ajax') ?>",
+    // // ================= Unit =================
+    // unitCreate: "<?= site_url('units/unit-create-ajax') ?>",
 
-    // ================= Strength =================
-    strengthCreate: "<?= site_url('ajax/strength') ?>",
+    // // ================= Strength =================
+    // strengthCreate: "<?= site_url('ajax/strength') ?>",
 
-    // ================= Tax =================
-    taxCreate: "<?= site_url('tax/vatTax-create-ajax') ?>",
+    // // ================= Tax =================
+    // taxCreate: "<?= site_url('tax/vatTax-create-ajax') ?>",
 
     // ================= Purchase =================
-    purchaseProduct: "<?= site_url('purchase/product') ?>"
+    purchaseProduct: "<?= site_url('purchase/store') ?>"
 };
 
 window.APP = {
 
     data: {
-        productsList: <?= json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>
+        productsList: <?= json_encode($getDefaultOpeningStock, JSON_PRETTY_PRINT) ?>
     }
 
 };
+
 </script>
 
 <!-- Application Scripts -->
-<script src="<?= base_url('assets/js/product-opening-stock.js') ?>"></script>
+<script src="<?//= base_url('assets/js/product-opening-stock.js') ?>"></script>
 <script src="<?= base_url('assets/js/product-purchase.js') ?>"></script>
 
 <?php
