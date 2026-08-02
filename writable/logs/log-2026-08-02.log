@@ -2177,3 +2177,2122 @@ DEBUG - 2026-08-02 10:37:38 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2026-08-02 10:37:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-08-02 10:38:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 ERROR - 2026-08-02 10:38:23 --> Undefined property: App\Controllers\PurchaseController::$product_purchase_details_object
+DEBUG - 2026-08-02 15:10:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 15:10:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 15:10:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 15:10:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 15:24:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 15:24:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 15:24:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 15:25:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 15:27:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 15:28:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 16:05:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 16:07:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 16:07:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-02 16:11:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-02 16:11:15 --> mysqli_sql_exception: Table 'pharmacy_db.product_inital_stock' doesn't exist in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT\r\n       ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT\r\n       ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT\r\n       ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\StockReportController.php(147): CodeIgniter\Database\BaseConnection->query('SELECT\r\n       ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-08-02 16:11:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.product_inital_stock' doesn't exist
+[Method: GET, Route: reports/purchase-list]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\StockReportController.php(147): CodeIgniter\Database\BaseConnection->query('SELECT
+            pis.product_id,
+            pis.product_name,
+            pis.base_price,
+            pis.purchase_price,
+            pis.sales_price_for_customer,
+            pis.`profit_margin_%` AS profit_margin,
+            pis.tax_amount,
+    
+            tx.tax_percentage AS tax,
+    
+            pis.productinitial_quantity AS initial_stock,
+    
+            IFNULL(ppd_data.totalPurchase,0) AS newPurchase,
+    
+            IFNULL(rs_data.totalReturn,0) AS totalReturn,
+    
+            IFNULL(adj.totalStockIn,0) AS stockIn,
+    
+            IFNULL(adj.totalStockOut,0) AS stockOut,
+    
+            IFNULL(sd_data.totalSale,0) AS totalSale,
+    
+            u.user_name AS purchaser_name,
+    
+            GREATEST(
+                pis.productinitial_quantity
+                + IFNULL(ppd_data.totalPurchase,0)
+                + IFNULL(rs_data.totalReturn,0)
+                + IFNULL(adj.totalStockIn,0)
+                - IFNULL(sd_data.totalSale,0)
+                - IFNULL(adj.totalStockOut,0)
+            ,0) AS current_stock
+    
+        FROM product_inital_stock AS pis
+    
+        LEFT JOIN tax tx
+            ON pis.tax_id = tx.tax_id
+    
+        -- ================= PURCHASE =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                ppd.product_id,
+    
+                SUM(
+                    (IFNULL(ppd.quantity_per_pack,0) * IFNULL(ppd.box_quantity,1))
+                    + IFNULL(ppd.free_qty,0)
+                ) AS totalPurchase,
+    
+                MAX(pp.purchaser_id) AS purchaser_id
+    
+            FROM product_purchase_details ppd
+    
+            LEFT JOIN product_purchase pp
+                ON pp.purchase_invoice = ppd.purchase_invoice_id
+    
+            GROUP BY ppd.product_id
+    
+        ) ppd_data
+            ON pis.product_id = ppd_data.product_id
+    
+        -- ================= SALES =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(product_quantity_sold) AS totalSale
+    
+            FROM sales_details
+    
+            GROUP BY product_id
+    
+        ) sd_data
+            ON pis.product_id = sd_data.product_id
+    
+        -- ================= SALES RETURN =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(return_qty) AS totalReturn
+    
+            FROM return_sales_details
+    
+            GROUP BY product_id
+    
+        ) rs_data
+            ON pis.product_id = rs_data.product_id
+    
+        -- ================= STOCK ADJUSTMENT =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                sad.product_id,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_in\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockIn,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_out\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockOut
+    
+            FROM stock_adjustment_details sad
+    
+            INNER JOIN stock_adjustment sa
+                ON sa.adjustment_id = sad.adjustment_id
+    
+            /* Uncomment if using approval
+            WHERE sa.status=\'Approved\'
+            */
+    
+            GROUP BY sad.product_id
+    
+        ) adj
+            ON pis.product_id = adj.product_id
+    
+        LEFT JOIN user u
+            ON u.user_id = ppd_data.purchaser_id
+    
+        ORDER BY pis.product_name ASC')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-02 16:11:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'pharmacy_db.product_inital_stock' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+            pis.product_id,
+            pis.product_name,
+            pis.base_price,
+            pis.purchase_price,
+            pis.sales_price_for_customer,
+            pis.`profit_margin_%` AS profit_margin,
+            pis.tax_amount,
+    
+            tx.tax_percentage AS tax,
+    
+            pis.productinitial_quantity AS initial_stock,
+    
+            IFNULL(ppd_data.totalPurchase,0) AS newPurchase,
+    
+            IFNULL(rs_data.totalReturn,0) AS totalReturn,
+    
+            IFNULL(adj.totalStockIn,0) AS stockIn,
+    
+            IFNULL(adj.totalStockOut,0) AS stockOut,
+    
+            IFNULL(sd_data.totalSale,0) AS totalSale,
+    
+            u.user_name AS purchaser_name,
+    
+            GREATEST(
+                pis.productinitial_quantity
+                + IFNULL(ppd_data.totalPurchase,0)
+                + IFNULL(rs_data.totalReturn,0)
+                + IFNULL(adj.totalStockIn,0)
+                - IFNULL(sd_data.totalSale,0)
+                - IFNULL(adj.totalStockOut,0)
+            ,0) AS current_stock
+    
+        FROM product_inital_stock AS pis
+    
+        LEFT JOIN tax tx
+            ON pis.tax_id = tx.tax_id
+    
+        -- ================= PURCHASE =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                ppd.product_id,
+    
+                SUM(
+                    (IFNULL(ppd.quantity_per_pack,0) * IFNULL(ppd.box_quantity,1))
+                    + IFNULL(ppd.free_qty,0)
+                ) AS totalPurchase,
+    
+                MAX(pp.purchaser_id) AS purchaser_id
+    
+            FROM product_purchase_details ppd
+    
+            LEFT JOIN product_purchase pp
+                ON pp.purchase_invoice = ppd.purchase_invoice_id
+    
+            GROUP BY ppd.product_id
+    
+        ) ppd_data
+            ON pis.product_id = ppd_data.product_id
+    
+        -- ================= SALES =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(product_quantity_sold) AS totalSale
+    
+            FROM sales_details
+    
+            GROUP BY product_id
+    
+        ) sd_data
+            ON pis.product_id = sd_data.product_id
+    
+        -- ================= SALES RETURN =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(return_qty) AS totalReturn
+    
+            FROM return_sales_details
+    
+            GROUP BY product_id
+    
+        ) rs_data
+            ON pis.product_id = rs_data.product_id
+    
+        -- ================= STOCK ADJUSTMENT =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                sad.product_id,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_in\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockIn,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_out\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockOut
+    
+            FROM stock_adjustment_details sad
+    
+            INNER JOIN stock_adjustment sa
+                ON sa.adjustment_id = sad.adjustment_id
+    
+            /* Uncomment if using approval
+            WHERE sa.status=\'Approved\'
+            */
+    
+            GROUP BY sad.product_id
+    
+        ) adj
+            ON pis.product_id = adj.product_id
+    
+        LEFT JOIN user u
+            ON u.user_id = ppd_data.purchaser_id
+    
+        ORDER BY pis.product_name ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+            pis.product_id,
+            pis.product_name,
+            pis.base_price,
+            pis.purchase_price,
+            pis.sales_price_for_customer,
+            pis.`profit_margin_%` AS profit_margin,
+            pis.tax_amount,
+    
+            tx.tax_percentage AS tax,
+    
+            pis.productinitial_quantity AS initial_stock,
+    
+            IFNULL(ppd_data.totalPurchase,0) AS newPurchase,
+    
+            IFNULL(rs_data.totalReturn,0) AS totalReturn,
+    
+            IFNULL(adj.totalStockIn,0) AS stockIn,
+    
+            IFNULL(adj.totalStockOut,0) AS stockOut,
+    
+            IFNULL(sd_data.totalSale,0) AS totalSale,
+    
+            u.user_name AS purchaser_name,
+    
+            GREATEST(
+                pis.productinitial_quantity
+                + IFNULL(ppd_data.totalPurchase,0)
+                + IFNULL(rs_data.totalReturn,0)
+                + IFNULL(adj.totalStockIn,0)
+                - IFNULL(sd_data.totalSale,0)
+                - IFNULL(adj.totalStockOut,0)
+            ,0) AS current_stock
+    
+        FROM product_inital_stock AS pis
+    
+        LEFT JOIN tax tx
+            ON pis.tax_id = tx.tax_id
+    
+        -- ================= PURCHASE =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                ppd.product_id,
+    
+                SUM(
+                    (IFNULL(ppd.quantity_per_pack,0) * IFNULL(ppd.box_quantity,1))
+                    + IFNULL(ppd.free_qty,0)
+                ) AS totalPurchase,
+    
+                MAX(pp.purchaser_id) AS purchaser_id
+    
+            FROM product_purchase_details ppd
+    
+            LEFT JOIN product_purchase pp
+                ON pp.purchase_invoice = ppd.purchase_invoice_id
+    
+            GROUP BY ppd.product_id
+    
+        ) ppd_data
+            ON pis.product_id = ppd_data.product_id
+    
+        -- ================= SALES =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(product_quantity_sold) AS totalSale
+    
+            FROM sales_details
+    
+            GROUP BY product_id
+    
+        ) sd_data
+            ON pis.product_id = sd_data.product_id
+    
+        -- ================= SALES RETURN =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(return_qty) AS totalReturn
+    
+            FROM return_sales_details
+    
+            GROUP BY product_id
+    
+        ) rs_data
+            ON pis.product_id = rs_data.product_id
+    
+        -- ================= STOCK ADJUSTMENT =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                sad.product_id,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_in\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockIn,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_out\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockOut
+    
+            FROM stock_adjustment_details sad
+    
+            INNER JOIN stock_adjustment sa
+                ON sa.adjustment_id = sad.adjustment_id
+    
+            /* Uncomment if using approval
+            WHERE sa.status=\'Approved\'
+            */
+    
+            GROUP BY sad.product_id
+    
+        ) adj
+            ON pis.product_id = adj.product_id
+    
+        LEFT JOIN user u
+            ON u.user_id = ppd_data.purchaser_id
+    
+        ORDER BY pis.product_name ASC')
+ 3 APPPATH\Controllers\StockReportController.php(147): CodeIgniter\Database\BaseConnection->query('SELECT
+            pis.product_id,
+            pis.product_name,
+            pis.base_price,
+            pis.purchase_price,
+            pis.sales_price_for_customer,
+            pis.`profit_margin_%` AS profit_margin,
+            pis.tax_amount,
+    
+            tx.tax_percentage AS tax,
+    
+            pis.productinitial_quantity AS initial_stock,
+    
+            IFNULL(ppd_data.totalPurchase,0) AS newPurchase,
+    
+            IFNULL(rs_data.totalReturn,0) AS totalReturn,
+    
+            IFNULL(adj.totalStockIn,0) AS stockIn,
+    
+            IFNULL(adj.totalStockOut,0) AS stockOut,
+    
+            IFNULL(sd_data.totalSale,0) AS totalSale,
+    
+            u.user_name AS purchaser_name,
+    
+            GREATEST(
+                pis.productinitial_quantity
+                + IFNULL(ppd_data.totalPurchase,0)
+                + IFNULL(rs_data.totalReturn,0)
+                + IFNULL(adj.totalStockIn,0)
+                - IFNULL(sd_data.totalSale,0)
+                - IFNULL(adj.totalStockOut,0)
+            ,0) AS current_stock
+    
+        FROM product_inital_stock AS pis
+    
+        LEFT JOIN tax tx
+            ON pis.tax_id = tx.tax_id
+    
+        -- ================= PURCHASE =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                ppd.product_id,
+    
+                SUM(
+                    (IFNULL(ppd.quantity_per_pack,0) * IFNULL(ppd.box_quantity,1))
+                    + IFNULL(ppd.free_qty,0)
+                ) AS totalPurchase,
+    
+                MAX(pp.purchaser_id) AS purchaser_id
+    
+            FROM product_purchase_details ppd
+    
+            LEFT JOIN product_purchase pp
+                ON pp.purchase_invoice = ppd.purchase_invoice_id
+    
+            GROUP BY ppd.product_id
+    
+        ) ppd_data
+            ON pis.product_id = ppd_data.product_id
+    
+        -- ================= SALES =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(product_quantity_sold) AS totalSale
+    
+            FROM sales_details
+    
+            GROUP BY product_id
+    
+        ) sd_data
+            ON pis.product_id = sd_data.product_id
+    
+        -- ================= SALES RETURN =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(return_qty) AS totalReturn
+    
+            FROM return_sales_details
+    
+            GROUP BY product_id
+    
+        ) rs_data
+            ON pis.product_id = rs_data.product_id
+    
+        -- ================= STOCK ADJUSTMENT =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                sad.product_id,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_in\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockIn,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_out\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockOut
+    
+            FROM stock_adjustment_details sad
+    
+            INNER JOIN stock_adjustment sa
+                ON sa.adjustment_id = sad.adjustment_id
+    
+            /* Uncomment if using approval
+            WHERE sa.status=\'Approved\'
+            */
+    
+            GROUP BY sad.product_id
+    
+        ) adj
+            ON pis.product_id = adj.product_id
+    
+        LEFT JOIN user u
+            ON u.user_id = ppd_data.purchaser_id
+    
+        ORDER BY pis.product_name ASC')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-02 16:11:15 --> [Caused by] mysqli_sql_exception: Table 'pharmacy_db.product_inital_stock' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT
+            pis.product_id,
+            pis.product_name,
+            pis.base_price,
+            pis.purchase_price,
+            pis.sales_price_for_customer,
+            pis.`profit_margin_%` AS profit_margin,
+            pis.tax_amount,
+    
+            tx.tax_percentage AS tax,
+    
+            pis.productinitial_quantity AS initial_stock,
+    
+            IFNULL(ppd_data.totalPurchase,0) AS newPurchase,
+    
+            IFNULL(rs_data.totalReturn,0) AS totalReturn,
+    
+            IFNULL(adj.totalStockIn,0) AS stockIn,
+    
+            IFNULL(adj.totalStockOut,0) AS stockOut,
+    
+            IFNULL(sd_data.totalSale,0) AS totalSale,
+    
+            u.user_name AS purchaser_name,
+    
+            GREATEST(
+                pis.productinitial_quantity
+                + IFNULL(ppd_data.totalPurchase,0)
+                + IFNULL(rs_data.totalReturn,0)
+                + IFNULL(adj.totalStockIn,0)
+                - IFNULL(sd_data.totalSale,0)
+                - IFNULL(adj.totalStockOut,0)
+            ,0) AS current_stock
+    
+        FROM product_inital_stock AS pis
+    
+        LEFT JOIN tax tx
+            ON pis.tax_id = tx.tax_id
+    
+        -- ================= PURCHASE =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                ppd.product_id,
+    
+                SUM(
+                    (IFNULL(ppd.quantity_per_pack,0) * IFNULL(ppd.box_quantity,1))
+                    + IFNULL(ppd.free_qty,0)
+                ) AS totalPurchase,
+    
+                MAX(pp.purchaser_id) AS purchaser_id
+    
+            FROM product_purchase_details ppd
+    
+            LEFT JOIN product_purchase pp
+                ON pp.purchase_invoice = ppd.purchase_invoice_id
+    
+            GROUP BY ppd.product_id
+    
+        ) ppd_data
+            ON pis.product_id = ppd_data.product_id
+    
+        -- ================= SALES =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(product_quantity_sold) AS totalSale
+    
+            FROM sales_details
+    
+            GROUP BY product_id
+    
+        ) sd_data
+            ON pis.product_id = sd_data.product_id
+    
+        -- ================= SALES RETURN =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(return_qty) AS totalReturn
+    
+            FROM return_sales_details
+    
+            GROUP BY product_id
+    
+        ) rs_data
+            ON pis.product_id = rs_data.product_id
+    
+        -- ================= STOCK ADJUSTMENT =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                sad.product_id,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_in\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockIn,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_out\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockOut
+    
+            FROM stock_adjustment_details sad
+    
+            INNER JOIN stock_adjustment sa
+                ON sa.adjustment_id = sad.adjustment_id
+    
+            /* Uncomment if using approval
+            WHERE sa.status=\'Approved\'
+            */
+    
+            GROUP BY sad.product_id
+    
+        ) adj
+            ON pis.product_id = adj.product_id
+    
+        LEFT JOIN user u
+            ON u.user_id = ppd_data.purchaser_id
+    
+        ORDER BY pis.product_name ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+            pis.product_id,
+            pis.product_name,
+            pis.base_price,
+            pis.purchase_price,
+            pis.sales_price_for_customer,
+            pis.`profit_margin_%` AS profit_margin,
+            pis.tax_amount,
+    
+            tx.tax_percentage AS tax,
+    
+            pis.productinitial_quantity AS initial_stock,
+    
+            IFNULL(ppd_data.totalPurchase,0) AS newPurchase,
+    
+            IFNULL(rs_data.totalReturn,0) AS totalReturn,
+    
+            IFNULL(adj.totalStockIn,0) AS stockIn,
+    
+            IFNULL(adj.totalStockOut,0) AS stockOut,
+    
+            IFNULL(sd_data.totalSale,0) AS totalSale,
+    
+            u.user_name AS purchaser_name,
+    
+            GREATEST(
+                pis.productinitial_quantity
+                + IFNULL(ppd_data.totalPurchase,0)
+                + IFNULL(rs_data.totalReturn,0)
+                + IFNULL(adj.totalStockIn,0)
+                - IFNULL(sd_data.totalSale,0)
+                - IFNULL(adj.totalStockOut,0)
+            ,0) AS current_stock
+    
+        FROM product_inital_stock AS pis
+    
+        LEFT JOIN tax tx
+            ON pis.tax_id = tx.tax_id
+    
+        -- ================= PURCHASE =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                ppd.product_id,
+    
+                SUM(
+                    (IFNULL(ppd.quantity_per_pack,0) * IFNULL(ppd.box_quantity,1))
+                    + IFNULL(ppd.free_qty,0)
+                ) AS totalPurchase,
+    
+                MAX(pp.purchaser_id) AS purchaser_id
+    
+            FROM product_purchase_details ppd
+    
+            LEFT JOIN product_purchase pp
+                ON pp.purchase_invoice = ppd.purchase_invoice_id
+    
+            GROUP BY ppd.product_id
+    
+        ) ppd_data
+            ON pis.product_id = ppd_data.product_id
+    
+        -- ================= SALES =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(product_quantity_sold) AS totalSale
+    
+            FROM sales_details
+    
+            GROUP BY product_id
+    
+        ) sd_data
+            ON pis.product_id = sd_data.product_id
+    
+        -- ================= SALES RETURN =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(return_qty) AS totalReturn
+    
+            FROM return_sales_details
+    
+            GROUP BY product_id
+    
+        ) rs_data
+            ON pis.product_id = rs_data.product_id
+    
+        -- ================= STOCK ADJUSTMENT =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                sad.product_id,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_in\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockIn,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_out\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockOut
+    
+            FROM stock_adjustment_details sad
+    
+            INNER JOIN stock_adjustment sa
+                ON sa.adjustment_id = sad.adjustment_id
+    
+            /* Uncomment if using approval
+            WHERE sa.status=\'Approved\'
+            */
+    
+            GROUP BY sad.product_id
+    
+        ) adj
+            ON pis.product_id = adj.product_id
+    
+        LEFT JOIN user u
+            ON u.user_id = ppd_data.purchaser_id
+    
+        ORDER BY pis.product_name ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+            pis.product_id,
+            pis.product_name,
+            pis.base_price,
+            pis.purchase_price,
+            pis.sales_price_for_customer,
+            pis.`profit_margin_%` AS profit_margin,
+            pis.tax_amount,
+    
+            tx.tax_percentage AS tax,
+    
+            pis.productinitial_quantity AS initial_stock,
+    
+            IFNULL(ppd_data.totalPurchase,0) AS newPurchase,
+    
+            IFNULL(rs_data.totalReturn,0) AS totalReturn,
+    
+            IFNULL(adj.totalStockIn,0) AS stockIn,
+    
+            IFNULL(adj.totalStockOut,0) AS stockOut,
+    
+            IFNULL(sd_data.totalSale,0) AS totalSale,
+    
+            u.user_name AS purchaser_name,
+    
+            GREATEST(
+                pis.productinitial_quantity
+                + IFNULL(ppd_data.totalPurchase,0)
+                + IFNULL(rs_data.totalReturn,0)
+                + IFNULL(adj.totalStockIn,0)
+                - IFNULL(sd_data.totalSale,0)
+                - IFNULL(adj.totalStockOut,0)
+            ,0) AS current_stock
+    
+        FROM product_inital_stock AS pis
+    
+        LEFT JOIN tax tx
+            ON pis.tax_id = tx.tax_id
+    
+        -- ================= PURCHASE =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                ppd.product_id,
+    
+                SUM(
+                    (IFNULL(ppd.quantity_per_pack,0) * IFNULL(ppd.box_quantity,1))
+                    + IFNULL(ppd.free_qty,0)
+                ) AS totalPurchase,
+    
+                MAX(pp.purchaser_id) AS purchaser_id
+    
+            FROM product_purchase_details ppd
+    
+            LEFT JOIN product_purchase pp
+                ON pp.purchase_invoice = ppd.purchase_invoice_id
+    
+            GROUP BY ppd.product_id
+    
+        ) ppd_data
+            ON pis.product_id = ppd_data.product_id
+    
+        -- ================= SALES =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(product_quantity_sold) AS totalSale
+    
+            FROM sales_details
+    
+            GROUP BY product_id
+    
+        ) sd_data
+            ON pis.product_id = sd_data.product_id
+    
+        -- ================= SALES RETURN =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(return_qty) AS totalReturn
+    
+            FROM return_sales_details
+    
+            GROUP BY product_id
+    
+        ) rs_data
+            ON pis.product_id = rs_data.product_id
+    
+        -- ================= STOCK ADJUSTMENT =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                sad.product_id,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_in\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockIn,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_out\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockOut
+    
+            FROM stock_adjustment_details sad
+    
+            INNER JOIN stock_adjustment sa
+                ON sa.adjustment_id = sad.adjustment_id
+    
+            /* Uncomment if using approval
+            WHERE sa.status=\'Approved\'
+            */
+    
+            GROUP BY sad.product_id
+    
+        ) adj
+            ON pis.product_id = adj.product_id
+    
+        LEFT JOIN user u
+            ON u.user_id = ppd_data.purchaser_id
+    
+        ORDER BY pis.product_name ASC')
+ 4 APPPATH\Controllers\StockReportController.php(147): CodeIgniter\Database\BaseConnection->query('SELECT
+            pis.product_id,
+            pis.product_name,
+            pis.base_price,
+            pis.purchase_price,
+            pis.sales_price_for_customer,
+            pis.`profit_margin_%` AS profit_margin,
+            pis.tax_amount,
+    
+            tx.tax_percentage AS tax,
+    
+            pis.productinitial_quantity AS initial_stock,
+    
+            IFNULL(ppd_data.totalPurchase,0) AS newPurchase,
+    
+            IFNULL(rs_data.totalReturn,0) AS totalReturn,
+    
+            IFNULL(adj.totalStockIn,0) AS stockIn,
+    
+            IFNULL(adj.totalStockOut,0) AS stockOut,
+    
+            IFNULL(sd_data.totalSale,0) AS totalSale,
+    
+            u.user_name AS purchaser_name,
+    
+            GREATEST(
+                pis.productinitial_quantity
+                + IFNULL(ppd_data.totalPurchase,0)
+                + IFNULL(rs_data.totalReturn,0)
+                + IFNULL(adj.totalStockIn,0)
+                - IFNULL(sd_data.totalSale,0)
+                - IFNULL(adj.totalStockOut,0)
+            ,0) AS current_stock
+    
+        FROM product_inital_stock AS pis
+    
+        LEFT JOIN tax tx
+            ON pis.tax_id = tx.tax_id
+    
+        -- ================= PURCHASE =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                ppd.product_id,
+    
+                SUM(
+                    (IFNULL(ppd.quantity_per_pack,0) * IFNULL(ppd.box_quantity,1))
+                    + IFNULL(ppd.free_qty,0)
+                ) AS totalPurchase,
+    
+                MAX(pp.purchaser_id) AS purchaser_id
+    
+            FROM product_purchase_details ppd
+    
+            LEFT JOIN product_purchase pp
+                ON pp.purchase_invoice = ppd.purchase_invoice_id
+    
+            GROUP BY ppd.product_id
+    
+        ) ppd_data
+            ON pis.product_id = ppd_data.product_id
+    
+        -- ================= SALES =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(product_quantity_sold) AS totalSale
+    
+            FROM sales_details
+    
+            GROUP BY product_id
+    
+        ) sd_data
+            ON pis.product_id = sd_data.product_id
+    
+        -- ================= SALES RETURN =================
+        LEFT JOIN
+        (
+            SELECT
+                product_id,
+                SUM(return_qty) AS totalReturn
+    
+            FROM return_sales_details
+    
+            GROUP BY product_id
+    
+        ) rs_data
+            ON pis.product_id = rs_data.product_id
+    
+        -- ================= STOCK ADJUSTMENT =================
+        LEFT JOIN
+        (
+            SELECT
+    
+                sad.product_id,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_in\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockIn,
+    
+                SUM(
+                    CASE
+                        WHEN sa.adjustment_type=\'stock_out\'
+                        THEN sad.adjustment_qty
+                        ELSE 0
+                    END
+                ) AS totalStockOut
+    
+            FROM stock_adjustment_details sad
+    
+            INNER JOIN stock_adjustment sa
+                ON sa.adjustment_id = sad.adjustment_id
+    
+            /* Uncomment if using approval
+            WHERE sa.status=\'Approved\'
+            */
+    
+            GROUP BY sad.product_id
+    
+        ) adj
+            ON pis.product_id = adj.product_id
+    
+        LEFT JOIN user u
+            ON u.user_id = ppd_data.purchaser_id
+    
+        ORDER BY pis.product_name ASC')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-02 16:35:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-02 16:35:50 --> ErrorException: Undefined array key "initial_stock"
+[Method: GET, Route: reports/purchase-list]
+in APPPATH\Views\report\stock_report.php on line 66.
+ 1 APPPATH\Views\report\stock_report.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "initial_stock"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php', 66)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/stock_report', [], true)
+ 5 APPPATH\Controllers\StockReportController.php(131): view('report/stock_report', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-02 16:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-02 16:38:34 --> ErrorException: Undefined array key "stockOut"
+[Method: GET, Route: reports/purchase-list]
+in APPPATH\Views\report\stock_report.php on line 72.
+ 1 APPPATH\Views\report\stock_report.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "stockOut"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/stock_report', [], true)
+ 5 APPPATH\Controllers\StockReportController.php(131): view('report/stock_report', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-02 16:39:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-02 16:39:02 --> ErrorException: Undefined array key "newPurchase"
+[Method: GET, Route: reports/purchase-list]
+in APPPATH\Views\report\stock_report.php on line 67.
+ 1 APPPATH\Views\report\stock_report.php(67): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "newPurchase"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php', 67)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/stock_report', [], true)
+ 5 APPPATH\Controllers\StockReportController.php(131): view('report/stock_report', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-02 16:41:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-02 16:41:16 --> ErrorException: Undefined variable $totalSaleReturn
+[Method: GET, Route: reports/purchase-list]
+in APPPATH\Views\report\stock_report.php on line 68.
+ 1 APPPATH\Views\report\stock_report.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalSaleReturn', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php', 68)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/stock_report', [], true)
+ 5 APPPATH\Controllers\StockReportController.php(131): view('report/stock_report', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-02 16:43:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-02 16:43:01 --> ErrorException: Undefined array key "purchase_return_stock"
+[Method: GET, Route: reports/purchase-list]
+in APPPATH\Views\report\stock_report.php on line 68.
+ 1 APPPATH\Views\report\stock_report.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "purchase_return_stock"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php', 68)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\report\\stock_report.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('report/stock_report', [], true)
+ 5 APPPATH\Controllers\StockReportController.php(131): view('report/stock_report', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-02 16:44:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-02 16:44:11 --> mysqli_sql_exception: Unknown column 'purchase_return.qty' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT\r\n    p.p...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT\r\n    p.p...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT\r\n    p.p...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\StockReportController.php(128): CodeIgniter\Database\BaseConnection->query('SELECT\r\n    p.p...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-08-02 16:44:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'purchase_return.qty' in 'field list'
+[Method: GET, Route: reports/purchase-list]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\StockReportController.php(128): CodeIgniter\Database\BaseConnection->query('SELECT
+    p.product_id,
+    p.product_name,
+
+    pc.category_name,
+    pb.product_brand_name,
+    pg.group_name,
+    pu.product_unit_name,
+
+    os.purchase_price_with_vat AS purchase_price,
+    os.selling_price,
+    os.tax_percentage,
+    os.profit_margin_percent,
+
+    COALESCE(opening.qty,0)          AS opening_stock,
+    COALESCE(purchase.qty,0)         AS purchase_stock,
+    COALESCE(sale.qty,0)             AS sale_stock,
+    COALESCE(sale_return.qty,0)      AS sale_return_stock,
+    COALESCE(stock_in.qty,0)         AS stock_in,
+    COALESCE(stock_out.qty,0)        AS stock_out,
+    COALESCE(ledger.current_stock,0) AS current_stock,
+    COALESCE(purchase_return.qty,0) AS purchase_return_stock
+
+FROM products p
+
+LEFT JOIN product_category pc
+ON pc.product_category_id=p.product_category
+
+LEFT JOIN product_brand pb
+ON pb.brand_id=p.product_brand
+
+LEFT JOIN product_group pg
+ON pg.product_group_id=p.product_group
+
+LEFT JOIN product_unit pu
+ON pu.product_unit_id=p.product_unit
+
+LEFT JOIN product_opening_stock os
+ON os.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'OPENING\'
+    GROUP BY product_id
+) opening
+ON opening.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'PURCHASE\'
+    GROUP BY product_id
+) purchase
+ON purchase.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE\'
+    GROUP BY product_id
+) sale
+ON sale.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE_RETURN\'
+    GROUP BY product_id
+) sale_return
+ON sale_return.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_IN\'
+    GROUP BY product_id
+) stock_in
+ON stock_in.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_OUT\'
+    GROUP BY product_id
+) stock_out
+ON stock_out.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT
+        product_id,
+        SUM(qty_in-qty_out) AS current_stock
+    FROM stock_ledger
+    GROUP BY product_id
+) ledger
+ON ledger.product_id=p.product_id
+
+ORDER BY p.product_name')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-02 16:44:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'purchase_return.qty' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+    p.product_id,
+    p.product_name,
+
+    pc.category_name,
+    pb.product_brand_name,
+    pg.group_name,
+    pu.product_unit_name,
+
+    os.purchase_price_with_vat AS purchase_price,
+    os.selling_price,
+    os.tax_percentage,
+    os.profit_margin_percent,
+
+    COALESCE(opening.qty,0)          AS opening_stock,
+    COALESCE(purchase.qty,0)         AS purchase_stock,
+    COALESCE(sale.qty,0)             AS sale_stock,
+    COALESCE(sale_return.qty,0)      AS sale_return_stock,
+    COALESCE(stock_in.qty,0)         AS stock_in,
+    COALESCE(stock_out.qty,0)        AS stock_out,
+    COALESCE(ledger.current_stock,0) AS current_stock,
+    COALESCE(purchase_return.qty,0) AS purchase_return_stock
+
+FROM products p
+
+LEFT JOIN product_category pc
+ON pc.product_category_id=p.product_category
+
+LEFT JOIN product_brand pb
+ON pb.brand_id=p.product_brand
+
+LEFT JOIN product_group pg
+ON pg.product_group_id=p.product_group
+
+LEFT JOIN product_unit pu
+ON pu.product_unit_id=p.product_unit
+
+LEFT JOIN product_opening_stock os
+ON os.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'OPENING\'
+    GROUP BY product_id
+) opening
+ON opening.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'PURCHASE\'
+    GROUP BY product_id
+) purchase
+ON purchase.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE\'
+    GROUP BY product_id
+) sale
+ON sale.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE_RETURN\'
+    GROUP BY product_id
+) sale_return
+ON sale_return.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_IN\'
+    GROUP BY product_id
+) stock_in
+ON stock_in.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_OUT\'
+    GROUP BY product_id
+) stock_out
+ON stock_out.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT
+        product_id,
+        SUM(qty_in-qty_out) AS current_stock
+    FROM stock_ledger
+    GROUP BY product_id
+) ledger
+ON ledger.product_id=p.product_id
+
+ORDER BY p.product_name')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+    p.product_id,
+    p.product_name,
+
+    pc.category_name,
+    pb.product_brand_name,
+    pg.group_name,
+    pu.product_unit_name,
+
+    os.purchase_price_with_vat AS purchase_price,
+    os.selling_price,
+    os.tax_percentage,
+    os.profit_margin_percent,
+
+    COALESCE(opening.qty,0)          AS opening_stock,
+    COALESCE(purchase.qty,0)         AS purchase_stock,
+    COALESCE(sale.qty,0)             AS sale_stock,
+    COALESCE(sale_return.qty,0)      AS sale_return_stock,
+    COALESCE(stock_in.qty,0)         AS stock_in,
+    COALESCE(stock_out.qty,0)        AS stock_out,
+    COALESCE(ledger.current_stock,0) AS current_stock,
+    COALESCE(purchase_return.qty,0) AS purchase_return_stock
+
+FROM products p
+
+LEFT JOIN product_category pc
+ON pc.product_category_id=p.product_category
+
+LEFT JOIN product_brand pb
+ON pb.brand_id=p.product_brand
+
+LEFT JOIN product_group pg
+ON pg.product_group_id=p.product_group
+
+LEFT JOIN product_unit pu
+ON pu.product_unit_id=p.product_unit
+
+LEFT JOIN product_opening_stock os
+ON os.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'OPENING\'
+    GROUP BY product_id
+) opening
+ON opening.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'PURCHASE\'
+    GROUP BY product_id
+) purchase
+ON purchase.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE\'
+    GROUP BY product_id
+) sale
+ON sale.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE_RETURN\'
+    GROUP BY product_id
+) sale_return
+ON sale_return.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_IN\'
+    GROUP BY product_id
+) stock_in
+ON stock_in.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_OUT\'
+    GROUP BY product_id
+) stock_out
+ON stock_out.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT
+        product_id,
+        SUM(qty_in-qty_out) AS current_stock
+    FROM stock_ledger
+    GROUP BY product_id
+) ledger
+ON ledger.product_id=p.product_id
+
+ORDER BY p.product_name')
+ 3 APPPATH\Controllers\StockReportController.php(128): CodeIgniter\Database\BaseConnection->query('SELECT
+    p.product_id,
+    p.product_name,
+
+    pc.category_name,
+    pb.product_brand_name,
+    pg.group_name,
+    pu.product_unit_name,
+
+    os.purchase_price_with_vat AS purchase_price,
+    os.selling_price,
+    os.tax_percentage,
+    os.profit_margin_percent,
+
+    COALESCE(opening.qty,0)          AS opening_stock,
+    COALESCE(purchase.qty,0)         AS purchase_stock,
+    COALESCE(sale.qty,0)             AS sale_stock,
+    COALESCE(sale_return.qty,0)      AS sale_return_stock,
+    COALESCE(stock_in.qty,0)         AS stock_in,
+    COALESCE(stock_out.qty,0)        AS stock_out,
+    COALESCE(ledger.current_stock,0) AS current_stock,
+    COALESCE(purchase_return.qty,0) AS purchase_return_stock
+
+FROM products p
+
+LEFT JOIN product_category pc
+ON pc.product_category_id=p.product_category
+
+LEFT JOIN product_brand pb
+ON pb.brand_id=p.product_brand
+
+LEFT JOIN product_group pg
+ON pg.product_group_id=p.product_group
+
+LEFT JOIN product_unit pu
+ON pu.product_unit_id=p.product_unit
+
+LEFT JOIN product_opening_stock os
+ON os.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'OPENING\'
+    GROUP BY product_id
+) opening
+ON opening.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'PURCHASE\'
+    GROUP BY product_id
+) purchase
+ON purchase.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE\'
+    GROUP BY product_id
+) sale
+ON sale.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE_RETURN\'
+    GROUP BY product_id
+) sale_return
+ON sale_return.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_IN\'
+    GROUP BY product_id
+) stock_in
+ON stock_in.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_OUT\'
+    GROUP BY product_id
+) stock_out
+ON stock_out.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT
+        product_id,
+        SUM(qty_in-qty_out) AS current_stock
+    FROM stock_ledger
+    GROUP BY product_id
+) ledger
+ON ledger.product_id=p.product_id
+
+ORDER BY p.product_name')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-02 16:44:11 --> [Caused by] mysqli_sql_exception: Unknown column 'purchase_return.qty' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT
+    p.product_id,
+    p.product_name,
+
+    pc.category_name,
+    pb.product_brand_name,
+    pg.group_name,
+    pu.product_unit_name,
+
+    os.purchase_price_with_vat AS purchase_price,
+    os.selling_price,
+    os.tax_percentage,
+    os.profit_margin_percent,
+
+    COALESCE(opening.qty,0)          AS opening_stock,
+    COALESCE(purchase.qty,0)         AS purchase_stock,
+    COALESCE(sale.qty,0)             AS sale_stock,
+    COALESCE(sale_return.qty,0)      AS sale_return_stock,
+    COALESCE(stock_in.qty,0)         AS stock_in,
+    COALESCE(stock_out.qty,0)        AS stock_out,
+    COALESCE(ledger.current_stock,0) AS current_stock,
+    COALESCE(purchase_return.qty,0) AS purchase_return_stock
+
+FROM products p
+
+LEFT JOIN product_category pc
+ON pc.product_category_id=p.product_category
+
+LEFT JOIN product_brand pb
+ON pb.brand_id=p.product_brand
+
+LEFT JOIN product_group pg
+ON pg.product_group_id=p.product_group
+
+LEFT JOIN product_unit pu
+ON pu.product_unit_id=p.product_unit
+
+LEFT JOIN product_opening_stock os
+ON os.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'OPENING\'
+    GROUP BY product_id
+) opening
+ON opening.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'PURCHASE\'
+    GROUP BY product_id
+) purchase
+ON purchase.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE\'
+    GROUP BY product_id
+) sale
+ON sale.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE_RETURN\'
+    GROUP BY product_id
+) sale_return
+ON sale_return.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_IN\'
+    GROUP BY product_id
+) stock_in
+ON stock_in.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_OUT\'
+    GROUP BY product_id
+) stock_out
+ON stock_out.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT
+        product_id,
+        SUM(qty_in-qty_out) AS current_stock
+    FROM stock_ledger
+    GROUP BY product_id
+) ledger
+ON ledger.product_id=p.product_id
+
+ORDER BY p.product_name', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT
+    p.product_id,
+    p.product_name,
+
+    pc.category_name,
+    pb.product_brand_name,
+    pg.group_name,
+    pu.product_unit_name,
+
+    os.purchase_price_with_vat AS purchase_price,
+    os.selling_price,
+    os.tax_percentage,
+    os.profit_margin_percent,
+
+    COALESCE(opening.qty,0)          AS opening_stock,
+    COALESCE(purchase.qty,0)         AS purchase_stock,
+    COALESCE(sale.qty,0)             AS sale_stock,
+    COALESCE(sale_return.qty,0)      AS sale_return_stock,
+    COALESCE(stock_in.qty,0)         AS stock_in,
+    COALESCE(stock_out.qty,0)        AS stock_out,
+    COALESCE(ledger.current_stock,0) AS current_stock,
+    COALESCE(purchase_return.qty,0) AS purchase_return_stock
+
+FROM products p
+
+LEFT JOIN product_category pc
+ON pc.product_category_id=p.product_category
+
+LEFT JOIN product_brand pb
+ON pb.brand_id=p.product_brand
+
+LEFT JOIN product_group pg
+ON pg.product_group_id=p.product_group
+
+LEFT JOIN product_unit pu
+ON pu.product_unit_id=p.product_unit
+
+LEFT JOIN product_opening_stock os
+ON os.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'OPENING\'
+    GROUP BY product_id
+) opening
+ON opening.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'PURCHASE\'
+    GROUP BY product_id
+) purchase
+ON purchase.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE\'
+    GROUP BY product_id
+) sale
+ON sale.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE_RETURN\'
+    GROUP BY product_id
+) sale_return
+ON sale_return.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_IN\'
+    GROUP BY product_id
+) stock_in
+ON stock_in.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_OUT\'
+    GROUP BY product_id
+) stock_out
+ON stock_out.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT
+        product_id,
+        SUM(qty_in-qty_out) AS current_stock
+    FROM stock_ledger
+    GROUP BY product_id
+) ledger
+ON ledger.product_id=p.product_id
+
+ORDER BY p.product_name')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT
+    p.product_id,
+    p.product_name,
+
+    pc.category_name,
+    pb.product_brand_name,
+    pg.group_name,
+    pu.product_unit_name,
+
+    os.purchase_price_with_vat AS purchase_price,
+    os.selling_price,
+    os.tax_percentage,
+    os.profit_margin_percent,
+
+    COALESCE(opening.qty,0)          AS opening_stock,
+    COALESCE(purchase.qty,0)         AS purchase_stock,
+    COALESCE(sale.qty,0)             AS sale_stock,
+    COALESCE(sale_return.qty,0)      AS sale_return_stock,
+    COALESCE(stock_in.qty,0)         AS stock_in,
+    COALESCE(stock_out.qty,0)        AS stock_out,
+    COALESCE(ledger.current_stock,0) AS current_stock,
+    COALESCE(purchase_return.qty,0) AS purchase_return_stock
+
+FROM products p
+
+LEFT JOIN product_category pc
+ON pc.product_category_id=p.product_category
+
+LEFT JOIN product_brand pb
+ON pb.brand_id=p.product_brand
+
+LEFT JOIN product_group pg
+ON pg.product_group_id=p.product_group
+
+LEFT JOIN product_unit pu
+ON pu.product_unit_id=p.product_unit
+
+LEFT JOIN product_opening_stock os
+ON os.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'OPENING\'
+    GROUP BY product_id
+) opening
+ON opening.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'PURCHASE\'
+    GROUP BY product_id
+) purchase
+ON purchase.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE\'
+    GROUP BY product_id
+) sale
+ON sale.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE_RETURN\'
+    GROUP BY product_id
+) sale_return
+ON sale_return.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_IN\'
+    GROUP BY product_id
+) stock_in
+ON stock_in.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_OUT\'
+    GROUP BY product_id
+) stock_out
+ON stock_out.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT
+        product_id,
+        SUM(qty_in-qty_out) AS current_stock
+    FROM stock_ledger
+    GROUP BY product_id
+) ledger
+ON ledger.product_id=p.product_id
+
+ORDER BY p.product_name')
+ 4 APPPATH\Controllers\StockReportController.php(128): CodeIgniter\Database\BaseConnection->query('SELECT
+    p.product_id,
+    p.product_name,
+
+    pc.category_name,
+    pb.product_brand_name,
+    pg.group_name,
+    pu.product_unit_name,
+
+    os.purchase_price_with_vat AS purchase_price,
+    os.selling_price,
+    os.tax_percentage,
+    os.profit_margin_percent,
+
+    COALESCE(opening.qty,0)          AS opening_stock,
+    COALESCE(purchase.qty,0)         AS purchase_stock,
+    COALESCE(sale.qty,0)             AS sale_stock,
+    COALESCE(sale_return.qty,0)      AS sale_return_stock,
+    COALESCE(stock_in.qty,0)         AS stock_in,
+    COALESCE(stock_out.qty,0)        AS stock_out,
+    COALESCE(ledger.current_stock,0) AS current_stock,
+    COALESCE(purchase_return.qty,0) AS purchase_return_stock
+
+FROM products p
+
+LEFT JOIN product_category pc
+ON pc.product_category_id=p.product_category
+
+LEFT JOIN product_brand pb
+ON pb.brand_id=p.product_brand
+
+LEFT JOIN product_group pg
+ON pg.product_group_id=p.product_group
+
+LEFT JOIN product_unit pu
+ON pu.product_unit_id=p.product_unit
+
+LEFT JOIN product_opening_stock os
+ON os.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'OPENING\'
+    GROUP BY product_id
+) opening
+ON opening.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'PURCHASE\'
+    GROUP BY product_id
+) purchase
+ON purchase.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE\'
+    GROUP BY product_id
+) sale
+ON sale.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'SALE_RETURN\'
+    GROUP BY product_id
+) sale_return
+ON sale_return.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_in) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_IN\'
+    GROUP BY product_id
+) stock_in
+ON stock_in.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT product_id,SUM(qty_out) qty
+    FROM stock_ledger
+    WHERE transaction_type=\'STOCK_OUT\'
+    GROUP BY product_id
+) stock_out
+ON stock_out.product_id=p.product_id
+
+
+LEFT JOIN
+(
+    SELECT
+        product_id,
+        SUM(qty_in-qty_out) AS current_stock
+    FROM stock_ledger
+    GROUP BY product_id
+) ledger
+ON ledger.product_id=p.product_id
+
+ORDER BY p.product_name')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\StockReportController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockReportController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-02 16:48:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

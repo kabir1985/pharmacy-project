@@ -23,61 +23,228 @@ echo $this->section('content');
             <div class='tile-body'>
                 <div class='table-responsive'>
                     <table class='table table-hover table-bordered' id='sampleTable'>
-                    <thead>
+<thead class="table-dark">
 <tr>
+    <th>SL</th>
     <th>Product Name</th>
+
     <th>Opening</th>
     <th>Purchase</th>
-    <th>Return</th>
+    <th>Sale Return</th>
     <th>Stock In</th>
+
     <th>Sale</th>
     <th>Stock Out</th>
+
     <th>Current Stock</th>
+
     <th>Purchase Price</th>
-    <th>Sales Price</th>
+    <th>Selling Price</th>
+
     <th>Stock Value</th>
-    <th>Purchased By</th>
+
+    <th>Status</th>
 </tr>
 </thead>
 <tbody>
-<?php foreach ($stock_report_show as $row):
 
-    $stock_value = $row['current_stock'] * $row['purchase_price'];
+<?php
+$totalOpening         = 0;
+$totalPurchase        = 0;
+$totalPurchaseReturn  = 0;
+$totalStockIn         = 0;
+$totalSale            = 0;
+$totalSaleReturn      = 0;
+$totalStockOut        = 0;
+$totalCurrentStock    = 0;
+$totalStockValue      = 0;
 
+foreach ($stock_report_show as $row):
+
+    $stockValue = (float)$row['current_stock'] * (float)$row['purchase_price'];
+
+    $totalOpening        += (float)$row['opening_stock'];
+    $totalPurchase       += (float)$row['purchase_stock'];
+    $totalPurchaseReturn += (float)$row['purchase_return_stock'];
+    $totalStockIn        += (float)$row['stock_in'];
+    $totalSale           += (float)$row['sale_stock'];
+    $totalSaleReturn     += (float)$row['sale_return_stock'];
+    $totalStockOut       += (float)$row['stock_out'];
+    $totalCurrentStock   += (float)$row['current_stock'];
+    $totalStockValue     += $stockValue;
 ?>
+
 <tr>
 
-    <td><?= esc($row['product_name']) ?></td>
-
-    <td><?= number_format($row['initial_stock'],2) ?></td>
-
-    <td><?= number_format($row['newPurchase'],2) ?></td>
-
-    <td><?= number_format($row['totalReturn'],2) ?></td>
-
-    <td><?= number_format($row['stockIn'],2) ?></td>
-
-    <td><?= number_format($row['totalSale'],2) ?></td>
-
-    <td><?= number_format($row['stockOut'],2) ?></td>
-
     <td>
-        <span class="badge bg-primary text-white">
-            <?= number_format($row['current_stock'],2) ?>
-        </span>
+        <strong><?= esc($row['product_name']) ?></strong><br>
+        <small class="text-muted">
+            <?= esc($row['category_name']) ?>
+            <?php if (!empty($row['product_brand_name'])) : ?>
+                | <?= esc($row['product_brand_name']) ?>
+            <?php endif; ?>
+        </small>
     </td>
 
-    <td><?= number_format($row['purchase_price'],2) ?></td>
+    <td class="text-end">
+        <?= number_format($row['opening_stock'], 2) ?>
+    </td>
 
-    <td><?= number_format($row['sales_price_for_customer'],2) ?></td>
+    <td class="text-end text-success">
+        <?= number_format($row['purchase_stock'], 2) ?>
+    </td>
 
-    <td><?= number_format($stock_value,2) ?></td>
+    <td class="text-end text-danger">
+        <?= number_format($row['purchase_return_stock'], 2) ?>
+    </td>
 
-    <td><?= esc($row['purchaser_name']) ?></td>
+    <td class="text-end text-primary">
+        <?= number_format($row['stock_in'], 2) ?>
+    </td>
+
+    <td class="text-end text-danger">
+        <?= number_format($row['sale_stock'], 2) ?>
+    </td>
+
+    <td class="text-end text-success">
+        <?= number_format($row['sale_return_stock'], 2) ?>
+    </td>
+
+    <td class="text-end text-warning">
+        <?= number_format($row['stock_out'], 2) ?>
+    </td>
+
+    <td class="text-center">
+
+        <?php if ($row['current_stock'] > 0): ?>
+
+            <span class="badge bg-success">
+                <?= number_format($row['current_stock'],2) ?>
+            </span>
+
+        <?php elseif ($row['current_stock'] == 0): ?>
+
+            <span class="badge bg-secondary">
+                0.00
+            </span>
+
+        <?php else: ?>
+
+            <span class="badge bg-danger">
+                <?= number_format($row['current_stock'],2) ?>
+            </span>
+
+        <?php endif; ?>
+
+    </td>
+
+    <td class="text-end">
+        <?= number_format($row['purchase_price'],2) ?>
+    </td>
+
+    <td class="text-end">
+        <?= number_format($row['selling_price'],2) ?>
+    </td>
+
+    <td class="text-end fw-bold">
+        <?= number_format($stockValue,2) ?>
+    </td>
 
 </tr>
+
 <?php endforeach; ?>
+
 </tbody>
+
+<tfoot class="table-dark">
+
+<tr>
+
+    <th class="text-end">Grand Total</th>
+
+    <th class="text-end">
+        <?= number_format($totalOpening,2) ?>
+    </th>
+
+    <th class="text-end">
+        <?= number_format($totalPurchase,2) ?>
+    </th>
+
+    <th class="text-end">
+        <?= number_format($totalPurchaseReturn,2) ?>
+    </th>
+
+    <th class="text-end">
+        <?= number_format($totalStockIn,2) ?>
+    </th>
+
+    <th class="text-end">
+        <?= number_format($totalSale,2) ?>
+    </th>
+
+    <th class="text-end">
+        <?= number_format($totalSaleReturn,2) ?>
+    </th>
+
+    <th class="text-end">
+        <?= number_format($totalStockOut,2) ?>
+    </th>
+
+    <th class="text-center">
+        <span class="badge bg-warning text-dark">
+            <?= number_format($totalCurrentStock,2) ?>
+        </span>
+    </th>
+
+    <th></th>
+
+    <th></th>
+
+    <th class="text-end fw-bold">
+        <?= number_format($totalStockValue,2) ?>
+    </th>
+
+</tr>
+
+</tfoot>
+
+<tfoot class="table-dark">
+
+<tr>
+
+    <th class="text-end">Grand Total</th>
+
+    <th class="text-end"><?= number_format($totalOpening,2) ?></th>
+
+    <th class="text-end"><?= number_format($totalPurchase,2) ?></th>
+
+    <th class="text-end"><?= number_format($totalPurchaseReturn,2) ?></th>
+
+    <th class="text-end"><?= number_format($totalStockIn,2) ?></th>
+
+    <th class="text-end"><?= number_format($totalSale,2) ?></th>
+
+    <th class="text-end"><?= number_format($totalSaleReturn,2) ?></th>
+
+    <th class="text-end"><?= number_format($totalStockOut,2) ?></th>
+
+    <th class="text-center">
+        <span class="badge bg-warning text-dark">
+            <?= number_format($totalCurrentStock,2) ?>
+        </span>
+    </th>
+
+    <th></th>
+
+    <th></th>
+
+    <th class="text-end">
+        <?= number_format($totalStockValue,2) ?>
+    </th>
+
+</tr>
+
+</tfoot>
                     </table>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 namespace App\Controllers;
 use App\Models\ProductModel;
 use App\Models\ProductPurchaseModel;
+use App\Models\ProductPurchaseDetailsModel;
 use App\Models\SupplierModel;
 
 //============For Opening Stock=========================
@@ -16,6 +17,7 @@ class PurchaseController extends BaseController
 {
     protected ProductPurchaseModel $product_purchase_object;
     protected ProductModel $product_add_object;
+    protected ProductPurchaseDetailsModel $product_purchase_details_object;
     protected SupplierModel $supplier_object;
 //============For Opening Stock=========================
     protected ProductCategoryModel $productCategory_object;
@@ -29,6 +31,7 @@ class PurchaseController extends BaseController
     public function __construct()
     {
         $this->product_purchase_object = new ProductPurchaseModel();
+        $this->product_purchase_details_object = new ProductPurchaseDetailsModel();
         $this->product_add_object = new ProductModel();
         $this->supplier_object = new SupplierModel();
 

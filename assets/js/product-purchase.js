@@ -1,10 +1,10 @@
 const productsList = APP.data.productsList;
 
-console.table(productsList);
+//console.table(productsList);
 
 $(document).ready(function() {
 
-alert("i am product-purchase.js page");
+//alert("i am product-purchase.js page");
     // console.log("kaiirsdffsdfdsfdsfdsfs");
 
     // console.log(productsList.find(p => p.product_id == product_id));
