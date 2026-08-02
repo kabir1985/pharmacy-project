@@ -18,8 +18,6 @@ class ProductOpeningStockModel extends Model
     protected $allowedFields = [
         'product_id',
         'supplier_id',
-        'batch_no',
-        'manufacturing_date',
         'expiry_date',
         'quantity',
         'bonus_quantity',
@@ -34,7 +32,6 @@ class ProductOpeningStockModel extends Model
 
         'profit_margin_percent',
         'selling_price',
-        'mrp',
 
         'stock_date',
         'remarks',
@@ -88,9 +85,8 @@ class ProductOpeningStockModel extends Model
     public function checkProductBatch($productId, $batchNo)
     {
         return $this->where([
-                'product_id' => $productId,
-                'batch_no'   => $batchNo
-            ])
+                'product_id' => $productId
+                  ])
             ->first();
     }
 }

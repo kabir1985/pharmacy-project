@@ -30,7 +30,7 @@ echo $this->section('content');
             <div class="table-responsive mt-3">
                 <table class="table table-striped">
                     <thead>
-                        <!-- <tr class="table-info">
+                       <tr class="table-info">
                             <th>Product</th>
                             <th>Stock</th>
                             <th>QtyPerBox</th>
@@ -44,24 +44,8 @@ echo $this->section('content');
                             <th id="discountHeader">Dis%</th>
                             <th class="text-end">SubTotal</th>
                             <th></th>
-                        </tr> -->
-                         <tr class="table-info">
-                            <th>Product</th>
-                            <th>Batch</th>
-                            <th>MFD</th>
-                            <th>EXP</th>
-                            <th>QtyPerBox</th>
-                            <th>BoxQty</th>
-                            <th>UnitPrice</th>
-                            <th>TP/Box</th>
-                            <th>Free Qty</th>
-                            <th class="vat-column-header">P.Vat%</th>
-                            <th>MRP</th>
-                            <th>S.Price</th>
-                            <th id="discountHeader">Dis%</th>
-                            <th class="text-end">SubTotal</th>
-                            <th></th>
                         </tr>
+
                     </thead>
                     <tbody id="cartTableBody"></tbody>
                 </table>

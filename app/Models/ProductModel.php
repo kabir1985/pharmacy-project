@@ -141,7 +141,6 @@ public function getProducts($category = null)
         pos.tax_amount,
         pos.profit_margin_percent,
         pos.selling_price,
-        pos.mrp,
 
         COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
     ");
@@ -190,8 +189,7 @@ public function getProducts($category = null)
         'pos.tax_percentage',
         'pos.tax_amount',
         'pos.profit_margin_percent',
-        'pos.selling_price',
-        'pos.mrp'
+        'pos.selling_price'
     ]);
 
     $builder->orderBy('p.product_name', 'ASC');
@@ -233,7 +231,6 @@ public function getProductList()
             pos.purchase_price_with_vat,
             pos.profit_margin_percent,
             pos.selling_price,
-            pos.mrp,
 
             tx.tax_name,
 
@@ -295,7 +292,6 @@ public function getProductList()
             'pos.purchase_price_with_vat',
             'pos.profit_margin_percent',
             'pos.selling_price',
-            'pos.mrp',
 
             'tx.tax_name'
         ])
@@ -445,9 +441,7 @@ public function getProductsWithCurrentStock()
         pos.purchase_price_without_vat,
         pos.purchase_price_with_vat,
         pos.profit_margin_percent,
-        pos.selling_price,
-        pos.mrp,
-
+        pos.selling_price
         COALESCE(sl.total_stock,0) AS total_stock
     ");
 

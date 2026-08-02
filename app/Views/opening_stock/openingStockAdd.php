@@ -48,13 +48,13 @@
 
                         </div>
 
-                        <div class="form-group col-md-3">
+                        <!-- <div class="form-group col-md-3">
 
                             <label>Batch No</label>
 
                             <input type="text" name="batch_no" class="form-control" placeholder="Batch Number">
 
-                        </div>
+                        </div> -->
 
                         <div class="form-group col-md-3">
 
@@ -94,13 +94,13 @@
 
                     <div class="form-row">
 
-                        <div class="form-group col-md-4">
+                        <!-- <div class="form-group col-md-4">
 
                             <label>Manufacturing Date</label>
 
                             <input type="date" name="manufacturing_date" class="form-control">
 
-                        </div>
+                        </div> -->
 
                         <div class="form-group col-md-4">
 
@@ -254,13 +254,13 @@
 
                     <div class="form-row">
 
-                        <div class="form-group col-md-3">
+                        <!-- <div class="form-group col-md-3">
 
                             <label>MRP</label>
 
                             <input type="number" step="0.01" name="mrp" class="form-control">
 
-                        </div>
+                        </div> -->
 
                         <div class="form-group col-md-3">
                             <label>Profit Margin (%)</label>
@@ -270,7 +270,7 @@
 
                         <div class="form-group col-md-4">
 
-                            <label>Selling Price</label>
+                            <label>MRP/Selling Price</label>
 
                             <input type="number" step="0.01" name="selling_price" id="selling_price" class="form-control">
 
@@ -353,12 +353,9 @@ $(document).ready(function () {
 
     $('#selling_price').on('input', function () {
         calculateMargin();
-        validateMRP();
     });
 
-    $('input[name="mrp"]').on('input', function () {
-        validateMRP();
-    });
+
 
     //===========================
     // Main Function
@@ -374,7 +371,6 @@ $(document).ready(function () {
 
         calculateTotalCost();
 
-        validateMRP();
     }
 
     //===========================
@@ -479,27 +475,6 @@ $(document).ready(function () {
         $('#total_cost').val(totalCost.toFixed(2));
     }
 
-    //===========================
-    // Validate MRP
-    //===========================
-
-    function validateMRP() {
-
-        let mrp = parseFloat($('input[name="mrp"]').val()) || 0;
-
-        let selling = parseFloat($('#selling_price').val()) || 0;
-
-        if (mrp > 0 && mrp < selling) {
-
-            $('input[name="mrp"]').addClass('is-invalid');
-
-        } else {
-
-            $('input[name="mrp"]').removeClass('is-invalid');
-
-        }
-
-    }
 
 });
 </script>

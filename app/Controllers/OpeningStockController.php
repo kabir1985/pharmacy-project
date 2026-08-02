@@ -44,7 +44,6 @@ class OpeningStockController extends BaseController
         if (
             !$this->validate([
                 'product_id' => 'required|integer',
-                'batch_no' => 'required|max_length[100]',
                 'quantity' => 'required|decimal',
                 'purchase_price_without_vat' => 'required|decimal',
                 'stock_date' => 'required|valid_date',
@@ -68,7 +67,6 @@ class OpeningStockController extends BaseController
 
             $exists = $this->db->table('product_opening_stock')
                 ->where('product_id', $this->request->getPost('product_id'))
-                ->where('batch_no', trim($this->request->getPost('batch_no')))
                 ->countAllResults();
 
             if ($exists > 0) {
@@ -102,9 +100,7 @@ class OpeningStockController extends BaseController
 
                 'product_id' => $this->request->getPost('product_id'),
                 'supplier_id' => $this->request->getPost('supplier_id') ?: null,
-                'batch_no' => trim($this->request->getPost('batch_no')),
 
-                'manufacturing_date' => $this->request->getPost('manufacturing_date') ?: null,
                 'expiry_date' => $this->request->getPost('expiry_date') ?: null,
 
                 'quantity' => $quantity,
@@ -121,7 +117,6 @@ class OpeningStockController extends BaseController
                 'profit_margin_percent' => (float) ($this->request->getPost('profit_margin_percent') ?? 0),
 
                 'selling_price' => (float) ($this->request->getPost('selling_price') ?? 0),
-                'mrp' => (float) ($this->request->getPost('mrp') ?? 0),
 
                 'stock_date' => $this->request->getPost('stock_date'),
 
@@ -146,8 +141,6 @@ class OpeningStockController extends BaseController
             $ledger = [
 
                 'product_id' => $data['product_id'],
-
-                'batch_no' => $data['batch_no'],
 
                 'transaction_type' => 'OPENING',
 
