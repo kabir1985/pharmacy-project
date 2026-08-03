@@ -22,7 +22,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->post('update-hold-sale', 'PosController::update_hold_sale');
         //$routes->post('products', 'PosController::products');
         $routes->post('filterProducts', 'PosController::filterProducts');
-        $routes->get('product-search', 'PosController::productSearch');
+    $routes->get('product-search', 'PosController::productSearch');
 
     });
 

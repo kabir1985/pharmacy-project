@@ -4,6 +4,35 @@ echo $this->section('content');
 ?>
 
 <?=$this->section('css')?>
+<style>
+
+.ui-autocomplete {
+    background: #fff;
+    border: 1px solid #17a2b8;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 99999 !important;
+}
+
+.ui-menu-item-wrapper {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f1f1f1;
+    cursor: pointer;
+}
+
+.ui-menu-item:last-child .ui-menu-item-wrapper {
+    border-bottom: none;
+}
+
+.ui-state-active,
+.ui-menu-item-wrapper.ui-state-active {
+    background: #17a2b8 !important;
+    color: #fff !important;
+    font-weight: 600;
+}
+    </style>
 <link rel="stylesheet" href="<?=base_url('assets/css/pos-add-view.css')?>">
 <?=$this->endSection()?>
 
@@ -194,7 +223,7 @@ foreach ($sales_summery_report_show as $row) {
                                     <!-- <th class="vat-column-header hide">Vat %</th> -->
                                     <th class="discount-column-header hide">Disc %</th>
 
-                                    <th>Pur.Price</th>
+                                    <th>Avg.P.P/unit</th>
                                     <th class="text-end">Amount</th>
                                     <th width="60" class="text-center">Action</th>
                                 </tr>
@@ -559,7 +588,7 @@ echo $this->endSection();
 echo $this->section('scripts');
 ?>
 
-<!-- <script src="<?= base_url('assets/js/jquery.mycart.js') ?>"></script> -->
+ <script src="<?= base_url('assets/js/jquery.mycart.js') ?>"></script>
 <script src="<?= base_url('assets/js/jquery-ui.min.js') ?>"></script>
 
 <script>
@@ -583,7 +612,7 @@ window.APP = {
     //console.log('Products List:', window.APP.productsList);
 };
 
-//console.log('Products List:', window.APP.productsList);
+console.log('Products List:', window.APP.productsList);
 </script>
 
 <script src="<?= base_url('assets/js/pos-add.js') ?>"></script>

@@ -2,17 +2,17 @@
 namespace App\Controllers;
 use App\Models\StockAdjustmentModel;
 use App\Models\StockAdjustmentDetailsModel;
-use App\Models\NewProductAddModel;
+use App\Models\ProductModel;
 class StockAdjustmentController extends BaseController
 {
-    protected NewProductAddModel $products_object;
+    protected ProductModel $products_object;
     protected StockAdjustmentModel $stockAdjustmentObject;
     protected StockAdjustmentDetailsModel $stockAdjustmentDetailsObject;
     protected \CodeIgniter\Database\BaseConnection $db;
 
     public function __construct()
     {
-        $this->products_object = new NewProductAddModel();
+        $this->products_object = new ProductModel();
         $this->stockAdjustmentObject = new StockAdjustmentModel();
         $this->stockAdjustmentDetailsObject = new StockAdjustmentDetailsModel();
         $this->db = \Config\Database::connect();
@@ -37,11 +37,16 @@ public function createStockAdjustment()
         'adjusted_by'     => session()->get('user_id'),
     ];
 
+    // echo "<pre>";
+    // print_r($header);
+    // echo "</pre>";
+    // exit();
+
     $detail = [
         'product_id'     => $this->request->getPost('product_id'),
-        'current_stock'  => $this->request->getPost('current_stock'),
+        //'current_stock'  => $this->request->getPost('current_stock'),
         'adjustment_qty' => $this->request->getPost('adjustment_qty'),
-        'new_stock'      => $this->request->getPost('new_stock'),
+       // 'new_stock'      => $this->request->getPost('new_stock'),
     ];
 
     $result = $this->stockAdjustmentObject->createAdjustment($header, $detail);

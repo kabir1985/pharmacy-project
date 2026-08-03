@@ -164,11 +164,20 @@ public function invoice($salesId)
     // ==========================
     $products = $this->db->table('sales_details sd')
         ->select("
-            sd.*,
-            pis.product_name
+            sd.sales_details_id,
+            sd.product_id,
+            p.product_name,
+            p.barcode,
+
+            sd.product_quantity_sold,
+            sd.returned_qty,
+            sd.unit_price,
+            sd.total_sale_price,
+            sd.total_buy_price
         ")
-        ->join('product_inital_stock pis', 'pis.product_id = sd.product_id')
+        ->join('products p', 'p.product_id = sd.product_id', 'left')
         ->where('sd.sales_id', $salesId)
+        ->orderBy('sd.sales_details_id', 'ASC')
         ->get()
         ->getResultArray();
 
@@ -176,8 +185,10 @@ public function invoice($salesId)
     // Invoice Due
     // ==========================
     $due = $this->db->table('customer_due')
-        ->selectSum('due_amount')
-        ->selectSum('paid_amount')
+        ->select("
+            COALESCE(SUM(due_amount),0) AS due_amount,
+            COALESCE(SUM(paid_amount),0) AS paid_amount
+        ", false)
         ->where('sales_id', $salesId)
         ->get()
         ->getRowArray();
@@ -187,7 +198,7 @@ public function invoice($salesId)
     if ($due) {
         $invoiceDue = max(
             0,
-            (float) $due['due_amount'] - (float) $due['paid_amount']
+            (float)$due['due_amount'] - (float)$due['paid_amount']
         );
     }
 

@@ -22,17 +22,6 @@ echo $this->section('content');
 
         <div class="tile">
 
-
-            <!-- <div class="tile-header d-flex justify-content-between align-items-center mb-3">
-                 <h4 class="mb-0">
-                    <i class="fa fa-exchange-alt"></i> Stock Adjustment List
-                </h4> 
-
-                <button class="btn btn-primary" data-toggle="modal" data-target="#StockAdjustmentModal">
-                    <i class="fa fa-plus"></i> New Adjustment
-                </button>
-            </div>  -->
-
             <div class="tile-body">
 
                 <div class="table-responsive">
@@ -41,85 +30,96 @@ echo $this->section('content');
 
                         <thead class="thead-dark">
                             <tr>
-                                <th>#</th>
+                                <th width="50">#</th>
                                 <th>Date</th>
                                 <th>Adjustment No</th>
                                 <th>Product</th>
                                 <th>Type</th>
                                 <th class="text-center">Previous Stock</th>
-                                <th class="text-center">Qty</th>
+                                <th class="text-center">Adjustment Qty</th>
                                 <th class="text-center">Current Stock</th>
                                 <th>Reason</th>
                                 <th>User</th>
-                                <th width="150">Action</th>
+                                <th width="150" class="text-center">Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
 
+                        <?php if (!empty($adjustments)): ?>
+
                             <?php $sl = 1; ?>
 
-                            <?php foreach ($adjustments as $row) { ?>
+                            <?php foreach ($adjustments as $row): ?>
 
                                 <tr>
 
-                                    <td><?= $sl++; ?></td>
+                                    <td><?=$sl++;?></td>
 
-                                    <td><?= date('d-M-Y', strtotime($row['adjustment_date'])); ?></td>
+                                    <td><?=date('d-M-Y', strtotime($row['adjustment_date']));?></td>
 
-                                    <td><?= $row['adjustment_no']; ?></td>
+                                    <td><?=esc($row['adjustment_no']);?></td>
 
-                                    <td><?= $row['product_name']; ?></td>
+                                    <td><?=esc($row['product_name']);?></td>
 
-                                    <td>
+                                    <td class="text-center">
 
-                                        <?php if ($row['adjustment_type'] == "stock_in") { ?>
+                                        <?php if ($row['adjustment_type'] == 'STOCK_IN'): ?>
 
                                             <span class="badge badge-success">
                                                 Stock In
                                             </span>
 
-                                        <?php } else { ?>
+                                        <?php elseif ($row['adjustment_type'] == 'STOCK_OUT'): ?>
 
                                             <span class="badge badge-danger">
                                                 Stock Out
                                             </span>
 
-                                        <?php } ?>
+                                        <?php else: ?>
+
+                                            <span class="badge badge-secondary">
+                                                <?=esc($row['adjustment_type']);?>
+                                            </span>
+
+                                        <?php endif; ?>
 
                                     </td>
 
                                     <td class="text-center">
-                                        <?= number_format($row['current_stock'], 2); ?>
+                                        <?=number_format((float) $row['previous_stock'], 2);?>
                                     </td>
 
                                     <td class="text-center">
-                                        <?= number_format($row['adjustment_qty'], 2); ?>
+                                        <?=number_format((float) $row['adjustment_qty'], 2);?>
                                     </td>
 
                                     <td class="text-center">
-                                        <?= number_format($row['new_stock'], 2); ?>
+                                        <?=number_format((float) $row['current_stock'], 2);?>
                                     </td>
 
-                                    <td><?= $row['reason']; ?></td>
+                                    <td><?=esc($row['reason']);?></td>
 
-                                    <td><?= $row['user_name']; ?></td>
+                                    <td><?=esc($row['user_name']);?></td>
 
-                                    <td>
+                                    <td class="text-center">
 
-                                        <a href="<?= site_url('stock-adjustment/view/' . $row['adjustment_id']) ?>"
-                                            class="btn btn-info btn-sm">
+                                        <a href="<?=site_url('stock-adjustment/view/' . $row['adjustment_id'])?>"
+                                           class="btn btn-info btn-sm"
+                                           title="View">
                                             <i class="fa fa-eye"></i>
                                         </a>
 
-                                        <a href="<?= site_url('stock-adjustment/edit/' . $row['adjustment_id']) ?>"
-                                            class="btn btn-primary btn-sm">
+                                        <a href="<?=site_url('stock-adjustment/edit/' . $row['adjustment_id'])?>"
+                                           class="btn btn-primary btn-sm"
+                                           title="Edit">
                                             <i class="fa fa-edit"></i>
                                         </a>
 
-                                        <a href="<?= site_url('stock-adjustment/delete/' . $row['adjustment_id']) ?>"
-                                            onclick="return confirm('Delete this adjustment?')"
-                                            class="btn btn-danger btn-sm">
+                                        <a href="<?=site_url('stock-adjustment/delete/' . $row['adjustment_id'])?>"
+                                           class="btn btn-danger btn-sm"
+                                           title="Delete"
+                                           onclick="return confirm('Are you sure you want to delete this adjustment?');">
                                             <i class="fa fa-trash"></i>
                                         </a>
 
@@ -127,9 +127,20 @@ echo $this->section('content');
 
                                 </tr>
 
-                            <?php } ?>
+                            <?php endforeach; ?>
+
+                        <?php else: ?>
+
+                            <tr>
+                                <td colspan="11" class="text-center text-muted">
+                                    No stock adjustment found.
+                                </td>
+                            </tr>
+
+                        <?php endif; ?>
 
                         </tbody>
+
                     </table>
 
                 </div>
@@ -170,7 +181,7 @@ echo $this->section('content');
 
                         <div class="form-group col-md-6">
                             <label>Adjustment Date</label>
-                            <input type="date" class="form-control" name="adjustment_date" value="<?= date('Y-m-d'); ?>"
+                            <input type="date" class="form-control" name="adjustment_date" value="<?=date('Y-m-d');?>"
                                 required>
                         </div>
 
@@ -192,16 +203,16 @@ echo $this->section('content');
 
                             <option value="" selected disabled>Select Product</option>
 
-                            <?php foreach ($product_show_for_sale as $row) { ?>
+                            <?php foreach ($product_show_for_sale as $row) {?>
 
-                                <option value="<?= $row['product_id']; ?>" data-total_stock="<?= $row['total_stock']; ?>">
+                                <option value="<?=$row['product_id'];?>" data-total_stock="<?=$row['total_stock'];?>">
 
-                                    <?= $row['product_name']; ?>
-                                    (Stock : <?= $row['total_stock']; ?>)
+                                    <?=$row['product_name'];?>
+                                    (Stock : <?=$row['total_stock'];?>)
 
                                 </option>
 
-                            <?php } ?>
+                            <?php }?>
 
                         </select>
 
@@ -211,14 +222,14 @@ echo $this->section('content');
                     <div class="form-row">
 
                         <div class="form-group col-md-4">
-                            <label>Current Stock</label>
-                            <input type="number" class="form-control" id="current_stock" name="current_stock" readonly>
+                            <label>Previous Stock</label>
+                            <input type="number" class="form-control" id="previous_stock" name="previous_stock" readonly>
                         </div>
 
 
                         <div class="form-group col-md-4">
-                            <label>New Stock</label>
-                            <input type="number" class="form-control" id="new_stock" name="new_stock" min="0">
+                            <label>Current Stock</label>
+                            <input type="number" class="form-control" id="current_stock" name="current_stock" min="0">
                         </div>
 
                         <div class="form-group col-md-4">
@@ -354,28 +365,41 @@ echo $this->section('scripts');
 <script type='text/javascript'>
     $(document).ready(function () {
 
+
+        $('#sampleTable').DataTable({
+
+responsive:true,
+
+autoWidth:false,
+
+pageLength:10,
+
+order:[[0,'asc']]
+
+});
+
         //===========================
         // Calculate Adjustment
         //===========================
         function calculateAdjustment() {
 
-            let current = parseFloat($('#current_stock').val()) || 0;
-            let newStock = parseFloat($('#new_stock').val()) || 0;
+            let previousStock = parseFloat($('#previous_stock').val()) || 0;
+            let currentStock = parseFloat($('#current_stock').val()) || 0;
             let type = $('#adjustment_type').val();
 
             if (type == "stock_in") {
 
                 // Only calculate
-                if (newStock >= current) {
-                    $('#adjustment_qty').val(newStock - current);
+                if (currentStock >= previousStock) {
+                    $('#adjustment_qty').val(currentStock - previousStock);
                 } else {
                     $('#adjustment_qty').val(0);
                 }
 
             } else if (type == "stock_out") {
 
-                if (newStock <= current) {
-                    $('#adjustment_qty').val(current - newStock);
+                if (currentStock <= previousStock) {
+                    $('#adjustment_qty').val(previousStock - currentStock);
                 } else {
                     $('#adjustment_qty').val(0);
                 }
@@ -391,8 +415,8 @@ echo $this->section('scripts');
 
             let stock = Number($('#product_id option:selected').data('total_stock')) || 0;
 
+            $('#previous_stock').val(stock);
             $('#current_stock').val(stock);
-            $('#new_stock').val(stock);
 
             calculateAdjustment();
 
@@ -410,7 +434,7 @@ echo $this->section('scripts');
         //===========================
         // New Stock Change
         //===========================
-        $('#new_stock').on('input', function () {
+        $('#current_stock').on('input', function () {
 
             calculateAdjustment();
 
@@ -419,33 +443,33 @@ echo $this->section('scripts');
         //===========================
         // Validation on Blur
         //===========================
-        $('#new_stock').on('blur', function () {
+        $('#current_stock').on('blur', function () {
 
-            let current = parseFloat($('#current_stock').val()) || 0;
-            let newStock = parseFloat($(this).val()) || 0;
+            let previousStock = parseFloat($('#previous_stock').val()) || 0;
+            let currentStock = parseFloat($(this).val()) || 0;
             let type = $('#adjustment_type').val();
 
             if (type == 'stock_in') {
 
-                if (newStock < current) {
+                if (currentStock < previousStock) {
 
                     alert('New Stock must be greater than or equal to Current Stock.');
 
-                    $(this).val(current);
+                    $(this).val(previousStock);
 
                 }
 
             } else if (type == 'stock_out') {
 
-                if (newStock > current) {
+                if (currentStock > previousStock) {
 
                     alert('New Stock cannot be greater than Current Stock.');
 
-                    $(this).val(current);
+                    $(this).val(previousStock);
 
                 }
 
-                if (newStock < 0) {
+                if (currentStock < 0) {
 
                     $(this).val(0);
 
@@ -470,7 +494,7 @@ echo $this->section('scripts');
 
             $.ajax({
 
-                url: "<?= site_url('stockAdjustment/create'); ?>",
+                url: "<?=site_url('stock-adjustment/create');?>",
                 type: "POST",
                 data: $(this).serialize(),
                 dataType: "json",

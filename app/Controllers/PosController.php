@@ -9,6 +9,7 @@ use App\Models\ProductBrandModel;
 use App\Models\ProductCategoryModel;
 use App\Models\ProductSaleDetailsModel;
 use App\Models\ProductSaleModel;
+use App\Models\StockLedgerModel;
 
 class PosController extends BaseController
 {
@@ -20,6 +21,7 @@ class PosController extends BaseController
     protected CustomerModel $customerModel_object;
     protected CustomerDueModel $customer_due_model_obj;
     protected CustomerGroupModel $customerGroupObject;
+    protected StockLedgerModel $ledgerModel;
     protected \CodeIgniter\Database\BaseConnection $db;
 
     public function __construct()
@@ -32,7 +34,7 @@ class PosController extends BaseController
         $this->customerModel_object = new CustomerModel();
         $this->customer_due_model_obj = new CustomerDueModel();
         $this->customerGroupObject = new CustomerGroupModel();
-        // $this->db = db_connect();
+        $this->ledgerModel = new StockLedgerModel();
         $this->db = \Config\Database::connect();
     }
 
@@ -41,6 +43,14 @@ class PosController extends BaseController
         $category = $this->request->getPost('product_category');
 
         $data['product_show_for_sale'] = $this->products_object->getProducts($category);
+///##############Average Purchase Price for view page#####################
+        foreach ($data['product_show_for_sale'] as &$row) {
+
+            $row['average_purchase_price'] =
+                $this->ledgerModel->getAveragePurchasePrice($row['product_id']);
+        }
+        unset($row);
+//########################################################################
 
         $data['product_category_show'] = $this->productCategory_object->findAll();
         $data['product_brand_show'] = $this->ProductBrand_object->findAll();
@@ -153,7 +163,7 @@ class PosController extends BaseController
                 'returned_qty' => 0,
                 'unit_price' => $price,
                 'total_sale_price' => $line_total,
-                'total_buy_price' => round($row['purchase_price'] * $qty, 2),
+                'total_buy_price' => round($row['purchase_price_without_vat'] * $qty, 2),
             ];
         }
 
@@ -164,14 +174,6 @@ class PosController extends BaseController
         $total_discount = round($total_discount, 2);
         $total_vat = round($total_vat, 2);
         $otherChargeOnTotalPrice = round($otherChargeOnTotalPrice, 2);
-        
-        $grand_total = round(
-            $subtotal 
-            - $total_discount 
-            + $total_vat 
-            + $otherChargeOnTotalPrice,
-            2
-        );
 
         $grand_total = round( $subtotal - $total_discount + $total_vat + $otherChargeOnTotalPrice,2 );
 
@@ -237,6 +239,67 @@ class PosController extends BaseController
                     'paid_amount' => 0,
                 ]);
             }
+
+
+
+
+
+// ======================================
+// STOCK LEDGER (SALE)
+// ======================================
+
+foreach ($sales_details_invoice_data as $item) {
+
+    // Current Stock Before Sale
+    $currentStock = $db->table('stock_ledger')
+        ->select('COALESCE(SUM(qty_in - qty_out),0) AS stock', false)
+        ->where('product_id', $item['product_id'])
+        ->get()
+        ->getRow();
+
+    $stockBeforeSale = (float) $currentStock->stock;
+
+    // Prevent Negative Stock
+    if ($stockBeforeSale < $item['product_quantity_sold']) {
+        throw new \Exception(
+            'Insufficient stock for Product ID : ' . $item['product_id']
+        );
+    }
+
+    $balanceQty = $stockBeforeSale - $item['product_quantity_sold'];
+
+    $unitCost = 0;
+
+    if ($item['product_quantity_sold'] > 0) {
+        $unitCost = round(
+            $item['total_buy_price'] / $item['product_quantity_sold'],
+            2
+        );
+    }
+
+    $ledger = [
+        'product_id'       => $item['product_id'],
+        'transaction_type' => 'SALE',
+        'reference_id'     => $sales_id,
+
+        'qty_in'           => 0,
+        'qty_out'          => $item['product_quantity_sold'],
+
+        'balance_qty'      => $balanceQty,
+
+        'unit_cost'        => $unitCost,
+
+        'transaction_date' => date('Y-m-d H:i:s'),
+
+        'remarks'          => 'Sales Invoice : ' . $invoice_id,
+
+        'created_by'       => $seller_id,
+    ];
+
+    $db->table('stock_ledger')->insert($ledger);
+}
+
+
 
             // Remove Held Sale
             $hold_id = $request->getPost('hold_id');

@@ -5,9 +5,12 @@ let productsList = window.APP.productsList;
 $(document).ready(function() {
 
     $("body").addClass("sidenav-toggled");
-    $("#search_product").focus();
 
+    setTimeout(function () {
+        $("#search_product").focus();
+    }, 200);
 
+//console.log(productsList)
     //################################Product Vat and Discount show/hide##############################//////////////////
     function toggleProductVatDiscount() {
         if ($("#ProductWiseVatAndDiscount").is(":checked")) {
@@ -33,11 +36,10 @@ $(document).ready(function() {
 
     obj.volume = 1.0;
 
-    /*------------ Product Search -------------------*/
     $("#search_product").autocomplete({
+
         source: function(request, response) {
             $.ajax({
-                //url: "<?=site_url('pos/product-search')?>",
                 url: APP_URLS.productSearch,
                 dataType: "json",
                 data: {
@@ -45,22 +47,58 @@ $(document).ready(function() {
                 },
                 success: function(data) {
                     response(data);
-                },
-                error: function() {
-                    response([]);
                 }
             });
         },
+    
         minLength: 1,
-        autoFocus: true,
         delay: 150,
-
+        autoFocus: true,
+    
+        open: function () {
+    
+            $(".ui-autocomplete").css({
+                width: $(this).outerWidth() + "px"
+            });
+    
+            // Focus first item
+            var menu = $(this).autocomplete("instance").menu;
+            menu.focus(null, menu.element.children("li:first"));
+    
+        },
+    
         select: function(event, ui) {
+    
             productAddToCart(ui.item.id, ui.item.total_stock);
+    
             obj.play();
+    
             $(this).val("");
+    
             return false;
         }
+    
+    });
+
+        // ==============================
+    // Press Enter to add product
+    // ==============================
+    $("#search_product").keydown(function(e){
+
+        if (e.keyCode === 13) {
+    
+            e.preventDefault();
+    
+            var instance = $(this).autocomplete("instance");
+    
+            if (instance.menu.active) {
+    
+                instance.menu.select(e);
+    
+            }
+    
+        }
+    
     });
 
 
@@ -703,7 +741,7 @@ $(document).ready(function() {
 
     <!-- Purchase Price -->
     <td class="text-end">
-        ${parseFloat(item.purchase_price || 0).toFixed(2)}
+        ${parseFloat(item.purchase_price_with_vat || 0).toFixed(2)}
     </td>
 
     <!-- Subtotal -->

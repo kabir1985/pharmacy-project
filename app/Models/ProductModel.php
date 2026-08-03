@@ -30,95 +30,6 @@ protected $allowedFields = [
 
 
 
-
-
-    // public function getProducts($category = null)
-    // {
-    //     $condition = '';
-
-    //     if (!empty($category) && $category !== 'all_category') {
-    //         $condition = " WHERE pis.product_category = " . (int) $category;
-    //     }
-
-    //     $sql = "SELECT
-    //                 pis.product_id,
-    //                 pis.product_name,
-    //                 pis.product_image,
-    //                 pis.sales_price_for_customer,
-    //                 pis.purchase_price,
-
-    //                 GREATEST(
-    //                     COALESCE(pis.productinitial_quantity,0)
-    //                     + COALESCE(ppd.total_purchase_qty,0)
-    //                     + COALESCE(rs.total_return,0)
-    //                     + COALESCE(adj.total_stock_in,0)
-    //                     - COALESCE(sd.total_sale,0)
-    //                     - COALESCE(adj.total_stock_out,0)
-    //                 ,0) AS total_stock
-
-    //             FROM product_inital_stock pis
-
-    //             LEFT JOIN (
-    //                 SELECT
-    //                     product_id,
-    //                     SUM((IFNULL(quantity_per_pack,0)*IFNULL(box_quantity,0))+IFNULL(free_qty,0)) total_purchase_qty
-    //                 FROM product_purchase_details
-    //                 GROUP BY product_id
-    //             ) ppd
-    //             ON ppd.product_id=pis.product_id
-
-    //             LEFT JOIN (
-    //                 SELECT
-    //                     product_id,
-    //                     SUM(product_quantity_sold) total_sale
-    //                 FROM sales_details
-    //                 GROUP BY product_id
-    //             ) sd
-    //             ON sd.product_id=pis.product_id
-
-    //             LEFT JOIN (
-    //                 SELECT
-    //                     product_id,
-    //                     SUM(return_qty) total_return
-    //                 FROM return_sales_details
-    //                 GROUP BY product_id
-    //             ) rs
-    //             ON rs.product_id=pis.product_id
-
-    //             LEFT JOIN (
-    //                 SELECT
-    //                     sad.product_id,
-
-    //                     SUM(
-    //                         CASE
-    //                             WHEN sa.adjustment_type='stock_in'
-    //                             THEN sad.adjustment_qty
-    //                             ELSE 0
-    //                         END
-    //                     ) total_stock_in,
-
-    //                     SUM(
-    //                         CASE
-    //                             WHEN sa.adjustment_type='stock_out'
-    //                             THEN sad.adjustment_qty
-    //                             ELSE 0
-    //                         END
-    //                     ) total_stock_out
-
-    //                 FROM stock_adjustment_details sad
-    //                 INNER JOIN stock_adjustment sa
-    //                 ON sa.adjustment_id=sad.adjustment_id
-
-    //                 GROUP BY sad.product_id
-
-    //             ) adj
-    //             ON adj.product_id=pis.product_id
-
-    //             $condition";
-
-    //     return $this->db->query($sql)->getResultArray();
-    // }
-
 public function getProducts($category = null)
 {
     $builder = $this->db->table('products p');
@@ -132,7 +43,6 @@ public function getProducts($category = null)
 
         pc.category_name,
 
-        pos.batch_no,
         pos.purchase_price_without_vat,
         pos.purchase_price_with_vat,
         pos.tax_type,
@@ -142,10 +52,10 @@ public function getProducts($category = null)
         pos.profit_margin_percent,
         pos.selling_price,
 
-        COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+        COALESCE(sl.total_stock,0) AS total_stock
     ");
 
-    // Product Category
+    // Category
     $builder->join(
         'product_category pc',
         'pc.product_category_id = p.product_category',
@@ -155,42 +65,24 @@ public function getProducts($category = null)
     // Active Opening Stock
     $builder->join(
         'product_opening_stock pos',
-        'pos.product_id = p.product_id
-         AND pos.status = "active"',
+        'pos.product_id = p.product_id AND pos.status = "active"',
         'left'
     );
 
-    // Stock Ledger
+    // Current Stock
     $builder->join(
-        'stock_ledger sl',
+        '(SELECT product_id,
+                 SUM(qty_in - qty_out) AS total_stock
+          FROM stock_ledger
+          GROUP BY product_id) sl',
         'sl.product_id = p.product_id',
-        'left'
+        'left',
+        false
     );
 
-    // Category Filter
     if (!empty($category) && $category != 'all_category') {
         $builder->where('p.product_category', $category);
     }
-
-    $builder->groupBy([
-        'p.product_id',
-        'p.product_name',
-        'p.product_image',
-        'p.barcode',
-        'p.alert_quantity',
-
-        'pc.category_name',
-
-        'pos.batch_no',
-        'pos.purchase_price_without_vat',
-        'pos.purchase_price_with_vat',
-        'pos.tax_type',
-        'pos.tax_id',
-        'pos.tax_percentage',
-        'pos.tax_amount',
-        'pos.profit_margin_percent',
-        'pos.selling_price'
-    ]);
 
     $builder->orderBy('p.product_name', 'ASC');
 
@@ -313,65 +205,58 @@ public function searchProducts($search)
         CONCAT(
             p.product_name,
             ' | ',
-            IFNULL(pb.product_brand_name,''),
+            IFNULL(pb.product_brand_name, ''),
             ' | ',
-            IFNULL(pc.category_name,''),
+            IFNULL(pc.category_name, ''),
             ' | ',
-            IFNULL(pg.group_name,''),
+            IFNULL(pg.group_name, ''),
             ' | Stock: ',
-            COALESCE(SUM(sl.qty_in - sl.qty_out),0)
+            COALESCE(SUM(sl.qty_in - sl.qty_out), 0)
         ) AS label,
 
-        COALESCE(SUM(sl.qty_in - sl.qty_out),0) AS total_stock
+        COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
     ");
 
+    // Stock Ledger
     $builder->join(
         'stock_ledger sl',
         'sl.product_id = p.product_id',
         'left'
     );
 
+    // Brand
     $builder->join(
         'product_brand pb',
         'pb.brand_id = p.product_brand',
         'left'
     );
 
+    // Category
     $builder->join(
         'product_category pc',
         'pc.product_category_id = p.product_category',
         'left'
     );
 
+    // Group
     $builder->join(
         'product_group pg',
         'pg.product_group_id = p.product_group',
         'left'
     );
 
-    // Optional: only products having active opening stock
-    $builder->join(
-        'product_opening_stock pos',
-        'pos.product_id = p.product_id AND pos.status = "active"',
-        'left'
-    );
-
     // Only Active Products
     $builder->where('p.status', 'active');
 
-    $search = strtolower(trim($search));
+    $search = trim($search);
 
     $builder->groupStart();
 
-    $builder->where("
-        LOWER(CONCAT(
-            p.product_name,' ',
-            IFNULL(pb.product_brand_name,''),' ',
-            IFNULL(pc.category_name,''),' ',
-            IFNULL(pg.group_name,''),' ',
-            IFNULL(p.barcode,'')
-        )) LIKE '%".$this->db->escapeLikeString($search)."%'
-    ", null, false);
+    $builder->like('p.product_name', $search);
+    $builder->orLike('pb.product_brand_name', $search);
+    $builder->orLike('pc.category_name', $search);
+    $builder->orLike('pg.group_name', $search);
+    $builder->orLike('p.barcode', $search);
 
     $builder->groupEnd();
 
@@ -387,17 +272,20 @@ public function searchProducts($search)
     // Only products having stock
     $builder->having('total_stock >', 0);
 
+    // Search Priority
     $builder->orderBy("
         CASE
             WHEN p.barcode = ".$this->db->escape($search)." THEN 1
-            WHEN LOWER(p.product_name) = ".$this->db->escape(strtolower($search))." THEN 2
-            WHEN LOWER(p.product_name) LIKE '%".$this->db->escapeLikeString($search)."%' THEN 3
-            WHEN LOWER(pb.product_brand_name) LIKE '".$this->db->escapeLikeString($search)."%' THEN 4
-            WHEN LOWER(pc.category_name) LIKE '".$this->db->escapeLikeString($search)."%' THEN 5
-            WHEN LOWER(pg.group_name) LIKE '".$this->db->escapeLikeString($search)."%' THEN 6
+            WHEN p.product_name = ".$this->db->escape($search)." THEN 2
+            WHEN p.product_name LIKE '%".$this->db->escapeLikeString($search)."%' THEN 3
+            WHEN pb.product_brand_name LIKE '".$this->db->escapeLikeString($search)."%' THEN 4
+            WHEN pc.category_name LIKE '".$this->db->escapeLikeString($search)."%' THEN 5
+            WHEN pg.group_name LIKE '".$this->db->escapeLikeString($search)."%' THEN 6
             ELSE 7
         END
     ", false);
+
+    $builder->orderBy('p.product_name', 'ASC');
 
     $builder->limit(20);
 
