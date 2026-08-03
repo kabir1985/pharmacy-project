@@ -51,11 +51,12 @@
     <th>Image</th>
     <th>Product Name</th>
     <th>Category</th>
+    <th>Brand</th>
+    <th>Group</th>
+
     <th>Current Stock</th>
     <th>Purchase Price</th>
     <th>Selling Price</th>
-    <th>MRP</th>
-    <th>Batch No</th>
     <th>Status</th>
     <th width="100">Action</th>
 </tr>
@@ -80,6 +81,8 @@
     <td><?= esc($product['product_name']) ?></td>
 
     <td><?= esc($product['category_name']) ?></td>
+    <td><?= esc($product['product_brand_name']) ?></td>
+    <td><?= esc($product['group_name']) ?></td>
 
     <td class="text-end">
         <?= number_format($product['total_stock'],2) ?>
@@ -93,13 +96,6 @@
         <?= number_format($product['selling_price'],2) ?>
     </td>
 
-    <td class="text-end">
-        <?= number_format($product['mrp'],2) ?>
-    </td>
-
-    <td>
-        <?= esc($product['batch_no']) ?>
-    </td>
 
     <td>
 

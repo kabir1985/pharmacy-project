@@ -27,97 +27,52 @@
                 <div class="card-body">
 
                     <div class="form-row">
-
-
                         <div class="form-group col-md-6">
                             <label>Product <span class="text-danger">*</span></label>
-
                             <select name="product_id" class="form-control select2" required>
-
                                 <option value="">Select Product</option>
-
                                 <?php foreach ($products as $row): ?>
 
                                     <option value="<?= $row['product_id'] ?>">
-                                        <?= esc($row['product_name']) ?>
+                                        <?= esc(
+                                            $row['product_name']
+                                            . ' | ' . $row['category_name']
+                                            . ' | ' . $row['product_brand_name']
+                                            . ' | ' . $row['group_name']
+                                            . ' | ' . $row['product_unit_name']
+                                        ) ?>
                                     </option>
 
                                 <?php endforeach; ?>
 
                             </select>
-
                         </div>
 
-                        <!-- <div class="form-group col-md-3">
-
-                            <label>Batch No</label>
-
-                            <input type="text" name="batch_no" class="form-control" placeholder="Batch Number">
-
-                        </div> -->
 
                         <div class="form-group col-md-3">
 
                             <label>Supplier</label>
 
                             <select name="supplier_id" class="form-control">
-
-                                <option value="">Select Supplier</option>
+                                <option value="">Own Stock / No Supplier</option>
 
                                 <?php foreach ($suppliers as $supplier): ?>
-
                                     <option value="<?= $supplier['supplier_id'] ?>">
                                         <?= esc($supplier['supplier_name']) ?>
                                     </option>
-
                                 <?php endforeach; ?>
-
                             </select>
 
                         </div>
 
-                    </div>
 
-                </div>
-
-            </div>
-
-            <!-- ================= Batch Information ================= -->
-
-            <div class="card mb-3">
-
-                <div class="card-header bg-light">
-                    <strong>Batch Information</strong>
-                </div>
-
-                <div class="card-body">
-
-                    <div class="form-row">
-
-                        <!-- <div class="form-group col-md-4">
-
-                            <label>Manufacturing Date</label>
-
-                            <input type="date" name="manufacturing_date" class="form-control">
-
-                        </div> -->
-
-                        <div class="form-group col-md-4">
-
-                            <label>Expiry Date</label>
-
-                            <input type="date" name="expiry_date" class="form-control">
-
-                        </div>
-
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
 
                             <label>Stock Date</label>
-
-                            <input type="date" name="stock_date" value="<?= date('Y-m-d') ?>" class="form-control"
-                                required>
-
+                            <input type="date" name="stock_date" id="stock_date" class="form-control"
+                                value="<?= old('stock_date', date('Y-m-d')) ?>">
                         </div>
+
 
                     </div>
 
@@ -185,7 +140,7 @@
                             <label>Tax Type</label>
                             <select class="form-control" id="tax_type" name="tax_type" required>
                                 <option value="without_tax" selected>Without Tax (Exclusive)</option>
-                                <option value="with_tax">With Tax (Inclusive)</option>
+                                <!-- <option value="with_tax">With Tax (Inclusive)</option> -->
                             </select>
                         </div>
 
@@ -224,9 +179,9 @@
 
                                 </div>
 
-<input type="hidden" id="tax_percentage" name="tax_percentage">
+                                <input type="hidden" id="tax_percentage" name="tax_percentage">
 
-<input type="hidden" id="tax_amount" name="tax_amount">
+                                <input type="hidden" id="tax_amount" name="tax_amount">
 
                             </div>
 
@@ -253,16 +208,7 @@
                     <!-- row start -->
 
                     <div class="form-row">
-
-                        <!-- <div class="form-group col-md-3">
-
-                            <label>MRP</label>
-
-                            <input type="number" step="0.01" name="mrp" class="form-control">
-
-                        </div> -->
-
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-4">
                             <label>Profit Margin (%)</label>
                             <input type="number" step="0.01" id="profit_margin_percent" name="profit_margin_percent"
                                 class="form-control">
@@ -272,11 +218,12 @@
 
                             <label>MRP/Selling Price</label>
 
-                            <input type="number" step="0.01" name="selling_price" id="selling_price" class="form-control">
+                            <input type="number" step="0.01" name="selling_price" id="selling_price"
+                                class="form-control">
 
                         </div>
 
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-4">
 
                             <label>Total Cost</label>
 
@@ -334,150 +281,149 @@
 <?= $this->section('scripts') ?>
 
 <script>
-$(document).ready(function () {
+    $(document).ready(function () {
 
-    calculateAll();
+        calculateAll();
 
-    //===========================
-    // Auto Calculate Events
-    //===========================
+        //===========================
+        // Auto Calculate Events
+        //===========================
 
-    $('#quantity, #bonus_quantity, #purchase_without_vat, #profit_margin_percent')
-        .on('input', function () {
+        $('#quantity, #bonus_quantity, #purchase_without_vat, #profit_margin_percent')
+            .on('input', function () {
+                calculateAll();
+            });
+
+        $('#tax_type, #tax_id').on('change', function () {
             calculateAll();
         });
 
-    $('#tax_type, #tax_id').on('change', function () {
-        calculateAll();
-    });
-
-    $('#selling_price').on('input', function () {
-        calculateMargin();
-    });
+        $('#selling_price').on('input', function () {
+            calculateMargin();
+        });
 
 
 
-    //===========================
-    // Main Function
-    //===========================
+        //===========================
+        // Main Function
+        //===========================
 
-    function calculateAll() {
+        function calculateAll() {
 
-        calculateTotalQuantity();
+            calculateTotalQuantity();
 
-        calculatePurchasePrice();
+            calculatePurchasePrice();
 
-        calculateSellingPrice();
+            calculateSellingPrice();
 
-        calculateTotalCost();
-
-    }
-
-    //===========================
-    // Total Quantity
-    //===========================
-
-    function calculateTotalQuantity() {
-
-        let qty = parseFloat($('#quantity').val()) || 0;
-
-        let bonus = parseFloat($('#bonus_quantity').val()) || 0;
-
-        $('#total_quantity').val((qty + bonus).toFixed(2));
-    }
-
-    //===========================
-    // Purchase Price With VAT
-    //===========================
-
-    function calculatePurchasePrice() {
-
-        let purchase = parseFloat($('#purchase_without_vat').val()) || 0;
-
-        let taxPercent = parseFloat($('#tax_id option:selected').data('percent')) || 0;
-
-        let taxType = $('#tax_type').val();
-
-        let taxAmount = 0;
-
-        let purchaseWithVat = purchase;
-
-        if (taxType === 'without_tax') {
-
-            taxAmount = purchase * taxPercent / 100;
-
-            purchaseWithVat = purchase + taxAmount;
-
-        } else {
-
-            purchaseWithVat = purchase;
-
-            taxAmount = purchaseWithVat - (purchaseWithVat / (1 + taxPercent / 100));
+            calculateTotalCost();
 
         }
 
-        $('#tax_percentage').val(taxPercent.toFixed(2));
+        //===========================
+        // Total Quantity
+        //===========================
 
-        $('#tax_amount').val(taxAmount.toFixed(2));
+        function calculateTotalQuantity() {
 
-        $('#purchase_price_with_vat').val(purchaseWithVat.toFixed(2));
-    }
+            let qty = parseFloat($('#quantity').val()) || 0;
 
-    //===========================
-    // Selling Price
-    //===========================
+            let bonus = parseFloat($('#bonus_quantity').val()) || 0;
 
-    function calculateSellingPrice() {
-
-        let purchase = parseFloat($('#purchase_price_with_vat').val()) || 0;
-
-        let margin = parseFloat($('#profit_margin_percent').val()) || 0;
-
-        let selling = purchase + ((purchase * margin) / 100);
-
-        $('#selling_price').val(selling.toFixed(2));
-    }
-
-    //===========================
-    // Margin Calculation
-    //===========================
-
-    function calculateMargin() {
-
-        let purchase = parseFloat($('#purchase_price_with_vat').val()) || 0;
-
-        let selling = parseFloat($('#selling_price').val()) || 0;
-
-        if (purchase <= 0) {
-
-            $('#profit_margin_percent').val('0.00');
-
-            return;
+            $('#total_quantity').val((qty + bonus).toFixed(2));
         }
 
-        let margin = ((selling - purchase) / purchase) * 100;
+        //===========================
+        // Purchase Price With VAT
+        //===========================
 
-        $('#profit_margin_percent').val(margin.toFixed(2));
-    }
+        function calculatePurchasePrice() {
 
-    //===========================
-    // Total Cost
-    //===========================
+            let purchase = parseFloat($('#purchase_without_vat').val()) || 0;
 
-    function calculateTotalCost() {
+            let taxPercent = parseFloat($('#tax_id option:selected').data('percent')) || 0;
 
-        let totalQty = parseFloat($('#total_quantity').val()) || 0;
+            let taxType = $('#tax_type').val();
 
-        let purchase = parseFloat($('#purchase_price_with_vat').val()) || 0;
+            let taxAmount = 0;
 
-        let totalCost = totalQty * purchase;
+            let purchaseWithVat = purchase;
 
-        $('#total_cost').val(totalCost.toFixed(2));
-    }
+            if (taxType === 'without_tax') {
+
+                taxAmount = purchase * taxPercent / 100;
+
+                purchaseWithVat = purchase + taxAmount;
+
+            } else {
+
+                purchaseWithVat = purchase;
+
+                taxAmount = purchaseWithVat - (purchaseWithVat / (1 + taxPercent / 100));
+
+            }
+
+            $('#tax_percentage').val(taxPercent.toFixed(2));
+
+            $('#tax_amount').val(taxAmount.toFixed(2));
+
+            $('#purchase_price_with_vat').val(purchaseWithVat.toFixed(2));
+        }
+
+        //===========================
+        // Selling Price
+        //===========================
+
+        function calculateSellingPrice() {
+
+            let purchase = parseFloat($('#purchase_price_with_vat').val()) || 0;
+
+            let margin = parseFloat($('#profit_margin_percent').val()) || 0;
+
+            let selling = purchase + ((purchase * margin) / 100);
+
+            $('#selling_price').val(selling.toFixed(2));
+        }
+
+        //===========================
+        // Margin Calculation
+        //===========================
+
+        function calculateMargin() {
+
+            let purchase = parseFloat($('#purchase_price_with_vat').val()) || 0;
+
+            let selling = parseFloat($('#selling_price').val()) || 0;
+
+            if (purchase <= 0) {
+
+                $('#profit_margin_percent').val('0.00');
+
+                return;
+            }
+
+            let margin = ((selling - purchase) / purchase) * 100;
+
+            $('#profit_margin_percent').val(margin.toFixed(2));
+        }
+
+        //===========================
+        // Total Cost
+        //===========================
+
+        function calculateTotalCost() {
+
+            let totalQty = parseFloat($('#total_quantity').val()) || 0;
+
+            let purchase = parseFloat($('#purchase_price_with_vat').val()) || 0;
+
+            let totalCost = totalQty * purchase;
+
+            $('#total_cost').val(totalCost.toFixed(2));
+        }
 
 
-});
+    });
 </script>
 
 <?= $this->endSection() ?>
-

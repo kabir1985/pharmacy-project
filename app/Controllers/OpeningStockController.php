@@ -23,15 +23,14 @@ class OpeningStockController extends BaseController
         $this->db = \Config\Database::connect();
     }
 
-    public function index()
-    {
-
-        return view('opening_stock/openingStockAdd', [
-            'products' => $this->productModel->findAll(),
-            'suppliers' => $this->supplierModel->findAll(),
-            'tax_show' => $this->taxModel->findAll(),
-        ]);
-    }
+public function index()
+{
+    return view('opening_stock/openingStockAdd', [
+        'products'  => $this->productModel->getProductsForOpeningStock(),
+        'suppliers' => $this->supplierModel->findAll(),
+        'tax_show'  => $this->taxModel->findAll(),
+    ]);
+}
 
 //     public function store()
 //     {
@@ -305,8 +304,6 @@ public function store()
             'product_id' => $this->request->getPost('product_id'),
 
             'supplier_id' => $this->request->getPost('supplier_id') ?: null,
-
-            'expiry_date' => $this->request->getPost('expiry_date') ?: null,
 
             'quantity' => $quantity,
 

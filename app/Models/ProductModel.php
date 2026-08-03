@@ -112,7 +112,6 @@ public function getProductList()
             pu.product_unit_name,
             ps.strength_name,
 
-            pos.batch_no,
             pos.quantity,
             pos.bonus_quantity,
             pos.tax_type,
@@ -173,7 +172,6 @@ public function getProductList()
             'pu.product_unit_name',
             'ps.strength_name',
 
-            'pos.batch_no',
             'pos.quantity',
             'pos.bonus_quantity',
             'pos.tax_type',
@@ -427,4 +425,33 @@ public function getProductsWithCurrentStock()
 
     return $builder->get()->getResultArray();
 }
+
+
+public function getProductsForOpeningStock()
+{
+    return $this->db->table('products p')
+        ->select("
+            p.product_id,
+            p.product_name,
+            p.sku,
+            p.barcode,
+
+            pc.category_name,
+            pb.product_brand_name,
+            pg.group_name,
+            pu.product_unit_name
+        ")
+        ->join('product_category pc', 'pc.product_category_id = p.product_category', 'left')
+        ->join('product_brand pb', 'pb.brand_id = p.product_brand', 'left')
+        ->join('product_group pg', 'pg.product_group_id = p.product_group', 'left')
+        ->join('product_unit pu', 'pu.product_unit_id = p.product_unit', 'left')
+        ->where('p.status', 'active')
+        ->orderBy('p.product_name', 'ASC')
+        ->get()
+        ->getResultArray();
+}
+
+
+
+
 }

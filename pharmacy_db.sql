@@ -2,8 +2,8 @@
 -- version 5.2.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Aug 03, 2026 at 10:31 AM
+-- Host: 127.0.0.1
+-- Generation Time: Aug 03, 2026 at 03:35 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -449,7 +449,6 @@ CREATE TABLE `product_opening_stock` (
   `opening_stock_id` bigint UNSIGNED NOT NULL,
   `product_id` bigint UNSIGNED NOT NULL,
   `supplier_id` bigint UNSIGNED DEFAULT NULL,
-  `expiry_date` date DEFAULT NULL,
   `quantity` decimal(12,2) NOT NULL DEFAULT '0.00',
   `bonus_quantity` decimal(12,2) NOT NULL DEFAULT '0.00',
   `tax_type` enum('without_tax','with_tax') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'without_tax',
@@ -472,8 +471,8 @@ CREATE TABLE `product_opening_stock` (
 -- Dumping data for table `product_opening_stock`
 --
 
-INSERT INTO `product_opening_stock` (`opening_stock_id`, `product_id`, `supplier_id`, `expiry_date`, `quantity`, `bonus_quantity`, `tax_type`, `tax_id`, `tax_percentage`, `purchase_price_without_vat`, `tax_amount`, `purchase_price_with_vat`, `profit_margin_percent`, `selling_price`, `stock_date`, `remarks`, `created_by`, `status`, `created_at`, `updated_at`) VALUES
-(12, 7, 124, '2026-08-28', 100.00, 0.00, 'without_tax', 8, 15.00, 2.00, 0.10, 2.10, 19.05, 2.50, '2026-08-02', 'dffdgdg', 18, 'active', '2026-08-02 04:11:04', '2026-08-02 06:36:58');
+INSERT INTO `product_opening_stock` (`opening_stock_id`, `product_id`, `supplier_id`, `quantity`, `bonus_quantity`, `tax_type`, `tax_id`, `tax_percentage`, `purchase_price_without_vat`, `tax_amount`, `purchase_price_with_vat`, `profit_margin_percent`, `selling_price`, `stock_date`, `remarks`, `created_by`, `status`, `created_at`, `updated_at`) VALUES
+(13, 7, NULL, 35.00, 0.00, 'without_tax', 11, 0.00, 2.00, 0.00, 2.00, 25.00, 2.50, '2026-08-03', 'test', 18, 'active', '2026-08-03 15:17:11', '2026-08-03 15:17:11');
 
 -- --------------------------------------------------------
 
@@ -829,10 +828,10 @@ CREATE TABLE `stock_ledger` (
 --
 
 INSERT INTO `stock_ledger` (`stock_ledger_id`, `product_id`, `transaction_type`, `reference_id`, `qty_in`, `qty_out`, `balance_qty`, `unit_cost`, `transaction_date`, `remarks`, `created_by`) VALUES
-(20, 7, 'OPENING', 12, 100.00, 0.00, 100.00, 2.10, '2026-08-02 00:00:00', 'Opening Stock', 18),
 (21, 7, 'PURCHASE', 125, 10.00, 0.00, 110.00, 2.10, '2026-08-02 15:27:58', 'Purchase Invoice : PUR-20260802152757', 18),
 (22, 7, 'PURCHASE', 126, 105.00, 0.00, 215.00, 2.10, '2026-08-02 16:07:01', 'Purchase Invoice : PUR-20260802160701', 18),
-(28, 7, 'SALE', 836, 0.00, 10.00, 205.00, 2.00, '2026-08-03 06:45:49', 'Sales Invoice : INV26215D1574', 18);
+(28, 7, 'SALE', 836, 0.00, 10.00, 205.00, 2.00, '2026-08-03 06:45:49', 'Sales Invoice : INV26215D1574', 18),
+(29, 7, 'OPENING', 13, 35.00, 0.00, 35.00, 2.00, '2026-08-03 00:00:00', 'Opening Stock', 18);
 
 -- --------------------------------------------------------
 
@@ -1050,7 +1049,6 @@ ALTER TABLE `product_opening_stock`
   ADD PRIMARY KEY (`opening_stock_id`),
   ADD KEY `idx_product` (`product_id`),
   ADD KEY `idx_supplier` (`supplier_id`),
-  ADD KEY `idx_expiry` (`expiry_date`),
   ADD KEY `idx_stock_date` (`stock_date`),
   ADD KEY `idx_tax` (`tax_id`),
   ADD KEY `idx_status` (`status`);
@@ -1273,7 +1271,7 @@ ALTER TABLE `product_group`
 -- AUTO_INCREMENT for table `product_opening_stock`
 --
 ALTER TABLE `product_opening_stock`
-  MODIFY `opening_stock_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `opening_stock_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `product_purchase`
@@ -1345,7 +1343,7 @@ ALTER TABLE `stock_adjustment_details`
 -- AUTO_INCREMENT for table `stock_ledger`
 --
 ALTER TABLE `stock_ledger`
-  MODIFY `stock_ledger_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `stock_ledger_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `supplier`

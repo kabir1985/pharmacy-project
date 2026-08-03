@@ -17,9 +17,7 @@ class ProductOpeningStockModel extends Model
 
     protected $allowedFields = [
         'product_id',
-        'supplier_id',
-        'expiry_date',
-    
+        'supplier_id',    
         'quantity',
         'bonus_quantity',
     

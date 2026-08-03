@@ -6983,3 +6983,876 @@ ORDER BY `s`.`sales_date` DESC, `s`.`sales_id` DESC', [], false)
 12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 DEBUG - 2026-08-03 09:46:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2026-08-03 09:54:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 14:18:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 14:18:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 14:18:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 14:18:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 14:18:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 14:18:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 14:18:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 14:24:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 14:26:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 14:28:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 14:31:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 14:37:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-03 14:37:25 --> ErrorException: Undefined array key "category_name"
+[Method: GET, Route: opening-stock]
+in APPPATH\Views\opening_stock\openingStockAdd.php on line 36.
+ 1 APPPATH\Views\opening_stock\openingStockAdd.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "category_name"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\opening_stock\\openingStockAdd.php', 36)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\opening_stock\\openingStockAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('opening_stock/openingStockAdd', [], true)
+ 5 APPPATH\Controllers\OpeningStockController.php(32): view('opening_stock/openingStockAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-03 14:38:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-03 14:38:19 --> ErrorException: Undefined array key "category_name"
+[Method: GET, Route: opening-stock]
+in APPPATH\Views\opening_stock\openingStockAdd.php on line 36.
+ 1 APPPATH\Views\opening_stock\openingStockAdd.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "category_name"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\opening_stock\\openingStockAdd.php', 36)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\opening_stock\\openingStockAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('opening_stock/openingStockAdd', [], true)
+ 5 APPPATH\Controllers\OpeningStockController.php(32): view('opening_stock/openingStockAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-03 14:53:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-03 14:53:01 --> mysqli_sql_exception: Unknown column 'pg.group_id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `p`.`pro...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `p`.`pro...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `p`.`pro...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `p`.`pro...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\ProductModel.php(452): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\OpeningStockController.php(29): App\Models\ProductModel->getProductsForOpeningStock()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-08-03 14:53:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.group_id' in 'on clause'
+[Method: GET, Route: opening-stock]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = :p.status:
+ORDER BY `p`.`product_name` ASC', [...], false)
+ 2 APPPATH\Models\ProductModel.php(452): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\OpeningStockController.php(29): App\Models\ProductModel->getProductsForOpeningStock()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-03 14:53:01 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pg.group_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = :p.status:
+ORDER BY `p`.`product_name` ASC', [...], false)
+ 4 APPPATH\Models\ProductModel.php(452): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\OpeningStockController.php(29): App\Models\ProductModel->getProductsForOpeningStock()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-03 14:53:01 --> [Caused by] mysqli_sql_exception: Unknown column 'pg.group_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = :p.status:
+ORDER BY `p`.`product_name` ASC', [...], false)
+ 5 APPPATH\Models\ProductModel.php(452): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\OpeningStockController.php(29): App\Models\ProductModel->getProductsForOpeningStock()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-03 14:53:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-03 14:53:57 --> mysqli_sql_exception: Unknown column 'pb.product_brand_id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `p`.`pro...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `p`.`pro...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `p`.`pro...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `p`.`pro...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\ProductModel.php(452): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\OpeningStockController.php(29): App\Models\ProductModel->getProductsForOpeningStock()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-08-03 14:53:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pb.product_brand_id' in 'on clause'
+[Method: GET, Route: opening-stock]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = :p.status:
+ORDER BY `p`.`product_name` ASC', [...], false)
+ 2 APPPATH\Models\ProductModel.php(452): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\OpeningStockController.php(29): App\Models\ProductModel->getProductsForOpeningStock()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-03 14:53:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pb.product_brand_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = :p.status:
+ORDER BY `p`.`product_name` ASC', [...], false)
+ 4 APPPATH\Models\ProductModel.php(452): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\OpeningStockController.php(29): App\Models\ProductModel->getProductsForOpeningStock()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-03 14:53:57 --> [Caused by] mysqli_sql_exception: Unknown column 'pb.product_brand_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`product_brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = :p.status:
+ORDER BY `p`.`product_name` ASC', [...], false)
+ 5 APPPATH\Models\ProductModel.php(452): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\OpeningStockController.php(29): App\Models\ProductModel->getProductsForOpeningStock()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-03 14:54:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-03 14:54:27 --> mysqli_sql_exception: Unknown column 'pc.category_id' in 'on clause' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `p`.`pro...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `p`.`pro...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `p`.`pro...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `p`.`pro...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\ProductModel.php(452): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\OpeningStockController.php(29): App\Models\ProductModel->getProductsForOpeningStock()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-08-03 14:54:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pc.category_id' in 'on clause'
+[Method: GET, Route: opening-stock]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = :p.status:
+ORDER BY `p`.`product_name` ASC', [...], false)
+ 2 APPPATH\Models\ProductModel.php(452): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\OpeningStockController.php(29): App\Models\ProductModel->getProductsForOpeningStock()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-03 14:54:27 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pc.category_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = :p.status:
+ORDER BY `p`.`product_name` ASC', [...], false)
+ 4 APPPATH\Models\ProductModel.php(452): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\OpeningStockController.php(29): App\Models\ProductModel->getProductsForOpeningStock()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-03 14:54:27 --> [Caused by] mysqli_sql_exception: Unknown column 'pc.category_id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = \'active\'
+ORDER BY `p`.`product_name` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `p`.`product_id`, `p`.`product_name`, `p`.`sku`, `p`.`barcode`, `pc`.`category_name`, `pb`.`product_brand_name`, `pg`.`group_name`, `pu`.`product_unit_name`
+FROM `products` `p`
+LEFT JOIN `product_category` `pc` ON `pc`.`category_id` = `p`.`product_category`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `p`.`product_brand`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `p`.`product_group`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `p`.`product_unit`
+WHERE `p`.`status` = :p.status:
+ORDER BY `p`.`product_name` ASC', [...], false)
+ 5 APPPATH\Models\ProductModel.php(452): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\OpeningStockController.php(29): App\Models\ProductModel->getProductsForOpeningStock()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\OpeningStockController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OpeningStockController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-03 14:55:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:02:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:03:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:07:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:12:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:14:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:15:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:15:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:16:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:17:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:17:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:19:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-03 15:19:24 --> mysqli_sql_exception: Unknown column 'pos.batch_no' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pr`.`pr...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pr`.`pr...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pr`.`pr...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pr`.`pr...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\ProductModel.php(193): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\ProductController.php(46): App\Models\ProductModel->getProductList()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ProductController->index()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-08-03 15:19:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pos.batch_no' in 'field list'
+[Method: GET, Route: products]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = :pr.status:
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC', [...], false)
+ 2 APPPATH\Models\ProductModel.php(193): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\ProductController.php(46): App\Models\ProductModel->getProductList()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-03 15:19:24 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pos.batch_no' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = :pr.status:
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC', [...], false)
+ 4 APPPATH\Models\ProductModel.php(193): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\ProductController.php(46): App\Models\ProductModel->getProductList()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-03 15:19:24 --> [Caused by] mysqli_sql_exception: Unknown column 'pos.batch_no' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = :pr.status:
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC', [...], false)
+ 5 APPPATH\Models\ProductModel.php(193): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\ProductController.php(46): App\Models\ProductModel->getProductList()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-03 15:24:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-03 15:24:08 --> mysqli_sql_exception: Unknown column 'pos.batch_no' in 'group statement' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pr`.`pr...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pr`.`pr...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pr`.`pr...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pr`.`pr...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\ProductModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\ProductController.php(46): App\Models\ProductModel->getProductList()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ProductController->index()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-08-03 15:24:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pos.batch_no' in 'group statement'
+[Method: GET, Route: products]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = :pr.status:
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC', [...], false)
+ 2 APPPATH\Models\ProductModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\ProductController.php(46): App\Models\ProductModel->getProductList()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-03 15:24:08 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pos.batch_no' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = :pr.status:
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC', [...], false)
+ 4 APPPATH\Models\ProductModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\ProductController.php(46): App\Models\ProductModel->getProductList()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-03 15:24:08 --> [Caused by] mysqli_sql_exception: Unknown column 'pos.batch_no' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = :pr.status:
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC', [...], false)
+ 5 APPPATH\Models\ProductModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\ProductController.php(46): App\Models\ProductModel->getProductList()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-03 15:24:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-03 15:24:11 --> mysqli_sql_exception: Unknown column 'pos.batch_no' in 'group statement' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pr`.`pr...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pr`.`pr...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pr`.`pr...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pr`.`pr...', Array, false)
+#4 C:\laragon\www\pharmacy-project\app\Models\ProductModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\pharmacy-project\app\Controllers\ProductController.php(46): App\Models\ProductModel->getProductList()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ProductController->index()
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2026-08-03 15:24:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pos.batch_no' in 'group statement'
+[Method: GET, Route: products]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = :pr.status:
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC', [...], false)
+ 2 APPPATH\Models\ProductModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\ProductController.php(46): App\Models\ProductModel->getProductList()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-03 15:24:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pos.batch_no' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = :pr.status:
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC', [...], false)
+ 4 APPPATH\Models\ProductModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\ProductController.php(46): App\Models\ProductModel->getProductList()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-03 15:24:11 --> [Caused by] mysqli_sql_exception: Unknown column 'pos.batch_no' in 'group statement'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = \'active\'
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`, COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
+FROM `products` `pr`
+LEFT JOIN `product_category` `pc` ON `pc`.`product_category_id` = `pr`.`product_category`
+LEFT JOIN `product_group` `pg` ON `pg`.`product_group_id` = `pr`.`product_group`
+LEFT JOIN `product_brand` `pb` ON `pb`.`brand_id` = `pr`.`product_brand`
+LEFT JOIN `product_unit` `pu` ON `pu`.`product_unit_id` = `pr`.`product_unit`
+LEFT JOIN `product_strength` `ps` ON `ps`.`strength_id` = `pr`.`product_strength`
+LEFT JOIN `product_opening_stock` `pos` ON `pos`.`product_id` = `pr`.`product_id` AND `pos`.`status` = "active"
+LEFT JOIN `tax` `tx` ON `tx`.`tax_id` = `pos`.`tax_id`
+LEFT JOIN `stock_ledger` `sl` ON `sl`.`product_id` = `pr`.`product_id`
+WHERE `pr`.`status` = :pr.status:
+GROUP BY `pr`.`product_id`, `pr`.`product_name`, `pr`.`product_category`, `pr`.`product_brand`, `pr`.`product_group`, `pr`.`product_strength`, `pr`.`product_unit`, `pr`.`sku`, `pr`.`barcode`, `pr`.`alert_quantity`, `pr`.`product_image`, `pr`.`status`, `pc`.`category_name`, `pg`.`group_name`, `pb`.`product_brand_name`, `pu`.`product_unit_name`, `ps`.`strength_name`, `pos`.`batch_no`, `pos`.`quantity`, `pos`.`bonus_quantity`, `pos`.`tax_type`, `pos`.`tax_id`, `pos`.`tax_percentage`, `pos`.`tax_amount`, `pos`.`purchase_price_without_vat`, `pos`.`purchase_price_with_vat`, `pos`.`profit_margin_percent`, `pos`.`selling_price`, `tx`.`tax_name`
+ORDER BY `pr`.`product_name` ASC', [...], false)
+ 5 APPPATH\Models\ProductModel.php(192): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\ProductController.php(46): App\Models\ProductModel->getProductList()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-03 15:25:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-03 15:25:29 --> ErrorException: Undefined array key "mrp"
+[Method: GET, Route: products]
+in APPPATH\Views\product\productAdd.php on line 97.
+ 1 APPPATH\Views\product\productAdd.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mrp"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php', 97)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-03 15:27:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-03 15:27:19 --> ErrorException: Undefined array key "batch_no"
+[Method: GET, Route: products]
+in APPPATH\Views\product\productAdd.php on line 97.
+ 1 APPPATH\Views\product\productAdd.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "batch_no"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php', 97)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\product\\productAdd.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('product/productAdd', [], true)
+ 5 APPPATH\Controllers\ProductController.php(49): view('product/productAdd', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ProductController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-03 15:27:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:28:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:32:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:32:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-03 15:33:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
