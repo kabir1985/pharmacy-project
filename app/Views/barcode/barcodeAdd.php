@@ -39,16 +39,16 @@ echo $this->section('content');
 
     <div class="row">
         <div class="col-sm-7">
-             <select class="form-control select2 w-100"> id="item" class="form-control select2">
+             <select  id="item" class="form-control select2 w-100">
                 <option value="0">Select Product</option>
                 <?php
-                foreach ($product_show_for_sale as $row) {
-                ?>
-                <option value="<?= esc($row["product_id"]) ?>">
-                    <?= esc($row["product_name"]) ?>
+foreach ($product_barcode as $row) {
+    ?>
+                <option value="<?=esc($row["product_id"])?>">
+                    <?=esc($row["product_name"])?>
                 </option>
                 <?php
-                } ?>
+}?>
 
             </select>
         </div>
@@ -56,14 +56,14 @@ echo $this->section('content');
             <select id="supplier_id" class="form-control select2" required>
                 <option value="">Select Supplier</option>
                 <?php
-                foreach ($supplier_show as $row) {
-                ?>
-                <option value="<?= esc($row["supplier_id"]) ?>">
-                    <?= esc($row["supplier_name"]) ?>
+foreach ($supplier_show as $row) {
+    ?>
+                <option value="<?=esc($row["supplier_id"])?>">
+                    <?=esc($row["supplier_name"])?>
                 </option>
                 <?php
-                }
-                ?>
+}
+?>
             </select>
         </div>
     </div>
@@ -96,16 +96,16 @@ echo $this->section('content');
         <div class="col-sm-5 bg-white rounded text-white pt-2">
             <div class="row">
                 <?php
-                foreach ($product_show_for_sale as $key => $row) {
-                ?>
+foreach ($product_barcode as $key => $row) {
+    ?>
                 <div class="col-3 mb-2">
-                    <img data-stock="<?= esc($row["total_stock"]) ?>" data-id="<?= esc($row["product_id"])?>"
-                        src="<?= base_url() ?>/public/uploads/<?= $row["product_image"] ?>"
+                    <img data-stock="<?=esc($row["total_stock"])?>" data-id="<?=esc($row["product_id"])?>"
+                    src="<?=base_url('public/uploads/' . $row['product_image'])?>"
                         class="img-thumbnail cart_item_image" alt="image 1" style="width: 100px; height: 80px;">
                 </div>
                 <?php
-                }
-                ?>
+}
+?>
             </div>
         </div>
     </div>
@@ -120,16 +120,16 @@ echo $this->section('content');
     </div>
 </div>
 
-<?= $this->endSection();?>
+<?=$this->endSection();?>
 
-<?= $this->section('scripts');
+<?=$this->section('scripts');
 ?>
 
 <!-- Data table plugin-->
-<script type='text/javascript' src="<?= base_url('assets/js/jquery.mycart.js') ?>"></script>
+<script type='text/javascript' src="<?=base_url('assets/js/jquery.mycart.js')?>"></script>
 
 <script type='text/javascript'>
-var productsList = <?php echo json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>;
+var productsList = <?php echo json_encode($product_barcode, JSON_PRETTY_PRINT) ?>;
 //console.log('sdfsdf ' + JSON.stringify(productsList));
 $(document).ready(function() {
 
@@ -143,7 +143,7 @@ $(document).ready(function() {
         var supplier_id = $("#supplier_id :selected").val();
 
         if (supplier_id == "") {
-            alert("Please Select Warehouse");
+            alert("Please Select Supplier");
             $("#supplier_id").focus();
             return;
         }
@@ -154,7 +154,7 @@ $(document).ready(function() {
         // console.log(itemsInCartObject);
 
         //var sales_process_url = "http://localhost/codeigniter4/Purchase/purchase_product";
-        var barcodeprinturl = "<?= site_url('barcode/print') ?>";
+        var barcodeprinturl = "<?=site_url('barcode/print')?>";
 
         $.ajax({
             url: barcodeprinturl, // complete url from siteurl/constroller/function
@@ -189,19 +189,27 @@ $(document).ready(function() {
     });
 
 
-    $('body').on("input", ".product_quantity_change", function() {
+    $('body').on("input", ".product_quantity_change", function () {
 
-        var index = $(this).data("id");
-        //var newQuantity = $(this).val();
-        var newQuantity = Number.parseInt($(this).val());
+            var index = $(this).data("id");
+            var newQuantity = parseInt($(this).val(), 10);
 
-        if (newQuantity < 1) {
-            itemsInCart.splice(index, 1);
-        } else {
-            itemsInCart[index].quantity_per_pack = newQuantity;
-        }
-        drawTable();
-    });
+            if (isNaN(newQuantity)) {
+                newQuantity = 1;
+            }
+
+            if (newQuantity > 1000) {
+                newQuantity = 1000;
+            }
+
+            if (newQuantity <= 0) {
+                itemsInCart.splice(index, 1);
+            } else {
+                itemsInCart[index].quantity_per_pack = newQuantity;
+            }
+
+            drawTable();
+            });
 
 
     /* Product Delete Strat */
@@ -333,4 +341,4 @@ if (e.target.classList.contains('btn-success')) {
 });
 </script>
 
-<?= $this->endSection();?>
+<?=$this->endSection();?>

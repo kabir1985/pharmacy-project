@@ -19,84 +19,104 @@ echo $this->section('content');
 
 
 <!---------------Data Table start Here----..............................................--------------------------->
-<div class='row'>
-    <div class='col-md-12'>
-        <div class='tile collapseable show animate__animated  animate__fadeInUp'>
-            <div class='tile-body'>
-                <div class='table-responsive'>
-                    <table class='table table-hover table-bordered' id='sampleTable'>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile collapseable show animate__animated animate__fadeInUp">
+            <div class="tile-body">
+                <div class="table-responsive">
+
+                    <table class="table table-hover table-bordered" id="sampleTable">
+
                         <thead>
                             <tr>
                                 <th>Ref.</th>
                                 <th>Category</th>
-                                <th>Sub-Category</th>
+                                <th>Sub Category</th>
                                 <th>What For</th>
                                 <th>Amount</th>
                                 <th>Note</th>
                                 <th>Date</th>
-                                <th>Action</th>
+                                <th width="120">Action</th>
                             </tr>
                         </thead>
-                        <?php
-                        if (count($expense_category_sub_category_show) > 0) {
-                            foreach ($expense_category_sub_category_show as $rows) {
-                                ?>
-                        <tr>
-                            <td>
-                                <?php echo $rows['expense_ref_no'] ?>
-                            </td>
-                            <td>
-                                <?php echo $rows['expense_category_name'] ?>
-                            </td>
-                            <td>
-                                <?php echo $rows['expense_sub_category_name'] ?>
-                            </td>
-                            <td>
-                                <?php echo $rows['expense_what_for'] ?>
-                            </td>
-                            <td>
-                                <?php echo $rows['expense_amount'] ?>
-                            </td>
-                            <td>
-                                <?php echo $rows['expense_note'] ?>
-                            </td>
-                            <td>
-                                <?php echo $rows['expense_date'] ?>
-                            </td>
-                            <td>
-                                <!-- Button to invoke the modal -->
-                                        <a href="#" class="btn btn-primary btn-sm btn-edit"
-                                            data-expense_id="<?php echo $rows['expense_id'] ?>"
-                                            data-expense_ref_no="<?php echo $rows['expense_ref_no'] ?>"
-                                            data-expense_category_name="<?php echo $rows['expense_category_name'] ?>"
-                                            data-expense_sub_category_name="<?php echo $rows['expense_sub_category_name'] ?>"
-                                            data-expense_what_for="<?php echo $rows['expense_what_for'] ?>"
-                                            data-expense_amount="<?php echo $rows['expense_amount'] ?>"
-                                            data-expense_note="<?php echo $rows['expense_note'] ?>"
-                                            data-expense_date="<?php echo $rows['expense_date'] ?>"
-                                            data-expense_category_id="<?php echo $rows['expense_category'] ?>"
-                                            data-expense_sub_category_id="<?php echo $rows['expense_sub_category'] ?>"><i
-                                                class="fa fa-edit"></i></a>
 
-                                        <a href="#" class="btn btn-danger btn-sm btn-delete"
-                                            data-delete_id="<?php echo $rows['expense_id'] ?>"><i class="fa fa-trash-o"></i></a>
-
-                                    </td>
-                                </tr>
-                                <?php
-                            }
-                        } else {
-                            ?>
-                            <tr>
-                                <td colspan="7">No data found.</td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
                         <tbody>
 
+                            <?php if (!empty($expense_category_sub_category_show)) : ?>
+
+                                <?php foreach ($expense_category_sub_category_show as $rows) : ?>
+
+                                    <tr>
+
+                                        <td><?= esc($rows['expense_ref_no']) ?></td>
+
+                                        <td><?= esc($rows['expense_category_name']) ?></td>
+
+                                        <td><?= esc($rows['expense_sub_category_name']) ?></td>
+
+                                        <td><?= esc($rows['expense_what_for']) ?></td>
+
+                                        <td class="text-right">
+                                            <?= number_format($rows['expense_amount'],2) ?>
+                                        </td>
+
+                                        <td><?= esc($rows['expense_note']) ?></td>
+
+                                        <td><?= esc($rows['expense_date']) ?></td>
+
+                                        <td>
+
+                                            <a href="#"
+                                               class="btn btn-primary btn-sm btn-edit"
+
+                                               data-expense_id="<?= $rows['expense_id'] ?>"
+
+                                               data-expense_ref_no="<?= esc($rows['expense_ref_no']) ?>"
+
+                                               data-expense_category_id="<?= $rows['expense_category'] ?>"
+
+                                               data-expense_sub_category_id="<?= $rows['expense_sub_category'] ?>"
+
+                                               data-expense_what_for="<?= esc($rows['expense_what_for']) ?>"
+
+                                               data-expense_amount="<?= $rows['expense_amount'] ?>"
+
+                                               data-expense_note="<?= esc($rows['expense_note']) ?>"
+
+                                               data-expense_date="<?= $rows['expense_date'] ?>">
+
+                                                <i class="fa fa-edit"></i>
+
+                                            </a>
+
+                                            <a href="#"
+                                               class="btn btn-danger btn-sm btn-delete"
+                                               data-delete_id="<?= $rows['expense_id'] ?>">
+
+                                                <i class="fa fa-trash"></i>
+
+                                            </a>
+
+                                        </td>
+
+                                    </tr>
+
+                                <?php endforeach; ?>
+
+                            <?php else : ?>
+
+                                <tr>
+                                    <td colspan="8" class="text-center">
+                                        No data found.
+                                    </td>
+                                </tr>
+
+                            <?php endif; ?>
+
                         </tbody>
+
                     </table>
+
                 </div>
             </div>
         </div>
@@ -128,7 +148,7 @@ echo $this->section('content');
 
                         <div class='form-group col-md-6'>
                             <label>Category</label>
-                            <select name="expense_category" class=" expense_category form-control" required>
+                            <select  id="expense_category_add" name="expense_category" class="expense_category form-control" required>
                                 <option value="">Select Category</option>
                                 <?php
                                 foreach ($expense_category_show as $row) {
@@ -146,18 +166,15 @@ echo $this->section('content');
                     <div class="form-row">
                         <div class='form-group col-md-6'>
                             <label>Expense Sub Category</label>
-                            <select id="expense_sub_category_add" name="expense_sub_category_add" class="form-control" required>
-                                    <option value="">Select Category</option>
-                                <?php
-                                foreach ($expense_sub_category_show as $row) {
-                                    ?>
-                                    <option value="<?php echo $row['expense_sub_category_id'] ?>">
-                                        <?php echo $row['expense_sub_category_name'] ?>
-                                    </option>
-                                    <?php
-                                }
-                                ?>
-                            </select>
+                            <select
+id="expense_sub_category_add"
+name="expense_sub_category_add"
+class="form-control"
+required>
+
+<option value="">Select Category First</option>
+
+</select>
                         </div>
 
                         <div class='form-group col-md-6'>
@@ -218,7 +235,7 @@ echo $this->section('content');
                         </div>
                         <div class='form-group col-md-6'>
                                 <label>Category</label>
-                            <select name="expense_category" class=" expense_category form-control" required>
+                            <select  id="expense_category_edit" name="expense_category" class=" expense_category form-control" required>
                                 <option value="">Select Category</option>
                                 <?php
                                 foreach ($expense_category_show as $row) {
@@ -316,219 +333,313 @@ echo $this->endSection();
 <?php
 echo $this->section('scripts');
 ?>
+<script>
+$(document).ready(function () {
 
+    //====================================
+    // DataTable
+    //====================================
+    $('#sampleTable').DataTable({
+        responsive: true,
+        destroy: true
+    });
 
-<!-- Google analytics script-->
-<script type='text/javascript'>
-    $(document).ready(function () {
-        $('#sampleTable').DataTable();
+    //====================================
+    // DatePicker
+    //====================================
+    $('.datePicker').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true,
+        todayHighlight: true,
+        container: 'body'
+    });
 
-        ////-------------------Product Category Entry Form-------------------------//
-        var allowSubmit = true;
+    var allowSubmit = true;
 
-        $('#Expense_add_submit_form').submit(function (event) {
-            // stop the form from submitting the normal way and refreshing the page
-            event.preventDefault();
-
-            if (allowSubmit) {
-                allowSubmit = false;
-                //for modal close variable after submit
-                var parentMOdal = $(this).closest('.modal');
-                var postData = new FormData(this);
-                $.ajax({
-                    type: $(this).attr("method"),
-                    url: $(this).attr("action"),
-                    data: postData,
-                    encode: true,
-                    processData: false,
-                    contentType: false,
-                })
-                    .done(function (data) {
-                        if (data == 1) {
-                            //Modal Remove after submission
-                            parentMOdal.modal('toggle');
-                            //page refresh after submission
-                            location.reload();
-                        }
-                    });
-            }
-
-        });
-
-        //////Get Sub category by category from database/////////////////////////////////
-//        $('.expense_category').change(function () {
-
-//     var expense_category_id = $(this).val();
-
-//     if (expense_category_id != '') {
-
-//         $.ajax({
-//             url: "<?= base_url('expense/getSubCategory') ?>",
-//             type: "POST",
-//             data: {
-//                 expense_category_id: expense_category_id
-//             },
-//             dataType: "json",
-
-//             success: function (response) {
-
-//                 // Add Modal
-//                 $('#expense_sub_category_add').html(
-//                     '<option value="">Select Sub Category</option>'
-//                 );
-
-//                 // Edit Modal
-//                 $('#expense_sub_category_edit').html(
-//                     '<option value="">Select Sub Category</option>'
-//                 );
-
-//                 $.each(response, function (index, row) {
-
-//                     var option =
-//                         '<option value="' + row.expense_sub_category_id + '">' +
-//                         row.expense_sub_category_name +
-//                         '</option>';
-
-//                     $('#expense_sub_category_add').append(option);
-//                     $('#expense_sub_category_edit').append(option);
-
-//                 });
-
-//             }
-//         });
-
-//     } else {
-
-//         $('#expense_sub_category_add').html(
-//             '<option value="">Select Sub Category</option>'
-//         );
-
-//         $('#expense_sub_category_edit').html(
-//             '<option value="">Select Sub Category</option>'
-//         );
-
-//     }
-
-// });
-
-        //////////////////////////////////////////////////////////////////////////////
-
-        $('#expense_update_submit_form').submit(function (event) {
-            event.preventDefault();
-
-            if (allowSubmit) {
-                allowSubmit = false;
-
-                var parentMOdal = $(this).closest('.modal');
-                var postData = new FormData(this);
-                $.ajax({
-                    //alert("ddd");
-                    type: $(this).attr("method"),
-                    url: $(this).attr("action"),
-                    // alert(;
-                    data: postData,
-                    //dataType: 'json',
-                    encode: true,
-                    processData: false,
-                    contentType: false,
-                })
-                    // using the done promise callback
-                    .done(function (data) {
-                        // alert(data);
-                        parentMOdal.modal('toggle');
-                        //page refresh after submission
-                        location.reload();
-                        // alert("Success");
-                    });
-
-            }
-
-        });
-
-        /////////Category Edit Submit inot database end here//////////////////////
-
-
-        //...................JQuery for Modal Edit & Delete option...................................
-
-        // get Edit Product
-$('.btn-edit').on('click', function () {
-
-    var expense_id = $(this).data('expense_id');
-    var expense_ref_no = $(this).data('expense_ref_no');
-    var expense_category_id = $(this).data('expense_category_id');
-    var expense_sub_category_id = $(this).data('expense_sub_category_id');
-    var expense_what_for = $(this).data('expense_what_for');
-    var expense_amount = $(this).data('expense_amount');
-    var expense_note = $(this).data('expense_note');
-    var expense_date = $(this).data('expense_date');
-
-    $('#expense_id').val(expense_id);
-    $('#expense_ref_no').val(expense_ref_no);
-
-    // Category Select
-    $('#ExpenseEditModal select[name="expense_category"]').val(expense_category_id);
-
+    //====================================
     // Load Sub Category
-    $.ajax({
-        url: "<?= base_url('expense/getSubCategory') ?>",
-        type: "POST",
-        data: {
-            expense_category_id: expense_category_id
-        },
-        dataType: "json",
-        success: function (response) {
+    //====================================
+    function loadSubCategory(categoryId, targetSelect, selectedId = '') {
 
-            var html = '<option value="">Select Sub Category</option>';
+        if (categoryId == '') {
 
-            $.each(response, function (index, row) {
+            $(targetSelect).html('<option value="">Select Category First</option>');
+            return;
+        }
 
-                var selected = '';
+        $.ajax({
 
-                if (row.expense_sub_category_id == expense_sub_category_id) {
-                    selected = 'selected';
+            url: "<?= site_url('expense/getSubCategory') ?>",
+            type: "POST",
+            dataType: "json",
+            data: {
+                expense_category_id: categoryId
+            },
+
+            beforeSend: function () {
+
+                $(targetSelect).html('<option>Loading...</option>');
+
+            },
+
+            success: function (response) {
+
+                console.log(response);
+
+                var html = '<option value="">Select Sub Category</option>';
+
+                $.each(response, function (i, row) {
+
+                    var selected = '';
+
+                    if (selectedId == row.expense_sub_category_id) {
+                        selected = 'selected';
+                    }
+
+                    html += '<option value="' +
+                        row.expense_sub_category_id +
+                        '" ' + selected + '>' +
+                        row.expense_sub_category_name +
+                        '</option>';
+
+                });
+
+                $(targetSelect).html(html);
+
+            },
+
+            error: function () {
+
+                $(targetSelect).html('<option value="">No Sub Category Found</option>');
+
+            }
+
+        });
+
+    }
+
+    //====================================
+    // Add Category Change
+    //====================================
+    $(document).on('change', '#expense_category_add', function () {
+
+console.log('Category Changed');
+
+var categoryId = $(this).val();
+
+console.log(categoryId);
+
+});
+
+    //====================================
+    // Edit Category Change
+    //====================================
+    $('#expense_category_edit').change(function () {
+
+        var categoryId = $(this).val();
+
+        loadSubCategory(
+            categoryId,
+            '#expense_sub_category_edit'
+        );
+
+    });
+
+    //====================================
+    // Add Expense
+    //====================================
+    $('#Expense_add_submit_form').submit(function (e) {
+
+        e.preventDefault();
+
+        if (!allowSubmit) return;
+
+        allowSubmit = false;
+
+        var form = this;
+
+        $.ajax({
+
+            url: $(form).attr('action'),
+            type: $(form).attr('method'),
+            data: new FormData(form),
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+
+            success: function (response) {
+
+                allowSubmit = true;
+
+                if (response.status) {
+
+                    $('#ExpenseAdd').modal('hide');
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: response.message,
+                        timer: 1500,
+                        showConfirmButton: false
+                    }).then(function () {
+
+                        location.reload();
+
+                    });
+
+                } else {
+
+                    var msg = '';
+
+                    $.each(response.errors, function (k, v) {
+
+                        msg += v + '<br>';
+
+                    });
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Validation Error',
+                        html: msg
+                    });
+
                 }
 
-                html += '<option value="' +
-                    row.expense_sub_category_id +
-                    '" ' + selected + '>' +
-                    row.expense_sub_category_name +
-                    '</option>';
-            });
+            },
 
-            $('#expense_sub_category_edit').html(html);
-        }
+            error: function () {
+
+                allowSubmit = true;
+
+                Swal.fire(
+                    'Error',
+                    'Something went wrong.',
+                    'error'
+                );
+
+            }
+
+        });
+
     });
 
-    $('#expense_what_for').val(expense_what_for);
-    $('#expense_amount').val(expense_amount);
-    $('#expense_note').val(expense_note);
-    $('#expense_date').val(expense_date);
+    //====================================
+    // Update Expense
+    //====================================
+    $('#expense_update_submit_form').submit(function (e) {
 
-    $('#ExpenseEditModal').modal('show');
+        e.preventDefault();
+
+        if (!allowSubmit) return;
+
+        allowSubmit = false;
+
+        var form = this;
+
+        $.ajax({
+
+            url: $(form).attr('action'),
+            type: $(form).attr('method'),
+            data: new FormData(form),
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+
+            success: function (response) {
+
+                allowSubmit = true;
+
+                if (response.status) {
+
+                    $('#ExpenseEditModal').modal('hide');
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Updated',
+                        text: response.message,
+                        timer: 1500,
+                        showConfirmButton: false
+                    }).then(function () {
+
+                        location.reload();
+
+                    });
+
+                } else {
+
+                    var msg = '';
+
+                    $.each(response.errors, function (k, v) {
+
+                        msg += v + '<br>';
+
+                    });
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Validation Error',
+                        html: msg
+                    });
+
+                }
+
+            },
+
+            error: function () {
+
+                allowSubmit = true;
+
+                Swal.fire(
+                    'Error',
+                    'Something went wrong.',
+                    'error'
+                );
+
+            }
+
+        });
+
+    });
+
+    //====================================
+    // Edit Button
+    //====================================
+    $('.btn-edit').click(function () {
+
+        $('#expense_id').val($(this).data('expense_id'));
+        $('#expense_ref_no').val($(this).data('expense_ref_no'));
+        $('#expense_what_for').val($(this).data('expense_what_for'));
+        $('#expense_amount').val($(this).data('expense_amount'));
+        $('#expense_note').val($(this).data('expense_note'));
+        $('#expense_date').val($(this).data('expense_date'));
+
+        var categoryId = $(this).data('expense_category_id');
+        var subCategoryId = $(this).data('expense_sub_category_id');
+
+        $('#expense_category_edit').val(categoryId);
+
+        loadSubCategory(
+            categoryId,
+            '#expense_sub_category_edit',
+            subCategoryId
+        );
+
+        $('#ExpenseEditModal').modal('show');
+
+    });
+
+    //====================================
+    // Delete Button
+    //====================================
+    $('.btn-delete').click(function () {
+
+        $('#delete_id').val($(this).data('delete_id'));
+
+        $('#deleteModal').modal('show');
+
+    });
+
 });
-        // get Delete Product
-        $('.btn-delete').on('click', function () {
-            // get data from button edit
-            const delete_id = $(this).data('delete_id');
-            //alert(delete_id);
-            // Set data to Form Edit
-            $('#delete_id').val(delete_id);
-            // Call Modal Edit
-            $('#deleteModal').modal('show');
-        });
-
-
-        //................ JQuery modal Edit & Delete end here........................................
-        // ...............For Date Show.............................
-        $('.datePicker').datepicker({
-            format: "yyyy-mm-dd",
-            autoclose: true,
-            todayHighlight: true,
-            container: 'body'
-        });
-        //.................For Date show end........................ 
-
-    });
 </script>
 
 <!-- For Calendar start -->

@@ -3,7 +3,7 @@ echo $this->extend('layout');
 echo $this->section('content');
 ?>
 
-<div class='app-title'>	
+<div class='app-title'>
     <div>
         <h1><i class='fa fa-th-list'></i> Stock / Purchse Report</h1>
     </div>
@@ -23,228 +23,267 @@ echo $this->section('content');
             <div class='tile-body'>
                 <div class='table-responsive'>
                     <table class='table table-hover table-bordered' id='sampleTable'>
-<thead class="table-dark">
-<tr>
-    <th>SL</th>
-    <th>Product Name</th>
+                        <thead class="table-dark">
+                            <tr>
 
-    <th>Opening</th>
-    <th>Purchase</th>
-    <th>Sale Return</th>
-    <th>Stock In</th>
+                                <th width="50">SL</th>
 
-    <th>Sale</th>
-    <th>Stock Out</th>
+                                <th>Product Name</th>
 
-    <th>Current Stock</th>
+                                <th class="text-end">Opening</th>
 
-    <th>Purchase Price</th>
-    <th>Selling Price</th>
+                                <th class="text-end">Purchase</th>
 
-    <th>Stock Value</th>
+                                <th class="text-end">Purchase Return</th>
 
-    <th>Status</th>
-</tr>
-</thead>
-<tbody>
+                                <th class="text-end">Sale Return</th>
 
-<?php
-$totalOpening         = 0;
-$totalPurchase        = 0;
-$totalPurchaseReturn  = 0;
-$totalStockIn         = 0;
-$totalSale            = 0;
-$totalSaleReturn      = 0;
-$totalStockOut        = 0;
-$totalCurrentStock    = 0;
-$totalStockValue      = 0;
+                                <th class="text-end">Stock In</th>
+
+                                <th class="text-end">Sale</th>
+
+                                <th class="text-end">Stock Out</th>
+
+                                <th class="text-center">Current Stock</th>
+
+                                <th class="text-end">Purchase Price</th>
+
+                                <th class="text-end">Selling Price</th>
+
+                                <th class="text-end">Stock Value</th>
+
+                                <th class="text-center">Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <?php
+
+$sl = 1;
+
+$totalOpening = 0;
+$totalPurchase = 0;
+$totalPurchaseReturn = 0;
+$totalSaleReturn = 0;
+$totalStockIn = 0;
+$totalSale = 0;
+$totalStockOut = 0;
+$totalCurrentStock = 0;
+$totalStockValue = 0;
 
 foreach ($stock_report_show as $row):
 
-    $stockValue = (float)$row['current_stock'] * (float)$row['purchase_price'];
+    $stockValue = (float) $row['current_stock'] * (float) $row['purchase_price'];
 
-    $totalOpening        += (float)$row['opening_stock'];
-    $totalPurchase       += (float)$row['purchase_stock'];
-    $totalPurchaseReturn += (float)$row['purchase_return_stock'];
-    $totalStockIn        += (float)$row['stock_in'];
-    $totalSale           += (float)$row['sale_stock'];
-    $totalSaleReturn     += (float)$row['sale_return_stock'];
-    $totalStockOut       += (float)$row['stock_out'];
-    $totalCurrentStock   += (float)$row['current_stock'];
-    $totalStockValue     += $stockValue;
-?>
+    $totalOpening += (float) $row['opening_stock'];
+    $totalPurchase += (float) $row['purchase_stock'];
+    $totalPurchaseReturn += (float) $row['purchase_return_stock'];
+    $totalSaleReturn += (float) $row['sale_return_stock'];
+    $totalStockIn += (float) $row['stock_in'];
+    $totalSale += (float) $row['sale_stock'];
+    $totalStockOut += (float) $row['stock_out'];
+    $totalCurrentStock += (float) $row['current_stock'];
+    $totalStockValue += $stockValue;
 
-<tr>
+    ?>
 
-    <td>
-        <strong><?= esc($row['product_name']) ?></strong><br>
-        <small class="text-muted">
-            <?= esc($row['category_name']) ?>
-            <?php if (!empty($row['product_brand_name'])) : ?>
-                | <?= esc($row['product_brand_name']) ?>
-            <?php endif; ?>
-        </small>
-    </td>
+                            <tr>
 
-    <td class="text-end">
-        <?= number_format($row['opening_stock'], 2) ?>
-    </td>
+                                <!-- SL -->
+                                <td class="text-center">
+                                    <?=$sl++?>
+                                </td>
 
-    <td class="text-end text-success">
-        <?= number_format($row['purchase_stock'], 2) ?>
-    </td>
+                                <!-- Product -->
+                                <td>
+                                    <strong><?=esc($row['product_name'])?></strong><br>
 
-    <td class="text-end text-danger">
-        <?= number_format($row['purchase_return_stock'], 2) ?>
-    </td>
+                                    <small class="text-muted">
+                                        <?=esc($row['category_name'])?>
 
-    <td class="text-end text-primary">
-        <?= number_format($row['stock_in'], 2) ?>
-    </td>
+                                        <?php if (!empty($row['product_brand_name'])): ?>
+                                        | <?=esc($row['product_brand_name'])?>
+                                        <?php endif; ?>
 
-    <td class="text-end text-danger">
-        <?= number_format($row['sale_stock'], 2) ?>
-    </td>
+                                        <?php if (!empty($row['group_name'])): ?>
+                                        | <?=esc($row['group_name'])?>
+                                        <?php endif; ?>
+                                    </small>
+                                </td>
 
-    <td class="text-end text-success">
-        <?= number_format($row['sale_return_stock'], 2) ?>
-    </td>
+                                <!-- Opening -->
+                                <td class="text-end">
+                                    <?=number_format($row['opening_stock'], 2)?>
+                                </td>
 
-    <td class="text-end text-warning">
-        <?= number_format($row['stock_out'], 2) ?>
-    </td>
+                                <!-- Purchase -->
+                                <td class="text-end text-success">
+                                    <?=number_format($row['purchase_stock'], 2)?>
+                                </td>
 
-    <td class="text-center">
+                                <!-- Purchase Return -->
+                                <td class="text-end text-danger">
+                                    <?=number_format($row['purchase_return_stock'], 2)?>
+                                </td>
 
-        <?php if ($row['current_stock'] > 0): ?>
+                                <!-- Sale Return -->
+                                <td class="text-end text-success">
+                                    <?=number_format($row['sale_return_stock'], 2)?>
+                                </td>
 
-            <span class="badge bg-success">
-                <?= number_format($row['current_stock'],2) ?>
-            </span>
+                                <!-- Stock In -->
+                                <td class="text-end text-primary">
+                                    <?=number_format($row['stock_in'], 2)?>
+                                </td>
 
-        <?php elseif ($row['current_stock'] == 0): ?>
+                                <!-- Sale -->
+                                <td class="text-end text-danger">
+                                    <?=number_format($row['sale_stock'], 2)?>
+                                </td>
 
-            <span class="badge bg-secondary">
-                0.00
-            </span>
+                                <!-- Stock Out -->
+                                <td class="text-end text-warning">
+                                    <?=number_format($row['stock_out'], 2)?>
+                                </td>
 
-        <?php else: ?>
+                                <!-- Current Stock -->
+                                <td class="text-center">
 
-            <span class="badge bg-danger">
-                <?= number_format($row['current_stock'],2) ?>
-            </span>
+                                    <?php if ($row['current_stock'] > 0): ?>
 
-        <?php endif; ?>
+                                    <span class="badge bg-success">
+                                        <?=number_format($row['current_stock'], 2)?>
+                                    </span>
 
-    </td>
+                                    <?php elseif ($row['current_stock'] == 0): ?>
 
-    <td class="text-end">
-        <?= number_format($row['purchase_price'],2) ?>
-    </td>
+                                    <span class="badge bg-secondary">
+                                        0.00
+                                    </span>
 
-    <td class="text-end">
-        <?= number_format($row['selling_price'],2) ?>
-    </td>
+                                    <?php else: ?>
 
-    <td class="text-end fw-bold">
-        <?= number_format($stockValue,2) ?>
-    </td>
+                                    <span class="badge bg-danger">
+                                        <?=number_format($row['current_stock'], 2)?>
+                                    </span>
 
-</tr>
+                                    <?php endif; ?>
 
-<?php endforeach; ?>
+                                </td>
 
-</tbody>
+                                <!-- Purchase Price -->
+                                <td class="text-end">
+                                    <?=number_format($row['purchase_price'], 2)?>
+                                </td>
 
-<tfoot class="table-dark">
+                                <!-- Selling Price -->
+                                <td class="text-end">
+                                    <?=number_format($row['selling_price'], 2)?>
+                                </td>
 
-<tr>
+                                <!-- Stock Value -->
+                                <td class="text-end fw-bold">
+                                    <?=number_format($stockValue, 2)?>
+                                </td>
 
-    <th class="text-end">Grand Total</th>
+                                <!-- Status -->
+                                <td class="text-center">
 
-    <th class="text-end">
-        <?= number_format($totalOpening,2) ?>
-    </th>
+                                    <?php if ($row['current_stock'] > 0): ?>
 
-    <th class="text-end">
-        <?= number_format($totalPurchase,2) ?>
-    </th>
+                                    <span class="badge bg-success">
+                                        In Stock
+                                    </span>
 
-    <th class="text-end">
-        <?= number_format($totalPurchaseReturn,2) ?>
-    </th>
+                                    <?php elseif ($row['current_stock'] == 0): ?>
 
-    <th class="text-end">
-        <?= number_format($totalStockIn,2) ?>
-    </th>
+                                    <span class="badge bg-secondary">
+                                        Out of Stock
+                                    </span>
 
-    <th class="text-end">
-        <?= number_format($totalSale,2) ?>
-    </th>
+                                    <?php else: ?>
 
-    <th class="text-end">
-        <?= number_format($totalSaleReturn,2) ?>
-    </th>
+                                    <span class="badge bg-danger">
+                                        Negative
+                                    </span>
 
-    <th class="text-end">
-        <?= number_format($totalStockOut,2) ?>
-    </th>
+                                    <?php endif; ?>
 
-    <th class="text-center">
-        <span class="badge bg-warning text-dark">
-            <?= number_format($totalCurrentStock,2) ?>
-        </span>
-    </th>
+                                </td>
 
-    <th></th>
+                            </tr>
 
-    <th></th>
+                            <?php endforeach; ?>
 
-    <th class="text-end fw-bold">
-        <?= number_format($totalStockValue,2) ?>
-    </th>
+                        </tbody>
+                        <tfoot class="table-dark">
+                            <tr>
 
-</tr>
+                                <!-- SL -->
+                                <th></th>
 
-</tfoot>
+                                <!-- Grand Total -->
+                                <th class="text-end">Grand Total</th>
 
-<tfoot class="table-dark">
+                                <!-- Opening -->
+                                <th class="text-end">
+                                    <?=number_format($totalOpening, 2)?>
+                                </th>
 
-<tr>
+                                <!-- Purchase -->
+                                <th class="text-end">
+                                    <?=number_format($totalPurchase, 2)?>
+                                </th>
 
-    <th class="text-end">Grand Total</th>
+                                <!-- Purchase Return -->
+                                <th class="text-end">
+                                    <?=number_format($totalPurchaseReturn, 2)?>
+                                </th>
 
-    <th class="text-end"><?= number_format($totalOpening,2) ?></th>
+                                <!-- Sale Return -->
+                                <th class="text-end">
+                                    <?=number_format($totalSaleReturn, 2)?>
+                                </th>
 
-    <th class="text-end"><?= number_format($totalPurchase,2) ?></th>
+                                <!-- Stock In -->
+                                <th class="text-end">
+                                    <?=number_format($totalStockIn, 2)?>
+                                </th>
 
-    <th class="text-end"><?= number_format($totalPurchaseReturn,2) ?></th>
+                                <!-- Sale -->
+                                <th class="text-end">
+                                    <?=number_format($totalSale, 2)?>
+                                </th>
 
-    <th class="text-end"><?= number_format($totalStockIn,2) ?></th>
+                                <!-- Stock Out -->
+                                <th class="text-end">
+                                    <?=number_format($totalStockOut, 2)?>
+                                </th>
 
-    <th class="text-end"><?= number_format($totalSale,2) ?></th>
+                                <!-- Current Stock -->
+                                <th class="text-center">
+                                    <span class="badge bg-warning text-dark">
+                                        <?=number_format($totalCurrentStock, 2)?>
+                                    </span>
+                                </th>
 
-    <th class="text-end"><?= number_format($totalSaleReturn,2) ?></th>
+                                <!-- Purchase Price -->
+                                <th></th>
 
-    <th class="text-end"><?= number_format($totalStockOut,2) ?></th>
+                                <!-- Selling Price -->
+                                <th></th>
 
-    <th class="text-center">
-        <span class="badge bg-warning text-dark">
-            <?= number_format($totalCurrentStock,2) ?>
-        </span>
-    </th>
+                                <!-- Stock Value -->
+                                <th class="text-end fw-bold">
+                                    <?=number_format($totalStockValue, 2)?>
+                                </th>
 
-    <th></th>
+                                <!-- Status -->
+                                <th></th>
 
-    <th></th>
-
-    <th class="text-end">
-        <?= number_format($totalStockValue,2) ?>
-    </th>
-
-</tr>
-
-</tfoot>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -261,8 +300,6 @@ echo $this->section('scripts');
 ?>
 
 <!-- DataTables -->
-<script src="<?= base_url('assets/js/plugins/jquery.dataTables.min.js') ?>"></script>
-<script src="<?= base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
 <!-- jsPDF & jsPDF-AutoTable from CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -274,7 +311,9 @@ $(document).ready(function() {
 
     // CSV Export function
     function downloadCSV(csv, filename) {
-        var csvFile = new Blob([csv], { type: "text/csv" });
+        var csvFile = new Blob([csv], {
+            type: "text/csv"
+        });
         var downloadLink = document.createElement("a");
         downloadLink.download = filename;
         downloadLink.href = window.URL.createObjectURL(csvFile);
@@ -289,7 +328,8 @@ $(document).ready(function() {
         var rows = document.querySelectorAll("#sampleTable tr");
 
         for (var i = 0; i < rows.length; i++) {
-            var row = [], cols = rows[i].querySelectorAll("td, th");
+            var row = [],
+                cols = rows[i].querySelectorAll("td, th");
 
             for (var j = 0; j < cols.length; j++) {
                 var data = cols[j].innerText.replace(/"/g, '""'); // Escape quotes
@@ -300,21 +340,29 @@ $(document).ready(function() {
         downloadCSV(csv.join("\n"), filename);
     }
 
-    $('#exportCsvBtn').click(function () {
+    $('#exportCsvBtn').click(function() {
         exportTableToCSV('stock_report.csv');
     });
 
     // PDF Export
-    $('#exportPdfBtn').click(function () {
-        const { jsPDF } = window.jspdf;
+    $('#exportPdfBtn').click(function() {
+        const {
+            jsPDF
+        } = window.jspdf;
         const doc = new jsPDF();
 
         doc.autoTable({
             html: '#sampleTable',
-            styles: { fontSize: 8 },
-            headStyles: { fillColor: [40, 116, 166] },
-            margin: { top: 20 },
-            didDrawPage: function (data) {
+            styles: {
+                fontSize: 8
+            },
+            headStyles: {
+                fillColor: [40, 116, 166]
+            },
+            margin: {
+                top: 20
+            },
+            didDrawPage: function(data) {
                 doc.text("Stock Report", data.settings.margin.left, 10);
             }
         });

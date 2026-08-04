@@ -11,102 +11,150 @@ use CodeIgniter\HTTP\IncomingRequest;
 class ExpenseController extends BaseController
 {
 
-     private $expenseaddobject;
-     private $expense_sub_category_model_object;
-     private $expense_category_model_object;
+     private ExpenseAddModel $expenseaddobject;
+     private ExpenseSubCategoryModel $expense_sub_category_model_object;
+     private ExpenseCategoryModel $expense_category_model_object;
 
     public function __construct()
     {
         $this->expenseaddobject = new ExpenseAddModel();
         $this->expense_sub_category_model_object = new ExpenseSubCategoryModel();
         $this->expense_category_model_object = new ExpenseCategoryModel();
-        $this->db = db_connect();
     } 
 
     public function index()
     {
-        ## Fetch all records from database
-       $data['expense_show'] = $this->expenseaddobject->findAll();
-       $data['expense_sub_category_show'] = $this->expense_sub_category_model_object->findAll();
-       $data['expense_category_show'] = $this->expense_category_model_object->findAll();
-
-
-       $sql = "SELECT * FROM expense AS ex
-       JOIN expense_category AS exc ON ex.expense_category=exc.expense_category_id
-       JOIN expense_sub_category as exsc ON ex.expense_sub_category =  exsc.expense_sub_category_id";
- 
-       $data['expense_category_sub_category_show'] = $this->db->query($sql)->getResult('array');
-
-	  return view('expense/expense_add', $data);
+        $data = [
+            'expense_category_show' => $this->expense_category_model_object->findAll(),
+            'expense_sub_category_show' => $this->expense_sub_category_model_object->findAll(),
+            'expense_category_sub_category_show' => $this->expenseaddobject->getExpenseList(),
+        ];
+    
+        return view('expense/expense_add', $data);
     }
 
     public function create()
     {
-		//print_r($_POST); 
-
-        $data = [
-            'expense_ref_no'       => $this->request->getVar('expense_ref_no'),
-            'expense_category'     => $this->request->getVar('expense_category'),
-            'expense_sub_category' => $this->request->getVar('expense_sub_category_add'),
-            'expense_what_for'     => $this->request->getVar('expense_what_for'),
-            'expense_amount'       => $this->request->getVar('expense_amount'),
-			'expense_note'         => $this->request->getVar('expense_note'),
-			'expense_date'         => $this->request->getVar('expense_date')
+        $rules = [
+            'expense_ref_no'           => 'required|max_length[50]',
+            'expense_category'         => 'required|integer',
+            'expense_sub_category_add' => 'required|integer',
+            'expense_amount'           => 'required|decimal',
+            'expense_date'             => 'required',
         ];
-		//print_r($data);
-
-       $d = $this->expenseaddobject->insert($data);
-       if($d>0)
-       {
-        echo "1";
-       }
-       else
-       {
-        echo "0";
-       }
+    
+        if (! $this->validate($rules)) {
+    
+            return $this->response->setJSON([
+                'status'  => false,
+                'message' => 'Validation failed.',
+                'errors'  => $this->validator->getErrors()
+            ]);
+        }
+    
+        $data = [
+            'expense_ref_no'       => $this->request->getPost('expense_ref_no'),
+            'expense_category'     => $this->request->getPost('expense_category'),
+            'expense_sub_category' => $this->request->getPost('expense_sub_category_add'),
+            'expense_what_for'     => $this->request->getPost('expense_what_for'),
+            'expense_amount'       => $this->request->getPost('expense_amount'),
+            'expense_note'         => $this->request->getPost('expense_note'),
+            'expense_date'         => $this->request->getPost('expense_date'),
+        ];
+    
+        if ($this->expenseaddobject->insert($data)) {
+    
+            return $this->response->setJSON([
+                'status'  => true,
+                'message' => 'Expense added successfully.'
+            ]);
+        }
+    
+        return $this->response->setJSON([
+            'status'  => false,
+            'message' => 'Failed to save expense.'
+        ]);
     }
 
 
-    public function update($id = 0)
+    public function update()
     {
-        $id = $this->request->getVar('expense_id');
-        //echo $id;
-        $data = [
-            'expense_ref_no'       => $this->request->getVar('expense_ref_no'),
-            'expense_category'     => $this->request->getVar('expense_category'),
-            'expense_sub_category' => $this->request->getVar('expense_sub_category_edit'),
-            'expense_what_for'     => $this->request->getVar('expense_what_for'),
-            'expense_amount'       => $this->request->getVar('expense_amount'),
-            'expense_note'         => $this->request->getVar('expense_note'),
-            'expense_date'         => $this->request->getVar('expense_date')
+        $id = (int) $this->request->getPost('expense_id');
+    
+        $rules = [
+            'expense_ref_no'           => 'required|max_length[50]',
+            'expense_category'         => 'required|integer',
+            'expense_sub_category_edit'=> 'required|integer',
+            'expense_amount'           => 'required|decimal',
+            'expense_date'             => 'required',
         ];
-
-        $this->expenseaddobject->update($id, $data);
-
+    
+        if (! $this->validate($rules)) {
+    
+            return $this->response->setJSON([
+                'status'  => false,
+                'message' => 'Validation failed.',
+                'errors'  => $this->validator->getErrors()
+            ]);
+        }
+    
+        $data = [
+            'expense_ref_no'       => $this->request->getPost('expense_ref_no'),
+            'expense_category'     => $this->request->getPost('expense_category'),
+            'expense_sub_category' => $this->request->getPost('expense_sub_category_edit'),
+            'expense_what_for'     => $this->request->getPost('expense_what_for'),
+            'expense_amount'       => $this->request->getPost('expense_amount'),
+            'expense_note'         => $this->request->getPost('expense_note'),
+            'expense_date'         => $this->request->getPost('expense_date'),
+        ];
+    
+        if ($this->expenseaddobject->update($id, $data)) {
+    
+            return $this->response->setJSON([
+                'status'  => true,
+                'message' => 'Expense updated successfully.'
+            ]);
+        }
+    
+        return $this->response->setJSON([
+            'status'  => false,
+            'message' => 'Failed to update expense.'
+        ]);
     }
 
 
     public function delete($id = 0)
     {
 
-        $id = $this->request->getVar('delete_id');
+        $id = $this->request->getPost('delete_id');
 
         $this->expenseaddobject->where('expense_id', $id)->delete();
 
         //return into supplier page
-        return $this->response->redirect(site_url('/Expense'));
+        return $this->response->redirect(site_url('expense'));
     } 
 
+
+// public function getSubCategory()
+// {
+//     $category_id = $this->request->getPost('expense_category_id');
+
+//     $result = $this->expense_sub_category_model_object
+//                     ->where('expense_category_id', $category_id)
+//                     ->findAll();
+
+//     return $this->response->setJSON($result);
+// }
 
 public function getSubCategory()
 {
     $category_id = $this->request->getPost('expense_category_id');
 
-    $result = $this->expense_sub_category_model_object
-                    ->where('expense_category_id', $category_id)
-                    ->findAll();
+    $data = $this->expenseSubCategoryModel
+                ->where('expense_category_id', $category_id)
+                ->findAll();
 
-    return $this->response->setJSON($result);
+    return $this->response->setJSON($data);
 }
 
 

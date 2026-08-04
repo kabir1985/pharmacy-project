@@ -454,4 +454,52 @@ public function getProductsForOpeningStock()
 
 
 
+
+public function getProductsForBarcode(bool $onlyInStock = false): array
+{
+    $builder = $this->db->table('product_opening_stock pos');
+
+    $builder->select("
+        pos.*,
+        p.product_name,
+        p.product_image,
+        p.barcode,
+        p.sku,
+        COALESCE(sl.total_stock, 0) AS total_stock
+    ");
+
+    $builder->join(
+        'products p',
+        'p.product_id = pos.product_id',
+        'inner'
+    );
+
+    $builder->join(
+        "(
+            SELECT
+                product_id,
+                SUM(qty_in - qty_out) AS total_stock
+            FROM stock_ledger
+            GROUP BY product_id
+        ) sl",
+        'sl.product_id = pos.product_id',
+        'left',
+        false // Prevent escaping subquery
+    );
+
+    $builder->where('pos.status', 'active');
+    $builder->where('p.status', 'active');
+
+    if ($onlyInStock) {
+        $builder->having('total_stock >', 0);
+    }
+
+    $builder->orderBy('p.product_name', 'ASC');
+
+    return $builder->get()->getResultArray();
+}
+
+
+
+
 }
