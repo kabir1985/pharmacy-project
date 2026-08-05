@@ -81,7 +81,7 @@ class Menu extends BaseConfig
 
                 [
                     'label'      => 'Sales List',
-                    'url'        => 'salelist',
+                    'url'        => 'reports/salelist',
                     'privileges' => ['sale_list']
                 ],
 

@@ -42,74 +42,76 @@ echo $this->section('content');
 
                         <tbody>
 
-                            <?php if (!empty($expense_category_sub_category_show)) : ?>
+                            <?php if (!empty($expense_category_sub_category_show)): ?>
 
-                                <?php foreach ($expense_category_sub_category_show as $rows) : ?>
+                            <?php foreach ($expense_category_sub_category_show as $rows): ?>
 
-                                    <tr>
+                            <tr>
 
-                                        <td><?= esc($rows['expense_ref_no']) ?></td>
+                                <td>
+                                    <?= esc($rows['expense_ref_no']) ?>
+                                </td>
 
-                                        <td><?= esc($rows['expense_category_name']) ?></td>
+                                <td>
+                                    <?= esc($rows['expense_category_name']) ?>
+                                </td>
 
-                                        <td><?= esc($rows['expense_sub_category_name']) ?></td>
+                                <td>
+                                    <?= esc($rows['expense_sub_category_name']) ?>
+                                </td>
 
-                                        <td><?= esc($rows['expense_what_for']) ?></td>
+                                <td>
+                                    <?= esc($rows['expense_what_for']) ?>
+                                </td>
 
-                                        <td class="text-right">
-                                            <?= number_format($rows['expense_amount'],2) ?>
-                                        </td>
+                                <td class="text-right">
+                                    <?= number_format($rows['expense_amount'], 2) ?>
+                                </td>
 
-                                        <td><?= esc($rows['expense_note']) ?></td>
+                                <td>
+                                    <?= esc($rows['expense_note']) ?>
+                                </td>
 
-                                        <td><?= esc($rows['expense_date']) ?></td>
+                                <td>
+                                    <?= esc($rows['expense_date']) ?>
+                                </td>
 
-                                        <td>
+                                <td>
 
-                                            <a href="#"
-                                               class="btn btn-primary btn-sm btn-edit"
+                                    <a href="#" class="btn btn-primary btn-sm btn-edit"
+                                        data-expense_id="<?= $rows['expense_id'] ?>"
+                                        data-expense_ref_no="<?= esc($rows['expense_ref_no']) ?>"
+                                        data-expense_category_id="<?= $rows['expense_category'] ?>"
+                                        data-expense_sub_category_id="<?= $rows['expense_sub_category'] ?>"
+                                        data-expense_what_for="<?= esc($rows['expense_what_for']) ?>"
+                                        data-expense_amount="<?= $rows['expense_amount'] ?>"
+                                        data-expense_note="<?= esc($rows['expense_note']) ?>"
+                                        data-expense_date="<?= $rows['expense_date'] ?>">
 
-                                               data-expense_id="<?= $rows['expense_id'] ?>"
+                                        <i class="fa fa-edit"></i>
 
-                                               data-expense_ref_no="<?= esc($rows['expense_ref_no']) ?>"
+                                    </a>
 
-                                               data-expense_category_id="<?= $rows['expense_category'] ?>"
+                                    <a href="#" class="btn btn-danger btn-sm btn-delete"
+                                        data-delete_id="<?= $rows['expense_id'] ?>">
 
-                                               data-expense_sub_category_id="<?= $rows['expense_sub_category'] ?>"
+                                        <i class="fa fa-trash"></i>
 
-                                               data-expense_what_for="<?= esc($rows['expense_what_for']) ?>"
+                                    </a>
 
-                                               data-expense_amount="<?= $rows['expense_amount'] ?>"
+                                </td>
 
-                                               data-expense_note="<?= esc($rows['expense_note']) ?>"
+                            </tr>
 
-                                               data-expense_date="<?= $rows['expense_date'] ?>">
+                            <?php endforeach; ?>
 
-                                                <i class="fa fa-edit"></i>
+                            <?php else: ?>
 
-                                            </a>
-
-                                            <a href="#"
-                                               class="btn btn-danger btn-sm btn-delete"
-                                               data-delete_id="<?= $rows['expense_id'] ?>">
-
-                                                <i class="fa fa-trash"></i>
-
-                                            </a>
-
-                                        </td>
-
-                                    </tr>
-
-                                <?php endforeach; ?>
-
-                            <?php else : ?>
-
-                                <tr>
-                                    <td colspan="8" class="text-center">
-                                        No data found.
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td colspan="8" class="text-center">
+                                    No data found.
+                                </td>
+                            </tr>
 
                             <?php endif; ?>
 
@@ -148,7 +150,8 @@ echo $this->section('content');
 
                         <div class='form-group col-md-6'>
                             <label>Category</label>
-                            <select  id="expense_category_add" name="expense_category" class="expense_category form-control" required>
+                            <select id="expense_category_add" name="expense_category"
+                                class="expense_category form-control" required>
                                 <option value="">Select Category</option>
                                 <?php
                                 foreach ($expense_category_show as $row) {
@@ -166,15 +169,12 @@ echo $this->section('content');
                     <div class="form-row">
                         <div class='form-group col-md-6'>
                             <label>Expense Sub Category</label>
-                            <select
-id="expense_sub_category_add"
-name="expense_sub_category_add"
-class="form-control"
-required>
+                            <select id="expense_sub_category_add" name="expense_sub_category_add" class="form-control"
+                                required>
 
-<option value="">Select Category First</option>
+                                <option value="">Select Category First</option>
 
-</select>
+                            </select>
                         </div>
 
                         <div class='form-group col-md-6'>
@@ -234,14 +234,15 @@ required>
                             <input type='text' required class='form-control' name='expense_ref_no' id='expense_ref_no'>
                         </div>
                         <div class='form-group col-md-6'>
-                                <label>Category</label>
-                            <select  id="expense_category_edit" name="expense_category" class=" expense_category form-control" required>
+                            <label>Category</label>
+                            <select id="expense_category_edit" name="expense_category"
+                                class=" expense_category form-control" required>
                                 <option value="">Select Category</option>
                                 <?php
                                 foreach ($expense_category_show as $row) {
                                     ?>
-                                    <option value="<?php echo $row['expense_category_id'] ?>">
-                                        <?php echo $row['expense_category_name'] ?>
+                                    <option value="<?= $row['expense_category_id'] ?>">
+                                        <?= $row['expense_category_name'] ?>
                                     </option>
                                     <?php
                                 }
@@ -251,8 +252,9 @@ required>
                     </div>
                     <div class='form-row'>
                         <div class='form-group col-md-6'>
-                          <label>Expense Sub Category</label>
-                            <select id="expense_sub_category_edit"  name="expense_sub_category_edit" class="form-control" required>
+                            <label>Expense Sub Category</label>
+                            <select id="expense_sub_category_edit" name="expense_sub_category_edit" class="form-control"
+                                required>
                                 <option value="">Select Sub Category</option>
                             </select>
 
@@ -333,10 +335,11 @@ echo $this->endSection();
 <?php
 echo $this->section('scripts');
 ?>
-<script>
-$(document).ready(function () {
 
-    //====================================
+<script>
+    $(document).ready(function () {
+
+       //====================================
     // DataTable
     //====================================
     $('#sampleTable').DataTable({
@@ -354,97 +357,51 @@ $(document).ready(function () {
         container: 'body'
     });
 
-    var allowSubmit = true;
+        let allowSubmit = true;
 
-    //====================================
-    // Load Sub Category
-    //====================================
-    function loadSubCategory(categoryId, targetSelect, selectedId = '') {
+        $('#expense_category_add').on('change', function () {
 
-        if (categoryId == '') {
+            var categoryId = $(this).val();
 
-            $(targetSelect).html('<option value="">Select Category First</option>');
-            return;
-        }
+            console.log(categoryId); // Selected Category ID
 
-        $.ajax({
+            if (categoryId != '') {
 
-            url: "<?= site_url('expense/getSubCategory') ?>",
-            type: "POST",
-            dataType: "json",
-            data: {
-                expense_category_id: categoryId
-            },
+                $.ajax({
+                    url: "<?= site_url('expense/getExpenseSubCategory') ?>",
+                    type: "POST",
+                    data: {
+                        expense_category_id: categoryId
+                    },
+                    dataType: "json",
+                    success: function (response) {
 
-            beforeSend: function () {
+                        $('#expense_sub_category_add').html(
+                            '<option value="">Select Sub Category</option>'
+                        );
 
-                $(targetSelect).html('<option>Loading...</option>');
+                        $.each(response, function (index, item) {
+                            $('#expense_sub_category_add').append(
+                                '<option value="' + item.expense_sub_category_id + '">' +
+                                item.expense_sub_category_name +
+                                '</option>'
+                            );
+                        });
 
-            },
-
-            success: function (response) {
-
-                console.log(response);
-
-                var html = '<option value="">Select Sub Category</option>';
-
-                $.each(response, function (i, row) {
-
-                    var selected = '';
-
-                    if (selectedId == row.expense_sub_category_id) {
-                        selected = 'selected';
                     }
-
-                    html += '<option value="' +
-                        row.expense_sub_category_id +
-                        '" ' + selected + '>' +
-                        row.expense_sub_category_name +
-                        '</option>';
-
                 });
 
-                $(targetSelect).html(html);
+            } else {
 
-            },
-
-            error: function () {
-
-                $(targetSelect).html('<option value="">No Sub Category Found</option>');
+                $('#expense_sub_category_add').html(
+                    '<option value="">Select Category First</option>'
+                );
 
             }
 
         });
 
-    }
-
-    //====================================
-    // Add Category Change
-    //====================================
-    $(document).on('change', '#expense_category_add', function () {
-
-console.log('Category Changed');
-
-var categoryId = $(this).val();
-
-console.log(categoryId);
-
-});
-
-    //====================================
-    // Edit Category Change
-    //====================================
-    $('#expense_category_edit').change(function () {
-
-        var categoryId = $(this).val();
-
-        loadSubCategory(
-            categoryId,
-            '#expense_sub_category_edit'
-        );
-
-    });
-
+        
     //====================================
     // Add Expense
     //====================================
@@ -523,111 +480,87 @@ console.log(categoryId);
 
     });
 
-    //====================================
-    // Update Expense
-    //====================================
-    $('#expense_update_submit_form').submit(function (e) {
 
-        e.preventDefault();
+    //==============================================
+    //Sub Category Load on Edit Modal
+    //==============================================
+$('#expense_category_edit').on('change', function () {
 
-        if (!allowSubmit) return;
+    var categoryId = $(this).val();
+   // alert('Selected Category ID: ' + categoryId); // Debugging alert
 
-        allowSubmit = false;
+    loadSubCategory(
+        categoryId,
+        '#expense_sub_category_edit'
+    );
 
-        var form = this;
+});
 
-        $.ajax({
 
-            url: $(form).attr('action'),
-            type: $(form).attr('method'),
-            data: new FormData(form),
-            processData: false,
-            contentType: false,
-            dataType: 'json',
+    function loadSubCategory(categoryId, targetSelect, selectedId = '') {
 
-            success: function (response) {
+    if (categoryId == '') {
+        $(targetSelect).html('<option value="">Select Category First</option>');
+        return;
+    }
 
-                allowSubmit = true;
+    $.ajax({
+        url: "<?= site_url('expense/getExpenseSubCategory') ?>",
+        type: "POST",
+        data: {
+            expense_category_id: categoryId
+        },
+        dataType: "json",
+        success: function (response) {
 
-                if (response.status) {
+            var html = '<option value="">Select Sub Category</option>';
 
-                    $('#ExpenseEditModal').modal('hide');
+            $.each(response, function (i, item) {
 
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Updated',
-                        text: response.message,
-                        timer: 1500,
-                        showConfirmButton: false
-                    }).then(function () {
+                var selected = (item.expense_sub_category_id == selectedId)
+                    ? 'selected'
+                    : '';
 
-                        location.reload();
+                html += '<option value="' + item.expense_sub_category_id + '" ' + selected + '>'
+                      + item.expense_sub_category_name +
+                      '</option>';
+            });
 
-                    });
-
-                } else {
-
-                    var msg = '';
-
-                    $.each(response.errors, function (k, v) {
-
-                        msg += v + '<br>';
-
-                    });
-
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Validation Error',
-                        html: msg
-                    });
-
-                }
-
-            },
-
-            error: function () {
-
-                allowSubmit = true;
-
-                Swal.fire(
-                    'Error',
-                    'Something went wrong.',
-                    'error'
-                );
-
-            }
-
-        });
-
+            $(targetSelect).html(html);
+        }
     });
 
-    //====================================
+}
+
+
+
+
+        //====================================
     // Edit Button
     //====================================
-    $('.btn-edit').click(function () {
+   $('.btn-edit').click(function () {
 
-        $('#expense_id').val($(this).data('expense_id'));
-        $('#expense_ref_no').val($(this).data('expense_ref_no'));
-        $('#expense_what_for').val($(this).data('expense_what_for'));
-        $('#expense_amount').val($(this).data('expense_amount'));
-        $('#expense_note').val($(this).data('expense_note'));
-        $('#expense_date').val($(this).data('expense_date'));
+    $('#expense_id').val($(this).data('expense_id'));
+    $('#expense_ref_no').val($(this).data('expense_ref_no'));
+    $('#expense_what_for').val($(this).data('expense_what_for'));
+    $('#expense_amount').val($(this).data('expense_amount'));
+    $('#expense_note').val($(this).data('expense_note'));
+    $('#expense_date').val($(this).data('expense_date'));
 
-        var categoryId = $(this).data('expense_category_id');
-        var subCategoryId = $(this).data('expense_sub_category_id');
+    var categoryId = $(this).data('expense_category_id');
+    var subCategoryId = $(this).data('expense_sub_category_id');
 
-        $('#expense_category_edit').val(categoryId);
+    $('#expense_category_edit').val(categoryId);
 
-        loadSubCategory(
-            categoryId,
-            '#expense_sub_category_edit',
-            subCategoryId
-        );
+    loadSubCategory(
+        categoryId,
+        '#expense_sub_category_edit',
+        subCategoryId
+    );
 
-        $('#ExpenseEditModal').modal('show');
+    $('#ExpenseEditModal').modal('show');
 
-    });
-
+});
     //====================================
     // Delete Button
     //====================================
@@ -639,12 +572,12 @@ console.log(categoryId);
 
     });
 
-});
+
+
+    });
+
 </script>
 
-<!-- For Calendar start -->
-
-<!-- For Calendar End -->
 
 <?php
 echo $this->endSection();

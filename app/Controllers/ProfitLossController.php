@@ -16,26 +16,26 @@ class ProfitLossController extends BaseController
     // =========================
     public function index()
     {
-        $sql = "
-            SELECT
-                piq.*,
-                COALESCE(piq.productinitial_quantity,0)
-                + COALESCE(ppd.new_purchased,0) AS total_stock
+        // $sql = "
+        //     SELECT
+        //         piq.*,
+        //         COALESCE(piq.productinitial_quantity,0)
+        //         + COALESCE(ppd.new_purchased,0) AS total_stock
 
-            FROM product_inital_stock piq
+        //     FROM product_inital_stock piq
 
-            LEFT JOIN (
-                SELECT
-                    product_id,
-                    SUM(quantity_per_pack * box_quantity) AS new_purchased
-                FROM product_purchase_details
-                GROUP BY product_id
-            ) ppd ON piq.product_id = ppd.product_id
-        ";
+        //     LEFT JOIN (
+        //         SELECT
+        //             product_id,
+        //             SUM(quantity_per_pack * box_quantity) AS new_purchased
+        //         FROM product_purchase_details
+        //         GROUP BY product_id
+        //     ) ppd ON piq.product_id = ppd.product_id
+        // ";
 
-        $data['stock_report_show'] = $this->db->query($sql)->getResultArray();
+        // $data['stock_report_show'] = $this->db->query($sql)->getResultArray();
 
-        return view('report/profitloss_report', $data);
+        return view('report/profitloss_report');
     }
 
     public function profitlosspdfcreate()

@@ -35,7 +35,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->post('process', 'ReturnController::process'); // From View/return/sales_return_list.php
     });
 
-    $routes->get('salelist', 'SaleListController::index');
+    //$routes->get('salelist', 'SaleListController::index');
 
     $routes->group('products', function ($routes) {
         $routes->get('/', 'ProductController::index');
@@ -118,7 +118,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->post('create', 'ExpenseController::create');
         $routes->post('update', 'ExpenseController::update');
         $routes->post('delete', 'ExpenseController::delete');
-        $routes->post('getSubCategory', 'ExpenseController::getSubCategory'); //From Views/expense/expense_add.php
+        $routes->post('getExpenseSubCategory', 'ExpenseController::getExpenseSubCategory'); //From Views/expense/expense_add.php
 
     });
 
@@ -192,6 +192,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->group('reports', function ($routes) {
 
         $routes->get('stock', 'StockReportController::index');
+        $routes->get('salelist', 'SaleListController::index');
         $routes->get('sales-summary', 'SaleSummaryReportController::index');
         $routes->get('profit-loss', 'ProfitLossController::index');
         $routes->get('expense', 'ExpenseReportController::index');

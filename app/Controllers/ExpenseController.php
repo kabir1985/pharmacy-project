@@ -110,17 +110,9 @@ class ExpenseController extends BaseController
     
         if ($this->expenseaddobject->update($id, $data)) {
     
-            return $this->response->setJSON([
-                'status'  => true,
-                'message' => 'Expense updated successfully.'
-            ]);
-        }
-    
-        return $this->response->setJSON([
-            'status'  => false,
-            'message' => 'Failed to update expense.'
-        ]);
+  return $this->response->redirect(site_url('expense'));
     }
+     }
 
 
     public function delete($id = 0)
@@ -146,11 +138,11 @@ class ExpenseController extends BaseController
 //     return $this->response->setJSON($result);
 // }
 
-public function getSubCategory()
+public function getExpenseSubCategory()
 {
     $category_id = $this->request->getPost('expense_category_id');
 
-    $data = $this->expenseSubCategoryModel
+    $data = $this->expense_sub_category_model_object
                 ->where('expense_category_id', $category_id)
                 ->findAll();
 
