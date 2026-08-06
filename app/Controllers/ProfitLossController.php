@@ -11,29 +11,8 @@ class ProfitLossController extends BaseController
         $this->db = db_connect();
     }
 
-    // =========================
-    // STOCK REPORT
-    // =========================
     public function index()
     {
-        // $sql = "
-        //     SELECT
-        //         piq.*,
-        //         COALESCE(piq.productinitial_quantity,0)
-        //         + COALESCE(ppd.new_purchased,0) AS total_stock
-
-        //     FROM product_inital_stock piq
-
-        //     LEFT JOIN (
-        //         SELECT
-        //             product_id,
-        //             SUM(quantity_per_pack * box_quantity) AS new_purchased
-        //         FROM product_purchase_details
-        //         GROUP BY product_id
-        //     ) ppd ON piq.product_id = ppd.product_id
-        // ";
-
-        // $data['stock_report_show'] = $this->db->query($sql)->getResultArray();
 
         return view('report/profitloss_report');
     }
@@ -66,40 +45,55 @@ class ProfitLossController extends BaseController
         // =====================================================
         $sales = $this->db->query("
         SELECT
-            IFNULL(SUM(total_amount),0) AS gross_sales,
+            IFNULL(SUM(grand_total),0) AS gross_sales,
             IFNULL(SUM(product_discount),0) AS product_discount,
             IFNULL(SUM(product_vat),0) AS total_vat,
             IFNULL(SUM(other_charge_on_all),0) AS other_charge
         FROM sales
         WHERE sales_date BETWEEN ? AND ?
-    ", [$start_date, $end_date])->getRowArray();
+        ", [$start_date, $end_date])->getRowArray();
 
         // =====================================================
-        // COST OF GOODS SOLD (COGS)
+        // COGS
         // =====================================================
+
         $cogs = $this->db->query("
-        SELECT
-            IFNULL(SUM(sd.total_buy_price),0) AS total_cogs
-        FROM sales_details sd
-        INNER JOIN sales s
-            ON s.sales_invoice = sd.sales_details_invoice
-        WHERE s.sales_date BETWEEN ? AND ?
-    ", [$start_date, $end_date])->getRowArray();
+SELECT
+    IFNULL(SUM(sd.total_buy_price),0) AS total_cogs
+FROM sales_details sd
+INNER JOIN sales s
+    ON s.sales_id = sd.sales_id
+WHERE s.sales_date BETWEEN ? AND ?
+", [$start_date, $end_date])->getRowArray();
 
         // =====================================================
         // SALES RETURNS
         // =====================================================
         $returns = $this->db->query("
         SELECT
-            IFNULL(SUM(rsd.total_sale_price),0) AS return_sales,
-            IFNULL(SUM(rsd.total_buy_price),0) AS return_cost
-        FROM return_sales_details rsd
 
-        INNER JOIN return_sales rs
-            ON rs.sales_invoice = rsd.sales_details_invoice
+            IFNULL(SUM(rsd.total_return_amount),0) AS return_sales,
+
+            IFNULL(
+                SUM(
+                    (
+                        sd.total_buy_price /
+                        NULLIF(sd.product_quantity_sold,0)
+                    )
+                    * rsd.return_qty
+                    ),
+            0) AS return_cost
+
+        FROM return_sales rs
+
+        INNER JOIN return_sales_details rsd
+            ON rs.return_id = rsd.return_id
+
+        INNER JOIN sales_details sd
+            ON sd.sales_details_id = rsd.sales_details_id
 
         WHERE rs.return_date BETWEEN ? AND ?
-    ", [$start_date, $end_date])->getRowArray();
+        ", [$start_date, $end_date])->getRowArray();
 
         // =====================================================
         // EXPENSES
@@ -114,138 +108,75 @@ class ProfitLossController extends BaseController
             date('Y-m-d', strtotime($end)),
         ])->getRowArray();
 
-        // =====================================================
-        // FINAL CALCULATIONS
-        // =====================================================
-
-       //=====================================================
-// SALES
+        //=====================================================
+// Final Profit Calculation
 //=====================================================
 
-$gross_sales       = (float)$sales['gross_sales'];
-$product_discount  = (float)$sales['product_discount'];
-$total_vat         = (float)$sales['total_vat'];
-$other_charge      = (float)$sales['other_charge'];
+        $gross_sales = (float) $sales['gross_sales'];
+        $product_discount = (float) $sales['product_discount'];
+        $total_vat = (float) $sales['total_vat'];
+        $other_charge = (float) $sales['other_charge'];
 
-//=====================================================
-// RETURNS
-//=====================================================
+        $return_sales = (float) $returns['return_sales'];
+        $return_cost = (float) $returns['return_cost'];
 
-$return_sales = (float)$returns['return_sales'];
-$return_cost  = (float)$returns['return_cost'];
+        $total_cogs = (float) $cogs['total_cogs'];
+        $total_expense = (float) $expense['total_expense'];
 
-//=====================================================
-// COGS
-//=====================================================
+        $other_income = 0;
+        $financial_cost = 0;
 
-$total_cogs = (float)$cogs['total_cogs'];
+// Net Sales
+        $net_sales = $gross_sales - $return_sales;
 
-//=====================================================
-// EXPENSE
-//=====================================================
+// Net COGS
+        $net_cogs = $total_cogs - $return_cost;
 
-$total_expense = (float)$expense['total_expense'];
+// Gross Profit
+        $gross_profit = $net_sales - $net_cogs;
 
-//=====================================================
-// OTHER INCOME & FINANCIAL COST
-//=====================================================
+// Operating Profit
+        $operating_profit = $gross_profit - $total_expense;
 
-$other_income  = 0;
-$financial_cost = 0;
+// Net Profit
+        $net_profit = $operating_profit + $other_income - $financial_cost;
 
-//=====================================================
-// NET SALES
-//=====================================================
+        $data = [
 
-// If total_amount ALREADY excludes VAT, use this:
-$net_sales =
-    $gross_sales
-    - $product_discount
-    - $return_sales
-    + $other_charge;
+            'gross_sales' => $gross_sales,
 
-/*
-If your total_amount INCLUDES VAT, use this instead:
+            'product_discount' => $product_discount,
 
-$net_sales =
-    $gross_sales
-    - $product_discount
-    - $total_vat
-    - $return_sales
-    + $other_charge;
-*/
+            'vat' => $total_vat,
 
-//=====================================================
-// NET COGS
-//=====================================================
+            'other_charge' => $other_charge,
 
-$net_cogs =
-    $total_cogs
-    - $return_cost;
+            'return_sales' => $return_sales,
 
-//=====================================================
-// GROSS PROFIT
-//=====================================================
+            'return_cost' => $return_cost,
 
-$gross_profit =
-    $net_sales
-    - $net_cogs;
+            'net_sales' => $net_sales,
 
-//=====================================================
-// OPERATING PROFIT
-//=====================================================
+            'total_cogs' => $total_cogs,
 
-$operating_profit =
-    $gross_profit
-    - $total_expense;
+            'net_cogs' => $net_cogs,
 
-//=====================================================
-// NET PROFIT
-//=====================================================
+            'gross_profit' => $gross_profit,
 
-$net_profit =
-    $operating_profit
-    + $other_income
-    - $financial_cost;
+            'expense' => $total_expense,
 
+            'operating_profit' => $operating_profit,
 
+            'other_income' => $other_income,
 
-    $data = [
+            'financial_cost' => $financial_cost,
 
-        'gross_sales'       => $gross_sales,
-    
-        'product_discount'  => $product_discount,
-    
-        'vat'               => $total_vat,
-    
-        'other_charge'      => $other_charge,
-    
-        'return_sales'      => $return_sales,
-    
-        'return_cost'       => $return_cost,
-    
-        'net_sales'         => $net_sales,
-    
-        'total_cogs'        => $total_cogs,
-    
-        'net_cogs'          => $net_cogs,
-    
-        'gross_profit'      => $gross_profit,
-    
-        'expense'           => $total_expense,
-    
-        'operating_profit'  => $operating_profit,
-    
-        'other_income'      => $other_income,
-    
-        'financial_cost'    => $financial_cost,
-    
-        'net_profit'        => $net_profit,
-    
-        'start_date'        => $start,
-    
-        'end_date'          => $end,
-    ];
+            'net_profit' => $net_profit,
+
+            'start_date' => $start,
+
+            'end_date' => $end,
+        ];
 
         // =====================================================
         // PDF VIEW
@@ -253,15 +184,15 @@ $net_profit =
         $html = view('report/profitloss_pdf', $data);
 
         $dompdf = new \Dompdf\Dompdf();
-        
+
         $dompdf->loadHtml($html);
-        
+
         $dompdf->setPaper('A4', 'portrait');
-        
+
         $dompdf->render();
-        
+
         $dompdf->stream("profit_loss.pdf", ["Attachment" => false]);
-        
+
         exit();
     }
 

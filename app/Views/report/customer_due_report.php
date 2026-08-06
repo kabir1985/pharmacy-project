@@ -3,7 +3,7 @@
 
 <div class="app-title">
     <div>
-        <h1><i class="fa fa-money"></i> Customer Payment Report</h1>
+        <h1><i class="fa fa-money"></i> Customer Due Report</h1>
     </div>
 
     <div class="mt-3 mb-3">
@@ -31,21 +31,13 @@
                         <thead class="table-primary">
 
                             <tr>
-
                                 <th>ID</th>
-
-                                <th>Customer</th>
-
+                                <th>Customer Name</th>
                                 <th>Phone</th>
-
                                 <th class="text-end">Total Due</th>
-
                                 <th class="text-end">Total Paid</th>
-
-                                <th class="text-end">Balance</th>
-
+                                <th class="text-end">Current Balance</th>
                                 <th>Status</th>
-
                             </tr>
 
                         </thead>
@@ -61,15 +53,13 @@
                             <?php foreach ($customers as $row): ?>
 
                                 <?php
-
-                                $totalDue = $row->total_due ?? 0;
-                                $totalPaid = $row->total_paid ?? 0;
-                                $balance = $row->current_balance ?? 0;
+                                $totalDue = (float)$row->total_due;
+                                $totalPaid = (float)$row->total_paid;
+                                $balance = (float)$row->current_balance;
 
                                 $grandDue += $totalDue;
                                 $grandPaid += $totalPaid;
                                 $grandBalance += $balance;
-
                                 ?>
 
                                 <tr>
@@ -78,7 +68,7 @@
 
                                     <td><?= esc($row->customer_name) ?></td>
 
-                                    <td><?= esc($row->cus_phone) ?></td>
+                                    <td><?= esc($row->phone) ?></td>
 
                                     <td class="text-end">
                                         <?= number_format($totalDue, 2) ?>
@@ -92,8 +82,14 @@
 
                                         <?php if ($balance > 0): ?>
 
-                                            <span class="badge bg-danger text-white">
+                                            <span class="badge bg-danger">
                                                 <?= number_format($balance, 2) ?>
+                                            </span>
+
+                                        <?php elseif ($balance < 0): ?>
+
+                                            <span class="badge bg-info">
+                                                <?= number_format(abs($balance), 2) ?>
                                             </span>
 
                                         <?php else: ?>
@@ -112,6 +108,12 @@
 
                                             <span class="badge bg-warning text-dark">
                                                 Due
+                                            </span>
+
+                                        <?php elseif ($balance < 0): ?>
+
+                                            <span class="badge bg-info">
+                                                Advance
                                             </span>
 
                                         <?php else: ?>
@@ -135,27 +137,19 @@
                             <tr class="table-info fw-bold">
 
                                 <td colspan="3" class="text-end">
-
                                     Grand Total
-
                                 </td>
 
                                 <td class="text-end">
-
                                     <?= number_format($grandDue, 2) ?>
-
                                 </td>
 
                                 <td class="text-end">
-
                                     <?= number_format($grandPaid, 2) ?>
-
                                 </td>
 
                                 <td class="text-end">
-
                                     <?= number_format($grandBalance, 2) ?>
-
                                 </td>
 
                                 <td></td>
@@ -183,30 +177,22 @@
 <script src="<?= base_url('assets/js/plugins/dataTables.bootstrap.min.js') ?>"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 
 <script>
 $(function(){
 
     $('#sampleTable').DataTable({
-
-        responsive:true,
-
-        autoWidth:false,
-
-        pageLength:25,
-
-        order:[[0,'asc']]
-
+        responsive: true,
+        autoWidth: false,
+        pageLength: 25,
+        order: [[0,'asc']]
     });
 
-
-    // ================= CSV ===================
-
+    // CSV Export
     function downloadCSV(csv, filename){
 
-        let csvFile = new Blob([csv], {type:'text/csv'});
+        let csvFile = new Blob(["\ufeff"+csv], {type:'text/csv;charset=utf-8;'});
 
         let downloadLink = document.createElement('a');
 
@@ -221,9 +207,7 @@ $(function(){
         downloadLink.click();
 
         document.body.removeChild(downloadLink);
-
     }
-
 
     function exportTableToCSV(filename){
 
@@ -251,16 +235,13 @@ $(function(){
 
     }
 
-
     $('#exportCsvBtn').click(function(){
 
-        exportTableToCSV('customer_payment_report.csv');
+        exportTableToCSV('customer_due_report.csv');
 
     });
 
-
-
-    // ================= PDF ===================
+    // PDF Export
 
     $('#exportPdfBtn').click(function(){
 
@@ -270,7 +251,7 @@ $(function(){
 
         doc.setFontSize(16);
 
-        doc.text('Customer Payment Report',14,15);
+        doc.text('Customer Due Report',14,15);
 
         doc.autoTable({
 
@@ -281,24 +262,24 @@ $(function(){
             theme:'grid',
 
             styles:{
-
                 fontSize:8,
-
                 cellPadding:2
-
             },
 
             headStyles:{
-
                 fillColor:[40,116,166],
-
                 textColor:255
+            },
 
+            footStyles:{
+                fillColor:[220,220,220],
+                textColor:0,
+                fontStyle:'bold'
             }
 
         });
 
-        doc.save('customer_payment_report.pdf');
+        doc.save('customer_due_report.pdf');
 
     });
 

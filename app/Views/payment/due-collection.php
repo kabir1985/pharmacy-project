@@ -41,42 +41,44 @@ echo $this->section('content');
 
                         <tbody>
 
-                            <?php if (!empty($due_list)) : ?>
+                            <?php if (!empty($due_list)): ?>
 
                             <?php $sl = 1; ?>
 
-                            <?php foreach ($due_list as $row) : ?>
+                            <?php foreach ($due_list as $row): ?>
 
                             <tr>
 
-                                <td><?= $sl++ ?></td>
+                                <td><?=$sl++?></td>
 
-                                <td><?= esc($row['sales_invoice']) ?></td>
+                                <td><?=esc($row['sales_invoice'])?></td>
 
-                                <td><?= esc($row['customer_name']) ?></td>
+                                <td><?=esc($row['customer_name'])?></td>
 
-                                <td class="text-right">
-                                    <?= number_format($row['total_amount'], 2) ?>
+                                <td class="text-end">
+                                    <?=number_format($row['grand_total'], 2)?>
                                 </td>
 
-                                <td class="text-right text-success">
-                                    <?= number_format($row['paid_amount'], 2) ?>
+                                <td class="text-end text-success">
+                                    <?=number_format($row['total_paid'], 2)?>
                                 </td>
 
-                                <td class="text-right text-danger font-weight-bold">
-                                    <?= number_format($row['due_amount'], 2) ?>
+                                <td class="text-end">
+                                    <span class="badge bg-danger">
+                                        <?=number_format($row['current_due'], 2)?>
+                                    </span>
                                 </td>
 
                                 <td class="text-center">
 
                                     <button type="button" class="btn btn-success btn-sm btn-edit"
-                                        data-due_id="<?= $row['due_id'] ?>" data-sales_id="<?= $row['sales_id'] ?>"
-                                        data-customer_id="<?= $row['customer_id'] ?>"
-                                        data-sales_invoice="<?= esc($row['sales_invoice']) ?>"
-                                        data-customer_name="<?= esc($row['customer_name']) ?>"
-                                        data-total_amount="<?= $row['total_amount'] ?>"
-                                        data-paid_amount="<?= $row['paid_amount'] ?>"
-                                        data-due_amount="<?= $row['due_amount'] ?>">
+                                        data-due_id="<?=$row['due_id']?>" data-sales_id="<?=$row['sales_id']?>"
+                                        data-customer_id="<?=$row['customer_id']?>"
+                                        data-sales_invoice="<?=esc($row['sales_invoice'])?>"
+                                        data-customer_name="<?=esc($row['customer_name'])?>"
+                                        data-grand_total="<?=$row['grand_total']?>"
+                                        data-total_paid="<?=$row['total_paid']?>"
+                                        data-current_due="<?=$row['current_due']?>">
 
                                         <i class="fa fa-money"></i>
                                         Collect
@@ -89,7 +91,7 @@ echo $this->section('content');
 
                             <?php endforeach; ?>
 
-                            <?php else : ?>
+                            <?php else: ?>
 
                             <tr>
                                 <td colspan="7" class="text-center text-danger">
@@ -123,10 +125,9 @@ echo $this->section('content');
 
         <div class="modal-content">
 
-            <form id="customer_payment_receive_submit" action="<?= base_url('payment/collection-save') ?>"
-                method="post">
+            <form id="customer_payment_receive_submit" action="<?=base_url('payment/collection-save')?>" method="post">
 
-                <?= csrf_field(); ?>
+                <?=csrf_field();?>
 
                 <!-- Hidden Fields -->
                 <input type="hidden" id="due_id" name="due_id">
@@ -172,21 +173,21 @@ echo $this->section('content');
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Grand Total</label>
-                                <input type="text" id="total_amount" class="form-control text-right" readonly>
+                                <input type="text" id="grand_total" class="form-control text-right" readonly>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Already Paid</label>
-                                <input type="text" id="paid_amount" class="form-control text-right" readonly>
+                                <label>Total Paid</label>
+                                <input type="text" id="total_paid" class="form-control text-right" readonly>
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Current Due</label>
-                                <input type="text" id="due_amount"
+                                <input type="text" id="current_due"
                                     class="form-control text-right text-danger font-weight-bold" readonly>
                             </div>
                         </div>
@@ -195,7 +196,7 @@ echo $this->section('content');
 
                     <div class="form-group">
                         <label>Collection Date</label>
-                        <input type="date" class="form-control" name="payment_date" value="<?= date('Y-m-d'); ?>"
+                        <input type="date" class="form-control" name="payment_date" value="<?=date('Y-m-d');?>"
                             required>
                     </div>
 
@@ -301,36 +302,48 @@ $(document).ready(function() {
 
     $(document).on('click', '.btn-edit', function() {
 
-        // Button Reference
-        let button = $(this);
+let button = $(this);
 
-        // Hidden Fields
-        $('#due_id').val(button.data('due_id'));
-        $('#sales_id').val(button.data('sales_id'));
-        $('#customer_id').val(button.data('customer_id'));
+// Hidden Fields
+$('#due_id').val(button.data('due_id'));
+$('#sales_id').val(button.data('sales_id'));
+$('#customer_id').val(button.data('customer_id'));
 
-        // Display Fields
-        $('#sales_invoice').val(button.data('sales_invoice'));
-        $('#customer_name').val(button.data('customer_name'));
-        $('#total_amount').val(parseFloat(button.data('total_amount')).toFixed(2));
-        $('#paid_amount').val(parseFloat(button.data('paid_amount')).toFixed(2));
-        $('#due_amount').val(parseFloat(button.data('due_amount')).toFixed(2));
+// Display Fields
+$('#sales_invoice').val(button.data('sales_invoice'));
+$('#customer_name').val(button.data('customer_name'));
 
-        // Default Collection Amount
-        $('#payment_amount')
-            .val(parseFloat(button.data('due_amount')).toFixed(2))
-            .attr('max', parseFloat(button.data('due_amount')));
+$('#grand_total').val(
+    parseFloat(button.data('grand_total') || 0).toFixed(2)
+);
 
-        // Show Modal
-        $('#customerPaymentModal').modal('show');
+$('#total_paid').val(
+    parseFloat(button.data('total_paid') || 0).toFixed(2)
+);
 
-    });
+let currentDue = parseFloat(button.data('current_due')) || 0;
+
+$('#current_due').val(
+    currentDue.toFixed(2)
+);
 
 
+// Default Collection Amount
+$('#payment_amount')
+    .val(currentDue.toFixed(2))
+    .attr('max', currentDue.toFixed(2))
+    .data('max_due', currentDue);
 
-    let allowSubmit = true;
 
-$('#customer_payment_receive_submit').on('submit', function (e) {
+// Show Modal
+$('#customerPaymentModal').modal('show');
+
+});
+
+
+let allowSubmit = true;
+
+$('#customer_payment_receive_submit').on('submit', function(e) {
 
     e.preventDefault();
 
@@ -339,30 +352,41 @@ $('#customer_payment_receive_submit').on('submit', function (e) {
         return;
     }
 
+
     // Validate
-    let dueAmount = parseFloat($('#due_amount').val()) || 0;
+    let due_amount = parseFloat($('#current_due').val()) || 0;
     let paymentAmount = parseFloat($('#payment_amount').val()) || 0;
 
+
     if (paymentAmount <= 0) {
+
         alert('Please enter a valid payment amount.');
         $('#payment_amount').focus();
         return;
+
     }
 
-    if (paymentAmount > dueAmount) {
+
+    if (paymentAmount > due_amount) {
+
         alert('Payment amount cannot exceed due amount.');
         $('#payment_amount').focus().select();
         return;
+
     }
 
+
     allowSubmit = false;
+
 
     let form = $(this);
     let submitBtn = form.find('button[type="submit"]');
 
+
     submitBtn
         .prop('disabled', true)
         .html('<i class="fa fa-spinner fa-spin"></i> Saving...');
+
 
     $.ajax({
 
@@ -373,15 +397,17 @@ $('#customer_payment_receive_submit').on('submit', function (e) {
         contentType: false,
         dataType: 'json',
 
-        success: function (response) {
+        success: function(response) {
 
             if (response.status) {
+
 
                 $('#customerPaymentModal').modal('hide');
 
                 alert(response.message);
 
                 location.reload();
+
 
             } else {
 
@@ -391,25 +417,34 @@ $('#customer_payment_receive_submit').on('submit', function (e) {
 
         },
 
-        error: function (xhr) {
+
+        error: function(xhr) {
 
             let message = 'Server Error';
 
+
             if (xhr.responseJSON && xhr.responseJSON.message) {
+
                 message = xhr.responseJSON.message;
+
             }
+
 
             alert(message);
 
         },
 
-        complete: function () {
+
+        complete: function() {
+
 
             allowSubmit = true;
+
 
             submitBtn
                 .prop('disabled', false)
                 .html('<i class="fa fa-save"></i> Save Payment');
+
 
         }
 

@@ -9,24 +9,48 @@ class CustomerReportController extends BaseController
         $db = \Config\Database::connect();
 
         $sql = "
-            SELECT 
+            SELECT
                 c.customer_id,
-                CONCAT(c.cus_first_name, ' ', c.cus_last_name) AS customer_name,
-                c.cus_phone,
+                c.customer_name,
+                c.phone,
 
-                SUM(cd.due_amount) AS total_due,
-                SUM(cd.due_paid_amount) AS total_paid,
+                IFNULL(d.total_due, 0) AS total_due,
 
-                (SUM(cd.due_amount) - SUM(cd.due_paid_amount)) AS current_balance
+                IFNULL(p.total_paid, 0) AS total_paid,
+
+                (
+                    IFNULL(d.total_due, 0)
+                    -
+                    IFNULL(p.total_paid, 0)
+                ) AS current_balance
 
             FROM customer c
-            LEFT JOIN customer_due cd 
-                ON c.customer_id = cd.customer_id
 
-            GROUP BY c.customer_id
+            LEFT JOIN
+            (
+                SELECT
+                    customer_id,
+                    SUM(due_amount) AS total_due
+                FROM customer_due
+                GROUP BY customer_id
+            ) d
+                ON d.customer_id = c.customer_id
+
+            LEFT JOIN
+            (
+                SELECT
+                    customer_id,
+                    SUM(payment_amount) AS total_paid
+                FROM customer_due_payment
+                GROUP BY customer_id
+            ) p
+                ON p.customer_id = c.customer_id
+
+            ORDER BY c.customer_name ASC
         ";
 
         $query = $db->query($sql);
+
         $data['customers'] = $query->getResult();
 
         return view('report/customer_due_report', $data);
