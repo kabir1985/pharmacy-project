@@ -15,53 +15,53 @@ class SaleReturnListController extends BaseController
 
     public function index()
     {
-        $sql = "SELECT
-        s.sales_id,
-        s.sales_invoice,
-        s.sales_date,
-    
-        c.customer_name AS customer_name,
-    
-        u.user_name AS seller_name,
-    
-        s.total_amount AS total_sale,
-        s.product_vat,
-        s.product_discount,
-        s.other_charge_on_all,
-    
-        s.paid_amount AS total_paid,
-    
-        IFNULL(cd.total_due, 0) AS customer_due,
-    
-        CASE
-            WHEN IFNULL(cd.total_due, 0) = 0
-                THEN 'Fully Paid'
-            ELSE 'Partially Paid'
-        END AS payment_status
-    
-    FROM sales s
-    
-    LEFT JOIN customer c
-        ON c.customer_id = s.customer_id
-    
-    LEFT JOIN user u
-        ON u.user_id = s.seller_id
-    
-    LEFT JOIN
-    (
-        SELECT
-            sales_id,
-            SUM(due_amount) AS total_due
-        FROM customer_due
-        GROUP BY sales_id
-    ) cd
-        ON cd.sales_id = s.sales_id
-    
-    WHERE s.return_status <> 'FULL'
-    
-    ORDER BY s.sales_date DESC,
-             s.sales_invoice DESC";
-    
+       $sql = "SELECT
+    s.sales_id,
+    s.sales_invoice,
+    s.sales_date,
+
+    c.customer_name AS customer_name,
+
+    u.user_name AS seller_name,
+
+    s.grand_total AS total_sale,
+    s.product_vat,
+    s.product_discount,
+    s.other_charge_on_all,
+
+    s.paid_amount AS total_paid,
+
+    IFNULL(cd.total_due, 0) AS customer_due,
+
+    CASE
+        WHEN IFNULL(cd.total_due, 0) = 0
+            THEN 'Fully Paid'
+        ELSE 'Partially Paid'
+    END AS payment_status
+
+FROM sales s
+
+LEFT JOIN customer c
+    ON c.customer_id = s.customer_id
+
+LEFT JOIN user u
+    ON u.user_id = s.seller_id
+
+LEFT JOIN
+(
+    SELECT
+        sales_id,
+        SUM(due_amount) AS total_due
+    FROM customer_due
+    GROUP BY sales_id
+) cd
+    ON cd.sales_id = s.sales_id
+
+WHERE s.return_status <> 'FULL'
+
+ORDER BY s.sales_date DESC,
+         s.sales_invoice DESC";
+            
         $data['saleReturnList'] = $this->db->query($sql)->getResultArray();
     
         return view('return/sales_return_list', $data);

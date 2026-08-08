@@ -1,5 +1,5 @@
-<?=$this->extend('layout')?>
-<?=$this->section('content')?>
+<?= $this->extend('layout') ?>
+<?= $this->section('content') ?>
 
 <div class="app-title">
     <div>
@@ -30,53 +30,58 @@
                         </thead>
                         <tbody>
                             <?php foreach ($saleReturnList as $row): ?>
-                            <tr>
-                                <td>
-                                    <?=esc($row['sales_date'])?>
-                                </td>
-                                <td>
-                                    <?=esc($row['sales_invoice'])?>
-                                </td>
-                                <td>
-                                    <?=esc($row['customer_name'])?>
-                                </td>
-                                <td class="text-end">
-                                    <?=number_format($row['total_sale'], 2)?>
-                                </td>
+                                <tr>
+                                    <td>
+                                        <?= esc($row['sales_date']) ?>
+                                    </td>
+                                    <td>
+                                        <?= esc($row['sales_invoice']) ?>
+                                    </td>
+                                    <td>
+                                        <?= esc($row['customer_name']) ?>
+                                    </td>
+                                    <td class="text-end">
+                                        <?= number_format($row['total_sale'], 2) ?>
+                                    </td>
 
-                                <td class="text-end">
-                                    <?=number_format($row['product_vat'], 2)?>
-                                </td>
+                                    <td class="text-end">
+                                        <?= number_format($row['product_vat'], 2) ?>
+                                    </td>
 
-                                <td class="text-end">
-                                    <?=number_format($row['product_discount'], 2)?>
-                                </td>
+                                    <td class="text-end">
+                                        <?= number_format($row['product_discount'], 2) ?>
+                                    </td>
 
-                                <td class="text-end">
-                                    <?=number_format($row['other_charge_on_all'], 2)?>
-                                </td>
+                                    <td class="text-end">
+                                        <?= number_format($row['other_charge_on_all'], 2) ?>
+                                    </td>
 
-                                <td class="text-end text-success">
-                                    <?=number_format($row['total_paid'], 2)?>
-                                </td>
+                                    <td class="text-end text-success">
+                                        <?= number_format($row['total_paid'], 2) ?>
+                                    </td>
 
-                                <td class="text-end text-danger">
-                                    <?=number_format($row['customer_due'], 2)?>
-                                </td>
-                                <td>
-                                    <?php if ($row['payment_status'] === 'Fully Paid'): ?>
-                                    <span class="badge bg-success text-white">Fully Paid</span>
-                                    <?php else: ?>
-                                    <span class="badge bg-danger text-white">Partially Paid</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm btn-return"
-                                        data-sales_invoice="<?=$row['sales_invoice']?>">
+                                    <td class="text-end text-danger">
+                                        <?= number_format($row['customer_due'], 2) ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($row['payment_status'] === 'Fully Paid'): ?>
+                                            <span class="badge bg-success text-white">Fully Paid</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-danger text-white">Partially Paid</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <!-- <button class="btn btn-primary btn-sm btn-return"
+                                        data-sales_id="<?= $row['sales_id'] ?>">
                                         <i class="fa fa-undo"></i> Return
-                                    </button>
-                                </td>
-                            </tr>
+                                    </button> -->
+                                        <button type="button" class="btn btn-primary btn-sm btn-return"
+                                            data-sales-id="<?= esc($row['sales_id']) ?>"
+                                            data-sales-invoice="<?= esc($row['sales_invoice']) ?>">
+                                            <i class="fa fa-undo"></i> Return
+                                        </button>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -95,10 +100,10 @@
                     <h5 class="modal-title mb-0">Sales Return</h5>
 
                     <div class="fw-bold text-primary">
-                        Invoice: <span id="invoice_text"></span>
+                        Sales Invoice: <span id="invoice_text"></span>
                     </div>
 
-                    <input type="hidden" id="return_invoice" name="return_invoice">
+                    <input type="hidden" id="sales_id" name="sales_id">
                 </div>
 
                 <!-- <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">X</button> -->
@@ -126,8 +131,9 @@
                                 <th>Return Qty</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <!-- Products will be appended here dynamically -->
+                            <!-- Products will be appended dynamically -->
                         </tbody>
                     </table>
                 </div>
@@ -141,143 +147,238 @@
     </div>
 </div>
 
-<?=$this->endSection()?>
+<?= $this->endSection() ?>
 
-<?=$this->section('scripts')?>
+<?= $this->section('scripts') ?>
 
 
 <script>
-$(document).ready(function() {
+    $(document).ready(function () {
 
-    $('#sampleTable').DataTable({
-        responsive: true,
-        pageLength: 15,
-        order: [
-            [0, 'desc']
-        ]
-    });
-
-    ///////////////////////////
-
-    $('body').on('click', '.btn-return', function() {
-        const invoice = $(this).data('sales_invoice');
-        $('#return_invoice').val(invoice);
-        $('#invoice_text').text(invoice); // ✅ ADD THIS LINE
-
-        // Fetch products for this invoice
-        $.ajax({
-            url: '<?=base_url("return/products")?>',
-            method: 'POST',
-            data: {
-                invoice: invoice
-            },
-            dataType: 'json',
-            success: function(products) {
-
-                //console.log(products);
-
-                let html = '';
-                products.forEach(p => {
-                    html += `<tr>
-                    <td>${p.product_name}
-                     <input type="hidden" name="product_id[]" value="${p.product_id}">
-                    </td>
-                    <td>${p.sold_qty ?? 0}</td>
-
-                    <td>${p.return_qty ?? 0}</td>
-                    <td>${p.remaining_qty ?? 0}</td>
-
-                    <td>${p.unit_price ?? 0}</td>
-                    <td>${p.total_buy_price ?? 0}</td>
-                    <td>${p.total_sale_price ?? 0}</td>
-                    <td>${p.return_status ?? 0}</td>
-                    <td>
-                        <input type="number" name="return_qty[${p.product_id}]"
-                            min="0"
-                            max="${p.remaining_qty ?? 0}"
-                            value="0"
-                            class="form-control"
-                            step="1"
-                            ${p.remaining_qty == 0 ? 'readonly' : ''}
-                            required>
-                    </td>
-                </tr>`;
-                });
-                // $('#returnProductsTable tbody').html(html);
-                $('#returnProductsTable tbody').empty().html(html);
-                $('#returnModal').modal('show');
-            },
-            error: function(xhr) {
-                alert('Error fetching products: ' + xhr.responseText);
-            }
-        });
-    });
-
-    $('#returnForm').on('submit', function(e) {
-        e.preventDefault();
-
-        let form = $(this);
-
-        // ===========================
-        // Validate Return Quantity
-        // ===========================
-        let hasReturnQty = false;
-
-        $('input[name^="return_qty"]').each(function() {
-            let qty = parseInt($(this).val()) || 0;
-
-            if (qty > 0) {
-                hasReturnQty = true;
-                return false; // stop loop
-            }
+        $('#sampleTable').DataTable({
+            responsive: true,
+            pageLength: 15,
+            order: [
+                [0, 'desc']
+            ]
         });
 
-        if (!hasReturnQty) {
-            alert('Please enter at least one Return Quantity greater than 0.');
-            return;
-        }
+        ///////////////////////////
 
-        // ===========================
-        // Ajax Submit
-        // ===========================
-        $.ajax({
-            url: '<?=base_url("return/process")?>',
-            type: 'POST',
-            data: form.serialize(),
-            dataType: 'json',
-            beforeSend: function() {
-                form.find('button[type="submit"]').prop('disabled', true);
-            },
-            success: function(res) {
+        $('body').on('click', '.btn-return', function () {
 
-                if (res.status === 'success') {
+            const sales_id = $(this).data('sales-id');
+            const sales_invoice = $(this).data('sales-invoice');
 
-                    alert(res.message);
+            console.log('Sales ID:', sales_id);
+            console.log('Sales Invoice:', sales_invoice);
 
-                    $('#returnModal').modal('hide');
-                    form[0].reset();
+            // Set sales ID
+            $('#sales_id').val(sales_id);
 
-                    setTimeout(() => location.reload(), 500);
+            // Display invoice number
+            $('#invoice_text').text(sales_invoice);
 
-                } else {
-                    alert(res.message);
+            // Clear previous products
+            $('#returnProductsTable tbody').empty();
+
+            // Fetch products for this sale
+            $.ajax({
+                url: '<?= base_url("return/products") ?>',
+                method: 'POST',
+                data: {
+                    sales_id: sales_id
+                },
+                dataType: 'json',
+
+                success: function (products) {
+
+                    console.log('Products:', products);
+
+                    let html = '';
+
+                    if (products.length === 0) {
+                        html = `
+                    <tr>
+                        <td colspan="9" class="text-center text-muted">
+                            No products available for return.
+                        </td>
+                    </tr>
+                `;
+                    } else {
+
+                        products.forEach(p => {
+
+                            const soldQty =
+                                parseFloat(p.sold_qty) || 0;
+
+                            const returnQty =
+                                parseFloat(p.return_qty) || 0;
+
+                            const remainingQty =
+                                parseFloat(p.remaining_qty) || 0;
+
+                            const unitPrice =
+                                parseFloat(p.unit_price) || 0;
+
+                            const buyPrice =
+                                parseFloat(p.total_buy_price) || 0;
+
+                            const salePrice =
+                                parseFloat(p.total_sale_price) || 0;
+
+                            html += `
+                        <tr>
+
+                            <td>
+                                ${p.product_name}
+
+                                <input type="hidden"
+                                       name="sales_details_id[]"
+                                       value="${p.sales_details_id}">
+
+                                <input type="hidden"
+                                       name="product_id[]"
+                                       value="${p.product_id}">
+                            </td>
+
+                            <td class="text-end">
+                                ${soldQty.toFixed(2)}
+                            </td>
+
+                            <td class="text-end">
+                                ${returnQty.toFixed(2)}
+                            </td>
+
+                            <td class="text-end">
+                                ${remainingQty.toFixed(2)}
+                            </td>
+
+                            <td class="text-end">
+                                ${unitPrice.toFixed(2)}
+                            </td>
+
+                            <td class="text-end">
+                                ${buyPrice.toFixed(2)}
+                            </td>
+
+                            <td class="text-end">
+                                ${salePrice.toFixed(2)}
+                            </td>
+
+                            <td>
+                                <span class="badge ${p.return_status === 'ACTIVE'
+                                    ? 'bg-success'
+                                    : 'bg-warning text-dark'
+                                }">
+                                    ${p.return_status}
+                                </span>
+                            </td>
+
+                            <td>
+                                <input
+                                    type="number"
+                                    name="return_qty[${p.sales_details_id}]"
+                                    class="form-control return-qty"
+                                    min="0"
+                                    max="${remainingQty}"
+                                    value="0"
+                                    step="1"
+                                    data-sales-details-id="${p.sales_details_id}"
+                                    data-product-id="${p.product_id}"
+                                    ${remainingQty <= 0 ? 'readonly' : ''}
+                                >
+                            </td>
+
+                        </tr>
+                    `;
+                        });
+                    }
+
+                    $('#returnProductsTable tbody')
+                        .html(html);
+
+                    $('#returnModal').modal('show');
+                },
+
+                error: function (xhr) {
+
+                    console.error(xhr.responseText);
+
+                    alert(
+                        'Error fetching products: ' +
+                        xhr.responseText
+                    );
                 }
-
-            },
-            error: function(xhr) {
-                console.error(xhr.responseText);
-                alert('Server Error! Check console.');
-            },
-            complete: function() {
-                form.find('button[type="submit"]').prop('disabled', false);
-            }
+            });
         });
 
+
+        $('#returnForm').on('submit', function (e) {
+            e.preventDefault();
+
+            let form = $(this);
+
+            // ===========================
+            // Validate Return Quantity
+            // ===========================
+            let hasReturnQty = false;
+
+            $('input[name^="return_qty"]').each(function () {
+                let qty = parseInt($(this).val()) || 0;
+
+                if (qty > 0) {
+                    hasReturnQty = true;
+                    return false; // stop loop
+                }
+            });
+
+            if (!hasReturnQty) {
+                alert('Please enter at least one Return Quantity greater than 0.');
+                return;
+            }
+
+            // ===========================
+            // Ajax Submit
+            // ===========================
+            $.ajax({
+                url: '<?= base_url("return/process") ?>',
+                type: 'POST',
+                data: form.serialize(),
+                dataType: 'json',
+                beforeSend: function () {
+                    form.find('button[type="submit"]').prop('disabled', true);
+                },
+                success: function (res) {
+
+                    if (res.status === 'success') {
+
+                        alert(res.message);
+
+                        $('#returnModal').modal('hide');
+                        form[0].reset();
+
+                        setTimeout(() => location.reload(), 500);
+
+                    } else {
+                        alert(res.message);
+                    }
+
+                },
+                error: function (xhr) {
+                    console.error(xhr.responseText);
+                    alert('Server Error! Check console.');
+                },
+                complete: function () {
+                    form.find('button[type="submit"]').prop('disabled', false);
+                }
+            });
+
+        });
+
+        //////////////////////////////////////////////////////////////////////
+
     });
-
-    //////////////////////////////////////////////////////////////////////
-
-});
 </script>
 
-<?=$this->endSection()?>
+<?= $this->endSection() ?>

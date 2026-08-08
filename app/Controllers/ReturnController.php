@@ -33,55 +33,63 @@ class ReturnController extends BaseController
     }
 
     // Get products for an invoice
-    public function getProducts()
-    {
-        $db = \Config\Database::connect();
+public function getProducts()
+{
+    $db = \Config\Database::connect();
 
-        $invoice = $this->request->getPost('invoice');
+    $sales_id = $this->request->getPost('sales_id');
 
-        $builder = $db->query("
-                    SELECT
-                        sd.sales_details_invoice,
-                        sd.product_id,
-                        p.product_name,
-                        sd.unit_price,
-                        sd.total_buy_price,
-                        sd.total_sale_price,
-                        sd.product_quantity_sold AS sold_qty,
+    $builder = $db->query("
+        SELECT
+            sd.sales_id,
+            sd.sales_details_id,
+            sd.product_id,
 
-                        IFNULL(r.return_qty,0) AS return_qty,
-                        sd.product_quantity_sold - IFNULL(r.return_qty, 0) AS remaining_qty,
+            p.product_name,
 
-                        CASE
-                            WHEN IFNULL(r.return_qty,0) = 0 THEN 'ACTIVE'
-                            WHEN IFNULL(r.return_qty,0) < sd.product_quantity_sold THEN 'PARTIAL'
-                            WHEN IFNULL(r.return_qty,0) = sd.product_quantity_sold THEN 'FULL'
-                        END AS return_status
+            sd.unit_price,
+            sd.total_buy_price,
+            sd.total_sale_price,
 
-                    FROM sales_details sd
+            sd.product_quantity_sold AS sold_qty,
 
-                    LEFT JOIN product_inital_stock p
-                        ON p.product_id = sd.product_id
+            IFNULL(sd.returned_qty, 0) AS return_qty,
 
-                    LEFT JOIN (
-                        SELECT
-                            sales_details_invoice,
-                            product_id,
-                            SUM(return_qty) AS return_qty
-                        FROM return_sales_details
-                        GROUP BY sales_details_invoice, product_id
-                    ) r
-                        ON r.sales_details_invoice = sd.sales_details_invoice
-                        AND r.product_id = sd.product_id
+            (
+                sd.product_quantity_sold
+                - IFNULL(sd.returned_qty, 0)
+            ) AS remaining_qty,
 
-                    WHERE sd.sales_details_invoice = ?
-                ", [$invoice]);
+            CASE
+                WHEN IFNULL(sd.returned_qty, 0) = 0
+                    THEN 'ACTIVE'
 
-        $products = $builder->getResultArray();
+                WHEN IFNULL(sd.returned_qty, 0) < sd.product_quantity_sold
+                    THEN 'PARTIAL'
 
-        return $this->response->setJSON($products);
+                WHEN IFNULL(sd.returned_qty, 0) >= sd.product_quantity_sold
+                    THEN 'FULL'
+            END AS return_status
 
-    }
+        FROM sales_details sd
+
+        INNER JOIN products p
+            ON p.product_id = sd.product_id
+
+        WHERE sd.sales_id = ?
+
+        ORDER BY sd.sales_details_id ASC
+    ", [$sales_id]);
+
+    $products = $builder->getResultArray();
+
+    // echo "<pre>";
+    // print_r($products); 
+    // echo "</pre>";
+    // exit
+
+    return $this->response->setJSON($products);
+}
 
     // public function process()
     // {
@@ -271,550 +279,574 @@ class ReturnController extends BaseController
     // }
     ////////////////////////////////////////////////////////////////////////////
 
-    public function process()
-    {
+public function process()
+{
+    $db = \Config\Database::connect();
 
-        // এই Part-1 এ যা সম্পন্ন হয়েছে
-        // ✅ Invoice Validation
-        // ✅ Sale Validation
-        // ✅ Full Returned Check
-        // ✅ Sale Details Load
-        // ✅ Qty Validation
-        // ✅ Multiple Return Protection (returned_qty)
-        // ✅ Full / Partial Return Detection
-        // ✅ Transaction Start
+    // =========================================
+    // INPUT
+    // =========================================
 
-        $db = \Config\Database::connect();
+    $invoice      = trim((string) $this->request->getPost('invoice_text'));
+    $returnQty    = $this->request->getPost('return_qty');
+    $reason       = trim((string) $this->request->getPost('reason'));
+    $remarks      = trim((string) $this->request->getPost('remarks'));
+    $paymentType  = trim((string) $this->request->getPost('payment_type'));
 
-        $invoice = trim($this->request->getPost('return_invoice'));
-        $returnQty = $this->request->getPost('return_qty');
-        $reason = trim($this->request->getPost('reason'));
-        $remarks = trim($this->request->getPost('remarks'));
+      $salesId = $this->request->getPost('sales_id');
 
-        //=========================================
-        // Basic Validation
-        //=========================================
 
-        if (empty($invoice)) {
+echo $salesId; // Debugging: Output the sales ID
 
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'Invoice number is required.',
-            ]);
-        }
+    exit; // Stop execution after logging for debugging purposes
 
-        if (empty($returnQty) || !is_array($returnQty)) {
 
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'Please enter return quantity.',
-            ]);
-        }
 
-        //=========================================
-        // Load Sale
-        //=========================================
+    // =========================================
+    // BASIC VALIDATION
+    // =========================================
 
-        $sale = $this->ProductSaleModel
-            ->where('sales_invoice', $invoice)
-            ->first();
+    if ($invoice === '') {
+        return $this->response->setJSON([
+            'status'  => 'error',
+            'message' => 'Invoice number is required.'
+        ]);
+    }
 
-        if (!$sale) {
+    if (empty($returnQty) || !is_array($returnQty)) {
+        return $this->response->setJSON([
+            'status'  => 'error',
+            'message' => 'Please enter return quantity.'
+        ]);
+    }
 
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'Sale invoice not found.',
-            ]);
-        }
+    // =========================================
+    // LOAD SALE
+    // =========================================
 
-        //=========================================
-        // Check Sale Already Fully Returned
-        //=========================================
+    $sale = $this->ProductSaleModel
+        ->where('sales_invoice', $invoice)
+        ->first();
 
-        if ($sale['return_status'] == 'FULL') {
+    if (!$sale) {
+        return $this->response->setJSON([
+            'status'  => 'error',
+            'message' => 'Sale invoice not found.'
+        ]);
+    }
 
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'This invoice is already fully returned.',
-            ]);
-        }
+    $salesId    = (int) $sale['sales_id'];
+    $customerId = !empty($sale['customer_id'])
+        ? (int) $sale['customer_id']
+        : null;
 
-        //=========================================
-        // Load Sale Details
-        //=========================================
+    // =========================================
+    // CHECK SALE RETURN STATUS
+    // =========================================
 
-        $saleDetails = $this->ProductSaleDetailsModel
-            ->where('sales_details_invoice', $invoice)
-            ->findAll();
+    if (($sale['return_status'] ?? 'NO_RETURN') === 'FULL') {
+        return $this->response->setJSON([
+            'status'  => 'error',
+            'message' => 'This invoice is already fully returned.'
+        ]);
+    }
 
-        if (!$saleDetails) {
+    // =========================================
+    // LOAD SALE DETAILS
+    // =========================================
 
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'Sale details not found.',
-            ]);
-        }
+    $saleDetails = $this->ProductSaleDetailsModel
+        ->where('sales_id', $salesId)
+        ->orderBy('sales_details_id', 'ASC')
+        ->findAll();
 
-        //=========================================
-        // Validate Return Qty
-        //=========================================
+    if (!$saleDetails) {
+        return $this->response->setJSON([
+            'status'  => 'error',
+            'message' => 'Sale details not found.'
+        ]);
+    }
 
-        $totalSoldQty = 0;
-        $totalReturnQty = 0;
+    // =========================================
+    // VALIDATE RETURN QUANTITIES
+    // IMPORTANT:
+    // JS uses return_qty[sales_details_id]
+    // =========================================
 
-        foreach ($saleDetails as $item) {
+    $totalReturnQty = 0;
 
-            $pid = $item['product_id'];
+    foreach ($saleDetails as $detail) {
 
-            $qty = isset($returnQty[$pid])
-            ? (float) $returnQty[$pid]
+        $salesDetailsId = (int) $detail['sales_details_id'];
+
+        $qty = isset($returnQty[$salesDetailsId])
+            ? (float) $returnQty[$salesDetailsId]
             : 0;
 
-            if ($qty < 0) {
+        if ($qty < 0) {
+            return $this->response->setJSON([
+                'status'  => 'error',
+                'message' => 'Return quantity cannot be negative.'
+            ]);
+        }
 
-                return $this->response->setJSON([
-                    'status' => 'error',
-                    'message' => 'Return quantity cannot be negative.',
-                ]);
-            }
+        if ($qty == 0) {
+            continue;
+        }
 
-            if ($qty == 0) {
+        $soldQty = (float) $detail['product_quantity_sold'];
+        $returnedQty = (float) ($detail['returned_qty'] ?? 0);
+
+        $availableQty = $soldQty - $returnedQty;
+
+        if ($availableQty <= 0) {
+            return $this->response->setJSON([
+                'status'  => 'error',
+                'message' => 'This product has already been fully returned.'
+            ]);
+        }
+
+        if ($qty > $availableQty) {
+            return $this->response->setJSON([
+                'status'  => 'error',
+                'message' => 'Return quantity exceeds available quantity.'
+            ]);
+        }
+
+        $totalReturnQty += $qty;
+    }
+
+    if ($totalReturnQty <= 0) {
+        return $this->response->setJSON([
+            'status'  => 'error',
+            'message' => 'Please enter at least one return quantity.'
+        ]);
+    }
+
+    // =========================================
+    // DETERMINE FULL / PARTIAL RETURN
+    // =========================================
+
+    $isFullReturn = true;
+
+    foreach ($saleDetails as $detail) {
+
+        $soldQty = (float) $detail['product_quantity_sold'];
+        $oldReturnedQty = (float) ($detail['returned_qty'] ?? 0);
+
+        $salesDetailsId = (int) $detail['sales_details_id'];
+
+        $newReturnQty = isset($returnQty[$salesDetailsId])
+            ? (float) $returnQty[$salesDetailsId]
+            : 0;
+
+        $finalReturnedQty = $oldReturnedQty + $newReturnQty;
+
+        if ($finalReturnedQty < $soldQty) {
+            $isFullReturn = false;
+            break;
+        }
+    }
+
+    $returnType = $isFullReturn ? 'FULL' : 'PARTIAL';
+
+    // =========================================
+    // START TRANSACTION
+    // =========================================
+
+    $db->transBegin();
+
+    try {
+
+        // =====================================
+        // CREATE RETURN MASTER
+        // =====================================
+
+        $returnInvoice = 'RET-' . date('YmdHis') . '-' . strtoupper(
+            substr(bin2hex(random_bytes(3)), 0, 6)
+        );
+
+        $this->returnSaleModel->insert([
+            'return_invoice'       => $returnInvoice,
+            'sales_id'             => $salesId,
+            'return_date'          => date('Y-m-d H:i:s'),
+            'return_type'          => $returnType,
+            'total_return_amount'  => 0,
+            'remarks'              => $reason ?: $remarks,
+            'return_by'            => session()->get('user_id'),
+        ]);
+
+        $returnId = $this->returnSaleModel->getInsertID();
+
+        if (!$returnId) {
+            throw new \Exception('Failed to create return transaction.');
+        }
+
+        // =====================================
+        // VARIABLES
+        // =====================================
+
+        $grandReturnAmount = 0;
+
+        // =====================================
+        // PROCESS EACH PRODUCT
+        // =====================================
+
+        foreach ($saleDetails as $detail) {
+
+            $salesDetailsId = (int) $detail['sales_details_id'];
+            $productId      = (int) $detail['product_id'];
+
+            $qty = isset($returnQty[$salesDetailsId])
+                ? (float) $returnQty[$salesDetailsId]
+                : 0;
+
+            if ($qty <= 0) {
                 continue;
             }
 
-            $soldQty = (float) $item['product_quantity_sold'];
+            $soldQty = (float) $detail['product_quantity_sold'];
+            $oldReturnedQty = (float) ($detail['returned_qty'] ?? 0);
 
-            $returnedQty = (float) $item['returned_qty'];
-
-            $availableQty = $soldQty - $returnedQty;
-
-            if ($availableQty <= 0) {
-
-                return $this->response->setJSON([
-                    'status' => 'error',
-                    'message' => 'Product already fully returned.',
-                ]);
-            }
+            $availableQty = $soldQty - $oldReturnedQty;
 
             if ($qty > $availableQty) {
-
-                return $this->response->setJSON([
-                    'status' => 'error',
-                    'message' => 'Return qty exceeds sold qty.',
-                ]);
+                throw new \Exception(
+                    'Return quantity exceeds available quantity for product ID ' . $productId
+                );
             }
 
-            $totalSoldQty += $soldQty;
-            $totalReturnQty += $qty;
-        }
+            // ----------------------------------
+            // UNIT SALE PRICE
+            // ----------------------------------
 
-        if ($totalReturnQty <= 0) {
+            $unitPrice = (float) $detail['unit_price'];
 
-            return $this->response->setJSON([
-                'status' => 'error',
-                'message' => 'Please enter at least one return quantity.',
+            // ----------------------------------
+            // RETURN AMOUNT
+            // ----------------------------------
+
+            $returnAmount = round($qty * $unitPrice, 2);
+
+            // ----------------------------------
+            // NEW RETURNED QTY
+            // ----------------------------------
+
+            $newReturnedQty = $oldReturnedQty + $qty;
+
+            $remainingQty = $soldQty - $newReturnedQty;
+
+            // ----------------------------------
+            // INSERT RETURN DETAILS
+            // ----------------------------------
+
+            $this->returnSaleDetailsModel->insert([
+                'return_id'         => $returnId,
+                'sales_details_id'  => $salesDetailsId,
+                'product_id'        => $productId,
+                'sold_qty'          => $soldQty,
+                'return_qty'        => $qty,
+                'remaining_qty'     => $remainingQty,
+                'unit_price'        => $unitPrice,
+                'total_return_amount' => $returnAmount,
+                'return_reason'     => $reason ?: null,
             ]);
+
+            // ----------------------------------
+            // UPDATE SALES DETAILS
+            // ----------------------------------
+
+            $this->ProductSaleDetailsModel
+                ->where('sales_details_id', $salesDetailsId)
+                ->set([
+                    'returned_qty' => $newReturnedQty
+                ])
+                ->update();
+
+            // ----------------------------------
+            // STOCK LEDGER
+            // RETURN = STOCK IN
+            // ----------------------------------
+
+            $currentStockRow = $db->query("
+                SELECT COALESCE(
+                    SUM(qty_in - qty_out),
+                    0
+                ) AS current_stock
+                FROM stock_ledger
+                WHERE product_id = ?
+            ", [$productId])->getRowArray();
+
+            $currentStock = (float) ($currentStockRow['current_stock'] ?? 0);
+
+            $newBalance = $currentStock + $qty;
+
+            $db->table('stock_ledger')->insert([
+                'product_id'       => $productId,
+                'transaction_type' => 'SALE_RETURN',
+                'reference_id'     => $returnId,
+                'qty_in'           => $qty,
+                'qty_out'          => 0,
+                'balance_qty'      => $newBalance,
+                'unit_cost'        => (float) ($detail['total_buy_price'] / max($soldQty, 1)),
+                'transaction_date' => date('Y-m-d H:i:s'),
+                'remarks'          => 'Sales Return : ' . $returnInvoice,
+                'created_by'       => session()->get('user_id'),
+            ]);
+
+            // ----------------------------------
+            // GRAND RETURN AMOUNT
+            // ----------------------------------
+
+            $grandReturnAmount += $returnAmount;
         }
 
-        //=========================================
-        // Full Return or Partial Return
-        //=========================================
+        $grandReturnAmount = round($grandReturnAmount, 2);
 
-        $isFullReturn = false;
+        // =====================================
+        // UPDATE RETURN MASTER
+        // =====================================
 
-        if ($totalSoldQty == ($totalReturnQty + array_sum(array_column($saleDetails, 'returned_qty')))) {
+        $this->returnSaleModel
+            ->update($returnId, [
+                'total_return_amount' => $grandReturnAmount
+            ]);
 
-            $isFullReturn = true;
+        // =====================================
+        // GET CURRENT CUSTOMER DUE
+        // =====================================
+
+        $currentDue = 0;
+
+        $dueRow = null;
+
+        if ($customerId !== null) {
+
+            $dueRow = $db->table('customer_due')
+                ->where('sales_id', $salesId)
+                ->where('customer_id', $customerId)
+                ->get()
+                ->getRowArray();
+
+            if ($dueRow) {
+
+                $currentDue =
+                    (float) $dueRow['due_amount']
+                    - (float) $dueRow['paid_amount'];
+
+                if ($currentDue < 0) {
+                    $currentDue = 0;
+                }
+            }
         }
 
-        //=========================================
-        // Start Transaction
-        //=========================================
+        // =====================================
+        // PAYMENT / DUE LOGIC
+        // =====================================
 
-        $db->transBegin();
+        $adjustDueAmount = 0;
+        $refundAmount = 0;
 
-        try {
+        /*
+        ---------------------------------------
+        CUSTOMER HAS OUTSTANDING DUE
+        ---------------------------------------
+        */
+
+        if ($currentDue > 0 && $customerId !== null && $dueRow) {
 
             /*
-            =====================================================
+            If return amount is less/equal to due,
+            adjust entire return against due.
+            */
 
-            PART-2 START HERE
+            if ($grandReturnAmount <= $currentDue) {
 
-            1. Insert return_sales
-            2. Get Return ID
-            এই Part-2 শেষে যা সম্পন্ন হবে
-            ✅ return_sales Insert
-            ✅ return_id Generate
-            ✅ return_sales_details Insert
-            ✅ sales_details.returned_qty Update
-            ✅ Total Return Amount Calculate ($grandReturnAmount)
+                $adjustDueAmount = $grandReturnAmount;
 
-            =====================================================
+                $refundAmount = 0;
+
+            } else {
+
+                /*
+                Due is fully adjusted.
+                Remaining amount is refunded.
+                */
+
+                $adjustDueAmount = $currentDue;
+
+                $refundAmount =
+                    $grandReturnAmount - $currentDue;
+            }
+        }
+
+        /*
+        ---------------------------------------
+        NO CUSTOMER DUE
+        ---------------------------------------
+        */
+
+        else {
+
+            $refundAmount = $grandReturnAmount;
+        }
+
+        $adjustDueAmount = round($adjustDueAmount, 2);
+        $refundAmount    = round($refundAmount, 2);
+
+        // =====================================
+        // UPDATE CUSTOMER DUE
+        // =====================================
+
+        if ($adjustDueAmount > 0 && $dueRow) {
+
+            /*
+             * Your current customer_due table has
+             * due_amount and paid_amount.
+             *
+             * We reduce due_amount here because
+             * there is currently no return_adjustment
+             * column in your schema.
              */
 
-            //=========================================
-            // Return Master Insert
-            //=========================================
+            $newDueAmount =
+                max(
+                    0,
+                    (float) $dueRow['due_amount']
+                    - $adjustDueAmount
+                );
 
-            $returnMaster = [
-                'sales_invoice' => $sale['sales_invoice'],
-                'customer_id' => $sale['customer_id'] ?? null,
-                'return_date' => date('Y-m-d'),
-                'return_type' => $isFullReturn ? 'FULL' : 'PARTIAL',
-                'return_status' => 'APPROVED',
-                'total_return_amount' => 0,
-                'refund_amount' => 0,
-                'adjust_due_amount' => 0,
-                'return_reason' => $reason,
-                'remarks' => $remarks,
-                'return_by' => session()->get('user_id'),
+            $db->table('customer_due')
+                ->where('due_id', $dueRow['due_id'])
+                ->update([
+                    'due_amount' => round($newDueAmount, 2)
+                ]);
+        }
+
+        // =====================================
+        // INSERT REFUND PAYMENT
+        // =====================================
+
+        if ($refundAmount > 0) {
+
+            /*
+             * Payment method must come from the
+             * return form.
+             */
+
+            if ($paymentType === '') {
+
+                throw new \Exception(
+                    'Please select a refund payment method.'
+                );
+            }
+
+            $allowedMethods = [
+                'Cash',
+                'Bank',
+                'Mobile Banking',
+                'Adjust Due'
             ];
 
-            $this->returnSaleModel->insert($returnMaster);
+            if (!in_array($paymentType, $allowedMethods, true)) {
 
-            $returnId = $this->returnSaleModel->getInsertID();
-
-            //=========================================
-            // Variables
-            //=========================================
-
-            $grandReturnAmount = 0;
-
-            //=========================================
-// Calculate Invoice Gross
-//=========================================
-
-            $invoiceGross = 0;
-
-            foreach ($saleDetails as $row) {
-                $invoiceGross += (float) $row['total_sale_price'];
-            }
-
-            //=========================================
-            // Loop Sale Details
-            //=========================================
-
-            foreach ($saleDetails as $detail) {
-
-                $productId = $detail['product_id'];
-
-                $qty = isset($returnQty[$productId])
-                ? (float) $returnQty[$productId]
-                : 0;
-
-                if ($qty <= 0) {
-                    continue;
-                }
-
-                $soldQty = (float) $detail['product_quantity_sold'];
-
-                $unitPrice = (float) $detail['unit_price'];
-
-                $lineSale = (float) $detail['total_sale_price'];
-
-                $lineBuy = (float) $detail['total_buy_price'];
-
-
-
-                //---------------------------------------
-// Allocate Invoice Discount/VAT
-//---------------------------------------
-
-$ratio = 0;
-
-if ($invoiceGross > 0) {
-    $ratio = $lineSale / $invoiceGross;
-}
-
-$lineDiscount = (float) $sale['product_discount'] * $ratio;
-$lineVat      = (float) $sale['product_vat'] * $ratio;
-$lineCharge   = (float) $sale['other_charge_on_all'] * $ratio;
-
-$lineNetAmount = $lineSale - $lineDiscount + $lineVat + $lineCharge;
-
-$perUnitNet = $soldQty > 0
-    ? ($lineNetAmount / $soldQty)
-    : 0;
-
-                //---------------------------------------
-                // Per Unit Buy Price
-                //---------------------------------------
-
-                $buyPerUnit = 0;
-
-                if ($soldQty > 0) {
-                    $buyPerUnit = $lineBuy / $soldQty;
-                }
-
-                //---------------------------------------
-                // Return Amount
-                //---------------------------------------
-
-                // $subtotal = $qty * $unitPrice;
-
-                // $buyAmount = $qty * $buyPerUnit;
-
-
-                $perUnitDiscount = $soldQty > 0
-                ? $lineDiscount / $soldQty
-                : 0;
-            
-            $perUnitVat = $soldQty > 0
-                ? $lineVat / $soldQty
-                : 0;
-
-
-                //---------------------------------------
-// Return Amount
-//---------------------------------------
-
-$subtotal = round($qty * $perUnitNet, 2);
-
-$buyAmount = round($qty * $buyPerUnit, 2);
-
-                //---------------------------------------
-                // Insert Return Details
-                //---------------------------------------
-
-                $this->returnSaleDetailsModel->insert([
-
-                    'return_id' => $returnId,
-
-                    'sales_invoice' => $sale['sales_invoice'],
-
-                    'sales_details_invoice' => $detail['sales_details_invoice'],
-
-                    'product_id' => $productId,
-
-                    'sold_qty' => $soldQty,
-
-                    'return_qty' => $qty,
-
-                    'unit_price' => $unitPrice,
-
-                    'buy_price' => $buyAmount,
-
-                    'sale_price' => $subtotal,
-                    'discount_amount' => round($perUnitDiscount * $qty, 2),
-
-                    'vat_amount' => round($perUnitVat * $qty, 2),
-
-                    'subtotal' => $subtotal,
-
-                ]);
-
-                //---------------------------------------
-                // Update Returned Qty
-                //---------------------------------------
-
-                $newReturnedQty = $detail['returned_qty'] + $qty;
-
-                $this->ProductSaleDetailsModel
-                    ->where('sales_details_id', $detail['sales_details_id'])
-                    ->set('returned_qty', $newReturnedQty)
-                    ->update();
-
-                //---------------------------------------
-                // Grand Return
-                //---------------------------------------
-
-                $grandReturnAmount += $subtotal;
-
+                throw new \Exception(
+                    'Invalid refund payment method.'
+                );
             }
 
             /*
-            =============================================
-
-            PART-3 START HERE
-
-            1. Due Adjustment
-            2. Refund Calculation
-            3. Update return_sales
-            এখানে আমরা করবো:
-
-            Due Adjustment
-            Refund Calculation
-            return_sales Update
-            return_payment Insert (যদি Refund থাকে)
-            sales.return_status Update
-            Transaction Commit / Rollback
-
-            =============================================
+             * If money is actually being refunded,
+             * Adjust Due is not applicable here.
              */
 
-            //=========================================
-            // Calculate Due & Refund
-            //=========================================
+            if ($paymentType === 'Adjust Due') {
 
-            $paidAmount = (float) ($sale['paid_amount'] ?? 0);
-
-            $dueAmount = (float) ($sale['due_amount'] ?? 0);
-
-            $refundAmount = 0;
-
-            $adjustDueAmount = 0;
-
-            /*
-            -------------------------------------------
-            Case-1
-            Due আছে
-            -------------------------------------------
-             */
-
-            if ($dueAmount > 0) {
-
-                if ($grandReturnAmount <= $dueAmount) {
-
-                    $adjustDueAmount = $grandReturnAmount;
-
-                    $refundAmount = 0;
-
-                    $dueAmount -= $grandReturnAmount;
-
-                } else {
-
-                    $adjustDueAmount = $dueAmount;
-
-                    $refundAmount = $grandReturnAmount - $dueAmount;
-
-                    $dueAmount = 0;
-                }
-
+                throw new \Exception(
+                    'Refund amount cannot use Adjust Due.'
+                );
             }
 
-            /*
-            -------------------------------------------
-            Case-2
-            No Due
-            -------------------------------------------
-             */
+            $this->ReturnPaymentModel->insert([
+                'return_id'    => $returnId,
+                'payment_type' => $paymentType,
+                'amount'       => $refundAmount,
+                'payment_date' => date('Y-m-d'),
+                'remarks'      => 'Sales Return Refund - ' . $returnInvoice,
+            ]);
+        }
 
-            else {
+        // =====================================
+        // UPDATE SALES RETURN STATUS
+        // =====================================
 
-                $refundAmount = $grandReturnAmount;
+        $finalStatus = 'FULL';
+
+        foreach (
+            $this->ProductSaleDetailsModel
+                ->where('sales_id', $salesId)
+                ->findAll()
+            as $item
+        ) {
+
+            $sold = (float) $item['product_quantity_sold'];
+            $returned = (float) ($item['returned_qty'] ?? 0);
+
+            if ($returned < $sold) {
+                $finalStatus = 'PARTIAL';
+                break;
             }
+        }
 
-            //=========================================
-            // Update Return Master
-            //=========================================
-
-            $this->returnSaleModel
-                ->update($returnId, [
-
-                    'total_return_amount' => $grandReturnAmount,
-
-                    'refund_amount' => $refundAmount,
-
-                    'adjust_due_amount' => $adjustDueAmount,
-
-                ]);
-
-            //=========================================
-            // Update Sales Due
-            //=========================================
-
-            $this->ProductSaleModel
-                ->update($sale['sales_id'], [
-
-                    'due_amount' => $dueAmount,
-
-                ]);
-
-            //=========================================
-            // Insert Refund Payment
-            //=========================================
-
-            if ($refundAmount > 0) {
-
-                $this->ReturnPaymentModel->insert([
-
-                    'return_id' => $returnId,
-
-                    'sales_invoice' => $sale['sales_invoice'],
-
-                    'customer_id' => $sale['customer_id'],
-
-                    'payment_date' => date('Y-m-d'),
-
-                    'payment_method' => $sale['payment_type'],
-
-                    'amount' => $refundAmount,
-
-                    'received_by' => session()->get('user_id'),
-
-                    'remarks' => 'Sales Return Refund',
-
-                ]);
-
-            }
-
-            //=========================================
-            // Update Return Status
-            //=========================================
-
-            $status = 'FULL';
-
-            foreach ($this->ProductSaleDetailsModel
-                ->where('sales_details_invoice', $invoice)
-                ->findAll() as $item) {
-
-                if ($item['returned_qty'] < $item['product_quantity_sold']) {
-
-                    $status = 'PARTIAL';
-
-                    break;
-                }
-            }
-
-            $this->ProductSaleModel
-                ->update($sale['sales_id'], [
-
-                    'return_status' => $status,
-
-                ]);
-
-            //=========================================
-            // Commit
-            //=========================================
-
-            if ($db->transStatus() === false) {
-
-                $db->transRollback();
-
-                return $this->response->setJSON([
-
-                    'status' => 'error',
-
-                    'message' => 'Return failed.',
-
-                ]);
-
-            }
-
-            $db->transCommit();
-
-            return $this->response->setJSON([
-
-                'status' => 'success',
-
-                'message' => $status == 'FULL'
-                ? 'Full return completed successfully.'
-                : 'Partial return completed successfully.',
-
+        $this->ProductSaleModel
+            ->update($salesId, [
+                'return_status' => $finalStatus
             ]);
 
-        } catch (\Exception $e) {
+        // =====================================
+        // TRANSACTION CHECK
+        // =====================================
+
+        if ($db->transStatus() === false) {
 
             $db->transRollback();
 
             return $this->response->setJSON([
-
-                'status' => 'error',
-
-                'message' => $e->getMessage(),
-
+                'status'  => 'error',
+                'message' => 'Return transaction failed.'
             ]);
         }
+
+        $db->transCommit();
+
+        // =====================================
+        // SUCCESS
+        // =====================================
+
+        return $this->response->setJSON([
+            'status'             => 'success',
+            'message'            => $finalStatus === 'FULL'
+                ? 'Full return completed successfully.'
+                : 'Partial return completed successfully.',
+            'return_invoice'     => $returnInvoice,
+            'return_id'          => $returnId,
+            'total_return'      => $grandReturnAmount,
+            'adjust_due_amount' => $adjustDueAmount,
+            'refund_amount'     => $refundAmount,
+            'return_status'     => $finalStatus,
+        ]);
+
+    } catch (\Throwable $e) {
+
+        $db->transRollback();
+
+        return $this->response->setJSON([
+            'status'  => 'error',
+            'message' => $e->getMessage()
+        ]);
     }
+}
+
+
 
 }
