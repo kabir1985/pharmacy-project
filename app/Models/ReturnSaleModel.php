@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use CodeIgniter\Model;
@@ -6,20 +7,24 @@ use CodeIgniter\Model;
 class ReturnSaleModel extends Model
 {
     protected $table = 'return_sales';
+
     protected $primaryKey = 'return_id';
-    protected $allowedFields = [ 
-                                 'sales_invoice',
-                                 'customer_type',
-                                 'return_date',
-                                 'payment_type',
-                                 'product_discount',
-                                 'product_vat',
-                                // 'discount_on_all',
-                                 'other_charge_on_all',
-                                 'paid_amount',
-                                 'due_amount',
-                                 'return_by',
-                                 'return_type',
-                                 'return_reason'
-                                ];
+
+    protected $returnType = 'array';
+
+    protected $allowedFields = [
+        'return_invoice',
+        'sales_id',
+        'return_date',
+        'return_type',
+        'total_return_amount',
+        'remarks',
+        'return_by',
+    ];
+
+    protected $useTimestamps = true;
+
+    protected $createdField = 'created_at';
+
+    protected $updatedField = 'updated_at';
 }

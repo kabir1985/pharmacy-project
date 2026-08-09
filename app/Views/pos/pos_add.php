@@ -3,179 +3,16 @@ echo $this->extend('layout');
 echo $this->section('content');
 ?>
 
-<?=$this->section('css')?>
-<style>
-
-.ui-autocomplete {
-    background: #fff;
-    border: 1px solid #17a2b8;
-    border-radius: 5px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 99999 !important;
-}
-
-.ui-menu-item-wrapper {
-    padding: 10px 15px;
-    border-bottom: 1px solid #f1f1f1;
-    cursor: pointer;
-}
-
-.ui-menu-item:last-child .ui-menu-item-wrapper {
-    border-bottom: none;
-}
-
-.ui-state-active,
-.ui-menu-item-wrapper.ui-state-active {
-    background: #17a2b8 !important;
-    color: #fff !important;
-    font-weight: 600;
-}
-    </style>
-<link rel="stylesheet" href="<?=base_url('assets/css/pos-add-view.css')?>">
-<?=$this->endSection()?>
-
 <div class="container-fluid">
 
-    <!--------------------Product Add Modal Start---------------------------------->
-    <div class="modal fade" id="productAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Product Title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- //////////////////NEw Design Start////////////////////////////////// -->
 
-    <!----------------------Product Add Modal End------------------------------------------>
-
-    <!----------------------------Customer Add Modal Start------------------------------>
-    <div class="modal fade" id="customerAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Customer Title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!----------------------------Customer Add modal End ------------------------------->
-
-
-    <!----------------------------Recent Transaction Modal Start------------------------------>
-    <div class="modal fade" id="recentTransaction" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Recent Transaction List</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!--------Data Table start Here------------------->
-                    <div class='row'>
-                        <div class='col-md-12'>
-                            <div class='tile collapseable show animate__animated  animate__fadeInUp'>
-                                <div class='tile-body'>
-                                    <div class='table-responsive'>
-                                        <table class='table table-hover table-bordered' id='sampleTable'>
-                                            <thead>
-                                                <tr>
-                                                    <th>Invoice No</th>
-                                                    <th>Invoice Date</th>
-                                                    <th>Quantity</th>
-                                                    <th>Unit Price</th>
-                                                    <th>Total Sale Price</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <?php
-foreach ($sales_summery_report_show as $row) {
-    //$date_time = $row['sales_date'];
-    //$new_date = date("Y-m-d H:i:s",strtotime($date_time));
-    $date = $row['sales_date'];
-    $new_date = explode(" ", $date);
-    //echo $new_date[0];
-    $str = explode('-', $new_date[0]);
-    $year = $str[0];
-    $month = $str[1];
-    $day = $str[2];
-    $only_date = $day . "/" . $month . "/" . $year;
-    ?>
-                                                <tr>
-                                                    <td>
-                                                        <?php echo $row['sales_invoice']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $only_date; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['Sale_Quantity']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['Unite_Price']; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $row['Total_Sale_Value']; ?>
-                                                    </td>
-                                                </tr>
-
-                                                <?php
-}
-?>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!---------Data Table End Here----------------->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!----------------------------Recent Transaction modal End ------------------------------->
-
-
-    <!-- //////////////////////////NEw Design Start////////////////////////////////////////////////////// -->
-    <div class="row">
+    <div class="row pos-main-row">
         <!----------------Customer show and Search Product Option-------------------------------->
-        <div class="col-sm-8">
-            <div class="row">
-                <div class="col-sm-5">
+        <div class="col-sm-8 col-12 pos-main-left">
+            <div class="row pos-top-controls">
+
+                <div class="col-md-5 col-12 pos-customer-control mb-2 mb-md-0">
                     <!-- <div class="input-group"> -->
                     <div class="input-group-append">
                         <select id="customer_id" class="form-control select2" name="customer_id">
@@ -197,7 +34,7 @@ foreach ($sales_summery_report_show as $row) {
                     <!-- </div> -->
                 </div>
 
-                <div class="col-sm-7 has-search">
+                <div class="col-md-7 col-12 has-search pos-product-search">
                     <div class="input-group-append">
                         <span class="fa fa-search form-control-feedback"></span>
                         <input type="text" class="form-control " id="search_product"
@@ -238,21 +75,18 @@ foreach ($sales_summery_report_show as $row) {
             </div>
 
 
-
-
-
             <div class="row">
                 <div class="col-sm-12">
                     <select id="product_category" class="form-control select2">
                         <option value="all_category">All Category</option>
                         <?php
-foreach ($product_category_show as $row) {
-    ?>
+                           foreach ($product_category_show as $row) {
+                         ?>
                         <option value="<?php echo $row["product_category_id"] ?>"><?php echo $row["category_name"] ?>
                         </option>
                         <?php
-}
-?>
+                            }
+                            ?>
                     </select>
 
                 </div>
@@ -262,23 +96,17 @@ foreach ($product_category_show as $row) {
                 <div class="col bg-white rounded text-black pt-2">
                     <div class="row all_products">
                         <?php
-foreach ($product_show_for_sale as $key => $row) {
-    ?>
+                        foreach ($product_show_for_sale as $key => $row) {
+                            ?>
                         <?php
-if ($row["total_stock"] > '0') {
-        ?>
+                        if ($row["total_stock"] > '0') {
+                                ?>
 
                         <div class="col-3 mb-3 text-center">
                             <!-- Product Image -->
-                            <!-- <img data-stock="<?php echo $row["total_stock"] ?>"
-                                        data-id="<?php echo $row["product_id"] ?>"
-                                        src="<?php echo base_url() ?>/public/uploads/<?php echo $row["product_image"] ?>"
-                                        class="img-thumbnail cart_item_image shadow-sm" alt="<?php echo $row["product_name"] ?>"
-                                        style="width: 100px; height: 80px; object-fit: cover;"> -->
-
                             <img data-stock="<?=$row['total_stock']?>" data-id="<?=$row['product_id']?>" src="<?=!empty($row['product_image'])
-        ? base_url('public/uploads/' . $row['product_image'])
-        : base_url('public/uploads/default-medicine.png')?>"
+                            ? base_url('public/uploads/' . $row['product_image'])
+                            : base_url('public/uploads/default-medicine.png')?>"
                                 class="img-thumbnail cart_item_image shadow-sm" alt="<?=$row['product_name']?>"
                                 style="width:100px;height:80px;object-fit:cover;">
 
@@ -295,9 +123,9 @@ if ($row["total_stock"] > '0') {
                         </div>
 
                         <?php
-}
-}
-?>
+                        }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -305,7 +133,7 @@ if ($row["total_stock"] > '0') {
         </div>
         <!----------------Customer show and Search Product Option End-------------------------------->
 
-        <div class="col-4 mb-2">
+        <div class="col-lg-4 col-12 mb-2 pos-main-right">
 
             <div class="card text-dark bg-light mb-3">
                 <div class="card-header">
@@ -327,7 +155,9 @@ if ($row["total_stock"] > '0') {
                         <strong id="subTotalCost">0.00</strong>
                     </div>
                     <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">
-                    <div class="productVatDiscountSection" style="display:none;">
+
+
+                    <!-- <div class="productVatDiscountSection" style="display:none;">
 
                         <div class="charge-row text-danger">
                             <span class="charge-label">(-)Discount</span>
@@ -363,6 +193,60 @@ if ($row["total_stock"] > '0') {
                             value="0.00" oninput="calculateotherCharge()">
 
                         <span id="otherChargeOnTotalPrice" class="charge-total">0.00</span>
+
+                    </div> -->
+
+
+                    <div class="productVatDiscountSection" style="display:none;">
+
+                        <div class="charge-row text-danger">
+
+                            <span class="charge-label">
+                                (-) Discount
+                            </span>
+
+                            <select id="productDiscountType" class="form-select form-select-sm charge-type"
+                                onchange="calculateDiscountEachProdcut()">
+
+                                <option value="%">%</option>
+                                <option value="flat">Flat</option>
+
+                            </select>
+
+                            <input type="text" id="discount_apply" class="form-control form-control-sm charge-input">
+
+                            <span id="productDiscount" class="charge-total">
+                                0.00
+                            </span>
+
+                        </div>
+
+                        <hr style="border:0;border-top:1px dashed #b5b5b5;margin:4px 0;">
+
+                    </div>
+
+
+                    <div class="charge-row text-success">
+
+                        <span class="charge-label">
+                            (+) Other Charge
+                        </span>
+
+                        <select id="otherCharge" class="form-select form-select-sm charge-type"
+                            onchange="calculateotherCharge()">
+
+                            <option value="%">%</option>
+                            <option value="flat">Flat</option>
+
+                        </select>
+
+                        <input type="number" id="otherChargeValue"
+                            class="form-control form-control-sm charge-input extra-fields" value="0.00"
+                            oninput="calculateotherCharge()">
+
+                        <span id="otherChargeOnTotalPrice" class="charge-total">
+                            0.00
+                        </span>
 
                     </div>
 
@@ -427,7 +311,7 @@ if ($row["total_stock"] > '0') {
                                                 <strong><?=$sale['hold_id']?></strong><br>
                                                 <small><?=$sale['customer_id']?></small>
                                             </div>
-                                
+
 
                                             <div class="btn-group">
                                                 <a href="javascript:void(0)" class="btn btn-sm btn-primary resume-sale"
@@ -462,6 +346,151 @@ if ($row["total_stock"] > '0') {
 
     </div>
     <!-- ////////////////////////////////////New Design end/////////////////////////////////////////// -->
+
+    <!-- Recent Transaction Modal -->
+    <div class="modal fade" id="recentTransaction" tabindex="-1" role="dialog" aria-labelledby="recentTransactionLabel"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered recent-transaction-modal" role="document">
+
+            <div class="modal-content">
+
+                <!-- Header -->
+                <div class="modal-header">
+
+                    <h5 class="modal-title" id="recentTransactionLabel">
+                        <i class="fa fa-list mr-1"></i>
+                        Recent Transaction List
+                    </h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                        <span aria-hidden="true">&times;</span>
+
+                    </button>
+
+                </div>
+
+
+                <!-- Body -->
+                <div class="modal-body recent-transaction-body">
+
+                    <div class="recent-transaction-wrapper">
+
+                        <div class="table-responsive recent-transaction-table-wrapper">
+
+                            <table class="table table-hover table-bordered mb-0" id="sampleTable">
+
+                                <thead>
+                                    <tr>
+                                        <th>Invoice No</th>
+                                        <th>Invoice Date</th>
+                                        <th>Quantity</th>
+                                        <th>Unit Price</th>
+                                        <th>Total Sale Price</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <?php foreach ($sales_summery_report_show as $row): ?>
+
+                                    <?php
+
+                                    $date = $row['sales_date'];
+
+                                    $new_date = explode(" ", $date);
+
+                                    $str = explode('-', $new_date[0]);
+
+                                    $year  = $str[0];
+                                    $month = $str[1];
+                                    $day   = $str[2];
+
+                                    $only_date = $day . "/" . $month . "/" . $year;
+
+                                    ?>
+
+                                    <tr>
+
+                                        <td>
+                                            <?=esc($row['sales_invoice'])?>
+                                        </td>
+
+                                        <td>
+                                            <?=esc($only_date)?>
+                                        </td>
+
+                                        <td>
+                                            <?=esc($row['Sale_Quantity'])?>
+                                        </td>
+
+                                        <td>
+                                            <?=esc($row['Unite_Price'])?>
+                                        </td>
+
+                                        <td>
+                                            <?=esc($row['Total_Sale_Value'])?>
+                                        </td>
+
+                                    </tr>
+
+                                    <?php endforeach; ?>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Footer -->
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+
+                        Close
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!----------------------------Recent Transaction modal End ------------------------------->
+
+
+
+    <!----------------------------Customer Add Modal Start------------------------------>
+    <div class="modal fade" id="customerAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Customer Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------------Customer Add modal End ------------------------------->
+
 
     <!-------------------------- Modal for New Customer Add------------------------------------>
     <div class="modal fade" id="CustomerAdd" tabindex="-1" role="dialog" aria-hidden="true">
@@ -575,39 +604,36 @@ if ($row["total_stock"] > '0') {
 
 </div>
 
-<?php
-echo $this->endSection();
-?>
-
+<?= $this->endSection();?>
 
 <?=$this->section('css')?>
+<link rel="stylesheet" href="<?=base_url('assets/css/pos-add-view.css')?>">
 <link rel="stylesheet" href="<?=base_url('assets/css/pos-add.css')?>">
+<link rel="stylesheet" href="<?=base_url('assets/css/responsive-view.css')?>">
 <?=$this->endSection()?>
 
-<?php
-echo $this->section('scripts');
-?>
+<?= $this->section('scripts');?>
 
- <script src="<?= base_url('assets/js/jquery.mycart.js') ?>"></script>
+<script src="<?= base_url('assets/js/jquery.mycart.js') ?>"></script>
 <script src="<?= base_url('assets/js/jquery-ui.min.js') ?>"></script>
 
 <script>
 window.APP_URLS = {
-    productSearch   : "<?= site_url('pos/product-search') ?>",
-    posSale         : "<?= site_url('pos/sale') ?>",
-    holdSale        : "<?= site_url('pos/hold-sale') ?>",
-    deleteHoldSale  : "<?= site_url('pos/delete-held-sale') ?>",
-    resumeSale      : "<?= site_url('pos/resume-sale') ?>",
-    filterProduct   : "<?= site_url('pos/filterProducts') ?>",
-    updateHoldSale  : "<?= site_url('pos/update-hold-sale') ?>",
-    update_hold_sale : "<?= site_url('pos/update_hold_sale')?>",
-    invoiceBase     : "<?= rtrim(base_url(), '/') ?>/invoice/",
-    successSound   : "<?= base_url('public/sounds/success.mp3') ?>",
-    warningSound   : "<?= base_url('public/sounds/warning.mp3') ?>"
+    productSearch: "<?= site_url('pos/product-search') ?>",
+    posSale: "<?= site_url('pos/sale') ?>",
+    holdSale: "<?= site_url('pos/hold-sale') ?>",
+    deleteHoldSale: "<?= site_url('pos/delete-held-sale') ?>",
+    resumeSale: "<?= site_url('pos/resume-sale') ?>",
+    filterProduct: "<?= site_url('pos/filterProducts') ?>",
+    updateHoldSale: "<?= site_url('pos/update-hold-sale') ?>",
+    update_hold_sale: "<?= site_url('pos/update_hold_sale')?>",
+    invoiceBase: "<?= rtrim(base_url(), '/') ?>/invoice/",
+    successSound: "<?= base_url('public/sounds/success.mp3') ?>",
+    warningSound: "<?= base_url('public/sounds/warning.mp3') ?>"
 };
 
 window.APP = {
-    productsList : <?= json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>
+    productsList: <?= json_encode($product_show_for_sale, JSON_PRETTY_PRINT) ?>
 
     //console.log('Products List:', window.APP.productsList);
 };
@@ -617,6 +643,4 @@ console.log('Products List:', window.APP.productsList);
 
 <script src="<?= base_url('assets/js/pos-add.js') ?>"></script>
 
-<?php
-echo $this->endSection();
-?>
+<?= $this->endSection();?>

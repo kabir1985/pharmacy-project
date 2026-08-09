@@ -1,0 +1,741 @@
+
+/* =========================================================
+   POS RESPONSIVE DESIGN
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+.pos-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* -------------------------
+   Search / Customer
+------------------------- */
+
+.pos-top-controls {
+    width: 100%;
+}
+
+.pos-customer-control,
+.pos-product-search {
+    width: 100%;
+}
+
+.pos-product-search .input-group-append,
+.pos-customer-control .input-group-append {
+    width: 100%;
+}
+
+.pos-product-search input {
+    min-width: 0;
+}
+
+/* -------------------------
+   Product Grid
+------------------------- */
+
+.all_products {
+    width: 100%;
+    margin: 0;
+}
+
+.all_products>.product-card {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+/* -------------------------
+   Product Image
+------------------------- */
+
+.cart_item_image {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* -------------------------
+   Cart Table
+------------------------- */
+
+.cart-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.cart-table-wrapper table {
+    min-width: 760px;
+}
+
+.cart-table-wrapper th,
+.cart-table-wrapper td {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* -------------------------
+   Sale Summary
+------------------------- */
+
+.sale-summary-card {
+    width: 100%;
+}
+
+.sale-summary-card .card-header h2 {
+    font-size: 1.35rem;
+    margin: 0;
+}
+
+/* .charge-row {
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) 70px 90px 80px;
+    gap: 6px;
+    align-items: center;
+}
+
+.charge-label {
+    white-space: nowrap;
+}
+
+.charge-type,
+.charge-input,
+.charge-total {
+    min-width: 0;
+}
+
+.charge-total {
+    text-align: right;
+    font-weight: 600;
+} */
+
+/* ================================
+   Charge Rows
+================================ */
+
+.charge-row {
+    display: grid;
+    grid-template-columns: minmax(110px, 1fr) 70px 90px 80px;
+    gap: 6px;
+    align-items: center;
+    width: 100%;
+}
+
+.charge-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.charge-type,
+.charge-input {
+    width: 100%;
+    min-width: 0;
+}
+
+.charge-total {
+    width: 100%;
+    text-align: right;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+
+/* ================================
+   Tablet
+================================ */
+
+@media (max-width: 767.98px) {
+
+    .charge-row {
+        grid-template-columns: minmax(100px, 1fr) 65px 85px 75px;
+        gap: 5px;
+    }
+
+    .charge-label {
+        font-size: 13px;
+    }
+
+    .charge-type,
+    .charge-input {
+        font-size: 13px;
+    }
+
+    .charge-total {
+        font-size: 13px;
+    }
+}
+
+
+/* ================================
+   Mobile
+================================ */
+
+@media (max-width: 575.98px) {
+
+    .charge-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 6px;
+    }
+
+    /* Label occupies full row */
+    .charge-label {
+        grid-column: 1 / -1;
+        font-size: 13px;
+        margin-bottom: 2px;
+    }
+
+    .charge-type,
+    .charge-input,
+    .charge-total {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .charge-type,
+    .charge-input {
+        height: 34px;
+        font-size: 13px;
+    }
+
+    .charge-total {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 34px;
+        font-size: 13px;
+    }
+}
+
+
+/* ================================
+   Very Small Phones
+================================ */
+
+@media (max-width: 380px) {
+
+    .charge-row {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 4px;
+    }
+
+    .charge-label {
+        font-size: 12px;
+    }
+
+    .charge-type,
+    .charge-input {
+        height: 32px;
+        padding: 3px 5px;
+        font-size: 12px;
+    }
+
+    .charge-total {
+        height: 32px;
+        font-size: 12px;
+    }
+}
+
+
+
+
+.sale-summary-card input {
+    max-width: 100%;
+}
+
+/* -------------------------
+   Paid / Due
+------------------------- */
+
+.payment-row {
+    display: flex;
+    align-items: center;
+}
+
+.payment-input {
+    width: 100%;
+    max-width: 150px;
+    margin-left: auto;
+}
+
+/* -------------------------
+   Held Sales
+------------------------- */
+
+.held-sale-list .list-group-item {
+    gap: 10px;
+}
+
+.held-sale-list .btn-group {
+    flex-shrink: 0;
+}
+
+/* -------------------------
+   Autocomplete
+------------------------- */
+
+.ui-autocomplete {
+    background: #fff;
+    border: 1px solid #17a2b8;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 99999 !important;
+    max-width: 100vw;
+}
+
+.ui-menu-item-wrapper {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f1f1f1;
+    cursor: pointer;
+}
+
+.ui-menu-item:last-child .ui-menu-item-wrapper {
+    border-bottom: none;
+}
+
+.ui-state-active,
+.ui-menu-item-wrapper.ui-state-active {
+    background: #17a2b8 !important;
+    color: #fff !important;
+    font-weight: 600;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .pos-main-left {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .pos-main-right {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-top: 15px;
+    }
+
+    /* .charge-row {
+        grid-template-columns: 1fr 70px 100px 90px;
+    } */
+
+    .all_products>.product-card {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .container-fluid {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .pos-top-controls>div {
+        margin-bottom: 8px;
+    }
+
+    .all_products>.product-card {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+
+    /* 
+    .charge-row {
+        grid-template-columns: 1fr 65px 90px 80px;
+    } */
+
+    .sale-summary-card .card-body {
+        padding: 12px;
+    }
+
+    .recent-transaction-table {
+        min-width: 650px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .container-fluid {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    /* Customer + Search */
+
+    .pos-top-controls {
+        margin-bottom: 8px;
+    }
+
+    .pos-top-controls>div {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    /* Product grid */
+
+    .all_products>.product-card {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .cart_item_image {
+        width: 80px !important;
+        height: 65px !important;
+    }
+
+    .product-name {
+        font-size: .72rem !important;
+    }
+
+    .product-price {
+        font-size: .7rem !important;
+    }
+
+    /* Cart */
+
+    .cart-table-wrapper {
+        margin-left: -5px;
+        margin-right: -5px;
+        width: calc(100% + 10px);
+    }
+
+    .cart-table-wrapper table {
+        min-width: 700px;
+        font-size: 12px;
+    }
+
+    .cart-table-wrapper th,
+    .cart-table-wrapper td {
+        padding: 6px;
+    }
+
+    /* Category */
+
+    #product_category {
+        margin-bottom: 8px;
+    }
+
+    /* Sale summary */
+
+    .sale-summary-card .card-header {
+        padding: 10px;
+    }
+
+    .sale-summary-card .card-header h2 {
+        font-size: 1.2rem;
+    }
+
+    /* .charge-row {
+        grid-template-columns: 1fr 55px 85px 75px;
+        gap: 4px;
+        font-size: 12px;
+    }
+
+    .charge-label {
+        font-size: 12px;
+    }
+
+    .charge-type,
+    .charge-input {
+        font-size: 12px;
+        padding: 4px;
+    }
+
+    .charge-total {
+        font-size: 12px;
+    } */
+
+    /* Paid / Due */
+
+    .payment-row {
+        display: flex;
+        align-items: center;
+    }
+
+    .payment-row .col-sm-4 {
+        width: 35%;
+        flex: 0 0 35%;
+    }
+
+    .payment-row .col-sm-8 {
+        width: 65%;
+        flex: 0 0 65%;
+    }
+
+    .payment-input {
+        max-width: 130px;
+        margin-left: auto;
+    }
+
+    /* Buttons */
+
+    #productSale,
+    #holdSale {
+        min-height: 44px;
+    }
+
+    .btn {
+        min-height: 38px;
+    }
+
+    /* Held sales */
+
+    .held-sale-list .list-group-item {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+
+    .held-sale-list .btn-group {
+        width: 100%;
+    }
+
+    .held-sale-list .btn-group .btn {
+        flex: 1;
+    }
+
+    /* Modal */
+
+    .modal-dialog {
+        margin: 8px;
+    }
+
+    .modal-dialog.modal-lg {
+        max-width: calc(100% - 16px);
+    }
+
+    .modal-body {
+        padding: 12px;
+    }
+
+    /* Recent transaction */
+
+    #recentTransaction .table-responsive {
+        overflow-x: auto;
+    }
+
+    #recentTransaction table {
+        min-width: 650px;
+    }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .all_products>.product-card {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .cart_item_image {
+        width: 70px !important;
+        height: 58px !important;
+    }
+
+    /* .charge-row {
+        grid-template-columns: 1fr 50px 75px 65px;
+    }
+
+    .charge-label {
+        font-size: 11px;
+    }
+
+    .charge-total {
+        font-size: 11px;
+    } */
+
+    .sale-summary-card .card-body {
+        padding: 8px;
+    }
+}
+
+
+
+
+/* =========================================================
+   RECENT TRANSACTION MODAL
+========================================================= */
+
+.recent-transaction-modal {
+    width: 95%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.recent-transaction-modal .modal-content {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.recent-transaction-modal .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+}
+
+.recent-transaction-modal .modal-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.recent-transaction-modal .modal-body {
+    padding: 12px;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.recent-transaction-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.recent-transaction-table-wrapper table {
+    width: 100%;
+    min-width: 650px;
+    margin-bottom: 0;
+}
+
+.recent-transaction-table-wrapper th,
+.recent-transaction-table-wrapper td {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.recent-transaction-table-wrapper th {
+    font-weight: 600;
+}
+
+.recent-transaction-table-wrapper td {
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 575.98px) {
+
+    .recent-transaction-modal {
+        width: calc(100% - 12px);
+        max-width: none;
+        margin: 6px auto;
+    }
+
+    .recent-transaction-modal .modal-content {
+        border-radius: 6px;
+    }
+
+    .recent-transaction-modal .modal-header {
+        padding: 10px 12px;
+    }
+
+    .recent-transaction-modal .modal-title {
+        font-size: 16px;
+    }
+
+    .recent-transaction-modal .modal-body {
+        padding: 8px;
+    }
+
+    .recent-transaction-table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .recent-transaction-table-wrapper table {
+        min-width: 650px;
+        font-size: 12px;
+    }
+
+    .recent-transaction-table-wrapper th,
+    .recent-transaction-table-wrapper td {
+        padding: 7px 8px;
+        white-space: nowrap;
+    }
+
+    .recent-transaction-modal .modal-footer {
+        padding: 8px 12px;
+    }
+
+    .recent-transaction-modal .modal-footer .btn {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .recent-transaction-modal {
+        width: calc(100% - 8px);
+        margin: 4px auto;
+    }
+
+    .recent-transaction-modal .modal-title {
+        font-size: 15px;
+    }
+
+    .recent-transaction-modal .modal-body {
+        padding: 6px;
+    }
+
+    .recent-transaction-table-wrapper table {
+        min-width: 620px;
+        font-size: 11px;
+    }
+
+    .recent-transaction-table-wrapper th,
+    .recent-transaction-table-wrapper td {
+        padding: 6px;
+    }
+
+}
+
+.recent-transaction-table-wrapper {
+    overflow-x: auto;
+}
+
+.recent-transaction-table-wrapper table {
+    min-width: 650px;
+}
