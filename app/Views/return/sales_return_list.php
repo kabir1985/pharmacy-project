@@ -193,7 +193,7 @@
 
                 success: function (products) {
 
-                    console.log('Products:', products);
+                   // console.log('Products:', products);
 
                     let html = '';
 

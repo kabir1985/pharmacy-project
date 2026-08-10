@@ -46,122 +46,118 @@
 
                     <table class="table table-bordered table-sm dt-responsive nowrap" id="sampleTable" width="100%">
 
-                    <thead>
-<tr>
-    <th>Image</th>
-    <th>Product Name</th>
-    <th>Category</th>
-    <th>Brand</th>
-    <th>Group</th>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Brand</th>
+                                <th>Group</th>
 
-    <th>Current Stock</th>
-    <th>Purchase Price</th>
-    <th>Selling Price</th>
-    <th>Status</th>
-    <th width="100">Action</th>
-</tr>
-</thead>
+                                <th>Current Stock</th>
+                                <th>Purchase Price</th>
+                                <th>Selling Price</th>
+                                <th>Status</th>
+                                <th width="100">Action</th>
+                            </tr>
+                        </thead>
 
-                       <tbody>
+                        <tbody>
 
-<?php if (!empty($product_show)): ?>
+                            <?php if (!empty($product_show)): ?>
 
-<?php foreach ($product_show as $product): ?>
+                                <?php foreach ($product_show as $product): ?>
 
-<tr>
+                                    <tr>
 
-    <td width="70">
+                                        <td width="70">
 
-        <img src="<?= base_url('public/uploads/' . (!empty($product['product_image']) ? $product['product_image'] : 'default-medicine.png')) ?>"
-            class="img-thumbnail"
-            style="width:60px;height:60px;object-fit:cover;">
+                                            <img src="<?= base_url('public/uploads/' . (!empty($product['product_image']) ? $product['product_image'] : 'default-medicine.png')) ?>"
+                                                class="img-thumbnail" style="width:60px;height:60px;object-fit:cover;">
 
-    </td>
+                                        </td>
 
-    <td><?= esc($product['product_name']) ?></td>
+                                        <td><?= esc($product['product_name']) ?></td>
 
-    <td><?= esc($product['category_name']) ?></td>
-    <td><?= esc($product['product_brand_name']) ?></td>
-    <td><?= esc($product['group_name']) ?></td>
+                                        <td><?= esc($product['category_name']) ?></td>
+                                        <td><?= esc($product['product_brand_name']) ?></td>
+                                        <td><?= esc($product['group_name']) ?></td>
 
-    <td class="text-end">
-        <?= number_format($product['total_stock'],2) ?>
-    </td>
+                                        <td class="text-end">
+                                            <?= number_format($product['total_stock'], 2) ?>
+                                        </td>
 
-    <td class="text-end">
-        <?= number_format($product['purchase_price_with_vat'],2) ?>
-    </td>
+                                        <td class="text-end">
+                                            <?= number_format($product['purchase_price_with_vat'], 2) ?>
+                                        </td>
 
-    <td class="text-end">
-        <?= number_format($product['selling_price'],2) ?>
-    </td>
+                                        <td class="text-end">
+                                            <?= number_format($product['selling_price'], 2) ?>
+                                        </td>
 
 
-    <td>
+                                        <td>
 
-        <?php if($product['status']=='active'): ?>
+                                            <?php if ($product['status'] == 'active'): ?>
 
-            <span class="badge bg-success">Active</span>
+                                                <span class="badge bg-success">Active</span>
 
-        <?php else: ?>
+                                            <?php else: ?>
 
-            <span class="badge bg-danger">Inactive</span>
+                                                <span class="badge bg-danger">Inactive</span>
 
-        <?php endif; ?>
+                                            <?php endif; ?>
 
-    </td>
+                                        </td>
 
-    <td>
+                                        <td>
 
-        <div class="btn-group btn-group-sm">
+                                            <div class="btn-group btn-group-sm">
 
-            <a href="#"
-                class="btn btn-primary btn-edit"
+                                                <a href="#" class="btn btn-primary btn-edit"
+                                                    data-product_id="<?= esc($product['product_id']) ?>"
+                                                    data-product_name="<?= esc($product['product_name']) ?>"
+                                                    data-product_category="<?= esc($product['product_category']) ?>"
+                                                    data-product_brand="<?= esc($product['product_brand']) ?>"
+                                                    data-product_group="<?= esc($product['product_group']) ?>"
+                                                    data-product_strength="<?= esc($product['product_strength']) ?>"
+                                                    data-product_unit="<?= esc($product['product_unit']) ?>"
+                                                    data-sku="<?= esc($product['sku']) ?>"
+                                                    data-barcode="<?= esc($product['barcode']) ?>"
+                                                    data-alert_quantity="<?= esc($product['alert_quantity']) ?>"
+                                                    data-status="<?= esc($product['status']) ?>"
+                                                    data-product_image="<?= esc($product['product_image']) ?>">
 
-                data-product_id="<?= esc($product['product_id']) ?>"
-                data-product_name="<?= esc($product['product_name']) ?>"
-                data-product_category="<?= esc($product['product_category']) ?>"
-                data-product_brand="<?= esc($product['product_brand']) ?>"
-                data-product_group="<?= esc($product['product_group']) ?>"
-                data-product_strength="<?= esc($product['product_strength']) ?>"
-                data-product_unit="<?= esc($product['product_unit']) ?>"
-                data-sku="<?= esc($product['sku']) ?>"
-                data-barcode="<?= esc($product['barcode']) ?>"
-                data-alert_quantity="<?= esc($product['alert_quantity']) ?>"
-                data-status="<?= esc($product['status']) ?>"
-                data-product_image="<?= esc($product['product_image']) ?>">
+                                                    <i class="fa fa-edit"></i>
 
-                <i class="fa fa-edit"></i>
+                                                </a>
 
-            </a>
+                                                <a href="#" class="btn btn-danger btn-delete"
+                                                    data-delete_id="<?= esc($product['product_id']) ?>">
 
-            <a href="#"
-                class="btn btn-danger btn-delete"
-                data-delete_id="<?= esc($product['product_id']) ?>">
+                                                    <i class="fa fa-trash"></i>
 
-                <i class="fa fa-trash"></i>
+                                                </a>
 
-            </a>
+                                            </div>
 
-        </div>
+                                        </td>
 
-    </td>
+                                    </tr>
 
-</tr>
+                                <?php endforeach; ?>
 
-<?php endforeach; ?>
+                            <?php else: ?>
 
-<?php else: ?>
+                                <tr>
+                                    <td colspan="10" class="text-center text-muted">
+                                        No Products Found.
+                                    </td>
+                                </tr>
 
-<tr>
-    <td colspan="10" class="text-center text-muted">
-        No Products Found.
-    </td>
-</tr>
+                            <?php endif; ?>
 
-<?php endif; ?>
-
-</tbody>
+                        </tbody>
 
                     </table>
 
@@ -179,10 +175,10 @@
             <!-----for image upload------------------->
             <?php if (session('msg')): ?>
             <div class="alert alert-success alert-dismissible">
-                <?=session('msg')?>
+                <?= session('msg') ?>
                 <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
             </div>
-            <?php endif?>
+            <?php endif ?>
             <!-----for image upload------------------->
             <form id="NewProductAdd_Form" method='post' action="<?= site_url('products/create') ?>"
                 accept-charset="utf-8" enctype="multipart/form-data">
@@ -235,9 +231,9 @@
 
                                             <?php foreach ($category_show as $category): ?>
 
-                                            <option value="<?=$category['product_category_id']?>">
-                                                <?=$category['category_name']?>
-                                            </option>
+                                                <option value="<?= $category['product_category_id'] ?>">
+                                                    <?= $category['category_name'] ?>
+                                                </option>
 
                                             <?php endforeach; ?>
 
@@ -295,7 +291,7 @@
 
                                         <select id="product_group" name="product_group" class="form-control" required>
                                             <option value="">Select Group </option>
-                                            <?php foreach ($group_show as $group) : ?>
+                                            <?php foreach ($group_show as $group): ?>
                                             <option value="<?= esc($group['product_group_id']) ?>">
                                                 <?= esc($group['group_name']) ?>
                                             </option>
@@ -325,7 +321,7 @@
 
                                         <select id="strength" name="strength" class="form-control" required>
                                             <option value="">Select Strength </option>
-                                            <?php foreach ($strength_show as $strength) :?>
+                                            <?php foreach ($strength_show as $strength): ?>
                                             <option value="<?= esc($strength['strength_id']) ?>">
                                                 <?= esc($strength['strength_name']) ?>
                                             </option>
@@ -357,12 +353,12 @@
 
                                         <select id="product_unit" name="product_unit" class="form-control" required>
                                             <option value="">Select Unit </option>
-                                            <?php foreach ($unit_show as $unit) : ?>
+                                            <?php foreach ($unit_show as $unit): ?>
                                             <option value="<?= esc($unit['product_unit_id']) ?>">
                                                 <?= esc($unit['product_unit_name']) ?>
                                             </option>
 
-                                            <?php endforeach;?>
+                                            <?php endforeach; ?>
                                         </select>
 
                                         <div class="input-group-append">
@@ -479,20 +475,20 @@
                         <div class='form-group col-md-4'>
                             <label>Category Name</label>
                             <select id="product_category" name="product_category" class="form-control">
-                                <?php foreach ($category_show as $category) :?>
-                                <option value="<?= esc($category['product_category_id']) ?>">
-                                    <?= esc($category['category_name']) ?>
-                                </option>
+                                <?php foreach ($category_show as $category): ?>
+                                    <option value="<?= esc($category['product_category_id']) ?>">
+                                        <?= esc($category['category_name']) ?>
+                                    </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Brand</label>
                             <select id="product_brand" name="product_brand" class="form-control">
-                                <?php foreach ($brand_show as $brand) :?>
-                                <option value="<?= esc($brand['brand_id']) ?>"><?= esc($brand['product_brand_name']) ?>
-                                </option>
-                                <?php endforeach;?>
+                                <?php foreach ($brand_show as $brand): ?>
+                                    <option value="<?= esc($brand['brand_id']) ?>"><?= esc($brand['product_brand_name']) ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -500,29 +496,29 @@
                         <div class='form-group col-md-4'>
                             <label>Group</label>
                             <select id="product_group" name="product_group" class="form-control">
-                                <?php foreach ($group_show as $group) :?>
-                                <option value="<?= esc($group['product_group_id']) ?>"><?= esc($group['group_name']) ?>
-                                </option>
-                                <?php endforeach;?>
+                                <?php foreach ($group_show as $group): ?>
+                                    <option value="<?= esc($group['product_group_id']) ?>"><?= esc($group['group_name']) ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>Unit</label>
                             <select id="product_unit" name="product_unit" class="form-control">
-                                <?php foreach ($unit_show as $unit) :?>
-                                <option value="<?= esc($unit['product_unit_id']) ?>">
-                                    <?= esc($unit['product_unit_name']) ?>
-                                </option>
-                                <?php endforeach;?>
+                                <?php foreach ($unit_show as $unit): ?>
+                                    <option value="<?= esc($unit['product_unit_id']) ?>">
+                                        <?= esc($unit['product_unit_name']) ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class='form-group col-md-4'>
                             <label>TAX</label>
                             <select id="tax_percentage" name="tax_percentage" class="form-control">
-                                <?php foreach ($tax_show as $tax) :?>
-                                <option value="<?= esc($tax['tax_percentage']) ?>"><?= esc($tax['tax_name']) ?>
-                                </option>
-                                <?php endforeach;?>
+                                <?php foreach ($tax_show as $tax): ?>
+                                    <option value="<?= esc($tax['tax_percentage']) ?>"><?= esc($tax['tax_name']) ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -620,7 +616,7 @@
     </div>
 
 </div>
-<?= $this->endSection()?>
+<?= $this->endSection() ?>
 
 
 <?= $this->section('css') ?>
@@ -631,17 +627,17 @@
 <?= $this->section('scripts') ?>
 
 <script>
-window.APP_URLS = {
-    categoryCreate: "<?= site_url('categories/category-create-ajax') ?>",
-    initialbrand: "<?=site_url('brands/initial-product-brand')?>",
-    brandCreate: "<?= site_url('brands/brand-create-ajax') ?>",
-    getCategory: "<?=site_url('categories/get-category-list')?>",
-    categoryList: "<?=site_url('get-category-list')?>",
-    groupCreate: "<?= site_url('groups/group-create-ajax') ?>",
-    unitCreate: "<?= site_url('units/unit-create-ajax') ?>",
-    strengthCreate: "<?= site_url('ajax/strength') ?>",
-    taxCreate: "<?= site_url('tax/vatTax-create-ajax') ?>"
-};
+    window.APP_URLS = {
+        categoryCreate: "<?= site_url('categories/category-create-ajax') ?>",
+        initialbrand: "<?= site_url('brands/initial-product-brand') ?>",
+        brandCreate: "<?= site_url('brands/brand-create-ajax') ?>",
+        getCategory: "<?= site_url('categories/get-category-list') ?>",
+        categoryList: "<?= site_url('get-category-list') ?>",
+        groupCreate: "<?= site_url('groups/group-create-ajax') ?>",
+        unitCreate: "<?= site_url('units/unit-create-ajax') ?>",
+        strengthCreate: "<?= site_url('ajax/strength') ?>",
+        taxCreate: "<?= site_url('tax/vatTax-create-ajax') ?>"
+    };
 </script>
 
 <script src="<?= base_url('assets/js/product-opening-stock.js') ?>"></script>
