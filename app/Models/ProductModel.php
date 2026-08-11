@@ -25,7 +25,8 @@ protected $allowedFields = [
     'alert_quantity',
 
     // Image
-    'product_image'
+    'product_image',
+    'status'
 ];
 
 
@@ -79,6 +80,9 @@ public function getProducts($category = null)
         'left',
         false
     );
+
+        // Only Active Products
+        $builder->where('p.status', 'active');
 
     if (!empty($category) && $category != 'all_category') {
         $builder->where('p.product_category', $category);

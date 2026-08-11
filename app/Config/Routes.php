@@ -22,7 +22,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->post('update-hold-sale', 'PosController::update_hold_sale');
         //$routes->post('products', 'PosController::products');
         $routes->post('filterProducts', 'PosController::filterProducts');
-    $routes->get('product-search', 'PosController::productSearch');
+        $routes->get('product-search', 'PosController::productSearch');
 
     });
 
@@ -42,7 +42,8 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->post('create', 'ProductController::create');
         $routes->post('update', 'ProductController::update');
         $routes->post('delete', 'ProductController::delete');
-        //$routes->get('search', 'PosController::productSearch');
+        $routes->post('import-csv','ProductController::importCsv');
+        $routes->get('download-template','ProductController::downloadTemplate');
     });
 
     $routes->group('ajax', function ($routes) {
@@ -51,17 +52,16 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
 
     });
 
-    $routes->group('opening-stock', ['namespace' => 'App\Controllers'], function($routes) {
+    $routes->group('opening-stock', ['namespace' => 'App\Controllers'], function ($routes) {
 
         $routes->get('/', 'OpeningStockController::index');
-       // $routes->get('create', 'OpeningStockController::create');
+        // $routes->get('create', 'OpeningStockController::create');
         $routes->post('store', 'OpeningStockController::store');
         $routes->get('edit/(:num)', 'OpeningStockController::edit/$1');
         $routes->post('update/(:num)', 'OpeningStockController::update/$1');
         $routes->get('delete/(:num)', 'OpeningStockController::delete/$1');
-    
-    });
 
+    });
 
     $routes->group('barcode', function ($routes) {
         $routes->get('/', 'BarcodeGenerateController::index');
@@ -172,8 +172,24 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
 
         $routes->get('/', 'StockAdjustmentController::index');
         $routes->post('create', 'StockAdjustmentController::createStockAdjustment');
-        $routes->get('view/(:num)', 'StockAdjustmentController::view/$1');
         $routes->get('edit/(:num)', 'StockAdjustmentController::edit/$1');
+    });
+
+    $routes->group('stock-adjustment', function ($routes) {
+
+        $routes->get('/', 'StockAdjustmentController::index');
+
+        $routes->post('create', 'StockAdjustmentController::createStockAdjustment'
+        );
+
+        $routes->get('view/(:num)', 'StockAdjustmentController::edit/$1'
+        );
+
+        // $routes->post(
+        //     'update/(:num)',
+        //     'StockAdjustmentController::update/$1'
+        // );
+
     });
 
     $routes->group('user', function ($routes) {

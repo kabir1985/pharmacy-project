@@ -57,26 +57,22 @@ public function createStockAdjustment()
     ]);
 }
 
-    public function view($id)
-    {
-        $data['adjustment'] = $this->stockAdjustmentObject->find($id);
+public function edit($id)
+{
+    $adjustment = $this->stockAdjustmentObject
+        ->getAdjustmentForEdit($id);
 
-        if (!$data['adjustment']) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-        }
-
-        return view('stock-adjustment/view', $data);
+    if (!$adjustment) {
+        return redirect()
+            ->to(site_url('stock-adjustment'))
+            ->with('error', 'Record not found');
     }
 
-    public function edit($id)
-    {
-        $data['adjustment'] = $this->stockAdjustmentObject->find($id);
+    $data = [
+        'adjustment' => $adjustment
+    ];
 
-        if (!$data['adjustment']) {
-            return redirect()->back()->with('error', 'Record not found');
-        }
-
-        return view('stock-adjustment/edit', $data);
-    }
+    return view('stockAdjustment/edit', $data);
+}
 
 }

@@ -284,42 +284,32 @@ public function update()
         echo "0";
     }
 }
- public function delete()
+public function delete()
 {
     try {
 
         $productId = (int) $this->request->getPost('delete_id');
 
         if ($productId <= 0) {
-            session()->setFlashdata('msg', 'Invalid Product ID.');
+            session()->setFlashdata('msg', 'Invalid product.');
             return redirect()->to(site_url('products'));
         }
 
-        // Find Product
-        $product = $this->productModelObject->find($productId);
-
-        if (!$product) {
-            session()->setFlashdata('msg', 'Product not found.');
-            return redirect()->to(site_url('products'));
-        }
-
-        // Already Inactive
-        if ($product['status'] === 'inactive') {
-            session()->setFlashdata('msg', 'Product is already inactive.');
-            return redirect()->to(site_url('products'));
-        }
-
-        // Soft Delete
         $updated = $this->productModelObject->update($productId, [
             'status' => 'inactive'
         ]);
 
-        if (!$updated) {
-            session()->setFlashdata('msg', 'Failed to deactivate product.');
-            return redirect()->to(site_url('products'));
+        if ($updated) {
+            session()->setFlashdata(
+                'msg',
+                'Product deactivated successfully.'
+            );
+        } else {
+            session()->setFlashdata(
+                'msg',
+                'Failed to deactivate product.'
+            );
         }
-
-        session()->setFlashdata('msg', 'Product deactivated successfully.');
 
     } catch (\Throwable $e) {
 
@@ -328,22 +318,551 @@ public function update()
             '[ProductController::delete] ' . $e->getMessage()
         );
 
-        session()->setFlashdata('msg', 'Something went wrong.');
+        session()->setFlashdata(
+            'msg',
+            'Something went wrong.'
+        );
     }
 
     return redirect()->to(site_url('products'));
 }
 
-    // public function barcodegenerate()
-    // {
 
-    //     //$generator = new Picqer\Barcode\BarcodeGeneratorHTML();
-    //     $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
+public function importCsv()
+{
+    $db = \Config\Database::connect();
 
-    //     //echo $generator->getBarcode('rasel', $generator::TYPE_CODE_128);
+    // ==================================================
+    // 1. Get uploaded CSV
+    // ==================================================
+    $file = $this->request->getFile('csv_file');
 
-    //     // $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
-    //     echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode('081231723897', $generator::TYPE_CODE_128)) . '">';
-    // }
+    if (!$file || !$file->isValid()) {
+        return redirect()->back()
+            ->with('error', 'Please select a valid CSV file.');
+    }
+
+    // ==================================================
+    // 2. Validate extension
+    // ==================================================
+    if (strtolower($file->getClientExtension()) !== 'csv') {
+        return redirect()->back()
+            ->with('error', 'Only CSV files are allowed.');
+    }
+
+    // ==================================================
+    // 3. Open CSV
+    // ==================================================
+    $handle = fopen($file->getTempName(), 'r');
+
+    if ($handle === false) {
+        return redirect()->back()
+            ->with('error', 'Unable to read CSV file.');
+    }
+
+    // ==================================================
+    // 4. Read CSV header
+    // ==================================================
+    $header = fgetcsv($handle);
+
+    if (!$header) {
+        fclose($handle);
+
+        return redirect()->back()
+            ->with('error', 'CSV file is empty.');
+    }
+
+    // Remove UTF-8 BOM
+    $header[0] = preg_replace('/^\xEF\xBB\xBF/', '', $header[0]);
+
+    // Normalize header
+    $header = array_map(function ($value) {
+        return strtolower(trim($value));
+    }, $header);
+
+    // ==================================================
+    // 5. Required CSV columns
+    // ==================================================
+    $requiredColumns = [
+        'product_name',
+        'category',
+        'brand',
+        'generic_name',
+        'strength',
+        'product_unit',
+        'sku',
+        'barcode',
+        'alert_quantity'
+    ];
+
+    foreach ($requiredColumns as $column) {
+
+        if (!in_array($column, $header, true)) {
+
+            fclose($handle);
+
+            return redirect()->back()
+                ->with(
+                    'error',
+                    'Missing required column: ' . $column
+                );
+        }
+    }
+
+    // ==================================================
+    // 6. Column indexes
+    // ==================================================
+    $columns = array_flip($header);
+
+    // ==================================================
+    // 7. Product model
+    // ==================================================
+    $productModel = new \App\Models\ProductModel();
+
+    // ==================================================
+    // 8. Counters
+    // ==================================================
+    $imported = 0;
+    $skipped  = 0;
+    $errors   = [];
+
+    $rowNumber = 1;
+
+    // ==================================================
+    // 9. Start transaction
+    // ==================================================
+    $db->transBegin();
+
+    try {
+
+        while (($row = fgetcsv($handle)) !== false) {
+
+            $rowNumber++;
+
+            // Ignore completely empty rows
+            if (
+                count(array_filter($row, function ($value) {
+                    return trim($value) !== '';
+                })) === 0
+            ) {
+                continue;
+            }
+
+            // ==================================================
+            // 10. Validate column count
+            // ==================================================
+            if (count($row) < count($header)) {
+
+                $errors[] =
+                    "Row {$rowNumber}: Invalid number of columns.";
+
+                $skipped++;
+
+                continue;
+            }
+
+            // ==================================================
+            // 11. Read CSV values
+            // ==================================================
+
+            $productName = trim(
+                $row[$columns['product_name']]
+            );
+
+            $categoryName = trim(
+                $row[$columns['category']]
+            );
+
+            $brandName = trim(
+                $row[$columns['brand']]
+            );
+
+            $genericName = trim(
+                $row[$columns['generic_name']]
+            );
+
+            $strengthName = trim(
+                $row[$columns['strength']]
+            );
+
+            $unitName = trim(
+                $row[$columns['product_unit']]
+            );
+
+            $sku = trim(
+                $row[$columns['sku']]
+            );
+
+            $barcode = trim(
+                $row[$columns['barcode']]
+            );
+
+            $alertQuantity = trim(
+                $row[$columns['alert_quantity']]
+            );
+
+            // ==================================================
+            // 12. Required field validation
+            // ==================================================
+
+            if ($productName === '') {
+                $errors[] =
+                    "Row {$rowNumber}: Product name is required.";
+
+                $skipped++;
+                continue;
+            }
+
+            if ($categoryName === '') {
+                $errors[] =
+                    "Row {$rowNumber}: Category is required.";
+
+                $skipped++;
+                continue;
+            }
+
+            if ($brandName === '') {
+                $errors[] =
+                    "Row {$rowNumber}: Brand is required.";
+
+                $skipped++;
+                continue;
+            }
+
+            if ($genericName === '') {
+                $errors[] =
+                    "Row {$rowNumber}: Generic name is required.";
+
+                $skipped++;
+                continue;
+            }
+
+            if ($strengthName === '') {
+                $errors[] =
+                    "Row {$rowNumber}: Strength is required.";
+
+                $skipped++;
+                continue;
+            }
+
+            if ($unitName === '') {
+                $errors[] =
+                    "Row {$rowNumber}: Product unit is required.";
+
+                $skipped++;
+                continue;
+            }
+
+            // ==================================================
+            // 13. Alert quantity validation
+            // ==================================================
+
+            if (
+                $alertQuantity === '' ||
+                !is_numeric($alertQuantity) ||
+                (float) $alertQuantity < 0
+            ) {
+
+                $errors[] =
+                    "Row {$rowNumber}: Invalid alert quantity.";
+
+                $skipped++;
+                continue;
+            }
+
+            // ==================================================
+            // 14. SKU duplicate check
+            // ==================================================
+
+            if ($sku !== '') {
+
+                $existingSku = $productModel
+                    ->where('sku', $sku)
+                    ->first();
+
+                if ($existingSku) {
+
+                    $errors[] =
+                        "Row {$rowNumber}: SKU already exists - {$sku}.";
+
+                    $skipped++;
+                    continue;
+                }
+            }
+
+            // ==================================================
+            // 15. Barcode validation
+            // ==================================================
+
+            if ($barcode === '') {
+
+                $errors[] =
+                    "Row {$rowNumber}: Barcode is required.";
+
+                $skipped++;
+                continue;
+            }
+
+            // Barcode is UNIQUE in products table
+            $existingBarcode = $productModel
+                ->where('barcode', $barcode)
+                ->first();
+
+            if ($existingBarcode) {
+
+                $errors[] =
+                    "Row {$rowNumber}: Barcode already exists - {$barcode}.";
+
+                $skipped++;
+                continue;
+            }
+
+            // ==================================================
+            // 16. Category lookup
+            // ==================================================
+
+            $category = $db->table('product_category')
+                ->where('category_name', $categoryName)
+                ->get()
+                ->getRow();
+
+            if (!$category) {
+
+                $errors[] =
+                    "Row {$rowNumber}: Category '{$categoryName}' not found.";
+
+                $skipped++;
+                continue;
+            }
+
+            // ==================================================
+            // 17. Brand lookup
+            // ==================================================
+
+            $brand = $db->table('product_brand')
+                ->where('brand_name', $brandName)
+                ->get()
+                ->getRow();
+
+            if (!$brand) {
+
+                $errors[] =
+                    "Row {$rowNumber}: Brand '{$brandName}' not found.";
+
+                $skipped++;
+                continue;
+            }
+
+            // ==================================================
+            // 18. Generic / Group lookup
+            // ==================================================
+
+            $group = $db->table('product_group')
+                ->where('group_name', $genericName)
+                ->get()
+                ->getRow();
+
+            if (!$group) {
+
+                $errors[] =
+                    "Row {$rowNumber}: Generic name '{$genericName}' not found.";
+
+                $skipped++;
+                continue;
+            }
+
+            // ==================================================
+            // 19. Strength lookup
+            // ==================================================
+
+            $strength = $db->table('product_strength')
+                ->where('strength_name', $strengthName)
+                ->get()
+                ->getRow();
+
+            if (!$strength) {
+
+                $errors[] =
+                    "Row {$rowNumber}: Strength '{$strengthName}' not found.";
+
+                $skipped++;
+                continue;
+            }
+
+            // ==================================================
+            // 20. Unit lookup
+            // ==================================================
+
+            $unit = $db->table('product_unit')
+                ->where('product_unit_name', $unitName)
+                ->get()
+                ->getRow();
+
+            if (!$unit) {
+
+                $errors[] =
+                    "Row {$rowNumber}: Unit '{$unitName}' not found.";
+
+                $skipped++;
+                continue;
+            }
+
+            // ==================================================
+            // 21. Prepare product data
+            // ==================================================
+
+            $productData = [
+                'product_name'     => $productName,
+                'product_category' => $category->product_category_id,
+                'product_brand'    => $brand->brand_id,
+                'product_group'    => $group->product_group_id,
+                'product_strength' => $strength->strength_id,
+                'product_unit'     => $unit->product_unit_id,
+                'sku'              => $sku !== '' ? $sku : null,
+                'barcode'          => $barcode,
+                'alert_quantity'   => $alertQuantity,
+                'product_image'    => 'default-medicine.png',
+                'status'           => 'active'
+            ];
+
+            // ==================================================
+            // 22. Insert product
+            // ==================================================
+
+            if (!$productModel->insert($productData)) {
+
+                $modelErrors = $productModel->errors();
+
+                $errorMessage = !empty($modelErrors)
+                    ? implode(', ', $modelErrors)
+                    : 'Unable to insert product.';
+
+                $errors[] =
+                    "Row {$rowNumber}: {$errorMessage}";
+
+                $skipped++;
+                continue;
+            }
+
+            $imported++;
+        }
+
+        fclose($handle);
+
+        // ==================================================
+        // 23. Check transaction
+        // ==================================================
+
+        if ($db->transStatus() === false) {
+
+            $db->transRollback();
+
+            return redirect()->back()
+                ->with(
+                    'error',
+                    'Product import failed. Database transaction was rolled back.'
+                );
+        }
+
+        // ==================================================
+        // 24. Commit
+        // ==================================================
+
+        $db->transCommit();
+
+    } catch (\Throwable $e) {
+
+        if (is_resource($handle)) {
+            fclose($handle);
+        }
+
+        $db->transRollback();
+
+        log_message(
+            'error',
+            'Product CSV Import Error: ' . $e->getMessage()
+        );
+
+        return redirect()->back()
+            ->with(
+                'error',
+                'Product import failed: ' . $e->getMessage()
+            );
+    }
+
+    // ==================================================
+    // 25. Store row errors
+    // ==================================================
+
+    if (!empty($errors)) {
+
+        session()->setFlashdata(
+            'import_errors',
+            $errors
+        );
+    }
+
+    // ==================================================
+    // 26. Final result
+    // ==================================================
+
+    $message =
+        "CSV import completed. " .
+        "Imported: {$imported}, " .
+        "Skipped: {$skipped}.";
+
+    return redirect()->back()
+        ->with('success', $message);
+}
+
+
+
+
+public function downloadTemplate()
+{
+    $filename = 'product_import_template.csv';
+
+    $headers = [
+        'product_name',
+        'category',
+        'brand',
+        'generic_name',
+        'strength',
+        'product_unit',
+        'sku',
+        'barcode',
+        'alert_quantity'
+    ];
+
+    $output = fopen('php://memory', 'w');
+
+    fputcsv($output, $headers);
+
+    fputcsv($output, [
+        'Napa',
+        'Tablet',
+        'Beximco',
+        'Paracetamol',
+        '500mg',
+        'Piece',
+        'NAPA-500',
+        '1234567890123',
+        '10'
+    ]);
+
+    rewind($output);
+
+    $csvContent = stream_get_contents($output);
+
+    fclose($output);
+
+    return $this->response
+        ->setHeader('Content-Type', 'text/csv; charset=UTF-8')
+        ->setHeader(
+            'Content-Disposition',
+            'attachment; filename="' . $filename . '"'
+        )
+        ->setBody($csvContent);
+}
 
 }

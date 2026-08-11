@@ -217,7 +217,7 @@ $(document).ready(function() {
             var Boxqty = Number(item.box_quantity) || 1;
             var UnitPrice = Number(item.purchase_price_without_vat) || 0;
 
-            var Trade_Price_Per_Box = qtyPerPack * 1 * UnitPrice;
+            var Trade_Price_Per_Box = qtyPerPack * UnitPrice;
 
             let calc = calculateRow(item);
 
@@ -245,7 +245,7 @@ $(document).ready(function() {
         type="number"
         min="1"
         step="any"
-        value="${item.box_quantity}">
+        value="${item.box_quantity || 1}">
 </td>
 
 
@@ -254,7 +254,7 @@ $(document).ready(function() {
     <input
         type="text"
         class="purchase_price_no_vat form-control form-control-sm w-100"
-        value="${item.purchase_price_without_vat}"
+        value="${item.purchase_price_without_vat || 1}"
         min="1"
         data-id="${key}" readonly>
 </td>
@@ -285,7 +285,7 @@ $(document).ready(function() {
         type="text"
         class="vat-input form-control form-control-sm"
         min="0"
-        value="${item.tax_percentage}"
+        value="${item.tax_percentage || 0}"
         data-id="${key}">
 </td>
 
@@ -295,7 +295,7 @@ $(document).ready(function() {
     <input
         type="text"
         class="sale_price form-control form-control-sm"
-        value="${item.selling_price}"
+        value="${item.selling_price || 0}"
         data-id="${key}"
         disabled>
 </td>
@@ -525,12 +525,23 @@ ${rowTotal.toFixed(2)}
     // VAT Modal
     // =========================================================================
 
+    // $("#openVatModal").on("click", function() {
+    //     var currentVat = $("#vat_amt_on_total").data("value", vatPercent).text(vatPercent.toFixed(
+    //         2));
+    //     //parseFloat($("#vat_amt_on_total").text()) || 0;
+    //     $("#vatInput").val(currentVat);
+    // });
+
+
     $("#openVatModal").on("click", function() {
-        var currentVat = $("#vat_amt_on_total").data("value", vatPercent).text(vatPercent.toFixed(
-            2));
-        //parseFloat($("#vat_amt_on_total").text()) || 0;
+
+        let currentVat =
+            parseFloat($("#vat_amt_on_total").data("value")) || 0;
+    
         $("#vatInput").val(currentVat);
     });
+
+
 
     $("#saveVatBtn").on("click", function() {
 

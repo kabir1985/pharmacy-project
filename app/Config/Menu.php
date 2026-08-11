@@ -119,7 +119,7 @@ class Menu extends BaseConfig
 
                 
                 [
-                    'label'      => 'Product Master',
+                    'label'      => 'Product Entry',
                     'url'        => 'products',
                     'privileges' => ['product_entry']
                 ],

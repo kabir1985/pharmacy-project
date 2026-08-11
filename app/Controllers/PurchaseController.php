@@ -65,252 +65,528 @@ class PurchaseController extends BaseController
 // print_r($data['product_show_for_sale']);
 // exit;
 
-        return view('purchase/purchase_add', $data);
+return view('purchase/purchase_add', $data);
     }
 
 
 
-    public function store()
-    {
-        $this->db->transBegin();
-    
-        try {
-    
-            $purchaseList = json_decode($this->request->getPost('cart_data'), true);
-    
-            if (empty($purchaseList) || !is_array($purchaseList)) {
-                return $this->response->setJSON([
-                    'status' => false,
-                    'message' => 'Cart is empty.'
-                ]);
+
+public function store()
+{
+    $this->db->transBegin();
+
+    try {
+
+        //==================================================
+        // Cart
+        //==================================================
+
+        $purchaseList = json_decode(
+            $this->request->getPost('cart_data'),
+            true
+        );
+
+        if (empty($purchaseList) || !is_array($purchaseList)) {
+
+            $this->db->transRollback();
+
+            return $this->response->setJSON([
+                'status'  => false,
+                'message' => 'Cart is empty.'
+            ]);
+        }
+
+        //==================================================
+        // Supplier
+        //==================================================
+
+        $supplier_id = (int)$this->request->getPost('supplier_id');
+
+        if ($supplier_id <= 0) {
+
+            $this->db->transRollback();
+
+            return $this->response->setJSON([
+                'status'  => false,
+                'message' => 'Please select supplier.'
+            ]);
+        }
+
+        //==================================================
+        // Invoice Totals
+        //==================================================
+
+        $invoiceTotal  = 0;
+        $discountTotal = 0;
+        $vatTotal      = 0;
+        $netTotal      = 0;
+
+        foreach ($purchaseList as $item) {
+
+            $qtyPerPack = (float)($item['quantity_per_pack'] ?? 0);
+            $boxQty     = (float)($item['box_quantity'] ?? 1);
+
+            $basePrice = (float)(
+                $item['purchase_price_without_vat'] ?? 0
+            );
+
+            $taxPercentage = (float)(
+                $item['tax_percentage'] ?? 0
+            );
+
+            $qty = $qtyPerPack * $boxQty;
+
+            $purchaseTotal = $qty * $basePrice;
+
+            //==================================================
+            // Discount
+            //==================================================
+
+            if (($item['discount_type'] ?? '') === 'fixed') {
+
+                $discount = (float)(
+                    $item['discount_fixed'] ?? 0
+                );
+
+            } else {
+
+                $discountPercent = (float)(
+                    $item['discount_percent'] ?? 0
+                );
+
+                $discount =
+                    $purchaseTotal *
+                    ($discountPercent / 100);
             }
-    
-            $supplier_id = (int)$this->request->getPost('supplier_id');
-    
-            if ($supplier_id <= 0) {
-                return $this->response->setJSON([
-                    'status' => false,
-                    'message' => 'Please select supplier.'
-                ]);
-            }
-    
+
+            $discount = min($discount, $purchaseTotal);
+
+            //==================================================
+            // Taxable
+            //==================================================
+
+            $taxable = max(
+                0,
+                $purchaseTotal - $discount
+            );
+
+            //==================================================
+            // VAT
+            //==================================================
+
+            $vat =
+                $taxable *
+                ($taxPercentage / 100);
+
+            //==================================================
+            // Line Total
+            //==================================================
+
+            $lineTotal = $taxable + $vat;
+
             //==================================================
             // Invoice Totals
             //==================================================
-    
-            $invoiceTotal  = 0;
-            $discountTotal = 0;
-            $vatTotal      = 0;
-            $netTotal      = 0;
-    
-            foreach ($purchaseList as $item) {
-    
-                $qty = ((float)$item['quantity_per_pack']) * ((float)$item['box_quantity']);
-    
-                $purchaseTotal = $qty * (float)$item['purchase_price_without_vat'];
-    
-                $discount = 0;
-    
-                if (
-                    isset($item['discount_type']) &&
-                    $item['discount_type'] == 'fixed'
-                ) {
-                    $discount = (float)($item['discount_fixed'] ?? 0);
-                } else {
-                    $discount = $purchaseTotal *
-                        ((float)($item['discount_percent'] ?? 0) / 100);
-                }
-    
-                $taxable = $purchaseTotal - $discount;
-    
-                $vat = $taxable *
-                    ((float)$item['tax_percentage'] / 100);
-    
-                $lineTotal = $taxable + $vat;
-    
-                $invoiceTotal += $purchaseTotal;
-                $discountTotal += $discount;
-                $vatTotal += $vat;
-                $netTotal += $lineTotal;
-            }
-    
-            //--------------------------------------------------
-            // Invoice Number
-            //--------------------------------------------------
-    
-            $invoiceNo = 'PUR-' . date('YmdHis');
-    
-            //--------------------------------------------------
-            // Purchase Master
-            //--------------------------------------------------
-    
-            $purchaseData = [
-    
-                'purchase_invoice'                 => $invoiceNo,
-                'payment_type'                     => 'Due',
-                'supplier_id'                      => $supplier_id,
-    
-                'invoice_total'                    => $invoiceTotal,
-                'discount_amount_on_invoice_total' => $discountTotal,
-                'vat_amount_on_invoice_total'      => $vatTotal,
-                'invoice_net_total'                => $netTotal,
-    
-                'paid_amount'                      => 0,
-                'due_amount'                       => $netTotal,
-    
-                'purchase_date'                    => date('Y-m-d H:i:s'),
-                'purchase_by'                      => session('user_id'),
-                'status'                           => 'active'
-            ];
-    
-            $this->product_purchase_object->insert($purchaseData);
-    
-            $purchase_id = $this->product_purchase_object->getInsertID();
-    
-            //--------------------------------------------------
-            // Purchase Details
-            //--------------------------------------------------
-    
-            foreach ($purchaseList as $item) {
-    
-                $qty = ((float)$item['quantity_per_pack']) * ((float)$item['box_quantity']);
-    
-                $purchaseTotal = $qty * (float)$item['purchase_price_without_vat'];
-    
-                $discount = 0;
-    
-                if (
-                    isset($item['discount_type']) &&
-                    $item['discount_type'] == 'fixed'
-                ) {
-                    $discount = (float)($item['discount_fixed'] ?? 0);
-                } else {
-                    $discount = $purchaseTotal *
-                        ((float)($item['discount_percent'] ?? 0) / 100);
-                }
-    
-                $taxable = $purchaseTotal - $discount;
-    
-                $vat = $taxable *
-                    ((float)$item['tax_percentage'] / 100);
-    
-                $lineTotal = $taxable + $vat;
-    
-                $details = [
-    
-                    'purchase_id'                 => $purchase_id,
-    
-                    'product_id'                  => $item['product_id'],
-    
-                    'expiry_date'                 => $item['expiry_date'] ?? null,
-    
-                    'quantity_per_pack'           => $item['quantity_per_pack'],
-    
-                    'box_quantity'                => $item['box_quantity'],
-    
-                    'free_qty'                    => $item['free_qty'] ?? 0,
-    
-                    'base_price_per_unit'         => $item['purchase_price_without_vat'],
-    
-                    'tax_id'                      => $item['tax_id'],
-    
-                    'tax_percentage'              => $item['tax_percentage'],
-    
-                    'product_wise_vat_amount'     => $vat,
-    
-                    'product_wise_discount_amount'=> $discount,
-    
-                    'selling_price'               => $item['selling_price'],
-    
-                    'purchase_price'              => $item['purchase_price_with_vat'],
-    
-                    'line_total'                  => $lineTotal
-                ];
-    
-                $this->product_purchase_details_object->insert($details);
 
+            $invoiceTotal  += $purchaseTotal;
+            $discountTotal += $discount;
+            $vatTotal      += $vat;
+            $netTotal      += $lineTotal;
+        }
 
+        //==================================================
+        // Invoice Number
+        //==================================================
 
+        $invoiceNo = 'PUR-' . date('YmdHis');
 
-                $qtyIn = (
-                    ((float)$item['quantity_per_pack'] * (float)$item['box_quantity'])
-                    + (float)($item['free_qty'] ?? 0)
-                );
-            
-                $currentStock = $this->db->table('stock_ledger')
-                    ->selectSum('qty_in')
-                    ->selectSum('qty_out')
-                    ->where('product_id', $item['product_id'])
-                    ->get()
-                    ->getRow();
-            
-                $previousBalance =
-                    ((float)$currentStock->qty_in) -
-                    ((float)$currentStock->qty_out);
-            
-                $newBalance = $previousBalance + $qtyIn;
-            
-                $ledgerData = [
-            
-                    'product_id'       => $item['product_id'],
-                    'transaction_type' => 'PURCHASE',
-                    'reference_id'     => $purchase_id,
-            
-                    'qty_in'           => $qtyIn,
-                    'qty_out'          => 0,
-            
-                    'balance_qty'      => $newBalance,
-            
-                    'unit_cost'        => $item['purchase_price_with_vat'],
-            
-                    'transaction_date' => date('Y-m-d H:i:s'),
-            
-                    'remarks'          => 'Purchase Invoice : ' . $invoiceNo,
-            
-                    'created_by'       => session('user_id')
-                ];
-            
-                $this->db->table('stock_ledger')->insert($ledgerData);
+        //==================================================
+        // Purchase Master
+        //==================================================
 
+        $purchaseData = [
 
-            }
-    
-            //--------------------------------------------------
-            // Commit
-            //--------------------------------------------------
-    
-            if ($this->db->transStatus() === false) {
-    
-                $this->db->transRollback();
-    
-                return $this->response->setJSON([
-                    'status' => false,
-                    'message' => 'Purchase failed.'
-                ]);
-            }
-    
-            $this->db->transCommit();
-    
-            return $this->response->setJSON([
-                'status' => true,
-                'message' => 'Purchase completed successfully.',
-                'purchase_id' => $purchase_id
-            ]);
-    
-        } catch (\Throwable $e) {
-    
+            'purchase_invoice' =>
+                $invoiceNo,
+
+            'payment_type' =>
+                'Due',
+
+            'supplier_id' =>
+                $supplier_id,
+
+            'invoice_total' =>
+                $invoiceTotal,
+
+            'discount_amount_on_invoice_total' =>
+                $discountTotal,
+
+            'vat_amount_on_invoice_total' =>
+                $vatTotal,
+
+            'invoice_net_total' =>
+                $netTotal,
+
+            'paid_amount' =>
+                0,
+
+            'due_amount' =>
+                $netTotal,
+
+            'purchase_date' =>
+                date('Y-m-d H:i:s'),
+
+            'purchase_by' =>
+                session('user_id'),
+
+            'status' =>
+                'active'
+        ];
+
+        //==================================================
+        // Insert Purchase Master
+        //==================================================
+
+        if (!$this->product_purchase_object->insert($purchaseData)) {
+
             $this->db->transRollback();
-    
-            log_message('error', $e->getMessage());
-    
+
             return $this->response->setJSON([
-                'status' => false,
-                'message' => $e->getMessage()
+                'status'       => false,
+                'step'         => 'product_purchase',
+                'message'      => 'Failed to save purchase.',
+                'model_errors' => $this->product_purchase_object->errors(),
+                'db_error'     => $this->db->error()
             ]);
         }
+
+        $purchase_id =
+            $this->product_purchase_object->getInsertID();
+
+        if (!$purchase_id) {
+
+            $this->db->transRollback();
+
+            return $this->response->setJSON([
+                'status'  => false,
+                'step'    => 'product_purchase',
+                'message' => 'Purchase ID was not generated.'
+            ]);
+        }
+
+        //==================================================
+        // Purchase Details
+        //==================================================
+
+        foreach ($purchaseList as $item) {
+
+            //==================================================
+            // Basic Values
+            //==================================================
+
+            $productId = (int)$item['product_id'];
+
+            $qtyPerPack =
+                (float)($item['quantity_per_pack'] ?? 0);
+
+            $boxQty =
+                (float)($item['box_quantity'] ?? 1);
+
+            $freeQty =
+                (float)($item['free_qty'] ?? 0);
+
+            $basePrice =
+                (float)($item['purchase_price_without_vat'] ?? 0);
+
+            $taxPercentage =
+                (float)($item['tax_percentage'] ?? 0);
+
+            //==================================================
+            // Quantity
+            //==================================================
+
+            $qty =
+                $qtyPerPack * $boxQty;
+
+            //==================================================
+            // Purchase Total
+            //==================================================
+
+            $purchaseTotal =
+                $qty * $basePrice;
+
+            //==================================================
+            // Discount
+            //==================================================
+
+            if (($item['discount_type'] ?? '') === 'fixed') {
+
+                $discount =
+                    (float)($item['discount_fixed'] ?? 0);
+
+            } else {
+
+                $discountPercent =
+                    (float)($item['discount_percent'] ?? 0);
+
+                $discount =
+                    $purchaseTotal *
+                    ($discountPercent / 100);
+            }
+
+            $discount =
+                min($discount, $purchaseTotal);
+
+            //==================================================
+            // Taxable
+            //==================================================
+
+            $taxable =
+                max(
+                    0,
+                    $purchaseTotal - $discount
+                );
+
+            //==================================================
+            // VAT
+            //==================================================
+
+            $vat =
+                $taxable *
+                ($taxPercentage / 100);
+
+            //==================================================
+            // Line Total
+            //==================================================
+
+            $lineTotal =
+                $taxable + $vat;
+
+            //==================================================
+            // Purchase Price With VAT
+            //==================================================
+
+            $purchasePriceWithVat =
+                $basePrice +
+                ($basePrice * $taxPercentage / 100);
+
+            //==================================================
+            // Tax ID
+            //==================================================
+
+            $taxId = !empty($item['tax_id'])
+                ? (int)$item['tax_id']
+                : null;
+
+            //==================================================
+            // Selling Price
+            //==================================================
+
+            $sellingPrice =
+                (float)($item['selling_price'] ?? 0);
+
+            //==================================================
+            // Purchase Details
+            //==================================================
+
+            $details = [
+
+                'purchase_id' =>
+                    $purchase_id,
+
+                'product_id' =>
+                    $productId,
+
+                'expiry_date' =>
+                    $item['expiry_date'] ?? null,
+
+                'quantity_per_pack' =>
+                    $qtyPerPack,
+
+                'box_quantity' =>
+                    $boxQty,
+
+                'free_qty' =>
+                    $freeQty,
+
+                'base_price_per_unit' =>
+                    $basePrice,
+
+                'tax_id' =>
+                    $taxId,
+
+                'tax_percentage' =>
+                    $taxPercentage,
+
+                'product_wise_vat_amount' =>
+                    $vat,
+
+                'product_wise_discount_amount' =>
+                    $discount,
+
+                'selling_price' =>
+                    $sellingPrice,
+
+                'purchase_price' =>
+                    $purchasePriceWithVat,
+
+                'line_total' =>
+                    $lineTotal
+            ];
+
+            //==================================================
+            // Insert Purchase Details
+            //==================================================
+
+            if (!$this->product_purchase_details_object->insert($details)) {
+
+                $this->db->transRollback();
+
+                return $this->response->setJSON([
+                    'status'       => false,
+                    'step'         => 'product_purchase_details',
+                    'message'      => 'Failed to save purchase details.',
+                    'model_errors' =>
+                        $this->product_purchase_details_object->errors(),
+                    'db_error'     =>
+                        $this->db->error(),
+                    'details'      =>
+                        $details
+                ]);
+            }
+
+            //==================================================
+            // Stock Quantity
+            //==================================================
+
+            $qtyIn =
+                ($qtyPerPack * $boxQty)
+                + $freeQty;
+
+            //==================================================
+            // Current Stock
+            //==================================================
+
+            $currentStock =
+                $this->db
+                    ->table('stock_ledger')
+                    ->selectSum('qty_in')
+                    ->selectSum('qty_out')
+                    ->where('product_id', $productId)
+                    ->get()
+                    ->getRow();
+
+            $previousBalance =
+                (float)($currentStock->qty_in ?? 0)
+                -
+                (float)($currentStock->qty_out ?? 0);
+
+            $newBalance =
+                $previousBalance + $qtyIn;
+
+            //==================================================
+            // Stock Ledger
+            //==================================================
+
+            $ledgerData = [
+
+                'product_id' =>
+                    $productId,
+
+                'transaction_type' =>
+                    'PURCHASE',
+
+                'reference_id' =>
+                    $purchase_id,
+
+                'qty_in' =>
+                    $qtyIn,
+
+                'qty_out' =>
+                    0,
+
+                'balance_qty' =>
+                    $newBalance,
+
+                'unit_cost' =>
+                    $purchasePriceWithVat,
+
+                'transaction_date' =>
+                    date('Y-m-d H:i:s'),
+
+                'remarks' =>
+                    'Purchase Invoice : ' . $invoiceNo,
+
+                'created_by' =>
+                    session('user_id')
+            ];
+
+            //==================================================
+            // Insert Stock Ledger
+            //==================================================
+
+            if (!$this->db->table('stock_ledger')->insert($ledgerData)) {
+
+                $dbError = $this->db->error();
+
+                $this->db->transRollback();
+
+                return $this->response->setJSON([
+                    'status'  => false,
+                    'step'    => 'stock_ledger',
+                    'message' => 'Failed to save stock ledger.',
+                    'db_error' => $dbError,
+                    'ledger_data' => $ledgerData
+                ]);
+            }
+        }
+
+        //==================================================
+        // Transaction Status
+        //==================================================
+
+        if ($this->db->transStatus() === false) {
+
+            $dbError = $this->db->error();
+
+            $this->db->transRollback();
+
+            return $this->response->setJSON([
+                'status'  => false,
+                'step'    => 'transaction',
+                'message' => 'Purchase failed.',
+                'db_error' => $dbError
+            ]);
+        }
+
+        //==================================================
+        // Commit
+        //==================================================
+
+        $this->db->transCommit();
+
+        return $this->response->setJSON([
+            'status'      => true,
+            'message'     => 'Purchase completed successfully.',
+            'purchase_id' => $purchase_id
+        ]);
+
+    } catch (\Throwable $e) {
+
+        $this->db->transRollback();
+
+        log_message(
+            'error',
+            'Purchase Store Error: ' . $e->getMessage()
+        );
+
+        return $this->response->setJSON([
+            'status'  => false,
+            'step'    => 'exception',
+            'message' => $e->getMessage()
+        ]);
     }
-
-
+}
 
 
 

@@ -22,18 +22,39 @@
 <?= $this->extend('layout') ?>
 <?= $this->section('content') ?>
 
-<div class='app-title'>
+
+<div class="app-title">
     <div>
-        <h1><i class='fa fa-th-list'></i> Product List , Edit, Delete & Add Section</h1>
-        <!-- <p>Table to display analytical data effectively</p> -->
+        <h1>
+            <i class="fa fa-cube"></i> Product List
+        </h1>
     </div>
 
-    <!-- Button trigger modal -->
-    <button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#AddNewProduct'>
-        <i class='fa fa-plus'></i>
-        Add Product
-    </button>
+    <div>
+        <!-- Import CSV -->
+        <button type="button"
+                class="btn btn-success"
+                data-toggle="modal"
+                data-target="#importProductModal">
+
+            <i class="fa fa-file-csv"></i>
+            Import CSV
+        </button>
+
+        <!-- Add Product -->
+        <button type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#AddNewProduct">
+
+            <i class="fa fa-plus"></i>
+            Add New Product
+        </button>
+    </div>
 </div>
+
+
+
 
 <!-- ==========================================================
      PRODUCT LIST TABLE
@@ -593,7 +614,7 @@
 
                 <div class="modal-footer">
 
-                    <input type="hidden" id="delete_id" name="delete_id">
+                    <input type="text" id="delete_id" name="delete_id">
 
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
 
@@ -616,6 +637,130 @@
     </div>
 
 </div>
+
+<!--==========================================
+CSV Import modal
+=================================---->
+
+<div class="modal fade"
+     id="importProductModal"
+     tabindex="-1"
+     role="dialog">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered"
+         role="document">
+
+        <div class="modal-content">
+
+            <form action="<?= site_url('products/import-csv'); ?>"
+                  method="post"
+                  enctype="multipart/form-data">
+
+                <?= csrf_field(); ?>
+
+                <div class="modal-header bg-success text-white">
+
+                    <h5 class="modal-title">
+                        <i class="fa fa-file-csv"></i>
+                        Import Products from CSV
+                    </h5>
+
+                    <button type="button"
+                            class="close text-white"
+                            data-dismiss="modal">
+
+                        <span>&times;</span>
+
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="alert alert-info">
+
+                        <strong>CSV Format:</strong>
+
+                        <br>
+
+                        product_name, category, brand, generic_name,
+                        strength, product_unit, sku, barcode, alert_quantity
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Select CSV File
+                        </label>
+
+                        <input type="file"
+                               name="csv_file"
+                               class="form-control"
+                               accept=".csv"
+                               required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <a href="<?= site_url('products/download-template'); ?>"
+                           class="btn btn-outline-primary">
+
+                            <i class="fa fa-download"></i>
+                            Download CSV Template
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="alert alert-warning">
+
+                        <i class="fa fa-info-circle"></i>
+
+                        Category, Brand, Generic Name and Unit must
+                        already exist in the system.
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal">
+
+                        <i class="fa fa-times"></i>
+                        Close
+
+                    </button>
+
+
+                    <button type="submit"
+                            class="btn btn-success">
+
+                        <i class="fa fa-upload"></i>
+                        Import Products
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
 <?= $this->endSection() ?>
 
 

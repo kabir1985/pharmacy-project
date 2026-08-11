@@ -170,4 +170,39 @@ class StockAdjustmentModel extends Model
     }
 
 
+
+    public function getAdjustmentForEdit($adjustmentId)
+{
+    return $this->db->table('stock_adjustment sa')
+        ->select("
+            sa.adjustment_id,
+            sa.adjustment_no,
+            sa.adjustment_date,
+            sa.adjustment_type,
+            sa.reason,
+            sa.reference_no,
+            sa.remarks,
+            sa.adjusted_by,
+
+            sad.id AS detail_id,
+            sad.product_id,
+            sad.adjustment_qty,
+            sad.unit_cost,
+
+            p.product_name
+        ")
+        ->join(
+            'stock_adjustment_details sad',
+            'sad.adjustment_id = sa.adjustment_id'
+        )
+        ->join(
+            'products p',
+            'p.product_id = sad.product_id'
+        )
+        ->where('sa.adjustment_id', $adjustmentId)
+        ->get()
+        ->getRowArray();
+}
+
+
 }
