@@ -785,5 +785,5 @@ CSV Import modal
     };
 </script>
 
-<script src="<?= base_url('assets/js/product-opening-stock.js') ?>"></script>
+<script src="<?= base_url('assets/js/new-product-add.js') ?>"></script>
 <?= $this->endSection() ?>

@@ -22,7 +22,7 @@ echo $this->section('content');
                     <button type='button' class='btn btn-primary btn-sm' data-toggle='modal'
                         data-target='#AddNewProduct'>
                         <i class='fa fa-plus-circle'></i>
-                        Opening Stock
+                        Add New Product
                     </button>
                 </div>
             </div>
@@ -201,22 +201,22 @@ echo $this->section('content');
 
 
 <!-- ==========================================================
-     ADD PRODUCT /Opening Stock MODAL
+     ADD NEW PRODUCT 
 =========================================================== -->
 <div class="modal fade" id='AddNewProduct' role='dialog' aria-labelledby='AddNewProduct' aria-hidden='true'>
-    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class='modal-content'>
             <!-----for image upload------------------->
             <?php if (session('msg')): ?>
             <div class="alert alert-success alert-dismissible">
-                <?=session('msg')?>
+                <?= session('msg') ?>
                 <button type="button" class="close" data-dismiss="alert"><span>×</span></button>
             </div>
-            <?php endif?>
+            <?php endif ?>
             <!-----for image upload------------------->
-            <form id="NewProductAdd_Form" method='post' action="<?=site_url('products/create')?>" accept-charset="utf-8"
-                enctype="multipart/form-data">
-                <?=csrf_field()?>
+            <form id="NewProductAdd_Form" method='post' action="<?= site_url('products/create') ?>"
+                accept-charset="utf-8" enctype="multipart/form-data">
+                <?= csrf_field() ?>
                 <!---------------------------Header------------------------------------>
                 <div class="modal-header bg-primary text-white">
 
@@ -265,9 +265,9 @@ echo $this->section('content');
 
                                             <?php foreach ($category_show as $category): ?>
 
-                                            <option value="<?=$category['product_category_id']?>">
-                                                <?=$category['category_name']?>
-                                            </option>
+                                                <option value="<?= $category['product_category_id'] ?>">
+                                                    <?= $category['category_name'] ?>
+                                                </option>
 
                                             <?php endforeach; ?>
 
@@ -326,8 +326,8 @@ echo $this->section('content');
                                         <select id="product_group" name="product_group" class="form-control" required>
                                             <option value="">Select Group </option>
                                             <?php foreach ($group_show as $group): ?>
-                                            <option value="<?=esc($group['product_group_id'])?>">
-                                                <?=esc($group['group_name'])?>
+                                            <option value="<?= esc($group['product_group_id']) ?>">
+                                                <?= esc($group['group_name']) ?>
                                             </option>
                                             <?php endforeach; ?>
                                         </select>
@@ -356,8 +356,8 @@ echo $this->section('content');
                                         <select id="strength" name="strength" class="form-control" required>
                                             <option value="">Select Strength </option>
                                             <?php foreach ($strength_show as $strength): ?>
-                                            <option value="<?=esc($strength['strength_id'])?>">
-                                                <?=esc($strength['strength_name'])?>
+                                            <option value="<?= esc($strength['strength_id']) ?>">
+                                                <?= esc($strength['strength_name']) ?>
                                             </option>
 
                                             <?php endforeach; ?>
@@ -388,8 +388,8 @@ echo $this->section('content');
                                         <select id="product_unit" name="product_unit" class="form-control" required>
                                             <option value="">Select Unit </option>
                                             <?php foreach ($unit_show as $unit): ?>
-                                            <option value="<?=esc($unit['product_unit_id'])?>">
-                                                <?=esc($unit['product_unit_name'])?>
+                                            <option value="<?= esc($unit['product_unit_id']) ?>">
+                                                <?= esc($unit['product_unit_name']) ?>
                                             </option>
 
                                             <?php endforeach; ?>
@@ -410,92 +410,6 @@ echo $this->section('content');
                             </div>
                         </div>
                     </div>
-                    <!-- ================= Purchase & Pricing ================= -->
-
-                    <div class="card shadow-sm mb-3">
-
-                        <div class="card-header bg-success text-white">
-                            <i class="fa fa-money"></i> Purchase & Pricing
-                        </div>
-
-                        <div class="card-body">
-
-                            <!-- Base Price, VAT, Purchase Price, Tax Type, Profit margin, Sales price -->
-
-                            <div class='form-row'>
-                                <div class='form-group col-md-4'>
-                                    <label>Base Price/Purchase Price (Without VAT)</label>
-                                    <input type='text' required class="form-control" name='base_price' id="base_price"
-                                        onkeypress="return accept_digit_only(event)" placeholder='Base Price' required>
-                                </div>
-
-                                <!--------------------------Purchase VAT/Tax------------------------------------------------------>
-                                <div class="form-group col-md-4">
-                                    <label>Purchase (VAT/TAX) %</label>
-
-                                    <div class="input-group">
-
-                                        <select id="tax_id" name="tax_id" class="form-control" required>
-                                            <option value="">Select Tax</option>
-                                            <?php foreach ($tax_show as $tax): ?>
-                                            <option value="<?=$tax['tax_id'];?>"
-                                                data-percent="<?=$tax['tax_percentage'];?>">
-                                                <?=$tax['tax_name'];?> (
-                                                <?=$tax['tax_percentage'];?>%)
-                                            </option>
-                                            <?php endforeach; ?>
-                                        </select>
-
-                                        <div class="input-group-append">
-
-                                            <button class="btn btn-success" id="btnAddVatTax" type="button"
-                                                title="Add VAT/TAX">
-
-                                                <i class="fa fa-plus"></i>
-
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <!---------------------------------------------------------------------------------------------------->
-
-                                <div class='form-group col-md-4'>
-                                    <label>Purchase Price (Per Product-With VAT)</label>
-                                    <input type='text' required class="form-control" id="purchase_price"
-                                        name='purchase_price' onkeypress="return accept_digit_only(event)"
-                                        placeholder='Unit Price' readonly>
-                                </div>
-                            </div>
-
-                            <div class='form-row'>
-                                <div class='form-group col-md-4'>
-                                    <label>Tax Type</label>
-                                    <select class="form-control" id="tax_type" name="tax_type" required>
-                                        <option value="without_tax" selected>Without Tax (Exclusive)</option>
-                                        <option value="with_tax">With Tax (Inclusive)</option>
-                                    </select>
-                                </div>
-                                <div class='form-group col-md-4'>
-                                    <label>Profit Margin(%)</label>
-                                    <input type='text' required class="form-control" id="profit_margin"
-                                        name='profit_margin' onkeypress="return accept_digit_only(event)"
-                                        placeholder="Selling Price">
-                                </div>
-                                <div class='form-group col-md-4'>
-                                    <label>Sales Price(vat/tax সহ)</label>
-                                    <input type='text' required class="form-control" id="sales_price" name='sales_price'
-                                        onkeypress="return accept_digit_only(event)" placeholder="Selling Price">
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
 
                     <!-- ================= Inventory ================= -->
 
@@ -503,27 +417,20 @@ echo $this->section('content');
 
                         <div class="card-header bg-warning text-dark">
                             <i class="fa fa-archive"></i>
-                            Inventory Information
+                            Inventory Setup
                         </div>
 
                         <div class="card-body">
 
                             <!-- Opening Qty, SKU, Barcode -->
                             <div class='form-row'>
-
-                                <div class='form-group col-md-4'>
-                                    <label>Opening /Initial Quantity</label>
-                                    <input type='text' required class="form-control" name='productinitial_quantity'
-                                        onkeypress="return accept_digit_only(event)" placeholder='Product Quantity'>
-                                </div>
-
-                                <div class='form-group col-md-4'>
+                                <div class='form-group col-md-6'>
                                     <label>SKU(Stock Keeping Unit)</label>
                                     <input type="text" class="form-control" name="sku" placeholder="SKU Code">
                                 </div>
-                                <div class='form-group col-md-4'>
+                                <div class='form-group col-md-6'>
                                     <label>Barcode</label>
-                                    <input type='text' required class="form-control" name='codefor_barcode'
+                                    <input type='text' required class="form-control" name='barcode'
                                         placeholder='Code for Barcode'>
                                 </div>
                             </div>
@@ -575,6 +482,15 @@ echo $this->section('content');
     </div>
 </div>
 
+
+
+
+
+
+
+
+
+
 <?php
 echo $this->endSection();
 ?>
@@ -582,7 +498,9 @@ echo $this->endSection();
 <!--=============== For Opening Stock  & Product-Purchae CSS start============== -->
 
 <?=$this->section('css')?>
+<!-- // for adding New Product -->
 <link rel="stylesheet" href="<?=base_url('assets/css/product.css')?>">
+<!-- // for adding New Product -->
 <link rel="stylesheet" href="<?=base_url('assets/css/product-purchase.css')?>">
 <?=$this->endSection()?>
 <!--=============== For Opening Stock  & Product-Purchae CSS start============== -->
@@ -592,39 +510,32 @@ echo $this->section('scripts');
 ?>
 
 <!-- Plugin -->
+     <!-- // ================= Purchase ================= -->
 <script src="<?= base_url('assets/js/jquery.mycart.js') ?>"></script>
 
 <!-- Global Configuration -->
 <script>
 window.APP_URLS = {
 
-    // ================= Category =================
-    // categoryCreate: "<?= site_url('categories/category-create-ajax') ?>",
-    // getCategory: "<?= site_url('categories/get-category-list') ?>",
-    // categoryList: "<?= site_url('get-category-list') ?>",
-
-    // // ================= Brand =================
-    // initialBrand: "<?= site_url('brands/initial-product-brand') ?>",
-    // brandCreate: "<?= site_url('brands/brand-create-ajax') ?>",
-
-    // // ================= Group =================
-    // groupCreate: "<?= site_url('groups/group-create-ajax') ?>",
-
-    // // ================= Unit =================
-    // unitCreate: "<?= site_url('units/unit-create-ajax') ?>",
-
-    // // ================= Strength =================
-    // strengthCreate: "<?= site_url('ajax/strength') ?>",
-
-    // // ================= Tax =================
-    // taxCreate: "<?= site_url('tax/vatTax-create-ajax') ?>",
+// for adding New Product
+    categoryCreate: "<?= site_url('categories/category-create-ajax') ?>",
+        initialbrand: "<?= site_url('brands/initial-product-brand') ?>",
+        brandCreate: "<?= site_url('brands/brand-create-ajax') ?>",
+        getCategory: "<?= site_url('categories/get-category-list') ?>",
+        categoryList: "<?= site_url('get-category-list') ?>",
+        groupCreate: "<?= site_url('groups/group-create-ajax') ?>",
+        unitCreate: "<?= site_url('units/unit-create-ajax') ?>",
+        strengthCreate: "<?= site_url('ajax/strength') ?>",
+        taxCreate: "<?= site_url('tax/vatTax-create-ajax') ?>",
+    // for adding New Product
 
     // ================= Purchase =================
     purchaseProduct: "<?= site_url('purchase/store') ?>"
 };
 
-window.APP = {
 
+// ================= Purchase =================
+window.APP = {
     data: {
         productsList: <?= json_encode($getDefaultOpeningStock, JSON_PRETTY_PRINT) ?>
     }
@@ -634,7 +545,9 @@ window.APP = {
 </script>
 
 <!-- Application Scripts -->
-<script src="<?//= base_url('assets/js/product-opening-stock.js') ?>"></script>
+ <!-- for adding New Product -->
+<script src="<?= base_url('assets/js/new-product-add.js') ?>"></script>
+<!-- for adding New Product -->
 <script src="<?= base_url('assets/js/product-purchase.js') ?>"></script>
 
 <?php

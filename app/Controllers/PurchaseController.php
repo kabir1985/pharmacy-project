@@ -112,87 +112,214 @@ public function store()
             ]);
         }
 
-        //==================================================
-        // Invoice Totals
-        //==================================================
+//==================================================
+// Invoice Totals
+//==================================================
 
-        $invoiceTotal  = 0;
-        $discountTotal = 0;
-        $vatTotal      = 0;
-        $netTotal      = 0;
+$invoiceTotal  = 0;
+$discountTotal = 0;
+$vatTotal      = 0;
+$netTotal      = 0;
 
-        foreach ($purchaseList as $item) {
+foreach ($purchaseList as $item) {
 
-            $qtyPerPack = (float)($item['quantity_per_pack'] ?? 0);
-            $boxQty     = (float)($item['box_quantity'] ?? 1);
+    //==================================================
+    // Basic Product Validation
+    //==================================================
 
-            $basePrice = (float)(
-                $item['purchase_price_without_vat'] ?? 0
-            );
+    $productId = (int)($item['product_id'] ?? 0);
 
-            $taxPercentage = (float)(
-                $item['tax_percentage'] ?? 0
-            );
+    $productName = trim(
+        $item['product_name'] ?? 'Unknown Product'
+    );
 
-            $qty = $qtyPerPack * $boxQty;
+    $qtyPerPack = (float)(
+        $item['quantity_per_pack'] ?? 0
+    );
 
-            $purchaseTotal = $qty * $basePrice;
+    $boxQty = (float)(
+        $item['box_quantity'] ?? 0
+    );
 
-            //==================================================
-            // Discount
-            //==================================================
+    $basePrice = (float)(
+        $item['purchase_price_without_vat'] ?? 0
+    );
 
-            if (($item['discount_type'] ?? '') === 'fixed') {
+    //==================================================
+    // Validate Product
+    //==================================================
 
-                $discount = (float)(
-                    $item['discount_fixed'] ?? 0
-                );
+    if ($productId <= 0) {
 
-            } else {
+        $this->db->transRollback();
 
-                $discountPercent = (float)(
-                    $item['discount_percent'] ?? 0
-                );
+        return $this->response->setJSON([
+            'status'  => false,
+            'step'    => 'validation',
+            'message' => 'Invalid product found in cart.'
+        ]);
+    }
 
-                $discount =
-                    $purchaseTotal *
-                    ($discountPercent / 100);
-            }
+    if ($qtyPerPack <= 0) {
 
-            $discount = min($discount, $purchaseTotal);
+        $this->db->transRollback();
 
-            //==================================================
-            // Taxable
-            //==================================================
+        return $this->response->setJSON([
+            'status'  => false,
+            'step'    => 'validation',
+            'message' => 'Quantity per pack must be greater than 0 for "' .
+                         $productName . '".'
+        ]);
+    }
 
-            $taxable = max(
-                0,
-                $purchaseTotal - $discount
-            );
+    if ($boxQty <= 0) {
 
-            //==================================================
-            // VAT
-            //==================================================
+        $this->db->transRollback();
 
-            $vat =
-                $taxable *
-                ($taxPercentage / 100);
+        return $this->response->setJSON([
+            'status'  => false,
+            'step'    => 'validation',
+            'message' => 'Box quantity must be greater than 0 for "' .
+                         $productName . '".'
+        ]);
+    }
 
-            //==================================================
-            // Line Total
-            //==================================================
+    if ($basePrice <= 0) {
 
-            $lineTotal = $taxable + $vat;
+        $this->db->transRollback();
 
-            //==================================================
-            // Invoice Totals
-            //==================================================
+        return $this->response->setJSON([
+            'status'  => false,
+            'step'    => 'validation',
+            'message' => 'Purchase price must be greater than 0 for "' .
+                         $productName . '".'
+        ]);
+    }
 
-            $invoiceTotal  += $purchaseTotal;
-            $discountTotal += $discount;
-            $vatTotal      += $vat;
-            $netTotal      += $lineTotal;
-        }
+    //==================================================
+    // Tax
+    //==================================================
+
+    $taxPercentage = (float)(
+        $item['tax_percentage'] ?? 0
+    );
+
+    //==================================================
+    // Quantity
+    //==================================================
+
+    $qty = $qtyPerPack * $boxQty;
+
+    //==================================================
+    // Purchase Total
+    //==================================================
+
+    $purchaseTotal = $qty * $basePrice;
+
+    if ($purchaseTotal <= 0) {
+
+        $this->db->transRollback();
+
+        return $this->response->setJSON([
+            'status'  => false,
+            'step'    => 'validation',
+            'message' => 'Purchase amount must be greater than 0 for "' .
+                         $productName . '".'
+        ]);
+    }
+
+    //==================================================
+    // Discount
+    //==================================================
+
+    if (($item['discount_type'] ?? '') === 'fixed') {
+
+        $discount = (float)(
+            $item['discount_fixed'] ?? 0
+        );
+
+    } else {
+
+        $discountPercent = (float)(
+            $item['discount_percent'] ?? 0
+        );
+
+        $discount =
+            $purchaseTotal *
+            ($discountPercent / 100);
+    }
+
+    $discount = min(
+        max(0, $discount),
+        $purchaseTotal
+    );
+
+    //==================================================
+    // Taxable
+    //==================================================
+
+    $taxable = max(
+        0,
+        $purchaseTotal - $discount
+    );
+
+    //==================================================
+    // VAT
+    //==================================================
+
+    $vat =
+        $taxable *
+        ($taxPercentage / 100);
+
+    //==================================================
+    // Line Total
+    //==================================================
+
+    $lineTotal =
+        $taxable + $vat;
+
+    //==================================================
+    // Validate Line Total
+    //==================================================
+
+    if ($lineTotal <= 0) {
+
+        $this->db->transRollback();
+
+        return $this->response->setJSON([
+            'status'  => false,
+            'step'    => 'validation',
+            'message' => 'Product "' . $productName .
+                         '" has a zero purchase value.'
+        ]);
+    }
+
+    //==================================================
+    // Invoice Totals
+    //==================================================
+
+    $invoiceTotal  += $purchaseTotal;
+    $discountTotal += $discount;
+    $vatTotal      += $vat;
+    $netTotal      += $lineTotal;
+}
+
+
+//==================================================
+// Validate Net Total
+//==================================================
+
+if ($netTotal <= 0) {
+
+    $this->db->transRollback();
+
+    return $this->response->setJSON([
+        'status'  => false,
+        'step'    => 'validation',
+        'message' => 'Purchase amount must be greater than 0.'
+    ]);
+}
+
 
         //==================================================
         // Invoice Number

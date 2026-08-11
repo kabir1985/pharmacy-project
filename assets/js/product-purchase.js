@@ -635,62 +635,123 @@ ${rowTotal.toFixed(2)}
 
          //url: "<?=site_url('purchase/product')?>",
 
-         $.ajax({
-            url: APP_URLS.purchaseProduct,
-            type: "POST",
-            dataType: "json",
-            data: {
-                cart_data: JSON.stringify(itemsInCart),
-                discount_on_total_price: $("#discount_on_total_price").text(),
-                vat_amt_on_total: $("#vat_amt_on_total").text(),
-                supplier_id: supplier_id
-            },
+        //  $.ajax({
+        //     url: APP_URLS.purchaseProduct,
+        //     type: "POST",
+        //     dataType: "json",
+        //     data: {
+        //         cart_data: JSON.stringify(itemsInCart),
+        //         discount_on_total_price: $("#discount_on_total_price").text(),
+        //         vat_amt_on_total: $("#vat_amt_on_total").text(),
+        //         supplier_id: supplier_id
+        //     },
         
-            success: function (response) {
+        //     success: function (response) {
         
-                if (response.status) {
+        //         if (response.status) {
         
-                    Swal.fire({
-                        icon: "success",
-                        title: "Success",
-                        text: response.message,
-                        confirmButtonText: "OK"
-                    }).then(() => {
+        //             Swal.fire({
+        //                 icon: "success",
+        //                 title: "Success",
+        //                 text: response.message,
+        //                 confirmButtonText: "OK"
+        //             }).then(() => {
         
-                        itemsInCart = [];
-                        location.reload();
+        //                 itemsInCart = [];
+        //                 location.reload();
         
-                    });
+        //             });
         
-                } else {
+        //         } else {
         
-                    Swal.fire({
-                        icon: "error",
-                        title: "Purchase Failed",
-                        text: response.message
-                    });
+        //             Swal.fire({
+        //                 icon: "error",
+        //                 title: "Purchase Failed",
+        //                 text: response.message
+        //             });
         
-                    $("#productPurchase")
-                        .prop("disabled", false)
-                        .text("Purchase");
-                }
-            },
+        //             $("#productPurchase")
+        //                 .prop("disabled", false)
+        //                 .text("Purchase");
+        //         }
+        //     },
         
-            error: function (xhr) {
+        //     error: function (xhr) {
         
-                Swal.fire({
-                    icon: "error",
-                    title: "Server Error",
-                    text: "Something went wrong. Please try again."
-                });
+        //         Swal.fire({
+        //             icon: "error",
+        //             title: "Server Error",
+        //             text: "Something went wrong. Please try again."
+        //         });
         
-                $("#productPurchase")
-                    .prop("disabled", false)
-                    .text("Purchase");
+        //         $("#productPurchase")
+        //             .prop("disabled", false)
+        //             .text("Purchase");
         
-                console.error(xhr.responseText);
-            }
+        //         console.error(xhr.responseText);
+        //     }
+        // });
+
+$.ajax({
+    url: APP_URLS.purchaseProduct,
+    type: "POST",
+    dataType: "json",
+    data: {
+        cart_data: JSON.stringify(itemsInCart),
+        discount_on_total_price: $("#discount_on_total_price").text(),
+        vat_amt_on_total: $("#vat_amt_on_total").text(),
+        supplier_id: supplier_id
+    },
+
+    success: function (response) {
+
+        if (response.status) {
+
+            Swal.fire({
+                icon: "success",
+                title: "Success",
+                text: response.message,
+                timer: 2000,
+                timerProgressBar: true,
+                showConfirmButton: false
+            }).then(() => {
+
+                itemsInCart = [];
+                location.reload();
+
+            });
+
+        } else {
+
+            Swal.fire({
+                icon: "error",
+                title: "Purchase Failed",
+                text: response.message
+            });
+
+            $("#productPurchase")
+                .prop("disabled", false)
+                .text("Purchase");
+        }
+    },
+
+    error: function (xhr) {
+
+        Swal.fire({
+            icon: "error",
+            title: "Server Error",
+            text: "Something went wrong. Please try again."
         });
+
+        $("#productPurchase")
+            .prop("disabled", false)
+            .text("Purchase");
+
+        console.error(xhr.responseText);
+    }
+});
+
+
     });
 
     // =========================================================================
