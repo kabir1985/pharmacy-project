@@ -1,0 +1,566 @@
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.dashboard-summary,
+.quick-actions {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
+.summary-card {
+
+    display: flex;
+    align-items: center;
+
+    min-height: 105px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    background: #fff;
+
+    border-radius: 8px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    transition: all 0.25s ease;
+}
+
+.summary-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.14);
+}
+
+
+/* =========================================================
+   SUMMARY ICON
+========================================================= */
+
+.summary-icon {
+
+    width: 60px;
+    height: 60px;
+
+    min-width: 60px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 16px;
+}
+
+.summary-icon i {
+    font-size: 25px;
+}
+
+
+/* =========================================================
+   SUMMARY CONTENT
+========================================================= */
+
+.summary-content {
+    flex: 1;
+}
+
+.summary-content h4 {
+
+    margin: 0 0 7px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #555;
+}
+
+.summary-content h3 {
+
+    margin: 0;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+.summary-content h3 small {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-left: 2px;
+}
+
+
+/* =========================================================
+   SALE
+========================================================= */
+
+.sale-summary {
+
+    border-left: 4px solid #28a745;
+}
+
+.sale-summary .summary-icon {
+
+    background: rgba(40, 167, 69, 0.12);
+
+    color: #28a745;
+}
+
+.sale-summary .summary-content h3 {
+
+    color: #28a745;
+}
+
+
+/* =========================================================
+   PURCHASE
+========================================================= */
+
+.purchase-summary {
+
+    border-left: 4px solid #17a2b8;
+}
+
+.purchase-summary .summary-icon {
+
+    background: rgba(23, 162, 184, 0.12);
+
+    color: #17a2b8;
+}
+
+.purchase-summary .summary-content h3 {
+
+    color: #17a2b8;
+}
+
+
+/* =========================================================
+   RETURN
+========================================================= */
+
+.return-summary {
+
+    border-left: 4px solid #f39c12;
+}
+
+.return-summary .summary-icon {
+
+    background: rgba(243, 156, 18, 0.12);
+
+    color: #f39c12;
+}
+
+.return-summary .summary-content h3 {
+
+    color: #f39c12;
+}
+
+
+/* =========================================================
+   CREDIT
+========================================================= */
+
+.credit-summary {
+
+    border-left: 4px solid #dc3545;
+}
+
+.credit-summary .summary-icon {
+
+    background: rgba(220, 53, 69, 0.12);
+
+    color: #dc3545;
+}
+
+.credit-summary .summary-content h3 {
+
+    color: #dc3545;
+}
+
+/* =========================================================
+   QUICK ACTION CARDS
+========================================================= */
+
+.quick-action-card {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    min-height: 105px;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+    text-decoration: none !important;
+
+    overflow: hidden;
+    background: #fff;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    transition: all 0.25s ease;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   QUICK ACTION ICON
+========================================================= */
+
+.quick-action-icon {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 16px;
+}
+
+.quick-action-icon i {
+    font-size: 27px;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.quick-action-content {
+    flex: 1;
+}
+
+.quick-action-content h4 {
+    margin: 0 0 5px;
+
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.quick-action-content p {
+    margin: 0;
+
+    font-size: 12px;
+    color: #777;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.quick-action-arrow {
+    font-size: 18px;
+
+    opacity: 0.55;
+
+    transition: all 0.2s ease;
+}
+
+.quick-action-card:hover .quick-action-arrow {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   QUICK SALE
+   PURPLE
+========================================================= */
+
+.sale-card {
+    border-left: 5px solid #6f42c1;
+}
+
+.sale-card .quick-action-icon {
+    background: rgba(111, 66, 193, 0.12);
+    color: #6f42c1;
+}
+
+.sale-card .quick-action-content h4,
+.sale-card .quick-action-arrow {
+    color: #6f42c1;
+}
+
+
+/* =========================================================
+   QUICK PURCHASE
+   BLUE
+========================================================= */
+
+.purchase-card {
+    border-left: 5px solid #007bff;
+}
+
+.purchase-card .quick-action-icon {
+    background: rgba(0, 123, 255, 0.12);
+    color: #007bff;
+}
+
+.purchase-card .quick-action-content h4,
+.purchase-card .quick-action-arrow {
+    color: #007bff;
+}
+
+
+/* =========================================================
+   QUICK STOCK
+   DARK TEAL
+========================================================= */
+
+.stock-card {
+    border-left: 5px solid #00897b;
+}
+
+.stock-card .quick-action-icon {
+    background: rgba(0, 137, 123, 0.12);
+    color: #00897b;
+}
+
+.stock-card .quick-action-content h4,
+.stock-card .quick-action-arrow {
+    color: #00897b;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .quick-action-card {
+        min-height: 90px;
+        padding: 15px;
+    }
+
+    .quick-action-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+    }
+
+    .quick-action-icon i {
+        font-size: 22px;
+    }
+
+    .quick-action-content h4 {
+        font-size: 15px;
+    }
+
+    .quick-action-content p {
+        font-size: 11px;
+    }
+}
+/* =========================================================
+   DASHBOARD TILE
+========================================================= */
+
+.dashboard-tile {
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.dashboard-tile .tile-title {
+
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+.dashboard-tile .tile-title i {
+
+    margin-right: 6px;
+}
+
+
+/* =========================================================
+   SUPPORT
+========================================================= */
+
+.support-box {
+
+    text-align: center;
+
+    padding: 30px 20px 35px;
+}
+
+.support-icon {
+
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(23, 162, 184, 0.12);
+
+    color: #17a2b8;
+}
+
+.support-icon i {
+
+    font-size: 28px;
+}
+
+.support-box h2 {
+
+    margin: 5px 0;
+
+    font-size: 24px;
+
+    font-weight: 700;
+}
+
+.support-box p {
+
+    margin: 0 0 18px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SUPPORT BUTTON
+========================================================= */
+
+.support-call-btn {
+
+    display: inline-block;
+
+    padding: 9px 18px;
+
+    border-radius: 5px;
+
+    background: #17a2b8;
+
+    color: #fff !important;
+
+    text-decoration: none !important;
+
+    font-size: 13px;
+
+    transition: all 0.2s ease;
+}
+
+.support-call-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .summary-card,
+    .quick-action-card {
+
+        min-height: 90px;
+
+        padding: 15px;
+    }
+
+
+    .summary-icon,
+    .quick-action-icon {
+
+        width: 50px;
+        height: 50px;
+
+        min-width: 50px;
+    }
+
+
+    .summary-icon i {
+
+        font-size: 21px;
+    }
+
+
+    .quick-action-icon i {
+
+        font-size: 22px;
+    }
+
+
+    .summary-content h4 {
+
+        font-size: 13px;
+    }
+
+
+    .summary-content h3 {
+
+        font-size: 18px;
+    }
+
+
+    .quick-action-content h4 {
+
+        font-size: 15px;
+    }
+
+
+    .quick-action-content p {
+
+        font-size: 11px;
+    }
+
+
+    .support-box h2 {
+
+        font-size: 20px;
+    }
+
+}
+

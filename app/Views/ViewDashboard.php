@@ -3,141 +3,320 @@ $this->extend('layout');
 $this->section('content');
 ?>
 
-<style>
-h4 {
-    font-size: 14px;
-}
-</style>
-<?php 
-//$allowedMenus = session()->get('allowedMenus');
-//echo $this->include('partial/sidebar', ['allowedMenus' => $allowedMenus]); ?>
-<?php //echo $this->include('partial/sidebar'); ?>
-
 <div class="app-title">
     <div>
         <h3>
             <i class="fa fa-cubes"></i>
-            Welcome <?= esc(session('user_name') ?? session('login_id')) ?> To POS Pharmacy Software
+            Welcome To CARE POINT Pharmacy and Dept. Store
         </h3>
-        <!-- <p>Welcome to View Dashboard </p>
-        <p>
-            <?//= $userId = session()->get('user_id');?>
-        </p> -->
     </div>
+
     <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item">
+            <i class="fa fa-home fa-lg"></i>
+        </li>
+        <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+        </li>
     </ul>
 </div>
-<div class="row">
-    <div class="col-md-6 col-lg-3">
-        <div class="widget-small primary coloured-icon"><i class="icon fa fa-user-o" aria-hidden="true fa-3x"></i>
-            <div class="info">
+
+
+<!-- =========================================================
+     TODAY SUMMARY
+========================================================= -->
+
+<div class="row dashboard-summary">
+
+    <!-- Today Sale -->
+    <div class="col-md-6 col-lg-4">
+        <div class="summary-card sale-summary">
+
+            <div class="summary-icon">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+
+            <div class="summary-content">
                 <h4>Today Sale Amt</h4>
-                <p><b> <?= number_format($today_sales, 2) ?>&nbsp;Tk.
-                    </b></p>
+
+                <h3>
+                    <?= number_format($today_sales, 2) ?>
+                    <small>Tk.</small>
+                </h3>
             </div>
+
         </div>
     </div>
-    <div class="col-md-6 col-lg-3">
-        <div class="widget-small info coloured-icon"><i class="icon fa fa-shopping-basket" aria-hidden="true fa-3x"></i>
-            <div class="info">
+
+
+    <!-- Today Purchase -->
+    <div class="col-md-6 col-lg-4">
+        <div class="summary-card purchase-summary">
+
+            <div class="summary-icon">
+                <i class="fa fa-shopping-basket"></i>
+            </div>
+
+            <div class="summary-content">
                 <h4>Today Purchase</h4>
-                <p><b><?= number_format($today_purchase, 2) ?>&nbsp;Tk.</b></p>
+
+                <h3>
+                    <?= number_format($today_purchase, 2) ?>
+                    <small>Tk.</small>
+                </h3>
             </div>
+
         </div>
     </div>
-    <div class="col-md-6 col-lg-3">
-        <div class="widget-small warning coloured-icon"><i class="icon fa fa-usd" aria-hidden="true fa-3x"></i>
-            <div class="info">
+
+
+    <!-- Today Return -->
+    <div class="col-md-6 col-lg-4">
+        <div class="summary-card return-summary">
+
+            <div class="summary-icon">
+                <i class="fa fa-undo"></i>
+            </div>
+
+            <div class="summary-content">
                 <h4>Today Return</h4>
-                <p><b>10</b></p>
+
+                <h3>
+                    <?= number_format($today_return, 2) ?>
+                    <small>Tk.</small>
+                </h3>
             </div>
+
         </div>
     </div>
-    <div class="col-md-6 col-lg-3">
-        <div class="widget-small danger coloured-icon"><i class="icon fa fa-credit-card" aria-hidden="true fa-3x"></i>
-            <div class="info">
+
+
+    <!-- Today Credit Sale -->
+    <!-- <div class="col-md-6 col-lg-3">
+        <div class="summary-card credit-summary">
+
+            <div class="summary-icon">
+                <i class="fa fa-credit-card"></i>
+            </div>
+
+            <div class="summary-content">
                 <h4>Today Credit Sale</h4>
-                <p><b>500</b></p>
+
+                <h3>
+                    <?//= number_format($today_credit_sale, 2) ?>
+                    <small>Tk.</small>
+                </h3>
             </div>
+
         </div>
-    </div>
+    </div> -->
+
 </div>
+
+
+<!-- =========================================================
+     QUICK ACTIONS
+========================================================= -->
+
+<div class="row quick-actions">
+
+    <!-- Quick Sale -->
+    <div class="col-md-4">
+
+        <a href="<?= base_url('pos') ?>"
+           class="quick-action-card sale-card">
+
+            <div class="quick-action-icon">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+
+            <div class="quick-action-content">
+                <h4>Quick Sale</h4>
+                <p>Create a new sales invoice quickly</p>
+            </div>
+
+            <div class="quick-action-arrow">
+                <i class="fa fa-arrow-right"></i>
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- Quick Purchase -->
+    <div class="col-md-4">
+
+        <a href="<?= base_url('purchase') ?>"
+           class="quick-action-card purchase-card">
+
+            <div class="quick-action-icon">
+                <i class="fa fa-shopping-basket"></i>
+            </div>
+
+            <div class="quick-action-content">
+                <h4>Quick Purchase</h4>
+                <p>Enter a new purchase quickly</p>
+            </div>
+
+            <div class="quick-action-arrow">
+                <i class="fa fa-arrow-right"></i>
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- Quick Stock -->
+    <div class="col-md-4">
+
+        <a href="<?= base_url('opening-stock') ?>"
+           class="quick-action-card stock-card">
+
+            <div class="quick-action-icon">
+                <i class="fa fa-cubes"></i>
+            </div>
+
+            <div class="quick-action-content">
+                <h4>Quick Stock</h4>
+                <p>Add or manage opening stock</p>
+            </div>
+
+            <div class="quick-action-arrow">
+                <i class="fa fa-arrow-right"></i>
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     CHART + SUPPORT
+========================================================= -->
+
 <div class="row">
-    <div class="col-md-6">
-        <div class="tile">
-            <h3 class="tile-title">Monthly Sales</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-                <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="tile">
-            <h3 class="tile-title">Support Team</h3>
 
-            <div class="text-center" style="padding:50px 20px;">
-                <h2>📞 01913-69-11-85</h2>
-                <p>Support Hotline</p>
+    <!-- Monthly Sales -->
+    <div class="col-md-6">
+
+        <div class="tile dashboard-tile">
+
+            <h3 class="tile-title">
+                <i class="fa fa-line-chart"></i>
+                Monthly Sales
+            </h3>
+
+            <div class="embed-responsive embed-responsive-16by9">
+
+                <canvas
+                    class="embed-responsive-item"
+                    id="lineChartDemo">
+                </canvas>
+
             </div>
+
         </div>
+
     </div>
+
+
+    <!-- Support -->
+    <div class="col-md-6">
+
+        <div class="tile dashboard-tile">
+
+            <h3 class="tile-title">
+                <i class="fa fa-headphones"></i>
+                Support Team
+            </h3>
+
+            <div class="support-box">
+
+                <div class="support-icon">
+                    <i class="fa fa-phone"></i>
+                </div>
+
+                <h2>01913-69-11-85</h2>
+
+                <p>Support Hotline</p>
+
+                <a href="tel:01913691185"
+                   class="support-call-btn">
+                    <i class="fa fa-phone"></i>
+                    Call Support
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 
-<?php
-$this->endSection();
-?>
+<?= $this->endSection(); ?>
 
 
-<?php
+<!-- =========================================================
+     CSS
+========================================================= -->
+
+<?= $this->section("css"); ?>
+
+<link rel="stylesheet" href="<?= base_url('assets/css/dashboard.css') ?>">
+
+<?= $this->endSection(); ?>
 
 
-$this->section("scripts");
-?>
-<!-- Page specific javascripts-->
-<script type="text/javascript" src="<?php echo base_url('assets/js/plugins/chart.js') ?>"></script>
+<!-- =========================================================
+     SCRIPTS
+========================================================= -->
 
-<script type="text/javascript">
+<?= $this->section("scripts"); ?>
+
+<script src="<?= base_url('assets/js/plugins/chart.js') ?>"></script>
+
+<script>
+
 var data = {
+
     labels: <?= $sales_labels ?? '[]' ?>,
+
     datasets: [{
+
         label: "Monthly Sales",
+
         fillColor: "rgba(151,187,205,0.2)",
+
         strokeColor: "rgba(151,187,205,1)",
+
         pointColor: "rgba(151,187,205,1)",
+
         pointStrokeColor: "#fff",
+
         pointHighlightFill: "#fff",
-        pointHighlightStroke: "rgba(151,187,205,1)",
+
+        pointHighlightStroke:
+            "rgba(151,187,205,1)",
+
         data: <?= $sales_amounts ?? '[]' ?>
+
     }]
+
 };
 
-var ctxl = $("#lineChartDemo").get(0).getContext("2d");
+
+var ctxl = $("#lineChartDemo")
+    .get(0)
+    .getContext("2d");
+
 var lineChart = new Chart(ctxl).Line(data);
+
 </script>
 
-
-<!-- Google analytics script-->
-<script type="text/javascript">
-if (document.location.hostname == 'pratikborsadiya.in') {
-    (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-72504830-1', 'auto');
-    ga('send', 'pageview');
-}
-</script>
-
-<?php
-$this->endSection();
-?>
+<?= $this->endSection(); ?>
