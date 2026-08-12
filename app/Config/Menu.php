@@ -376,7 +376,8 @@ class Menu extends BaseConfig
             'url'   => '#',
 
             'privileges' => [
-                'due_collection'
+                'due_collection',
+                'customer_ac_stmt'
             ],
 
             'children' => [
@@ -385,6 +386,11 @@ class Menu extends BaseConfig
                     'label'      => 'Due Collection',
                     'url'        => 'payment/due-collection',
                     'privileges' => ['due_collection']
+                ],
+                [
+                    'label'      => 'Customer A/C Stmt',
+                    'url'        => 'payment/cus-acc-stmt',
+                    'privileges' => ['customer_ac_stmt']
                 ]
 
             ]

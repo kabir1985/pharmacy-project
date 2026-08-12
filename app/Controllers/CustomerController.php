@@ -136,4 +136,16 @@ class CustomerController extends BaseController
 
         return redirect()->to('/customer');
     }
+
+
+
+public function CustomerAccountStatementView()
+{
+
+return view('payment/cus-acc-stmt');
+
+}
+
+
+
 }

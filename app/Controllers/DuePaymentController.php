@@ -33,6 +33,9 @@ class DuePaymentController extends BaseController
 /**
  * Save Due Payment
  */
+/**
+ * Save Due Payment
+ */
 public function save()
 {
     if (!$this->request->isAJAX()) {
@@ -42,168 +45,288 @@ public function save()
         ]);
     }
 
+    $dueId        = (int) $this->request->getPost('due_id');
+    $salesId      = (int) $this->request->getPost('sales_id');
+    $customerId   = (int) $this->request->getPost('customer_id');
 
-    $dueId          = $this->request->getPost('due_id');
-    $salesId        = $this->request->getPost('sales_id');
-    $customerId     = $this->request->getPost('customer_id');
+    $paymentAmount = round(
+        (float) $this->request->getPost('payment_amount'),
+        2
+    );
 
-    $paymentAmount  = (float) $this->request->getPost('payment_amount');
-    $paymentDate    = $this->request->getPost('payment_date');
-    $paymentMethod  = $this->request->getPost('payment_method');
-    $referenceNo    = $this->request->getPost('reference_no');
-    $note           = $this->request->getPost('note');
+    $paymentDate  = $this->request->getPost('payment_date');
+    $paymentMethod = $this->request->getPost('payment_method');
+    $referenceNo   = $this->request->getPost('reference_no');
+    $note          = $this->request->getPost('note');
 
+
+    // =========================================================
+    // Basic Validation
+    // =========================================================
+
+    if ($dueId <= 0 || $salesId <= 0 || $customerId <= 0) {
+        return $this->response->setJSON([
+            'status'  => false,
+            'message' => 'Invalid due information.'
+        ]);
+    }
 
     if ($paymentAmount <= 0) {
-
         return $this->response->setJSON([
             'status'  => false,
-            'message' => 'Invalid payment amount.'
+            'message' => 'Payment amount must be greater than zero.'
         ]);
-
     }
 
 
-    // Get Sale
-    $sale = $this->productSaleModel->find($salesId);
-
-
-    if (!$sale) {
-
-        return $this->response->setJSON([
-            'status'  => false,
-            'message' => 'Invoice not found.'
-        ]);
-
-    }
-
-
-    // Calculate Current Due
-    $currentDue = $sale['grand_total'] - $sale['paid_amount'];
-
-
-    // Validate
-    if ($paymentAmount > $currentDue) {
-
-        return $this->response->setJSON([
-            'status'  => false,
-            'message' => 'Payment exceeds due amount.'
-        ]);
-
-    }
-
+    // =========================================================
+    // Start Transaction
+    // =========================================================
 
     $this->db->transBegin();
 
-
     try {
 
+        // =====================================================
+        // Lock Customer Due Row
+        // =====================================================
 
-        // Payment History
+        $due = $this->db->query(
+            "SELECT *
+             FROM customer_due
+             WHERE due_id = ?
+             FOR UPDATE",
+            [$dueId]
+        )->getRowArray();
+
+
+        if (!$due) {
+
+            throw new \RuntimeException(
+                'Customer due record not found.'
+            );
+        }
+
+
+        // =====================================================
+        // Validate Customer / Sales Relationship
+        // =====================================================
+
+        if ((int) $due['sales_id'] !== $salesId) {
+
+            throw new \RuntimeException(
+                'Sales invoice does not match customer due.'
+            );
+        }
+
+        if ((int) $due['customer_id'] !== $customerId) {
+
+            throw new \RuntimeException(
+                'Customer does not match customer due.'
+            );
+        }
+
+
+        // =====================================================
+        // Original Due & Already Paid
+        // =====================================================
+
+        $originalDue = round(
+            (float) $due['due_amount'],
+            2
+        );
+
+        $alreadyPaid = round(
+            (float) $due['paid_amount'],
+            2
+        );
+
+
+        // =====================================================
+        // Current Due
+        // =====================================================
+
+        $currentDue = round(
+            $originalDue - $alreadyPaid,
+            2
+        );
+
+
+        // =====================================================
+        // Already Fully Paid
+        // =====================================================
+
+        if ($currentDue <= 0) {
+
+            throw new \RuntimeException(
+                'This invoice has no outstanding due.'
+            );
+        }
+
+
+        // =====================================================
+        // Prevent Over Payment
+        // =====================================================
+
+        if ($paymentAmount > $currentDue) {
+
+            throw new \RuntimeException(
+                'Payment cannot exceed current due of ৳' .
+                number_format($currentDue, 2)
+            );
+        }
+
+
+        // =====================================================
+        // New Paid Amount
+        // =====================================================
+
+        $newPaidAmount = round(
+            $alreadyPaid + $paymentAmount,
+            2
+        );
+
+
+        // =====================================================
+        // New Current Due
+        // =====================================================
+
+        $newCurrentDue = round(
+            $originalDue - $newPaidAmount,
+            2
+        );
+
+
+        // =====================================================
+        // Payment Status
+        // =====================================================
+
+        if ($newCurrentDue <= 0) {
+            $paymentStatus = 'Paid';
+        } else {
+            $paymentStatus = 'Partial';
+        }
+
+
+        // =====================================================
+        // Insert Payment History
+        // =====================================================
+
         $this->customerDuePaymentModel->insert([
 
             'due_id'         => $dueId,
             'sales_id'       => $salesId,
             'customer_id'    => $customerId,
-            'payment_date'   => $paymentDate,
+
+            'payment_date'   => $paymentDate
+                ?: date('Y-m-d H:i:s'),
+
             'payment_amount' => $paymentAmount,
-            'payment_method' => $paymentMethod,
-            'reference_no'   => $referenceNo,
-            'note'           => $note,
+
+            'payment_method' => $paymentMethod ?: 'Cash',
+
+            'reference_no'   => $referenceNo ?: null,
+
+            'note'           => $note ?: null,
+
             'received_by'    => session()->get('user_id'),
 
         ]);
 
 
+        // =====================================================
+        // Update Customer Due
+        // IMPORTANT:
+        // due_amount remains ORIGINAL DUE
+        // only paid_amount increases
+        // =====================================================
 
-        // Update Sale Paid Amount
-
-        $newPaidAmount = $sale['paid_amount'] + $paymentAmount;
-
-
-        $paymentStatus = 'Partial';
-
-
-        if ($newPaidAmount >= $sale['grand_total']) {
-
-            $paymentStatus = 'Paid';
-
-        }
+        $this->customerDueModel
+            ->where('due_id', $dueId)
+            ->set('paid_amount', $newPaidAmount)
+            ->update();
 
 
+        // =====================================================
+        // Update Sales Paid Amount
+        // =====================================================
 
-        $this->productSaleModel->update($salesId, [
-
-            'paid_amount'    => $newPaidAmount,
-            'payment_status' => $paymentStatus,
-
-        ]);
-
-
-
-        // Optional: Update customer_due table
-        // only if you keep this table for tracking
-
-        if ($dueId) {
-
-            $due = $this->customerDueModel->find($dueId);
+        $this->productSaleModel->update(
+            $salesId,
+            [
+                'paid_amount'   => $newPaidAmount,
+                'payment_status' => $paymentStatus,
+            ]
+        );
 
 
-            if ($due) {
-
-                $newDueAmount = $due['due_amount'] - $paymentAmount;
-
-
-                $this->customerDueModel->update($dueId, [
-
-                    'paid_amount' => $due['paid_amount'] + $paymentAmount,
-                    'due_amount'  => $newDueAmount,
-
-                ]);
-
-            }
-
-        }
-
-
+        // =====================================================
+        // Transaction Check
+        // =====================================================
 
         if ($this->db->transStatus() === false) {
 
-            $this->db->transRollback();
-
-            return $this->response->setJSON([
-                'status'  => false,
-                'message' => 'Payment failed.'
-            ]);
-
+            throw new \RuntimeException(
+                'Database transaction failed.'
+            );
         }
 
 
+        // =====================================================
+        // Commit
+        // =====================================================
 
         $this->db->transCommit();
 
 
         return $this->response->setJSON([
-            'status'  => true,
-            'message' => 'Payment collected successfully.'
-        ]);
 
+            'status'  => true,
+
+            'message' =>
+                'Payment collected successfully.',
+
+            'data' => [
+
+                'due_id' => $dueId,
+
+                'sales_id' => $salesId,
+
+                'payment_amount' =>
+                    number_format($paymentAmount, 2, '.', ''),
+
+                'paid_amount' =>
+                    number_format($newPaidAmount, 2, '.', ''),
+
+                'current_due' =>
+                    number_format($newCurrentDue, 2, '.', ''),
+
+                'payment_status' =>
+                    $paymentStatus,
+
+            ]
+
+        ]);
 
 
     } catch (\Throwable $e) {
 
-
         $this->db->transRollback();
 
-
-        log_message('error', $e->getMessage());
+        log_message(
+            'error',
+            'Customer Due Payment Error: ' .
+            $e->getMessage()
+        );
 
 
         return $this->response->setJSON([
-            'status'  => false,
-            'message' => 'An unexpected error occurred.'
-        ]);
 
+            'status'  => false,
+
+            'message' => $e->getMessage(),
+
+        ]);
     }
 }
 

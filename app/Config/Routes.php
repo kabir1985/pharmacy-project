@@ -150,6 +150,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->get('due-collection', 'DuePaymentController::index');
         // $routes->get('collect/(:num)', 'DuePaymentController::collect/$1');
         $routes->post('collection-save', 'DuePaymentController::save');
+        $routes->get('cus-acc-stmt', 'CustomerController::CustomerAccountStatementView');
     });
 
     $routes->group('customer-group', function ($routes) {
