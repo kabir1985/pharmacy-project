@@ -204,130 +204,280 @@ $(document).ready(function() {
     // =========================================================================
 
     // ================= DRAW TABLE ================= //
-    function drawTable() {
+//     function drawTable() {
 
-        const tbody = $("#cartTableBody");
-        tbody.empty();
+//         const tbody = $("#cartTableBody");
+//         tbody.empty();
 
-        let rows = "";
+//         let rows = "";
 
-        $.each(itemsInCart, function(key, item) {
+//         $.each(itemsInCart, function(key, item) {
 
-            var qtyPerPack = Number(item.quantity_per_pack) || 0;
-            var Boxqty = Number(item.box_quantity) || 1;
-            var UnitPrice = Number(item.purchase_price_without_vat) || 0;
+//             var qtyPerPack = Number(item.quantity_per_pack) || 0;
+//             var Boxqty = Number(item.box_quantity) || 1;
+//             var UnitPrice = Number(item.purchase_price_without_vat) || 0;
 
-            var Trade_Price_Per_Box = qtyPerPack * UnitPrice;
+//             var Trade_Price_Per_Box = qtyPerPack * UnitPrice;
 
-            let calc = calculateRow(item);
+//             let calc = calculateRow(item);
 
-            let vatAfterDiscount = calc.vat;
-            let rowTotal = calc.subtotal;
+//             let vatAfterDiscount = calc.vat;
+//             let rowTotal = calc.subtotal;
 
-            rows += `<tr data-index="${key}">
-        <td>${item.product_name}</td>
-        <td>${item.total_stock}</td>
+//             rows += `<tr data-index="${key}">
+//         <td>${item.product_name}</td>
+//         <td>${item.total_stock}</td>
 
-<!---------- QtyPerBox----------------------->
-<td>
-    <input
-        data-id="${key}"
-        class="product_quantity_change form-control form-control-sm w-100"
-        type="number"
-        step="any"
-        value="${item.quantity_per_pack || 1}">
-</td>
-<!--------------------BoxQty-------------------------------->
-<td>
-    <input
-        data-id="${key}"
-        class="product_boxqty_change form-control form-control-sm"
-        type="number"
-        min="1"
-        step="any"
-        value="${item.box_quantity || 1}">
-</td>
-
-
-<!---------------- Unit Price------------------------------>
-<td>
-    <input
-        type="text"
-        class="purchase_price_no_vat form-control form-control-sm w-100"
-        value="${item.purchase_price_without_vat || 1}"
-        min="1"
-        data-id="${key}" readonly>
-</td>
+// <!---------- QtyPerBox----------------------->
+// <td>
+//     <input
+//         data-id="${key}"
+//         class="product_quantity_change form-control form-control-sm w-100"
+//         type="number"
+//         step="any"
+//         value="${item.quantity_per_pack || 1}">
+// </td>
+// <!--------------------BoxQty-------------------------------->
+// <td>
+//     <input
+//         data-id="${key}"
+//         class="product_boxqty_change form-control form-control-sm"
+//         type="number"
+//         min="1"
+//         step="any"
+//         value="${item.box_quantity || 1}">
+// </td>
 
 
-<!----------------Trade Price Per Box-------------------------------------->
-<td style="min-width:70px;">
-<input
-    type="text"
-    class="trade_price_per_box form-control form-control-sm text-end"
-    value="${parseFloat(Trade_Price_Per_Box).toFixed(2)}"
-    data-id="${key}">
-</td>
-
-<!----------------Free Qty-------------------------------------->
-<td>
-    <input style="min-width: 50px;"
-    type="number"
-    class="free_qty form-control form-control-sm"
-    data-id="${key}"
-    min="0"
-    value="${item.free_qty || 0}">
- </td>
+// <!---------------- Unit Price------------------------------>
+// <td>
+//     <input
+//         type="text"
+//         class="purchase_price_no_vat form-control form-control-sm w-100"
+//         value="${item.purchase_price_without_vat || 1}"
+//         min="1"
+//         data-id="${key}" readonly>
+// </td>
 
 
-<td>
-    <input
-        type="text"
-        class="vat-input form-control form-control-sm"
-        min="0"
-        value="${item.tax_percentage || 0}"
-        data-id="${key}">
-</td>
+// <!----------------Trade Price Per Box-------------------------------------->
+// <td style="min-width:70px;">
+// <input
+//     type="text"
+//     class="trade_price_per_box form-control form-control-sm text-end"
+//     value="${parseFloat(Trade_Price_Per_Box).toFixed(2)}"
+//     data-id="${key}">
+// </td>
 
-<td class="vatAmount"> ${vatAfterDiscount.toFixed(2)}</td>
+// <!----------------Free Qty-------------------------------------->
+// <td>
+//     <input style="min-width: 50px;"
+//     type="number"
+//     class="free_qty form-control form-control-sm"
+//     data-id="${key}"
+//     min="0"
+//     value="${item.free_qty || 0}">
+//  </td>
 
-<td>
-    <input
-        type="text"
-        class="sale_price form-control form-control-sm"
-        value="${item.selling_price || 0}"
-        data-id="${key}"
-        disabled>
-</td>
 
-<td>
-<input
-type="text"
-class="discount_percent form-control form-control-sm"
-value="${getDiscountValue(item)}"
-data-id="${key}">
-</td>
+// <td>
+//     <input
+//         type="text"
+//         class="vat-input form-control form-control-sm"
+//         min="0"
+//         value="${item.tax_percentage || 0}"
+//         data-id="${key}">
+// </td>
 
-<td class="text-end rowTotal">
-${rowTotal.toFixed(2)}
-</td>
+// <td class="vatAmount"> ${vatAfterDiscount.toFixed(2)}</td>
 
-<td>
-    <button
-        data-index="${key}"
-        class="btn btn-sm btn-danger btn_item_delete">
-        ×
-    </button>
-</td>
+// <td>
+//     <input
+//         type="text"
+//         class="sale_price form-control form-control-sm"
+//         value="${item.selling_price || 0}"
+//         data-id="${key}"
+//         >
+// </td>
 
-    </tr>`;
-        });
+// <td>
+// <input
+// type="text"
+// class="discount_percent form-control form-control-sm"
+// value="${getDiscountValue(item)}"
+// data-id="${key}">
+// </td>
 
-        tbody.html(rows);
+// <td class="text-end rowTotal">
+// ${rowTotal.toFixed(2)}
+// </td>
 
-        updateGrandTotal();
-        enableButton();
-    }
+// <td>
+//     <button
+//         data-index="${key}"
+//         class="btn btn-sm btn-danger btn_item_delete">
+//         ×
+//     </button>
+// </td>
+
+//     </tr>`;
+//         });
+
+//         tbody.html(rows);
+
+//         updateGrandTotal();
+//         enableButton();
+//     }
+
+
+
+// ================= DRAW TABLE ================= //
+function drawTable() {
+
+    const tbody = $("#cartTableBody");
+    tbody.empty();
+
+    let rows = "";
+
+    $.each(itemsInCart, function(key, item) {
+
+        const qtyPerPack = Number(item.quantity_per_pack) || 1;
+        const Boxqty = Number(item.box_quantity) || 1;
+        const UnitPrice = Number(item.purchase_price_without_vat) || 0;
+
+        const Trade_Price_Per_Box = qtyPerPack * UnitPrice;
+
+        let calc = calculateRow(item);
+
+        let vatAfterDiscount = calc.vat;
+        let rowTotal = calc.subtotal;
+
+        rows += `
+        <tr data-index="${key}">
+
+            <!-- Product -->
+            <td>${item.product_name}</td>
+
+            <!-- Stock -->
+            <td>${Number(item.total_stock || 0).toFixed(2)}</td>
+
+            <!-- Qty Per Box -->
+            <td>
+                <input
+                    data-id="${key}"
+                    class="product_quantity_change form-control form-control-sm w-100"
+                    type="number"
+                    min="1"
+                    step="any"
+                    value="${qtyPerPack}">
+            </td>
+
+            <!-- Box Qty -->
+            <td>
+                <input
+                    data-id="${key}"
+                    class="product_boxqty_change form-control form-control-sm"
+                    type="number"
+                    min="1"
+                    step="any"
+                    value="${Boxqty}">
+            </td>
+
+            <!-- Unit Purchase Price -->
+            <td>
+                <input
+                    type="text"
+                    class="purchase_price_no_vat form-control form-control-sm w-100"
+                    value="${UnitPrice.toFixed(2)}"
+                    min="0"
+                    data-id="${key}"
+                    readonly>
+            </td>
+
+            <!-- Trade Price Per Box -->
+            <td style="min-width:70px;">
+                <input
+                    type="text"
+                    class="trade_price_per_box form-control form-control-sm text-end"
+                    value="${Trade_Price_Per_Box.toFixed(2)}"
+                    data-id="${key}"
+                    >
+            </td>
+
+            <!-- Free Qty -->
+            <td>
+                <input
+                    style="min-width:50px;"
+                    type="number"
+                    class="free_qty form-control form-control-sm"
+                    data-id="${key}"
+                    min="0"
+                    step="any"
+                    value="${Number(item.free_qty || 0)}">
+            </td>
+
+            <!-- VAT % -->
+            <td>
+                <input
+                    type="text"
+                    class="vat-input form-control form-control-sm"
+                    min="0"
+                    step="any"
+                    value="${Number(item.tax_percentage || 0)}"
+                    data-id="${key}">
+            </td>
+
+            <!-- VAT Amount -->
+            <td class="vatAmount">
+                ${vatAfterDiscount.toFixed(2)}
+            </td>
+
+            <!-- SELLING PRICE -->
+            <td>
+                <input
+                    type="number"
+                    class="sale_price form-control form-control-sm"
+                    value="${item.selling_price !== undefined && item.selling_price !== null
+                        ? item.selling_price
+                        : ''}"
+                    data-id="${key}"
+                    min="0"
+                    step="0.01"
+                    placeholder="Enter S.Price">
+            </td>
+
+            <!-- Discount % -->
+            <td>
+                <input
+                    type="text"
+                    class="discount_percent form-control form-control-sm"
+                    value="${getDiscountValue(item)}"
+                    data-id="${key}">
+            </td>
+
+            <!-- Sub Total -->
+            <td class="text-end rowTotal">
+                ${rowTotal.toFixed(2)}
+            </td>
+
+            <!-- Delete -->
+            <td>
+                <button
+                    type="button"
+                    data-index="${key}"
+                    class="btn btn-sm btn-danger btn_item_delete">
+                    ×
+                </button>
+            </td>
+
+        </tr>`;
+    });
+
+    tbody.html(rows);
+
+    updateGrandTotal();
+    enableButton();
+}
 
 
 
@@ -466,6 +616,17 @@ ${rowTotal.toFixed(2)}
         //console.log(itemsInCart);
 
         updateRow(index); // or updateRow(index)
+    });
+
+
+
+
+    $(document).on("input", ".sale_price", function () {
+
+        const key = $(this).data("id");
+    
+        itemsInCart[key].selling_price =
+            parseFloat($(this).val()) || 0;
     });
 
 

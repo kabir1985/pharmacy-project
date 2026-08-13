@@ -40,7 +40,7 @@ echo $this->section('content');
                             <th>Free Qty</th>
                             <th class="vat-column-header">P.Vat%</th>
                             <th>V.Amt</th>
-                            <th>S.Price</th>
+                            <th>S.Price/Unit</th>
                             <th id="discountHeader">Dis%</th>
                             <th class="text-end">SubTotal</th>
                             <th></th>

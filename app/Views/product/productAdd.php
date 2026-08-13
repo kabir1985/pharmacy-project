@@ -281,8 +281,27 @@
                                     <label for="inputState">Brand</label>
                                     <div class="input-group">
 
-                                        <select id="product_brand" name="product_brand" class="form-control" required>
-                                        </select>
+                                     <select id="product_brand" name="product_brand" class="form-control" required>
+                                        </select> 
+
+
+
+                                        <!-- <select id="product_brand" name="product_brand" class="form-control" required>
+
+                                            <option value="">Select Brand</option>
+
+                                            <?php foreach ($brand_show as $brand): ?>
+
+                                                <option value="<?= $brand['brand_id'] ?>">
+                                                    <?= $brand['product_brand_name'] ?>
+                                                </option>
+
+                                            <?php endforeach; ?>
+
+                                        </select> -->
+
+
+
 
                                         <div class="input-group-append">
 

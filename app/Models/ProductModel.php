@@ -44,157 +44,507 @@ public function getProducts($category = null)
 
         pc.category_name,
 
-        pos.purchase_price_without_vat,
-        pos.purchase_price_with_vat,
-        pos.tax_type,
-        pos.tax_id,
-        pos.tax_percentage,
-        pos.tax_amount,
-        pos.profit_margin_percent,
-        pos.selling_price,
+        /* =========================================
+           PRICE
+           Opening stock first,
+           Latest purchase as fallback
+        ========================================= */
 
-        COALESCE(sl.total_stock,0) AS total_stock
-    ");
+        COALESCE(
+            pos.purchase_price_without_vat,
+            lp.base_price_per_unit,
+            0
+        ) AS purchase_price_without_vat,
 
-    // Category
+        COALESCE(
+            pos.purchase_price_with_vat,
+            lp.purchase_price,
+            0
+        ) AS purchase_price_with_vat,
+
+        COALESCE(
+            pos.tax_type,
+            CASE
+                WHEN lp.tax_percentage > 0
+                THEN 'with_tax'
+                ELSE 'without_tax'
+            END,
+            'without_tax'
+        ) AS tax_type,
+
+        COALESCE(
+            pos.tax_id,
+            lp.tax_id
+        ) AS tax_id,
+
+        COALESCE(
+            pos.tax_percentage,
+            lp.tax_percentage,
+            0
+        ) AS tax_percentage,
+
+        COALESCE(
+            pos.tax_amount,
+            lp.product_wise_vat_amount,
+            0
+        ) AS tax_amount,
+
+        COALESCE(
+            pos.profit_margin_percent,
+            CASE
+                WHEN lp.purchase_price > 0
+                THEN ((lp.selling_price - lp.purchase_price)
+                      / lp.purchase_price) * 100
+                ELSE 0
+            END,
+            0
+        ) AS profit_margin_percent,
+
+        COALESCE(
+            NULLIF(pos.selling_price, 0),
+            NULLIF(lp.selling_price, 0),
+            0
+        ) AS selling_price,
+
+        /* =========================================
+           CURRENT STOCK
+           ========================================= */
+
+        COALESCE(sl.total_stock, 0) AS total_stock
+
+    ", false);
+
+    // =====================================================
+    // CATEGORY
+    // =====================================================
+
     $builder->join(
         'product_category pc',
         'pc.product_category_id = p.product_category',
         'left'
     );
 
-    // Active Opening Stock
+    // =====================================================
+    // OPENING STOCK
+    // =====================================================
+
     $builder->join(
         'product_opening_stock pos',
-        'pos.product_id = p.product_id AND pos.status = "active"',
-        'left'
+        'pos.product_id = p.product_id
+         AND pos.status = "active"',
+        'left',
+        false
     );
 
-    // Current Stock
+    // =====================================================
+    // LATEST ACTIVE PURCHASE
+    // =====================================================
+
     $builder->join(
-        '(SELECT product_id,
-                 SUM(qty_in - qty_out) AS total_stock
-          FROM stock_ledger
-          GROUP BY product_id) sl',
+        '(
+            SELECT ppd.*
+            FROM product_purchase_details ppd
+
+            INNER JOIN (
+                SELECT
+                    ppd2.product_id,
+                    MAX(ppd2.purchase_details_id) AS latest_purchase_details_id
+
+                FROM product_purchase_details ppd2
+
+                INNER JOIN product_purchase pp2
+                    ON pp2.purchase_id = ppd2.purchase_id
+
+                WHERE pp2.status = "active"
+
+                GROUP BY ppd2.product_id
+
+            ) latest
+                ON latest.latest_purchase_details_id =
+                   ppd.purchase_details_id
+
+        ) lp',
+        'lp.product_id = p.product_id',
+        'left',
+        false
+    );
+
+    // =====================================================
+    // CURRENT STOCK
+    // =====================================================
+
+    $builder->join(
+        '(
+            SELECT
+                product_id,
+                SUM(
+                    COALESCE(qty_in, 0)
+                    -
+                    COALESCE(qty_out, 0)
+                ) AS total_stock
+
+            FROM stock_ledger
+
+            GROUP BY product_id
+
+        ) sl',
         'sl.product_id = p.product_id',
         'left',
         false
     );
 
-        // Only Active Products
-        $builder->where('p.status', 'active');
+    // =====================================================
+    // ONLY ACTIVE PRODUCTS
+    // =====================================================
 
-    if (!empty($category) && $category != 'all_category') {
-        $builder->where('p.product_category', $category);
+    $builder->where('p.status', 'active');
+
+    // =====================================================
+    // CATEGORY FILTER
+    // =====================================================
+
+    if (!empty($category) && $category !== 'all_category') {
+
+        $builder->where(
+            'p.product_category',
+            $category
+        );
     }
 
-    $builder->orderBy('p.product_name', 'ASC');
+    // =====================================================
+    // ORDER
+    // =====================================================
 
-    return $builder->get()->getResultArray();
-}
+    $builder->orderBy(
+        'p.product_name',
+        'ASC'
+    );
 
-public function getProductList()
-{
-    return $this->db->table('products pr')
-        ->select("
-            pr.product_id,
-            pr.product_name,
-            pr.product_category,
-            pr.product_brand,
-            pr.product_group,
-            pr.product_strength,
-            pr.product_unit,
-            pr.sku,
-            pr.barcode,
-            pr.alert_quantity,
-            pr.product_image,
-            pr.status,
-
-            pc.category_name,
-            pg.group_name,
-            pb.product_brand_name,
-            pu.product_unit_name,
-            ps.strength_name,
-
-            pos.quantity,
-            pos.bonus_quantity,
-            pos.tax_type,
-            pos.tax_id,
-            pos.tax_percentage,
-            pos.tax_amount,
-            pos.purchase_price_without_vat,
-            pos.purchase_price_with_vat,
-            pos.profit_margin_percent,
-            pos.selling_price,
-
-            tx.tax_name,
-
-            COALESCE(SUM(sl.qty_in - sl.qty_out), 0) AS total_stock
-        ")
-
-        ->join('product_category pc', 'pc.product_category_id = pr.product_category', 'left')
-        ->join('product_group pg', 'pg.product_group_id = pr.product_group', 'left')
-        ->join('product_brand pb', 'pb.brand_id = pr.product_brand', 'left')
-        ->join('product_unit pu', 'pu.product_unit_id = pr.product_unit', 'left')
-        ->join('product_strength ps', 'ps.strength_id = pr.product_strength', 'left')
-
-        // Active Opening Stock
-        ->join(
-            'product_opening_stock pos',
-            'pos.product_id = pr.product_id AND pos.status = "active"',
-            'left'
-        )
-
-        ->join('tax tx', 'tx.tax_id = pos.tax_id', 'left')
-
-        // Stock Ledger
-        ->join(
-            'stock_ledger sl',
-            'sl.product_id = pr.product_id',
-            'left'
-        )
-
-        ->where('pr.status', 'active')
-
-        ->groupBy([
-            'pr.product_id',
-            'pr.product_name',
-            'pr.product_category',
-            'pr.product_brand',
-            'pr.product_group',
-            'pr.product_strength',
-            'pr.product_unit',
-            'pr.sku',
-            'pr.barcode',
-            'pr.alert_quantity',
-            'pr.product_image',
-            'pr.status',
-
-            'pc.category_name',
-            'pg.group_name',
-            'pb.product_brand_name',
-            'pu.product_unit_name',
-            'ps.strength_name',
-
-            'pos.quantity',
-            'pos.bonus_quantity',
-            'pos.tax_type',
-            'pos.tax_id',
-            'pos.tax_percentage',
-            'pos.tax_amount',
-            'pos.purchase_price_without_vat',
-            'pos.purchase_price_with_vat',
-            'pos.profit_margin_percent',
-            'pos.selling_price',
-
-            'tx.tax_name'
-        ])
-
-        ->orderBy('pr.product_name', 'ASC')
-
+    return $builder
         ->get()
         ->getResultArray();
 }
+
+
+
+public function getProductList()
+{
+    $builder = $this->db->table('products pr');
+
+    $builder->select("
+        pr.product_id,
+        pr.product_name,
+        pr.product_category,
+        pr.product_brand,
+        pr.product_group,
+        pr.product_strength,
+        pr.product_unit,
+        pr.sku,
+        pr.barcode,
+        pr.alert_quantity,
+        pr.product_image,
+        pr.status,
+
+        pc.category_name,
+        pg.group_name,
+        pb.product_brand_name,
+        pu.product_unit_name,
+        ps.strength_name,
+
+        /* =====================================================
+           TAX TYPE
+           Opening stock first, otherwise latest purchase
+           ===================================================== */
+        COALESCE(
+            NULLIF(pos.tax_type, ''),
+            CASE
+                WHEN COALESCE(lp.tax_percentage, 0) > 0
+                THEN 'with_tax'
+                ELSE 'without_tax'
+            END
+        ) AS tax_type,
+
+        /* =====================================================
+           TAX ID
+           ===================================================== */
+        COALESCE(
+            pos.tax_id,
+            lp.tax_id
+        ) AS tax_id,
+
+        /* =====================================================
+           TAX NAME
+           ===================================================== */
+        tx.tax_name,
+
+        /* =====================================================
+           TAX PERCENTAGE
+           ===================================================== */
+        COALESCE(
+            pos.tax_percentage,
+            lp.tax_percentage,
+            0
+        ) AS tax_percentage,
+
+        /* =====================================================
+           TAX AMOUNT
+           ===================================================== */
+        COALESCE(
+            pos.tax_amount,
+            lp.product_wise_vat_amount,
+            0
+        ) AS tax_amount,
+
+        /* =====================================================
+           PURCHASE PRICE WITHOUT VAT
+           Opening stock first.
+           Latest purchase if opening stock doesn't exist.
+           ===================================================== */
+        COALESCE(
+            NULLIF(pos.purchase_price_without_vat, 0),
+            NULLIF(lp.base_price_per_unit, 0),
+            0
+        ) AS purchase_price_without_vat,
+
+        /* =====================================================
+           PURCHASE PRICE WITH VAT
+           Opening stock first.
+           Latest purchase if opening stock doesn't exist.
+           ===================================================== */
+        COALESCE(
+            NULLIF(pos.purchase_price_with_vat, 0),
+            NULLIF(lp.purchase_price, 0),
+            0
+        ) AS purchase_price_with_vat,
+
+        /* =====================================================
+           PROFIT MARGIN
+           ===================================================== */
+        COALESCE(
+            pos.profit_margin_percent,
+            0
+        ) AS profit_margin_percent,
+
+        /* =====================================================
+           SELLING PRICE
+           IMPORTANT:
+           No hardcoded markup.
+
+           1. Opening stock selling price
+           2. Latest purchase selling price
+           3. Otherwise 0
+           ===================================================== */
+        COALESCE(
+            NULLIF(pos.selling_price, 0),
+            NULLIF(lp.selling_price, 0),
+            0
+        ) AS selling_price,
+
+        /* =====================================================
+           CURRENT STOCK
+           ===================================================== */
+        COALESCE(
+            sl.total_stock,
+            0
+        ) AS total_stock
+
+    ", false);
+
+    /*
+    |--------------------------------------------------------------------------
+    | CURRENT STOCK
+    |--------------------------------------------------------------------------
+    */
+
+    $builder->join(
+        "(
+            SELECT
+                product_id,
+                SUM(qty_in - qty_out) AS total_stock
+            FROM stock_ledger
+            GROUP BY product_id
+        ) sl",
+        "sl.product_id = pr.product_id",
+        "left",
+        false
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | LATEST ACTIVE OPENING STOCK
+    |--------------------------------------------------------------------------
+    |
+    | Opening stock is optional.
+    |
+    */
+
+    $builder->join(
+        "(
+            SELECT os.*
+            FROM product_opening_stock os
+            INNER JOIN (
+                SELECT
+                    product_id,
+                    MAX(opening_stock_id) AS latest_opening_stock_id
+                FROM product_opening_stock
+                WHERE status = 'active'
+                GROUP BY product_id
+            ) x
+                ON x.latest_opening_stock_id = os.opening_stock_id
+        ) pos",
+        "pos.product_id = pr.product_id",
+        "left",
+        false
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | LATEST ACTIVE PURCHASE
+    |--------------------------------------------------------------------------
+    |
+    | This is very important.
+    |
+    | A newly created product may have:
+    |
+    | products              = YES
+    | opening_stock         = NO
+    | purchase              = YES
+    |
+    | In that case price comes from latest purchase.
+    |
+    */
+
+    $builder->join(
+        "(
+            SELECT ppd.*
+            FROM product_purchase_details ppd
+
+            INNER JOIN (
+                SELECT
+                    ppd2.product_id,
+                    MAX(ppd2.purchase_details_id) AS latest_purchase_details_id
+                FROM product_purchase_details ppd2
+
+                INNER JOIN product_purchase pp2
+                    ON pp2.purchase_id = ppd2.purchase_id
+
+                WHERE pp2.status = 'active'
+
+                GROUP BY ppd2.product_id
+            ) latest
+                ON latest.latest_purchase_details_id = ppd.purchase_details_id
+
+        ) lp",
+        "lp.product_id = pr.product_id",
+        "left",
+        false
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | TAX
+    |--------------------------------------------------------------------------
+    |
+    | Opening stock tax first.
+    | Otherwise latest purchase tax.
+    |
+    */
+
+    $builder->join(
+        'tax tx',
+        'tx.tax_id = COALESCE(pos.tax_id, lp.tax_id)',
+        'left',
+        false
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | CATEGORY
+    |--------------------------------------------------------------------------
+    */
+
+    $builder->join(
+        'product_category pc',
+        'pc.product_category_id = pr.product_category',
+        'left'
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | GROUP
+    |--------------------------------------------------------------------------
+    */
+
+    $builder->join(
+        'product_group pg',
+        'pg.product_group_id = pr.product_group',
+        'left'
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | BRAND
+    |--------------------------------------------------------------------------
+    */
+
+    $builder->join(
+        'product_brand pb',
+        'pb.brand_id = pr.product_brand',
+        'left'
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | UNIT
+    |--------------------------------------------------------------------------
+    */
+
+    $builder->join(
+        'product_unit pu',
+        'pu.product_unit_id = pr.product_unit',
+        'left'
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | STRENGTH
+    |--------------------------------------------------------------------------
+    */
+
+    $builder->join(
+        'product_strength ps',
+        'ps.strength_id = pr.product_strength',
+        'left'
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | ACTIVE PRODUCTS ONLY
+    |--------------------------------------------------------------------------
+    */
+
+    $builder->where(
+        'pr.status',
+        'active'
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | ORDER
+    |--------------------------------------------------------------------------
+    */
+
+    $builder->orderBy(
+        'pr.product_name',
+        'ASC'
+    );
+
+    return $builder
+        ->get()
+        ->getResultArray();
+}
+
+
 
 public function searchProducts($search)
 {
@@ -294,52 +644,127 @@ public function searchProducts($search)
     return $builder->get()->getResultArray();
 }
 
-//In PurchaseController.php, the method getProductsWithCurrentStock() is used 
-// to retrieve products along with their current stock levels. 
-// It joins multiple tables such as stock_ledger, product_opening_stock, tax, and various 
-// product-related tables to gather comprehensive product information. 
-// The method filters for active products and groups the results by product attributes to ensure accurate stock calculations.
 public function getProductsWithCurrentStock()
 {
-    $builder = $this->db->table('products p');
+    $builder = $this->db->table('products pr');
 
     $builder->select("
-        p.product_id,
-        p.product_name,
-        p.product_category,
-        p.product_brand,
-        p.product_group,
-        p.product_strength,
-        p.product_unit,
-        p.sku,
-        p.barcode,
-        p.alert_quantity,
-        p.product_image,
-        p.status,
+        pr.product_id,
+        pr.product_name,
+        pr.product_category,
+        pr.product_brand,
+        pr.product_group,
+        pr.product_strength,
+        pr.product_unit,
+        pr.sku,
+        pr.barcode,
+        pr.alert_quantity,
+        pr.product_image,
+        pr.status,
 
         pc.category_name,
         pb.product_brand_name,
         pg.group_name,
         ps.strength_name,
 
-        pos.tax_type,
-        pos.tax_id,
-        pos.tax_percentage,
-        tx.tax_name,
-        pos.tax_amount,
-        pos.purchase_price_without_vat,
-        pos.purchase_price_with_vat,
-        pos.profit_margin_percent,
-        pos.selling_price,
+        /* ==============================
+           TAX TYPE
+           ============================== */
 
-        COALESCE(sl.total_stock, 0) AS total_stock
-    ");
+        COALESCE(
+            NULLIF(pos.tax_type, ''),
+            CASE
+                WHEN COALESCE(lp.tax_percentage, 0) > 0
+                THEN 'with_tax'
+                ELSE 'without_tax'
+            END
+        ) AS tax_type,
+
+        /* ==============================
+           TAX
+           ============================== */
+
+        COALESCE(
+            pos.tax_id,
+            lp.tax_id
+        ) AS tax_id,
+
+        tx.tax_name,
+
+        COALESCE(
+            pos.tax_percentage,
+            lp.tax_percentage,
+            0
+        ) AS tax_percentage,
+
+        COALESCE(
+            pos.tax_amount,
+            lp.product_wise_vat_amount,
+            0
+        ) AS tax_amount,
+
+        /* ==============================
+           PURCHASE PRICE WITHOUT VAT
+           Opening stock first
+           Latest purchase fallback
+           ============================== */
+
+        COALESCE(
+            NULLIF(pos.purchase_price_without_vat, 0),
+            NULLIF(lp.base_price_per_unit, 0),
+            0
+        ) AS purchase_price_without_vat,
+
+        /* ==============================
+           PURCHASE PRICE WITH VAT
+           Opening stock first
+           Latest purchase fallback
+           ============================== */
+
+        COALESCE(
+            NULLIF(pos.purchase_price_with_vat, 0),
+            NULLIF(lp.purchase_price, 0),
+            0
+        ) AS purchase_price_with_vat,
+
+        /* ==============================
+           PROFIT MARGIN
+           ============================== */
+
+        COALESCE(
+            NULLIF(pos.profit_margin_percent, 0),
+            0
+        ) AS profit_margin_percent,
+
+        /* ==============================
+           SELLING PRICE
+           Purchase form price first
+           Opening stock fallback
+           ============================== */
+
+        COALESCE(
+            NULLIF(lp.selling_price, 0),
+            NULLIF(pos.selling_price, 0),
+            0
+        ) AS selling_price,
+
+        /* ==============================
+           CURRENT STOCK
+           ============================== */
+
+        COALESCE(
+            sl.total_stock,
+            0
+        ) AS total_stock
+
+    ", false);
 
     /*
     |--------------------------------------------------------------------------
-    | Current Stock (Stock Ledger)
+    | CURRENT STOCK
     |--------------------------------------------------------------------------
     */
+
     $builder->join(
         "(
             SELECT
@@ -348,88 +773,174 @@ public function getProductsWithCurrentStock()
             FROM stock_ledger
             GROUP BY product_id
         ) sl",
-        "sl.product_id = p.product_id",
+        "sl.product_id = pr.product_id",
         "left",
         false
     );
 
     /*
     |--------------------------------------------------------------------------
-    | Latest Opening Stock / Pricing
+    | LATEST ACTIVE OPENING STOCK
     |--------------------------------------------------------------------------
     */
+
     $builder->join(
         "(
             SELECT os.*
             FROM product_opening_stock os
-            INNER JOIN
-            (
+
+            INNER JOIN (
                 SELECT
                     product_id,
-                    MAX(opening_stock_id) AS opening_stock_id
+                    MAX(opening_stock_id) AS latest_opening_stock_id
+
                 FROM product_opening_stock
+
                 WHERE status = 'active'
+
                 GROUP BY product_id
+
             ) x
-            ON os.opening_stock_id = x.opening_stock_id
+
+            ON x.latest_opening_stock_id = os.opening_stock_id
+
         ) pos",
-        "pos.product_id = p.product_id",
+        "pos.product_id = pr.product_id",
         "left",
         false
     );
 
     /*
     |--------------------------------------------------------------------------
-    | Tax
+    | LATEST ACTIVE PURCHASE
     |--------------------------------------------------------------------------
     */
+
+    $builder->join(
+        "(
+            SELECT ppd.*
+
+            FROM product_purchase_details ppd
+
+            INNER JOIN (
+                SELECT
+                    ppd2.product_id,
+                    MAX(ppd2.purchase_details_id)
+                        AS latest_purchase_details_id
+
+                FROM product_purchase_details ppd2
+
+                INNER JOIN product_purchase pp2
+                    ON pp2.purchase_id = ppd2.purchase_id
+
+                WHERE pp2.status = 'active'
+
+                GROUP BY ppd2.product_id
+
+            ) latest
+
+            ON latest.latest_purchase_details_id
+               = ppd.purchase_details_id
+
+        ) lp",
+        "lp.product_id = pr.product_id",
+        "left",
+        false
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | TAX
+    |--------------------------------------------------------------------------
+    */
+
     $builder->join(
         'tax tx',
-        'tx.tax_id = pos.tax_id',
+        'tx.tax_id = COALESCE(pos.tax_id, lp.tax_id)',
+        'left',
+        false
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | CATEGORY
+    |--------------------------------------------------------------------------
+    */
+
+    $builder->join(
+        'product_category pc',
+        'pc.product_category_id = pr.product_category',
         'left'
     );
 
     /*
     |--------------------------------------------------------------------------
-    | Product Masters
+    | BRAND
     |--------------------------------------------------------------------------
     */
-    $builder->join(
-        'product_category pc',
-        'pc.product_category_id = p.product_category',
-        'left'
-    );
 
     $builder->join(
         'product_brand pb',
-        'pb.brand_id = p.product_brand',
-        'left'
-    );
-
-    $builder->join(
-        'product_group pg',
-        'pg.product_group_id = p.product_group',
-        'left'
-    );
-
-    $builder->join(
-        'product_strength ps',
-        'ps.strength_id = p.product_strength',
+        'pb.brand_id = pr.product_brand',
         'left'
     );
 
     /*
     |--------------------------------------------------------------------------
-    | Only Active Products
+    | GROUP
     |--------------------------------------------------------------------------
     */
-    $builder->where('p.status', 'active');
 
-    $builder->orderBy('p.product_name', 'ASC');
+    $builder->join(
+        'product_group pg',
+        'pg.product_group_id = pr.product_group',
+        'left'
+    );
 
-    return $builder->get()->getResultArray();
+    /*
+    |--------------------------------------------------------------------------
+    | STRENGTH
+    |--------------------------------------------------------------------------
+    */
+
+    $builder->join(
+        'product_strength ps',
+        'ps.strength_id = pr.product_strength',
+        'left'
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | ACTIVE PRODUCTS ONLY
+    |--------------------------------------------------------------------------
+    */
+
+    $builder->where(
+        'pr.status',
+        'active'
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | ORDER
+    |--------------------------------------------------------------------------
+    */
+
+    $builder->orderBy(
+        'pr.product_name',
+        'ASC'
+    );
+
+    /*
+    |--------------------------------------------------------------------------
+    | EXECUTE
+    |--------------------------------------------------------------------------
+    */
+
+    return $builder
+        ->get()
+        ->getResultArray();
 }
-
 
 public function getProductsForOpeningStock()
 {

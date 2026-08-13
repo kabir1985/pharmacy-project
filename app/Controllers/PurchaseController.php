@@ -86,6 +86,13 @@ public function store()
             true
         );
 
+
+        // echo "<pre>";
+        // print_r($purchaseList);
+        // echo "</pre>";
+
+        // exit();
+
         if (empty($purchaseList) || !is_array($purchaseList)) {
 
             $this->db->transRollback();
