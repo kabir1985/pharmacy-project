@@ -34,7 +34,7 @@
 .charge-total {
     margin-left: auto;
     min-width: 70px;
-    text-align: right;
+    /*text-align: right;*/
     font-weight: 600;
 }
 

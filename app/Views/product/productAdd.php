@@ -281,12 +281,12 @@
                                     <label for="inputState">Brand</label>
                                     <div class="input-group">
 
-                                     <select id="product_brand" name="product_brand" class="form-control" required>
-                                        </select> 
+                                     <!-- <select id="product_brand" name="product_brand" class="form-control" required>
+                                        </select>  -->
 
 
 
-                                        <!-- <select id="product_brand" name="product_brand" class="form-control" required>
+                                         <select id="product_brand" name="product_brand" class="form-control" required>
 
                                             <option value="">Select Brand</option>
 
@@ -298,7 +298,7 @@
 
                                             <?php endforeach; ?>
 
-                                        </select> -->
+                                        </select> 
 
 
 

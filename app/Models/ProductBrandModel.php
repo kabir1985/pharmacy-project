@@ -10,5 +10,9 @@ class ProductBrandModel extends Model
 
     protected $primaryKey = 'brand_id';
 
-    protected $allowedFields = ['product_brand_name','product_category_id'];
+    protected $allowedFields = [
+        'product_brand_name'
+    ];
+
+    protected $useTimestamps = true;
 }

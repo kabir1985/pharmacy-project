@@ -141,7 +141,7 @@
 
 .charge-total {
     width: 100%;
-    text-align: right;
+    text-align: left;
     white-space: nowrap;
     font-weight: 600;
 }

@@ -85,7 +85,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->post('update', 'ProductBrandController::update');
         $routes->post('delete', 'ProductBrandController::delete');
         $routes->post('brand-create-ajax', 'ProductBrandController::brandCreateAjax'); //From Views/product/NewProductAdd.php
-        $routes->post('initial-product-brand', 'ProductBrandController::brand_call'); //From Views/product/NewProductAdd.php
+       // $routes->post('initial-product-brand', 'ProductBrandController::brand_call'); //From Views/product/NewProductAdd.php
 
     });
 

@@ -125,48 +125,49 @@ $(document).ready(function () {
         calculatePrice(false);
     });
     //////////////Product Final Price Calculation End///////////////////////////////////////////////////////////////////////////////////
-    $("#product_category").on("change", function () {
-        var categoryId = this.value;
+   //show product brand based on category selection
+    // $("#product_category").on("change", function () {
+    //     var categoryId = this.value;
 
-        if (!categoryId) {
+    //     if (!categoryId) {
 
-            $("#product_brand")
-                .html('<option value="">Select Brand</option>')
-                .val('')
-                .trigger('change');
+    //         $("#product_brand")
+    //             .html('<option value="">Select Brand</option>')
+    //             .val('')
+    //             .trigger('change');
 
-            return;
-        }
+    //         return;
+    //     }
 
-        $.ajax({
-            // url: "<?=site_url('brands/initial-product-brand')?>",
-            //initialbrand
-            url: window.APP_URLS.initialbrand,
-            type: "POST",
-            data: {
-                categoryId: categoryId
-            },
-            success: function (response) {
+    //     $.ajax({
+    //         // url: "<?=site_url('brands/initial-product-brand')?>",
+    //         //initialbrand
+    //         url: window.APP_URLS.initialbrand,
+    //         type: "POST",
+    //         data: {
+    //             categoryId: categoryId
+    //         },
+    //         success: function (response) {
 
-                $("#product_brand")
-                    .html(response)
-                    .val('')
-                    .trigger('change');
+    //             $("#product_brand")
+    //                 .html(response)
+    //                 .val('')
+    //                 .trigger('change');
 
-                // এখানে এই অংশ যোগ করুন
-                let selectedBrand = $("#product_brand").data("selected_brand");
+    //             // এখানে এই অংশ যোগ করুন
+    //             let selectedBrand = $("#product_brand").data("selected_brand");
 
-                if (selectedBrand) {
-                    $("#product_brand")
-                        .val(selectedBrand)
-                        .trigger('change');
-                    $("#product_brand").removeData("selected_brand");
-                }
+    //             if (selectedBrand) {
+    //                 $("#product_brand")
+    //                     .val(selectedBrand)
+    //                     .trigger('change');
+    //                 $("#product_brand").removeData("selected_brand");
+    //             }
 
-                $("#product_brand").trigger("change");
-            }
-        });
-    });
+    //             $("#product_brand").trigger("change");
+    //         }
+    //     });
+    // });
 
 
 
@@ -517,28 +518,10 @@ $(document).ready(function () {
 
 $("#btnAddBrand").click(function () {
 
-    // Keep currently selected category
-    const selectedCategory = $("#product_category").val();
-
-    // Category must be selected first
-    if (!selectedCategory) {
-
-        Swal.fire({
-            icon: "warning",
-            title: "Select Category First",
-            text: "Please select a Product Category before adding a Brand.",
-            timer: 1800,
-            showConfirmButton: false
-        });
-
-        return;
-    }
-
-    // Get selected category name
-    const selectedCategoryName =
-        $("#product_category option:selected").text().trim();
-
+    // =====================================================
     // Hide Product modal
+    // =====================================================
+
     $('#AddNewProduct').modal('hide');
 
     setTimeout(function () {
@@ -551,21 +534,6 @@ $("#btnAddBrand").click(function () {
 
             html: `
                 <div style="text-align:left">
-
-                    <div class="mb-3">
-
-                        <label style="font-weight:600;margin-bottom:6px;display:block;">
-                            Category
-                        </label>
-
-                        <input
-                            type="text"
-                            class="form-control"
-                            value="${selectedCategoryName}"
-                            readonly
-                            style="background-color:#f5f5f5;">
-
-                    </div>
 
                     <div class="mt-3">
 
@@ -602,12 +570,11 @@ $("#btnAddBrand").click(function () {
             allowOutsideClick: false,
 
             // =====================================================
-            // When SweetAlert opens
+            // SweetAlert Open
             // =====================================================
 
-            didOpen: () => {
+            didOpen: function () {
 
-                // Automatically focus Brand input
                 $("#swal_brand").focus();
 
                 // Press ENTER = Save
@@ -618,6 +585,7 @@ $("#btnAddBrand").click(function () {
                         e.preventDefault();
 
                         Swal.clickConfirm();
+
                     }
 
                 });
@@ -628,7 +596,7 @@ $("#btnAddBrand").click(function () {
             // Validate Brand
             // =====================================================
 
-            preConfirm: () => {
+            preConfirm: function () {
 
                 const brand = $("#swal_brand").val().trim();
 
@@ -642,24 +610,26 @@ $("#btnAddBrand").click(function () {
                 }
 
                 return {
-                    category: selectedCategory,
                     brand: brand
                 };
 
             }
 
-        }).then((result) => {
+        }).then(function (result) {
 
+            // =====================================================
             // Show Product modal again
+            // =====================================================
+
             $('#AddNewProduct').modal('show');
 
-            // Cancel
+            // User clicked Cancel
             if (!result.isConfirmed) {
                 return;
             }
 
             // =====================================================
-            // AJAX - Create Brand
+            // Create Brand
             // =====================================================
 
             $.ajax({
@@ -672,37 +642,35 @@ $("#btnAddBrand").click(function () {
 
                 data: {
 
-                    category_id: result.value.category,
-
+                    // IMPORTANT:
+                    // No category_id
                     product_brand_name: result.value.brand
 
                 },
 
                 success: function (response) {
 
+                    console.log(response);
+
                     if (response.status) {
 
                         // =================================================
-                        // Store newly created brand ID
+                        // Add newly created brand directly to Select2
                         // =================================================
 
-                        $("#product_brand").data(
-                            "selected_brand",
-                            response.id
+                        let newOption = new Option(
+                            response.name,
+                            response.id,
+                            true,
+                            true
                         );
 
-
-                        // =================================================
-                        // Keep same category selected
-                        // =================================================
-
-                        $("#product_category")
-                            .val(selectedCategory)
+                        $("#product_brand")
+                            .append(newOption)
                             .trigger("change");
 
-
                         // =================================================
-                        // Success message
+                        // Success
                         // =================================================
 
                         Swal.fire({
@@ -720,7 +688,7 @@ $("#btnAddBrand").click(function () {
                     } else {
 
                         // =================================================
-                        // Server returned error
+                        // Failed
                         // =================================================
 
                         Swal.fire({
