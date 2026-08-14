@@ -45,7 +45,7 @@ public function getProducts($category = null)
         pc.category_name,
 
         /* =========================================
-           PRICE
+           PURCHASE PRICE
            Opening stock first,
            Latest purchase as fallback
         ========================================= */
@@ -61,6 +61,11 @@ public function getProducts($category = null)
             lp.purchase_price,
             0
         ) AS purchase_price_with_vat,
+
+
+        /* =========================================
+           TAX
+        ========================================= */
 
         COALESCE(
             pos.tax_type,
@@ -89,16 +94,30 @@ public function getProducts($category = null)
             0
         ) AS tax_amount,
 
+
+        /* =========================================
+           PROFIT MARGIN
+        ========================================= */
+
         COALESCE(
             pos.profit_margin_percent,
+
             CASE
                 WHEN lp.purchase_price > 0
-                THEN ((lp.selling_price - lp.purchase_price)
-                      / lp.purchase_price) * 100
+                THEN (
+                    (lp.selling_price - lp.purchase_price)
+                    / lp.purchase_price
+                ) * 100
                 ELSE 0
             END,
+
             0
         ) AS profit_margin_percent,
+
+
+        /* =========================================
+           FULL SELLING PRICE
+        ========================================= */
 
         COALESCE(
             NULLIF(pos.selling_price, 0),
@@ -106,13 +125,59 @@ public function getProducts($category = null)
             0
         ) AS selling_price,
 
+
+        /* =========================================
+           PACK / UNIT INFORMATION
+        ========================================= */
+
+        COALESCE(
+            lp.quantity_per_pack,
+            1
+        ) AS quantity_per_pack,
+
+        COALESCE(
+            lp.box_quantity,
+            1
+        ) AS box_quantity,
+
+
+        /* =========================================
+           SELLING UNIT PRICE
+
+           selling_price
+           -------------------------------
+           box_quantity × quantity_per_pack
+        ========================================= */
+
+      (
+    COALESCE(
+        NULLIF(pos.selling_price, 0),
+        NULLIF(lp.selling_price, 0),
+        0
+    )
+    /
+    NULLIF(
+        (
+            COALESCE(lp.box_quantity, 1)
+            *
+            COALESCE(lp.quantity_per_pack, 1)
+        ),
+        0
+    )
+) AS selling_unit_price,
+
+
         /* =========================================
            CURRENT STOCK
-           ========================================= */
+        ========================================= */
 
-        COALESCE(sl.total_stock, 0) AS total_stock
+        COALESCE(
+            sl.total_stock,
+            0
+        ) AS total_stock
 
     ", false);
+
 
     // =====================================================
     // CATEGORY
@@ -123,6 +188,7 @@ public function getProducts($category = null)
         'pc.product_category_id = p.product_category',
         'left'
     );
+
 
     // =====================================================
     // OPENING STOCK
@@ -136,6 +202,7 @@ public function getProducts($category = null)
         false
     );
 
+
     // =====================================================
     // LATEST ACTIVE PURCHASE
     // =====================================================
@@ -148,7 +215,8 @@ public function getProducts($category = null)
             INNER JOIN (
                 SELECT
                     ppd2.product_id,
-                    MAX(ppd2.purchase_details_id) AS latest_purchase_details_id
+                    MAX(ppd2.purchase_details_id)
+                    AS latest_purchase_details_id
 
                 FROM product_purchase_details ppd2
 
@@ -164,10 +232,14 @@ public function getProducts($category = null)
                    ppd.purchase_details_id
 
         ) lp',
+
         'lp.product_id = p.product_id',
+
         'left',
+
         false
     );
+
 
     // =====================================================
     // CURRENT STOCK
@@ -177,6 +249,7 @@ public function getProducts($category = null)
         '(
             SELECT
                 product_id,
+
                 SUM(
                     COALESCE(qty_in, 0)
                     -
@@ -188,28 +261,41 @@ public function getProducts($category = null)
             GROUP BY product_id
 
         ) sl',
+
         'sl.product_id = p.product_id',
+
         'left',
+
         false
     );
+
 
     // =====================================================
     // ONLY ACTIVE PRODUCTS
     // =====================================================
 
-    $builder->where('p.status', 'active');
+    $builder->where(
+        'p.status',
+        'active'
+    );
+
 
     // =====================================================
     // CATEGORY FILTER
     // =====================================================
 
-    if (!empty($category) && $category !== 'all_category') {
+    if (
+        !empty($category)
+        &&
+        $category !== 'all_category'
+    ) {
 
         $builder->where(
             'p.product_category',
             $category
         );
     }
+
 
     // =====================================================
     // ORDER
@@ -220,11 +306,11 @@ public function getProducts($category = null)
         'ASC'
     );
 
+
     return $builder
         ->get()
         ->getResultArray();
 }
-
 
 
 public function getProductList()

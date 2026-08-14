@@ -1,8 +1,3 @@
-
-
-
-
-
 /* ==============================
    GLOBAL CLEAN LOOK
 ============================== */
@@ -11,6 +6,7 @@
 /* ==============================
    CARD DESIGN (Right Panel)
 ============================== */
+
 .card {
     border: none;
     border-radius: 12px;
@@ -28,9 +24,11 @@
     margin: 0;
 }
 
+
 /* ==============================
    TABLE CLEAN ALIGNMENT
 ============================== */
+
 .table {
     background: #ffffff;
     border-radius: 10px;
@@ -54,6 +52,11 @@
     font-weight: 600;
 }
 
+
+/* ==============================
+   FORM CONTROL
+============================== */
+
 .form-control:not(.sale_price_change) {
     text-align: left;
 }
@@ -63,9 +66,24 @@
     width: 80% !important;
 }
 
+
 /* ==============================
    INPUT & SELECT SMOOTH STYLE
 ============================== */
+
+select,
+input[type="number"] {
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+select {
+    width: 70px;
+    text-align: center;
+}
+
 
 /* ==============================
    SEARCH + CUSTOMER ALIGNMENT
@@ -75,6 +93,7 @@
 /* ==============================
    PRODUCT GRID CLEAN
 ============================== */
+
 .all_products {
     max-height: 450px;
     overflow-y: auto;
@@ -99,9 +118,11 @@
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
+
 /* ==============================
-   BILLING ALIGNMENT FIX
+   BILLING ALIGNMENT
 ============================== */
+
 .card-body .row {
     margin-bottom: 8px;
 }
@@ -123,56 +144,214 @@
     text-align: right;
 }
 
+
 /* ==============================
-   DISCOUNT & VAT ALIGNMENT
+   CHARGE ROW
 ============================== */
-.d-flex.align-items-center {
-    gap: 8px;
+
+.charge-row {
+    display: grid;
+
+    /*
+       1 = Label
+       2 = Type
+       3 = Input
+       4 = Result
+    */
+    grid-template-columns:
+        minmax(0, 1fr)
+        70px
+        105px
+        70px;
+
+    align-items: center;
+
+    column-gap: 8px;
+
+    width: 100%;
+
+    margin: 0;
 }
 
+
+/* ==============================
+   CHARGE LABEL
+============================== */
+
+.charge-label {
+    width: auto !important;
+    min-width: 0;
+
+    white-space: nowrap;
+
+    font-weight: 600;
+
+    margin: 0;
+}
+
+
+/* ==============================
+   CHARGE TYPE
+============================== */
+
+.charge-type {
+    width: 70px !important;
+    min-width: 70px;
+
+    height: 38px;
+
+    padding: 5px 8px;
+
+    text-align: center;
+}
+
+
+/* ==============================
+   CHARGE INPUT
+============================== */
+
+.charge-input {
+    width: 105px !important;
+    min-width: 105px;
+
+    height: 38px;
+
+    padding: 5px 8px;
+
+    text-align: right;
+}
+
+
+/* ==============================
+   CHARGE TOTAL
+============================== */
+
+.charge-total {
+    width: 70px;
+    min-width: 70px;
+
+    text-align: right;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* ==============================
+   OTHER CHARGE
+============================== */
+
 #otherCharge {
-    width: 65px;
+    width: 70px !important;
+    min-width: 70px;
 }
 
 #otherChargeValue {
-    width: 80%;
+    width: 105px !important;
+    min-width: 105px;
+
+    text-align: left;
 }
 
+#otherChargeOnTotalPrice {
+    width: 70px !important;
+    min-width: 70px;
 
-.charge-label {
-    width: 470px;
-    /* Same width for both labels */
+    text-align: left;
+
     font-weight: 600;
-    margin-right: 10px;
 }
 
-.form-select {
-    width: 70px;
+
+/* ==============================
+   PRODUCT DISCOUNT
+============================== */
+
+#productDiscountType {
+    width: 70px !important;
+    min-width: 70px;
 }
+
+#discount_apply {
+    width: 105px !important;
+    min-width: 105px;
+
+    text-align: right;
+}
+
+#productDiscount {
+    width: 70px;
+    min-width: 70px;
+
+    text-align: left;
+
+    font-weight: 600;
+}
+
+
+/* ==============================
+   PRODUCT VAT / DISCOUNT SECTION
+============================== */
+
+.productVatDiscountSection {
+    width: 100%;
+}
+
+
+/* ==============================
+   OLD EXTRA FIELD OVERRIDES
+   Keep compatible with existing JS
+============================== */
 
 .extra-fields {
-    width: 120px;
+    box-sizing: border-box;
 }
 
-/* #discountOnAllPrice, */
-#otherChargeOnTotalPrice {
-    width: 60px;
-    text-align: right;
-    font-weight: 600;
+
+/* ==============================
+   DISCOUNT CONTAINER
+============================== */
+
+.discount-container {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin: 10px 0;
+}
+
+
+/* ==============================
+   RESULT
+============================== */
+
+.result {
+    margin-top: 15px;
+
+    font-size: 16px;
+
+    font-weight: bold;
 }
 
 
 /* ==============================
    BUTTON STYLE CLEAN
 ============================== */
+
 .btn {
     border-radius: 8px;
+
     font-weight: 600;
+
     transition: 0.2s ease;
 }
 
 .btn-info {
     background: #17a2b8;
+
     border: none;
 }
 
@@ -185,20 +364,27 @@
     opacity: 0.9;
 }
 
+
 /* ==============================
    HELD SALE SECTION
 ============================== */
+
 .held-sale-list .list-group-item {
     border-radius: 8px;
+
     margin-bottom: 5px;
+
     border: 1px solid #eee;
 }
+
 
 /* ==============================
    MODAL CLEAN LOOK
 ============================== */
+
 .modal-content {
     border-radius: 12px;
+
     border: none;
 }
 
@@ -210,95 +396,93 @@
     border-top: 1px solid #eee;
 }
 
+
 /* ==============================
    SCROLLBAR LIGHT
 ============================== */
+
 .all_products::-webkit-scrollbar {
     width: 6px;
 }
 
 .all_products::-webkit-scrollbar-thumb {
     background: #ccc;
+
     border-radius: 10px;
 }
 
 
+/* ==============================
+   TOGGLE SWITCH
+============================== */
 
-.discount-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin: 10px 0;
-}
-
-select,
-input[type="number"] {
-    padding: 6px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-select {
-    width: 70px;
-    text-align: center;
-}
-
-/*input[type="number"] {
-    width: 80px;
-}*/
-
-.result {
-    margin-top: 15px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* Toggle switch styling */
 .switch {
     position: relative;
+
     display: inline-block;
+
     width: 50px;
+
     height: 20px;
+
     vertical-align: middle;
+
     margin-right: 8px;
 }
 
 .switch input {
     opacity: 0;
+
     width: 0;
+
     height: 0;
 }
 
 .slider {
     position: absolute;
+
     cursor: pointer;
+
     top: 0;
+
     left: 0;
+
     right: 0;
+
     bottom: 0;
+
     background-color: #ccc;
+
     transition: 0.4s;
+
     border-radius: 20px;
 }
 
 .slider:before {
     position: absolute;
+
     content: "";
+
     height: 14px;
+
     width: 14px;
+
     left: 3px;
+
     bottom: 3px;
+
     background-color: white;
+
     transition: 0.4s;
+
     border-radius: 50%;
 }
 
-input:checked+.slider {
+input:checked + .slider {
     background-color: #17a2b8;
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
     transform: translateX(30px);
 }
 
@@ -306,7 +490,48 @@ input:checked+.slider:before {
     border-radius: 20px;
 }
 
-/* Hide elements with this class */
+
+/* ==============================
+   HIDE ELEMENTS
+============================== */
+
 .hide {
     display: none !important;
+}
+
+
+/* ==============================
+   RESPONSIVE CHARGE ROW
+============================== */
+
+@media (max-width: 576px) {
+
+    .charge-row {
+        grid-template-columns:
+            minmax(0, 1fr)
+            60px
+            90px
+            60px;
+
+        column-gap: 5px;
+    }
+
+    .charge-type {
+        width: 60px !important;
+        min-width: 60px;
+    }
+
+    .charge-input {
+        width: 90px !important;
+        min-width: 90px;
+    }
+
+    .charge-total {
+        width: 60px;
+        min-width: 60px;
+    }
+
+    .charge-label {
+        font-size: 14px;
+    }
 }

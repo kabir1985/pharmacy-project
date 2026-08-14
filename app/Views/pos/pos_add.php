@@ -55,7 +55,7 @@ echo $this->section('content');
                                     <th>Name</th>
                                     <th>Stock</th>
                                     <th>Quantity</th>
-                                    <th>Sale Price</th>
+                                    <th>Sale Price/unit</th>
 
                                     <!-- <th class="vat-column-header hide">Vat %</th> -->
                                     <th class="discount-column-header hide">Disc %</th>
@@ -117,9 +117,10 @@ echo $this->section('content');
                             </p>
 
                             <!-- Product Price -->
-                            <p class="text-primary mb-0" style="font-size: 0.7rem; font-weight: 600;">
-                                ৳<?php echo number_format($row["selling_price"], 2) ?>
-                            </p>
+                             <p class="text-primary mb-0" style="font-size: 0.7rem; font-weight: 600;">
+                                ৳<?php echo number_format($row["selling_unit_price"], 2) ?>
+                            </p> 
+
                         </div>
 
                         <?php
@@ -226,7 +227,7 @@ echo $this->section('content');
                     </div>
 
 
-                    <div class="charge-row text-success">
+                    <!-- <div class="charge-row text-success">
 
                         <span class="charge-label">
                             (+) Other Charge
@@ -248,7 +249,35 @@ echo $this->section('content');
                             0.00
                         </span>
 
-                    </div>
+                    </div> -->
+
+    <div class="charge-row text-success">
+
+    <span class="charge-label">
+        (+) Other Charge
+    </span>
+
+    <select id="otherCharge"
+        class="form-select form-select-sm charge-type"
+        onchange="calculateotherCharge()">
+
+        <option value="%">%</option>
+        <option value="flat">Flat</option>
+
+    </select>
+
+    <input type="number"
+        id="otherChargeValue"
+        class="form-control form-control-sm charge-input extra-fields"
+        value="0.00"
+        oninput="calculateotherCharge()">
+
+    <span id="otherChargeOnTotalPrice"
+        class="charge-total">
+        0.00
+    </span>
+
+</div>
 
 
                     <hr style="border:0; border-top:1px dashed #b5b5b5; margin:4px 0;">

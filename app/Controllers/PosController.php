@@ -99,6 +99,13 @@ class PosController extends BaseController
 
         $productsList = $request->getPost('cart_data');
 
+// echo "<pre>";
+// print_r($productsList); 
+// echo "</pre>";
+// exit();
+
+
+
         if (empty($productsList) || !is_array($productsList)) {
             return $this->response->setJSON([
                 'status' => 'error',
@@ -137,9 +144,9 @@ class PosController extends BaseController
         foreach ($productsList as $row) {
 
             $qty = (float) $row['quantity'];
-            $price = (float) $row['selling_price'];
+            $selling_unit_price = (float) $row['selling_unit_price'];
 
-            $line_total = round($qty * $price, 2);
+            $line_total = round($qty * $selling_unit_price, 2);
 
             $vat_percent = (float) ($row['vat'] ?? 0);
             $vat_amount = round(($line_total * $vat_percent) / 100, 2);
@@ -161,7 +168,7 @@ class PosController extends BaseController
                 'product_id' => $row['product_id'],
                 'product_quantity_sold' => $qty,
                 'returned_qty' => 0,
-                'unit_price' => $price,
+                'unit_price' => $selling_unit_price,
                 'total_sale_price' => $line_total,
                 'total_buy_price' => round($row['purchase_price_without_vat'] * $qty, 2),
             ];

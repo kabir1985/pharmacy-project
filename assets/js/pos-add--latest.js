@@ -2,7 +2,7 @@
 
 let productsList = window.APP.productsList;
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     $("body").addClass("sidenav-toggled");
 
@@ -10,7 +10,7 @@ $(document).ready(function() {
         $("#search_product").focus();
     }, 200);
 
-//console.log(productsList)
+    //console.log(productsList)
     //################################Product Vat and Discount show/hide##############################//////////////////
     function toggleProductVatDiscount() {
         if ($("#ProductWiseVatAndDiscount").is(":checked")) {
@@ -24,7 +24,7 @@ $(document).ready(function() {
     toggleProductVatDiscount();
 
     // On checkbox change
-    $("#ProductWiseVatAndDiscount").change(function() {
+    $("#ProductWiseVatAndDiscount").change(function () {
         toggleProductVatDiscount();
     });
     /////////////#########################################################################///////////////////////////////////////////
@@ -38,67 +38,67 @@ $(document).ready(function() {
 
     $("#search_product").autocomplete({
 
-        source: function(request, response) {
+        source: function (request, response) {
             $.ajax({
                 url: APP_URLS.productSearch,
                 dataType: "json",
                 data: {
                     term: request.term
                 },
-                success: function(data) {
+                success: function (data) {
                     response(data);
                 }
             });
         },
-    
+
         minLength: 1,
         delay: 150,
         autoFocus: true,
-    
+
         open: function () {
-    
+
             $(".ui-autocomplete").css({
                 width: $(this).outerWidth() + "px"
             });
-    
+
             // Focus first item
             var menu = $(this).autocomplete("instance").menu;
             menu.focus(null, menu.element.children("li:first"));
-    
+
         },
-    
-        select: function(event, ui) {
-    
+
+        select: function (event, ui) {
+
             productAddToCart(ui.item.id, ui.item.total_stock);
-    
+
             obj.play();
-    
+
             $(this).val("");
-    
+
             return false;
         }
-    
+
     });
 
-        // ==============================
+    // ==============================
     // Press Enter to add product
     // ==============================
-    $("#search_product").keydown(function(e){
+    $("#search_product").keydown(function (e) {
 
         if (e.keyCode === 13) {
-    
+
             e.preventDefault();
-    
+
             var instance = $(this).autocomplete("instance");
-    
+
             if (instance.menu.active) {
-    
+
                 instance.menu.select(e);
-    
+
             }
-    
+
         }
-    
+
     });
 
 
@@ -107,7 +107,7 @@ $(document).ready(function() {
     var itemsInCart = [];
     var subTotalCost = 0;
 
-    $("#productSale").on("click", function() {
+    $("#productSale").on("click", function () {
 
         var otherChargeOnTotalPrice = $("#otherChargeOnTotalPrice").text();
 
@@ -138,7 +138,7 @@ $(document).ready(function() {
 
         var itemsInCartObject = JSON.parse(JSON.stringify(itemsInCart)); // deep copy
 
-        $.each(itemsInCartObject, function(key, item) {
+        $.each(itemsInCartObject, function (key, item) {
             item.discount_on_each_product = parseFloat(item.discount_percent || 0);
             item.discount_type = item.discount_type || $("#productDiscountType").val();
             item.vat = parseFloat(item.vat_input || 0);
@@ -147,12 +147,12 @@ $(document).ready(function() {
 
         var hold_id = itemsInCartObject[0].hold_id || null; // take from first product if exists
 
-       // var base_url = "<?php echo rtrim(base_url(), '/') ?>";
+        // var base_url = "<?php echo rtrim(base_url(), '/') ?>";
 
-       // var sales_process_url = "<?php echo site_url('pos/sale') ?>";
+        // var sales_process_url = "<?php echo site_url('pos/sale') ?>";
         $.ajax({
-           // url: sales_process_url,
-           url: APP_URLS.posSale,
+            // url: sales_process_url,
+            url: APP_URLS.posSale,
             method: 'POST',
             dataType: "json",
             data: {
@@ -165,12 +165,12 @@ $(document).ready(function() {
                 hold_id: hold_id // ✅ send hold_id
 
             },
-            success: function(data) {
+            success: function (data) {
 
                 if (data.sales_id && data.sales_id > 0) {
 
-                   // const url = base_url + "/invoice/" + data.sales_id;
-                   const url = APP_URLS.invoiceBase + data.sales_id;
+                    // const url = base_url + "/invoice/" + data.sales_id;
+                    const url = APP_URLS.invoiceBase + data.sales_id;
 
                     window.open(
                         url,
@@ -188,7 +188,7 @@ $(document).ready(function() {
                 $('#due').val('');
 
                 // --- Remove held sale from list dynamically ---
-                $(".resume-sale").each(function() {
+                $(".resume-sale").each(function () {
                     if ($(this).data('id') == itemsInCartObject[0].hold_id) {
                         $(this).closest('li').remove();
                     }
@@ -196,7 +196,7 @@ $(document).ready(function() {
 
                 location.reload(); // optional
             },
-            error: function() {
+            error: function () {
                 alert('error');
             }
         });
@@ -206,7 +206,7 @@ $(document).ready(function() {
 
     /////////////////////////////////////Sale HOLD Section//////////////////////////////////////////////////////////////
 
-    $('#holdSale').on('click', function() {
+    $('#holdSale').on('click', function () {
         if (itemsInCart.length === 0) {
             alert('Cart is empty. Add products first!');
             return;
@@ -230,7 +230,7 @@ $(document).ready(function() {
                 otherChargeOnTotalPrice: otherChargeOnTotalPrice,
                 customer_id: customer_id
             },
-            success: function(response) {
+            success: function (response) {
                 if (response.status === 'success') {
                     alert('Sale has been put on hold!');
 
@@ -275,7 +275,7 @@ $(document).ready(function() {
                     alert('Failed to hold the sale!');
                 }
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error(xhr.responseText);
                 alert('AJAX error: ' + error);
             }
@@ -283,7 +283,7 @@ $(document).ready(function() {
     });
 
     //==========================Delete from HOld============================================
-    $(document).on("click", ".delete-held-sale", function() {
+    $(document).on("click", ".delete-held-sale", function () {
 
         if (!confirm("Delete this held sale?")) {
             return;
@@ -294,12 +294,12 @@ $(document).ready(function() {
 
         $.ajax({
 
-           // url: "<?=site_url('pos/delete-held-sale')?>/" + id,
-           url: APP_URLS.deleteHoldSale + "/" + id,
+            // url: "<?=site_url('pos/delete-held-sale')?>/" + id,
+            url: APP_URLS.deleteHoldSale + "/" + id,
             type: "POST",
             dataType: "json",
 
-            success: function(res) {
+            success: function (res) {
 
                 if (res.status == "success") {
 
@@ -313,7 +313,7 @@ $(document).ready(function() {
 
             },
 
-            error: function() {
+            error: function () {
 
                 alert("Unable to delete.");
 
@@ -324,18 +324,18 @@ $(document).ready(function() {
     });
 
     // ===================== Resume Sale =====================
-    $(document).on('click', '.resume-sale', function() {
+    $(document).on('click', '.resume-sale', function () {
 
         let saleId = $(this).data('id');
         let $clickedButton = $(this);
 
         $.ajax({
-           // url: '<?=site_url("pos/resume-sale")?>/' + saleId,
-           url: APP_URLS.resumeSale + "/" + saleId,
+            // url: '<?=site_url("pos/resume-sale")?>/' + saleId,
+            url: APP_URLS.resumeSale + "/" + saleId,
             type: 'POST',
             dataType: 'json',
 
-            success: function(res) {
+            success: function (res) {
 
                 if (res.status === 'success') {
 
@@ -343,7 +343,7 @@ $(document).ready(function() {
                     itemsInCart = res.cart_data || [];
 
                     // Attach Hold ID to every item
-                    $.each(itemsInCart, function(i, item) {
+                    $.each(itemsInCart, function (i, item) {
                         item.hold_id = saleId;
                     });
 
@@ -381,7 +381,7 @@ $(document).ready(function() {
 
             },
 
-            error: function(xhr) {
+            error: function (xhr) {
 
                 console.log(xhr.responseText);
                 alert('Unable to resume sale.');
@@ -394,7 +394,7 @@ $(document).ready(function() {
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Product show Category-wise
-    $("#product_category").change(function() {
+    $("#product_category").change(function () {
         var product_category = $(this).val();
 
         //var product_show_url = "<?php echo site_url('pos/filterProducts') ?>";
@@ -403,10 +403,10 @@ $(document).ready(function() {
             url: product_show_url,
             method: 'POST',
             data: "product_category=" + product_category,
-            success: function(data) {
+            success: function (data) {
                 $(".all_products").html(data);
             },
-            error: function() {
+            error: function () {
                 alert('error');
             }
         });
@@ -414,11 +414,11 @@ $(document).ready(function() {
     });
 
 
-    $(".extra-fields").on("input", function() {
+    $(".extra-fields").on("input", function () {
         totalCalculation();
     });
 
-    $('body').on("input", ".product_quantity_change", function() {
+    $('body').on("input", ".product_quantity_change", function () {
 
         let index = $(this).data("id");
         let qty = parseFloat($(this).val()) || 0;
@@ -442,8 +442,8 @@ $(document).ready(function() {
         if (itemsInCart[index].hold_id) {
 
             $.ajax({
-               // url: "<?=site_url('pos/update-hold-sale')?>",
-               url: APP_URLS.updateHoldSale,
+                // url: "<?=site_url('pos/update-hold-sale')?>",
+                url: APP_URLS.updateHoldSale,
                 type: "POST",
                 data: {
                     id: itemsInCart[index].hold_id,
@@ -458,7 +458,7 @@ $(document).ready(function() {
     });
 
     /* Product Delete Strat */
-    $('body').on("click", ".btn_item_delete", function() {
+    $('body').on("click", ".btn_item_delete", function () {
 
         if (!confirm("Really Want to Delete?")) {
             return;
@@ -472,15 +472,15 @@ $(document).ready(function() {
         if (holdId > 0) {
 
             $.ajax({
-               // url: "<?=site_url('pos/update-hold-sale')?>",
-               url: APP_URLS.updateHoldSale,
+                // url: "<?=site_url('pos/update-hold-sale')?>",
+                url: APP_URLS.updateHoldSale,
                 type: "POST",
                 dataType: "json",
                 data: {
                     id: holdId,
                     cart_data: itemsInCart
                 },
-                success: function(res) {
+                success: function (res) {
                     drawTable();
                     obj_warning.play();
                 }
@@ -498,14 +498,14 @@ $(document).ready(function() {
 
 
     // VAT and Discount toggle handler
-    $("#ProductWiseVatAndDiscount").on('change', function() {
+    $("#ProductWiseVatAndDiscount").on('change', function () {
         var enabled = $(this).is(":checked");
         toggleVatAndDiscount(enabled);
     });
 
 
     /* Image e click kore product add kora strat */
-    $('body').on("click", ".cart_item_image", function() {
+    $('body').on("click", ".cart_item_image", function () {
         var product_id = $(this).data("id");
         var stock = Number.parseInt($(this).data('stock'));
         if (stock <= 0) {
@@ -522,54 +522,75 @@ $(document).ready(function() {
     /*
     Cart Initialize the cart
     */
-    function productAddToCart(product_id, stock) {
-        $.each(productsList, function(key, value) {
-            if (value.product_id == product_id) {
-                var response = itemExist(product_id);
-                if (response.inCart) {
-                    if ((itemsInCart[response.productIndex].quantity + 1) <= stock) {
-                        itemsInCart[response.productIndex].quantity = itemsInCart[response.productIndex]
-                            .quantity + 1;
-                    } else {
-                        obj_warning.play();
-                        alert("Your Stock is Exceeded ----------------!");
-                    }
+function productAddToCart(product_id, stock) {
+
+    $.each(productsList, function (key, value) {
+
+        if (value.product_id == product_id) {
+
+            const response = itemExist(product_id);
+
+            if (response.inCart) {
+
+                if (
+                    (parseFloat(itemsInCart[response.productIndex].quantity) + 1)
+                    <= stock
+                ) {
+
+                    itemsInCart[response.productIndex].quantity++;
+
                 } else {
-                    value.quantity = 1;
-                    itemsInCart.push(value);
+
+                    obj_warning.play();
+                    alert("Your Stock is Exceeded!");
                 }
-                drawTable();
+
+            } else {
+
+                const cartItem = JSON.parse(JSON.stringify(value));
+
+                cartItem.quantity = 1;
+
+                itemsInCart.push(cartItem);
+            }
+
+            drawTable();
+        }
+    });
+}
+
+$(document).on("input", ".sale_price_change", function () {
+
+    const index = $(this).data("id");
+
+    if (!itemsInCart[index]) {
+        return;
+    }
+
+    const sellingUnitPrice =
+        parseFloat($(this).val()) || 0;
+
+    itemsInCart[index].selling_unit_price =
+        sellingUnitPrice;
+
+    if (itemsInCart[index].hold_id) {
+
+        $.ajax({
+            url: APP_URLS.update_hold_sale,
+            type: "POST",
+            data: {
+                id: itemsInCart[index].hold_id,
+                cart_data: itemsInCart
             }
         });
     }
 
+    updateRow(index);
+});
 
 
-    $(document).on("input", ".sale_price_change", function() {
 
-        let index = $(this).data("id");
-
-        itemsInCart[index].selling_unit_price = parseFloat($(this).val()) || 0;
-        ////==============================================================================
-        if (itemsInCart[index].hold_id) {
-
-            $.ajax({
-                //url: "<?=site_url('pos/update_hold_sale')?>",
-                url: APP_URLS.update_hold_sale,
-                type: "POST",
-                data: {
-                    id: itemsInCart[index].hold_id,
-                    cart_data: itemsInCart
-                }
-            });
-
-        }
-        ///==================================================================================
-
-        updateRow(index);
-    });
-
-    $(document).on("input", ".vat_input", function() {
+    $(document).on("input", ".vat_input", function () {
 
         let index = $(this).closest("tr").find(".btn_item_delete").data("index");
 
@@ -593,7 +614,7 @@ $(document).ready(function() {
         updateRow(index);
     });
 
-    $(document).on("input", ".discount_percent", function() {
+    $(document).on("input", ".discount_percent", function () {
 
         let index = $(this).closest("tr").find(".btn_item_delete").data("index");
 
@@ -620,14 +641,34 @@ $(document).ready(function() {
 
     /////##############################################################
 
+
+function getSellingUnitPrice(item) {
+    return parseFloat(item.selling_unit_price) || 0;
+}
+
+
+
+
     function updateRow(index) {
 
         const item = itemsInCart[index];
         if (!item) return;
 
-        let subtotal =
-            (parseFloat(item.quantity) || 0) *
-            (parseFloat(item.selling_unit_price) || 0);
+        // let subtotal =
+        //     (parseFloat(item.quantity) || 0) *
+        //     (parseFloat(item.selling_price) || 0);
+
+
+        let qty =
+            parseFloat(item.quantity) || 0;
+
+        // IMPORTANT
+        // Use calculated selling unit price
+        let sellingUnitPrice = getSellingUnitPrice(item);
+
+        // Base total
+        let subtotal = qty * sellingUnitPrice;
+
 
         if ($("#ProductWiseVatAndDiscount").is(":checked")) {
 
@@ -658,11 +699,17 @@ $(document).ready(function() {
 
         subTotalCost = 0;
 
-        itemsInCart.forEach(function(item) {
+        itemsInCart.forEach(function (item) {
 
-            //let subtotal = item.quantity * item.selling_unit_price;
-            let subtotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
-                .selling_unit_price) || 0);
+            //let subtotal = item.quantity * item.selling_price;
+            // let subtotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
+            //     .selling_price) || 0);
+
+            let qty = parseFloat(item.quantity) || 0;
+
+            let sellingUnitPrice = getSellingUnitPrice(item);
+
+            let subtotal = qty * sellingUnitPrice;
 
             subTotalCost += subtotal;
         });
@@ -679,12 +726,22 @@ $(document).ready(function() {
         $("#cartTableBody").empty();
         $("#subTotalCost").html("0.00");
         subTotalCost = 0;
-        $.each(itemsInCart, function(key, item) {
+        $.each(itemsInCart, function (key, item) {
 
-            // var baseTotal = parseInt(item.quantity) * parseFloat(item.selling_unit_price);
-            var baseTotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
-                .selling_unit_price) || 0);
-            var subtotalPrice = baseTotal; // default, no VAT/Discount
+            // var baseTotal = parseInt(item.quantity) * parseFloat(item.selling_price);
+            // var baseTotal = (parseFloat(item.quantity) || 0) * (parseFloat(item
+            //     .selling_price) || 0);
+            // var subtotalPrice = baseTotal; // default, no VAT/Discount
+
+let qty = parseFloat(item.quantity) || 0;
+
+let sellingUnitPrice = getSellingUnitPrice(item);
+
+//alert('Selling Unit Price: ' + sellingUnitPrice);
+
+let baseTotal = qty * sellingUnitPrice;
+
+let subtotalPrice = baseTotal; // default, no VAT/Discount
 
             // Add to total
             subTotalCost += subtotalPrice;
@@ -713,15 +770,17 @@ $(document).ready(function() {
             onkeypress="return accept_digit_only(event)">
     </td>
 
-    <!-- Sale Price -->
+<!-- Selling Unit Price -->
 <td class="d-flex justify-content-center">
     <input
         type="number"
+        step="0.01"
+        min="0"
         inputmode="decimal"
         class="form-control form-control-sm sale_price_change text-center"
         data-id="${key}"
         name="selling_unit_price"
-        value="${parseFloat(item.selling_unit_price || 1).toFixed(2)}">
+        value="${getSellingUnitPrice(item).toFixed(2)}">
 </td>
 
     <!-- VAT -->
@@ -787,7 +846,7 @@ $(document).ready(function() {
     */
     function totalCalculation() {
 
-        var otherChargeOnTotalPrice = $("#otherChargeOnTotalPrice").text();
+        let otherChargeOnTotalPrice = $("#otherChargeOnTotalPrice").text();
         if (otherChargeOnTotalPrice != "") {
             otherChargeOnTotalPrice = parseFloat((Number.isNaN(otherChargeOnTotalPrice)) ? 0 :
                 otherChargeOnTotalPrice);
@@ -795,19 +854,37 @@ $(document).ready(function() {
             otherChargeOnTotalPrice = 0;
         }
 
-
         //////////////////////////////////////////////////
-        subTotalCost = 0;
-        var productTotalVat = 0;
-        var productTotalDiscount = 0;
+        let subTotalCost = 0;
+        let productTotalVat = 0;
+        let productTotalDiscount = 0;
 
-        itemsInCart.forEach(function(item) {
+        itemsInCart.forEach(function (item) {
+
+            // let qty = parseFloat(item.quantity) || 0;
+            // let price = parseFloat(item.selling_price) || 0;
+
+            // // Basic subtotal (without VAT & Discount)
+            // let lineTotal = qty * price;
 
             let qty = parseFloat(item.quantity) || 0;
-            let price = parseFloat(item.selling_unit_price) || 0;
 
-            // Basic subtotal (without VAT & Discount)
-            let lineTotal = qty * price;
+            // IMPORTANT
+            // Do NOT use item.selling_price here
+            let sellingUnitPrice = getSellingUnitPrice(item);
+
+            // Example:
+            // selling_price = 120
+            // quantity_per_pack = 10
+            // box_quantity = 1
+            //
+            // sellingUnitPrice = 120 / (10 * 1)
+            //                   = 12
+
+            let lineTotal =
+                qty * sellingUnitPrice;
+
+
 
             subTotalCost += lineTotal;
 
@@ -836,13 +913,13 @@ $(document).ready(function() {
         });
         ////////////////////////////////////////////////
 
-            var netTotalPrice = Math.round(
-                subTotalCost - productTotalDiscount + productTotalVat + otherChargeOnTotalPrice
-            );
+        let netTotalPrice = Math.round(
+            subTotalCost - productTotalDiscount + productTotalVat + otherChargeOnTotalPrice
+        );
 
 
-        var paid = parseFloat($("#paid").val()) || 0;
-        var due = Math.round(netTotalPrice - paid);
+        let paid = parseFloat($("#paid").val()) || 0;
+        let due = Math.round(netTotalPrice - paid);
 
         $("#due").val(due);
 
@@ -856,11 +933,11 @@ $(document).ready(function() {
     Chek Is the selected Item Exist in List
     */
     function itemExist(product_id) {
-        var response = {
+        let response = {
             inCart: false,
             productIndex: null
         };
-        $.each(itemsInCart, function(key, item) {
+        $.each(itemsInCart, function (key, item) {
             if (item.product_id == product_id) {
                 if (!response.inCart) {
                     response.inCart = true;
@@ -872,7 +949,7 @@ $(document).ready(function() {
     }
 
 
-    $("#discount_apply, #productDiscountType").on("input change", function() {
+    $("#discount_apply, #productDiscountType").on("input change", function () {
 
         let value = parseFloat($("#discount_apply").val()) || 0;
         let type = $("#productDiscountType").val();
@@ -881,9 +958,15 @@ $(document).ready(function() {
 
         // Calculate current subtotal
         let subTotal = 0;
-        itemsInCart.forEach(function(item) {
-            subTotal += (parseFloat(item.quantity) || 0) *
-                (parseFloat(item.selling_unit_price) || 0);
+        itemsInCart.forEach(function (item) {
+            // subTotal += (parseFloat(item.quantity) || 0) *
+            //     (parseFloat(item.selling_price) || 0);
+
+               let qty = parseFloat(item.quantity) || 0;
+
+    let sellingUnitPrice = getSellingUnitPrice(item);
+
+    subTotal += qty * sellingUnitPrice;
         });
 
         if (type === "%") {
@@ -910,7 +993,7 @@ $(document).ready(function() {
         //     item.discount_type = type;
         //     item.discount_percent = value;
         // });
-        itemsInCart.forEach(function(item) {
+        itemsInCart.forEach(function (item) {
             item.discount_type = type;
 
             if (type === "%") {
@@ -924,7 +1007,7 @@ $(document).ready(function() {
         drawTable();
     });
 
-    $("#productDiscountType").on("change", function() {
+    $("#productDiscountType").on("change", function () {
         $(".discount-column-header").text(
             $(this).val() === "%" ? "Disc %" : "Disc"
         );
@@ -934,28 +1017,28 @@ $(document).ready(function() {
 
 
     ////////////////////New Customer Add//////////////////////////////
-    var allowSubmit = true;
+    let allowSubmit = true;
 
     //product_group_edit_form
 
-    $('#CustomerModalEntry_Form').submit(function(event) {
+    $('#CustomerModalEntry_Form').submit(function (event) {
         // stop the form from submitting the normal way and refreshing the page
         event.preventDefault();
 
         if (allowSubmit) {
             allowSubmit = false;
             //for modal close variable after submit
-            var parentMOdal = $(this).closest('.modal');
-            var postData = new FormData(this);
+            let parentMOdal = $(this).closest('.modal');
+            let postData = new FormData(this);
             $.ajax({
-                    type: $(this).attr("method"),
-                    url: $(this).attr("action"),
-                    data: postData,
-                    encode: true,
-                    processData: false,
-                    contentType: false,
-                })
-                .done(function(data) {
+                type: $(this).attr("method"),
+                url: $(this).attr("action"),
+                data: postData,
+                encode: true,
+                processData: false,
+                contentType: false,
+            })
+                .done(function (data) {
                     if (data == 1) {
                         parentMOdal.modal('toggle');
                         location.reload();
