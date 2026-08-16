@@ -1,0 +1,1225 @@
+DEBUG - 2026-08-16 13:35:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 13:36:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 13:36:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 13:47:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 13:54:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 14:06:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 14:06:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 14:07:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 14:07:13 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`return_sales_details`, CONSTRAINT `fk_return_details_return` FOREIGN KEY (`return_id`) REFERENCES `return_sales` (`return_id`) ON DELETE CASCADE ON UPDATE CASCADE) in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\pharmacy-project\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(602): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2026-08-16 14:07:13 --> Sales Return Error: Please select a refund payment method.
+DEBUG - 2026-08-16 14:07:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 14:07:26 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`return_sales_details`, CONSTRAINT `fk_return_details_return` FOREIGN KEY (`return_id`) REFERENCES `return_sales` (`return_id`) ON DELETE CASCADE ON UPDATE CASCADE) in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\pharmacy-project\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(602): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2026-08-16 14:07:26 --> Sales Return Error: Please select a refund payment method.
+DEBUG - 2026-08-16 14:07:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 14:07:40 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`return_sales_details`, CONSTRAINT `fk_return_details_return` FOREIGN KEY (`return_id`) REFERENCES `return_sales` (`return_id`) ON DELETE CASCADE ON UPDATE CASCADE) in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\pharmacy-project\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(602): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2026-08-16 14:07:40 --> Sales Return Error: Please select a refund payment method.
+DEBUG - 2026-08-16 14:59:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 14:59:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 14:59:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 14:59:50 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`return_sales_details`, CONSTRAINT `fk_return_details_return` FOREIGN KEY (`return_id`) REFERENCES `return_sales` (`return_id`) ON DELETE CASCADE ON UPDATE CASCADE) in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\pharmacy-project\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(929): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2026-08-16 14:59:50 --> Sales Return Error: Failed to insert return details for Product ID 12
+DEBUG - 2026-08-16 15:00:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:00:11 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`return_sales_details`, CONSTRAINT `fk_return_details_return` FOREIGN KEY (`return_id`) REFERENCES `return_sales` (`return_id`) ON DELETE CASCADE ON UPDATE CASCADE) in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\pharmacy-project\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(929): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2026-08-16 15:00:11 --> Sales Return Error: Failed to insert return details for Product ID 7
+DEBUG - 2026-08-16 15:00:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:00:25 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`return_sales_details`, CONSTRAINT `fk_return_details_return` FOREIGN KEY (`return_id`) REFERENCES `return_sales` (`return_id`) ON DELETE CASCADE ON UPDATE CASCADE) in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\pharmacy-project\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(929): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2026-08-16 15:00:25 --> Sales Return Error: Failed to insert return details for Product ID 11
+DEBUG - 2026-08-16 15:03:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:03:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:03:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:03:58 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`return_sales_details`, CONSTRAINT `fk_return_details_return` FOREIGN KEY (`return_id`) REFERENCES `return_sales` (`return_id`) ON DELETE CASCADE ON UPDATE CASCADE) in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\pharmacy-project\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(947): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2026-08-16 15:03:58 --> Sales Return Error: Failed to insert return details for Product ID 12. Model Error: {"CodeIgniter\\Database\\MySQLi\\Connection":"Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`return_sales_details`, CONSTRAINT `fk_return_details_return` FOREIGN KEY (`return_id`) REFERENCES `return_sales` (`return_id`) ON DELETE CASCADE ON UPDATE CASCADE)"}. DB Error: {"code":1452,"message":"Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`return_sales_details`, CONSTRAINT `fk_return_details_return` FOREIGN KEY (`return_id`) REFERENCES `return_sales` (`return_id`) ON DELETE CASCADE ON UPDATE CASCADE)"}
+DEBUG - 2026-08-16 15:04:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:04:16 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`return_sales_details`, CONSTRAINT `fk_return_details_return` FOREIGN KEY (`return_id`) REFERENCES `return_sales` (`return_id`) ON DELETE CASCADE ON UPDATE CASCADE) in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\laragon\www\pharmacy-project\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\laragon\www\pharmacy-project\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\pharmacy-project\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\pharmacy-project\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\pharmacy-project\app\Controllers\ReturnController.php(947): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#9 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#10 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+ERROR - 2026-08-16 15:04:16 --> Sales Return Error: Failed to insert return details for Product ID 7. Model Error: {"CodeIgniter\\Database\\MySQLi\\Connection":"Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`return_sales_details`, CONSTRAINT `fk_return_details_return` FOREIGN KEY (`return_id`) REFERENCES `return_sales` (`return_id`) ON DELETE CASCADE ON UPDATE CASCADE)"}. DB Error: {"code":1452,"message":"Cannot add or update a child row: a foreign key constraint fails (`pharmacy_db`.`return_sales_details`, CONSTRAINT `fk_return_details_return` FOREIGN KEY (`return_id`) REFERENCES `return_sales` (`return_id`) ON DELETE CASCADE ON UPDATE CASCADE)"}
+DEBUG - 2026-08-16 15:07:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:07:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:07:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:07:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:07:53 --> SALES RETURN ERROR: Please select a refund payment method.
+DEBUG - 2026-08-16 15:13:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:13:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:13:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:13:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:13:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:13:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:13:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:13:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:13:42 --> Sales Return Error: Undefined property: App\Controllers\ReturnController::$ReturnPaymentModel
+DEBUG - 2026-08-16 15:20:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:20:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:20:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:20:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:20:45 --> Sales Return Error: Please select a refund payment method.
+Trace: #0 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#1 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#2 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#5 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#6 {main}
+DEBUG - 2026-08-16 15:22:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:22:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:22:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:22:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:22:37 --> Sales Return Error: Invalid refund payment method.
+Trace: #0 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\ReturnController->process()
+#1 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReturnController))
+#2 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#4 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#5 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#6 {main}
+DEBUG - 2026-08-16 15:23:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:23:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:23:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:23:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:24:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:24:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:24:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:24:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:26:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:26:35 --> mysqli_sql_exception: Unknown column 's.total_amount' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT\r\n\r\n    ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT\r\n\r\n    ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT\r\n\r\n    ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\SaleReturnListController.php(140): CodeIgniter\Database\BaseConnection->query(' SELECT\r\n\r\n    ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-08-16 15:26:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.total_amount' in 'field list'
+[Method: GET, Route: return/sale-return]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\SaleReturnListController.php(140): CodeIgniter\Database\BaseConnection->query(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-16 15:26:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 3 APPPATH\Controllers\SaleReturnListController.php(140): CodeIgniter\Database\BaseConnection->query(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-16 15:26:35 --> [Caused by] mysqli_sql_exception: Unknown column 's.total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 4 APPPATH\Controllers\SaleReturnListController.php(140): CodeIgniter\Database\BaseConnection->query(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-16 15:31:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:31:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:31:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:31:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:32:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:32:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:32:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:32:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:32:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:32:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:33:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:33:03 --> mysqli_sql_exception: Unknown column 's.total_amount' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT\r\n\r\n    ...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT\r\n\r\n    ...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT\r\n\r\n    ...')
+#3 C:\laragon\www\pharmacy-project\app\Controllers\SaleReturnListController.php(90): CodeIgniter\Database\BaseConnection->query(' SELECT\r\n\r\n    ...')
+#4 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#9 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#10 {main}
+CRITICAL - 2026-08-16 15:33:03 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.total_amount' in 'field list'
+[Method: GET, Route: return/sale-return]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Controllers\SaleReturnListController.php(90): CodeIgniter\Database\BaseConnection->query(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-16 15:33:03 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 3 APPPATH\Controllers\SaleReturnListController.php(90): CodeIgniter\Database\BaseConnection->query(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-16 15:33:03 --> [Caused by] mysqli_sql_exception: Unknown column 's.total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 4 APPPATH\Controllers\SaleReturnListController.php(90): CodeIgniter\Database\BaseConnection->query(' SELECT
+
+          s.sales_id,
+          s.sales_invoice,
+          s.sales_date,
+      
+          c.customer_name AS customer_name,
+      
+          u.user_name AS seller_name,
+      
+          s.total_amount AS total_sale,
+      
+          s.product_vat,
+          s.product_discount,
+          s.other_charge_on_all,
+      
+          IFNULL(cdp.total_paid,0) AS total_paid,
+      
+          IFNULL(cd.total_due,0) AS customer_due,
+      
+          CASE
+              WHEN IFNULL(cd.total_due,0)=0
+              THEN \'Fully Paid\'
+              ELSE \'Partially Paid\'
+          END AS payment_status
+      
+      FROM sales s
+      
+      LEFT JOIN customer c
+      ON c.customer_id=s.customer_id
+      
+      LEFT JOIN user u
+      ON u.user_id=s.seller_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(due_amount) total_due
+          FROM customer_due
+          GROUP BY sales_id
+      ) cd
+      ON cd.sales_id=s.sales_id
+      
+      LEFT JOIN
+      (
+          SELECT
+              sales_id,
+              SUM(payment_amount) total_paid
+          FROM customer_due_payment
+          GROUP BY sales_id
+      ) cdp
+      ON cdp.sales_id=s.sales_id
+      
+      WHERE s.return_status<>\'FULL\'
+      
+      ORDER BY s.sales_date DESC
+            ')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
