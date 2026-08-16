@@ -1223,3 +1223,1590 @@ in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
  8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
  9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-16 15:42:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:42:37 --> mysqli_sql_exception: Unknown column 's.total_amount' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\laragon\www\pharmacy-project\app\Models\ReturnSaleModel.php(155): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...')
+#4 C:\laragon\www\pharmacy-project\app\Controllers\SaleReturnListController.php(32): App\Models\ReturnSaleModel->saleReturnListShow()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-08-16 15:42:37 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.total_amount' in 'field list'
+[Method: GET, Route: return/sale-return]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Models\ReturnSaleModel.php(155): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 2 APPPATH\Controllers\SaleReturnListController.php(32): App\Models\ReturnSaleModel->saleReturnListShow()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-16 15:42:37 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 3 APPPATH\Models\ReturnSaleModel.php(155): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 4 APPPATH\Controllers\SaleReturnListController.php(32): App\Models\ReturnSaleModel->saleReturnListShow()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-16 15:42:37 --> [Caused by] mysqli_sql_exception: Unknown column 's.total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 4 APPPATH\Models\ReturnSaleModel.php(155): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 5 APPPATH\Controllers\SaleReturnListController.php(32): App\Models\ReturnSaleModel->saleReturnListShow()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-16 15:42:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:42:39 --> mysqli_sql_exception: Unknown column 's.total_amount' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\laragon\www\pharmacy-project\app\Models\ReturnSaleModel.php(155): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...')
+#4 C:\laragon\www\pharmacy-project\app\Controllers\SaleReturnListController.php(32): App\Models\ReturnSaleModel->saleReturnListShow()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-08-16 15:42:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.total_amount' in 'field list'
+[Method: GET, Route: return/sale-return]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Models\ReturnSaleModel.php(155): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 2 APPPATH\Controllers\SaleReturnListController.php(32): App\Models\ReturnSaleModel->saleReturnListShow()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-16 15:42:39 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 3 APPPATH\Models\ReturnSaleModel.php(155): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 4 APPPATH\Controllers\SaleReturnListController.php(32): App\Models\ReturnSaleModel->saleReturnListShow()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-16 15:42:39 --> [Caused by] mysqli_sql_exception: Unknown column 's.total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 4 APPPATH\Models\ReturnSaleModel.php(155): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 5 APPPATH\Controllers\SaleReturnListController.php(32): App\Models\ReturnSaleModel->saleReturnListShow()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-16 15:42:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-08-16 15:42:41 --> mysqli_sql_exception: Unknown column 's.total_amount' in 'field list' in C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\laragon\www\pharmacy-project\system\Database\MySQLi\Connection.php(327): mysqli->query('\r\n        SELEC...', 0)
+#1 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('\r\n        SELEC...')
+#2 C:\laragon\www\pharmacy-project\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('\r\n        SELEC...')
+#3 C:\laragon\www\pharmacy-project\app\Models\ReturnSaleModel.php(155): CodeIgniter\Database\BaseConnection->query('\r\n        SELEC...')
+#4 C:\laragon\www\pharmacy-project\app\Controllers\SaleReturnListController.php(32): App\Models\ReturnSaleModel->saleReturnListShow()
+#5 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+#6 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+#7 C:\laragon\www\pharmacy-project\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\pharmacy-project\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\pharmacy-project\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\laragon\www\pharmacy-project\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2026-08-16 15:42:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.total_amount' in 'field list'
+[Method: GET, Route: return/sale-return]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 APPPATH\Models\ReturnSaleModel.php(155): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 2 APPPATH\Controllers\SaleReturnListController.php(32): App\Models\ReturnSaleModel->saleReturnListShow()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-16 15:42:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 's.total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 3 APPPATH\Models\ReturnSaleModel.php(155): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 4 APPPATH\Controllers\SaleReturnListController.php(32): App\Models\ReturnSaleModel->saleReturnListShow()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2026-08-16 15:42:41 --> [Caused by] mysqli_sql_exception: Unknown column 's.total_amount' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 4 APPPATH\Models\ReturnSaleModel.php(155): CodeIgniter\Database\BaseConnection->query('
+        SELECT
+            s.sales_id,
+            s.sales_invoice,
+            s.sales_date,
+
+            c.customer_name AS customer_name,
+
+            u.user_name AS seller_name,
+
+            s.total_amount AS total_sale,
+
+            s.product_vat,
+            s.product_discount,
+            s.other_charge_on_all,
+
+            IFNULL(cdp.total_paid, 0) AS total_paid,
+
+            IFNULL(cd.total_due, 0) AS customer_due,
+
+            CASE
+                WHEN IFNULL(cd.total_due, 0) = 0
+                    THEN \'Fully Paid\'
+                ELSE \'Partially Paid\'
+            END AS payment_status
+
+        FROM sales s
+
+        LEFT JOIN customer c
+            ON c.customer_id = s.customer_id
+
+        LEFT JOIN user u
+            ON u.user_id = s.seller_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(due_amount) AS total_due
+            FROM customer_due
+            GROUP BY sales_id
+        ) cd
+            ON cd.sales_id = s.sales_id
+
+        LEFT JOIN
+        (
+            SELECT
+                sales_id,
+                SUM(payment_amount) AS total_paid
+            FROM customer_due_payment
+            GROUP BY sales_id
+        ) cdp
+            ON cdp.sales_id = s.sales_id
+
+        WHERE COALESCE(s.return_status, \'\') <> \'FULL\'
+
+        ORDER BY
+            s.sales_date DESC,
+            s.sales_invoice DESC
+    ')
+ 5 APPPATH\Controllers\SaleReturnListController.php(32): App\Models\ReturnSaleModel->saleReturnListShow()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-16 15:43:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-08-16 15:43:57 --> ErrorException: Undefined array key "return_date"
+[Method: GET, Route: return/sale-return]
+in APPPATH\Views\return\saleReturnListShow.php on line 45.
+ 1 APPPATH\Views\return\saleReturnListShow.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "return_date"', 'C:\\laragon\\www\\pharmacy-project\\app\\Views\\return\\saleReturnListShow.php', 45)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\pharmacy-project\\app\\Views\\return\\saleReturnListShow.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('return/saleReturnListShow', [], true)
+ 5 APPPATH\Controllers\SaleReturnListController.php(35): view('return/saleReturnListShow', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SaleReturnListController->saleReturnListShow()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SaleReturnListController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2026-08-16 15:46:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:57:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2026-08-16 15:57:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
