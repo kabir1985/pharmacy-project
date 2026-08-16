@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Models\ProductModel;
+use App\Models\ProductBrandModel;
 use App\Models\ProductPurchaseModel;
 use App\Models\ProductPurchaseDetailsModel;
 use App\Models\SupplierModel;
@@ -16,6 +17,7 @@ use App\Models\TaxModel;
 class PurchaseController extends BaseController
 {
     protected ProductPurchaseModel $product_purchase_object;
+    protected ProductBrandModel $ProductBrandModel;
     protected ProductModel $product_add_object;
     protected ProductPurchaseDetailsModel $product_purchase_details_object;
     protected SupplierModel $supplier_object;
@@ -31,6 +33,7 @@ class PurchaseController extends BaseController
     public function __construct()
     {
         $this->product_purchase_object = new ProductPurchaseModel();
+         $this->ProductBrandModel = new ProductBrandModel();
         $this->product_purchase_details_object = new ProductPurchaseDetailsModel();
         $this->product_add_object = new ProductModel();
         $this->supplier_object = new SupplierModel();
@@ -51,6 +54,7 @@ class PurchaseController extends BaseController
             'getDefaultOpeningStock' => $this->product_add_object->getProductsWithCurrentStock(),
 
             'supplier_show'         => $this->supplier_object->findAll(),
+              'brand_show' => $this->ProductBrandModel->findAll(),
 //============For Opening Stock=========================
             'category_show'         => $this->productCategory_object->findAll(),
             'group_show'            => $this->productgroup_object->findAll(),
@@ -108,6 +112,7 @@ public function store()
         //==================================================
 
         $supplier_id = (int)$this->request->getPost('supplier_id');
+        $purchase_date = $this->request->getPost('purchase_date');
 
         if ($supplier_id <= 0) {
 
@@ -367,8 +372,7 @@ if ($netTotal <= 0) {
             'due_amount' =>
                 $netTotal,
 
-            'purchase_date' =>
-                date('Y-m-d H:i:s'),
+           'purchase_date' => date('Y-m-d H:i:s', strtotime($purchase_date) ),
 
             'purchase_by' =>
                 session('user_id'),
@@ -512,12 +516,20 @@ if ($netTotal <= 0) {
                 ? (int)$item['tax_id']
                 : null;
 
+            
+            
+            
+            
             //==================================================
-            // Selling Price
-            //==================================================
+// Selling Price
+//==================================================
 
-            $sellingPrice =
-                (float)($item['selling_price'] ?? 0);
+$sellingUnitPrice = (float)($item['selling_unit_price'] ?? 0);
+
+$sellingPrice =
+    $sellingUnitPrice *
+    $qtyPerPack *
+    $boxQty;
 
             //==================================================
             // Purchase Details
@@ -525,47 +537,34 @@ if ($netTotal <= 0) {
 
             $details = [
 
-                'purchase_id' =>
-                    $purchase_id,
+                'purchase_id' => $purchase_id,
 
-                'product_id' =>
-                    $productId,
+                'product_id' => $productId,
 
-                'expiry_date' =>
-                    $item['expiry_date'] ?? null,
+                'expiry_date' => $item['expiry_date'] ?? null,
 
-                'quantity_per_pack' =>
-                    $qtyPerPack,
+                'quantity_per_pack' => $qtyPerPack,
 
-                'box_quantity' =>
-                    $boxQty,
+                'box_quantity' => $boxQty,
 
-                'free_qty' =>
-                    $freeQty,
+                'free_qty' => $freeQty,
 
-                'base_price_per_unit' =>
-                    $basePrice,
+                'base_price_per_unit' => $basePrice,
 
-                'tax_id' =>
-                    $taxId,
+                'tax_id' => $taxId,
 
-                'tax_percentage' =>
-                    $taxPercentage,
+                'tax_percentage' => $taxPercentage,
 
-                'product_wise_vat_amount' =>
-                    $vat,
+                'product_wise_vat_amount' =>$vat,
 
-                'product_wise_discount_amount' =>
-                    $discount,
+                'product_wise_discount_amount' => $discount,
 
-                'selling_price' =>
-                    $sellingPrice,
+                'selling_price' => $sellingPrice,
+                'selling_unit_price' => $sellingUnitPrice,
 
-                'purchase_price' =>
-                    $purchasePriceWithVat,
+                'purchase_price' => $purchasePriceWithVat,
 
-                'line_total' =>
-                    $lineTotal
+                'line_total' => $lineTotal
             ];
 
             //==================================================

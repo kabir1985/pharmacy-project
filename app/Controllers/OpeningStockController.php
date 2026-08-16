@@ -42,7 +42,7 @@ public function store()
             'quantity'                    => 'required|decimal|greater_than[0]',
             'purchase_price_without_vat'  => 'required|decimal|greater_than[0]',
             'stock_date'                  => 'required|valid_date',
-            'selling_price'               => 'required|decimal|greater_than[0]',
+            'selling_unit_price'          => 'required|decimal|greater_than[0]',
         ])
     ) {
         return redirect()
@@ -161,7 +161,7 @@ public function store()
 
             'profit_margin_percent' => (float) ($this->request->getPost('profit_margin_percent') ?: 0),
 
-            'selling_price' => (float) $this->request->getPost('selling_price'),
+            'selling_unit_price' => (float) $this->request->getPost('selling_unit_price'),
 
             'stock_date' => $this->request->getPost('stock_date'),
 

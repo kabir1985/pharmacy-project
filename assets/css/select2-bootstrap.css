@@ -1,58 +1,7 @@
-/*!
- * Select2 Bootstrap Theme v0.1.0-beta.10 (https://select2.github.io/select2-bootstrap-theme)
- * Copyright 2015-2017 Florian Kissling and contributors (https://github.com/select2/select2-bootstrap-theme/graphs/contributors)
- * Licensed under MIT (https://github.com/select2/select2-bootstrap-theme/blob/master/LICENSE)
- */
 
 .select2-container--bootstrap {
   display: block;
-  /*------------------------------------*      #COMMON STYLES
-  \*------------------------------------*/
-  /**
-   * Search field in the Select2 dropdown.
-   */
-  /**
-   * No outline for all search fields - in the dropdown
-   * and inline in multi Select2s.
-   */
-  /**
-   * Adjust Select2's choices hover and selected styles to match
-   * Bootstrap 3's default dropdown styles.
-   *
-   * @see http://getbootstrap.com/components/#dropdowns
-   */
-  /**
-   * Clear the selection.
-   */
-  /**
-   * Address disabled Select2 styles.
-   *
-   * @see https://select2.github.io/examples.html#disabled
-   * @see http://getbootstrap.com/css/#forms-control-disabled
-   */
-  /*------------------------------------*      #DROPDOWN
-  \*------------------------------------*/
-  /**
-   * Dropdown border color and box-shadow.
-   */
-  /**
-   * Limit the dropdown height.
-   */
-  /*------------------------------------*      #SINGLE SELECT2
-  \*------------------------------------*/
-  /*------------------------------------*    #MULTIPLE SELECT2
-  \*------------------------------------*/
-  /**
-   * Address Bootstrap control sizing classes
-   *
-   * 1. Reset Bootstrap defaults.
-   * 2. Adjust the dropdown arrow button icon position.
-   *
-   * @see http://getbootstrap.com/css/#forms-control-sizes
-   */
-  /* 1 */
-  /*------------------------------------*    #RTL SUPPORT
-  \*------------------------------------*/
+  
 }
 
 .select2-container--bootstrap .select2-selection {
@@ -274,7 +223,7 @@
 }
 
 .select2-container--bootstrap .select2-selection--single {
-  height: 34px;
+  height: 32px;
   line-height: 1.42857143;
   padding: 6px 24px 6px 12px;
   /**

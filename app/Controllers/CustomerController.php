@@ -142,9 +142,112 @@ class CustomerController extends BaseController
 public function CustomerAccountStatementView()
 {
 
-return view('payment/cus-acc-stmt');
+    $data['customer_show'] = $this->customerModelObject
+        ->where('status', 1)
+        ->orderBy('customer_name', 'ASC')
+        ->findAll();
+
+return view('customer/accountStatementView', $data);
 
 }
+
+
+
+/**
+ * Customer Account Statement Data
+ *
+ * AJAX endpoint
+ */
+public function CustomerAccountStatementData()
+{
+    $customerId = $this->request->getPost('customer_id');
+
+    // -----------------------------------------------------
+    // Validate customer ID
+    // -----------------------------------------------------
+
+    if (empty($customerId)) {
+
+        return $this->response->setJSON([
+            'status'  => false,
+            'message' => 'Customer ID is required.'
+        ]);
+    }
+
+
+    // -----------------------------------------------------
+    // Get customer
+    // -----------------------------------------------------
+
+    $customer = $this->customerModelObject
+        ->where('customer_id', $customerId)
+        ->where('status', 1)
+        ->first();
+
+
+    if (!$customer) {
+
+        return $this->response->setJSON([
+            'status'  => false,
+            'message' => 'Customer not found.'
+        ]);
+    }
+
+
+    // -----------------------------------------------------
+    // Get account statement
+    // -----------------------------------------------------
+
+    $statement = $this->customerModelObject
+        ->getCustomerAccountStatement($customerId);
+
+
+    // -----------------------------------------------------
+    // Calculate summary
+    // -----------------------------------------------------
+
+    $totalDue = 0;
+    $totalPaid = 0;
+    $totalOutstanding = 0;
+
+
+    foreach ($statement as $row) {
+
+        $totalDue += (float) ($row['due_amount'] ?? 0);
+
+        $totalPaid += (float) ($row['paid_amount'] ?? 0);
+
+        $totalOutstanding +=
+            (float) ($row['remaining_due'] ?? 0);
+    }
+
+
+    // -----------------------------------------------------
+    // Response
+    // -----------------------------------------------------
+
+    return $this->response->setJSON([
+        'status' => true,
+
+        'customer' => [
+            'customer_id'   => $customer['customer_id'],
+            'customer_name' => $customer['customer_name'],
+            'phone'         => $customer['phone'] ?? '',
+            'address'       => $customer['address'] ?? ''
+        ],
+
+        'summary' => [
+            'total_due'         => number_format($totalDue, 2, '.', ''),
+            'total_paid'        => number_format($totalPaid, 2, '.', ''),
+            'total_outstanding' => number_format($totalOutstanding, 2, '.', '')
+        ],
+
+        'data' => $statement
+    ]);
+}
+
+
+
 
 
 

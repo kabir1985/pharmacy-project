@@ -555,7 +555,7 @@
 
                                             <label class="form-label-smart">
 
-                                                MRP / Selling Price
+                                                MRP / Selling Price (per unit)
 
                                             </label>
 
@@ -571,8 +571,8 @@
                                                 </div>
 
 
-                                                <input type="number" step="0.01" min="0" name="selling_price"
-                                                    id="selling_price" class="form-control" placeholder="0.00">
+                                                <input type="number" step="0.01" min="0" name="selling_unit_price"
+                                                    id="selling_unit_price" class="form-control" placeholder="0.00">
 
                                             </div>
 
@@ -900,7 +900,7 @@
                 );
 
 
-            $('#selling_price')
+            $('#selling_unit_price')
                 .val(sellingPrice.toFixed(2));
 
         }
@@ -910,7 +910,7 @@
            SELLING PRICE -> PROFIT MARGIN
         ========================================================= */
 
-        $('#selling_price')
+        $('#selling_unit_price')
             .on('input', function() {
 
 

@@ -30,7 +30,7 @@ class ProductOpeningStockModel extends Model
         'purchase_price_with_vat',
     
         'profit_margin_percent',
-        'selling_price',
+        'selling_unit_price',
     
         'stock_date',
         'remarks',

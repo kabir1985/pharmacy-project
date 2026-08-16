@@ -144,13 +144,15 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
         $routes->post('create', 'CustomerController::create');
         $routes->post('update', 'CustomerController::update');
         $routes->post('delete', 'CustomerController::delete');
+        $routes->post('account-statement-data','CustomerController::CustomerAccountStatementData');
+        $routes->get('account-statement', 'CustomerController::CustomerAccountStatementView');
     });
 
     $routes->group('payment', function ($routes) {
         $routes->get('due-collection', 'DuePaymentController::index');
         // $routes->get('collect/(:num)', 'DuePaymentController::collect/$1');
         $routes->post('collection-save', 'DuePaymentController::save');
-        $routes->get('cus-acc-stmt', 'CustomerController::CustomerAccountStatementView');
+       // $routes->get('cus-acc-stmt', 'CustomerController::CustomerAccountStatementView');
     });
 
     $routes->group('customer-group', function ($routes) {

@@ -2,9 +2,9 @@ const productsList = APP.data.productsList;
 
 //console.table(productsList);
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-//alert("i am product-purchase.js page");
+    //alert("i am product-purchase.js page");
     // console.log("kaiirsdffsdfdsfdsfdsfs");
 
     // console.log(productsList.find(p => p.product_id == product_id));
@@ -80,7 +80,7 @@ $(document).ready(function() {
         let totalVat = 0;
         let totalDiscount = 0;
 
-        itemsInCart.forEach(function(item) {
+        itemsInCart.forEach(function (item) {
 
             let c = calculateRow(item);
 
@@ -204,155 +204,155 @@ $(document).ready(function() {
     // =========================================================================
 
     // ================= DRAW TABLE ================= //
-//     function drawTable() {
+    //     function drawTable() {
 
-//         const tbody = $("#cartTableBody");
-//         tbody.empty();
+    //         const tbody = $("#cartTableBody");
+    //         tbody.empty();
 
-//         let rows = "";
+    //         let rows = "";
 
-//         $.each(itemsInCart, function(key, item) {
+    //         $.each(itemsInCart, function(key, item) {
 
-//             var qtyPerPack = Number(item.quantity_per_pack) || 0;
-//             var Boxqty = Number(item.box_quantity) || 1;
-//             var UnitPrice = Number(item.purchase_price_without_vat) || 0;
+    //             var qtyPerPack = Number(item.quantity_per_pack) || 0;
+    //             var Boxqty = Number(item.box_quantity) || 1;
+    //             var UnitPrice = Number(item.purchase_price_without_vat) || 0;
 
-//             var Trade_Price_Per_Box = qtyPerPack * UnitPrice;
+    //             var Trade_Price_Per_Box = qtyPerPack * UnitPrice;
 
-//             let calc = calculateRow(item);
+    //             let calc = calculateRow(item);
 
-//             let vatAfterDiscount = calc.vat;
-//             let rowTotal = calc.subtotal;
+    //             let vatAfterDiscount = calc.vat;
+    //             let rowTotal = calc.subtotal;
 
-//             rows += `<tr data-index="${key}">
-//         <td>${item.product_name}</td>
-//         <td>${item.total_stock}</td>
+    //             rows += `<tr data-index="${key}">
+    //         <td>${item.product_name}</td>
+    //         <td>${item.total_stock}</td>
 
-// <!---------- QtyPerBox----------------------->
-// <td>
-//     <input
-//         data-id="${key}"
-//         class="product_quantity_change form-control form-control-sm w-100"
-//         type="number"
-//         step="any"
-//         value="${item.quantity_per_pack || 1}">
-// </td>
-// <!--------------------BoxQty-------------------------------->
-// <td>
-//     <input
-//         data-id="${key}"
-//         class="product_boxqty_change form-control form-control-sm"
-//         type="number"
-//         min="1"
-//         step="any"
-//         value="${item.box_quantity || 1}">
-// </td>
-
-
-// <!---------------- Unit Price------------------------------>
-// <td>
-//     <input
-//         type="text"
-//         class="purchase_price_no_vat form-control form-control-sm w-100"
-//         value="${item.purchase_price_without_vat || 1}"
-//         min="1"
-//         data-id="${key}" readonly>
-// </td>
+    // <!---------- QtyPerBox----------------------->
+    // <td>
+    //     <input
+    //         data-id="${key}"
+    //         class="product_quantity_change form-control form-control-sm w-100"
+    //         type="number"
+    //         step="any"
+    //         value="${item.quantity_per_pack || 1}">
+    // </td>
+    // <!--------------------BoxQty-------------------------------->
+    // <td>
+    //     <input
+    //         data-id="${key}"
+    //         class="product_boxqty_change form-control form-control-sm"
+    //         type="number"
+    //         min="1"
+    //         step="any"
+    //         value="${item.box_quantity || 1}">
+    // </td>
 
 
-// <!----------------Trade Price Per Box-------------------------------------->
-// <td style="min-width:70px;">
-// <input
-//     type="text"
-//     class="trade_price_per_box form-control form-control-sm text-end"
-//     value="${parseFloat(Trade_Price_Per_Box).toFixed(2)}"
-//     data-id="${key}">
-// </td>
-
-// <!----------------Free Qty-------------------------------------->
-// <td>
-//     <input style="min-width: 50px;"
-//     type="number"
-//     class="free_qty form-control form-control-sm"
-//     data-id="${key}"
-//     min="0"
-//     value="${item.free_qty || 0}">
-//  </td>
+    // <!---------------- Unit Price------------------------------>
+    // <td>
+    //     <input
+    //         type="text"
+    //         class="purchase_price_no_vat form-control form-control-sm w-100"
+    //         value="${item.purchase_price_without_vat || 1}"
+    //         min="1"
+    //         data-id="${key}" readonly>
+    // </td>
 
 
-// <td>
-//     <input
-//         type="text"
-//         class="vat-input form-control form-control-sm"
-//         min="0"
-//         value="${item.tax_percentage || 0}"
-//         data-id="${key}">
-// </td>
+    // <!----------------Trade Price Per Box-------------------------------------->
+    // <td style="min-width:70px;">
+    // <input
+    //     type="text"
+    //     class="trade_price_per_box form-control form-control-sm text-end"
+    //     value="${parseFloat(Trade_Price_Per_Box).toFixed(2)}"
+    //     data-id="${key}">
+    // </td>
 
-// <td class="vatAmount"> ${vatAfterDiscount.toFixed(2)}</td>
-
-// <td>
-//     <input
-//         type="text"
-//         class="sale_price form-control form-control-sm"
-//         value="${item.selling_price || 0}"
-//         data-id="${key}"
-//         >
-// </td>
-
-// <td>
-// <input
-// type="text"
-// class="discount_percent form-control form-control-sm"
-// value="${getDiscountValue(item)}"
-// data-id="${key}">
-// </td>
-
-// <td class="text-end rowTotal">
-// ${rowTotal.toFixed(2)}
-// </td>
-
-// <td>
-//     <button
-//         data-index="${key}"
-//         class="btn btn-sm btn-danger btn_item_delete">
-//         ×
-//     </button>
-// </td>
-
-//     </tr>`;
-//         });
-
-//         tbody.html(rows);
-
-//         updateGrandTotal();
-//         enableButton();
-//     }
+    // <!----------------Free Qty-------------------------------------->
+    // <td>
+    //     <input style="min-width: 50px;"
+    //     type="number"
+    //     class="free_qty form-control form-control-sm"
+    //     data-id="${key}"
+    //     min="0"
+    //     value="${item.free_qty || 0}">
+    //  </td>
 
 
+    // <td>
+    //     <input
+    //         type="text"
+    //         class="vat-input form-control form-control-sm"
+    //         min="0"
+    //         value="${item.tax_percentage || 0}"
+    //         data-id="${key}">
+    // </td>
 
-// ================= DRAW TABLE ================= //
-function drawTable() {
+    // <td class="vatAmount"> ${vatAfterDiscount.toFixed(2)}</td>
 
-    const tbody = $("#cartTableBody");
-    tbody.empty();
+    // <td>
+    //     <input
+    //         type="text"
+    //         class="sale_price form-control form-control-sm"
+    //         value="${item.selling_unit_price || 0}"
+    //         data-id="${key}"
+    //         >
+    // </td>
 
-    let rows = "";
+    // <td>
+    // <input
+    // type="text"
+    // class="discount_percent form-control form-control-sm"
+    // value="${getDiscountValue(item)}"
+    // data-id="${key}">
+    // </td>
 
-    $.each(itemsInCart, function(key, item) {
+    // <td class="text-end rowTotal">
+    // ${rowTotal.toFixed(2)}
+    // </td>
 
-        const qtyPerPack = Number(item.quantity_per_pack) || 1;
-        const Boxqty = Number(item.box_quantity) || 1;
-        const UnitPrice = Number(item.purchase_price_without_vat) || 0;
+    // <td>
+    //     <button
+    //         data-index="${key}"
+    //         class="btn btn-sm btn-danger btn_item_delete">
+    //         ×
+    //     </button>
+    // </td>
 
-        const Trade_Price_Per_Box = qtyPerPack * UnitPrice;
+    //     </tr>`;
+    //         });
 
-        let calc = calculateRow(item);
+    //         tbody.html(rows);
 
-        let vatAfterDiscount = calc.vat;
-        let rowTotal = calc.subtotal;
+    //         updateGrandTotal();
+    //         enableButton();
+    //     }
 
-        rows += `
+
+
+    // ================= DRAW TABLE ================= //
+    function drawTable() {
+
+        const tbody = $("#cartTableBody");
+        tbody.empty();
+
+        let rows = "";
+
+        $.each(itemsInCart, function (key, item) {
+
+            const qtyPerPack = Number(item.quantity_per_pack) || 1;
+            const Boxqty = Number(item.box_quantity) || 1;
+            const UnitPrice = Number(item.purchase_price_without_vat) || 0;
+
+            const Trade_Price_Per_Box = qtyPerPack * UnitPrice;
+
+            let calc = calculateRow(item);
+
+            let vatAfterDiscount = calc.vat;
+            let rowTotal = calc.subtotal;
+
+            rows += `
         <tr data-index="${key}">
 
             <!-- Product -->
@@ -361,27 +361,27 @@ function drawTable() {
             <!-- Stock -->
             <td>${Number(item.total_stock || 0).toFixed(2)}</td>
 
-            <!-- Qty Per Box -->
-            <td>
-                <input
-                    data-id="${key}"
-                    class="product_quantity_change form-control form-control-sm w-100"
-                    type="number"
-                    min="1"
-                    step="any"
-                    value="${qtyPerPack}">
-            </td>
+<!-- Qty Per Box -->
+<td class="qty-box-cell">
+    <input
+        data-id="${key}"
+        class="product_quantity_change form-control form-control-sm"
+        type="number"
+        min="1"
+        step="any"
+        value="${qtyPerPack}">
+</td>
 
-            <!-- Box Qty -->
-            <td>
-                <input
-                    data-id="${key}"
-                    class="product_boxqty_change form-control form-control-sm"
-                    type="number"
-                    min="1"
-                    step="any"
-                    value="${Boxqty}">
-            </td>
+<!-- Box Qty -->
+<td class="box-qty-cell">
+    <input
+        data-id="${key}"
+        class="product_boxqty_change form-control form-control-sm"
+        type="number"
+        min="1"
+        step="any"
+        value="${Boxqty}">
+</td>
 
             <!-- Unit Purchase Price -->
             <td>
@@ -394,27 +394,28 @@ function drawTable() {
                     readonly>
             </td>
 
-            <!-- Trade Price Per Box -->
-            <td style="min-width:70px;">
-                <input
-                    type="text"
-                    class="trade_price_per_box form-control form-control-sm text-end"
-                    value="${Trade_Price_Per_Box.toFixed(2)}"
-                    data-id="${key}"
-                    >
-            </td>
+<!-- Trade Price Per Box -->
+<td class="trade-price-cell">
+    <input
+        type="number"
+        class="trade_price_per_box form-control form-control-sm text-end"
+        value="${Trade_Price_Per_Box.toFixed(2)}"
+        data-id="${key}"
+        min="0"
+        step="0.01"
+        placeholder="TP/Box">
+</td>
 
-            <!-- Free Qty -->
-            <td>
-                <input
-                    style="min-width:50px;"
-                    type="number"
-                    class="free_qty form-control form-control-sm"
-                    data-id="${key}"
-                    min="0"
-                    step="any"
-                    value="${Number(item.free_qty || 0)}">
-            </td>
+   <!-- Free Qty -->
+<td class="free-qty-cell">
+    <input
+        type="number"
+        class="free_qty form-control form-control-sm"
+        data-id="${key}"
+        min="0"
+        step="any"
+        value="${Number(item.free_qty || 0)}">
+</td>
 
             <!-- VAT % -->
             <td>
@@ -427,24 +428,28 @@ function drawTable() {
                     data-id="${key}">
             </td>
 
-            <!-- VAT Amount -->
-            <td class="vatAmount">
-                ${vatAfterDiscount.toFixed(2)}
-            </td>
+<!-- VAT Amount - Hidden -->
+<!--
+<td class="vatAmount">
+    ${vatAfterDiscount.toFixed(2)}
+</td>
+-->
 
-            <!-- SELLING PRICE -->
-            <td>
-                <input
-                    type="number"
-                    class="sale_price form-control form-control-sm"
-                    value="${item.selling_price !== undefined && item.selling_price !== null
-                        ? item.selling_price
-                        : ''}"
-                    data-id="${key}"
-                    min="0"
-                    step="0.01"
-                    placeholder="Enter S.Price">
-            </td>
+<!-- SELLING PRICE / UNIT -->
+<td>
+    <input
+        type="number"
+        class="sale_price form-control form-control-sm"
+        value="${item.selling_unit_price !== undefined &&
+                    item.selling_unit_price !== null
+                    ? Number(item.selling_unit_price).toFixed(2)
+                    : ''
+                }"
+        data-id="${key}"
+        min="0"
+        step="0.01"
+        placeholder="Enter S.Price">
+</td>
 
             <!-- Discount % -->
             <td>
@@ -471,13 +476,13 @@ function drawTable() {
             </td>
 
         </tr>`;
-    });
+        });
 
-    tbody.html(rows);
+        tbody.html(rows);
 
-    updateGrandTotal();
-    enableButton();
-}
+        updateGrandTotal();
+        enableButton();
+    }
 
 
 
@@ -492,7 +497,7 @@ function drawTable() {
 
         var found = false;
 
-        $.each(itemsInCart, function(key, item) {
+        $.each(itemsInCart, function (key, item) {
             if (item.product_id == product_id) {
                 item.quantity_per_pack += 1;
                 found = true;
@@ -501,7 +506,7 @@ function drawTable() {
         });
 
         if (!found) {
-            $.each(productsList, function(key, product) {
+            $.each(productsList, function (key, product) {
                 if (product.product_id == product_id) {
 
                     product.quantity_per_pack = 1;
@@ -546,7 +551,7 @@ function drawTable() {
 
     // ================= EVENTS ================= //
 
-    $(document).on("input", ".product_quantity_change", function() {
+    $(document).on("input", ".product_quantity_change", function () {
 
         let index = $(this).data("id");
 
@@ -558,8 +563,8 @@ function drawTable() {
         // Read current Trade Price Per Box from the row
         let tradePrice = parseFloat(
             $("#cartTableBody tr[data-index='" + index + "']")
-            .find(".trade_price_per_box")
-            .val()
+                .find(".trade_price_per_box")
+                .val()
         ) || 0;
 
         // Buying Price = Trade Price / Qty Per Box
@@ -569,7 +574,7 @@ function drawTable() {
 
     });
 
-    $(document).on("input", ".product_boxqty_change", function() {
+    $(document).on("input", ".product_boxqty_change", function () {
 
         let index = $(this).data("id");
 
@@ -579,7 +584,7 @@ function drawTable() {
 
     });
 
-    $(document).on("input", ".trade_price_per_box", function() {
+    $(document).on("input", ".trade_price_per_box", function () {
 
         let index = $(this).data("id");
 
@@ -595,7 +600,7 @@ function drawTable() {
 
 
 
-    $(document).on("input", ".purchase_price_no_vat", function() {
+    $(document).on("input", ".purchase_price_no_vat", function () {
         var index = $(this).closest("tr").data("index");
         var newPrice = Number($(this).val()) || 0;
 
@@ -608,7 +613,7 @@ function drawTable() {
         updateRow(index);
     });
 
-    $(document).on("input", ".free_qty", function() {
+    $(document).on("input", ".free_qty", function () {
         const index = $(this).data("id");
 
         itemsInCart[index].free_qty = Number($(this).val()) || 0;
@@ -624,14 +629,14 @@ function drawTable() {
     $(document).on("input", ".sale_price", function () {
 
         const key = $(this).data("id");
-    
-        itemsInCart[key].selling_price =
+
+        itemsInCart[key].selling_unit_price =
             parseFloat($(this).val()) || 0;
     });
 
 
 
-    $(document).on("input", ".vat-input", function() {
+    $(document).on("input", ".vat-input", function () {
 
         let index = $(this).data("id");
 
@@ -642,7 +647,7 @@ function drawTable() {
     });
 
 
-    $(document).on("input", ".discount_percent", function() {
+    $(document).on("input", ".discount_percent", function () {
 
         let index = $(this).data("id");
         let value = Number($(this).val()) || 0;
@@ -656,7 +661,7 @@ function drawTable() {
         updateRow(index);
     });
 
-    $(document).on("click", ".btn_item_delete", function() {
+    $(document).on("click", ".btn_item_delete", function () {
         var index = $(this).data("index");
         itemsInCart.splice(index, 1);
         drawTable();
@@ -668,7 +673,7 @@ function drawTable() {
     $("#percentAmount").on("input", updateLivePreview);
 
     // Show/Hide Fixed & Percent Input
-    $("input[name='discountType']").on("change", function() {
+    $("input[name='discountType']").on("change", function () {
 
         if ($("#fixedType").is(":checked")) {
             $("#fixedInput").removeClass("d-none");
@@ -694,17 +699,17 @@ function drawTable() {
     // });
 
 
-    $("#openVatModal").on("click", function() {
+    $("#openVatModal").on("click", function () {
 
         let currentVat =
             parseFloat($("#vat_amt_on_total").data("value")) || 0;
-    
+
         $("#vatInput").val(currentVat);
     });
 
 
 
-    $("#saveVatBtn").on("click", function() {
+    $("#saveVatBtn").on("click", function () {
 
         let vatPercent = parseFloat($("#vatInput").val()) || 0;
 
@@ -714,7 +719,7 @@ function drawTable() {
             .text(vatPercent.toFixed(2));
 
         // Apply to every product
-        itemsInCart.forEach(function(item) {
+        itemsInCart.forEach(function (item) {
             item.tax_percentage = vatPercent;
         });
 
@@ -723,7 +728,7 @@ function drawTable() {
         $("#vatModal").modal("hide");
     });
 
-    $("#vatInput").on("input", function() {
+    $("#vatInput").on("input", function () {
         var vatPercent = parseFloat($(this).val()) || 0;
         $("#vat_amt_on_total").data("value", vatPercent).text(vatPercent.toFixed(2));
         recalcNetTotal();
@@ -732,7 +737,7 @@ function drawTable() {
     // =========================================================================
     // Discount Modal
     // =========================================================================
-    $("#discountOnTotalModal .btn-primary").on("click", function() {
+    $("#discountOnTotalModal .btn-primary").on("click", function () {
 
         if ($("#percentType").is(":checked")) {
 
@@ -740,7 +745,7 @@ function drawTable() {
 
             $("#discountHeader").text("Dis%");
 
-            itemsInCart.forEach(function(item) {
+            itemsInCart.forEach(function (item) {
                 item.discount_type = "percent";
                 item.discount_percent = discountPercent;
                 item.discount_fixed = 0;
@@ -752,7 +757,7 @@ function drawTable() {
 
             $("#discountHeader").text("Disc");
 
-            itemsInCart.forEach(function(item) {
+            itemsInCart.forEach(function (item) {
                 item.discount_type = "fixed";
                 item.discount_fixed = fixed; // 10 Tk for EVERY product
                 item.discount_percent = fixed; // Display 10 in the Disc column
@@ -769,7 +774,7 @@ function drawTable() {
     // Product Selection
     // =========================================================================
 
-    $("#item").on('change', function() {
+    $("#item").on('change', function () {
         var product_id = $(this).val();
         if (product_id > 0) addProductToCart(product_id);
         $(this).val("0");
@@ -778,9 +783,10 @@ function drawTable() {
     // Purchase
     // =========================================================================
 
-    $("#productPurchase").on("click", function() {
+    $("#productPurchase").on("click", function () {
 
         var supplier_id = $("#supplier_id").val();
+        var purchase_date = $("#purchase_date").val();
 
         if (!supplier_id) {
             alert("Please Select Supplier");
@@ -794,7 +800,7 @@ function drawTable() {
 
         $(this).prop("disabled", true).text("Processing...");
 
-         //url: "<?=site_url('purchase/product')?>",
+        //url: "<?=site_url('purchase/product')?>",
 
         //  $.ajax({
         //     url: APP_URLS.purchaseProduct,
@@ -806,111 +812,112 @@ function drawTable() {
         //         vat_amt_on_total: $("#vat_amt_on_total").text(),
         //         supplier_id: supplier_id
         //     },
-        
+
         //     success: function (response) {
-        
+
         //         if (response.status) {
-        
+
         //             Swal.fire({
         //                 icon: "success",
         //                 title: "Success",
         //                 text: response.message,
         //                 confirmButtonText: "OK"
         //             }).then(() => {
-        
+
         //                 itemsInCart = [];
         //                 location.reload();
-        
+
         //             });
-        
+
         //         } else {
-        
+
         //             Swal.fire({
         //                 icon: "error",
         //                 title: "Purchase Failed",
         //                 text: response.message
         //             });
-        
+
         //             $("#productPurchase")
         //                 .prop("disabled", false)
         //                 .text("Purchase");
         //         }
         //     },
-        
+
         //     error: function (xhr) {
-        
+
         //         Swal.fire({
         //             icon: "error",
         //             title: "Server Error",
         //             text: "Something went wrong. Please try again."
         //         });
-        
+
         //         $("#productPurchase")
         //             .prop("disabled", false)
         //             .text("Purchase");
-        
+
         //         console.error(xhr.responseText);
         //     }
         // });
 
-$.ajax({
-    url: APP_URLS.purchaseProduct,
-    type: "POST",
-    dataType: "json",
-    data: {
-        cart_data: JSON.stringify(itemsInCart),
-        discount_on_total_price: $("#discount_on_total_price").text(),
-        vat_amt_on_total: $("#vat_amt_on_total").text(),
-        supplier_id: supplier_id
-    },
+        $.ajax({
+            url: APP_URLS.purchaseProduct,
+            type: "POST",
+            dataType: "json",
+            data: {
+                cart_data: JSON.stringify(itemsInCart),
+                discount_on_total_price: $("#discount_on_total_price").text(),
+                vat_amt_on_total: $("#vat_amt_on_total").text(),
+                supplier_id: supplier_id,
+                purchase_date: purchase_date
+            },
 
-    success: function (response) {
+            success: function (response) {
 
-        if (response.status) {
+                if (response.status) {
 
-            Swal.fire({
-                icon: "success",
-                title: "Success",
-                text: response.message,
-                timer: 2000,
-                timerProgressBar: true,
-                showConfirmButton: false
-            }).then(() => {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success",
+                        text: response.message,
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showConfirmButton: false
+                    }).then(() => {
 
-                itemsInCart = [];
-                location.reload();
+                        itemsInCart = [];
+                        location.reload();
 
-            });
+                    });
 
-        } else {
+                } else {
 
-            Swal.fire({
-                icon: "error",
-                title: "Purchase Failed",
-                text: response.message
-            });
+                    Swal.fire({
+                        icon: "error",
+                        title: "Purchase Failed",
+                        text: response.message
+                    });
 
-            $("#productPurchase")
-                .prop("disabled", false)
-                .text("Purchase");
-        }
-    },
+                    $("#productPurchase")
+                        .prop("disabled", false)
+                        .text("Purchase");
+                }
+            },
 
-    error: function (xhr) {
+            error: function (xhr) {
 
-        Swal.fire({
-            icon: "error",
-            title: "Server Error",
-            text: "Something went wrong. Please try again."
+                Swal.fire({
+                    icon: "error",
+                    title: "Server Error",
+                    text: "Something went wrong. Please try again."
+                });
+
+                $("#productPurchase")
+                    .prop("disabled", false)
+                    .text("Purchase");
+
+                console.error(xhr.responseText);
+            }
         });
-
-        $("#productPurchase")
-            .prop("disabled", false)
-            .text("Purchase");
-
-        console.error(xhr.responseText);
-    }
-});
 
 
     });

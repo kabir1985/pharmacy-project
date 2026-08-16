@@ -388,8 +388,8 @@ class Menu extends BaseConfig
                     'privileges' => ['due_collection']
                 ],
                 [
-                    'label'      => 'Customer A/C Stmt',
-                    'url'        => 'payment/cus-acc-stmt',
+                    'label'      => 'Customer A/C Stmt.',
+                    'url'        => 'customer/account-statement',
                     'privileges' => ['customer_ac_stmt']
                 ]
 

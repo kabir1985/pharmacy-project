@@ -113,7 +113,7 @@
                                         </td>
 
                                         <td class="text-end">
-                                            <?= number_format($product['selling_price'], 2) ?>
+                                            <?= number_format($product['selling_unit_price'], 2) ?>
                                         </td>
 
 
@@ -633,7 +633,7 @@
 
                 <div class="modal-footer">
 
-                    <input type="text" id="delete_id" name="delete_id">
+                    <input type="hidden" id="delete_id" name="delete_id">
 
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
 

@@ -23,6 +23,7 @@ protected $allowedFields = [
                             'product_wise_vat_amount',
                             'product_wise_discount_amount',
                             'selling_price',
+                            'selling_unit_price',
                             'purchase_price',
                             'line_total'
                         ];

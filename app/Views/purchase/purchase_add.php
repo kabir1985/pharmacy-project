@@ -39,7 +39,7 @@ echo $this->section('content');
                             <th>TP/Box</th>
                             <th>Free Qty</th>
                             <th class="vat-column-header">P.Vat%</th>
-                            <th>V.Amt</th>
+                            <!-- <th>V.Amt</th> -->
                             <th>S.Price/Unit</th>
                             <th id="discountHeader">Dis%</th>
                             <th class="text-end">SubTotal</th>
@@ -53,14 +53,75 @@ echo $this->section('content');
         </div>
         <div class="col-12 col-lg-3 mb-2">
             <div class="card text-dark bg-light mb-3">
-                <div class="card-header">
+                <!-- <div class="card-header">
+                    <h5 class="mb-3">
+                        <i class="fa fa-shopping-cart"></i>
+                        Create Purchase
+                    </h5>
+
+                    <hr class="mt-0 mb-3">
                     <select id="supplier_id" class="form-control select2 w-100" required>
                         <option value="">Select Supplier</option>
                         <?php foreach ($supplier_show as $row): ?>
                         <option value="<?=$row['supplier_id']?>"><?=$row['supplier_name']?></option>
                         <?php endforeach; ?>
                     </select>
-                </div>
+                </div> -->
+
+
+<div class="card-header">
+
+    <h5 class="mb-3">
+        <i class="fa fa-shopping-cart"></i>
+        Create Purchase
+    </h5>
+
+    <hr class="mt-0 mb-3">
+
+    <div class="row">
+
+        <!-- Supplier -->
+        <div class="col-md-8">
+            <label for="supplier_id" class="form-label">
+                Supplier
+            </label>
+
+            <select id="supplier_id"
+                    class="form-control select2 w-100"
+                    required>
+
+                <option value="">Select Supplier</option>
+
+                <?php foreach ($supplier_show as $row): ?>
+                    <option value="<?= $row['supplier_id'] ?>">
+                        <?= $row['supplier_name'] ?>
+                    </option>
+                <?php endforeach; ?>
+
+            </select>
+        </div>
+
+        <!-- Purchase Date -->
+        <div class="col-md-4">
+            <label for="purchase_date" class="form-label">
+                 Date
+            </label>
+
+<input
+    type="datetime-local"
+    id="purchase_date"
+    name="purchase_date"
+    class="form-control"
+    value="<?= date('Y-m-d\TH:i') ?>"
+    required>
+        </div>
+
+    </div>
+
+</div>
+
+
+
                 <div class="card-body">
                     <table class="table table-striped mb-0">
                         <tfoot>
@@ -294,8 +355,22 @@ echo $this->section('content');
                                     <label for="inputState">Brand</label>
                                     <div class="input-group">
 
-                                        <select id="product_brand" name="product_brand" class="form-control" required>
-                                        </select>
+                                        <!-- <select id="product_brand" name="product_brand" class="form-control" required>
+                                        </select> -->
+
+                                           <select id="product_brand" name="product_brand" class="form-control" required>
+
+                                            <option value="">Select Brand</option>
+
+                                            <?php foreach ($brand_show as $brand): ?>
+
+                                                <option value="<?= $brand['brand_id'] ?>">
+                                                    <?= $brand['product_brand_name'] ?>
+                                                </option>
+
+                                            <?php endforeach; ?>
+
+                                        </select> 
 
                                         <div class="input-group-append">
 
@@ -438,10 +513,17 @@ echo $this->section('content');
 
 
                             <div class="form-row">
-                                <div class='form-group col-md-4'>
-                                    <label>Alert Quantity</label>
-                                    <input type="number" class="form-control" name="alert_quantity" min="0" required>
-                                </div>
+                               <div class="form-group col-md-4">
+    <label>Alert Quantity</label>
+    <input
+        type="number"
+        class="form-control"
+        name="alert_quantity"
+        min="0"
+        step="1"
+        onkeydown="return !['e','E','+','-'].includes(event.key)"
+        required>
+</div>
 
                                 <div class="form-group col-md-8">
                                     <label>Product Image</label>
