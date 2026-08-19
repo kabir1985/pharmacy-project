@@ -2,19 +2,19 @@
 <html lang="en">
 
 <head>
-  <meta name="description" content="Inventory Management System.">
+  <meta name="description" content="PharmaPOS - Pharmacy POS and Inventory Management System">
   <!-- Twitter meta-->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:site" content="@pratikborsadiya">
   <meta property="twitter:creator" content="@pratikborsadiya">
   <!-- Open Graph Meta-->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Inventory Management System">
+  <meta property="og:site_name" content="PharmaPOS - Pharmacy POS and Inventory Management System">
   <meta property="og:title" content="Inventory Management System">
-  <meta property="og:url" content="Inventory Management System">
-  <meta property="og:image" content="Inventory Management System">
+  <meta property="og:url" content="Pharmacy POS and Inventory Management System">
+  <meta property="og:image" content="Pharmacy POS and Inventory Management System">
   <meta property="og:description" content="Inventory Management System.">
-  <title>Inventory Management System</title>
+  <title>PharmaPOS- Pharmacy POS and Inventory Management System</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
